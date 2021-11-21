@@ -1,0 +1,73 @@
+.table-condensed {
+    font-size: 90%;    
+}
+
+.-headerGroups {
+  background: #ccc;
+}
+.rt-th-group:after {
+    background-color: transparent !important;
+}
+
+.rt-th {
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(230, 230, 230);
+    background-color: #dedede;
+}
+.rt-th:hover,
+.rt-th[aria-sort="ascending"],
+.rt-th[aria-sort="descending"] {
+    background-color: #bbb;
+}
+
+.rt-td-filter {
+    padding: 0px 10px !important;
+    background-color: #f0f0f0;
+}
+.rt-filter {
+    border: 0px !important;
+    border-radius: 0px !important;
+    font-size: 80% !important;
+}
+
+.-header {
+  /* background-color: #eee; */
+  color: #333;
+  /* font-size: 90%; */
+}
+
+.rt-row {
+    display: flex;
+    align-items: baseline;
+    /* display: inline-block; */
+}
+
+.rank {
+  border-radius: 12px;
+  margin: 0 auto;
+  width: 35px;
+  /* height: 25px; */
+  text-align: center;
+}
+.rank-small {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 75%;
+  margin-left: 10px;
+  color: #666;
+  width: 25px !important;
+  /* height: 20px !important; */
+  /* border-radius: 50%; */
+  border-radius: 10px;
+  /* padding-top: 2%; */
+}
+/* .sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+} */
+/* .sup {
+  top: -0.5em;
+} */
