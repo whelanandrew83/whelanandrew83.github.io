@@ -3,7 +3,7 @@
   "short_name": "Wheelo Ratings",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#fff",
+  "background_color": "#670099",
   "description": "Wheelo Ratings.",
   "icons": [{
     "src": "logo_48.png",
