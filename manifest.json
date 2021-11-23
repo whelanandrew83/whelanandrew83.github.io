@@ -2,7 +2,8 @@
   "name": "Wheelo Ratings",
   "short_name": "Wheelo Ratings",
   "start_url": ".",
-  "display": "standalone",
+  "scope": "/",
+  "display": "minimal-ui",
   "background_color": "#670099",
   "description": "Wheelo Ratings.",
   "icons": [{
