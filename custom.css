@@ -13,12 +13,12 @@
     border-bottom: 1px;
     border-bottom-style: solid;
     border-bottom-color: rgb(230, 230, 230);
-    background-color: #dedede;
+    background-color: #dedede !important;
 }
 .rt-th:hover,
 .rt-th[aria-sort="ascending"],
 .rt-th[aria-sort="descending"] {
-    background-color: #bbb;
+    background-color: #bbb !important;
 }
 
 .rt-td-filter {
@@ -42,7 +42,23 @@
     align-items: baseline;
     /* display: inline-block; */
 }
-
+.rt-tr-striped .sticky {
+    background-color: rgb(246, 248, 250) !important;
+}
+.rt-tr-striped {
+    background-color: rgb(246, 248, 250);
+}
+/* .rt-th .sticky {
+    background-color: #dedede;
+} */
+.rt-tr .sticky {
+    background-color: #fff;
+}
+.sticky {
+    position: sticky !important;
+    left: 0;
+    z-index: 1;
+}
 .rank {
   border-radius: 12px;
   margin: 0 auto;
