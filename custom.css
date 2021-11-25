@@ -94,3 +94,7 @@
 /* .sup {
   top: -0.5em;
 } */
+.plot-scroll {
+  overflow: auto;
+  white-space: nowrap;
+}
