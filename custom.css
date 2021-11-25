@@ -23,7 +23,7 @@
 
 .rt-td-filter {
     padding: 0px 10px !important;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0 !important;
 }
 .rt-filter {
     border: 0px !important;
@@ -58,6 +58,13 @@
     position: sticky !important;
     left: 0;
     z-index: 1;
+}
+.rating {
+  border-radius: 12px;
+  margin: 0 auto;
+  width: 45px;
+  /* height: 25px; */
+  text-align: center;
 }
 .rank {
   border-radius: 12px;
