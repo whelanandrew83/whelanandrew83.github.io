@@ -94,7 +94,8 @@
 /* .sup {
   top: -0.5em;
 } */
-.plot-scroll {
-  overflow: auto;
-  white-space: nowrap;
+.checkbox-inline {
+  margin-left: 0px !important;
+  margin-right: 10px !important;
+  width: 180px;
 }
