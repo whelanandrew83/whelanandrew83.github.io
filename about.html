@@ -11,7 +11,7 @@
 
 
 
-<title>About This Website</title>
+<title>About</title>
 
 <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -260,27 +260,6 @@ $(document).ready(function () {
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    AFL
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">MODEL</li>
-    <li>
-      <a href="afl_ratings.html">Ratings</a>
-    </li>
-    <li class="divider"></li>
-    <li class="dropdown-header">STATS</li>
-    <li>
-      <a href="afl_premierships.html">Premierships</a>
-    </li>
-    <li>
-      <a href="afl_annual_summary.html">Annual Summary</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     ATP Tennis
      
     <span class="caret"></span>
@@ -351,6 +330,27 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    AFL
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">MODEL</li>
+    <li>
+      <a href="afl_ratings.html">Ratings</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">STATS</li>
+    <li>
+      <a href="afl_premierships.html">Premierships</a>
+    </li>
+    <li>
+      <a href="afl_annual_summary.html">Annual Summary</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="about.html">About</a>
 </li>
@@ -371,12 +371,75 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About This Website</h1>
+<h1 class="title toc-ignore">About</h1>
 
 </div>
 
 
-<p>More about this website.</p>
+<p>
+Wheelo Ratings provides statistics, records and elo ratings for ATP and WTA tennis, and the Australian Rules football AFL competition. The site will also include predictions and simulations of the AFL season.
+</p>
+<p>
+This site was built with <a href="https://rmarkdown.rstudio.com/" target="_blank">R Markdown</a> and primarily with the following packages:
+</p>
+<ul>
+<li>
+<a href="https://glin.github.io/reactable/" target="_blank">reactable</a>
+</li>
+<li>
+<a href="https://plotly.com/r/" target="_blank">plotly</a>
+</li>
+<li>
+<a href="https://rstudio.github.io/htmltools/" target="_blank">htmltools</a>
+</li>
+<li>
+<a href="https://www.tidyverse.org/" target="_blank">tidyverse</a>
+</li>
+</ul>
+<p><br></p>
+<div id="data-sources" class="section level3">
+<h3>Data Sources</h3>
+<p>
+Tennis match results sourced from <a href="https://www.tennisabstract.com/blog/2015/03/24/free-atp-and-wta-results-and-stats-databases/" target="_blank">tennisabstract.com</a>
+</p>
+<p>
+AFL statistics sourced from the <a href="https://github.com/jimmyday12/fitzRoy" target="_blank">fitzRoy</a> R package. This incredibly useful package provides access to match results, player statistics, team lineups from a range of data sources.
+</p>
+<p><br></p>
+</div>
+<div id="useful-links" class="section level3">
+<h3>Useful Links</h3>
+<div id="tennis" class="section level4">
+<h4>Tennis</h4>
+<ul>
+<li>
+<a href="https://ultimatetennisstatistics.com/" target="_blank">Ultimate Tennis Statistics</a>
+</li>
+<li>
+<a href="http://www.tennisabstract.com/" target="_blank">Tennis Abstract</a>
+</li>
+</ul>
+<p><br></p>
+</div>
+<div id="afl" class="section level4">
+<h4>AFL</h4>
+<ul>
+<li>
+<a href="https://afltables.com/afl/afl_index.html" target="_blank">AFL Tables</a>
+</li>
+<li>
+<a href="http://www.matterofstats.com/" target="_blank">Matter Of Stats</a>
+</li>
+<li>
+<a href="https://squiggle.com.au/" target="_blank">Squiggle</a>
+</li>
+<li>
+<a href="https://probabilistic-footy.monash.edu/~footy/" target="_blank">Monash University Probabilistic Footy Tipping Competition</a>
+</li>
+</ul>
+<p><br></p>
+</div>
+</div>
 
 &nbsp;
 <hr />
