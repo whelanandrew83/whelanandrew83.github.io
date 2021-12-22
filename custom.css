@@ -100,10 +100,14 @@
 /* .sup {
   top: -0.5em;
 } */
-.checkbox-inline {
+.fixed-width .checkbox-inline {
   margin-left: 0px !important;
   margin-right: 10px !important;
   width: 160px;
+}
+.covid .checkbox-inline {
+  margin-left: 0px !important;
+  margin-right: 10px !important;
 }
 /* .legendtoggle {
   width: 160px;
