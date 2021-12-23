@@ -3,157 +3,169 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://www.wheeloratings.com/about.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/afl_annual_summary.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.wheeloratings.com/afl_matches.html</loc>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/afl_methodology.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/afl_premierships.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/afl_ratings.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/afl_simulations.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/afl_tipping.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.wheeloratings.com/covid.html</loc>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/index.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_current_high.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_goat.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_players.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_ratings.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_ratings_by_year.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_ratings_by_year_top5.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_records.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_season_records.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_atp_tournaments.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_current_high.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_goat.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_players.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_ratings.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_ratings_by_year.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_ratings_by_year_top5.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_records.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_season_records.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_tournaments.html</loc>
-      <lastmod>2021-12-05</lastmod>
+      <lastmod>2021-12-22</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
