@@ -112,3 +112,7 @@
 /* .legendtoggle {
   width: 160px;
 } */
+/* Hide "Make a selection" button from leaflet map */
+.easy-button-container {
+    display: none;
+}
