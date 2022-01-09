@@ -5,7 +5,7 @@
 .-headerGroups {
   background: #ccc;
 }
-. rt-th-group:after {
+.rt-th-group:after {
     background-color: transparent !important;
 }
 
