@@ -13,12 +13,15 @@
     border-bottom: 1px;
     border-bottom-style: solid;
     border-bottom-color: rgb(230, 230, 230);
-    background-color: #dedede !important;
+    /* background-color: #dedede !important; */
+    background-color: #670099 !important;
+    padding: 6px 5px !important;
 }
 .rt-th:hover,
 .rt-th[aria-sort="ascending"],
 .rt-th[aria-sort="descending"] {
-    background-color: #bbb !important;
+    /* background-color: #bbb !important; */
+    background-color: #3a0057 !important;
 }
 
 .rt-td-filter {
@@ -33,7 +36,8 @@
 
 .-header {
   /* background-color: #eee; */
-  color: #333;
+  /* color: #333; */
+  color: #fff;
   /* font-size: 90%; */
 }
 
