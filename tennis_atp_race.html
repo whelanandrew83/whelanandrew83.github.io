@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>ATP Elo Race</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L04L041MGC');
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="flatly.css" type="text/css" />
+<link rel="stylesheet" href="custom.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px;" src="logo.png" /></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    ATP Tennis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">RATINGS</li>
+    <li>
+      <a href="tennis_atp_ratings.html">Ratings</a>
+    </li>
+    <li>
+      <a href="tennis_atp_race.html">Race</a>
+    </li>
+    <li>
+      <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+    </li>
+    <li>
+      <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">STATS</li>
+    <li>
+      <a href="tennis_atp_records.html">Overall Records</a>
+    </li>
+    <li>
+      <a href="tennis_atp_season_records.html">Season Records</a>
+    </li>
+    <li>
+      <a href="tennis_atp_players.html">Players</a>
+    </li>
+    <li>
+      <a href="tennis_atp_tournaments.html">Tournaments</a>
+    </li>
+    <li>
+      <a href="tennis_atp_goat.html">Greatest players</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    WTA Tennis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">RATINGS</li>
+    <li>
+      <a href="tennis_wta_ratings.html">Ratings</a>
+    </li>
+    <li>
+      <a href="tennis_wta_race.html">Race</a>
+    </li>
+    <li>
+      <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+    </li>
+    <li>
+      <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">STATS</li>
+    <li>
+      <a href="tennis_wta_records.html">Overall Records</a>
+    </li>
+    <li>
+      <a href="tennis_wta_season_records.html">Season Records</a>
+    </li>
+    <li>
+      <a href="tennis_wta_players.html">Players</a>
+    </li>
+    <li>
+      <a href="tennis_wta_tournaments.html">Tournaments</a>
+    </li>
+    <li>
+      <a href="tennis_wta_goat.html">Greatest players</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    AFL
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">MODEL</li>
+    <li>
+      <a href="afl_ratings.html">Ratings</a>
+    </li>
+    <li>
+      <a href="afl_simulations.html">Simulations</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">STATS</li>
+    <li>
+      <a href="afl_premierships.html">Premierships</a>
+    </li>
+    <li>
+      <a href="afl_annual_summary.html">Team Annual Summary</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://twitter.com/WheeloRatings">
+    <span class="ion ion-social-twitter"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">ATP Elo Race</h1>
+
+</div>
+
+
+<p>
+<a href="tennis_wta_race.html">View WTA</a>
+</p>
+<p><p>Ratings as at 17 January 2022.</p></p>
+<div id="section" class="section level2 tabset tabset-fade tabset-pills">
+<h2 class="tabset tabset-fade tabset-pills"></h2>
+<div id="section-1" class="section level3">
+<h3>2022</h3>
+<div>
+<div id="htmlwidget-e33a04c73019f2a4423b" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e33a04c73019f2a4423b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104],"player_name":["Thanasi Kokkinakis","Daniel Evans","Aslan Karatsev","Roberto Bautista Agut","Maxime Cressy","Felix Auger Aliassime","Daniil Medvedev","Arthur Rinderknech","Rafael Nadal","Gael Monfils","Jannik Sinner","Taylor Fritz","Denis Shapovalov","Alex De Minaur","Emil Ruusuvuori","Karen Khachanov","Alexander Zverev","Corentin Moutet","Diego Schwartzman","Marin Cilic","Tallon Griekspoor","Andy Murray","Pablo Carreno Busta","Kamil Majchrzak","Lorenzo Sonego","Tommy Paul","Thiago Monteiro","Grigor Dimitrov","Hubert Hurkacz","Laslo Djere","Roman Safiullin","Jaume Munar","Casper Ruud","Ricardas Berankis","Brandon Nakashima","Alex Molcan","Filip Krajinovic","Stefanos Tsitsipas","Ugo Humbert","Soon Woo Kwon","Jordan Thompson","Egor Gerasimov","Botic Van De Zandschulp","Pedro Martinez","Taro Daniel","Mikael Ymer","Reilly Opelka","Fabio Fognini","Matteo Berrettini","Miomir Kecmanovic","David Goffin","Denis Kudla","Juan Manuel Cerundolo","Gianluca Mager","Aleksandar Vukic","Max Purcell","Steve Johnson","Cristian Garin","Jan Zielinski","Mackenzie Mcdonald","Aristotelis Thanos","Henri Laaksonen","Benjamin Bonzi","Brayden Schnur","Facundo Bagnis","Sebastian Baez","Marton Fucsovics","Hugo Gaston","Peter Gojowczyk","Andreas Seppi","Lloyd Harris","Dominik Koepfer","Holger Rune","Francisco Cerundolo","Rinky Hijikata","Aleksandre Bakshi","Jan Lennard Struff","Alejandro Davidovich Fokina","Alexei Popyrin","Alexander Bublik","Lorenzo Musetti","Kevin Anderson","Alejandro Tabilo","Jiri Vesely","Cameron Norrie","Adrian Mannarino","Dusan Lajovic","Federico Delbonis","Michail Pervolarakis","Nikoloz Basilashvili","Frances Tiafoe","James Duckworth","Benoit Paire","Marcos Giron","Stefano Travaglia","Yoshihito Nishioka","Christopher Oconnell","Daniel Altmaier","John Isner","Alex Bolt","Roberto Carballes Baena","John Millman","Aleksandre Metreveli","Viktor Durasovic"],"player_ioc":["AUS","GBR","RUS","ESP","USA","CAN","RUS","FRA","ESP","FRA","ITA","USA","CAN","AUS","FIN","RUS","GER","FRA","ARG","CRO","NED","GBR","ESP","POL","ITA","USA","BRA","BUL","POL","SRB","RUS","ESP","NOR","LTU","USA","SVK","SRB","GRE","FRA","KOR","AUS","BLR","NED","ESP","JPN","SWE","USA","ITA","ITA","SRB","BEL","USA","ARG","ITA","AUS","AUS","USA","CHI","POL","USA","GRE","SUI","FRA","CAN","ARG","ARG","HUN","FRA","GER","ITA","RSA","GER","DEN","ARG","AUS","GEO","GER","ESP","AUS","KAZ","ITA","RSA","CHI","CZE","GBR","FRA","SRB","ARG","CYP","GEO","USA","AUS","FRA","USA","ITA","JPN","AUS","GER","USA","AUS","ESP","AUS","GEO","NOR"],"race_points_total":[36.7052118266546,24.649683559004,21.1133238867481,20.5226085738212,19.9228279522805,17.2013402474661,15.3992751633337,15.1148345077139,15.0358876513734,13.6063131194972,12.9234600904229,12.5835015009545,12.1627500778242,11.9258779356157,11.0340483405826,10.8528335855976,10.718357945537,10.1724952566792,10.0487156408037,9.80317093581251,9.05657234118846,8.21209551557142,7.80699217707044,7.52591092857697,6.39982604821182,6.1221470310059,5.85849425627922,5.85188926483887,5.5316240765597,5.42445727202419,5.31019566987928,4.71729130974984,4.50917365485048,3.89716420164052,3.43611966174319,3.39753373413418,2.29534039255408,2.20022247418897,2.16776320727292,2.07495396103553,1.33657712759179,1.32627881820861,1.2762085501466,1.07845419102926,1.05228192291546,1.03160634721162,0.698787281474553,0.1132751704105,0.109203144525283,-0.476957082469605,-0.736795358999613,-0.86777603449003,-0.989670113708708,-1.09778745636705,-1.31369155089028,-1.97405703720797,-2.14621554758506,-2.22020639870064,-2.51656884289842,-2.67529300709866,-2.69989219592245,-3.11341509456014,-3.24095563294355,-3.4742990369939,-3.5416424155586,-3.55440030234987,-3.57021109827499,-3.62349172932956,-4.14519294798363,-4.32097161330704,-4.48979729716251,-4.71334762584012,-4.87256416014864,-4.95144667701785,-5.34066793302341,-5.3747965649567,-5.61597822412737,-5.74613999842285,-5.87693077657152,-5.94963015284692,-6.29625310352949,-6.35920094240188,-6.35962646106983,-6.65208397630616,-6.94020152152421,-7.14697441367586,-7.90435868960059,-8.57261064065443,-9.28809712892329,-9.30662500177944,-9.4463008094018,-9.75347990888103,-10.1404570841421,-10.6890189893677,-10.7507629896704,-10.7886543905287,-11.0025450544165,-11.2675195841098,-11.7450296652871,-12.1197406248744,-12.6400390081566,-13.0489489704162,-15.8151414427717,-18.3452702839591],"Matches":[9,6,4,5,8,5,4,8,4,5,3,3,4,3,4,6,3,6,3,6,3,6,5,3,3,6,5,3,4,3,4,5,3,2,3,3,3,2,3,4,4,4,4,2,2,3,4,2,3,2,4,2,2,4,4,1,4,3,1,3,1,2,3,1,3,3,3,1,1,1,1,1,1,1,1,1,4,1,3,1,1,1,3,2,3,2,5,4,3,3,2,2,2,2,2,2,2,2,4,2,2,2,3,4],"Wins":[8,5,4,4,6,3,3,5,4,4,3,2,3,2,3,4,2,4,2,4,2,4,4,3,2,4,3,2,3,2,2,3,2,1,2,2,2,1,1,2,2,2,2,1,1,2,2,1,1,1,2,1,1,2,2,0,2,1,0,1,0,1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,0,0,1,2,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],"Losses":[1,1,0,1,2,2,1,3,0,1,0,1,1,1,1,2,1,2,1,2,1,2,1,0,1,2,2,1,1,1,2,2,1,1,1,1,1,1,2,2,2,2,2,1,1,1,2,1,2,1,2,1,1,2,2,1,2,2,1,2,1,1,2,1,2,2,2,1,1,1,1,1,1,1,1,1,3,1,2,1,1,1,2,2,3,2,4,2,2,3,2,2,2,2,2,2,2,2,3,2,2,2,3,4],"WinPercentage":[0.888888888888889,0.833333333333333,1,0.8,0.75,0.6,0.75,0.625,1,0.8,1,0.666666666666667,0.75,0.666666666666667,0.75,0.666666666666667,0.666666666666667,0.666666666666667,0.666666666666667,0.666666666666667,0.666666666666667,0.666666666666667,0.8,1,0.666666666666667,0.666666666666667,0.6,0.666666666666667,0.75,0.666666666666667,0.5,0.6,0.666666666666667,0.5,0.666666666666667,0.666666666666667,0.666666666666667,0.5,0.333333333333333,0.5,0.5,0.5,0.5,0.5,0.5,0.666666666666667,0.5,0.5,0.333333333333333,0.5,0.5,0.5,0.5,0.5,0.5,0,0.5,0.333333333333333,0,0.333333333333333,0,0.5,0.333333333333333,0,0.333333333333333,0.333333333333333,0.333333333333333,0,0,0,0,0,0,0,0,0,0.25,0,0.333333333333333,0,0,0,0.333333333333333,0,0,0,0.2,0.5,0.333333333333333,0,0,0,0,0,0,0,0,0,0.25,0,0,0,0,0],"Titles":[1,0,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},"columns":[{"accessor":"rank","name":"Rank","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","defaultSortDesc":false,"cell":[{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["1"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["2"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["3"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["4"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["5"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["6"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["7"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["8"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["9"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["10"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["11"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["12"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["13"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["14"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["15"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["16"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["17"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["18"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["19"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["20"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["21"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["22"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["23"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["24"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["25"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["26"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["27"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["28"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["29"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["30"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["31"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["32"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["33"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["34"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["35"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["36"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["37"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["38"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["39"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["40"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["41"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["42"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["43"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["44"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["45"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["46"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["47"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["48"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["49"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["50"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["51"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["52"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["53"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["54"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["55"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["56"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["57"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["58"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["59"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["60"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["61"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["62"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["63"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["64"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["65"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["66"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["67"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["68"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["69"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["70"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["71"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["72"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["73"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["74"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["75"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["76"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["77"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["78"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["79"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["80"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["81"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["82"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["83"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["84"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["85"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["86"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["87"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["88"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["89"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["90"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["91"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["92"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["93"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["94"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["95"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["96"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["97"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["98"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["99"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["100"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["101"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["102"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["103"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["104"]}]},{"accessor":"player_name","name":"Player","type":"character","sortNALast":true,"minWidth":180,"align":"left","filterable":true,"defaultSortDesc":false,"className":"sticky","headerClassName":"sticky"},{"accessor":"player_ioc","name":"Country","type":"character","sortNALast":true,"minWidth":90,"align":"center","filterable":true,"defaultSortDesc":false},{"accessor":"race_points_total","name":"Race Points","type":"numeric","sortNALast":true,"minWidth":70,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}},{"accessor":"Matches","name":"Matches","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"},{"accessor":"Wins","name":"Wins","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"},{"accessor":"Losses","name":"Losses","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"},{"accessor":"WinPercentage","name":"Win Percentage","type":"numeric","sortNALast":true,"minWidth":90,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"accessor":"Titles","name":"Titles","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"}],"defaultSortDesc":true,"defaultSorted":[{"id":"rank","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"5ef0b963f3c5d12218718070ff4eb648","key":"5ef0b963f3c5d12218718070ff4eb648"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="section-2" class="section level3">
+<h3>2021</h3>
+<div>
+<div id="htmlwidget-f527740bbe5156f3545c" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f527740bbe5156f3545c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393],"player_name":["Daniil Medvedev","Novak Djokovic","Alexander Zverev","Stefanos Tsitsipas","Casper Ruud","Andrey Rublev","Jannik Sinner","Matteo Berrettini","Cameron Norrie","Rafael Nadal","Felix Auger Aliassime","Pablo Carreno Busta","Aslan Karatsev","Hubert Hurkacz","Diego Schwartzman","Sebastian Korda","Carlos Alcaraz","Karen Khachanov","Taylor Fritz","Kei Nishikori","Ilya Ivashka","Marin Cilic","John Isner","Denis Shapovalov","Frances Tiafoe","Grigor Dimitrov","Roberto Bautista Agut","Lloyd Harris","Jenson Brooksby","Lorenzo Sonego","Nikoloz Basilashvili","Daniel Evans","Marton Fucsovics","Alexander Bublik","Botic Van De Zandschulp","Alejandro Davidovich Fokina","Brandon Nakashima","Tommy Paul","Jeremy Chardy","Marcos Giron","Andy Murray","Roger Federer","Cristian Garin","Reilly Opelka","Hugo Gaston","Gael Monfils","James Duckworth","Alex De Minaur","Milos Raonic","Ugo Humbert","Borna Coric","Dominic Thiem","Peter Gojowczyk","Emil Ruusuvuori","Mackenzie Mcdonald","Arthur Rinderknech","Fabio Fognini","Zsombor Piros","Vit Kopriva","Jack Sock","Max Purcell","Jan Lennard Struff","Alexei Popyrin","Lorenzo Musetti","Ernesto Escobedo","Dominic Stricker","Christian Harrison","Albert Ramos","Nick Kyrgios","Aljaz Bedene","Jack Draper","Corentin Moutet","Oscar Otte","Marius Copil","Sebastian Baez","Aziz Dougaz","Nicolas Mahut","Henri Laaksonen","Matthew Ebden","Michael Geerts","Orlando Luz","Mats Moraing","Hugo Grenier","Kevin Anderson","Philip Henning","Christian Sigsgaard","Darian King","Tomas Machac","Alexander Erler","Soon Woo Kwon","Borna Gojo","Otto Virtanen","Laurynas Grigelis","Yosuke Watanuki","Kaichi Uchida","Felipe Meligeni Alves","Tom Kocevar Desman","Alex Bolt","Flavio Cobolli","Bor Artnak","Jisung Nam","Viktor Durasovic","Ruan Roelofse","Hernando Jose Escurra Isnardi","Alexandros Skorilas","Matheus Pucinelli De Almeida","Jerome Kym","Timofey Skatov","Yuta Shimizu","Jason Kubler","Daniil Ostapenkov","Juan Pablo Varillas","Nuno Borges","Lukas Lacko","Mikael Ymer","Andrea Vavassori","Maxime Cressy","Tristan Lamasine","Bernard Tomic","Andrew Harris","Vitaliy Sachko","Harry Bourchier","August Holmgren","Pedja Krstin","Sanjar Fayziev","Khumoun Sultanov","Jiri Lehecka","Liam Broady","Ergi Kirkin","Luke Saville","Brandon Perez","Stan Wawrinka","David Goffin","Alexander Zgirovsky","Francisco Llanes","Dane Sweeny","Enzo Couacaud","Leo Borg","Leandro Riedi","Jurij Rodionov","Alex Molcan","Mikael Torpegaard","Tallon Griekspoor","Alastair Gray","Mubarak Shannan Zayid","Duje Ajdukovic","Gonzalo Lama","Zachary Svajda","Cem Ilkel","Donald Young","Evgenii Tiurnev","Constant Lestienne","Sam Riffice","Lorenzo Giustino","Rudolf Molleker","James Ward","Stefan Kozlov","Philipp Kohlschreiber","Michael Vrbensky","Giulio Zeppieri","Martin Cuevas","Edan Leshem","Daniil Glinka","Mattias Siimar","Murkel Alejandro Dellien Velasco","Ruben Bemelmans","Pedro Martinez","Blaz Rola","Raul Brancaccio","Alexandar Lazarov","Jc Aragone","Mathias Bourgue","Dustin Brown","Dmitry Popko","Thiago Agustin Tirante","Mohamed Safwat","Trent Bryde","Andrea Collarini","Mario Vilella Martinez","Daniel Masur","Gerald Melzer","Danilo Petrovic","Finn Reynolds","Blake Mott","Nicolas Alvarez","Vladimir Ivanov","Johan Nikles","Thomas Fancutt","Alibek Kachmazov","Marcelo Arevalo","Tung Lin Wu","Lucas Catarina","Lukas Neumayer","Andrea Arnaboldi","Thomaz Bellucci","Federico Delbonis","Hamad Medjedovic","Facundo Diaz Acosta","Alessandro Giannessi","Nicolas Kicker","Erik Arutiunian","Kevin King","Eduardo Nava","Roberto Marcora","Andrey Kuznetsov","Thai Son Kwiatkowski","Filip Horansky","Ignacio Carou","Bjorn Fratangelo","Robert Strombachs","Marco Trungelliti","Juan Manuel Cerundolo","Nick Hardt","Mischa Zverev","Aleksandar Vukic","Alexandre Muller","Aqeel Khan","Ryan Harrison","Luis Patino","Sandro Ehrat","Gerardo Lopez Villasenor","Alexander Sarkissian","Justin Barki","Steven Diez","Tristan Schoolkate","Marko Topo","Mirza Basic","Lluis Miralles","Mehluli Don Ayanda Sibanda","Gastao Elias","Filip Cristian Jianu","Dimitar Kuzmanov","Kasidit Samrej","Arthur Cazaux","Roey Tabet","Leonardo Mayer","Roberto Quiroz","Dominik Koepfer","Alejandro Tabilo","Muzammil Murtaza","Matthias Bachinger","Wojciech Marek","Gunawan Trismuwantara","Daniel Cukierman","Patrik Niklas Salminen","Hady Habib","Roberto Cid","Fabian Marozsan","Antoine Hoang","Aziz Ouakaa","Marsel Ilhan","Nikola Milojevic","Nerman Fatic","Ricardo Rodriguez","Edgars Manusis","Benjamin Hassan","Siim Troost","Vilius Gaubas","Kaipo Marshall","Martin Antonio Vergara Del Puerto","Emilio Nava","Aisam Ul Haq Qureshi","Sebastian Ofner","Benjamin Lock","Thabo Ncube","Sebastian Dominko","Adolfo Daniel Vallejo","Johannes Ingildsen","Dimitri Badra","Filip Krajinovic","Altug Celikbilek","Denis Kudla","Joao Menezes","Petros Tsitsipas","Frederico Ferreira Silva","Michael Mmoh","Ivo Karlovic","Nino Serdarusic","Tomas Martin Etcheverry","Thanasi Kokkinakis","Kimmer Coppejans","John Patrick Smith","Jozef Kovalik","Roman Safiullin","Yuki Bhambri","Jay Clarke","Emilio Gomez","Federico Gaio","Robin Haase","Zhizhen Zhang","Yshai Oliel","Prajnesh Gunneswaran","Zizou Bergs","Mitchell Krueger","Renzo Olivo","Ji Sung Nam","Daniel Altmaier","Marc Andrea Huesler","Pavel Kotov","Noah Rubin","Jason Jung","Shintaro Mochizuki","Lukas Klein","Elias Ymer","Kacper Zuk","Thomas Fabbiano","Li Tu","Attila Balazs","Nicolas Jarry","Christopher Eubanks","Nicola Kuhn","Paolo Lorenzi","Jose Rubin Statham","Nicolas Mejia","Malek Jaziri","Steve Johnson","Jordan Thompson","Pablo Cuevas","Sergiy Stakhovsky","Daniel Elahi Galan","Viktor Troicki","Adrian Andreev","Michail Pervolarakis","Pierre Hugues Herbert","Carlos Taberner","Cedrik Marcel Stebe","J J Wolf","Wishaya Trongcharoenchaikul","Damir Dzumhur","Tomas Barrios Vera","Quentin Halys","Richard Gasquet","Facundo Bagnis","Laslo Djere","Pablo Andujar","Maximilian Marterer","Ramkumar Ramanathan","Hugo Dellien","Illya Marchenko","Ernests Gulbis","Yuichi Sugita","Yannick Hanfmann","Roberto Carballes Baena","Kamil Majchrzak","Gregoire Barrere","Brayden Schnur","Sumit Nagal","Evgeny Donskoy","Christopher Oconnell","Denis Istomin","Benjamin Bonzi","John Millman","Yen Hsun Lu","Holger Rune","Tennys Sandgren","Francisco Cerundolo","Bernabe Zapata Miralles","Marc Polmans","Pedro Sousa","Thiago Seyboth Wild","Federico Coria","Andrej Martin","Fernando Verdasco","Vasek Pospisil","Jo-Wilfried Tsonga","Thiago Monteiro","Marco Cecchinato","Sam Querrey","Norbert Gombos","Andreas Seppi","Ricardas Berankis","Dusan Lajovic","Stefano Travaglia","Taro Daniel","Egor Gerasimov","Guido Pella","Gianluca Mager","Dennis Novak","Lucas Pouille","Yasutaka Uchiyama","Jaume Munar","Yoshihito Nishioka","Jiri Vesely","Mikhail Kukushkin","Radu Albot","Gilles Simon","Feliciano Lopez","Adrian Mannarino","Miomir Kecmanovic","Juan Ignacio Londero","Benoit Paire","Joao Sousa","Salvatore Caruso"],"player_ioc":["RUS","SRB","GER","GRE","NOR","RUS","ITA","ITA","GBR","ESP","CAN","ESP","RUS","POL","ARG","USA","ESP","RUS","USA","JPN","BLR","CRO","USA","CAN","USA","BUL","ESP","RSA","USA","ITA","GEO","GBR","HUN","KAZ","NED","ESP","USA","USA","FRA","USA","GBR","SUI","CHI","USA","FRA","FRA","AUS","AUS","CAN","FRA","CRO","AUT","GER","FIN","USA","FRA","ITA","HUN","CZE","USA","AUS","GER","AUS","ITA","USA","SUI","USA","ESP","AUS","SLO","GBR","FRA","GER","ROU","ARG","TUN","FRA","SUI","AUS","BEL","BRA","GER","FRA","RSA","RSA","DEN","BAR","CZE","AUT","KOR","CRO","FIN","LTU","JPN","JPN","BRA","SLO","AUS","ITA","SLO","KOR","NOR","RSA","PAR","GRE","BRA","SUI","RUS","JPN","AUS","BLR","PER","POR","SVK","SWE","ITA","USA","FRA","AUS","AUS","UKR","AUS","DEN","SRB","UZB","UZB","CZE","GBR","TUR","AUS","VEN","SUI","BEL","BLR","URU","AUS","FRA","SWE","SUI","AUT","SVK","DEN","NED","GBR","QAT","CRO","CHI","USA","TUR","USA","RUS","FRA","USA","ITA","GER","GBR","USA","GER","CZE","ITA","URU","ISR","EST","EST","BOL","BEL","ESP","SLO","ITA","BUL","USA","FRA","GER","KAZ","ARG","EGY","USA","ARG","ESP","GER","AUT","SRB","NZL","AUS","PER","EST","SUI","AUS","RUS","ESA","TPE","MON","AUT","ITA","BRA","ARG","SRB","ARG","ITA","ARG","BLR","USA","USA","ITA","RUS","USA","SVK","ARG","USA","GER","ARG","ARG","DOM","GER","AUS","FRA","PAK","USA","MEX","SUI","MEX","USA","INA","CAN","AUS","SRB","BIH","ESP","ZIM","POR","ROU","BUL","THA","FRA","LIB","ARG","ECU","GER","CHI","PAK","GER","POL","INA","ISR","FIN","LIB","DOM","HUN","FRA","TUN","TUR","SRB","BIH","VEN","LAT","GER","EST","LTU","BAR","PAR","USA","PAK","AUT","ZIM","ZIM","SLO","PAR","DEN","VEN","SRB","TUR","USA","BRA","GRE","POR","USA","CRO","CRO","ARG","AUS","BEL","AUS","SVK","RUS","IND","GBR","ECU","ITA","NED","CHN","ISR","IND","BEL","USA","ARG","KOR","GER","SUI","RUS","USA","TPE","JPN","SVK","SWE","POL","ITA","AUS","HUN","CHI","USA","ESP","ITA","NZL","COL","TUN","USA","AUS","URU","UKR","COL","SRB","BUL","CYP","FRA","ESP","GER","USA","THA","BIH","CHI","FRA","FRA","ARG","SRB","ESP","GER","IND","BOL","UKR","LAT","JPN","GER","ESP","POL","FRA","CAN","IND","RUS","AUS","UZB","FRA","AUS","TPE","DEN","USA","ARG","ESP","AUS","POR","BRA","ARG","SVK","ESP","CAN","FRA","BRA","ITA","USA","SVK","ITA","LTU","SRB","ITA","JPN","BLR","ARG","ITA","AUT","FRA","JPN","ESP","JPN","CZE","KAZ","MDA","FRA","ESP","FRA","SRB","ARG","FRA","POR","ITA"],"race_points_total":[330.99048712042,314.384555655253,291.137027523223,252.401138101775,211.49245990495,196.566845472985,183.608787033703,174.870235756319,174.01503280069,129.511255491898,118.376928356114,116.896064016673,111.75598920062,107.061498763815,95.583112484406,93.3269510241397,93.0776706225736,92.4234814829903,90.4663461178703,83.0183388495134,81.731307206427,74.4606464913146,73.5348424113191,69.638988669066,66.5544538729075,63.1120325111494,61.4402238824952,57.6118912775512,53.7309848460436,50.604816649603,49.3713861009019,43.8051045082566,42.1198112671295,41.6206626402298,41.429534208371,38.5657362434228,38.4539895486454,34.2126555066243,31.8218234562033,30.9625324676799,29.5315927101178,29.0885195281101,21.8784927777535,21.3247444823766,17.2857633871054,16.8728803984555,16.6773982753113,15.4420045536462,15.1251551962592,14.6365281485742,14.3768773874075,14.055124887624,13.3522614877498,12.9294400535603,12.8840672685126,11.7485632075826,11.2033122995089,10.5765638679134,10.2192270037297,10.1096267455018,8.3366851975644,7.96201695038613,7.40398962115439,6.7111612022992,6.53714008766548,6.4996270567483,6.44808412608909,6.10721828253106,5.70869508608149,4.80244770806841,4.64784890957812,4.55027182754719,4.39150624967228,4.39109139991372,4.36509647345481,3.85285015562155,3.72406723010679,3.68777073097245,3.49459780907311,3.35856606117707,3.03809498600232,2.91864887109047,2.91816115346721,2.86576550109938,2.29221974987536,2.23301554387733,2.20843227907076,2.17910440823801,2.11019314815273,2.03307435813196,1.91415088232243,1.86407022107767,1.80892065994613,1.80040004325486,1.53453989444174,1.28955210353287,1.16075779135921,1.06413329319766,1.05821528593111,1.0441487839706,1.04117740505764,0.960246113010937,0.856478379133186,0.856478379133186,0.856478379133186,0.856478379133186,0.846649499535406,0.717018981286032,0.643547832018683,0.542129797706325,0.524673521891312,0.341772830737531,0.242200806470339,0.141134635883852,-0.103164303459,-0.160764751847235,-0.25468774205993,-0.339313449302119,-0.696512344721907,-0.82510858316666,-1.48612381487175,-1.51686469369581,-1.58200933628827,-1.6782359211452,-1.89078395501901,-1.89947758000264,-1.93340330303075,-2.479635702794,-2.56513171262144,-2.80211913852474,-2.88135820629288,-3.07031637404419,-3.26613665932874,-3.39042420641403,-3.39204516644293,-3.4226404695099,-3.45729640124083,-3.55210709597517,-3.68423260269108,-3.69487661119116,-3.78090605853185,-3.84690537008874,-3.9619714640413,-3.98613775216309,-4.00083145643091,-4.29235229434617,-4.30276031730732,-4.30790384859457,-4.33424655801154,-4.35360177557037,-4.36018998171069,-4.37679198122012,-4.38104184642714,-4.421011169892,-4.42194975682593,-4.46650586870431,-4.51454574352121,-4.53255866315788,-4.58210755912218,-4.59932994050507,-4.63577652620056,-4.67338377964784,-4.70127920060717,-4.72839024379186,-4.77368309880681,-4.77394701694721,-4.80731905374236,-4.94889837885445,-4.9538559508875,-4.99693914509579,-5.11956009765347,-5.14444734385995,-5.15942246316182,-5.24248471795056,-5.26384414717396,-5.27010811105458,-5.28076078031645,-5.2993522634681,-5.30879880683647,-5.32933908575413,-5.41435877427272,-5.44068696535662,-5.46491609887315,-5.49682012459656,-5.50326496349188,-5.62103667624814,-5.62592791440474,-5.6422448753922,-5.64297780950589,-5.64612035918132,-5.6523613297673,-5.66136747700201,-5.7109161798436,-5.72229070944623,-5.74304281689781,-5.75074882211802,-5.82067264673877,-5.88208315039371,-5.93566681047006,-5.94676294429177,-5.95338509439585,-5.99419614805574,-6.05928490814366,-6.15179375155951,-6.2419753498964,-6.25450126475302,-6.2807219535142,-6.28377414956337,-6.30753824639398,-6.42033853616131,-6.49726138245283,-6.51221302029094,-6.5267498620822,-6.57799515775398,-6.58607226067626,-6.64595858809724,-6.68337515860374,-6.70736721792779,-6.72810967115257,-6.77467698438099,-6.80082221911722,-6.80919658387551,-6.81466075626065,-6.83199237231177,-6.88347521495765,-6.89987134632646,-6.96218577516081,-6.97918102674041,-6.99981592397668,-7.0755219526427,-7.11726121563763,-7.23291905550431,-7.25894618869535,-7.26710306420806,-7.30370887949346,-7.30647474556515,-7.31777798781964,-7.37851505247127,-7.38587638468259,-7.42840354179249,-7.49197302480398,-7.53514353751054,-7.54892252914711,-7.57942460147582,-7.58242256625627,-7.58715248968356,-7.9227304848466,-8.03342160369068,-8.04576047883885,-8.07169776347335,-8.07762685259184,-8.11243393879007,-8.14287268190544,-8.14747263920646,-8.17770116469483,-8.36257173378156,-8.38544488956874,-8.39487419898493,-8.40278088012607,-8.4151048341133,-8.43425212205877,-8.49917025093996,-8.58405084042306,-8.60683717572736,-8.62583038337131,-8.63165005070238,-8.64789138117741,-8.72055321169544,-8.72677530996509,-8.79214752961862,-8.82536885394505,-8.85594080955007,-9.06576159630758,-9.19061090690077,-9.40690366165803,-9.68025804120592,-9.69739614739493,-9.90773107767091,-10.1033802384225,-10.1071992242265,-10.524201692012,-10.5775602855411,-10.8773760123959,-10.8815969926128,-10.8979745641686,-11.0549983016101,-11.1061004759666,-11.125601694069,-11.1369220942192,-11.3494279805563,-11.3633945405056,-11.4410532341779,-11.6687363822718,-11.7258412706478,-11.7429489479057,-11.8110198632027,-11.8492993759156,-11.8743169023661,-11.9571498345642,-12.0142560558533,-12.1465161488931,-12.2829993322602,-12.5940179876682,-12.6348879572586,-12.7103966814175,-12.7434032467376,-12.8078991532673,-12.8809573355506,-13.0047783638285,-13.3527414602207,-13.4901883461585,-13.5255952980698,-13.7857510152208,-14.022864794722,-14.1153176151548,-14.1558520208678,-14.3169722762801,-14.3600170683485,-14.4028734104752,-14.4750874228689,-14.9612964738608,-15.022781188432,-15.1438613599529,-15.2691280874431,-15.8130575249872,-15.9281677370579,-15.9437134799451,-16.1888770962643,-16.5172256182997,-17.3148171301681,-17.7671282733827,-18.1487475168633,-18.9889799960425,-19.0958759194913,-19.2297079818367,-20.4964408369639,-20.5028080130202,-20.7197193785771,-21.3507368196925,-21.549050477967,-21.8575488763863,-22.2511609391067,-23.5247612107202,-23.6303018001879,-23.6595345524697,-23.7240885019868,-23.7816393003171,-24.094752126447,-24.1973657144164,-24.3512205282352,-24.9798314303243,-25.2358078643683,-25.4993244115304,-25.8114072109086,-26.2233435829575,-26.3261774374414,-26.375299980529,-28.1669718371055,-28.8288366257574,-30.3032448276107,-31.2525543977927,-31.798761535393,-31.9768093751341,-33.1713182902432,-33.4902387482809,-34.6481624192716,-34.6701855864577,-35.1248060184451,-35.2104594392593,-35.2838424679813,-35.5133893321525,-35.6652476741972,-36.5293371983712,-38.2310220864308,-39.2037844237658,-39.2242858670484,-41.2707226840766,-41.5561544930972,-43.7159675184045,-44.2856377537389,-44.5649259139665,-44.9260940284847,-45.3842265277423,-46.0521214369336,-49.2353293071692,-52.1950460431953,-53.4115018874898,-55.137696966163,-55.4651430564703,-59.1964174949933,-69.1307392281718,-72.8039776917153,-77.2831943137377],"Matches":[75,63,74,74,75,77,72,54,77,29,61,57,54,60,60,49,49,59,56,45,48,56,36,53,57,42,55,53,22,54,61,48,51,65,26,50,29,48,38,43,29,14,40,43,18,37,41,50,12,39,9,18,23,45,37,35,46,2,4,11,11,57,44,43,9,8,4,49,14,30,5,25,8,2,7,3,1,17,11,1,1,2,2,26,1,1,2,7,2,34,6,1,1,3,1,1,1,12,2,1,1,3,1,1,1,1,1,2,1,2,2,8,2,2,38,2,12,2,2,2,1,2,3,2,1,1,1,11,2,1,1,7,29,1,1,2,3,1,1,8,13,3,11,1,1,2,1,3,3,1,1,1,1,1,1,1,1,16,1,1,1,2,1,1,2,2,36,1,1,1,1,1,1,1,1,1,1,1,9,1,1,1,1,1,2,1,1,1,1,2,1,1,1,1,1,48,1,1,3,1,1,1,1,3,1,1,1,1,7,1,3,12,2,1,6,4,1,1,1,1,4,1,2,1,1,1,1,1,1,1,1,6,2,3,1,1,5,48,6,1,1,1,1,1,1,1,2,1,4,2,1,3,1,1,1,1,1,1,1,1,2,1,5,1,1,1,1,1,1,43,6,20,2,2,2,5,6,4,3,6,2,2,12,6,2,2,7,5,5,2,2,3,4,2,2,2,15,2,2,2,5,2,6,13,3,3,2,2,4,5,4,2,2,3,7,22,42,20,6,24,5,6,3,23,14,5,3,2,10,3,3,32,23,49,30,4,4,8,12,3,8,22,28,13,7,4,10,7,13,4,9,50,8,20,24,13,15,8,10,7,34,17,10,24,9,29,37,26,23,20,32,46,31,16,40,26,39,19,19,13,31,33,26,18,21,22,31,40,40,11,43,16,24],"Wins":[62,56,59,55,57,54,50,41,52,24,38,38,34,37,38,31,32,35,34,27,31,33,23,31,33,24,30,30,15,30,34,25,26,35,16,27,17,25,20,23,15,9,22,21,9,19,22,25,7,19,6,9,13,23,18,18,22,2,3,6,6,27,22,21,5,5,3,24,7,15,2,12,4,2,3,3,1,9,6,1,1,1,1,13,1,1,2,4,1,19,3,1,1,2,1,1,1,6,1,1,1,2,1,1,1,1,1,1,1,1,1,5,1,1,18,1,6,1,1,1,0,1,2,1,0,0,0,5,1,0,0,3,14,0,0,1,1,0,0,4,7,1,5,0,0,1,0,1,1,0,0,0,0,0,0,0,0,7,0,0,0,1,0,0,1,1,17,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,24,0,0,1,0,0,0,0,1,0,0,0,0,3,0,1,6,1,0,2,1,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,3,1,1,0,0,2,22,2,0,0,0,0,0,0,0,1,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,20,3,9,0,0,0,1,2,1,1,2,0,0,6,2,0,0,2,1,2,0,0,1,1,0,0,0,7,0,0,0,2,0,2,5,1,0,0,0,1,1,1,0,0,0,3,10,21,9,2,11,1,2,0,9,6,1,0,0,4,0,0,14,11,23,12,0,0,2,5,0,2,9,11,5,1,0,3,1,4,0,2,23,1,7,8,5,5,2,2,1,16,6,2,8,1,13,16,10,9,7,14,18,11,5,16,8,16,5,5,3,12,10,10,5,6,5,11,14,14,0,13,2,5],"Losses":[13,7,15,19,18,23,22,13,25,5,23,19,20,23,22,18,17,24,22,18,17,23,13,22,24,18,25,23,7,24,27,23,25,30,10,23,12,23,18,20,14,5,18,22,9,18,19,25,5,20,3,9,10,22,19,17,24,0,1,5,5,30,22,22,4,3,1,25,7,15,3,13,4,0,4,0,0,8,5,0,0,1,1,13,0,0,0,3,1,15,3,0,0,1,0,0,0,6,1,0,0,1,0,0,0,0,0,1,0,1,1,3,1,1,20,1,6,1,1,1,1,1,1,1,1,1,1,6,1,1,1,4,15,1,1,1,2,1,1,4,6,2,6,1,1,1,1,2,2,1,1,1,1,1,1,1,1,9,1,1,1,1,1,1,1,1,19,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,24,1,1,2,1,1,1,1,2,1,1,1,1,4,1,2,6,1,1,4,3,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,3,1,2,1,1,3,26,4,1,1,1,1,1,1,1,1,1,3,1,1,2,1,1,1,1,1,1,1,1,2,1,3,1,1,1,1,1,1,23,3,11,2,2,2,4,4,3,2,4,2,2,6,4,2,2,5,4,3,2,2,2,3,2,2,2,8,2,2,2,3,2,4,8,2,3,2,2,3,4,3,2,2,3,4,12,21,11,4,13,4,4,3,14,8,4,3,2,6,3,3,18,12,26,18,4,4,6,7,3,6,13,17,8,6,4,7,6,9,4,7,27,7,13,16,8,10,6,8,6,18,11,8,16,8,16,21,16,14,13,18,28,20,11,24,18,23,14,14,10,19,23,16,13,15,17,20,26,26,11,30,14,19],"WinPercentage":[0.826666666666667,0.888888888888889,0.797297297297297,0.743243243243243,0.76,0.701298701298701,0.694444444444444,0.759259259259259,0.675324675324675,0.827586206896552,0.622950819672131,0.666666666666667,0.62962962962963,0.616666666666667,0.633333333333333,0.63265306122449,0.653061224489796,0.593220338983051,0.607142857142857,0.6,0.645833333333333,0.589285714285714,0.638888888888889,0.584905660377358,0.578947368421053,0.571428571428571,0.545454545454545,0.566037735849057,0.681818181818182,0.555555555555556,0.557377049180328,0.520833333333333,0.509803921568627,0.538461538461538,0.615384615384615,0.54,0.586206896551724,0.520833333333333,0.526315789473684,0.534883720930233,0.517241379310345,0.642857142857143,0.55,0.488372093023256,0.5,0.513513513513513,0.536585365853659,0.5,0.583333333333333,0.487179487179487,0.666666666666667,0.5,0.565217391304348,0.511111111111111,0.486486486486487,0.514285714285714,0.478260869565217,1,0.75,0.545454545454545,0.545454545454545,0.473684210526316,0.5,0.488372093023256,0.555555555555556,0.625,0.75,0.489795918367347,0.5,0.5,0.4,0.48,0.5,1,0.428571428571429,1,1,0.529411764705882,0.545454545454545,1,1,0.5,0.5,0.5,1,1,1,0.571428571428571,0.5,0.558823529411765,0.5,1,1,0.666666666666667,1,1,1,0.5,0.5,1,1,0.666666666666667,1,1,1,1,1,0.5,1,0.5,0.5,0.625,0.5,0.5,0.473684210526316,0.5,0.5,0.5,0.5,0.5,0,0.5,0.666666666666667,0.5,0,0,0,0.454545454545455,0.5,0,0,0.428571428571429,0.482758620689655,0,0,0.5,0.333333333333333,0,0,0.5,0.538461538461538,0.333333333333333,0.454545454545455,0,0,0.5,0,0.333333333333333,0.333333333333333,0,0,0,0,0,0,0,0,0.4375,0,0,0,0.5,0,0,0.5,0.5,0.472222222222222,0,0,0,0,0,0,0,0,0,0,0,0.444444444444444,0,0,0,0,0,0.5,0,0,0,0,0.5,0,0,0,0,0,0.5,0,0,0.333333333333333,0,0,0,0,0.333333333333333,0,0,0,0,0.428571428571429,0,0.333333333333333,0.5,0.5,0,0.333333333333333,0.25,0,0,0,0,0.5,0,0.5,0,0,0,0,0,0,0,0,0.5,0.5,0.333333333333333,0,0,0.4,0.458333333333333,0.333333333333333,0,0,0,0,0,0,0,0.5,0,0.25,0.5,0,0.333333333333333,0,0,0,0,0,0,0,0,0,0,0.4,0,0,0,0,0,0,0.465116279069767,0.5,0.45,0,0,0,0.2,0.333333333333333,0.25,0.333333333333333,0.333333333333333,0,0,0.5,0.333333333333333,0,0,0.285714285714286,0.2,0.4,0,0,0.333333333333333,0.25,0,0,0,0.466666666666667,0,0,0,0.4,0,0.333333333333333,0.384615384615385,0.333333333333333,0,0,0,0.25,0.2,0.25,0,0,0,0.428571428571429,0.454545454545455,0.5,0.45,0.333333333333333,0.458333333333333,0.2,0.333333333333333,0,0.391304347826087,0.428571428571429,0.2,0,0,0.4,0,0,0.4375,0.478260869565217,0.469387755102041,0.4,0,0,0.25,0.416666666666667,0,0.25,0.409090909090909,0.392857142857143,0.384615384615385,0.142857142857143,0,0.3,0.142857142857143,0.307692307692308,0,0.222222222222222,0.46,0.125,0.35,0.333333333333333,0.384615384615385,0.333333333333333,0.25,0.2,0.142857142857143,0.470588235294118,0.352941176470588,0.2,0.333333333333333,0.111111111111111,0.448275862068966,0.432432432432432,0.384615384615385,0.391304347826087,0.35,0.4375,0.391304347826087,0.354838709677419,0.3125,0.4,0.307692307692308,0.41025641025641,0.263157894736842,0.263157894736842,0.230769230769231,0.387096774193548,0.303030303030303,0.384615384615385,0.277777777777778,0.285714285714286,0.227272727272727,0.354838709677419,0.35,0.35,0,0.302325581395349,0.125,0.208333333333333],"Titles":[4,5,6,2,5,1,4,2,2,2,0,2,2,3,1,1,2,0,0,0,1,2,1,0,0,0,0,0,0,1,2,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},"columns":[{"accessor":"rank","name":"Rank","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","defaultSortDesc":false,"cell":[{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["1"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["2"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["3"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["4"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["5"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["6"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["7"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["8"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["9"]},{"name":"div","attribs":{"style":{"background-color":"#e0baf2"},"className":"rank"},"children":["10"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["11"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["12"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["13"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["14"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["15"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["16"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["17"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["18"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["19"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["20"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["21"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["22"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["23"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["24"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["25"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["26"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["27"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["28"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["29"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["30"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["31"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["32"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["33"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["34"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["35"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["36"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["37"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["38"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["39"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["40"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["41"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["42"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["43"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["44"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["45"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["46"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["47"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["48"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["49"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["50"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["51"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["52"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["53"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["54"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["55"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["56"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["57"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["58"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["59"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["60"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["61"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["62"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["63"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["64"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["65"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["66"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["67"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["68"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["69"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["70"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["71"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["72"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["73"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["74"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["75"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["76"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["77"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["78"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["79"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["80"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["81"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["82"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["83"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["84"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["85"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["86"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["87"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["88"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["89"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["90"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["91"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["92"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["93"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["94"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["95"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["96"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["97"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["98"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["99"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["100"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["101"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["102"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["103"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["104"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["105"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["106"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["107"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["108"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["109"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["110"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["111"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["112"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["113"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["114"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["115"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["116"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["117"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["118"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["119"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["120"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["121"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["122"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["123"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["124"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["125"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["126"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["127"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["128"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["129"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["130"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["131"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["132"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["133"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["134"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["135"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["136"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["137"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["138"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["139"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["140"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["141"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["142"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["143"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["144"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["145"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["146"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["147"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["148"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["149"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["150"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["151"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["152"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["153"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["154"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["155"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["156"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["157"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["158"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["159"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["160"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["161"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["162"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["163"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["164"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["165"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["166"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["167"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["168"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["169"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["170"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["171"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["172"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["173"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["174"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["175"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["176"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["177"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["178"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["179"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["180"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["181"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["182"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["183"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["184"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["185"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["186"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["187"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["188"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["189"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["190"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["191"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["192"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["193"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["194"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["195"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["196"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["197"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["198"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["199"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["200"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["201"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["202"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["203"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["204"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["205"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["206"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["207"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["208"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["209"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["210"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["211"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["212"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["213"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["214"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["215"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["216"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["217"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["218"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["219"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["220"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["221"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["222"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["223"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["224"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["225"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["226"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["227"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["228"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["229"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["230"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["231"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["232"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["233"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["234"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["235"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["236"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["237"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["238"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["239"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["240"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["241"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["242"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["243"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["244"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["245"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["246"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["247"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["248"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["249"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["250"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["251"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["252"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["253"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["254"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["255"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["256"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["257"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["258"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["259"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["260"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["261"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["262"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["263"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["264"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["265"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["266"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["267"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["268"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["269"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["270"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["271"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["272"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["273"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["274"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["275"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["276"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["277"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["278"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["279"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["280"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["281"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["282"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["283"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["284"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["285"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["286"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["287"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["288"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["289"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["290"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["291"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["292"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["293"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["294"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["295"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["296"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["297"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["298"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["299"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["300"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["301"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["302"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["303"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["304"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["305"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["306"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["307"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["308"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["309"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["310"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["311"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["312"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["313"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["314"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["315"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["316"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["317"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["318"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["319"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["320"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["321"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["322"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["323"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["324"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["325"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["326"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["327"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["328"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["329"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["330"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["331"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["332"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["333"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["334"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["335"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["336"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["337"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["338"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["339"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["340"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["341"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["342"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["343"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["344"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["345"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["346"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["347"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["348"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["349"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["350"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["351"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["352"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["353"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["354"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["355"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["356"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["357"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["358"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["359"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["360"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["361"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["362"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["363"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["364"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["365"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["366"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["367"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["368"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["369"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["370"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["371"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["372"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["373"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["374"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["375"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["376"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["377"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["378"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["379"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["380"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["381"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["382"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["383"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["384"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["385"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["386"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["387"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["388"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["389"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["390"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["391"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["392"]},{"name":"div","attribs":{"style":[],"className":"rank"},"children":["393"]}]},{"accessor":"player_name","name":"Player","type":"character","sortNALast":true,"minWidth":180,"align":"left","filterable":true,"defaultSortDesc":false,"className":"sticky","headerClassName":"sticky"},{"accessor":"player_ioc","name":"Country","type":"character","sortNALast":true,"minWidth":90,"align":"center","filterable":true,"defaultSortDesc":false},{"accessor":"race_points_total","name":"Race Points","type":"numeric","sortNALast":true,"minWidth":70,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}},{"accessor":"Matches","name":"Matches","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"},{"accessor":"Wins","name":"Wins","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"},{"accessor":"Losses","name":"Losses","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"},{"accessor":"WinPercentage","name":"Win Percentage","type":"numeric","sortNALast":true,"minWidth":90,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"accessor":"Titles","name":"Titles","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"}],"defaultSortDesc":true,"defaultSorted":[{"id":"rank","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"3f8f72d0d4a1ed300bd06de04d2c37fd","key":"3f8f72d0d4a1ed300bd06de04d2c37fd"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+
+<br>
+<div class="addthis_inline_share_toolbox"></div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script>
+&nbsp;
+<hr />
+<p style="text-align: center;"><a href="#top">Back to top</a></p>
+<p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
