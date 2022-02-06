@@ -5,6 +5,7 @@
   "scope": "/",
   "display": "minimal-ui",
   "background_color": "#670099",
+  "theme_color": "#670099",
   "description": "Wheelo Ratings.",
   "icons": [{
     "src": "logo_48.png",
