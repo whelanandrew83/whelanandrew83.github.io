@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Wheelo Ratings</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
+<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
+<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L04L041MGC');
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png" alt="Wheelo Ratings logo" /></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    ATP Tennis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">RATINGS / STATS</li>
+    <li>
+      <a href="tennis_atp_ratings.html">Ratings</a>
+    </li>
+    <li>
+      <a href="tennis_atp_race.html">Race</a>
+    </li>
+    <li>
+      <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+    </li>
+    <li>
+      <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+    </li>
+    <li>
+      <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">HISTORY</li>
+    <li>
+      <a href="tennis_atp_players.html">Players</a>
+    </li>
+    <li>
+      <a href="tennis_atp_tournaments.html">Tournaments</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">RECORDS</li>
+    <li>
+      <a href="tennis_atp_records.html">Overall Records</a>
+    </li>
+    <li>
+      <a href="tennis_atp_season_records.html">Season Records</a>
+    </li>
+    <li>
+      <a href="tennis_atp_goat.html">Greatest players</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    WTA Tennis
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">RATINGS / STATS</li>
+    <li>
+      <a href="tennis_wta_ratings.html">Ratings</a>
+    </li>
+    <li>
+      <a href="tennis_wta_race.html">Race</a>
+    </li>
+    <li>
+      <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+    </li>
+    <li>
+      <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+    </li>
+    <li>
+      <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">HISTORY</li>
+    <li>
+      <a href="tennis_wta_players.html">Players</a>
+    </li>
+    <li>
+      <a href="tennis_wta_tournaments.html">Tournaments</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">RECORDS</li>
+    <li>
+      <a href="tennis_wta_records.html">Overall Records</a>
+    </li>
+    <li>
+      <a href="tennis_wta_season_records.html">Season Records</a>
+    </li>
+    <li>
+      <a href="tennis_wta_goat.html">Greatest players</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    AFL
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">MODEL</li>
+    <li>
+      <a href="afl_ratings.html">Ratings</a>
+    </li>
+    <li>
+      <a href="afl_simulations.html">Simulations</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">STATS</li>
+    <li>
+      <a href="afl_premierships.html">Premierships</a>
+    </li>
+    <li>
+      <a href="afl_annual_summary.html">Team Annual Summary</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://twitter.com/WheeloRatings">
+    <span class="ion ion-social-twitter"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<header id="header">
+
+
+
+<h1 class="title toc-ignore">Wheelo Ratings</h1>
+
+</header>
+
+
+<main>
+<p><p class="text-danger">Please note that this website is currently in development and will be subject to ongoing changes in the near future.</p><p>Welcome to Wheelo Ratings, providing statistics, records and elo ratings for ATP and WTA tennis, and the Australian Rules football AFL competition. The site will also include predictions and simulations of the AFL season.</p><p>Jump to:</p></p>
+<div class="row">
+<div class="col-md-12">
+<a class="btn btn-primary btn-sm" href="#tennis-ratings">Tennis Ratings</a>
+<a class="btn btn-primary btn-sm" href="#tennis-race">Tennis Race</a>
+<a class="btn btn-primary btn-sm" href="#afl-ratings">AFL Ratings</a>
+</div>
+</div>
+<p><br/></p>
+<div id="tennis-ratings" class="section level3">
+<h3>Tennis Ratings</h3>
+<div class="row">
+<div class="col-md-6">
+<div class="card border-primary">
+<div class="card-header bg-primary">
+Current ATP Elo Ratings
+<a href="tennis_atp_ratings.html">(view all)</a>
+</div>
+<div class="card-body">
+<p class="small">Ratings as at 07 February 2022.</p>
+<div id="htmlwidget-a3ddfb02712ed9f221e3" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a3ddfb02712ed9f221e3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"elo_rank":[1,2,3,4,5,6,7,8,9,10],"change":[0,0,0,0,0,0,0,0,0,0],"player_name":["Novak Djokovic","Daniil Medvedev","Alexander Zverev","Rafael Nadal","Casper Ruud","Matteo Berrettini","Carlos Alcaraz","Stefanos Tsitsipas","Jannik Sinner","Jenson Brooksby"],"player_ioc":["SRB","RUS","GER","ESP","NOR","ITA","ESP","GRE","ITA","USA"],"elo":[2080,2079,2023,2006,1972,1967,1953,1944,1942,1916]},"columns":[{"accessor":"elo_rank","name":"","type":"numeric","minWidth":35,"align":"center"},{"accessor":"change","name":"+/-","type":"numeric","minWidth":35,"cell":["•","•","•","•","•","•","•","•","•","•"],"html":true,"align":"center","style":"function(rowInfo) {\n                    var value = rowInfo.row['change']\n                    if (value > 0) {\n                        var color = '#008000'\n                    } else if (value < 0) {\n                        var color = '#e00000'\n                    } else {\n                        var color = '#777'\n                    }\n                    return { color: color, fontWeight: 'bold' }\n                }"},{"accessor":"player_name","name":"Player","type":"character","minWidth":180,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Novak Djokovic"]},{"name":"span","attribs":{"className":"small-2"},"children":["SRB"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Daniil Medvedev"]},{"name":"span","attribs":{"className":"small-2"},"children":["RUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Alexander Zverev"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Rafael Nadal"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Casper Ruud"]},{"name":"span","attribs":{"className":"small-2"},"children":["NOR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Matteo Berrettini"]},{"name":"span","attribs":{"className":"small-2"},"children":["ITA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Carlos Alcaraz"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Stefanos Tsitsipas"]},{"name":"span","attribs":{"className":"small-2"},"children":["GRE"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Jannik Sinner"]},{"name":"span","attribs":{"className":"small-2"},"children":["ITA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Jenson Brooksby"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":90,"show":false},{"accessor":"elo","name":"Elo","type":"numeric","minWidth":45,"align":"center"}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"4f57669cdeb63b81032b12ace4ade425","key":"4f57669cdeb63b81032b12ace4ade425"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.style"],"jsHooks":[]}</script>
+<p>
+<b>Recent Tournaments</b>
+<a href="tennis_atp_tournaments.html">(view all)</a>
+</p>
+<div id="htmlwidget-0ba6a75b8f3c4e71f8da" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0ba6a75b8f3c4e71f8da">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"tourney_date":["2022-01-31","2022-01-31","2022-01-31","2022-01-17","2022-01-10","2022-01-10","2022-01-03","2022-01-03"],"Image":["images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png"],"tourney_name":["Montpellier","Pune","Cordoba","Australian Open","Sydney","Adelaide 2","Adelaide 1","Melbourne"],"winner_name":["Alexander Bublik","Joao Sousa","Albert Ramos","Rafael Nadal","Aslan Karatsev","Thanasi Kokkinakis","Gael Monfils","Rafael Nadal"]},"columns":[{"accessor":"tourney_date","name":"Date","type":"Date","minWidth":85,"align":"left","cell":["31 Jan 2022","31 Jan 2022","31 Jan 2022","17 Jan 2022","10 Jan 2022","10 Jan 2022","03 Jan 2022","03 Jan 2022"]},{"accessor":"Image","name":"Image","type":"character","minWidth":110,"align":"left","show":false},{"accessor":"tourney_name","name":"Tournament","type":"character","minWidth":110,"align":"left","cell":[{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Montpellier"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Pune"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Cordoba"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Australian Open"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Sydney"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Adelaide 2"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Adelaide 1"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Melbourne"]}]}]},{"accessor":"winner_name","name":"Winner","type":"character","minWidth":110,"align":"left"}],"sortable":false,"defaultPageSize":8,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"f6a76fc80a0bb97e9d52edf622752201","key":"f6a76fc80a0bb97e9d52edf622752201"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card border-primary">
+<div class="card-header bg-primary">
+Current WTA Elo Ratings
+<a href="tennis_wta_ratings.html">(view all)</a>
+</div>
+<div class="card-body">
+<p class="small">Ratings as at 07 February 2022.</p>
+<div id="htmlwidget-4f854616d912034ef764" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4f854616d912034ef764">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"elo_rank":[1,2,3,4,5,6,7,8,9,10],"change":[0,0,0,0,0,0,0,0,0,0],"player_name":["Ashleigh Barty","Paula Badosa","Iga Swiatek","Anett Kontaveit","Danielle Rose Collins","Barbora Krejcikova","Victoria Azarenka","Ons Jabeur","Aryna Sabalenka","Simona Halep"],"player_ioc":["AUS","ESP","POL","EST","USA","CZE","BLR","TUN","BLR","ROU"],"elo":[2100,2025,2003,1972,1969,1960,1951,1946,1929,1925]},"columns":[{"accessor":"elo_rank","name":"","type":"numeric","minWidth":35,"align":"center"},{"accessor":"change","name":"+/-","type":"numeric","minWidth":35,"cell":["•","•","•","•","•","•","•","•","•","•"],"html":true,"align":"center","style":"function(rowInfo) {\n                    var value = rowInfo.row['change']\n                    if (value > 0) {\n                        var color = '#008000'\n                    } else if (value < 0) {\n                        var color = '#e00000'\n                    } else {\n                        var color = '#777'\n                    }\n                    return { color: color, fontWeight: 'bold' }\n                }"},{"accessor":"player_name","name":"Player","type":"character","minWidth":180,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Ashleigh Barty"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Paula Badosa"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Iga Swiatek"]},{"name":"span","attribs":{"className":"small-2"},"children":["POL"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Anett Kontaveit"]},{"name":"span","attribs":{"className":"small-2"},"children":["EST"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Danielle Rose Collins"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Barbora Krejcikova"]},{"name":"span","attribs":{"className":"small-2"},"children":["CZE"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Victoria Azarenka"]},{"name":"span","attribs":{"className":"small-2"},"children":["BLR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Ons Jabeur"]},{"name":"span","attribs":{"className":"small-2"},"children":["TUN"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Aryna Sabalenka"]},{"name":"span","attribs":{"className":"small-2"},"children":["BLR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Simona Halep"]},{"name":"span","attribs":{"className":"small-2"},"children":["ROU"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":90,"show":false},{"accessor":"elo","name":"Elo","type":"numeric","minWidth":45,"align":"center"}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"15c5eb57420e73fc8d38bb9dfa969b5f","key":"15c5eb57420e73fc8d38bb9dfa969b5f"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.style"],"jsHooks":[]}</script>
+<p>
+<b>Recent Tournaments</b>
+<a href="tennis_wta_tournaments.html">(view all)</a>
+</p>
+<div id="htmlwidget-4d88d4e3f5d9ff86c64b" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4d88d4e3f5d9ff86c64b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"tourney_date":["2022-01-17","2022-01-10","2022-01-10","2022-01-03","2022-01-03","2022-01-03"],"Image":["images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png"],"tourney_name":["Australian Open","Adelaide 2","Sydney","Adelaide 1","Melbourne 1","Melbourne 2"],"winner_name":["Ashleigh Barty","Madison Keys","Paula Badosa","Ashleigh Barty","Simona Halep","Amanda Anisimova"]},"columns":[{"accessor":"tourney_date","name":"Date","type":"Date","minWidth":85,"align":"left","cell":["17 Jan 2022","10 Jan 2022","10 Jan 2022","03 Jan 2022","03 Jan 2022","03 Jan 2022"]},{"accessor":"Image","name":"Image","type":"character","minWidth":110,"align":"left","show":false},{"accessor":"tourney_name","name":"Tournament","type":"character","minWidth":110,"align":"left","cell":[{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Australian Open"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Adelaide 2"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Sydney"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Adelaide 1"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Melbourne 1"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":""},"children":[]}," ",{"name":"span","attribs":{},"children":["Melbourne 2"]}]}]},{"accessor":"winner_name","name":"Winner","type":"character","minWidth":110,"align":"left"}],"sortable":false,"defaultPageSize":6,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"d47f59d5e6a9f694c382bc926a8f4a46","key":"d47f59d5e6a9f694c382bc926a8f4a46"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tennis-race" class="section level3">
+<h3>Tennis Race</h3>
+<div class="row">
+<div class="col-md-6">
+<div class="panel panel-primary">
+<div class="panel-heading">
+ATP Elo Race 2022
+<a href="tennis_atp_race.html">(view all)</a>
+</div>
+<div class="panel-body">
+<p class="small">Race as at 07 February 2022.</p>
+<div id="htmlwidget-b3bcfeba30d5a61067a6" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b3bcfeba30d5a61067a6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10],"player_name":["Rafael Nadal","Daniil Medvedev","Felix Auger Aliassime","Thanasi Kokkinakis","Maxime Cressy","Denis Shapovalov","Alexander Zverev","Gael Monfils","Stefanos Tsitsipas","Jannik Sinner"],"RacePoints":[72.9334652150891,55.5516431976476,42.3519066679057,38.9474623930266,37.8066738125948,36.390183107223,33.5352333722567,31.3923077203951,30.36553087332,29.1727777500746],"player_ioc":["ESP","RUS","CAN","AUS","USA","CAN","GER","FRA","GRE","ITA"]},"columns":[{"accessor":"rank","name":"","type":"numeric","minWidth":35,"align":"center"},{"accessor":"player_name","name":"Player","type":"character","minWidth":180,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Rafael Nadal"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Daniil Medvedev"]},{"name":"span","attribs":{"className":"small-2"},"children":["RUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Felix Auger Aliassime"]},{"name":"span","attribs":{"className":"small-2"},"children":["CAN"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Thanasi Kokkinakis"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Maxime Cressy"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Denis Shapovalov"]},{"name":"span","attribs":{"className":"small-2"},"children":["CAN"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Alexander Zverev"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Gael Monfils"]},{"name":"span","attribs":{"className":"small-2"},"children":["FRA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Stefanos Tsitsipas"]},{"name":"span","attribs":{"className":"small-2"},"children":["GRE"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Jannik Sinner"]},{"name":"span","attribs":{"className":"small-2"},"children":["ITA"]}]}]},{"accessor":"RacePoints","name":"Race Points","type":"numeric","minWidth":45,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"align":"center"},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":90,"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"767a6b93c6555939410d53c1b1cbba1c","key":"767a6b93c6555939410d53c1b1cbba1c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="panel panel-primary">
+<div class="panel-heading">
+WTA Elo Race 2022
+<a href="tennis_wta_race.html">(view all)</a>
+</div>
+<div class="panel-body">
+<p class="small">Race as at 07 February 2022.</p>
+<div id="htmlwidget-9b4b391e69934a633125" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-9b4b391e69934a633125">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"rank":[1,2,3,4,5,6,7,8,9,10],"player_name":["Ashleigh Barty","Madison Keys","Amanda Anisimova","Paula Badosa","Iga Swiatek","Barbora Krejcikova","Simona Halep","Danielle Rose Collins","Darya Kasatkina","Elena Rybakina"],"RacePoints":[88.4460261777338,70.900518070317,52.4573641431238,52.2307390221937,46.4767908940911,40.8624151155486,39.3373157510618,38.4859015660486,36.5325846213151,24.6781296087497],"player_ioc":["AUS","USA","USA","ESP","POL","CZE","ROU","USA","RUS","KAZ"]},"columns":[{"accessor":"rank","name":"","type":"numeric","minWidth":35,"align":"center"},{"accessor":"player_name","name":"Player","type":"character","minWidth":180,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Ashleigh Barty"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Madison Keys"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Amanda Anisimova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Paula Badosa"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Iga Swiatek"]},{"name":"span","attribs":{"className":"small-2"},"children":["POL"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Barbora Krejcikova"]},{"name":"span","attribs":{"className":"small-2"},"children":["CZE"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Simona Halep"]},{"name":"span","attribs":{"className":"small-2"},"children":["ROU"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Danielle Rose Collins"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Darya Kasatkina"]},{"name":"span","attribs":{"className":"small-2"},"children":["RUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Elena Rybakina"]},{"name":"span","attribs":{"className":"small-2"},"children":["KAZ"]}]}]},{"accessor":"RacePoints","name":"Race Points","type":"numeric","minWidth":45,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"align":"center"},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":90,"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"123943cfd23fae1ff79f31f6dbb3f874","key":"123943cfd23fae1ff79f31f6dbb3f874"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="afl-ratings" class="section level3">
+<h3>AFL Ratings</h3>
+<div class="row">
+<div class="col-md-6">
+<div class="panel panel-primary">
+<div class="panel-heading">
+Current AFL Ratings
+<a href="afl_ratings.html">(view all)</a>
+</div>
+<div class="panel-body">
+<div id="htmlwidget-b7e4b1844a12463651c3" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b7e4b1844a12463651c3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"Image":["images/afl_logos/Melb-40.png","images/afl_logos/WB-40.png","images/afl_logos/Bris-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Port-40.png","images/afl_logos/Ess-40.png","images/afl_logos/Geel-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Rich-40.png","images/afl_logos/St K-40.png","images/afl_logos/Haw-40.png","images/afl_logos/WC-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Adel-40.png","images/afl_logos/Carl-40.png","images/afl_logos/Frem-40.png","images/afl_logos/GC-40.png","images/afl_logos/NM-40.png"],"TeamName":["Melbourne","Western Bulldogs","Brisbane","Sydney","Port Adelaide","Essendon","Geelong","Greater Western Sydney","Richmond","St Kilda","Hawthorn","West Coast","Collingwood","Adelaide","Carlton","Fremantle","Gold Coast","North Melbourne"],"RatingOverall":[38.2,16.1,14.1,13.3,8.6,6.8,6.5,2.4,-1.5,-2.1,-4.8,-7.3,-10.4,-11.4,-12,-12.5,-20.7,-23.3],"RatingOverall_Diff":[7.6,-7.6,0,0,0,0,-0,0,-0,0,0,0,0,0,-0,-0,-0,0]},"columns":[{"accessor":"Rank","name":"","type":"numeric","align":"center","defaultSortDesc":false,"minWidth":30},{"accessor":"Image","name":"Image","type":["glue","character"],"align":"center","show":false},{"accessor":"TeamName","name":"Team","type":"character","align":"left","cell":[{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Melb-40.png","height":"18px","alt":""},"children":[]}," ","Melbourne"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/WB-40.png","height":"18px","alt":""},"children":[]}," ","Western Bulldogs"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Bris-40.png","height":"18px","alt":""},"children":[]}," ","Brisbane"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Syd-40.png","height":"18px","alt":""},"children":[]}," ","Sydney"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Port-40.png","height":"18px","alt":""},"children":[]}," ","Port Adelaide"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Ess-40.png","height":"18px","alt":""},"children":[]}," ","Essendon"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Geel-40.png","height":"18px","alt":""},"children":[]}," ","Geelong"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GWS-40.png","height":"18px","alt":""},"children":[]}," ","Greater Western Sydney"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Rich-40.png","height":"18px","alt":""},"children":[]}," ","Richmond"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/St K-40.png","height":"18px","alt":""},"children":[]}," ","St Kilda"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Haw-40.png","height":"18px","alt":""},"children":[]}," ","Hawthorn"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/WC-40.png","height":"18px","alt":""},"children":[]}," ","West Coast"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Coll-40.png","height":"18px","alt":""},"children":[]}," ","Collingwood"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Adel-40.png","height":"18px","alt":""},"children":[]}," ","Adelaide"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Carl-40.png","height":"18px","alt":""},"children":[]}," ","Carlton"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Frem-40.png","height":"18px","alt":""},"children":[]}," ","Fremantle"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GC-40.png","height":"18px","alt":""},"children":[]}," ","Gold Coast"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/NM-40.png","height":"18px","alt":""},"children":[]}," ","North Melbourne"]}],"minWidth":180},{"accessor":"RatingOverall","name":"Overall","type":"numeric","align":"center","defaultSortDesc":true,"cell":["+38.2","+16.1","+14.1","+13.3","+8.6","+6.8","+6.5","+2.4","-1.5","-2.1","-4.8","-7.3","-10.4","-11.4","-12.0","-12.5","-20.7","-23.3"],"minWidth":60,"style":[{"background":"#63BE7B"},{"background":"#BDE3C7"},{"background":"#C5E7CE"},{"background":"#C8E8D1"},{"background":"#DBF0E1"},{"background":"#E3F3E7"},{"background":"#E4F3E8"},{"background":"#F5FAF6"},{"background":"#FEF9F9"},{"background":"#FEF6F6"},{"background":"#FEECEC"},{"background":"#FDE2E2"},{"background":"#FDD6D6"},{"background":"#FCD2D2"},{"background":"#FCCFD0"},{"background":"#FCCDCE"},{"background":"#FBADAE"},{"background":"#FAA3A4"}]},{"accessor":"RatingOverall_Diff","name":"+/-","type":"numeric","align":"center","defaultSortDesc":true,"cell":["<small><span class=\"glyphicon glyphicon-chevron-up\" aria-hidden=\"true\"><\/span><\/small>7.6","<small><span class=\"glyphicon glyphicon-chevron-down\" aria-hidden=\"true\"><\/span><\/small>7.6","•","•","•","•","•","•","•","•","•","•","•","•","•","•","•","•"],"html":true,"minWidth":55,"style":"function(rowInfo) {\n            var value = rowInfo.row['RatingOverall_Diff']\n            if (value > 0) {\n                var color = '#008000'\n            } else if (value < 0) {\n                var color = '#e00000'\n            } else {\n                var color = '#777'\n            }\n            return { color: color, fontWeight: 'bold' }\n        }"}],"sortable":false,"defaultPageSize":18,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"nowrap":true,"showSortIcon":false,"className":"afl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"24ce4d0dd0f530093504bd199a4dc09f","key":"24ce4d0dd0f530093504bd199a4dc09f"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.4.style"],"jsHooks":[]}</script>
+<p>
+<b>Recent Matches</b>
+<a href="afl_matches.html">(view all)</a>
+</p>
+<div class="panel-body"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+</footer>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

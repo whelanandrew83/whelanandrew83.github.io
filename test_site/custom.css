@@ -1,0 +1,125 @@
+.table-condensed {
+    font-size: 90%;    
+}
+
+.-headerGroups {
+  background: #ccc;
+}
+.rt-th-group:after {
+    background-color: transparent !important;
+}
+
+.rt-th {
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(230, 230, 230);
+    /* background-color: #dedede !important; */
+    background-color: #670099 !important;
+    padding: 6px 5px !important;
+}
+.rt-th:hover,
+.rt-th[aria-sort="ascending"],
+.rt-th[aria-sort="descending"] {
+    /* background-color: #bbb !important; */
+    background-color: #3a0057 !important;
+}
+
+.rt-td-filter {
+    padding: 0px 10px !important;
+    background-color: #f0f0f0 !important;
+}
+.rt-filter {
+    border: 0px !important;
+    border-radius: 0px !important;
+    font-size: 80% !important;
+}
+
+.-header {
+  /* background-color: #eee; */
+  /* color: #333; */
+  color: #fff;
+  /* font-size: 90%; */
+}
+
+.rt-row {
+    display: flex;
+    align-items: baseline;
+    /* display: inline-block; */
+}
+.rt-tr-striped .sticky {
+    background-color: rgb(246, 248, 250) !important;
+}
+.rt-tr-striped {
+    background-color: rgb(246, 248, 250);
+}
+/* .rt-th .sticky {
+    background-color: #dedede;
+} */
+.rt-tr .sticky {
+    background-color: #fff;
+}
+.sticky {
+    position: sticky !important;
+    left: 0;
+    z-index: 1;
+}
+.rt-expander-button {
+    margin: 1px 2px !important;
+}
+.rating {
+  border-radius: 12px;
+  margin: 0 auto;
+  width: 45px;
+  /* height: 25px; */
+  text-align: center;
+}
+.rank {
+  border-radius: 12px;
+  margin: 0 auto;
+  width: 35px;
+  /* height: 25px; */
+  text-align: center;
+}
+.rank-small {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 75%;
+  margin-left: 10px;
+  color: #666;
+  width: 25px !important;
+  /* height: 20px !important; */
+  /* border-radius: 50%; */
+  border-radius: 10px;
+  /* padding-top: 2%; */
+}
+.small-2 {
+  vertical-align: middle;
+  font-size: 75%;
+  margin-left: 5px;
+  color: #666;
+}
+/* .sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+} */
+/* .sup {
+  top: -0.5em;
+} */
+.fixed-width .checkbox-inline {
+  margin-left: 0px !important;
+  margin-right: 10px !important;
+  width: 160px;
+}
+.covid .checkbox-inline {
+  margin-left: 0px !important;
+  margin-right: 10px !important;
+}
+/* .legendtoggle {
+  width: 160px;
+} */
+/* Hide "Make a selection" button from leaflet map */
+.easy-button-container {
+    display: none;
+}
