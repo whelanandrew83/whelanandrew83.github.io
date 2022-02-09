@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>WTA Records</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
+<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
+<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L04L041MGC');
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  //var menuAnchor = $('a[href="' + href + '"]');
+  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+
+  //menuAnchor.classList.add("active");
+  
+  const parent = menuAnchor.closest('li');
+  parent.classList.add('active');
+  parent.parentElement.closest('li').classList.add('active');
+  
+  //document.getElementsByTagName("h3")[0].innerHTML = menuAnchor.innerHTML;
+  
+  // mark it active
+  //menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  //menuAnchor.closest('li').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+</head>
+<body>
+<div class="container-fluid main-container container">
+
+<nav class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS / STATS</li>
+            <li>
+              <a href="tennis_atp_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_atp_race.html">Race</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+            </li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_atp_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_atp_tournaments.html">Tournaments</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS / STATS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Race</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+            </li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_wta_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_wta_tournaments.html">Tournaments</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <span class="ion ion-social-twitter"></span>
+
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="header">
+
+
+<h1 class="title toc-ignore">WTA Records</h1>
+
+</header>
+
+
+<main>
+<!-- ## {.tabset .tabset-fade .tabset-pills} -->
+<!-- ### Table -->
+<p>
+<a href="tennis_atp_records.html">View ATP</a>
+</p>
+<p><p>Includes all tour-level matches since 1968, excluding qualifying matches.</p><a href="tennis_wta_players.html">View all players</a></p>
+<div class="row">
+<div class="col-md-4">
+<div class="card border-primary">
+<div class="card-header bg-primary">Most Grand Slams</div>
+<div class="card-body">
+<div id="htmlwidget-01172e280aac85c6308b" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-01172e280aac85c6308b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[23,22,18,18,11,9,9,7,7,7],"player_name":["Serena Williams","Steffi Graf","Martina Navratilova","Chris Evert","Margaret Court","Billie Jean King","Monica Seles","Evonne Goolagong","Venus Williams","Justine Henin"],"player_ioc":["USA","GER","USA","USA","AUS","USA","USA","AUS","USA","BEL"],"Rank":[1,2,3,3,5,6,6,8,8,8]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":40,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Monica Seles"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Venus Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Justine Henin"]},{"name":"span","attribs":{"className":"small-2"},"children":["BEL"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"59f2ee3b9967cd8e3f3a31f8e17f7831","key":"59f2ee3b9967cd8e3f3a31f8e17f7831"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card border-primary">
+<div class="card-header bg-primary">Most Titles</div>
+<div class="card-body">
+<div id="htmlwidget-5faf02d3ed6ffeda428a" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5faf02d3ed6ffeda428a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[177,160,108,97,93,84,73,60,55,55],"player_name":["Martina Navratilova","Chris Evert","Steffi Graf","Margaret Court","Evonne Goolagong","Billie Jean King","Serena Williams","Virginia Wade","Lindsay Davenport","Helga Masthoff"],"player_ioc":["USA","USA","GER","AUS","AUS","USA","USA","GBR","USA","FRG"],"Rank":[1,2,3,4,5,6,7,8,9,9]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":40,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Lindsay Davenport"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Helga Masthoff"]},{"name":"span","attribs":{"className":"small-2"},"children":["FRG"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"7ca80605699d35838b254297833888e6","key":"7ca80605699d35838b254297833888e6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card border-primary">
+<div class="card-header bg-primary">Most Finals</div>
+<div class="card-body">
+<div id="htmlwidget-8e4eeb4cdfa17ad6bdb4" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-8e4eeb4cdfa17ad6bdb4">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[250,235,149,140,126,119,114,98,93,85],"player_name":["Martina Navratilova","Chris Evert","Evonne Goolagong","Steffi Graf","Billie Jean King","Margaret Court","Virginia Wade","Serena Williams","Lindsay Davenport","Monica Seles"],"player_ioc":["USA","USA","AUS","GER","USA","AUS","GBR","USA","USA","USA"],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":40,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Lindsay Davenport"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Monica Seles"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"9754ace6fe4bc6bb76805bf7f46dd41a","key":"9754ace6fe4bc6bb76805bf7f46dd41a"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card border-primary">
+<div class="card-header bg-primary">Most Semi Finals</div>
+<div class="card-body">
+<div id="htmlwidget-0b0356728051c2a4b54f" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0b0356728051c2a4b54f">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[298,270,191,176,172,164,143,134,133,131],"player_name":["Martina Navratilova","Chris Evert","Virginia Wade","Billie Jean King","Evonne Goolagong","Steffi Graf","Margaret Court","Lindsay Davenport","Rosie Casals","Arantxa Sanchez Vicario"],"player_ioc":["USA","USA","GBR","USA","AUS","GER","AUS","USA","USA","ESP"],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":40,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Lindsay Davenport"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Rosie Casals"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Arantxa Sanchez Vicario"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"f9be5aa17907a34a1473fa41b2a72036","key":"f9be5aa17907a34a1473fa41b2a72036"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card border-primary">
+<div class="card-header bg-primary">Most Matches</div>
+<div class="card-body">
+<div id="htmlwidget-148be5d4503f875e060e" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-148be5d4503f875e060e">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[1726,1491,1290,1076,1065,1021,1018,1013,975,967],"player_name":["Martina Navratilova","Chris Evert","Virginia Wade","Venus Williams","Arantxa Sanchez Vicario","Conchita Martinez","Serena Williams","Steffi Graf","Evonne Goolagong","Wendy Turnbull"],"player_ioc":["USA","USA","GBR","USA","ESP","ESP","USA","GER","AUS","AUS"],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":40,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Venus Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Arantxa Sanchez Vicario"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Conchita Martinez"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Wendy Turnbull"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"3183a8af9e7563584127214fa09a0345","key":"3183a8af9e7563584127214fa09a0345"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card border-primary">
+<div class="card-header bg-primary">Most Wins</div>
+<div class="card-body">
+<div id="htmlwidget-fc0b712469375b252ad8" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-fc0b712469375b252ad8">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[1489,1328,930,901,850,803,794,769,739,738],"player_name":["Martina Navratilova","Chris Evert","Virginia Wade","Steffi Graf","Serena Williams","Venus Williams","Evonne Goolagong","Arantxa Sanchez Vicario","Billie Jean King","Lindsay Davenport"],"player_ioc":["USA","USA","GBR","GER","USA","USA","AUS","ESP","USA","USA"],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":40,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Venus Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Arantxa Sanchez Vicario"]},{"name":"span","attribs":{"className":"small-2"},"children":["ESP"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Lindsay Davenport"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"c0404731c19766a05bc90b0f00d71d39","key":"c0404731c19766a05bc90b0f00d71d39"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card border-primary">
+<div class="card-header bg-primary">
+Highest Win Percentage
+<small>(50+ matches)</small>
+</div>
+<div class="card-body">
+<div id="htmlwidget-6dfe5659e7791f47f9d9" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6dfe5659e7791f47f9d9">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":["90.3","89.1","88.9","86.3","83.5","82.8","81.7","81.4","80.1","80.1"],"player_name":["Margaret Court","Chris Evert","Steffi Graf","Martina Navratilova","Serena Williams","Monica Seles","Justine Henin","Evonne Goolagong","Martina Hingis","Billie Jean King"],"player_ioc":["AUS","USA","GER","USA","USA","USA","BEL","AUS","SUI","USA"],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"accessor":"Value","name":"","type":"character","minWidth":40,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Monica Seles"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Justine Henin"]},{"name":"span","attribs":{"className":"small-2"},"children":["BEL"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Hingis"]},{"name":"span","attribs":{"className":"small-2"},"children":["SUI"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"af0814742eeeab7a30ab76f3dac78524","key":"af0814742eeeab7a30ab76f3dac78524"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+</footer>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>
