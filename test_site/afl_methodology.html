@@ -64,33 +64,6 @@
 
 
 
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname;
-  href = href.substr(href.lastIndexOf('/') + 1);
-  if (href === "")
-    href = "index.html";
-  //var menuAnchor = $('a[href="' + href + '"]');
-  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
-
-  //menuAnchor.classList.add("active");
-  
-  const parent = menuAnchor.closest('li');
-  parent.classList.add('active');
-  parent.parentElement.closest('li').classList.add('active');
-  
-  //document.getElementsByTagName("h3")[0].innerHTML = menuAnchor.innerHTML;
-  
-  // mark it active
-  //menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  //menuAnchor.closest('li').addClass('active');
-});
-</script>
-
 <!-- tabsets -->
 <style type="text/css">
 .tabset-dropdown > .nav-tabs {
@@ -356,21 +329,7 @@ $(document).ready(function () {
 
 </div>
 
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
 <!-- tabsets -->
-
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
@@ -396,7 +355,29 @@ $(document).ready(function () {
   })();
 </script>
 
-<script>
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  // active menu anchor
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+
+  //menuAnchor.classList.add("active");
+  
+  const li = menuAnchor.closest('li');
+  li.classList.add('active');
+  
+  const parent = li.parentElement.closest('li')
+  
+  if (parent !== null)
+    parent.classList.add('active');
+})();
+</script>
+
+<!-- <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -407,7 +388,7 @@ var currentScrollPos = window.pageYOffset;
   }
   prevScrollpos = currentScrollPos;
 }
-</script>
+</script> -->
 
 </body>
 </html>
