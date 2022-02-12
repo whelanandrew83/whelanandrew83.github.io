@@ -14,6 +14,8 @@
 <title>About</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
 <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -150,7 +152,7 @@ $(document).ready(function () {
 <body>
 <div class="container-fluid main-container container">
 
-<nav class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
   <div class="container">
     <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
         alt="Wheelo Ratings logo" /></a>
@@ -169,30 +171,32 @@ $(document).ready(function () {
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header">RATINGS / STATS</li>
+            <li class="dropdown-header">RATINGS</li>
             <li>
-              <a href="tennis_atp_ratings.html">Ratings</a>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
             </li>
             <li>
-              <a href="tennis_atp_race.html">Race</a>
+              <a href="tennis_atp_race.html">Elo Race</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
             </li>
             <li>
               <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
-            </li>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
             <li>
               <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
             </li>
-            <li class="divider"></li>
+            <!-- <li class="divider"></li>
             <li class="dropdown-header">HISTORY</li>
             <li>
               <a href="tennis_atp_players.html">Players</a>
             </li>
             <li>
               <a href="tennis_atp_tournaments.html">Tournaments</a>
-            </li>
+            </li> -->
             <li class="divider"></li>
             <li class="dropdown-header">RECORDS</li>
             <li>
@@ -212,30 +216,32 @@ $(document).ready(function () {
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li class="dropdown-header">RATINGS / STATS</li>
+            <li class="dropdown-header">RATINGS</li>
             <li>
-              <a href="tennis_wta_ratings.html">Ratings</a>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
             </li>
             <li>
-              <a href="tennis_wta_race.html">Race</a>
+              <a href="tennis_wta_race.html">Elo Race</a>
             </li>
-            <li>
+            <!-- <li>
               <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
             </li>
             <li>
               <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
-            </li>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
             <li>
               <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
             </li>
-            <li class="divider"></li>
+            <!-- <li class="divider"></li>
             <li class="dropdown-header">HISTORY</li>
             <li>
               <a href="tennis_wta_players.html">Players</a>
             </li>
             <li>
               <a href="tennis_wta_tournaments.html">Tournaments</a>
-            </li>
+            </li> -->
             <li class="divider"></li>
             <li class="dropdown-header">RECORDS</li>
             <li>
@@ -262,8 +268,13 @@ $(document).ready(function () {
             <li>
               <a href="afl_simulations.html">Simulations</a>
             </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="....html">...</a>
+            </li> -->
             <li class="divider"></li>
-            <li class="dropdown-header">STATS</li>
+            <li class="dropdown-header">RECORDS</li>
             <li>
               <a href="afl_premierships.html">Premierships</a>
             </li>
@@ -411,6 +422,19 @@ $(document).ready(function () {
 <!-- code folding -->
 
 
+
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("nav").style.top = "0";
+  } else {
+    document.getElementById("nav").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
 
 </body>
 </html>
