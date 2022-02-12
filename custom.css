@@ -34,7 +34,7 @@ html {
   margin-right: -15px;
 }
 @media (min-width: 768px) {
-  .nav > li {
+  .navbar-nav > li {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
@@ -43,7 +43,7 @@ html {
   position: relative;
   display: block;
 } */
-.nav li.active {
+.navbar-nav li.active {
   /* background-color: #3a0057; */
   font-weight: bold;
   color: #fff;
@@ -54,7 +54,7 @@ html {
 /* .dropdown-menu {
   background-color: #670099;
 } */
-.nav > li > a {
+.navbar-nav > li > a {
     position: relative;
 }
 ul.nav.navbar-nav>li>a {
