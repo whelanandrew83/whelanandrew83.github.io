@@ -85,6 +85,10 @@ ul.nav.navbar-nav>li>a {
 .-headerGroups {
   background: #ccc;
 }
+.rt-th-group {
+    border-left: solid 1px #fff;
+    text-align: left;
+}
 .rt-th-group:after {
     background-color: transparent !important;
 }
@@ -94,6 +98,7 @@ ul.nav.navbar-nav>li>a {
     border-bottom-color: rgb(230, 230, 230);
     /* background-color: #dedede !important; */
     background-color: #670099 !important;
+    color: #fff;
     padding: 6px 5px !important;
 }
 .rt-th:hover,
@@ -101,6 +106,12 @@ ul.nav.navbar-nav>li>a {
 .rt-th[aria-sort="descending"] {
     /* background-color: #bbb !important; */
     background-color: #3a0057 !important;
+}
+.rt-th-group:hover {
+    background-color: #670099 !important;
+}
+.rt-th-group-none:hover {
+    background-color: #670099 !important;
 }
 .rt-td-filter {
     padding: 0px 10px !important;
@@ -122,10 +133,19 @@ ul.nav.navbar-nav>li>a {
     align-items: baseline;
     /* display: inline-block; */
 }
-.rt-tr-striped .sticky {
-    background-color: rgb(246, 248, 250) !important;
+.bg-hide .rt-tbody .shaded {
+  background-color: transparent !important;
+}
+.bg-hide .colour-hint {
+  display: none;
 }
 .rt-tr-striped {
+    background-color: #fff;
+}
+.bg-hide .rt-tr-striped .sticky {
+    background-color: rgb(246, 248, 250) !important;
+}
+.bg-hide .rt-tr-striped {
     background-color: rgb(246, 248, 250);
 }
 /* .rt-th .sticky {
