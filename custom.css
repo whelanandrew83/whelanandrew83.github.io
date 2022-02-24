@@ -227,3 +227,6 @@ ul.nav.navbar-nav>li>a {
   border-bottom: 1px solid #670099;
   background-color: #670099;
 }
+.crosstalk-input-slider {
+  margin-bottom: 0.5rem;
+}
