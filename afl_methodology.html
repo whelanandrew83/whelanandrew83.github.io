@@ -310,10 +310,28 @@
 </div>
 <div id="venue-advantage" class="section level2">
 <h2>Venue advantage</h2>
-<p><span class="math display">\[\text{Venue}=\text{Travel}+\text{Venue Experience}+\text{Venue Performance}+\text{Home Advantage}\]</span> <span class="math display">\[\text{Travel}=w_d \cdot ({\text{Distance}_h}^w - {\text{Distance}_a}^w)\]</span></p>
+<p>Venue advantage is based on the following four factors:</p>
+<ul>
+<li>travel distances for the two teams;</li>
+<li>number of matches the teams have played at the particular venue over the past five seasons;</li>
+<li>a constant home advantage which applies to all matches, with the exception of Grand Finals, where the designated home team is playing in its home state; and</li>
+<li>historical performance of the teams at the particular venue compared to expected performance.</li>
+</ul>
+<p><span class="math display">\[\text{Venue}=\text{Travel}+\text{Venue Experience}+\text{Home Advantage}+\text{Venue Performance}\]</span> <span class="math display">\[\text{Travel}=k \cdot ({\text{Travel}_h}^w - {\text{Travel}_a}^w)\]</span> Where <span class="math inline">\(\text{Travel}_h\)</span> and <span class="math inline">\(\text{Travel}_a\)</span> are the travel distances in kilometres for the home and away teams, respectively.</p>
+<p><span class="math display">\[\text{Venue Experience}=k \cdot (({\text{Matches}_h + c})^w - ({\text{Matches}_a} + c)^w)\]</span> Where <span class="math inline">\(\text{Matches}_h\)</span> and <span class="math inline">\(\text{Matches}_a\)</span> are the numbers of matches played at the venue in the past five years by the home and away teams, respectively.</p>
 </div>
 <div id="incorporating-player-information" class="section level2">
 <h2>Incorporating player information</h2>
+<p>The official AFL Player Ratings are used to supplement the Team Ratings in order to obtain an improved prediction based on the named team lineups for the two teams. Detailed information on the AFL Player Ratings can be found below.</p>
+<p>For the purpose of this model, a player’s estimated rating for a match is calculated using a weighted average of their rating in previous matches with their latest match carrying the greatest weight. The estimated rating for all players listed in the team lineups are aggregated for each team.</p>
+<p><span class="math display">\[\text{Expected Margin}_p=w_s \cdot ((\text{Att}_h + \text{Def}_h) - (\text{Att}_a + \text{Def}_a)) + w_p \cdot (\text{Player Rating}_h - \text{Player Rating}_a) + \text{Venue}\]</span> Where <span class="math inline">\(\text{Player Rating}_h\)</span> and <span class="math inline">\(\text{Player Rating}_a\)</span> are the totals of the estimated player ratings for the home and away teams, respectively.</p>
+<div id="afl-player-ratings" class="section level3">
+<h3>AFL Player Ratings</h3>
+<ul>
+<li><a href="https://s.afl.com.au/staticfile/AFL%20Tenant/AFL/PlayerRatings/PlayerRatings_HOW.pdf">AFL Player Ratings Overview</a></li>
+<li><a href="https://researchbank.swinburne.edu.au/file/248ec147-72d7-448c-a19d-49f01d90b12f/1/Karl%20Jackson%20Thesis.pdf">Assessing Player Performance in Australian Football Using Spatial Data (Karl Jackson thesis)</a></li>
+</ul>
+</div>
 </div>
 </main>
 
