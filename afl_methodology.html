@@ -257,6 +257,9 @@
             <li>
               <a href="afl_annual_summary.html">Team Annual Summary</a>
             </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
           </ul>
         </li>
         <li>
@@ -289,14 +292,14 @@
 <h2>Overview</h2>
 <div id="team-ratings" class="section level3">
 <h3>Team ratings</h3>
-<p>Each team has an attacking and defensive rating.</p>
+<p>Each team has an attacking and defensive rating which gets updated following every match.</p>
 <div id="expected-margin" class="section level4">
 <h4>Expected Margin</h4>
-<p><span class="math display">\[\text{Expected Margin} = (\text{Att}_h + \text{Def}_h) - (\text{Att}_a + \text{Def}_a) + \text{Venue}\]</span> Where <span class="math inline">\(\text{Att}_h\)</span> denotes the attacking rating of the designated home team, <span class="math inline">\(\text{Def}_h\)</span> denotes the defensive rating of the designated home team, <span class="math inline">\(\text{Att}_a\)</span> denotes the attacking rating of the designated away team, <span class="math inline">\(\text{Def}_a\)</span> denotes the defensive rating of the designated away team, and <span class="math inline">\(\text{Venue}\)</span> denotes the net venue effect.</p>
+<p><span class="math display">\[\text{Expected Margin} = (\text{Att}_h + \text{Def}_h) - (\text{Att}_a + \text{Def}_a) + \text{Venue}\]</span> Where <span class="math inline">\(\text{Att}_h\)</span> denotes the <em>attacking</em> rating of the designated home team, <span class="math inline">\(\text{Def}_h\)</span> denotes the <em>defensive</em> rating of the designated home team, <span class="math inline">\(\text{Att}_a\)</span> denotes the <em>attacking</em> rating of the designated away team, <span class="math inline">\(\text{Def}_a\)</span> denotes the <em>defensive</em> rating of the designated away team, and <span class="math inline">\(\text{Venue}\)</span> denotes the net venue effect.</p>
 </div>
 <div id="updating-team-ratings-following-a-match" class="section level4">
 <h4>Updating team ratings following a match</h4>
-<p>These ratings are updated following each match based on the <em>adjusted</em> margin compared to the <em>expected</em> margin.</p>
+<p>These ratings are updated following each match based on the <em>adjusted</em> margin compared to the <em>expected</em> margin. The adjusted margin is</p>
 <div id="attacking-rating" class="section level5">
 <h5>Attacking rating</h5>
 <p>Each team’s attacking rating is updated based on their <em>adjusted</em> score compared to their <em>expected</em> score. <span class="math display">\[\text{New attacking rating} = \text{Att}_h + k_t(\text{Adjusted}_h-\text{Expected}_h)\]</span></p>
