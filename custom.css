@@ -139,9 +139,9 @@ ul.nav.navbar-nav>li>a {
 .bg-hide .colour-hint {
   display: none;
 }
-.rt-tr-striped {
+/* .rt-tr-striped {
     background-color: #fff;
-}
+} */
 .rt-tr-striped .sticky {
     background-color: rgb(246, 248, 250) !important;
 }
@@ -151,8 +151,14 @@ ul.nav.navbar-nav>li>a {
 /* .rt-th .sticky {
     background-color: #dedede;
 } */
-.rt-tr .sticky {
+.rt-tr.inactive {
+    background-color: #ccc;
+}
+.rt-td.sticky {
     background-color: #fff;
+}
+.rt-td.sticky.inactive {
+    background-color: #ccc;
 }
 .sticky {
     position: sticky !important;
