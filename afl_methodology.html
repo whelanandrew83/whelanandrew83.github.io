@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <link href="site_libs/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet" />
@@ -296,7 +296,16 @@
 </div>
 <div id="updating-team-ratings-following-a-match" class="section level4">
 <h4>Updating team ratings following a match</h4>
-<p>These ratings are updated following each match based on the <em>adjusted</em> margin compared to the <em>expected</em> margin. The adjusted margin is</p>
+<p>These ratings are updated following each match based on the <em>adjusted</em> margin compared to the <em>expected</em> margin.</p>
+<div id="expected-scores" class="section level5">
+<h5>Expected scores</h5>
+<p><span class="math display">\[\text{Expected}_h = \mu + (\text{Att}_h-\text{Def}_a)\]</span> <span class="math display">\[\text{Expected}_a = \mu + (\text{Att}_a-\text{Def}_h)\]</span> Where <span class="math inline">\(\mu\)</span> is the AFL average score.</p>
+</div>
+<div id="adjusted-scores" class="section level5">
+<h5>Adjusted scores</h5>
+<p>Adjusted scores are a weighted average of a team’s actual score and their score had they kicked at an expected accuracy. The expected accuracy is a weighted average of the competition-wide accuracy and the team’s accuracy in the current season.</p>
+<p><span class="math display">\[\text{Adjusted} = w\cdot(6\cdot\text{G} + \text{B}) + (1-w)\cdot(c\cdot(\text{G}+\text{B}) + (1-c)\cdot(\text{G}+\text{B}))\]</span></p>
+</div>
 <div id="attacking-rating" class="section level5">
 <h5>Attacking rating</h5>
 <p>Each team’s attacking rating is updated based on their <em>adjusted</em> score compared to their <em>expected</em> score. <span class="math display">\[\text{New attacking rating} = \text{Att}_h + k_t(\text{Adjusted}_h-\text{Expected}_h)\]</span></p>
