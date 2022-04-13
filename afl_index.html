@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>AFL Home</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
+<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
+<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+</head>
+<body>
+<div class="container-fluid main-container container">
+
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_atp_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_atp_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_atp_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_wta_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_wta_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <span class="ion ion-social-twitter"></span>
+
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="header">
+
+
+<h1 class="title toc-ignore">AFL Home</h1>
+
+</header>
+
+
+<main>
+<div class="row">
+<div class="col-md-6 col-lg-4">
+<h3>AFL Ratings</h3>
+<a href="afl_ratings.html">View details</a>
+<br/>
+<div id="htmlwidget-876bfc58080c228a5b26" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-876bfc58080c228a5b26">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"Image":["images/afl_logos/Melb-40.png","images/afl_logos/Geel-40.png","images/afl_logos/Bris-40.png","images/afl_logos/WB-40.png","images/afl_logos/St K-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Port-40.png","images/afl_logos/Frem-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Carl-40.png","images/afl_logos/GWS-40.png","images/afl_logos/GC-40.png","images/afl_logos/Rich-40.png","images/afl_logos/Ess-40.png","images/afl_logos/Adel-40.png","images/afl_logos/WC-40.png","images/afl_logos/NM-40.png"],"TeamName":["Melbourne","Geelong","Brisbane","Western Bulldogs","St Kilda","Sydney","Port Adelaide","Fremantle","Collingwood","Hawthorn","Carlton","Greater Western Sydney","Gold Coast","Richmond","Essendon","Adelaide","West Coast","North Melbourne"],"RatingOverall":[22.9,16.5,14.8,7.5,6.9,3.7,1.2,1.1,1,-2.3,-2.5,-3.2,-3.4,-3.9,-6.1,-13.2,-18.3,-22.8],"RatingOverall_Diff":[-0.4,2.3,-2.3,-2.1,4.1,-0.8,0.4,2.4,-0.9,-4,-1.4,-2.3,1.4,2,-0.9,0.9,0.9,0.7]},"columns":[{"accessor":"Rank","name":"","type":"numeric","align":"center","defaultSortDesc":false,"minWidth":30},{"accessor":"Image","name":"Image","type":["glue","character"],"align":"center","show":false},{"accessor":"TeamName","name":"Team","type":"character","align":"left","cell":[{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Melb-40.png","height":"18px","alt":""},"children":[]}," ","Melbourne"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Geel-40.png","height":"18px","alt":""},"children":[]}," ","Geelong"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Bris-40.png","height":"18px","alt":""},"children":[]}," ","Brisbane"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/WB-40.png","height":"18px","alt":""},"children":[]}," ","Western Bulldogs"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/St K-40.png","height":"18px","alt":""},"children":[]}," ","St Kilda"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Syd-40.png","height":"18px","alt":""},"children":[]}," ","Sydney"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Port-40.png","height":"18px","alt":""},"children":[]}," ","Port Adelaide"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Frem-40.png","height":"18px","alt":""},"children":[]}," ","Fremantle"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Coll-40.png","height":"18px","alt":""},"children":[]}," ","Collingwood"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Haw-40.png","height":"18px","alt":""},"children":[]}," ","Hawthorn"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Carl-40.png","height":"18px","alt":""},"children":[]}," ","Carlton"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GWS-40.png","height":"18px","alt":""},"children":[]}," ","Greater Western Sydney"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GC-40.png","height":"18px","alt":""},"children":[]}," ","Gold Coast"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Rich-40.png","height":"18px","alt":""},"children":[]}," ","Richmond"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Ess-40.png","height":"18px","alt":""},"children":[]}," ","Essendon"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Adel-40.png","height":"18px","alt":""},"children":[]}," ","Adelaide"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/WC-40.png","height":"18px","alt":""},"children":[]}," ","West Coast"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/NM-40.png","height":"18px","alt":""},"children":[]}," ","North Melbourne"]}],"minWidth":180},{"accessor":"RatingOverall","name":"Overall","type":"numeric","align":"center","defaultSortDesc":true,"cell":["+22.9","+16.5","+14.8","+7.5","+6.9","+3.7","+1.2","+1.1","+1.0","-2.3","-2.5","-3.2","-3.4","-3.9","-6.1","-13.2","-18.3","-22.8"],"minWidth":60,"style":[{"background":"#63BE7B"},{"background":"#8ED09F"},{"background":"#9AD4A9"},{"background":"#CBE9D3"},{"background":"#CFEBD7"},{"background":"#E5F4E9"},{"background":"#F6FBF8"},{"background":"#F7FBF8"},{"background":"#F8FCF9"},{"background":"#FEEFF0"},{"background":"#FEEEEE"},{"background":"#FEEAEA"},{"background":"#FDE8E9"},{"background":"#FDE5E5"},{"background":"#FDD7D7"},{"background":"#FAA8A9"},{"background":"#F98788"},{"background":"#F8696B"}]},{"accessor":"RatingOverall_Diff","name":"+/-","type":"numeric","align":"center","defaultSortDesc":true,"cell":["-0.4","+2.3","-2.3","-2.1","+4.1","-0.8","+0.4","+2.4","-0.9","-4.0","-1.4","-2.3","+1.4","+2.0","-0.9","+0.9","+0.9","+0.7"],"html":true,"minWidth":55,"style":"function(rowInfo) {\n            var value = rowInfo.row['RatingOverall_Diff']\n            if (value > 0) {\n                var color = '#008000'\n            } else if (value < 0) {\n                var color = '#e00000'\n            } else {\n                var color = '#777'\n            }\n            return { color: color, fontWeight: 'bold' }\n        }"}],"sortable":false,"defaultPageSize":18,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"nowrap":true,"showSortIcon":false,"className":"afl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"408a2fad7f02780163aaf3d30403d86a","key":"408a2fad7f02780163aaf3d30403d86a"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.4.style"],"jsHooks":[]}</script>
+</div>
+<div class="col-md-6 col-lg-4">
+<h3>Leading Goalkickers</h3>
+<a href="afl_stats">View all player stats</a>
+<br/>
+<div id="htmlwidget-377a1574229931ed15ad" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-377a1574229931ed15ad">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Goals":[13,13,12,12,12,11,10,10,10,10,10,10,9,9,9,9,9],"LatestGoals":[4,5,3,3,3,2,0,3,4,4,2,2,2,2,1,3,1],"Player":["Max King","Tom Hawkins","Mitch Lewis","Joe Daniher","Peter Wright","Isaac Heeney","Nick Larkey","Josh Rachele","Tom J. Lynch","Tim Membrey","Harry Himmelberg","Shai Bolton","Harry McKay","Lance Franklin","Jeremy Cameron","Mabior Chol","Charlie Curnow"],"Image":["images/afl_logos/St K-40.png","images/afl_logos/Geel-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Bris-40.png","images/afl_logos/Ess-40.png","images/afl_logos/Syd-40.png","images/afl_logos/NM-40.png","images/afl_logos/Adel-40.png","images/afl_logos/Rich-40.png","images/afl_logos/St K-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Rich-40.png","images/afl_logos/Carl-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Geel-40.png","images/afl_logos/GC-40.png","images/afl_logos/Carl-40.png"],"Matches":[4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]},"columns":[{"accessor":"Goals","name":"","type":"numeric","align":"center","defaultSortDesc":true,"minWidth":25,"style":{"fontWeight":"bold"}},{"accessor":"LatestGoals","name":"","type":"numeric","align":"center","defaultSortDesc":true,"cell":["(4)","(5)","(3)","(3)","(3)","(2)","(0)","(3)","(4)","(4)","(2)","(2)","(2)","(2)","(1)","(3)","(1)"],"minWidth":25},{"accessor":"Player","name":"Player","type":"character","align":"left","cell":[{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/St K-40.png","height":"18px","alt":""},"children":[]}," ","Max King"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Geel-40.png","height":"18px","alt":""},"children":[]}," ","Tom Hawkins"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Haw-40.png","height":"18px","alt":""},"children":[]}," ","Mitch Lewis"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Bris-40.png","height":"18px","alt":""},"children":[]}," ","Joe Daniher"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Ess-40.png","height":"18px","alt":""},"children":[]}," ","Peter Wright"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Syd-40.png","height":"18px","alt":""},"children":[]}," ","Isaac Heeney"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/NM-40.png","height":"18px","alt":""},"children":[]}," ","Nick Larkey"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Adel-40.png","height":"18px","alt":""},"children":[]}," ","Josh Rachele"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Rich-40.png","height":"18px","alt":""},"children":[]}," ","Tom J. Lynch"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/St K-40.png","height":"18px","alt":""},"children":[]}," ","Tim Membrey"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GWS-40.png","height":"18px","alt":""},"children":[]}," ","Harry Himmelberg"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Rich-40.png","height":"18px","alt":""},"children":[]}," ","Shai Bolton"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Carl-40.png","height":"18px","alt":""},"children":[]}," ","Harry McKay"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Syd-40.png","height":"18px","alt":""},"children":[]}," ","Lance Franklin"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Geel-40.png","height":"18px","alt":""},"children":[]}," ","Jeremy Cameron"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GC-40.png","height":"18px","alt":""},"children":[]}," ","Mabior Chol"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Carl-40.png","height":"18px","alt":""},"children":[]}," ","Charlie Curnow"]}],"minWidth":180},{"accessor":"Image","name":"Image","type":["glue","character"],"align":"center","show":false},{"accessor":"Matches","name":"M","type":"numeric","align":"center","defaultSortDesc":true,"minWidth":25}],"sortable":false,"defaultPageSize":17,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"nowrap":true,"showSortIcon":false,"className":"afl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"ab7f9af8c1b766275792831ba3242825","key":"ab7f9af8c1b766275792831ba3242825"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+</footer>
+
+
+
+</div>
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  // active menu anchor
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+
+  const li = menuAnchor.closest('li');
+  li.classList.add('active');
+  
+  const parent = li.parentElement.closest('li')
+  
+  if (parent !== null)
+    parent.classList.add('active');
+})();
+</script>
+<!-- <script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("nav").style.top = "0";
+  } else {
+    document.getElementById("nav").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script> -->
+</body>
+</html>
