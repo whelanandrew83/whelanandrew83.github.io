@@ -293,3 +293,11 @@ ul.nav.navbar-nav>li>a {
 .crosstalk-input-slider {
   margin-bottom: 0.5rem;
 }
+
+.twitter {
+  fill: #fff;
+}
+
+.twitter:hover {
+  fill: #d79ff5;
+}
