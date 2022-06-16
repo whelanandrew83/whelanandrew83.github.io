@@ -127,8 +127,13 @@ ul.nav.navbar-nav>li>a {
   /* background-color: #dedede !important; */
   background-color: #670099 !important;
   color: #fff;
-  padding: 6px 5px !important;
+  /* padding: 6px 5px !important; */
+  /* padding: 2px 3px !important; */
   /* padding: 0px; */
+}
+
+.rt-th-content {
+  padding: 6px 5px !important;
 }
 
 .rt-th:hover,
