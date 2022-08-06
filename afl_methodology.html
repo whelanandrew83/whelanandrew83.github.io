@@ -319,8 +319,8 @@
 
 <main>
 <!-- https://rpruim.github.io/s341/S19/from-class/MathinRmd.html -->
-<div id="overview" class="section level2">
-<h2>Overview</h2>
+<div id="match-prediction-model" class="section level2">
+<h2>Match Prediction Model</h2>
 <div id="team-ratings" class="section level3">
 <h3>Team ratings</h3>
 <p>Each team has an attacking and defensive rating which gets updated following every match.</p>
@@ -373,6 +373,32 @@
 <ul>
 <li><a href="https://s.afl.com.au/staticfile/AFL%20Tenant/AFL/PlayerRatings/PlayerRatings_HOW.pdf">AFL Player Ratings Overview</a></li>
 <li><a href="https://researchbank.swinburne.edu.au/file/248ec147-72d7-448c-a19d-49f01d90b12f/1/Karl%20Jackson%20Thesis.pdf">Assessing Player Performance in Australian Football Using Spatial Data (Karl Jackson thesis)</a></li>
+</ul>
+</div>
+</div>
+<div id="brownlow" class="section level2">
+<h2>Brownlow Medal Prediction Model</h2>
+<p>The Brownlow Medal prediction model uses an ordinal logistic regression model and was based on Chew The Stat’s <a href="https://chewthestat.com/monte-charlo-using-data-to-predict-the-brownlow-medal/">Monte ChaRlo model</a> methodology. The Wheelo Ratings model uses in-game statistics only which would generally not perform as well as a model which takes into account coaches and media votes.</p>
+<div id="statistics" class="section level3">
+<h3>Statistics</h3>
+<ul>
+<li>Match result and margin</li>
+<li>AFL Player Rating points</li>
+<li>Kicks</li>
+<li>Handballs</li>
+<li>Total possessions and contested possessions</li>
+<li>Metres gained</li>
+<li>Centre clearances and stoppage clearances</li>
+<li>Total marks, contested marks and intercept marks</li>
+<li>Hitouts and hit outs to advantage</li>
+<li>Tackles</li>
+<li>Frees for and against</li>
+<li>Goals</li>
+<li>Goal assists</li>
+<li>Score involvements</li>
+<li>Bounces</li>
+<li>Spoils</li>
+<li>Defensive one-one-one contests won or neutralised</li>
 </ul>
 </div>
 </div>
