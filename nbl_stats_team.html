@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>NBL Player Statistics</title>
+<meta name="description" content="NBL team statistics for the current season.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
+<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
+<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+</head>
+<body>
+<div class="container-fluid main-container container">
+
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_atp_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_atp_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_atp_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_wta_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_wta_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="nbl_stats.html">Player Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="nbl_stats_team.html">Team Stats</a>
+        </li>
+    </ul>
+</nav>
+
+<header id="header">
+
+
+<h1 class="title toc-ignore">NBL Player Statistics</h1>
+
+</header>
+
+
+<main>
+<h3>2022-2023</h3>
+<p>
+View <a href="nbl_stats.html">player statistics.</a>
+</p>
+<p class="mt-3 mb-1">
+<span class="me-2" style="display: inline-block; border: solid 1px black; background: linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B); width: 2em; height: 1em;"></span><b>Background shading</b>
+</p>
+<div class="form-check form-switch">
+<p><input class="form-check-input" type="checkbox" id="showColorScale"> <label class="form-check-label" for="showColorScale">Add background shading to show relative values.</label></p>
+</div>
+<div id="player-stats" class="bg-hide">
+<div id="htmlwidget-5f91a752b00297d99ddc" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5f91a752b00297d99ddc">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Season":["2022-2023","2022-2023","2022-2023","2022-2023","2022-2023","2022-2023","2022-2023","2022-2023","2022-2023"],"Competition":["Australian NBL","Australian NBL","Australian NBL","Australian NBL","Australian NBL","Australian NBL","Australian NBL","Australian NBL","Australian NBL"],"Team":["Brisbane","Cairns","Illawarra","Melbourne","New Zealand","Perth","South East Melbourne","Sydney","Tasmania"],"Matches":[1,1,1,1,1,1,1,1,2],"Wins":[0,1,0,1,0,1,1,1,0],"Losses":[1,0,1,0,1,0,0,0,2],"M_OT":[0,0,0,1,1,0,0,0,0],"Margin":[-14,22,-9,4,-4,14,5,9,-13.5],"Percentage":[83.9080459770115,126.190476190476,91.5094339622642,104.123711340206,96.039603960396,119.178082191781,106.329113924051,109.278350515464,85.7894736842105],"WinPercentage":[0,100,0,100,0,100,100,100,0],"1":[22,15,21,20,22,22,28,24,19.5],"2":[13,33,22,25,20,26,15,20,22],"3":[24,39,29,24,25,22,14,31,17.5],"4":[14,19,25,19,21,17,27,31,22.5],"OT":["NA","NA","NA",13,9,"NA","NA","NA","NA"],"Final":[73,106,97,101,97,87,84,106,81.5],"Against1":[22,23,24,22,20,22,16,21,21.5],"Against2":[26,27,20,20,25,13,17,22,24],"Against3":[22,17,31,25,24,24,18,29,26.5],"Against4":[17,17,31,21,19,14,28,25,23],"AgainstOT":["NA","NA","NA",9,13,"NA","NA","NA","NA"],"AgainstFinal":[87,84,106,97,101,73,79,97,95],"FGM":[27,34,36,33,39,32,27,38,31],"FGA":[64,64,86,77,82,71,58,73,71.5],"FGP":[42.188,53.125,41.86,42.857,47.561,45.07,46.552,52.055,43.357],"FG3M":[12,12,15,18,8,11,8,12,11.5],"FG3A":[33,29,40,38,32,31,23,27,27],"FG3P":[36.364,41.379,37.5,47.368,25,35.484,34.783,44.444,42.593],"FTM":[7,26,10,17,11,12,22,18,8],"FTA":[10,32,11,23,17,13,29,27,10],"FTP":[70,81.25,90.909,73.913,64.706,92.308,75.862,66.667,80],"Off":[13,9,15,9,14,9,15,9,12.5],"Def":[31,29,31,32,37,23,28,35,19.5],"Reb":[44,38,46,41,51,32,43,44,32],"Ast":[21,23,20,18,21,24,12,15,19],"PF":[16,12,26,19,20,14,14,14,22],"STL":[4,9,8,6,2,14,5,8,8.5],"TO":[24,11,14,7,12,9,17,17,14],"BLK":[2,4,3,1,4,1,4,5,1.5],"PTS":[73,106,97,101,97,87,84,106,81.5],"PPP":[79.004,118.994,92.522,107.31,95.585,101.493,95.716,104.044,90.656]},"columns":[{"accessor":"Season","name":"Season","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"accessor":"Competition","name":"Competition","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"accessor":"Team","name":"Team","type":"character","sortNALast":true,"minWidth":150,"align":"left","filterable":true,"defaultSortDesc":false,"className":"sticky","headerClassName":"sticky"},{"accessor":"Matches","name":"GP","type":"numeric","sortNALast":true,"minWidth":35,"align":"center","className":"sticky","style":{"left":150},"headerClassName":"sticky","headerStyle":{"left":150}},{"accessor":"Wins","name":"W","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"accessor":"Losses","name":"L","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"accessor":"M_OT","name":"M_OT","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","show":false},{"accessor":"Margin","name":"Margin","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","show":false},{"accessor":"Percentage","name":"%","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["%"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#FA997C"},{"background":"#FEE999"},{"background":"#FCB587"},{"background":"#96CE85"},{"background":"#F5EC9A"},{"background":"#DFE595"},{"background":"#F8746F"}]},{"accessor":"WinPercentage","name":"Win %","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Win %"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#63BE7B"},{"background":"#63BE7B"},{"background":"#F8696B"}]},{"accessor":"1","name":"Q1","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q1"]}]},"className":"shaded","style":[{"background":"#F3EB99"},{"background":"#F8696B"},{"background":"#FEE498"},{"background":"#FDD090"},{"background":"#F3EB99"},{"background":"#F3EB99"},{"background":"#63BE7B"},{"background":"#C3DC8F"},{"background":"#FCC58C"}]},{"accessor":"2","name":"Q2","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q2"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#FEE197"},{"background":"#DFE595"},{"background":"#FCC68D"},{"background":"#D0E092"},{"background":"#F98374"},{"background":"#FCC68D"},{"background":"#FEE197"}]},{"accessor":"3","name":"Q3","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q3"]}]},"className":"shaded","style":[{"background":"#FDD492"},{"background":"#63BE7B"},{"background":"#DFE595"},{"background":"#FDD492"},{"background":"#FEDE96"},{"background":"#FCBE8A"},{"background":"#F8696B"},{"background":"#C6DD90"},{"background":"#F98E78"}]},{"accessor":"4","name":"Q4","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q4"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#FCB787"},{"background":"#D1E092"},{"background":"#FCB787"},{"background":"#FDD793"},{"background":"#FA987C"},{"background":"#ACD58A"},{"background":"#63BE7B"},{"background":"#FFEF9C"}]},{"accessor":"OT","name":"OT","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["OT"]}]},"className":"shaded","style":[null,null,null,{"background":"#63BE7B"},{"background":"#F8696B"},null,null,null,null]},{"accessor":"Final","name":"Total","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Total"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#B8D88D"},{"background":"#92CC85"},{"background":"#B8D88D"},{"background":"#FDDA94"},{"background":"#FCC28B"},{"background":"#63BE7B"},{"background":"#FBAE84"}]},{"accessor":"Against1","name":"Q1","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q1"]}]},"className":"shaded","style":[{"background":"#B1D68B"},{"background":"#8ACA83"},{"background":"#63BE7B"},{"background":"#B1D68B"},{"background":"#FFEF9C"},{"background":"#B1D68B"},{"background":"#F8696B"},{"background":"#D8E293"},{"background":"#C4DC8F"}]},{"accessor":"Against2","name":"Q2","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q2"]}]},"className":"shaded","style":[{"background":"#79C57F"},{"background":"#63BE7B"},{"background":"#FFEF9C"},{"background":"#FFEF9C"},{"background":"#8FCC84"},{"background":"#F8696B"},{"background":"#FCB587"},{"background":"#D2E192"},{"background":"#A5D389"}]},{"accessor":"Against3","name":"Q3","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q3"]}]},"className":"shaded","style":[{"background":"#FDC88E"},{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#E8E897"},{"background":"#FFEF9C"},{"background":"#FFEF9C"},{"background":"#F97C72"},{"background":"#8FCC84"},{"background":"#C7DD90"}]},{"accessor":"Against4","name":"Q4","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Q4"]}]},"className":"shaded","style":[{"background":"#FA987C"},{"background":"#FA987C"},{"background":"#63BE7B"},{"background":"#FDD793"},{"background":"#FCB787"},{"background":"#F8696B"},{"background":"#9ACF86"},{"background":"#D1E092"},{"background":"#F5EC9A"}]},{"accessor":"AgainstOT","name":"OT","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["OT"]}]},"className":"shaded","style":[null,null,null,{"background":"#F8696B"},{"background":"#63BE7B"},null,null,null,null]},{"accessor":"AgainstFinal","name":"Total","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Total"]}]},"className":"shaded","style":[{"background":"#FDDA94"},{"background":"#FCC28B"},{"background":"#63BE7B"},{"background":"#B8D88D"},{"background":"#92CC85"},{"background":"#F8696B"},{"background":"#FA997C"},{"background":"#B8D88D"},{"background":"#CBDE91"}]},{"accessor":"FGM","name":"FGM","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["FGM"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#E4E696"},{"background":"#B1D68B"},{"background":"#FFEF9C"},{"background":"#63BE7B"},{"background":"#FDD893"},{"background":"#F8696B"},{"background":"#7DC680"},{"background":"#FCC28B"}]},{"accessor":"FGA","name":"FGA","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["FGA"]}]},"className":"shaded","style":[{"background":"#FBA280"},{"background":"#FBA280"},{"background":"#63BE7B"},{"background":"#C7DD90"},{"background":"#8FCC84"},{"background":"#FEE598"},{"background":"#F8696B"},{"background":"#F3EB99"},{"background":"#FEEA9A"}]},{"accessor":"FGP","name":"FG %","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["FG %"]}]},"className":"shaded","style":[{"background":"#F8706D"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#F98073"},{"background":"#FDEE9B"},{"background":"#FBB586"},{"background":"#FDD893"},{"background":"#80C781"},{"background":"#F98C78"}]},{"accessor":"FG3M","name":"3PM","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["3PM"]}]},"className":"shaded","style":[{"background":"#FDD492"},{"background":"#FDD492"},{"background":"#C0DB8E"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#FCB988"},{"background":"#F8696B"},{"background":"#FDD492"},{"background":"#FCC68D"}]},{"accessor":"FG3A","name":"3PA","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["3PA"]}]},"className":"shaded","style":[{"background":"#E3E696"},{"background":"#FCC78D"},{"background":"#63BE7B"},{"background":"#87C982"},{"background":"#F5EC9A"},{"background":"#FEE799"},{"background":"#F8696B"},{"background":"#FBA882"},{"background":"#FBA882"}]},{"accessor":"FG3P","name":"3P %","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["3P %"]}]},"className":"shaded","style":[{"background":"#FCEE9B"},{"background":"#B6D88C"},{"background":"#ECE998"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#FEE698"},{"background":"#FEDE95"},{"background":"#8BCA83"},{"background":"#A5D289"}]},{"accessor":"FTM","name":"FTM","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["FTM"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#FA937A"},{"background":"#F6EC9A"},{"background":"#FAA17F"},{"background":"#FBAF84"},{"background":"#A4D288"},{"background":"#E6E796"},{"background":"#F87770"}]},{"accessor":"FTA","name":"FTA","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["FTA"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#F8756F"},{"background":"#E2E696"},{"background":"#FCBE8A"},{"background":"#F98D78"},{"background":"#8DCB84"},{"background":"#A9D48A"},{"background":"#F8696B"}]},{"accessor":"FTP","name":"FT %","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["FT %"]}]},"className":"shaded","style":[{"background":"#FA9C7D"},{"background":"#DFE595"},{"background":"#72C27E"},{"background":"#FCC28B"},{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#FDD592"},{"background":"#F87C71"},{"background":"#EEE998"}]},{"accessor":"Off","name":"Off Reb","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Off Reb"]}]},"className":"shaded","style":[{"background":"#CBDE91"},{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#96CE86"},{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#E4E696"}]},{"accessor":"Def","name":"Def Reb","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Def Reb"]}]},"className":"shaded","style":[{"background":"#CDDF91"},{"background":"#F1EA99"},{"background":"#CDDF91"},{"background":"#BCDA8D"},{"background":"#63BE7B"},{"background":"#FA9E7E"},{"background":"#FEEB9A"},{"background":"#86C982"},{"background":"#F8696B"}]},{"accessor":"Reb","name":"Reb","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Reb"]}]},"className":"shaded","style":[{"background":"#D5E293"},{"background":"#FCBD89"},{"background":"#B5D78C"},{"background":"#FEE799"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#E6E796"},{"background":"#D5E293"},{"background":"#F8696B"}]},{"accessor":"Ast","name":"A","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["A"]}]},"className":"shaded","style":[{"background":"#B1D68B"},{"background":"#7DC680"},{"background":"#CBDE91"},{"background":"#FFEF9C"},{"background":"#B1D68B"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#FBAC83"},{"background":"#E4E696"}]},{"accessor":"PF","name":"PF","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["PF"]}]},"className":"shaded","style":[{"background":"#BCDA8D"},{"background":"#63BE7B"},{"background":"#F8696B"},{"background":"#FFEF9C"},{"background":"#FEDB95"},{"background":"#8FCC84"},{"background":"#8FCC84"},{"background":"#8FCC84"},{"background":"#FCB587"}]},{"accessor":"STL","name":"ST","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["ST"]}]},"className":"shaded","style":[{"background":"#FA957B"},{"background":"#E4E696"},{"background":"#FFEF9C"},{"background":"#FCC28B"},{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#FBAC83"},{"background":"#FFEF9C"},{"background":"#F2EA99"}]},{"accessor":"TO","name":"TO","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["TO"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#ACD58A"},{"background":"#E3E696"},{"background":"#63BE7B"},{"background":"#BEDA8E"},{"background":"#87C982"},{"background":"#FDD793"},{"background":"#FDD793"},{"background":"#E3E696"}]},{"accessor":"BLK","name":"B","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["B"]}]},"className":"shaded","style":[{"background":"#FBAC83"},{"background":"#B1D68B"},{"background":"#FFEF9C"},{"background":"#F8696B"},{"background":"#B1D68B"},{"background":"#F8696B"},{"background":"#B1D68B"},{"background":"#63BE7B"},{"background":"#F98A77"}]},{"accessor":"PTS","name":"Pts","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Pts"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#B8D88D"},{"background":"#92CC85"},{"background":"#B8D88D"},{"background":"#FDDA94"},{"background":"#FCC28B"},{"background":"#63BE7B"},{"background":"#FBAE84"}]},{"accessor":"PPP","name":"PPP","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["PPP"]}]},"className":"shaded","style":[{"background":"#F8696B"},{"background":"#63BE7B"},{"background":"#FCC38C"},{"background":"#BEDA8E"},{"background":"#FDD893"},{"background":"#EBE897"},{"background":"#FDD893"},{"background":"#D7E293"},{"background":"#FCB787"}]}],"columnGroups":[{"name":"Summary","columns":["Matches","Wins","Losses","Percentage","WinPercentage"]},{"name":"Pts per Quarter For","columns":["1","2","3","4"]},{"name":"Pts per Quarter Against","columns":["Against1","Against2","Against3","Against4"]}],"defaultSortDesc":true,"defaultSorted":[{"id":"WinPercentage","desc":true},{"id":"Percentage","desc":true}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"nbl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"crosstalkKey":["1","2","3","4","5","6","7","8","9"],"crosstalkGroup":"SharedData8b5ea2fc","dataKey":"3b70f450a2665d87b64971708b3bd2c1","key":"3b70f450a2665d87b64971708b3bd2c1"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p>
+Data sourced from <a href="https://basketball.realgm.com/international/league/5/Australian-NBL/home" target="_blank">realgm.com</a>
+</p>
+<h3>
+Abbreviations
+</h3>
+<ul>
+<li>
+<b>B/PF:</b> Blocks per personal foul
+</li>
+<li>
+<b>PPP:</b> Points per possession (<a href="https://www.nbastuffer.com/analytics101/points-per-possession-ppp/" target="_blank">Source</a>)
+</li>
+</ul>
+<script>
+var checkbox = document.getElementById("showColorScale");
+
+checkbox.addEventListener('change', function() {
+  var element = document.getElementById("player-stats");
+  element.classList.toggle("bg-hide");
+  element.classList.toggle("bg-show");
+});
+</script>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+</footer>
+
+
+
+</div>
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  // active menu anchor
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+
+  const li = menuAnchor.closest('li');
+  li.classList.add('active');
+  
+  const parent = li.parentElement.closest('li')
+  
+  if (parent !== null)
+    parent.classList.add('active');
+})();
+</script>
+<!-- <script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("nav").style.top = "0";
+  } else {
+    document.getElementById("nav").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script> -->
+</body>
+</html>
