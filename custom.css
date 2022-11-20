@@ -58,6 +58,12 @@ html {
   color: #fff;
 }
 
+.navbar-banner-nav li.active {
+  /* background-color: #3a0057; */
+  font-weight: bold;
+  /* color: #fff; */
+}
+
 .dropdown-header {
   font-weight: bold;
 }

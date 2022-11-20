@@ -1079,7 +1079,7 @@ $(document).ready(function () {
   href = href.substr(href.lastIndexOf('/') + 1);
   if (href === "")
     href = "index.html";
-  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+  const menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
 
   const li = menuAnchor.closest('li');
   li.classList.add('active');
@@ -1088,6 +1088,20 @@ $(document).ready(function () {
   
   if (parent !== null)
     parent.classList.add('active');
+})();
+</script>
+<script type="text/javascript">
+// manage active state of banner menu based on current page
+(function() {
+  // active menu anchor
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  const menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  const li = menuAnchor.closest('li');
+  li.classList.add('active');
 })();
 </script>
 <!-- <script>
