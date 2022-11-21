@@ -387,34 +387,33 @@ $(document).ready(function () {
 <script type="text/javascript">
 // manage active state of menu based on current page
 (function() {
-  // active menu anchor
   href = window.location.pathname;
   href = href.substr(href.lastIndexOf('/') + 1);
   if (href === "")
     href = "index.html";
-  const menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
-
-  const li = menuAnchor.closest('li');
-  li.classList.add('active');
   
-  const parent = li.parentElement.closest('li')
+  let li = null;
   
-  if (parent !== null)
-    parent.classList.add('active');
-})();
-</script>
-<script type="text/javascript">
-// manage active state of banner menu based on current page
-(function() {
-  // active menu anchor
-  href = window.location.pathname;
-  href = href.substr(href.lastIndexOf('/') + 1);
-  if (href === "")
-    href = "index.html";
-  const menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
 
-  const li = menuAnchor.closest('li');
-  li.classList.add('active');
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
+  
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
 })();
 </script>
 <!-- <script>
