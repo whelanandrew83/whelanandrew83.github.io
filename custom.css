@@ -58,6 +58,15 @@ html {
   color: #fff;
 }
 
+.navbar-banner-heading {
+  background-color: #3a0057;
+  padding: .5rem 1rem;
+  color: white;
+  letter-spacing: 0.1rem;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
 .navbar-banner-nav li.active {
   /* background-color: #3a0057; */
   font-weight: bold;
