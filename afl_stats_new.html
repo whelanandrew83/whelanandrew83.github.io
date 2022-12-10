@@ -341,14 +341,48 @@
 
 
 <main>
-<p><ul class='nav nav-pills'></ul></p>
+<ul class='nav nav-pills'>
+<li id="year-2012">
+<a href="afl_stats_new.html?year=2012">2012</a>
+</li>
+<li id="year-2013">
+<a href="afl_stats_new.html?year=2013">2013</a>
+</li>
+<li id="year-2014">
+<a href="afl_stats_new.html?year=2014">2014</a>
+</li>
+<li id="year-2015">
+<a href="afl_stats_new.html?year=2015">2015</a>
+</li>
+<li id="year-2016">
+<a href="afl_stats_new.html?year=2016">2016</a>
+</li>
+<li id="year-2017">
+<a href="afl_stats_new.html?year=2017">2017</a>
+</li>
+<li id="year-2018">
+<a href="afl_stats_new.html?year=2018">2018</a>
+</li>
+<li id="year-2019">
+<a href="afl_stats_new.html?year=2019">2019</a>
+</li>
+<li id="year-2020">
+<a href="afl_stats_new.html?year=2020">2020</a>
+</li>
+<li id="year-2021">
+<a href="afl_stats_new.html?year=2021">2021</a>
+</li>
+<li id="year-2022">
+<a href="afl_stats_new.html?year=2022">2022</a>
+</li>
+<p></ul></p>
 <script id="year-load">
 const urlParams = new URLSearchParams(location.search);
 
-validYears = []
+validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
 year = parseInt(urlParams.get("year"));
 
-if (!year) year = NA;
+if (!year) year = 2022;
 
 if (validYears.includes(year)) {
 document.querySelector(`#year-${year}`).classList = "active";
