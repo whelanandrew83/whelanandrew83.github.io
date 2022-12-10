@@ -11,7 +11,8 @@
 
 
 
-<title>afl_stats_new.knit</title>
+<title>AFL Player Statistics</title>
+<meta name="description" content="AFL player statistics.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -334,25 +335,27 @@
 <header id="header">
 
 
+<h1 class="title toc-ignore">AFL Player Statistics</h1>
 
 </header>
 
 
 <main>
-<p><h3 id="year_label"></h3></p>
+<p><ul class='nav nav-pills'></ul></p>
 <script id="year-load">
 const urlParams = new URLSearchParams(location.search);
 
-validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
+validYears = []
 year = parseInt(urlParams.get("year"));
 
-if (!year) year = 2022;
+if (!year) year = NA;
 
 if (validYears.includes(year)) {
-document.querySelector("#year_label").innerText = year;
+document.querySelector(`#year-${year}`).classList = "active";
+<!-- document.querySelector("#year-label").innerText = year; -->
 
 const xmlhttp = new XMLHttpRequest();
-const url = `https://www.wheeloratings.com/player_stats_snippet_${year}.html`;
+const url = `https://www.wheeloratings.com/src/player_stats_snippet/${year}.html`;
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -364,8 +367,7 @@ xmlhttp.onreadystatechange = function() {
 xmlhttp.open("GET", url, false);
 xmlhttp.send();
 } else {
-  document.querySelector("#year_label").innerText = "Invalid year.";
-
+  <!-- document.querySelector("#year-label").innerText = "Invalid year."; -->
 }
 </script>
 <h3>
