@@ -27,6 +27,12 @@
 <script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
 <link rel="icon" href="favicon.ico" />
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="logo_192.png">
@@ -342,7 +348,90 @@
 
 
 <main>
+<!-- <div id="react-div2"> -->
+<!-- <div id="htmlwidget-test2" class="reactable html-widget" style="width:auto;height:auto;"></div> -->
+<!-- <script type="application/json" data-for="htmlwidget-test2">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"a":[0.8651782094612745,0.1068587256762572,0.4899648437155486,0.09396533451907874,0.7783461566157899,0.2691056234714446,0.6700063966090382,0.2773878824231857,0.2278836253369647,0.31064130099811815],"b":[0.18820378396094806,0.40545884367244334,0.2430973223415378,0.08055510496147278,0.08729002136938124,0.9204741386213342,0.8483799216609671,0.10294348209441262,0.4359434021570885,0.41411951655095525]},"columns":[{"accessor":"a","name":"a","type":"numeric"},{"accessor":"b","name":"b","type":"numeric"}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"dataKey":"6d17000e431fb6608fe29fa782a11248","key":"6d17000e431fb6608fe29fa782a11248"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script> -->
+<!-- </div> -->
+<div id="react-div">
+<div id="htmlwidget-test" class="reactable html-widget" style="width:auto;height:auto;">
 
+</div>
+</div>
+<script id="update-table">
+  <!-- const a = []; -->
+  <!-- const b = []; -->
+
+  <!-- for (let i = 0; i < 10; i++) { -->
+  <!--     a.push(Math.random()); -->
+  <!--     b.push(Math.random()); -->
+  <!-- } -->
+
+  <!-- data.x.tag.attribs.data = {a,b}; -->
+
+  <!-- const div = document.querySelector("#react-div"); -->
+
+  <!-- const s = document.createElement('script'); -->
+  <!-- s.setAttribute('type', 'application/json'); -->
+  <!-- s.setAttribute('data-for', 'htmlwidget-test'); -->
+  <!-- s.innerText = JSON.stringify(data); -->
+
+  <!-- div.append(s); -->
+
+<!-- fetch('https://www.wheeloratings.com/test_reactable.json') -->
+<!--   .then(response => response.json()) -->
+<!--   .then(data => { -->
+<!--       const a = []; -->
+<!--       const b = []; -->
+
+<!--       for (let i = 0; i < 10; i++) { -->
+<!--           a.push(Math.random()); -->
+<!--           b.push(Math.random()); -->
+<!--       } -->
+
+<!--       data.x.tag.attribs.data = {a,b}; -->
+
+<!--       const div = document.querySelector("#react-div"); -->
+
+<!--       const s = document.createElement('script'); -->
+<!--       s.setAttribute('type', 'application/json'); -->
+<!--       s.setAttribute('data-for', 'htmlwidget-test'); -->
+<!--       s.innerText = JSON.stringify(data); -->
+
+<!--       div.append(s); -->
+<!--     }) -->
+<!--   .catch(error => console.log(error)); -->
+
+
+var xmlhttp = new XMLHttpRequest();
+var url = 'https://www.wheeloratings.com/test_reactable.json';
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const a = [];
+      const b = [];
+
+      for (let i = 0; i < 10; i++) {
+          a.push(Math.random());
+          b.push(Math.random());
+      }
+
+      let data = JSON.parse(this.responseText);
+
+      data.x.tag.attribs.data = {a,b};
+
+      const div = document.querySelector("#react-div");
+
+      const s = document.createElement('script');
+      s.setAttribute('type', 'application/json');
+      s.setAttribute('data-for', 'htmlwidget-test');
+      s.innerText = JSON.stringify(data);
+
+      div.append(s);
+    }
+};
+xmlhttp.open("GET", url, false);
+xmlhttp.send();
+</script>
 </main>
 
 <footer>
