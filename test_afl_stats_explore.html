@@ -402,35 +402,72 @@
 <!--   .catch(error => console.log(error)); -->
 
 
-var xmlhttp = new XMLHttpRequest();
-var url = 'https://www.wheeloratings.com/test_reactable.json';
+<!-- var xmlhttp = new XMLHttpRequest(); -->
+<!-- var url = 'https://www.wheeloratings.com/test_reactable.json'; -->
+
+<!-- xmlhttp.onreadystatechange = function() { -->
+<!--     if (this.readyState == 4 && this.status == 200) { -->
+<!--       const a = []; -->
+<!--       const b = []; -->
+
+<!--       for (let i = 0; i < 10; i++) { -->
+<!--           a.push(Math.random()); -->
+<!--           b.push(Math.random()); -->
+<!--       } -->
+
+<!--       let data = JSON.parse(this.responseText); -->
+
+<!--       data.x.tag.attribs.data = {a,b}; -->
+
+<!--       const div = document.querySelector("#react-div"); -->
+
+<!--       const s = document.createElement('script'); -->
+<!--       s.setAttribute('type', 'application/json'); -->
+<!--       s.setAttribute('data-for', 'htmlwidget-test'); -->
+<!--       s.innerText = JSON.stringify(data); -->
+
+<!--       div.append(s); -->
+<!--     } -->
+<!-- }; -->
+<!-- xmlhttp.open("GET", url, false); -->
+<!-- xmlhttp.send(); -->
+
+
+const xmlhttp = new XMLHttpRequest();
+const url = 'https://www.wheeloratings.com/src/player_profiles/base_table.json';
+
+const xmlhttp2 = new XMLHttpRequest();
+const url2 = 'https://www.wheeloratings.com/src/player_profiles/table_data/CD_I1000.json';
+
+let data = "";
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      const a = [];
-      const b = [];
+      data = JSON.parse(this.responseText);
 
-      for (let i = 0; i < 10; i++) {
-          a.push(Math.random());
-          b.push(Math.random());
-      }
-
-      let data = JSON.parse(this.responseText);
-
-      data.x.tag.attribs.data = {a,b};
-
-      const div = document.querySelector("#react-div");
-
-      const s = document.createElement('script');
-      s.setAttribute('type', 'application/json');
-      s.setAttribute('data-for', 'htmlwidget-test');
-      s.innerText = JSON.stringify(data);
-
-      div.append(s);
+      xmlhttp2.open("GET", url2, false);
+      xmlhttp2.send();
     }
 };
 xmlhttp.open("GET", url, false);
 xmlhttp.send();
+
+xmlhttp2.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let data2 = JSON.parse(this.responseText);
+
+      data.x.tag.attribs.data = data2.CD_I1000061;
+      
+      const div = document.querySelector("#react-div");
+      
+      const s = document.createElement('script');
+      s.setAttribute('type', 'application/json');
+      s.setAttribute('data-for', 'htmlwidget-test');
+      s.innerText = JSON.stringify(data);
+      
+      div.append(s);
+    }
+};
 </script>
 </main>
 
