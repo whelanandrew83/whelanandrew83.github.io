@@ -432,12 +432,14 @@
 <!-- xmlhttp.open("GET", url, false); -->
 <!-- xmlhttp.send(); -->
 
+const urlParams = new URLSearchParams(location.search);
+player = urlParams.get("ID");
 
 const xmlhttp = new XMLHttpRequest();
 const url = 'https://www.wheeloratings.com/src/player_profiles/base_table.json';
 
 const xmlhttp2 = new XMLHttpRequest();
-const url2 = 'https://www.wheeloratings.com/src/player_profiles/table_data/CD_I1000.json';
+const url2 = `https://www.wheeloratings.com/src/player_profiles/table_data/${player.substring(0,8)}.json`;
 
 let data = "";
 let data2 = "";
@@ -455,7 +457,7 @@ xmlhttp2.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       data2 = JSON.parse(this.responseText);
 
-      data.x.tag.attribs.data = data2.CD_I1000061;
+      data.x.tag.attribs.data = data2[player];
       
       const div = document.querySelector("#react-div");
       
