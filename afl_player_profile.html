@@ -350,6 +350,7 @@
 
 
 <main>
+<div id="player-div">
 <h3>
 Season stats
 </h3>
@@ -358,10 +359,15 @@ Season stats
 
 </div>
 </div>
+</div>
 <script id="update-table">
 const urlParams = new URLSearchParams(location.search);
 player = urlParams.get("ID");
 
+const h1 = document.querySelector("h1");
+const playerDiv = document.querySelector("#player-div");
+
+if (player) {
 const xmlhttp = new XMLHttpRequest();
 const url = `https://www.wheeloratings.com/src/player_profiles/table_data/${player.substring(0,8)}.json`;
 
@@ -376,24 +382,33 @@ xmlhttp.onreadystatechange = function() {
       res = JSON.parse(this.responseText);
 
       player_data = res[player];
-      data.x.tag.attribs.data = player_data.Data;
       
-      const h1 = document.querySelector("h1");
-      h1.innerText = `Player Profile - {player_data.Summary.Player}`;
-      
-      const div = document.querySelector("#react-div");
-      
-      const s = document.createElement('script');
-      s.setAttribute('type', 'application/json');
-      s.setAttribute('data-for', 'htmlwidget-test');
-      s.innerText = JSON.stringify(data);
-      
-      div.append(s);
+      if (player_data) {
+        data.x.tag.attribs.data = player_data.Data;
+        
+        h1.innerText = `Player Profile - ${player_data.Summary.Player}`;
+        
+        const div = document.querySelector("#react-div");
+        
+        const s = document.createElement('script');
+        s.setAttribute('type', 'application/json');
+        s.setAttribute('data-for', 'htmlwidget-test');
+        s.innerText = JSON.stringify(data);
+              
+        div.append(s);
+      } else {
+        h1.innerText = 'Player Profile';
+        playerDiv.style.display = "none";
+      }
     }
 };
 
 xmlhttp.open("GET", url, false);
 xmlhttp.send();
+} else {
+  h1.innerText = 'Player Profile';
+  playerDiv.style.display = "none";
+}
 </script>
 </main>
 
