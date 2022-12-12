@@ -379,7 +379,7 @@ xmlhttp.onreadystatechange = function() {
       data.x.tag.attribs.data = player_data.Data;
       
       const h1 = document.querySelector("h1");
-      h1.innerText = player_data.Summary.Player;
+      h1.innerText = `Player Profile - {player_data.Summary.Player}`;
       
       const div = document.querySelector("#react-div");
       
