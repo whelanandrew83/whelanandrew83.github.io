@@ -382,6 +382,7 @@ const addCompare = function(id) {
 };
 
 const compareColumns = {
+  "Age": {name: "Age", dec: 0},
   "Matches": {name: "Matches", dec: 0},
   "RatingPoints_Avg": {name: "Player Rating", dec: 2},
   "DreamTeamPoints_Avg": {name: "Fantasy Points", dec: 1},
@@ -599,18 +600,7 @@ if (player) {
 }
 </script>
 <script>
-  const statDropdown = document.querySelector("#stat-select");
-  
-  statDropdown.addEventListener('change', (e) => {
-      <!-- chart.data.datasets[0].label = statDropdown.options[statDropdown.selectedIndex].text; -->
-      chart.options.scales.y.title.text = statDropdown.options[statDropdown.selectedIndex].text;
-      chart.data.datasets[0].data = player_data.Data[statDropdown.value].slice(1, -1);
-      chart.update();
-    }
-  );
-</script>
-<script>
-  if (player_data) {
+  <!-- if (player_data) { -->
   const ctx = document.getElementById('stats-chart');
   const careerRow = player_data.Data.Season.indexOf("Career");
   
@@ -636,7 +626,18 @@ if (player) {
       }
     }
   });
-  };
+  <!-- }; -->
+</script>
+<script>
+  const statDropdown = document.querySelector("#stat-select");
+  
+  statDropdown.addEventListener('change', (e) => {
+      <!-- chart.data.datasets[0].label = statDropdown.options[statDropdown.selectedIndex].text; -->
+      chart.options.scales.y.title.text = statDropdown.options[statDropdown.selectedIndex].text;
+      chart.data.datasets[0].data = player_data.Data[statDropdown.value].slice(1, -1);
+      chart.update();
+    }
+  );
 </script>
 <script>
 const tblDiv = document.querySelector('#compare-tbl');
