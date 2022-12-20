@@ -369,7 +369,7 @@ const addCompare = function(id) {
           
           <!-- const dataset = { -->
           <!--   label: compare_players_data[id].Summary.Player, -->
-          <!--   data: compare_players_data[id].Data[statDropdown.value].slice(1, -1) -->
+          <!--   data: compare_players_data[id].Data[statDropdown.value].slice(0, -1) -->
           <!-- } -->
           <!-- chart.data.datasets.push(dataset); -->
           <!-- chart.update(); -->
@@ -448,12 +448,12 @@ Compare
 const searchButton = document.querySelector("#search-button");
 const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
+const search = document.querySelector('#player-search-text');
 
 searchButton.addEventListener('click', () => {overlay.style.display = "block"});
-closeSearchButton.addEventListener('click', () => {overlay.style.display = "none"});
+closeSearchButton.addEventListener('click', () => {overlay.style.display = "none"; search.value = ""});
 </script>
 <script>let timerId;
-const search  =  document.querySelector('#player-search-text');
 const results = document.getElementById('results');
 let search_term = '';
 
@@ -607,10 +607,10 @@ if (player) {
   const chart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: player_data.Data.Season.slice(1, -1),
+      labels: player_data.Data.Season.slice(0, -1),
       datasets: [{
         label: player_data.Summary.Player,
-        data: player_data.Data.RatingPoints_Avg.slice(1, -1),
+        data: player_data.Data.RatingPoints_Avg.slice(0, -1),
         borderWidth: 1.5
       }]
     },
@@ -634,7 +634,7 @@ if (player) {
   statDropdown.addEventListener('change', (e) => {
       <!-- chart.data.datasets[0].label = statDropdown.options[statDropdown.selectedIndex].text; -->
       chart.options.scales.y.title.text = statDropdown.options[statDropdown.selectedIndex].text;
-      chart.data.datasets[0].data = player_data.Data[statDropdown.value].slice(1, -1);
+      chart.data.datasets[0].data = player_data.Data[statDropdown.value].slice(0, -1);
       chart.update();
     }
   );
@@ -670,7 +670,7 @@ const printCompare = function() {
   row = thead.insertRow();
   
   th = document.createElement("th");
-  th.innerText = "Season";
+  th.innerText = "Season (Age)";
   row.appendChild(th);
   
   th = document.createElement("th");
@@ -681,7 +681,10 @@ const printCompare = function() {
   for (let i = 0; i < player_data.Data['Season'].length; i++) {
     const option = document.createElement("option");
     option.value = i;
-    option.text = player_data.Data['Season'][i];
+    option.text = player_data.Data['Season'][i]
+    if (parseInt(player_data.Data['Age'][i])) {
+      option.text += ` (${player_data.Data['Age'][i]})`
+    };
     selectList.appendChild(option);
   }
   selectList.selectedIndex = compare_players_season[player];
@@ -774,7 +777,7 @@ const printCompare = function() {
       let cell = row.insertCell();
       cell.classList = "text-center";
       let dec = compareColumns[col].dec;
-      if (value) {
+      if (!isNaN(value)) {
       if (statValues.length > 1 && value === Math.max(...statValuesValid)) {
         cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
       } else {
