@@ -403,6 +403,7 @@ if (!year) year = 2022;
 
 if (validYears.includes(year)) {
 document.querySelector(`#year-${year}`).classList = "active";
+document.title = `AFL Player Statistics - ${year}`;
 <!-- document.querySelector("#year-label").innerText = year; -->
 
 const xmlhttp = new XMLHttpRequest();
