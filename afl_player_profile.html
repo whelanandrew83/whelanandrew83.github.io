@@ -375,7 +375,7 @@ Trend chart
 <div>
 <p><select id="stat-select" class="form-select" aria-label="Select stat for chart"> <option value="RatingPoints_Avg">Player Rating</option> <option value="DreamTeamPoints_Avg">Fantasy Points</option> <option value="TimeOnGround">Time On Ground</option> <option value="Disposals">Disposals</option> <option value="DisposalEfficiency">Disposal Efficiency</option> <option value="KickingEfficiency">Kicking Efficiency</option> <option value="Inside50s">Inside 50s</option> <option value="MetresGained">Metres Gained</option> <option value="ContestedPossessions">Contested Possessions</option> <option value="CentreClearances">Centre Clearances</option> <option value="TotalClearances">Total Clearances</option> <option value="Marks">Marks</option> <option value="Hitouts">Hitouts</option> <option value="HitoutsWinPercentage">Hitouts Win %</option> <option value="HitoutsToAdvantage">Hitouts To Advantage</option> <option value="Tackles">Tackles</option> <option value="Goals_Total">Goals (Total)</option> <option value="Goals_Avg">Goals (Average)</option> <option value="ShotsAtGoal">Shots At Goal</option> <option value="GoalAssists">Goal Assists</option> <option value="ScoreInvolvements">Score Involvements</option> <option value="ScoreInvolvementPercentage">Score Involvement %</option> </select></p>
 </div>
-<div>
+<div class="chart-container" style="position: relative; margin:auto; height:40vw; width:80vw">
 <canvas id="stats-chart">
 </canvas>
 </div>
@@ -448,13 +448,50 @@ if (player) {
         
         div = document.querySelector("#summary-div");
         
-        div.innerHTML = "<table class='table'>";
-        div.innerHTML += "<tbody>";
-        div.innerHTML += "<tr>";
-        div.innerHTML += `<td>${player_data[player].Summary.DebutSeason}</td>`;
-        div.innerHTML += "</tr>";
-        div.innerHTML += "</tbody>";
-        div.innerHTML += "</table>";
+        const tbl = document.createElement("table");
+        tbl.classList = 'table table-condensed table-sm';
+        div.appendChild(tbl);
+        const tbody = tbl.createTBody();
+        
+        let row = tbody.insertRow();
+        let cell = row.insertCell();
+        cell.classList = "fw-bold";
+        cell.innerText = "Player";
+        
+        cell = row.insertCell();
+        cell.innerText = player_data[player].Summary.Player;
+        
+        row = tbody.insertRow();
+        cell = row.insertCell();
+        cell.classList = "fw-bold";
+        cell.innerText = "Debut";
+        
+        cell = row.insertCell();
+        cell.innerText = `${player_data[player].Summary.DebutSeason} v ${player_data[player].Summary.DebutOpposition}`;
+
+        row = tbody.insertRow();
+        cell = row.insertCell();
+        cell.classList = "fw-bold";
+        cell.innerText = "Last Match";
+        
+        cell = row.insertCell();
+        cell.innerText = `${player_data[player].Summary.LastMatchSeason} v ${player_data[player].Summary.LastMatchOpposition}`;
+
+        row = tbody.insertRow();
+        cell = row.insertCell();
+        cell.classList = "fw-bold";
+        cell.innerText = "Career Matches";
+        
+        cell = row.insertCell();
+        cell.innerText = `${player_data[player].Data.Matches.slice(-1)}`;
+
+        row = tbody.insertRow();
+        cell = row.insertCell();
+        cell.classList = "fw-bold";
+        cell.innerText = "Career Goals";
+        
+        cell = row.insertCell();
+        cell.innerText = `${player_data[player].Data.Goals_Total.slice(-1)}`;
       } else {
         h1.innerText = 'Player Profile';
         playerDiv.style.display = "none";
