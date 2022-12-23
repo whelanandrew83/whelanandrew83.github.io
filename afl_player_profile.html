@@ -356,6 +356,12 @@
 <p><a id="search-button" class="btn btn-primary btn-sm mx-1">Search</a></p>
 <div id="player-div">
 <h3>
+Summary
+</h3>
+<div id="summary-div">
+
+</div>
+<h3>
 Season stats
 </h3>
 <div id="react-div">
@@ -385,11 +391,14 @@ Compare
 </div>
 <div id="overlay" class="overlay player-search">
 <div class="overlay-content">
-<p><button id="close-search-button" type="button" class="btn-close" aria-label="Close"></button> <!-- <input type="text" id="player-search-text" class="form-control" placeholder="Search" aria-label="Search" /> --></p>
+<div class="d-flex justify-content-between">
+<span id="compare-message" class="small"></span><button id="close-search-button" type="button" class="btn-close" aria-label="Close"></button>
+</div>
+<p><!-- <input type="text" id="player-search-text" class="form-control" placeholder="Search" aria-label="Search" /> --></p>
 <div class="input-group mb-3">
 <input id="player-search-text" type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="clear-search"><button class="btn btn-outline-secondary" type="button" id="clear-search-button">Clear</button>
 </div>
-<p id="compare-message">
+<p id="results-message" class="small">
 </p>
 <div id="results" class="container">
 
@@ -423,13 +432,12 @@ if (player) {
       }
       
       if (player_data) {
-        <!-- compare_players_season[player] = player_data[player].Data['Season'].length-1; -->
         data.x.tag.attribs.data = player_data[player].Data;
 
         h1.innerText = `Player Profile - ${player_data[player].Summary.Player}`;
         document.title = `AFL Player Profile - ${player_data[player].Summary.Player}`;
 
-        const div = document.querySelector("#react-div");
+        let div = document.querySelector("#react-div");
 
         const s = document.createElement('script');
         s.setAttribute('type', 'application/json');
@@ -437,6 +445,16 @@ if (player) {
         s.innerText = JSON.stringify(data);
 
         div.append(s);
+        
+        div = document.querySelector("#summary-div");
+        
+        div.innerHTML = "<table class='table'>";
+        div.innerHTML += "<tbody>";
+        div.innerHTML += "<tr>";
+        div.innerHTML += `<td>${player_data[player].Summary.DebutSeason}</td>`;
+        div.innerHTML += "</tr>";
+        div.innerHTML += "</tbody>";
+        div.innerHTML += "</table>";
       } else {
         h1.innerText = 'Player Profile';
         playerDiv.style.display = "none";

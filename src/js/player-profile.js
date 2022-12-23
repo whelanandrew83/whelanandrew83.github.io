@@ -74,14 +74,15 @@ const overlay = document.querySelector("#overlay");
 const search = document.querySelector('#player-search-text');
 const results = document.querySelector('#results');
 const compareMessage = document.querySelector('#compare-message');
+const resultsMessage = document.querySelector('#results-message');
 
 const updateCompareMessage = function () {
     if (compare_players.length < max_compare_players) {
         compareMessage.innerText = `Please select up to ${max_compare_players - compare_players.length} more player(s) to compare to ${player_data[player].Summary.Player}.`;
-        compareMessage.classList = "";
+        compareMessage.classList = "small";
     } else {
         compareMessage.innerText = `You have already selected ${max_compare_players} players.`;
-        compareMessage.classList = "text-danger";
+        compareMessage.classList = "small text-danger";
     }
 }
 
@@ -94,6 +95,7 @@ if (player_data) {
 const clearSearch = function () {
     search.value = "";
     results.innerHTML = '';
+    resultsMessage.innerText = 'No results.';
 };
 
 searchButton.addEventListener('click', () => { overlay.style.display = "block" });
@@ -124,6 +126,11 @@ function showList() {
         });
 
         if (search_results.length) {
+            resultsMessage.innerText = `${search_results.length} results.`;
+            if (search_results.length > 100) {
+                resultsMessage.innerText += ' Displaying first 100 results only.';
+            }
+
             const searchTableDiv = document.createElement('div');
             searchTableDiv.id = "results-table";
             searchTableDiv.classList = 'table-responsive';
@@ -136,7 +143,7 @@ function showList() {
 
             const tbody = searchTable.createTBody();
 
-            search_results.slice(0, 40).forEach((e) => {
+            search_results.slice(0, 100).forEach((e) => {
                 let row = tbody.insertRow();
 
                 let cell = row.insertCell();
@@ -219,7 +226,11 @@ function showList() {
 
                 // results.appendChild(row);
             });
+        } else {
+            resultsMessage.innerText = 'No results.';
         }
+    } else {
+        resultsMessage.innerText = 'No results.';
     }
 };
 
@@ -324,7 +335,7 @@ const printCompare = function () {
     if (player_data) {
         const tbl = document.createElement('table');
         tbl.id = "compare-tbl";
-        tbl.classList = "table table-condensed table-sm";
+        tbl.classList = "table table-condensed table-sm table-hover";
         const thead = tbl.createTHead();
         // thead.classList = "table-primary";
         let row = thead.insertRow();
@@ -445,6 +456,23 @@ const printCompare = function () {
                 }
             }
         }
+
+        const tfoot = tbl.createTFoot();
+        // thead.classList = "table-primary";
+        row = tfoot.insertRow();
+        row.classList = "fw-bold";
+
+        td = document.createElement("td");
+        td.innerText = "Player";
+        row.appendChild(td);
+
+        for (id of [player, ...compare_players]) {
+            td = document.createElement("td");
+            td.innerText = player_data[id].Summary.Player;
+            td.classList = "text-center";
+            row.appendChild(td);
+        }
+
 
         tblDiv.innerHTML = "";
         tblDiv.appendChild(tbl);
