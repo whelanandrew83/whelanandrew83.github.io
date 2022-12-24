@@ -132,10 +132,11 @@ function showList() {
             }
 
             const searchTableDiv = document.createElement('div');
-            searchTableDiv.id = "results-table";
+            searchTableDiv.id = "results-table-div";
             searchTableDiv.classList = 'table-responsive';
 
             const searchTable = document.createElement('table');
+            searchTable.id = "results-table";
             searchTable.classList = 'table table-condensed table-sm';
 
             searchTableDiv.appendChild(searchTable);
@@ -151,7 +152,7 @@ function showList() {
 
                 const profileLink = document.createElement('a');
                 profileLink.classList = 'btn btn-primary btn-sm mx-1';
-                profileLink.href = `https://www.wheeloratings.com/afl_player_profile.html?ID=${player_search_list.WebsiteId[e]}`;
+                profileLink.href = `afl_player_profile.html?ID=${player_search_list.WebsiteId[e]}`;
                 profileLink.innerText = "Profile";
                 cell.appendChild(profileLink);
 
@@ -194,7 +195,7 @@ function showList() {
 
                 // const profileLink = document.createElement('a');
                 // profileLink.classList = 'btn btn-primary btn-sm mx-1';
-                // profileLink.href = `https://www.wheeloratings.com/afl_player_profile.html?ID=${player_search_list.WebsiteId[e]}`;
+                // profileLink.href = `afl_player_profile.html?ID=${player_search_list.WebsiteId[e]}`;
                 // profileLink.innerText = "Profile";
                 // colProfile.appendChild(profileLink);
 
@@ -350,7 +351,7 @@ const printCompare = function () {
                 th.innerText = player_data[id].Summary.Player;
             } else {
                 const a = document.createElement('a');
-                a.href = `https://www.wheeloratings.com/afl_player_profile.html?ID=${player_data[id].Summary.WebsiteId}`;
+                a.href = `afl_player_profile.html?ID=${player_data[id].Summary.WebsiteId}`;
                 a.innerText = player_data[id].Summary.Player;
                 th.appendChild(a);
             }
