@@ -162,7 +162,6 @@ ul.nav.navbar-nav>li>a {
 }
 
 .rt-td-filter {
-  padding: 0px 10px !important;
   background-color: #f0f0f0 !important;
 }
 
@@ -331,7 +330,7 @@ ul.nav.navbar-nav>li>a {
   overflow: auto;
 }
 
-#results-table td:nth-child(-n+2) {
+.results-button {
   width: 80px;
 }
 

@@ -148,7 +148,7 @@ function showList() {
                 let row = tbody.insertRow();
 
                 let cell = row.insertCell();
-                cell.classList = "py-0 text-center";
+                cell.classList = "results-button py-0 text-center";
 
                 const profileLink = document.createElement('a');
                 profileLink.classList = 'btn btn-primary btn-sm mx-1';
@@ -158,7 +158,7 @@ function showList() {
 
                 if (player_data) {
                     cell = row.insertCell();
-                    cell.classList = "py-0 text-center";
+                    cell.classList = "results-button py-0 text-center";
 
                     const compareLink = document.createElement('a');
 
