@@ -78,7 +78,7 @@ const resultsMessage = document.querySelector('#results-message');
 
 const updateCompareMessage = function () {
     if (compare_players.length < max_compare_players) {
-        compareMessage.innerText = `Please select up to ${max_compare_players - compare_players.length} more player(s) to compare to ${player_data[player].Summary.Player}.`;
+        compareMessage.innerText = `Select up to ${max_compare_players - compare_players.length} more player(s) to compare to ${player_data[player].Summary.Player} or view another player's profile.`;
         compareMessage.classList = "small";
     } else {
         compareMessage.innerText = `You have already selected ${max_compare_players} players.`;
