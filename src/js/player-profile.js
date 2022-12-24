@@ -346,7 +346,14 @@ const printCompare = function () {
 
         for (id of [player, ...compare_players]) {
             th = document.createElement("th");
-            th.innerText = player_data[id].Summary.Player;
+            if (id === player) {
+                th.innerText = player_data[id].Summary.Player;
+            } else {
+                const a = document.createElement('a');
+                a.href = `https://www.wheeloratings.com/afl_player_profile.html?ID=${player_data[id].Summary.WebsiteId}`;
+                a.innerText = player_data[id].Summary.Player;
+                th.appendChild(a);
+            }
             th.classList = "text-center";
             row.appendChild(th);
         }

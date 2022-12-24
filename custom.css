@@ -317,7 +317,7 @@ ul.nav.navbar-nav>li>a {
   fill: #d79ff5;
 }
 
-#summary-table tr td:first-child {
+#summary-table td:first-child {
   width: 130px;
 }
 
@@ -327,8 +327,12 @@ ul.nav.navbar-nav>li>a {
   z-index: 3;
 }
 
-#results-table {
+#results-table-div {
   overflow: auto;
+}
+
+#results-table td:nth-child(-n+2) {
+  width: 80px;
 }
 
 .overlay {
@@ -350,19 +354,23 @@ ul.nav.navbar-nav>li>a {
   margin: auto;
 }
 
+#compare-tbl {
+  width: auto;
+}
+
 #compare-tbl td,
 #compare-tbl th {
   background-color: white;
 }
 
-#compare-tbl th:first-child {
+#compare-tbl th:first-child,
+#compare-tbl td:first-child {
   position: sticky;
   left: 0;
   z-index: 1;
 }
 
-#compare-tbl td:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 1;
+#compare-tbl td,
+#compare-tbl th {
+  width: 200px;
 }
