@@ -317,6 +317,10 @@ ul.nav.navbar-nav>li>a {
   fill: #d79ff5;
 }
 
+#summary-table tr td:first-child {
+  width: 130px;
+}
+
 #results {
   max-height: 400px;
   overflow: auto;

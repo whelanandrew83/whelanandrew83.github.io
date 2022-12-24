@@ -449,6 +449,7 @@ if (player) {
         div = document.querySelector("#summary-div");
         
         const tbl = document.createElement("table");
+        tbl.id = "summary-table";
         tbl.classList = 'table table-condensed table-sm';
         div.appendChild(tbl);
         const tbody = tbl.createTBody();
