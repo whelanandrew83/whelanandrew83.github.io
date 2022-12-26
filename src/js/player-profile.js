@@ -42,7 +42,10 @@ const compareColumns = {
     "Age": { name: "Age", dec: 0 },
     "Matches": { name: "Matches", dec: 0 },
     "RatingPoints_Avg": { name: "Player Rating", dec: 2 },
+    "Supercoach_Avg": { name: "Supercoach Points", dec: 1 },
     "DreamTeamPoints_Avg": { name: "Fantasy Points", dec: 1 },
+    "CoachesVotes_Total": { name: "Coaches Votes", dec: 2 },
+    "CoachesVotes_Avg": { name: "Coaches Votes (Average)", dec: 1 },
     "TimeOnGround": { name: "Time On Ground", dec: 1 },
     "Disposals": { name: "Disposals", dec: 1 },
     "DisposalEfficiency": { name: "Disposal Efficiency", dec: 1 },
@@ -98,7 +101,7 @@ const clearSearch = function () {
     resultsMessage.innerText = 'No results.';
 };
 
-const openSearch = function() {
+const openSearch = function () {
     overlay.style.display = "block";
     search.focus();
 };
