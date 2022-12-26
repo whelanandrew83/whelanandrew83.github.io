@@ -98,8 +98,13 @@ const clearSearch = function () {
     resultsMessage.innerText = 'No results.';
 };
 
-searchButton.addEventListener('click', () => { overlay.style.display = "block" });
-searchCompareButton.addEventListener('click', () => { overlay.style.display = "block" });
+const openSearch = function() {
+    overlay.style.display = "block";
+    search.focus();
+};
+
+searchButton.addEventListener('click', () => { openSearch() });
+searchCompareButton.addEventListener('click', () => { openSearch() });
 closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; clearSearch() });
 clearSearchButton.addEventListener('click', () => { clearSearch() })
 
@@ -304,7 +309,6 @@ const updateChart = function () {
 }
 
 const ctx = document.getElementById('stats-chart');
-const careerRow = player_data[player].Data.Season.indexOf("Career");
 
 const chart = new Chart(ctx, {
     type: 'bar',
@@ -328,7 +332,7 @@ const chart = new Chart(ctx, {
     }
 });
 
-updateChart();
+if (player_data) { updateChart() };
 
 const tblDiv = document.querySelector('#compare-tbl-div');
 

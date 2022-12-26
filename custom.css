@@ -349,6 +349,7 @@ ul.nav.navbar-nav>li>a {
 .overlay-content {
   position: relative;
   width: 90%;
+  max-width: 800px;
   top: 100px;
   margin: auto;
 }
