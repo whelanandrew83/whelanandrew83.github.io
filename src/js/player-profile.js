@@ -265,6 +265,7 @@ search.addEventListener('input', (event) => {
 });
 
 const statDropdown = document.querySelector("#stat-select");
+const chartAgeSelect = document.querySelector("#age-select");
 
 statDropdown.addEventListener('change', (e) => {
     // chart.data.datasets[0].label = statDropdown.options[statDropdown.selectedIndex].text;
@@ -273,6 +274,8 @@ statDropdown.addEventListener('change', (e) => {
 }
 );
 
+chartAgeSelect.addEventListener('change', (e) => { updateChart(); });
+
 const updateChart = function () {
     const datasets = [];
     let chartRange = [];
@@ -280,17 +283,23 @@ const updateChart = function () {
 
     for (id of [player, ...compare_players]) {
         const data = [];
+        let x;
         player_data[id].Data.Season.slice(0, -1).forEach((element, index) => {
+            if (chartAgeSelect.checked) {
+                x = player_data[id].Data.Age[index];
+            } else {
+                x = parseInt(element);
+            }
             data.push({ x: parseInt(element), y: player_data[id].Data[statDropdown.value][index] });
             if (chartRange.length) {
-                if (parseInt(element) < chartRange[0]) {
-                    chartRange[0] = parseInt(element);
+                if (x < chartRange[0]) {
+                    chartRange[0] = x;
                 }
-                if (parseInt(element) > chartRange[1]) {
-                    chartRange[1] = parseInt(element);
+                if (x > chartRange[1]) {
+                    chartRange[1] = x;
                 }
             } else {
-                chartRange = [parseInt(element), parseInt(element)];
+                chartRange = [x, x];
             }
         });
 

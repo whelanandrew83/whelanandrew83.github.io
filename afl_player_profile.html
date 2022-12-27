@@ -373,7 +373,9 @@ style="width:auto;height:auto;">
 <h3>
 Trend chart
 </h3>
-<div>
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
 <p><select id="stat-select" class="form-select" aria-label="Select stat for chart">
 <option value="RatingPoints_Avg">Player Rating</option>
 <option value="Supercoach_Avg">Supercoach Points</option>
@@ -401,6 +403,15 @@ Trend chart
 <option value="ScoreInvolvements">Score Involvements</option>
 <option value="ScoreInvolvementPercentage">Score Involvement %</option>
 </select></p>
+</div>
+<div class="col-sm-3">
+<div class="form-check form-switch">
+<p><input class="form-check-input" type="checkbox" id="age-select">
+<label class="form-check-label" for="age-select">Age on
+x-axis</label></p>
+</div>
+</div>
+</div>
 </div>
 <div class="chart-container"
 style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
