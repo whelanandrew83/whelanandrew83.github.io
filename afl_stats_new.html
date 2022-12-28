@@ -400,6 +400,8 @@ Select statistical categories to include in the table
 <!-- <select id="stat-select-presets" class="form-select" aria-label="Select stats for include in table">
 </select> -->
 </div>
+<p>
+</p>
 <script id="year-load">
 const urlParams = new URLSearchParams(location.search);
 
@@ -505,6 +507,7 @@ for (c of [...Object.keys(statsColumns), 'Show all']) {
 
   const label = document.createElement('label');
   label.classList = "form-check-label"
+  if (c === 'Show all') { label.classList += " fw-bold" }
   label.htmlFor = id;
   label.innerText = c;
 
@@ -526,7 +529,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 Abbreviations
 </h3>
 <h4>
-Summary
+General
 </h4>
 <ul>
 <li>
@@ -712,10 +715,10 @@ Defence
 10 contests)
 </li>
 <li>
-<b>Tot:</b> Total tackles
+<b>Tack:</b> Total tackles
 </li>
 <li>
-<b>In 50:</b> Tackles inside forward 50
+<b>Tack In 50:</b> Tackles inside forward 50
 </li>
 <li>
 <b>Press. Acts:</b> Pressure acts
