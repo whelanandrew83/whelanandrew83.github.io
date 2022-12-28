@@ -109,7 +109,7 @@ const openSearch = function () {
 searchButton.addEventListener('click', () => { openSearch() });
 searchCompareButton.addEventListener('click', () => { openSearch() });
 closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; clearSearch() });
-clearSearchButton.addEventListener('click', () => { clearSearch() })
+clearSearchButton.addEventListener('click', () => { clearSearch(); search.focus() })
 
 let timerId;
 let search_term = '';

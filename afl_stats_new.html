@@ -393,10 +393,10 @@
 <a href="afl_stats.html?year=2022">2022</a>
 </li>
 </ul>
-<div id="stat-select">
 <h4>
 Select statistical categories to include in the table
 </h4>
+<div id="stat-select">
 <!-- <select id="stat-select-presets" class="form-select" aria-label="Select stats for include in table">
 </select> -->
 </div>
@@ -445,7 +445,7 @@ const statsColumnsAll = ["WebsiteId","Team","Image","RatingPoints_Avg","Supercoa
                   "Bounces","OnePercenters","PressureActs","Spoils"];
 const statsColumns = {
   "Key stats": ["RatingPoints_Avg","TimeOnGround","Disposals","MetresGained","ContestedPossessions","TotalPossessions",
-                "CentreClearances","TotalClearances","Marks","ContestedMarks","Goals_Total","Goals_Avg","Tackles","Hitouts"],
+                "CentreClearances","TotalClearances","Marks","ContestedMarks","Goals_Total","Goals_Avg","Tackles","PressureActs","Hitouts"],
   "General": ["RatingPoints_Avg","Supercoach_Avg","DreamTeamPoints_Avg","CoachesVotes_Total","CoachesVotes_Avg","TimeOnGround"],
   "Disposals": ["Kicks","Handballs","Disposals","DisposalEfficiency","KickingEfficiency","HandballEfficiency","KickPercentage",
                 "Inside50s","Rebound50s","MetresGained","MetresGainedPerDisposal","Clangers","DisposalsPerClanger","Turnovers","DisposalsPerTurnover"],
@@ -461,34 +461,32 @@ const statsColumns = {
 
 let showColumns = statsColumns["Key stats"];
 
-const updateTableColumns = function () {
+const updateTableColumns = function (showAll = false) {
   showColumns = [];
   
-  const selectedInputs = document.querySelectorAll("#stat-select input:checked");
+  if (showAll) {
+    Reactable.setHiddenColumns('player-stats-table', ["WebsiteId","Team","Image"] );
+  } else {
+    const selectedInputs = document.querySelectorAll("#stat-select input:checked");
 
-  console.log(selectedInputs);
+    for (input of selectedInputs) {
+      showColumns = [...showColumns, ...statsColumns[input.value]];
+    }
 
-  for (input of selectedInputs) {
-    showColumns = [...showColumns, ...statsColumns[input.value]];
-
-    console.log(input.value);
+    Reactable.setHiddenColumns('player-stats-table', statsColumnsAll.filter( (el) => !showColumns.includes(el)) );
   }
-  
-  console.log(showColumns);
-
-  Reactable.setHiddenColumns('player-stats-table', statsColumnsAll.filter( (el) => !showColumns.includes(el)) );
 };
 
 const statSelectDiv = document.querySelector("#stat-select");
 // const statDropdown = document.querySelector("#stat-select-presets");
 
-for (c of Object.keys(statsColumns)) {
+for (c of [...Object.keys(statsColumns), 'Show all']) {
   // const option = new Option(c, c);
   // statDropdown.add(option);
 
   const div = document.createElement('div');
   div.classList = "form-check form-switch";
-
+  
   const id = "select-" + c.toLowerCase().replaceAll(' ', '-');
 
   const input = document.createElement('input');
@@ -499,7 +497,11 @@ for (c of Object.keys(statsColumns)) {
 
   if (c === Object.keys(statsColumns)[0]) { input.checked = true; }
 
-  input.addEventListener('change', (e) => { updateTableColumns(); });
+  if (c === 'Show all') {
+    input.addEventListener('change', (e) => { updateTableColumns(e.target.checked); });
+  } else {
+    input.addEventListener('change', (e) => { updateTableColumns(); });
+  }
 
   const label = document.createElement('label');
   label.classList = "form-check-label"
@@ -535,6 +537,9 @@ Summary
 (<a href="https://s.afl.com.au/staticfile/AFL%20Tenant/AFL/PlayerRatings/PlayerRatings_HOW.pdf" target="_blank">Overview</a>)
 </li>
 <li>
+<b>CV Avg:</b> Average Coaches Votes per match
+</li>
+<li>
 <b>TOG:</b> Time on ground percentage
 </li>
 </ul>
@@ -543,13 +548,13 @@ Disposals
 </h4>
 <ul>
 <li>
-<b>K:</b> Kicks
+<b>Kick:</b> Kicks
 </li>
 <li>
-<b>H:</b> Handballs
+<b>HB:</b> Handballs
 </li>
 <li>
-<b>D:</b> Disposals
+<b>Dis.:</b> Disposals
 </li>
 <li>
 <b>Eff %:</b> Disposal Efficiency (minimum 20 disposals)
@@ -606,7 +611,7 @@ Possessions
 possessions)
 </li>
 <li>
-<b>Int:</b> Intercept possessions
+<b>Int Poss:</b> Intercept possessions
 </li>
 <li>
 <b>GB Gets:</b> Ground ball gets
@@ -650,64 +655,10 @@ Marks
 <b>In 50:</b> Marks inside forward 50
 </li>
 <li>
-<b>Int:</b> Intercept marks
+<b>Int Mks:</b> Intercept marks
 </li>
 <li>
 <b>On lead:</b> Marks on lead
-</li>
-</ul>
-<h4>
-Ruck contests
-</h4>
-<ul>
-<li>
-<b>Tot:</b> Ruck contests
-</li>
-<li>
-<b>%:</b> Ruck contests / total team ruck contests
-</li>
-<li>
-<b>HO:</b> Total hit outs
-</li>
-<li>
-<b>Win %:</b> Hit outs / ruck contests (minimum 20 ruck contests)
-</li>
-<li>
-<b>To Adv:</b> Hit outs to advantage
-</li>
-<li>
-<b>Adv %:</b> Hit outs to advantage / total hit outs (minimum 20 hit
-outs)
-</li>
-</ul>
-<h4>
-Tackles
-</h4>
-<ul>
-<li>
-<b>Tot:</b> Total tackles
-</li>
-<li>
-<b>In 50:</b> Tackles inside forward 50
-</li>
-</ul>
-<h4>
-Contests
-</h4>
-<ul>
-<li>
-<b>Def 1v1:</b> Defensive one-on-one contests
-</li>
-<li>
-<b>Loss %:</b> Percentage of defensive one-on-one contests lost (minimum
-10 contests)
-</li>
-<li>
-<b>Off 1v1:</b> Offensive one-on-one contests
-</li>
-<li>
-<b>Win %:</b> Percentage of offensive one-on-one contests won (minimum
-10 contests)
 </li>
 </ul>
 <h4>
@@ -741,6 +692,58 @@ Scoring
 <li>
 <b>Launch:</b> Score launches
 </li>
+<li>
+<b>Off 1v1:</b> Offensive one-on-one contests
+</li>
+<li>
+<b>Win %:</b> Percentage of offensive one-on-one contests won (minimum
+10 contests)
+</li>
+</ul>
+<h4>
+Defence
+</h4>
+<ul>
+<li>
+<b>Def 1v1:</b> Defensive one-on-one contests
+</li>
+<li>
+<b>Loss %:</b> Percentage of defensive one-on-one contests lost (minimum
+10 contests)
+</li>
+<li>
+<b>Tot:</b> Total tackles
+</li>
+<li>
+<b>In 50:</b> Tackles inside forward 50
+</li>
+<li>
+<b>Press. Acts:</b> Pressure acts
+</li>
+</ul>
+<h4>
+Ruck contests
+</h4>
+<ul>
+<li>
+<b>Ruck Cont:</b> Ruck contests
+</li>
+<li>
+<b>RC %:</b> Ruck contests / total team ruck contests
+</li>
+<li>
+<b>Hit Outs:</b> Total hit outs
+</li>
+<li>
+<b>Win %:</b> Hit outs / ruck contests (minimum 20 ruck contests)
+</li>
+<li>
+<b>To Adv:</b> Hit outs to advantage
+</li>
+<li>
+<b>Adv %:</b> Hit outs to advantage / total hit outs (minimum 20 hit
+outs)
+</li>
 </ul>
 <h4>
 Other
@@ -758,9 +761,6 @@ kick-ins)
 </li>
 <li>
 <b>1%s:</b> One percenters
-</li>
-<li>
-<b>Press. Acts:</b> Pressure acts
 </li>
 </ul>
 <script>
