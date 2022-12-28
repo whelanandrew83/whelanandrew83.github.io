@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>AFL Player Statistics</title>
+<meta name="description" content="AFL player statistics.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.1/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.1/reactable.js"></script>
+<link href="site_libs/selectize-0.12.4/css/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="site_libs/selectize-0.12.4/js/selectize.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="site_libs/ionrangeslider-javascript-2.3.1/js/ion.rangeSlider.min.js"></script>
+<script src="site_libs/strftime-0.9.2/strftime-min.js"></script>
+<link href="site_libs/ionrangeslider-css-2.3.1/ionrangeslider-css.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+</head>
+<body>
+<div class="container-fluid main-container container">
+
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_atp_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_atp_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_atp_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_wta_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_wta_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav id="navbar-banner">
+    <ul class="nav navbar-banner-heading justify-content-center">
+        <li class="fw-bold text-center">
+            Australian Football League (AFL)
+        </li>
+    </ul>
+    <ul class="nav navbar-banner-nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="afl_index.html">AFL Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_previews.html">Match Previews</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats.html">Player Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats_team.html">Team Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_ratings.html">Team Ratings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_simulations.html">Simulations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_brownlow.html">Brownlow Medal</a>
+        </li>
+    </ul>
+</nav>
+
+<header id="header">
+
+
+<h1 class="title toc-ignore">AFL Player Statistics</h1>
+
+</header>
+
+
+<main>
+<ul class='nav nav-pills'>
+<li id="year-2012">
+<a href="afl_stats.html?year=2012">2012</a>
+</li>
+<li id="year-2013">
+<a href="afl_stats.html?year=2013">2013</a>
+</li>
+<li id="year-2014">
+<a href="afl_stats.html?year=2014">2014</a>
+</li>
+<li id="year-2015">
+<a href="afl_stats.html?year=2015">2015</a>
+</li>
+<li id="year-2016">
+<a href="afl_stats.html?year=2016">2016</a>
+</li>
+<li id="year-2017">
+<a href="afl_stats.html?year=2017">2017</a>
+</li>
+<li id="year-2018">
+<a href="afl_stats.html?year=2018">2018</a>
+</li>
+<li id="year-2019">
+<a href="afl_stats.html?year=2019">2019</a>
+</li>
+<li id="year-2020">
+<a href="afl_stats.html?year=2020">2020</a>
+</li>
+<li id="year-2021">
+<a href="afl_stats.html?year=2021">2021</a>
+</li>
+<li id="year-2022">
+<a href="afl_stats.html?year=2022">2022</a>
+</li>
+</ul>
+<div id="stat-select">
+<h4>
+Select statistical categories to include in the table
+</h4>
+<!-- <select id="stat-select-presets" class="form-select" aria-label="Select stats for include in table">
+</select> -->
+</div>
+<script id="year-load">
+const urlParams = new URLSearchParams(location.search);
+
+validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
+year = parseInt(urlParams.get("year"));
+
+if (!year) year = 2022;
+
+if (validYears.includes(year)) {
+document.querySelector(`#year-${year}`).classList = "active";
+document.title = `AFL Player Statistics - ${year}`;
+// document.querySelector("#year-label").innerText = year;
+
+const xmlhttp = new XMLHttpRequest();
+const url = `https://www.wheeloratings.com/src/player_stats_snippet/${year}.html`;
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const contents = this.responseText;
+      const main = document.querySelector("main");
+      main.innerHTML = main.innerHTML += contents;
+    }
+};
+xmlhttp.open("GET", url, false);
+xmlhttp.send();
+} else {
+  // document.querySelector("#year-label").innerText = "Invalid year.";
+}
+</script>
+<script>
+const statsColumnsAll = ["WebsiteId","Team","Image","RatingPoints_Avg","Supercoach_Avg",
+                  "DreamTeamPoints_Avg","CoachesVotes_Total","CoachesVotes_Avg","TimeOnGround","Kicks","Handballs","Disposals",
+                  "DisposalEfficiency","KickingEfficiency","HandballEfficiency","KickPercentage","Inside50s","Rebound50s",
+                  "MetresGained","MetresGainedPerDisposal","Clangers","DisposalsPerClanger","Turnovers","DisposalsPerTurnover",
+                  "ContestedPossessions","UncontestedPossessions","TotalPossessions","ContestedPossessionRate","Intercepts",
+                  "GroundBallGets","CentreBounceAttendances","CentreBounceAttendancePercentage","CentreClearances","CentreClearanceRate",
+                  "StoppageClearances","TotalClearances","Marks","ContestedMarks","MarksInside50","InterceptMarks","MarksOnLead",
+                  "FreesFor","FreesAgainst","FreesDiff","RuckContests","RuckContestPercentage","Hitouts","HitoutsWinPercentage",
+                  "HitoutsToAdvantage","HitoutsToAdvantagePercentage","Tackles","TacklesInside50","ContestDefensiveOneOnOnes",
+                  "ContestDefensiveLossPercentage","ContestOffensiveOneOnOnes","ContestOffensiveWinPercentage",
+                  "Goals_Total","Goals_Avg","Behinds","ShotsAtGoal","GoalAssists","GoalAccuracy","ScoreInvolvements",
+                  "ScoreInvolvementPercentage","ScoreLaunches","KickIns","KickInPercentage","KickInsPlayOnPercentage",
+                  "Bounces","OnePercenters","PressureActs","Spoils"];
+const statsColumns = {
+  "Key stats": ["RatingPoints_Avg","TimeOnGround","Disposals","MetresGained","ContestedPossessions","TotalPossessions",
+                "CentreClearances","TotalClearances","Marks","ContestedMarks","Goals_Total","Goals_Avg","Tackles","Hitouts"],
+  "General": ["RatingPoints_Avg","Supercoach_Avg","DreamTeamPoints_Avg","CoachesVotes_Total","CoachesVotes_Avg","TimeOnGround"],
+  "Disposals": ["Kicks","Handballs","Disposals","DisposalEfficiency","KickingEfficiency","HandballEfficiency","KickPercentage",
+                "Inside50s","Rebound50s","MetresGained","MetresGainedPerDisposal","Clangers","DisposalsPerClanger","Turnovers","DisposalsPerTurnover"],
+  "Possessions": ["ContestedPossessions","UncontestedPossessions","TotalPossessions","ContestedPossessionRate","Intercepts","GroundBallGets"],
+  "Clearances": ["CentreBounceAttendances","CentreBounceAttendancePercentage","CentreClearances","CentreClearanceRate","StoppageClearances","TotalClearances"],
+  "Marks": ["Marks","ContestedMarks","MarksInside50","InterceptMarks","MarksOnLead"],
+  "Scoring/Attack": ["Goals_Total","Goals_Avg","Behinds","ShotsAtGoal","GoalAssists","GoalAccuracy","ScoreInvolvements","ScoreInvolvementPercentage","ScoreLaunches",
+                "ContestOffensiveOneOnOnes","ContestOffensiveWinPercentage"],
+  "Defence": ["ContestDefensiveOneOnOnes","ContestDefensiveLossPercentage","Tackles","TacklesInside50","PressureActs","Spoils"],
+  "Ruck Contests": ["RuckContests","RuckContestPercentage","Hitouts","HitoutsWinPercentage","HitoutsToAdvantage","HitoutsToAdvantagePercentage"],
+  "Other": ["FreesFor","FreesAgainst","FreesDiff","KickIns","KickInPercentage","KickInsPlayOnPercentage","Bounces","OnePercenters"]
+};
+
+let showColumns = statsColumns["Key stats"];
+
+const updateTableColumns = function () {
+  showColumns = [];
+  
+  const selectedInputs = document.querySelectorAll("#stat-select input:checked");
+
+  console.log(selectedInputs);
+
+  for (input of selectedInputs) {
+    showColumns = [...showColumns, ...statsColumns[input.value]];
+
+    console.log(input.value);
+  }
+  
+  console.log(showColumns);
+
+  Reactable.setHiddenColumns('player-stats-table', statsColumnsAll.filter( (el) => !showColumns.includes(el)) );
+};
+
+const statSelectDiv = document.querySelector("#stat-select");
+// const statDropdown = document.querySelector("#stat-select-presets");
+
+for (c of Object.keys(statsColumns)) {
+  // const option = new Option(c, c);
+  // statDropdown.add(option);
+
+  const div = document.createElement('div');
+  div.classList = "form-check form-switch";
+
+  const id = "select-" + c.toLowerCase().replaceAll(' ', '-');
+
+  const input = document.createElement('input');
+  input.classList = "form-check-input"
+  input.type = "checkbox"
+  input.value = c;
+  input.id = id;
+
+  if (c === Object.keys(statsColumns)[0]) { input.checked = true; }
+
+  input.addEventListener('change', (e) => { updateTableColumns(); });
+
+  const label = document.createElement('label');
+  label.classList = "form-check-label"
+  label.htmlFor = id;
+  label.innerText = c;
+
+  div.appendChild(input);
+  div.appendChild(label);
+  statSelectDiv.appendChild(div);
+}
+
+// statDropdown.addEventListener('change', (e) => {
+//   showColumns = statsColumns[statDropdown.value];
+//   updateTableColumns();
+// });
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    updateTableColumns()
+});
+</script>
+<h3>
+Abbreviations
+</h3>
+<h4>
+Summary
+</h4>
+<ul>
+<li>
+<b>Age:</b> Age as at 31 December
+</li>
+<li>
+<b>Player Rating:</b> Official AFL Player Ratings
+(<a href="https://s.afl.com.au/staticfile/AFL%20Tenant/AFL/PlayerRatings/PlayerRatings_HOW.pdf" target="_blank">Overview</a>)
+</li>
+<li>
+<b>TOG:</b> Time on ground percentage
+</li>
+</ul>
+<h4>
+Disposals
+</h4>
+<ul>
+<li>
+<b>K:</b> Kicks
+</li>
+<li>
+<b>H:</b> Handballs
+</li>
+<li>
+<b>D:</b> Disposals
+</li>
+<li>
+<b>Eff %:</b> Disposal Efficiency (minimum 20 disposals)
+</li>
+<li>
+<b>Kick Eff %:</b> Kick Efficiency (minimum 20 kicks)
+</li>
+<li>
+<b>HB Eff %:</b> Handball Efficiency (minimum 20 handballs)
+</li>
+<li>
+<b>Kick %:</b> Kicks / Disposals (minimum 20 disposals)
+</li>
+<li>
+<b>In 50s:</b> Inside 50s
+</li>
+<li>
+<b>Reb 50s:</b> Rebound 50s
+</li>
+<li>
+<b>Mtrs Gnd:</b> Metres gained
+</li>
+<li>
+<b>Mtrs / D:</b> Metres gained / Disposal (minimum 20 disposals)
+</li>
+<li>
+<b>Clng:</b> Clangers
+</li>
+<li>
+<b>D/Cg:</b> Disposals per clanger
+</li>
+<li>
+<b>TO:</b> Turnovers
+</li>
+<li>
+<b>D/TO:</b> Disposals per turnover
+</li>
+</ul>
+<h4>
+Possessions
+</h4>
+<ul>
+<li>
+<b>CP:</b> Contested possessions
+</li>
+<li>
+<b>UP:</b> Uncontested possessions
+</li>
+<li>
+<b>Poss:</b> Total possessions
+</li>
+<li>
+<b>CP%:</b> Contested possessions / total possessions (minimum 20 total
+possessions)
+</li>
+<li>
+<b>Int:</b> Intercept possessions
+</li>
+<li>
+<b>GB Gets:</b> Ground ball gets
+</li>
+</ul>
+<h4>
+Clearances
+</h4>
+<ul>
+<li>
+<b>CBA:</b> Centre bounce attendances
+</li>
+<li>
+<b>CBA %:</b> Centre bounce attendances / total centre bounces
+</li>
+<li>
+<b>CC / CBA:</b> Centre clearances / centre bounce attendances (minimum
+20 centre bounce attendances_
+</li>
+<li>
+<b>Ctr Clr:</b> Centre clearances
+</li>
+<li>
+<b>Stp Clr:</b> Stoppage clearances
+</li>
+<li>
+<b>Tot:</b> Total clearances
+</li>
+</ul>
+<h4>
+Marks
+</h4>
+<ul>
+<li>
+<b>Tot:</b> Total marks
+</li>
+<li>
+<b>CM:</b> Contested marks
+</li>
+<li>
+<b>In 50:</b> Marks inside forward 50
+</li>
+<li>
+<b>Int:</b> Intercept marks
+</li>
+<li>
+<b>On lead:</b> Marks on lead
+</li>
+</ul>
+<h4>
+Ruck contests
+</h4>
+<ul>
+<li>
+<b>Tot:</b> Ruck contests
+</li>
+<li>
+<b>%:</b> Ruck contests / total team ruck contests
+</li>
+<li>
+<b>HO:</b> Total hit outs
+</li>
+<li>
+<b>Win %:</b> Hit outs / ruck contests (minimum 20 ruck contests)
+</li>
+<li>
+<b>To Adv:</b> Hit outs to advantage
+</li>
+<li>
+<b>Adv %:</b> Hit outs to advantage / total hit outs (minimum 20 hit
+outs)
+</li>
+</ul>
+<h4>
+Tackles
+</h4>
+<ul>
+<li>
+<b>Tot:</b> Total tackles
+</li>
+<li>
+<b>In 50:</b> Tackles inside forward 50
+</li>
+</ul>
+<h4>
+Contests
+</h4>
+<ul>
+<li>
+<b>Def 1v1:</b> Defensive one-on-one contests
+</li>
+<li>
+<b>Loss %:</b> Percentage of defensive one-on-one contests lost (minimum
+10 contests)
+</li>
+<li>
+<b>Off 1v1:</b> Offensive one-on-one contests
+</li>
+<li>
+<b>Win %:</b> Percentage of offensive one-on-one contests won (minimum
+10 contests)
+</li>
+</ul>
+<h4>
+Scoring
+</h4>
+<ul>
+<li>
+<b>Goals:</b> Total goals
+</li>
+<li>
+<b>Gls Avg:</b> Average goals per match
+</li>
+<li>
+<b>Beh:</b> Behinds
+</li>
+<li>
+<b>Shots:</b> Shots at goal
+</li>
+<li>
+<b>Goal Ass.:</b> Goal assists
+</li>
+<li>
+<b>Acc:</b> Accuracy (Goals / shots at goal) (minimum 10 shots at goal)
+</li>
+<li>
+<b>SI:</b> Score involvements
+</li>
+<li>
+<b>SI %:</b> Score involvements / Total team scores
+</li>
+<li>
+<b>Launch:</b> Score launches
+</li>
+</ul>
+<h4>
+Other
+</h4>
+<ul>
+<li>
+<b>Kick In %:</b> Kick-ins / Total kick-ins
+</li>
+<li>
+<b>KI Play On %:</b> Play on percentage from kick-ins (minimum 10
+kick-ins)
+</li>
+<li>
+<b>Bounce:</b> Bounces
+</li>
+<li>
+<b>1%s:</b> One percenters
+</li>
+<li>
+<b>Press. Acts:</b> Pressure acts
+</li>
+</ul>
+<script>
+var checkbox = document.getElementById("showColorScale");
+
+checkbox.addEventListener('change', function() {
+  var element = document.getElementById("player-stats");
+  element.classList.toggle("bg-hide");
+  element.classList.toggle("bg-show");
+});
+</script>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
+</footer>
+
+
+
+</div>
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
+  
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
+})();
+</script>
+<!-- <script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("nav").style.top = "0";
+  } else {
+    document.getElementById("nav").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script> -->
+</body>
+</html>

@@ -153,6 +153,10 @@ ul.nav.navbar-nav>li>a {
   background-color: #3a0057 !important;
 }
 
+.rt-th-group {
+  white-space: nowrap;
+}
+
 .rt-th-group:hover {
   background-color: #670099 !important;
 }
