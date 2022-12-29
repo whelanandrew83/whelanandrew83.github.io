@@ -48,25 +48,25 @@ const statsColumns = {
         "RatingPoints_Avg": null, "TimeOnGround": null, "Disposals": null, "MetresGained": null, "ContestedPossessions": null, "TotalPossessions": null,
         "CentreClearances": null, "TotalClearances": null, "Marks": null, "ContestedMarks": null, "Goals_Total": null, "Goals_Avg": null, "Tackles": null, "PressureActs": null, "Hitouts": null
     },
-    "General": { "RatingPoints_Avg": "Rating Points", "Supercoach_Avg": "Supercoach Points", "DreamTeamPoints_Avg": "Fantasy Points", "CoachesVotes_Total": "Coaches Votes (Total)", "CoachesVotes_Avg": "Coaches Votes (Average)", "TimeOnGround": "Time On Ground" },
+    "General": { "RatingPoints_Avg": "Player Rating", "Supercoach_Avg": "Supercoach Points", "DreamTeamPoints_Avg": "Fantasy Points", "CoachesVotes_Total": "Coaches Votes (Total)", "CoachesVotes_Avg": "Coaches Votes (Average)", "TimeOnGround": "Time On Ground" },
     "Disposals": {
-        "Kicks": "Kicks", "Handballs": "Handballs", "Disposals": "Disposals", "KickPercentage": "Kick Percentage",
+        "Kicks": "Kicks", "Handballs": "Handballs", "Disposals": "Disposals", "KickPercentage": "Kick %",
         "Inside50s": "Inside 50s", "Rebound50s": "Rebound 50s", "MetresGained": "Metres Gained", "MetresGainedPerDisposal": "Metres Gained Per Disposal"
     },
     "Disposal Efficiency": {
-        "DisposalEfficiency": "Disposal Efficiency", "KickingEfficiency": "Kicking Efficiency", "HandballEfficiency": "Handball Efficiency",
+        "KickingEfficiency": "Kicking Efficiency", "HandballEfficiency": "Handball Efficiency", "DisposalEfficiency": "Disposal Efficiency",
         "Clangers": "Clangers", "DisposalsPerClanger": "Disposals Per Clanger", "Turnovers": "Turnovers", "DisposalsPerTurnover": "Disposals Per Turnover"
     },
     "Possessions": { "ContestedPossessions": "Contested Possessions", "UncontestedPossessions": "Uncontested Possessions", "TotalPossessions": "Total Possessions", "ContestedPossessionRate": "Contested Possession %", "Intercepts": "Intercept Possessions", "GroundBallGets": "Ground Ball Gets" },
     "Clearances": { "CentreBounceAttendances": "Centre Bounce Attendances", "CentreBounceAttendancePercentage": "Centre Bounce Attendance %", "CentreClearances": "Centre Clearances", "CentreClearanceRate": "Centre Clearances Per CBA", "StoppageClearances": "Stoppage Clearances", "TotalClearances": "Total Clearances" },
-    "Marks": { "Marks": "Marks", "ContestedMarks": "Contested Marks", "MarksInside50": "Marks Inside 50", "InterceptMarks": "Intercept Marks", "MarksOnLead": "Marks On Lead" },
+    "Marks": { "Marks": "Marks", "ContestedMarks": "Contested Marks", "MarksInside50": "Marks Inside Forward 50", "InterceptMarks": "Intercept Marks", "MarksOnLead": "Marks On Lead" },
     "Scoring/Attack": {
         "Goals_Total": "Goals (Total)", "Goals_Avg": "Goals (Average)", "Behinds": "Behinds", "ShotsAtGoal": "Shots At Goal", "GoalAssists": "Goal Assists", "GoalAccuracy": "Goal Accuracy", "ScoreInvolvements": "Score Involvements", "ScoreInvolvementPercentage": "Score Involvement %", "ScoreLaunches": "Score Launches",
-        "ContestOffensiveOneOnOnes": "Offensive One On One Contests", "ContestOffensiveWinPercentage": "Offensive One On One Contest Win %"
+        "ContestOffensiveOneOnOnes": "Offensive One-On-One Contests", "ContestOffensiveWinPercentage": "Offensive One-On-One Contest Win %"
     },
-    "Defence": { "ContestDefensiveOneOnOnes": "Defensive One On One Contests", "ContestDefensiveLossPercentage": "Defensive One On One Contest Loss %", "Tackles": "Tackles", "TacklesInside50": "Tackles Inside Forward 50", "PressureActs": "Pressure Acts", "Spoils": "Spoils" },
+    "Defence": { "ContestDefensiveOneOnOnes": "Defensive One-On-One Contests", "ContestDefensiveLossPercentage": "Defensive One-On-One Contest Loss %", "Tackles": "Tackles", "TacklesInside50": "Tackles Inside Forward 50", "PressureActs": "Pressure Acts", "Spoils": "Spoils" },
     "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %" },
-    "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick Ins", "KickInPercentage": "Kick In %", "KickInsPlayOnPercentage": "Kick Ins Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
+    "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-Ins Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
 };
 
 {/* <h4>Select statistical categories to include in the table</h4>
@@ -86,20 +86,24 @@ const statSelect = document.createElement("div");
 statSelect.id = "stat-select";
 const customStatDiv = document.createElement("div");
 customStatDiv.id = "stat-select-custom";
+customStatDiv.classList = "d-flex flex-wrap d-none";
 
 statSelectDiv.appendChild(h4);
 statSelectDiv.appendChild(statSelect);
 statSelectDiv.appendChild(customStatDiv);
 
+const paraCustomWarning = document.createElement('p');
+paraCustomWarning.classList = "small text-danger d-none";
+paraCustomWarning.innerHTML = "<b>Custom</b> needs to be selected and <b>Show all</b> needs to be de-selected for custom selections to be reflected."
+
 const updateTableColumns = function (custom = false) {
-    showColumns = [];
+    let showColumns = [];
 
     if (custom) { customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom input:checked").length} selected)` };
 
     if (selectShowAll.checked) {
         Reactable.setHiddenColumns('player-stats-table', ["WebsiteId", "Team", "Image"]);
     } else if (selectCustom.checked) {
-        console.log("Updated");
         const selectedInputs = document.querySelectorAll("#stat-select-custom input:checked");
 
         for (input of selectedInputs) {
@@ -108,7 +112,6 @@ const updateTableColumns = function (custom = false) {
 
         Reactable.setHiddenColumns('player-stats-table', statsColumnsAll.filter((el) => !showColumns.includes(el)));
     } else if (!custom) {
-        console.log("Updated");
         const selectedInputs = document.querySelectorAll("#stat-select input:checked");
 
         for (input of selectedInputs) {
@@ -117,6 +120,12 @@ const updateTableColumns = function (custom = false) {
 
         Reactable.setHiddenColumns('player-stats-table', statsColumnsAll.filter((el) => !showColumns.includes(el)));
     }
+
+    if ((selectShowAll.checked || !selectCustom.checked) && document.querySelectorAll("#stat-select-custom input:checked").length) {
+        paraCustomWarning.classList.remove("d-none");
+    } else {
+        paraCustomWarning.classList.add("d-none")
+    };
 };
 
 const saveButton = document.createElement('button');
@@ -136,7 +145,6 @@ const saveSelections = function () {
 
     if (storageAvailable("localStorage")) {
         localStorage.setItem("playerStatSelections", JSON.stringify(selections));
-        console.log("saved");
     }
 
     saveButton.innerText = "Saved!";
@@ -208,9 +216,9 @@ if (storageAvailable("localStorage")) {
 }
 
 const para = document.createElement('p');
-para.classList = "small";
-para.innerHTML = "<b>Custom</b> selection overrides other selected statistical categories. <b>Show all</b> overrides all other selections."
-statSelect.appendChild(para)
+para.classList = "small my-2";
+para.innerHTML = "<b>Custom</b> selection overrides other selected statistical categories. <b>Show all</b> overrides all other selections.";
+statSelect.appendChild(para);
 
 for (c of Object.keys(statsColumns).splice(1)) {
     const statCategoryDiv = document.createElement('div');
@@ -252,6 +260,8 @@ for (c of Object.keys(statsColumns).splice(1)) {
 
     customStatDiv.appendChild(statCategoryDiv)
 }
+
+statSelectDiv.appendChild(paraCustomWarning);
 
 customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom input:checked").length} selected)`;
 
