@@ -77,10 +77,45 @@ const statsColumns = {
 <div id="stat-select-custom" class="d-flex flex-wrap d-none">
 </div> */}
 
-const statSelectDiv = document.querySelector("#stat-select-div");
+const filtersDiv = document.querySelector("#filters");
 
-const h4 = document.createElement("h4");
-h4.innerText = "Select statistical categories to include in the table";
+const statSelectAccordian = document.createElement('div');
+statSelectAccordian.classList = "accordion-item";
+
+const statSelectAccordianCollapse = document.createElement('div');
+statSelectAccordianCollapse.id = "collapse-stat-categories";
+statSelectAccordianCollapse.classList = "accordion-collapse collapse show";
+
+let statSelectDiv = document.querySelector("#stat-select-div");
+statSelectDiv.remove();
+
+statSelectDiv = document.createElement('div');
+statSelectDiv.id = "stat-select-div";
+statSelectDiv.classList = "accordion-body px-3 py-2";
+// statSelectDiv.ariaLabelledby = "stat-categories-select";
+statSelectDiv.dataset.bsParent = "#filters";
+
+// const h4 = document.createElement("h4");
+// h4.innerText = "Select statistical categories to include in the table";
+
+const h2 = document.createElement("h2");
+h2.id = "stat-categories-select";
+h2.classList = "accordion-header mt-0";
+
+const statCategoryButton = document.createElement('button');
+statCategoryButton.classList = "accordion-button";
+statCategoryButton.type = "button";
+statCategoryButton.dataset.bsToggle = "collapse";
+statCategoryButton.dataset.bsTarget = "#collapse-stat-categories";
+statCategoryButton.ariaExpanded = false;
+statCategoryButton.ariaControls = "collapse-stat-categories";
+statCategoryButton.innerText = "Select statistical categories";
+h2.appendChild(statCategoryButton);
+
+if (playerStatSelections && playerStatSelections.length > 0) {
+    statSelectAccordianCollapse.classList.remove("show");
+    statCategoryButton.classList.add("collapsed");
+}
 
 const statSelect = document.createElement("div");
 statSelect.id = "stat-select";
@@ -88,7 +123,12 @@ const customStatDiv = document.createElement("div");
 customStatDiv.id = "stat-select-custom";
 customStatDiv.classList = "d-flex flex-wrap d-none";
 
-statSelectDiv.appendChild(h4);
+// statSelectDiv.appendChild(h4);
+statSelectAccordian.appendChild(h2);
+statSelectAccordianCollapse.appendChild(statSelectDiv);
+statSelectAccordian.appendChild(statSelectAccordianCollapse);
+filtersDiv.appendChild(statSelectAccordian);
+
 statSelectDiv.appendChild(statSelect);
 statSelectDiv.appendChild(customStatDiv);
 
