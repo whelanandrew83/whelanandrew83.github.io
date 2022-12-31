@@ -18,6 +18,7 @@ const toggleCompare = function (id, e) {
                 .then((data) => {
                     player_data[id] = data[id];
                     compare_players_season[id] = data[id].Data['Season'].length - 1;
+                    gtag('event', 'player_compare_added');
 
                     printCompare();
                     updateChart();

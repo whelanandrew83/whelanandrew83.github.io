@@ -66,7 +66,7 @@ const statsColumns = {
     },
     "Defence": { "ContestDefensiveOneOnOnes": "Defensive One-On-One Contests", "ContestDefensiveLossPercentage": "Defensive One-On-One Contest Loss %", "Tackles": "Tackles", "TacklesInside50": "Tackles Inside Forward 50", "PressureActs": "Pressure Acts", "Spoils": "Spoils" },
     "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %" },
-    "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-Ins Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
+    "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-In Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
 };
 
 /* <h4>Select statistical categories to include in the table</h4>
