@@ -393,6 +393,9 @@
 <a href="afl_stats.html?year=2022">2022</a>
 </li>
 </ul>
+<div id="player-stats-div">
+
+</div>
 <script id="year-load">
 const urlParams = new URLSearchParams(location.search);
 
@@ -404,7 +407,7 @@ if (!year) year = 2022;
 if (validYears.includes(year)) {
 document.querySelector(`#year-${year}`).classList = "active";
 document.title = `AFL Player Statistics - ${year}`;
-<!-- document.querySelector("#year-label").innerText = year; -->
+// document.querySelector("#year-label").innerText = year;
 
 const xmlhttp = new XMLHttpRequest();
 const url = `https://www.wheeloratings.com/src/player_stats_snippet/${year}.html`;
@@ -412,16 +415,17 @@ const url = `https://www.wheeloratings.com/src/player_stats_snippet/${year}.html
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       const contents = this.responseText;
-      const main = document.querySelector("main");
-      main.innerHTML = main.innerHTML += contents;
+      const div = document.querySelector("#player-stats-div");
+      div.innerHTML += contents;
     }
 };
 xmlhttp.open("GET", url, false);
 xmlhttp.send();
 } else {
-  <!-- document.querySelector("#year-label").innerText = "Invalid year."; -->
+  // document.querySelector("#year-label").innerText = "Invalid year.";
 }
 </script>
+<script src="./src/js/afl-stats.js"></script>
 <h3>
 Abbreviations
 </h3>
@@ -528,11 +532,11 @@ Clearances
 <b>CBA %:</b> Centre bounce attendances / total centre bounces
 </li>
 <li>
-<b>CC / CBA:</b> Centre clearances / centre bounce attendances (minimum
-20 centre bounce attendances_
+<b>Ctr Clr:</b> Centre clearances
 </li>
 <li>
-<b>Ctr Clr:</b> Centre clearances
+<b>CC / CBA:</b> Centre clearances / centre bounce attendances (minimum
+20 centre bounce attendances_
 </li>
 <li>
 <b>Stp Clr:</b> Stoppage clearances
@@ -663,15 +667,6 @@ kick-ins)
 <b>1%s:</b> One percenters
 </li>
 </ul>
-<script>
-var checkbox = document.getElementById("showColorScale");
-
-checkbox.addEventListener('change', function() {
-  var element = document.getElementById("player-stats");
-  element.classList.toggle("bg-hide");
-  element.classList.toggle("bg-show");
-});
-</script>
 </main>
 
 <footer>

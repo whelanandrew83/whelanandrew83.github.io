@@ -378,3 +378,7 @@ ul.nav.navbar-nav>li>a {
 #compare-tbl th {
   width: 200px;
 }
+
+.stat-selection-label {
+  min-width: 200px;
+}

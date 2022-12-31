@@ -112,6 +112,8 @@ const statsColumns = {
 // statCategoryButton.innerText = "Select statistical categories";
 // h2.appendChild(statCategoryButton);
 
+const statSelectDiv = document.querySelector('#stat-select-div');
+
 const statCategoryAccordian = document.querySelector('#accordion-stat-categories');
 statCategoryAccordian.classList.remove('d-none');
 
@@ -122,13 +124,21 @@ if (playerStatSelections && playerStatSelections.length > 0) {
     statCategoryCollapse.classList.remove("show");
     statCategoryButton.classList.add("collapsed");
     statCategoryButton.ariaExpanded = "false";
+} else {
+    const newAlert = document.createElement("span");
+    newAlert.classList = "badge bg-primary mx-2";
+    newAlert.innerText = "New";
+    statCategoryButton.appendChild(newAlert);
 }
 
 const statSelect = document.createElement("div");
 statSelect.id = "stat-select";
 const customStatDiv = document.createElement("div");
 customStatDiv.id = "stat-select-custom";
-customStatDiv.classList = "d-flex flex-wrap d-none";
+customStatDiv.classList = "d-flex flex-wrap";
+
+const customStatDivParent = document.createElement("div");
+customStatDivParent.classList = "d-none";
 
 // statSelectDiv.appendChild(h4);
 // statSelectAccordian.appendChild(h2);
@@ -136,17 +146,21 @@ customStatDiv.classList = "d-flex flex-wrap d-none";
 // statSelectAccordian.appendChild(statSelectAccordianCollapse);
 // filtersDiv.appendChild(statSelectAccordian);
 
-statSelectDiv.appendChild(statSelect);
-statSelectDiv.appendChild(customStatDiv);
-
 const paraCustomWarning = document.createElement('p');
-paraCustomWarning.classList = "small text-danger d-none";
+paraCustomWarning.classList = "small my-1 text-danger d-none";
 paraCustomWarning.innerHTML = "<b>Custom</b> needs to be selected and <b>Show all</b> needs to be de-selected for custom selections to be reflected."
 
-const updateTableColumns = function (custom = false) {
+statSelectDiv.appendChild(statSelect);
+statSelectDiv.appendChild(customStatDivParent);
+customStatDivParent.appendChild(paraCustomWarning);
+customStatDivParent.appendChild(customStatDiv);
+
+const updateTableColumns = function (id = null, custom = false) {
     let showColumns = [];
 
-    if (custom) { customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom input:checked").length} selected)` };
+    const customSelections = document.querySelectorAll("#stat-select-custom input:checked").length;
+
+    if (custom) { customTextSpan.innerText = `(${customSelections} selected)` };
 
     if (selectShowAll.checked) {
         Reactable.setHiddenColumns('player-stats-table', ["WebsiteId", "Team", "Image"]);
@@ -168,11 +182,29 @@ const updateTableColumns = function (custom = false) {
         Reactable.setHiddenColumns('player-stats-table', statsColumnsAll.filter((el) => !showColumns.includes(el)));
     }
 
-    if ((selectShowAll.checked || !selectCustom.checked) && document.querySelectorAll("#stat-select-custom input:checked").length) {
+    if (selectShowAll.checked || !selectCustom.checked) {
         paraCustomWarning.classList.remove("d-none");
     } else {
         paraCustomWarning.classList.add("d-none")
     };
+
+    if (!custom) {
+        const inputs = document.querySelectorAll("#stat-select input");
+
+        for (input of inputs) {
+            if (input === selectCustom) {
+                input.disabled = selectShowAll.checked;
+            } else if (input !== selectShowAll) {
+                input.disabled = (selectShowAll.checked || selectCustom.checked);
+            }
+        }
+    }
+
+    if (id === "select-custom" && selectCustom.checked) {
+        toggleCustomStatDivDisplay(true);
+    } else if (id === "select-custom" && !selectCustom.checked) {
+        toggleCustomStatDivDisplay(false);
+    }
 };
 
 const saveButton = document.createElement('button');
@@ -192,12 +224,13 @@ const saveSelections = function () {
 
     if (storageAvailable("localStorage")) {
         localStorage.setItem("playerStatSelections", JSON.stringify(selections));
-    }
+        gtag('event', 'save_stat_selections');
 
-    saveButton.innerText = "Saved!";
-    setTimeout(() => {
-        saveButton.innerText = saveButtonInitialText;
-    }, 500);
+        saveButton.innerText = "Saved!";
+        setTimeout(() => {
+            saveButton.innerText = saveButtonInitialText;
+        }, 500);
+    }
 };
 
 // const statDropdown = document.querySelector("#stat-select-presets");
@@ -212,7 +245,7 @@ for (c of [...Object.keys(statsColumns), 'Custom', 'Show all']) {
     const div = document.createElement('div');
     div.classList = "form-check form-switch";
 
-    const id = "select-" + c.toLowerCase().replaceAll(' ', '-');
+    const id = "select-" + c.toLowerCase().replace(/[\W_]+/g, '-');
 
     const input = document.createElement('input');
     input.classList = "form-check-input"
@@ -226,10 +259,12 @@ for (c of [...Object.keys(statsColumns), 'Custom', 'Show all']) {
         input.checked = true;
     }
 
-    input.addEventListener('change', (e) => { updateTableColumns(); });
+    input.addEventListener('change', (e) => {
+        updateTableColumns(id);
+    });
 
     const label = document.createElement('label');
-    label.classList = "form-check-label"
+    label.classList = "form-check-label stat-selection-label"
     if (c === "Custom" || c === 'Show all') { label.classList += " fw-bold" }
     label.htmlFor = id;
     label.innerText = c;
@@ -247,13 +282,33 @@ for (c of [...Object.keys(statsColumns), 'Custom', 'Show all']) {
 const selectShowAll = document.querySelector("#select-show-all");
 const selectCustom = document.querySelector("#select-custom");
 
+let customStatDivDisplayed = false;
+
+const toggleCustomStatDivDisplay = function (show = null) {
+    if (show === null) {
+        customStatDivDisplayed = !customStatDivDisplayed;
+    } else {
+        customStatDivDisplayed = show;
+    }
+
+    if (customStatDivDisplayed) {
+        customButton.innerText = "Hide custom fields";
+        customStatDivParent.classList.remove("d-none")
+    } else {
+        customButton.innerText = "Show custom fields";
+        customStatDivParent.classList.add("d-none")
+    }
+}
+
 const customButton = document.createElement('button');
 customButton.id = "custom-button";
 customButton.classList = "btn btn-primary btn-sm mx-1 my-2";
-customButton.innerText = "Show/hide custom fields";
+customButton.style.width = "150px";
+
+toggleCustomStatDivDisplay(false);
 
 // customButton.addEventListener("click", () => customStatDiv.style.display === "none" ? customStatDiv.style.display = "" : customStatDiv.style.display = "none");
-customButton.addEventListener("click", () => customStatDiv.classList.toggle("d-none"));
+customButton.addEventListener("click", () => toggleCustomStatDivDisplay());
 
 statSelect.appendChild(customButton)
 
@@ -261,11 +316,6 @@ if (storageAvailable("localStorage")) {
     saveButton.addEventListener("click", saveSelections);
     statSelect.appendChild(saveButton);
 }
-
-const para = document.createElement('p');
-para.classList = "small my-2";
-para.innerHTML = "<b>Custom</b> selection overrides other selected statistical categories. <b>Show all</b> overrides all other selections.";
-statSelect.appendChild(para);
 
 for (c of Object.keys(statsColumns).splice(1)) {
     const statCategoryDiv = document.createElement('div');
@@ -293,10 +343,10 @@ for (c of Object.keys(statsColumns).splice(1)) {
             input.checked = true
         }
 
-        input.addEventListener('change', (e) => { updateTableColumns(true); });
+        input.addEventListener('change', (e) => { updateTableColumns(id, true); });
 
         const label = document.createElement('label');
-        label.classList = "form-check-label"
+        label.classList = "form-check-label stat-selection-label"
         label.htmlFor = id;
         label.innerText = statsColumns[c][s];
 
@@ -308,8 +358,6 @@ for (c of Object.keys(statsColumns).splice(1)) {
     customStatDiv.appendChild(statCategoryDiv)
 }
 
-statSelectDiv.appendChild(paraCustomWarning);
-
 customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom input:checked").length} selected)`;
 
 // statDropdown.addEventListener('change', (e) => {
@@ -317,9 +365,7 @@ customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom in
 //   updateTableColumns();
 // });
 
-window.addEventListener('DOMContentLoaded', (event) => {
-    updateTableColumns()
-});
+window.addEventListener('DOMContentLoaded', (event) => { updateTableColumns() });
 
 const checkbox = document.querySelector("#showColorScale");
 
