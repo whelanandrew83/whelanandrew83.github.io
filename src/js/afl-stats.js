@@ -69,52 +69,59 @@ const statsColumns = {
     "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-Ins Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
 };
 
-{/* <h4>Select statistical categories to include in the table</h4>
+/* <h4>Select statistical categories to include in the table</h4>
 <div id="stat-select">
 // <select id="stat-select-presets" class="form-select" aria-label="Select stats for include in table">
 // </select>
 </div>
 <div id="stat-select-custom" class="d-flex flex-wrap d-none">
-</div> */}
+</div> */
 
-const filtersDiv = document.querySelector("#filters");
+// const filtersDiv = document.querySelector("#filters");
 
-const statSelectAccordian = document.createElement('div');
-statSelectAccordian.classList = "accordion-item";
+// const statSelectAccordian = document.createElement('div');
+// statSelectAccordian.classList = "accordion-item";
 
-const statSelectAccordianCollapse = document.createElement('div');
-statSelectAccordianCollapse.id = "collapse-stat-categories";
-statSelectAccordianCollapse.classList = "accordion-collapse collapse show";
+// const statSelectAccordianCollapse = document.createElement('div');
+// statSelectAccordianCollapse.id = "collapse-stat-categories";
+// statSelectAccordianCollapse.classList = "accordion-collapse collapse show";
 
-let statSelectDiv = document.querySelector("#stat-select-div");
-statSelectDiv.remove();
+// let statSelectDiv = document.querySelector("#stat-select-div");
+// statSelectDiv.remove();
 
-statSelectDiv = document.createElement('div');
-statSelectDiv.id = "stat-select-div";
-statSelectDiv.classList = "accordion-body px-3 py-2";
-// statSelectDiv.ariaLabelledby = "stat-categories-select";
-statSelectDiv.dataset.bsParent = "#filters";
+// statSelectDiv = document.createElement('div');
+// statSelectDiv.id = "stat-select-div";
+// statSelectDiv.classList = "accordion-body px-3 py-2";
+// // statSelectDiv.ariaLabelledby = "stat-categories-select";
+// statSelectDiv.dataset.bsParent = "#filters";
 
-// const h4 = document.createElement("h4");
-// h4.innerText = "Select statistical categories to include in the table";
+// // const h4 = document.createElement("h4");
+// // h4.innerText = "Select statistical categories to include in the table";
 
-const h2 = document.createElement("h2");
-h2.id = "stat-categories-select";
-h2.classList = "accordion-header mt-0";
+// const h2 = document.createElement("h2");
+// h2.id = "stat-categories-select";
+// h2.classList = "accordion-header mt-0";
 
-const statCategoryButton = document.createElement('button');
-statCategoryButton.classList = "accordion-button";
-statCategoryButton.type = "button";
-statCategoryButton.dataset.bsToggle = "collapse";
-statCategoryButton.dataset.bsTarget = "#collapse-stat-categories";
-statCategoryButton.ariaExpanded = false;
-statCategoryButton.ariaControls = "collapse-stat-categories";
-statCategoryButton.innerText = "Select statistical categories";
-h2.appendChild(statCategoryButton);
+// const statCategoryButton = document.createElement('button');
+// statCategoryButton.classList = "accordion-button";
+// statCategoryButton.type = "button";
+// statCategoryButton.dataset.bsToggle = "collapse";
+// statCategoryButton.dataset.bsTarget = "#collapse-stat-categories";
+// statCategoryButton.ariaExpanded = false;
+// statCategoryButton.ariaControls = "collapse-stat-categories";
+// statCategoryButton.innerText = "Select statistical categories";
+// h2.appendChild(statCategoryButton);
+
+const statCategoryAccordian = document.querySelector('#accordion-stat-categories');
+statCategoryAccordian.classList.remove('d-none');
+
+const statCategoryCollapse = document.querySelector('#collapse-stat-categories');
+const statCategoryButton = document.querySelector('#collapse-stat-categories-button');
 
 if (playerStatSelections && playerStatSelections.length > 0) {
-    statSelectAccordianCollapse.classList.remove("show");
+    statCategoryCollapse.classList.remove("show");
     statCategoryButton.classList.add("collapsed");
+    statCategoryButton.ariaExpanded = "false";
 }
 
 const statSelect = document.createElement("div");
@@ -124,10 +131,10 @@ customStatDiv.id = "stat-select-custom";
 customStatDiv.classList = "d-flex flex-wrap d-none";
 
 // statSelectDiv.appendChild(h4);
-statSelectAccordian.appendChild(h2);
-statSelectAccordianCollapse.appendChild(statSelectDiv);
-statSelectAccordian.appendChild(statSelectAccordianCollapse);
-filtersDiv.appendChild(statSelectAccordian);
+// statSelectAccordian.appendChild(h2);
+// statSelectAccordianCollapse.appendChild(statSelectDiv);
+// statSelectAccordian.appendChild(statSelectAccordianCollapse);
+// filtersDiv.appendChild(statSelectAccordian);
 
 statSelectDiv.appendChild(statSelect);
 statSelectDiv.appendChild(customStatDiv);
