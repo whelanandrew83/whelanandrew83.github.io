@@ -80,7 +80,31 @@
       <priority>0.8</priority>
    </url>
    <url>
+      <loc>https://www.wheeloratings.com/afl_stats_last_year.html</loc>
+      <lastmod>2022-12-27</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.wheeloratings.com/afl_stats_new1.html</loc>
+      <lastmod>2022-12-27</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.wheeloratings.com/afl_stats_new2.html</loc>
+      <lastmod>2022-12-27</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
       <loc>https://www.wheeloratings.com/afl_stats_team.html</loc>
+      <lastmod>2022-12-27</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.wheeloratings.com/afl_stats_team_last_year.html</loc>
       <lastmod>2022-12-27</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
@@ -279,6 +303,12 @@
    </url>
    <url>
       <loc>https://www.wheeloratings.com/tennis_wta_tournaments.html</loc>
+      <lastmod>2022-12-27</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.wheeloratings.com/test_afl_stats_explore.html</loc>
       <lastmod>2022-12-27</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.8</priority>
