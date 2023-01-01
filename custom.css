@@ -325,14 +325,14 @@ ul.nav.navbar-nav>li>a {
 }
 
 #results {
-  max-height: 400px;
-  overflow: auto;
+  /* max-height: 400px; */
+  /* overflow: auto; */
   z-index: 3;
 }
 
-#results-table-div {
+/* #results-table-div {
   overflow: auto;
-}
+} */
 
 .results-button {
   width: 80px;
@@ -346,15 +346,25 @@ ul.nav.navbar-nav>li>a {
   max-height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.97);
   z-index: 3;
 }
 
-.overlay-content {
+/* .overlay-content {
   position: relative;
   width: 90%;
   max-width: 800px;
   top: 100px;
+  margin: auto;
+} */
+
+.overlay-content {
+  position: relative;
+  width: 95%;
+  top: 70px;
+  max-width: 800px;
+  max-height: calc(100% - 100px);
+  overflow: auto;
   margin: auto;
 }
 

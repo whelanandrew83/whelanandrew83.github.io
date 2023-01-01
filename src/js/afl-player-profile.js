@@ -83,10 +83,10 @@ const resultsMessage = document.querySelector('#results-message');
 const updateCompareMessage = function () {
     if (compare_players.length < max_compare_players) {
         compareMessage.innerText = `Select up to ${max_compare_players - compare_players.length} more player(s) to compare to ${player_data[player].Summary.Player} or view another player's profile.`;
-        compareMessage.classList = "small";
+        compareMessage.classList = "small me-1";
     } else {
         compareMessage.innerText = `You have already selected ${max_compare_players} players.`;
-        compareMessage.classList = "small text-danger";
+        compareMessage.classList = "small me-1 text-danger";
     }
 }
 
@@ -142,7 +142,8 @@ function showList() {
 
             const searchTableDiv = document.createElement('div');
             searchTableDiv.id = "results-table-div";
-            searchTableDiv.classList = 'table-responsive';
+            // searchTableDiv.classList = 'table-responsive';
+            searchTableDiv.classList = 'table';
 
             const searchTable = document.createElement('table');
             searchTable.id = "results-table";
