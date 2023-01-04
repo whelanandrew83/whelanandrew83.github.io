@@ -12,8 +12,7 @@
 
 
 <title>AFL Team Statistics</title>
-<meta name="description" content="AFL team statistics for the current
-season.">
+<meta name="description" content="AFL team statistics.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -398,6 +397,8 @@ if (!year) year = 2022;
 if (validYears.includes(year)) {
 document.querySelector(`#year-${year}`).classList = "active";
 document.title = `AFL Team Statistics - ${year}`;
+document.querySelector('meta[name="description"]').setAttribute('content', `AFL team statistics for ${year}.`);
+document.querySelector('h1').innerText = `AFL Team Statistics - ${year}`;
 <!-- document.querySelector("#year-label").innerText = year; -->
 
 const xmlhttp = new XMLHttpRequest();
