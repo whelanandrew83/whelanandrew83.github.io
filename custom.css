@@ -1,5 +1,5 @@
 body {
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 html {
@@ -59,6 +59,10 @@ html {
 }
 
 .navbar-banner-heading {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
   background-color: #3a0057;
   padding: .5rem 1rem;
   color: white;
