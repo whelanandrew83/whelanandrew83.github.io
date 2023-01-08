@@ -13,11 +13,12 @@ const toggleCompare = function (id, e) {
             e.classList = 'btn btn-success btn-sm mx-1';
             e.innerText = "Remove";
             updateCompareMessage();
-            fetch(`https://www.wheeloratings.com/src/player_profiles/table_data/${id.slice(-2)}.json`)
+            fetch(`${tableDataUrl}/${id.slice(-2)}.json`)
                 .then((response) => response.json())
                 .then((data) => {
                     player_data[id] = data[id];
                     compare_players_season[id] = data[id].Data['Season'].length - 1;
+                    gtag('event', 'player_compare_added');
 
                     printCompare();
                     updateChart();
@@ -38,37 +39,6 @@ const toggleCompare = function (id, e) {
     }
 };
 
-const compareColumns = {
-    "Age": { name: "Age", dec: 0 },
-    "Matches": { name: "Matches", dec: 0 },
-    "RatingPoints_Avg": { name: "Player Rating", dec: 2 },
-    "Supercoach_Avg": { name: "Supercoach Points", dec: 1 },
-    "DreamTeamPoints_Avg": { name: "Fantasy Points", dec: 1 },
-    "CoachesVotes_Total": { name: "Coaches Votes", dec: 0 },
-    "CoachesVotes_Avg": { name: "Coaches Votes (Average)", dec: 2 },
-    "TimeOnGround": { name: "Time On Ground", dec: 1 },
-    "Disposals": { name: "Disposals", dec: 1 },
-    "DisposalEfficiency": { name: "Disposal Efficiency", dec: 1 },
-    "KickingEfficiency": { name: "Kicking Efficiency", dec: 1 },
-    "Inside50s": { name: "Inside 50s", dec: 1 },
-    "MetresGained": { name: "Metres Gained", dec: 1 },
-    "ContestedPossessions": { name: "Contested Possessions", dec: 1 },
-    "CentreClearances": { name: "Centre Clearances", dec: 1 },
-    "TotalClearances": { name: "Total Clearances", dec: 1 },
-    "Marks": { name: "Marks", dec: 1 },
-    "ContestedMarks": { name: "Contested Marks", dec: 1 },
-    "Hitouts": { name: "Hitouts", dec: 1 },
-    "HitoutsWinPercentage": { name: "Hitout Win %", dec: 1 },
-    "HitoutsToAdvantage": { name: "Hitout To Advantage", dec: 1 },
-    "Tackles": { name: "Tackles", dec: 1 },
-    "Goals_Total": { name: "Goals (Total)", dec: 0 },
-    "Goals_Avg": { name: "Goals (Average)", dec: 1 },
-    "ShotsAtGoal": { name: "Shots At Goal", dec: 1 },
-    "GoalAssists": { name: "Goal Assists", dec: 1 },
-    "ScoreInvolvements": { name: "Score Involvements", dec: 1 },
-    "ScoreInvolvementPercentage": { name: "Score Involvement %", dec: 1 }
-}
-
 const searchButton = document.querySelector("#search-button");
 const searchCompareButton = document.querySelector("#search-compare-button");
 const closeSearchButton = document.querySelector("#close-search-button");
@@ -82,10 +52,10 @@ const resultsMessage = document.querySelector('#results-message');
 const updateCompareMessage = function () {
     if (compare_players.length < max_compare_players) {
         compareMessage.innerText = `Select up to ${max_compare_players - compare_players.length} more player(s) to compare to ${player_data[player].Summary.Player} or view another player's profile.`;
-        compareMessage.classList = "small";
+        compareMessage.classList = "small me-1";
     } else {
         compareMessage.innerText = `You have already selected ${max_compare_players} players.`;
-        compareMessage.classList = "small text-danger";
+        compareMessage.classList = "small me-1 text-danger";
     }
 }
 
@@ -111,7 +81,6 @@ searchCompareButton.addEventListener('click', () => { openSearch() });
 closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; clearSearch() });
 clearSearchButton.addEventListener('click', () => { clearSearch(); search.focus() })
 
-let timerId;
 let search_term = '';
 
 function showList() {
@@ -141,7 +110,8 @@ function showList() {
 
             const searchTableDiv = document.createElement('div');
             searchTableDiv.id = "results-table-div";
-            searchTableDiv.classList = 'table-responsive';
+            // searchTableDiv.classList = 'table-responsive';
+            searchTableDiv.classList = 'table';
 
             const searchTable = document.createElement('table');
             searchTable.id = "results-table";
@@ -160,7 +130,7 @@ function showList() {
 
                 const profileLink = document.createElement('a');
                 profileLink.classList = 'btn btn-primary btn-sm mx-1';
-                profileLink.href = `afl_player_profile.html?ID=${player_search_list.WebsiteId[e]}`;
+                profileLink.href = `${profileUrl}=${player_search_list.WebsiteId[e]}`;
                 profileLink.innerText = "Profile";
                 cell.appendChild(profileLink);
 
@@ -203,7 +173,7 @@ function showList() {
 
                 // const profileLink = document.createElement('a');
                 // profileLink.classList = 'btn btn-primary btn-sm mx-1';
-                // profileLink.href = `afl_player_profile.html?ID=${player_search_list.WebsiteId[e]}`;
+                // profileLink.href = `${profileUrl}=${player_search_list.WebsiteId[e]}`;
                 // profileLink.innerText = "Profile";
                 // colProfile.appendChild(profileLink);
 
@@ -242,6 +212,8 @@ function showList() {
         resultsMessage.innerText = 'No results.';
     }
 };
+
+let timerId;
 
 // Throttle function: Input as function which needs to be throttled and delay is the time interval in milliseconds
 const throttleFunction = function (func, delay) {
@@ -336,7 +308,7 @@ const chart = new Chart(ctx, {
             y: {
                 title: {
                     display: true,
-                    text: 'Player Rating'
+                    text: statDropdown.options[statDropdown.selectedIndex].text
                 },
                 beginAtZero: true
             }
@@ -367,7 +339,7 @@ const printCompare = function () {
                 th.innerText = player_data[id].Summary.Player;
             } else {
                 const a = document.createElement('a');
-                a.href = `afl_player_profile.html?ID=${player_data[id].Summary.WebsiteId}`;
+                a.href = `${profileUrl}=${player_data[id].Summary.WebsiteId}`;
                 a.innerText = player_data[id].Summary.Player;
                 th.appendChild(a);
             }
