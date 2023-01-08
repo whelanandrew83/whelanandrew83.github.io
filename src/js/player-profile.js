@@ -262,7 +262,7 @@ const updateChart = function () {
             } else {
                 x = parseInt(element);
             }
-            data.push({ x: parseInt(element), y: player_data[id].Data[statDropdown.value][index] });
+            data.push({ x: x, y: player_data[id].Data[statDropdown.value][index] });
             if (chartRange.length) {
                 if (x < chartRange[0]) {
                     chartRange[0] = x;
