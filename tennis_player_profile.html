@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Tennis Player Profiles</title>
+<meta name="description" content="Tennis Player Profiles">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.1/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.1/reactable.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+</head>
+<body>
+<div class="container-fluid main-container container">
+
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_atp_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_atp_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_atp_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_wta_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_wta_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header id="header">
+
+
+<h1 class="title toc-ignore">Tennis Player Profiles</h1>
+
+</header>
+
+
+<main>
+<script>const player_search_list = {"WebsiteId":["34779","19f79","3156a","19ad5","198b5","1982e","31b40","31302","19469","3134c","312ee","19d92","194e8","19a75","312f6","33732","30e1d","1974c","19b4c","1ed06","1ef7e","199a9","316c2","3130e","19c59","196e6","19e7d","30e5a","199a0","2352c","312e3","30e37","1ddda","18924","19b16","316d8","3135f","313c4","1e51a","30fa7","32465","345c7","33bbd","3132b","31376","316b5","312d3","316be","19ba3","3130d","3421a","1e393","35b0d","34c59","31a11","19964","313c6","316b4","31728","312cd","33bef","31e83","31246","344a5","34ae8","3131b","34aa1","3129a","312c4","35d13","31349","31dfa","19a67","31b01","3137f","31699","31314","198e4","199ba","19778","19bc5","19a13","19cfb","1ec8e","199d6","19675","31e8a","31315","33b83","3355f","32516","34baf","347ec","34574","312bb","3347e","3479b","31b0d","31e8f","31374","3239b","31257","30dbc","316e6","19b56","20d48","1eccc","31e8e","19a8b","1944b","3134f","34671","34bbc","3138d","19deb","1ed1f","34610","316da","3133e","19efa","33d5e","325d4","19b0a","19c64","32633","3131f","235ba","33bbf","316f2","325ac","31296","313e5","32220","325a2","31709","196b0","19572","1ecaf","20b57","1b491","19b74","31b32","1ee3b","19e57","33897","31266","3494a","316d9","19ee8","1941b","199b2","19ca9","19663","31373","19fc0","1f16b","1ddba","19c8e","3283d","1b4ae","19864","313c2","1e411","1b4c7","316bd","34ae9","316f9","31331","32c75","196ba","1ee47","31ad3","3265e","345b4","3138e","31318","31284","20e72","3124d","32542","344f7","34c13","19cb1","1ca6c","31755","31345","338b2","31b2c","19f58","19d90","31343","19c1b","1b231","19f5b","19bf8","31676","31359","3477a","34cc6","35e20","312a4","3133f","316b8","19e15","235ff","35faf","3380d","19fba","317af","342ce","31aab","3428e","19e10","1958d","1f0b5","19a12","1e36b","19c52","19857","19891","195f6","3124a","324d5","31a7d","31a86","19fb5","31b37","34442","3138b","19e01","19d54","19622","19ccc","195dc","19de9","347fb","33960","1995d","19e3d","20936","3179d","1b00a","19f15","3176c","347ea","19d72","313db","31af5","35cbc","19e3b","19eec","316ed","1a8cb","1dcde","196a2","32e76","19ef9","214f8","31317","19ba9","31703","19856","19dcf","19c6f","1980c","19b53","1deb4","31295","19751","19e5e","32654","316fd","31258","33b69","34c34","347c5","312ef","31259","347e8","1b260","316fe","35e2a","33722","316e3","32644","32637","30e85","3490a","19d95","3294e","34a3d","35f7e","34912","323f7","1e46e","19af8","313a6","33945","316ce","3128c","3132c","19c43","19a87","199de","19e30","19c0f","33c42","31b3a","3460d","19920","31392","19ddc","19cab","19dd7","19ac4","195ac","30d40","346fe","1974d","19e7e","19dd0","1959b","33a53","3128b","19746","316ad","1952a","1973c","1ecff","3494b","34b80","311fc","34bf7","31577","33b54","197f1","19a37","19f99","1984b","19729","32572","317b9","19958","312e8","316e5","19cc7","318a4","19c75","33d43","1ecfc","33d1f","1ecc5","196f4","19814","31753","32444","3279c","197e8","19ebe","316ef","34381","1996d","19f38","3117e","19d31","19d5b","19c4e","19e79","19c56","19706","30e51","35f60","33a60","19b85","3394f","198b7","198d0","31372","19def","19cb7","324fb","32c9d","19863","1f422","19ed6","30ec0","1edc9","1b262","34655","34d1b","19716","195b1","19a25","19a33","1eb6a","336c5","19bde","31b2f","33711","31379","31384","317cd","317c0","19817","33b18","31273","193a5","30fde","32b75","19e4a","33d5a","34838","1943c","19dae","199f1","199a4","31380","33916","19721","193e9","19c36","316d2","34228","197c2","3255d","33b01","1b3d9","19585","312f1","316eb","338cc","19b8f","19eca","2354f","1eebc","30db8","31283","33a4d","31ac0","3251c","31691","199a7","19cc4","19ea6","198ab","19a44","316e4","312aa","34215","31032","19833","32ce7","19ee2","1985e","32561","19f09","19b5f","19ac2","34737","316bb","3137c","19861","19b8d","19be1","1b352","19c19","199cb","324e1","19e5b","19453","19404","19ef4","32b3e","19b07","19792","1df2d","34b5a","316ba","316dd","31702","31320","33b66","1990a","195da","19565","19aac","30f42","30ec6","3136a","31b38","312fa","348b3","1b4b2","34b40","316e7","1b3d7","19d13","3131a","346a6","19623","34450","313be","348fa","31afa","3135d","31321","33af5","31ac6","312db","32658","3357f","338a3","34802","35d31","347fd","19bed","199e4","1991b","316bc","30d8f","34418","30fa9","19f35","32e93","312f9","19c6b","31280","19839","31339","31360","31344","313e1","31370","3137d","19f8a","19813","316b2","1b399","324b7","312e0","31365","313e0","31390","19d63","3167d","32651","199d7","348db","3138f","31dd6","35ccf","19f29","317bc","3486f","3166c","36432","313c3","34673","33ba6","19528","2356e","32a9e","204bb","33ab3","312ec","19873","19fac","19f3a","345bb","31354","312d1","34641","19b76","19f0a","1f310","19a51","1a8cc","1988a","1963d","19f33","31707","3177e","1b360","342a2","3130b","31393","317a7","33ae4","3132d","34bb4","19763","316f6","31385","235b1","1ca70","1990f","31e84","19cb8","19e51","195a3","19c05","1987b","19eea","195d0","3170a","3464c","31894","33b98","3169b","313ae","31247","3129d","325d1","31704","31281","313a8","342e6","33807","3133b","3427f","19b0b","31333","31a73","19892","19fa8","3124e","19cb9","347aa","19bdc","199f3","34c52","198cb","19dab","19942","19b9d","31a3d","31a5a","19f66","19dbc","31784","19f03","19edf","312d4","1ee92","19a0a","19a5b","199c1","19b39","1ef7d","19ed9","315d3","1acab","19718","337c6","3260d","31338","31285","32296","1949e","1948e","1b3dd","19314","19a46","312c6","2079a","19774","3134b","31764","1b35d","23543","19a66","19656","19cd3","30def","34585","30d42","19d4e","317bd","3137b","19a27","19f2b","31af0","19ca1","194b0","31395","31328","31394","325f9","35d00","31e03","312cb","30d85","32648","31a21","33af6","313b0","33b38","316f7","33c21","34659","19fa1","30d9f","19ceb","19895","1ecee","1b4b5","19e3c","195ed","31007","316f4","313c8","1b09c","1956a","19dcc","313da","339d3","1eca8","1b397","334da","3137e","19c8d","32628","199dd","313d2","2064e","31ac7","3258b","34929","3131d","31307","312f0","34cc9","31346","1950e","316dc","19ee6","198d9","19d4f","198cf","33f45","34b66","195d5","325a0","325af","31341","196da","195e4","33ac3","32317","31afe","316c8","312d2","30e6f","31dbf","19f9e","1e4af","19ac3","313c0","19ab1","19ba0","19ace","31324","31330","3134d","1ca75","19743","1978c","19d04","31a1a","31353","19580","19bd8","33ba8","1b24d","316fc","35f54","1b364","19375","19bd6","1993b","19929","1978a","19f80","31386","316fa","33ae5","34467","1e51b","316c4","3437f","19de0","19d05","19c67","19ebf","19933","316f0","19495","31b20","19684","3125f","19ab2","19ea4","19ef8","19bbe","19dcd","199c2","1958b","19769","1ecb0","31300","19bda","19a72","1989c","192c1","30f24","1979d","32519","19e08","19a10","313ca","31329","31aec","316d5","19e73","19a48","19a3f","31700","3126d","33a49","1dcfd","19a5d","31322","334f6","31e8b","1a8f2","31578","30fb0","1e4d4","30d61","199a5","198d4","312ba","312d0","31375","31383","312b5","3133d","3135a","3137a","198ac","36049","31371","31706","312ab","3422e","316aa","19834","1efe8","3132a","1984f","1b3da","31337","19d9a","1ef36","337b7","1948d","31305","31045","31782","19787","19be9","19d03","31e7b","31e06","312e4","1b3d8","31268","313b8","19c9a","20ed4","33989","345bd","30d49","31309","316ee","19e89","3424f","19abb","1ecfb","31aed","317c6","33981","19d57","3252c","317a3","317ce","1986f","19fb7","31e4a","19f59","323a6","19b01","19b7d","19a68","1973b","19a69","1eeb6","313dd","31312","1991f","23502","1989f","32bd6","235e5","19c15","192fb","1ecfd","19636","19e99","19d0a","312ea","30d45","1b23f","19c76","3245e","31334","334fd","342a8","31e6a","316cb","312e7","316fb","35ae3","31306","19c69","3102c","3129b","34520","31271","317d1","32620","31362","194b7","19584","312f2","31701","1ed84","198e6","34485","31b0a","31768","198e0","30d6b","30e30","31352","199c5","198bf","34bb8","3170b","19f9d","194ae","34c45","3136c","34bd0","317c5","32626","3132e","19d8e","1d668","312fc","19e32","19725","313e7","30d7b","31708","19faf","208b1","31e92","325d6","19b00","19e2a","34bec","313ed","316e0","312a1","312e2","3170c","312cf","3138a","19c71","3251b","1996a","1b256","30e4b","30ef4"],"Player":["Abigail Tere Apisah","Adam Pavlasek","Adrian Andreev","Adrian Mannarino","Adrian Menendez Maceiras","Adrian Ungur","Adriana Perez","Agnieszka Radwanska","Aisam Ul Haq Qureshi","Ajla Tomljanovic","Akgul Amanmuradova","Albano Olivetti","Albert Montanes","Albert Ramos","Alberta Brianti","Aldila Sutjiadi","Alejandro Davidovich Fokina","Alejandro Falla","Alejandro Gonzalez","Alejandro Tabilo","Aleksandar Vukic","Aleksandr Nedovyesov","Aleksandra Krunic","Aleksandra Wozniak","Alessandro Giannessi","Alex Bogomolov Jr","Alex Bolt","Alex De Minaur","Alex Kuznetsov","Alex Molcan","Alexa Glatch","Alexandar Lazarov","Alexander Bublik","Alexander Zverev","Alexandr Dolgopolov","Alexandra Cadantu Ignatik","Alexandra Dulgheru","Alexandra Panova","Alexandre Muller","Alexei Popyrin","Aliaksandra Sasnovich","Alina Lazareva","Aliona Bolsova","Alisa Kleybanova","Alison Riske Amritraj","Alison Van Uytvanck","Alize Cornet","Alize Lim","Aljaz Bedene","Alla Kudryavtseva","Allie Kiick","Altug Celikbilek","Alycia Parks","Amanda Anisimova","Amandine Hesse","Amir Weintraub","Amra Sadikovic","An Sophie Mestach","Ana Bogdan","Ana Ivanovic","Ana Konjuh","Ana Sofia Sanchez","Anabel Medina Garrigues","Anastasia Gasanova","Anastasia Iamachkine","Anastasia Pavlyuchenkova","Anastasia Potapova","Anastasia Rodionova","Anastasia Yakimova","Anastasia Zakharova","Anastasija Sevastova","Anastasiya Prenko","Andrea Arnaboldi","Andrea Gamiz","Andrea Hlavackova","Andrea Koch Benvenuto","Andrea Petkovic","Andreas Beck","Andreas Haider Maurer","Andreas Seppi","Andrej Martin","Andrey Golubev","Andrey Kuznetsov","Andrey Rublev","Andy Murray","Andy Roddick","Anett Kontaveit","Angelique Kerber","Anhelina Kalinina","Anita Husaric","Ankita Raina","Ann Li","Anna Blinkova","Anna Bondar","Anna Chakvetadze","Anna Clarice Patrimonio","Anna Kalinskaya","Anna Karolina Schmiedlova","Anna Lena Friedsam","Anna Tatishvili","Anna Zaja","Anne Keothavong","Anne Kremer","Annika Beck","Ante Pavic","Antoine Bellier","Antoine Hoang","Antonia Lottner","Antonio Veic","Aqeel Khan","Arantxa Rus","Ariana Rahmanparast","Arianne Hartono","Arina Rodionova","Arthur De Greef","Arthur Rinderknech","Aryna Sabalenka","Ashleigh Barty","Asia Muhammad","Aslan Karatsev","Aslina Chua","Astra Sharma","Attila Balazs","Austin Krajicek","Aymet Uzcategui","Ayumi Morita","Aziz Dougaz","Barbara Gatica","Barbara Haas","Barbora Krejcikova","Barbora Strycova","Basak Eraydin","Beatrice Gumulya","Beatriz Haddad Maia","Belinda Bencic","Benjamin Balleret","Benjamin Becker","Benjamin Bonzi","Benjamin Hassan","Benjamin Lock","Benoit Paire","Bermet Duvanaeva","Bernabe Zapata Miralles","Bernard Tomic","Bernarda Pera","Bethanie Mattek Sands","Bianca Andreescu","Bibiane Schoofs","Bjorn Fratangelo","Bjorn Phau","Blaz Kavcic","Blaz Rola","Bobby Reynolds","Bojana Jovanovski","Borna Coric","Borna Gojo","Botic Van De Zandschulp","Bradley Klahn","Brandon Nakashima","Brayden Schnur","Brian Baker","Cagla Buyukakcay","Calvin Hemery","Cameron Norrie","Camila Giorgi","Camila Osorio","Carina Witthoeft","Carla Suarez Navarro","Carlos Alcaraz","Carlos Berlocq","Carlos Taberner","Carol Zhao","Carolina Alves","Caroline Dolehide","Caroline Garcia","Caroline Wozniacki","Casey Dellacqua","Casper Ruud","Catalina Castano","Catalina Pella","Catherine Cartan Bellis","Caty Mcnally","Cedrik Marcel Stebe","Cem Ilkel","Chanel Simmonds","Chanelle Scheepers","Charlotte Roemer","Chloe Paquet","Christian Harrison","Christian Lindell","Christina Mchale","Christopher Diaz Figueroa","Christopher Eubanks","Christopher Oconnell","Christopher Rungkat","Chun Hsin Tseng","Claire Feuerstein","Claire Liu","Clara Burel","Clara Tauson","Claudine Schaul","Coco Vandeweghe","Conny Perrin","Constant Lestienne","Corentin Moutet","Cori Gauff","Cornelia Lister","Cristian Garin","Cristina Andreea Mitu","Cristina Bucsa","Dalila Jakupovic","Dalma Galfi","Damir Dzumhur","Danai Udomchoke","Daniel Altmaier","Daniel Brands","Daniel Elahi Galan","Daniel Evans","Daniel Garza","Daniel Gimeno Traver","Daniel Munoz de la Nava","Daniela Hantuchova","Daniela Seguel","Danielle Collins","Danielle Lao","Daniil Medvedev","Danka Kovinic","Daria Kasatkina","Daria Saville","Darian King","David Agung Susanto","David Ferrer","David Goffin","David Nalbandian","David Souto","Dayana Yastremska","Dea Herdzelas","Denis Istomin","Denis Kudla","Denis Shapovalov","Denisa Allertova","Dennis Novak","Dennis Novikov","Despina Papamichail","Destanee Aiava","Di Wu","Dia Evtimova","Diana Marcinkevica","Diane Parry","Diego Schwartzman","Dimitar Kuzmanov","Dinah Pfizenmaier","Dineshkanthan Thangarajah","Dmitry Popko","Dmitry Tursunov","Dominic Stricker","Dominic Thiem","Dominik Koepfer","Dominika Cibulkova","Donald Young","Donna Vekic","Dudi Sela","Duilio Beretta","Dusan Lajovic","Dustin Brown","Dzmitry Zhyrmont","Edan Leshem","Edina Gallovits Hall","Edouard Roger Vasselin","Egor Gerasimov","Ekaterina Alexandrova","Ekaterine Gorgodze","Elena Baltacha","Elena Gabriela Ruse","Elena Malygina","Elena Rybakina","Elena Vesnina","Eleni Daniilidou","Eleonora Molinaro","Elias Ymer","Elina Svitolina","Elisabetta Cocciaretto","Elise Mertens","Elitsa Kostova","Elizaveta Kulichkova","Ellen Perez","Emil Ruusuvuori","Emiliana Arango","Emilio Gomez","Emilio Nava","Emma Navarro","Emma Raducanu","En Shuo Liang","Eri Hozumi","Ernesto Escobedo","Ernests Gulbis","Estrella Cabeza Candela","Eudice Wong Chong","Eugenie Bouchard","Eva Birnerova","Evgeniya Rodina","Evgeny Donskoy","Evgeny Korolev","Fabio Fognini","Facundo Arguello","Facundo Bagnis","Fang Ying Xun","Fangzhou Liu","Fanny Stollar","Farrukh Dustov","Fatma Al Nabhani","Federico Coria","Federico Delbonis","Federico Gaio","Federico Zeballos","Feliciano Lopez","Felix Auger Aliassime","Fernanda Contreras Gomez","Fernando Verdasco","Filip Horansky","Filip Krajinovic","Filippo Volandri","Fiona Ferro","Flavia Pennetta","Flavio Cipolla","Florencia Molinero","Florent Serra","Florian Mayer","Frances Tiafoe","Francesca Di Lorenzo","Francesca Jones","Francesca Schiavone","Francisca Jorge","Francisco Cerundolo","Francoise Abanda","Frank Dancevic","Franko Skugor","Frederico Ferreira Silva","Frederico Gil","Frederik Nielsen","Gabriela Ce","Gabriela Dabrowski","Gael Monfils","Galina Voskoboeva","Garbine Muguruza","Gastao Elias","Georgina Garcia Perez","Gerald Melzer","Geraldine Ang","Gerardo Lopez Villasenor","Ghazaleh Torkaman","Gianluca Mager","Gilles Muller","Gilles Simon","Giulia Gatto Monticone","Giuliana Olmos","Giulio Zeppieri","Go Soeda","Gonzalo Lama","Grace Min","Greet Minnen","Grega Zemlja","Gregoire Barrere","Greta Arn","Grigor Dimitrov","Guido Andreozzi","Guido Pella","Guilherme Clezar","Guillaume Rufin","Guillermo Garcia Lopez","Hady Habib","Hailey Baptiste","Harmony Tan","Harri Heliovaara","Harriet Dart","Harshana Godamanna","Haydn Lewis","Heather Watson","Henri Laaksonen","Hiroki Moriya","Hiroko Kuwata","Holger Rune","Horacio Zeballos","Hubert Hurkacz","Hugo Dellien","Hugo Gaston","Hugo Grenier","Hyeon Chung","Iesha Shepherd","Iga Swiatek","Igor Andreev","Igor Kunitsyn","Igor Sijsling","Illya Marchenko","Ilya Ivashka","Ilze Hattingh","Inigo Cervantes Huegun","Ipek Soylu","Irina Bara","Irina Camelia Begu","Irina Falconi","Irina Khromacheva","Isabella Shinikova","Ivan Dodig","Ivana Jorovic","Iveta Benesova","Ivo Karlovic","J J Wolf","Jack Draper","Jack Sock","Jahana Bayramova","Jaimee Fourlis","James Blake","James Duckworth","James Mcgee","James Ward","Jamie Hampton","Jamie Loeb","Jan Hajek","Jan Hernych","Jan Lennard Struff","Jana Cepelova","Jana Fett","Janko Tipsarevic","Jannik Sinner","Jaqueline Cristian","Jared Donaldson","Jarkko Nieminen","Jarmila Gajdosova","Jasmina Tinjic","Jasmine Paolini","Jason Jung","Jason Kubler","Jaume Munar","Jay Clarke","Jelena Dokic","Jelena Jankovic","Jelena Ostapenko","Jelena Simic","Jennifer Brady","Jenson Brooksby","Jeremy Chardy","Jerzy Janowicz","Jeson Patrombon","Jesse Huta Galung","Jesse Levine","Jessica Pegula","Jie Zheng","Jil Teichmann","Jill Craybas","Jimmy Wang","Jiri Lehecka","Jiri Vesely","Jo-Wilfried Tsonga","Joana Eidukonyte","Joao Domingues","Joao Sousa","Joao Souza","Jodie Burrage","Johanna Konta","Johanna Larsson","John Isner","John Millman","John Patrick Smith","Jordan Thompson","Jose Hernandez","Jose Rubin Statham","Jovana Jaksic","Jozef Kovalik","Juan Carlos Ferrero","Juan Ignacio Chela","Juan Ignacio Londero","Juan Manuel Cerundolo","Juan Martin del Potro","Juan Monaco","Juan Pablo Varillas","Jule Niemeier","Julia Boserup","Julia Cohen","Julia Glushko","Julia Goerges","Julia Grabher","Julian Reister","Julien Benneteau","Jurgen Melzer","Jurgen Zopp","Jurij Rodionov","Kacper Zuk","Kai Chen Chang","Kai Lin Zhang","Kaia Kanepi","Kaja Juvan","Kamil Majchrzak","Kamilla Rakhimova","Karen Barbat","Karen Khachanov","Karim Mohamed Maamoun","Karin Knapp","Karman Thandi","Karol Beck","Karolina Muchova","Karolina Pliskova","Katarina Zavatska","Katarzyna Kawa","Katarzyna Piter","Kate Makarova","Katerina Siniakova","Kateryna Baindl","Kateryna Bondarenko","Katharina Lehnert","Kathinka Von Deichmann","Katie Boulter","Katie Swan","Katie Volynets","Kayla Day","Kei Nishikori","Kenny De Schepper","Kevin Anderson","Kiki Bertens","Kim Clijsters","Kimberly Birrell","Kimiko Date Krumm","Kimmer Coppejans","Kirsten Andrea Weedon","Kirsten Flipkens","Kittipong Wachiramanowong","Klara Koukalova","Konstantin Kravchuk","Kristie Ahn","Kristina Kucova","Kristina Mladenovic","Kristyna Pliskova","Ksenia Pervak","Kurumi Nara","Kyle Edmund","Lamine Ouahab","Lara Arruabarrena","Laslo Djere","Laura Pigossi","Laura Pous Tio","Laura Robson","Laura Siegemund","Lauren Davis","Laurynas Grigelis","Lavinia Tananta","Leolia Jeanjean","Leonardo Mayer","Leonie Kung","Lesia Tsurenko","Lesley Pattinama Kerkhove","Leylah Fernandez","Liam Broady","Lin Zhu","Lina Glushko","Lina Stanciute","Linda Fruhvirtova","Ling Zhang","Liudmila Samsonova","Lizette Cabrera","Lleyton Hewitt","Lloyd Harris","Lorenzo Musetti","Lorenzo Sonego","Louisa Chirico","Lourdes Dominguez Lino","Luca Vanni","Lucas Gomez","Lucas Pouille","Lucia Bronzetti","Lucie Hradecka","Lucie Safarova","Lucrezia Stefanini","Luis David Martinez","Luis Patino","Lukas Klein","Lukas Lacko","Lukas Mugevicius","Lukas Rosol","Lukasz Kubot","Luke Saville","Luksika Kumkhum","Lyudmyla Kichenok","Mackenzie Mcdonald","Maddison Inglis","Madison Brengle","Madison Keys","Magda Linette","Magdalena Frech","Magdalena Rybarikova","Mai Hontama","Malek Jaziri","Mallory Burdette","Mandy Minella","Marc Andrea Huesler","Marc Polmans","Marcel Granollers","Marcela Zacarias","Marcelo Arevalo","Marco Cecchinato","Marco Chiudinelli","Marco Trungelliti","Marcos Baghdatis","Marcos Giron","Mardy Fish","Margarita Gasparyan","Maria Carle","Maria Fernanda Alvarez Teran","Maria Fernanda Herazo Gonzalez","Maria Irigoyen","Maria Joao Koehler","Maria Jose Martinez Sanchez","Maria Kirilenko","Maria Sakkari","Maria Sanchez","Maria Sharapova","Maria Teresa Torro Flor","Mariam Bolkvadze","Marian Jade Capadocia","Mariana Duque Marino","Marie Bouzkova","Marin Cilic","Marina Erakovic","Marina Melnikova","Marinko Matosevic","Mario Vilella Martinez","Marion Bartoli","Marius Copil","Marketa Vondrousova","Markus Eriksson","Marsel Ilhan","Marta Kostyuk","Martin Alund","Martin Cuevas","Martin Fischer","Martin Klizan","Martina Di Giuseppe","Martina Trevisan","Martins Podzus","Marton Fucsovics","Maryna Zanevska","Mate Delic","Mate Pavic","Mathilde Johansson","Matteo Berrettini","Matteo Viola","Matthew Ebden","Matthias Bachinger","Mauricio Echazu","Max Purcell","Maxim Dubarenco","Maxime Cressy","Maximilian Marterer","Maximo Gonzalez","Mayar Sherif","Mayo Hibi","Melanie Oudin","Melinda Czink","Melisa Morales","Michael Berrer","Michael Llodra","Michael Mmoh","Michael Russell","Michael Venus","Michaella Krajicek","Michail Pervolarakis","Michal Przysiezny","Michelle Larcher De Brito","Mihaela Buzarnescu","Mikael Torpegaard","Mikael Ymer","Mikhail Kukushkin","Mikhail Youzhny","Milos Raonic","Miomir Kecmanovic","Mirjam Bjorklund","Mirjana Lucic","Mirza Basic","Misa Eguchi","Misaki Doi","Mischa Zverev","Mitchell Krueger","Miyu Kato","Mohamed Safwat","Mohammad Ghareeb","Mona Barthel","Monica Niculescu","Monica Puig","Montserrat Gonzalez","Moyuka Uchijima","Na Lae Han","Na Li","Nadia Petrova","Nadia Podoroska","Nadiya Kichenok","Nao Hibino","Naomi Broady","Naomi Osaka","Nastassja Burnett","Natalia Vikhlyantseva","Nethmi Himashi Waduge","Nick Kyrgios","Nicola Kuhn","Nicolaas Scholtz","Nicolas Almagro","Nicolas Alvarez","Nicolas Jarry","Nicolas Kicker","Nicolas Mahut","Nicolas Mejia","Nicole Gibbs","Nigina Abduraimova","Nikola Milojevic","Nikolay Davydenko","Nikoloz Basilashvili","Nina Bratchikova","Nina Stojanovic","Nino Serdarusic","Noah Rubin","Noelia Zeballos","Noppawan Lertcheewakarn","Norbert Gombos","Nour Abbes","Novak Djokovic","Nudnida Luangnam","Nuno Borges","Nuria Parrizas Diaz","Oceane Dodin","Olga Danilovic","Olga Govortsova","Olga Puchkova","Olga Savchuk","Olivia Gadecki","Olivia Rogowska","Olivier Rochus","Ons Jabeur","Oscar Otte","Pablo Andujar","Pablo Carreno Busta","Pablo Cuevas","Paige Mary Hourigan","Panna Udvardy","Paolo Lorenzi","Patricia Ku Flores","Patricia Maria Tig","Patricia Mayr Achleitner","Paul Capdeville","Paul Henri Mathieu","Paula Badosa","Paula Cristina Goncalves","Paula Kania","Paula Ormaechea","Pauline Parmentier","Pavel Kotov","Peangtarn Plipuech","Pedro Cachin","Pedro Martinez","Pedro Sousa","Pemra Ozgen","Pere Riba","Peter Gojowczyk","Peter Polansky","Petra Cetkovska","Petra Kvitova","Petra Martic","Petros Chrysochos","Philipp Kohlschreiber","Philipp Petzschner","Pierre Hugues Herbert","Piia Suomalainen","Polona Hercog","Potito Starace","Prajnesh Gunneswaran","Priscilla Hon","Pruchya Isarow","Qiang Wang","Qinwen Zheng","Quentin Halys","Radek Stepanek","Radu Albot","Rafael Arevalo","Rafael Nadal","Rajeev Ram","Ramkumar Ramanathan","Rebecca Marino","Rebecca Peterson","Rebecca Sramkova","Rebeka Masarova","Reilly Opelka","Reka Luca Jani","Renata Zarazua","Renzo Olivo","Rhyne Williams","Ricardas Berankis","Ricardo Rodriguez","Richard Gasquet","Richel Hogenkamp","Rik De Voest","Risa Ozaki","Robby Ginepri","Roberta Vinci","Roberto Bautista Agut","Roberto Carballes Baena","Roberto Cid","Roberto Marcora","Roberto Quiroz","Robin Haase","Roger Federer","Rogerio Dutra Silva","Roman Safiullin","Romina Oprandi","Ruan Roelofse","Ruben Bemelmans","Ruben Gonzales","Ruben Ramirez Hidalgo","Rudolf Molleker","Rui Machado","Rutuja Bhosale","Ryan Harrison","Ryan Sweeting","Sabina Sharipova","Sabine Lisicki","Sachia Vickery","Saisai Zheng","Salvatore Caruso","Sam Groth","Sam Querrey","Samantha Crawford","Samantha Stosur","Sandra Samir","Sanjar Fayziev","Santiago Giraldo","Sara Errani","Sara Mansoor","Sara Sorribes Tormo","Seanon Williams","Sebastian Baez","Sebastian Korda","Sebastian Ofner","Serena Williams","Sergei Bubka","Sergiy Stakhovsky","Sesil Karatantcheva","Shahar Peer","Sharon Fichman","Shelby Rogers","Shuai Peng","Shuai Zhang","Silvia Soler Espinosa","Simona Halep","Simone Bolelli","Sinja Kraus","Sloane Stephens","So Ra Lee","Sofia Arvidsson","Sofia Kenin","Sofia Shapatava","Somdev Devvarman","Soon Woo Kwon","Sorana Cirstea","Stan Wawrinka","Stefan Kozlov","Stefanie Voegele","Stefano Travaglia","Stefanos Tsitsipas","Steffi Carruthers","Stephane Robert","Stephanie Dubois","Stephanie Foretz Gacon","Stephanie Vogt","Steve Darcis","Steve Johnson","Steven Diez","Storm Sanders","Su Jeong Jang","Su Wei Hsieh","Sumit Nagal","Svetlana Kuznetsova","Tadeja Majeric","Takanyi Garanganga","Tallon Griekspoor","Tamara Korpatsch","Tamara Zidansek","Tamarine Tanasugarn","Tamira Paszek","Tara Moore","Taro Daniel","Tatjana Maria","Tatsuma Ito","Taylor Fritz","Taylor Townsend","Teliana Pereira","Tena Lukas","Tennys Sandgren","Tereza Martincova","Tereza Mrdeza","Tereza Smitkova","Teymuraz Gabashvili","Thanasi Kokkinakis","Theiviya Selvarajoo","Thiago Monteiro","Thiago Seyboth Wild","Thiemo De Bakker","Thomas Fabbiano","Thomaz Bellucci","Ti Chen","Tim Smyczek","Tim Van Rijthoven","Timea Babos","Timea Bacsinszky","Tobias Kamke","Tomas Barrios Vera","Tomas Berdych","Tomas Machac","Tomas Martin Etcheverry","Tomislav Brkic","Tommy Haas","Tommy Paul","Tommy Robredo","Tristan Lamasine","Tsung Hua Yang","Tsvetana Pironkova","Ugo Humbert","Ugo Nastasi","Uladzimir Ignatik","Ulrikke Eikeri","Urszula Radwanska","Ushna Suhail","Usue Maitane Arconada","Valentini Grammatikopoulou","Valeria Savinykh","Vania King","Varvara Flink","Varvara Gracheva","Varvara Lepchenko","Vasek Pospisil","Venus Williams","Vera Dushevina","Vera Lapko","Vera Zvonareva","Veronica Cepede Royg","Veronika Kudermetova","Vesna Dolonc","Victor Estrella","Victor Hanescu","Victoria Azarenka","Victoria Duval","Viktor Durasovic","Viktor Troicki","Viktoria Kuzmova","Viktorija Golubic","Viktoriya Tomova","Vincent Millot","Virginie Razzano","Vit Kopriva","Vitalia Diatchenko","Vladimir Ivanov","Wayne Odesnik","Whitney Osuigwe","Wing Yau Venise Chan","Wishaya Trongcharoenchaikul","Xavier Malisse","Xin Yu Wang","Xinyun Han","Xiyu Wang","Ya Hsuan Lee","Yafan Wang","Yanina Wickmayer","Yannick Hanfmann","Yannick Maden","Yaroslava Shvedova","Yasutaka Uchiyama","Yen Hsun Lu","Yi Fan Xu","Yibing Wu","Ying Ying Duan","Yoshihito Nishioka","Yosuke Watanuki","Ysaline Bonaventure","Yue Yuan","Yuichi Sugita","Yuki Bhambri","Yuki Naito","Yulia Putintseva","Yuliana Lizarazo","Yuliya Beygelzimer","Yung Jan Chan","Yuxuan Zhang","Yvonne Meusburger","Zarina Diyas","Ze Zhang","Zhaoxuan Yang","Zhe Li","Zhizhen Zhang","Zizou Bergs","Zsombor Piros"]};</script>
+<a id="search-button" class="btn btn-primary btn-sm mx-1">Search</a>
+<p class="my-2 small">
+<b>Note:</b> Player profiles available for tennis players who have
+played at least ten non-qualifying matches since 2012.
+</p>
+<div id="player-div">
+<h3>
+Summary
+</h3>
+<div id="summary-div">
+
+</div>
+<h3>
+Season stats
+</h3>
+<div id="react-div">
+<div id="htmlwidget-stats" class="reactable html-widget"
+style="width:auto;height:auto;">
+
+</div>
+</div>
+<p class="my-2 small">
+<b>Note:</b> Age is calculated as at 31 December of each year.
+</p>
+<h3>
+Trend chart
+</h3>
+<div class="container">
+<div class="row">
+<div class="col-sm-9">
+<p><select id="stat-select" class="form-select" aria-label="Select stat for chart">
+<option value="WinPercentage">Win %</option>
+<option value="Matches">Matches</option>
+<option value="Wins">Wins</option> <option value="RacePoints">Race
+Points</option> <option value="PointsWonPercentage">Points Won
+%</option> <option value="GamesWonPercentage">Games Won %</option>
+<option value="SetsWonPercentage">Sets Won %</option>
+<option value="FirstServePercentage">1st Serve %</option>
+<option value="FirstServeWonPercentage">1st Serve Won %</option>
+<option value="SecondServeWonPercentage">2nd Serve Won %</option>
+<option value="ServicePointsWonPercentage">Service Points Won %</option>
+<option value="ServiceGamesWonPercentage">Service Games Won %</option>
+<option value="Aces">Aces</option> <option value="AcePercentage">Ace
+%</option> <option value="DoubleFaultPercentage">Double Fault %</option>
+<option value="BreakPointsSavedPercentage">Break Points Saved %</option>
+<option value="FirstServeReturnPointsWonPercentage">1st Serve Return Won
+%</option> <option value="SecondServeReturnPointsWonPercentage">2nd
+Serve Return Won %</option>
+<option value="ReturnPointsWonPercentage">Return Points Won %</option>
+<option value="ReturnGamesWonPercentage">Return Games Won %</option>
+<option value="AceAgainstPercentage">Opponent’s Ace %</option>
+<option value="BreakPointsConvertedPercentage">Break Points Converted
+%</option> </select></p>
+</div>
+<div class="col-sm-3">
+<div class="form-check form-switch">
+<p><input class="form-check-input" type="checkbox" id="age-select">
+<label class="form-check-label" for="age-select">Age on
+x-axis</label></p>
+</div>
+</div>
+</div>
+</div>
+<div class="chart-container"
+style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
+<canvas id="stats-chart">
+</canvas>
+</div>
+<div id="compare-div">
+<h3>
+Compare
+</h3>
+<a id="search-compare-button" class="btn btn-primary btn-sm mx-1">Search</a>
+<!-- <p>Search for players below the table to compare to current player or view their profile. -->
+<!-- <button id="refresh-compare" type="button" class="btn btn-primary">Refresh</button> -->
+<div id="compare-tbl-div" class="overflow-auto">
+
+</div>
+</div>
+</div>
+<div id="overlay" class="overlay player-search">
+<div class="overlay-content">
+<div class="d-flex justify-content-between">
+<span id="compare-message"
+class="small"></span><button id="close-search-button" type="button" class="btn-close" aria-label="Close"></button>
+</div>
+<p><!-- <input type="text" id="player-search-text" class="form-control" placeholder="Search" aria-label="Search" /> --></p>
+<div class="input-group mb-3">
+<input id="player-search-text" type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="clear-search"><button class="btn btn-outline-secondary" type="button" id="clear-search-button">Clear</button>
+</div>
+<p id="results-message" class="small">
+</p>
+<div id="results">
+
+</div>
+</div>
+</div>
+<script id="update-table">
+const profileUrl = `tennis_player_profile.html?ID`;
+
+const urlParams = new URLSearchParams(location.search);
+player = urlParams.get("ID");
+
+const h1 = document.querySelector("h1");
+const playerDiv = document.querySelector("#player-div");
+
+let player_data = "";
+
+const noValidPlayer = function() {
+  h1.innerText = 'Player Profile';
+  playerDiv.style.display = "none";
+}
+
+if (player) {
+  const xmlhttp = new XMLHttpRequest();
+  const url = `https://www.wheeloratings.com/src/player_profiles_tennis/table_data/${player.slice(-2)}.json`;
+
+  let data = `{"x":{"tag":{"name":"Reactable","attribs":{"data":{},"columns":[{"id":"Season","name":"Season","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center","defaultSortDesc":false,"className":"sticky","headerClassName":"sticky"},{"id":"Age","name":"Age","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":35,"align":"center","defaultSortDesc":false},{"id":"Matches","name":"M","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"sticky","style":{"left":60},"headerClassName":"sticky","headerStyle":{"left":60}},{"id":"Wins","name":"Wins","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center"},{"id":"Losses","name":"Losses","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center"},{"id":"WinPercentage","name":"Win %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"Titles","name":"Titles","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center"},{"id":"RacePoints","name":"Race Points","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"PointsWonPercentage","name":"Points Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"GamesWonPercentage","name":"Games Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"SetsWonPercentage","name":"Sets Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"TieBreaks","name":"Tie Breaks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center"},{"id":"TieBreaksWon","name":"TB W","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center"},{"id":"TieBreaksLost","name":"TB L","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center"},{"id":"TieBreaksWonPercentage","name":"Tie Break Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"FirstServePercentage","name":"1st Serve %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"FirstServeWonPercentage","name":"1st Serve Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"SecondServeWonPercentage","name":"2nd Serve Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"ServicePointsWonPercentage","name":"Service Pts Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":70,"align":"center"},{"id":"ServiceGamesWonPercentage","name":"Service Gms Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":70,"align":"center"},{"id":"Aces","name":"Aces","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center"},{"id":"AcePercentage","name":"Ace %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"AcesPerServiceGame","name":"Aces / Service Gm","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":70,"align":"center"},{"id":"DoubleFaultPercentage","name":"Double Fault %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","defaultSortDesc":false},{"id":"DoubleFaultsPerServiceGame","name":"DF / Service Gm","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":70,"align":"center","defaultSortDesc":false},{"id":"AcesPerDoubleFault","name":"Aces / Double Fault","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":70,"align":"center"},{"id":"BreakPointsFacedPerServiceGame","name":"BP Faced / Service Gm","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":70,"align":"center","defaultSortDesc":false},{"id":"BreakPointsSavedPercentage","name":"BP Saved %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"FirstServeReturnPointsWonPercentage","name":"1st Serve Return Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"SecondServeReturnPointsWonPercentage","name":"2nd Serve Return Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center"},{"id":"ReturnPointsWonPercentage","name":"Return Pts Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":70,"align":"center"},{"id":"ReturnGamesWonPercentage","name":"Return Games Won %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":70,"align":"center"},{"id":"AceAgainstPercentage","name":"Opp. Ace %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","defaultSortDesc":false},{"id":"AcesAgainstPerReturnGame","name":"Opp. Ace / Return Gm","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":70,"align":"center","defaultSortDesc":false},{"id":"BreakPointChancesPerReturnGame","name":"BP Chances / Return Gm","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":70,"align":"center"},{"id":"BreakPointsConvertedPercentage","name":"BP Converted %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":80,"align":"center"}],"defaultSortDesc":true,"defaultPageSize":100,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","rowClassName":"function(rowInfo) { if (rowInfo.original.Season === 'Career') { return 'fw-bold' } }","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"e974eddcc36674fdee430ede82aae863"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.rowClassName"],"jsHooks":[]}`;
+
+  data = JSON.parse(data);
+
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      res = JSON.parse(this.responseText);
+
+      if (res[player]) {
+        player_data = {};
+        player_data[player] = res[player];
+      }
+      
+      if (player_data) {
+        data.x.tag.attribs.data = player_data[player].Data;
+
+        h1.innerText = `Player Profile - ${player_data[player].Summary.Player}`;
+        document.title = `Tennis Player Profile - ${player_data[player].Summary.Player}`;
+
+        let div = document.querySelector("#react-div");
+
+        const s = document.createElement('script');
+        s.setAttribute('type', 'application/json');
+        s.setAttribute('data-for', 'htmlwidget-stats');
+        s.innerText = JSON.stringify(data);
+
+        div.append(s);
+        
+        div = document.querySelector("#summary-div");
+        
+        const tbl = document.createElement("table");
+        tbl.id = "summary-table";
+        tbl.classList = 'table table-condensed table-sm';
+        div.appendChild(tbl);
+        const tbody = tbl.createTBody();
+        
+        let row = tbody.insertRow();
+        let cell = row.insertCell();
+        cell.classList = "fw-bold";
+        cell.innerText = "Player";
+        
+        cell = row.insertCell();
+        cell.innerText = player_data[player].Summary.Player;
+        
+        // row = tbody.insertRow();
+        // cell = row.insertCell();
+        // cell.classList = "fw-bold";
+        // cell.innerText = "Debut";
+        
+        // cell = row.insertCell();
+        // cell.innerText = `${player_data[player].Summary.DebutSeason} v ${player_data[player].Summary.DebutOpposition}`;
+
+        // row = tbody.insertRow();
+        // cell = row.insertCell();
+        // cell.classList = "fw-bold";
+        // cell.innerText = "Last Match";
+        
+        // cell = row.insertCell();
+        // cell.innerText = `${player_data[player].Summary.LastMatchSeason} v ${player_data[player].Summary.LastMatchOpposition}`;
+
+        // row = tbody.insertRow();
+        // cell = row.insertCell();
+        // cell.classList = "fw-bold";
+        // cell.innerText = "Career Matches";
+        
+        // cell = row.insertCell();
+        // cell.innerText = `${player_data[player].Data.Matches.slice(-1)}`;
+
+        // row = tbody.insertRow();
+        // cell = row.insertCell();
+        // cell.classList = "fw-bold";
+        // cell.innerText = "Career Goals";
+        
+        // cell = row.insertCell();
+        // cell.innerText = `${player_data[player].Data.Goals_Total.slice(-1)}`;
+      } else {
+        noValidPlayer();
+      }
+    } else if (this.readyState == 4) {
+      noValidPlayer();
+    }
+  };
+
+  xmlhttp.open("GET", url, false);
+  xmlhttp.send();
+} else {
+  noValidPlayer();
+}
+</script>
+<script src="./src/js/tennis-player-profile.js"></script>
+<script src="./src/js/player-profile.js"></script>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
+</footer>
+
+
+
+</div>
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
+  
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
+})();
+</script>
+<!-- <script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("nav").style.top = "0";
+  } else {
+    document.getElementById("nav").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script> -->
+</body>
+</html>
