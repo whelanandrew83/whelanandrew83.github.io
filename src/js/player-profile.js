@@ -443,8 +443,14 @@ const printCompare = function () {
                 let cell = row.insertCell();
                 cell.classList = "text-center";
                 let dec = compareColumns[col].dec;
+                let best;
+                if (compareColumns[col].reverse) {
+                    best = Math.min(...statValuesValid).toFixed(dec);
+                } else {
+                    best = Math.max(...statValuesValid).toFixed(dec);
+                }
                 if (!isNaN(value)) {
-                    if (statValues.length > 1 && value === Math.max(...statValuesValid)) {
+                    if (statValues.length > 1 && value.toFixed(dec) === best) {
                         cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
                     } else {
                         cell.innerText = value.toFixed(dec);

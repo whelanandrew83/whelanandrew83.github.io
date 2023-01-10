@@ -17,12 +17,12 @@ const compareColumns = {
     "ServiceGamesWonPercentage": { name: "Service Games Won %", dec: 1 },
     "Aces": { name: "Aces", dec: 0 },
     "AcePercentage": { name: "Ace %", dec: 1 },
-    "DoubleFaultPercentage": { name: "Double Fault %", dec: 1 },
+    "DoubleFaultPercentage": { name: "Double Fault %", dec: 1, reverse: true },
     "BreakPointsSavedPercentage": { name: "Break Points Saved %", dec: 1 },
     "FirstServeReturnPointsWonPercentage": { name: "1st Serve Return Won %", dec: 1 },
     "SecondServeReturnPointsWonPercentage": { name: "2nd Serve Return Won %", dec: 1 },
     "ReturnPointsWonPercentage": { name: "Return Points Won %", dec: 1 },
     "ReturnGamesWonPercentage": { name: "Return Games Won %", dec: 1 },
-    "AceAgainstPercentage": { name: "Opponent's Ace %", dec: 1 },
+    "AceAgainstPercentage": { name: "Opponent's Ace %", dec: 1, reverse: true },
     "BreakPointsConvertedPercentage": { name: "Break Points Converted %", dec: 1 }
 };
