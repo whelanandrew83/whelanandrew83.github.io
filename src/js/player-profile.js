@@ -431,29 +431,34 @@ const printCompare = function () {
             let cell = row.insertCell();
             cell.innerText = compareColumns[col].name;
 
-            let statValues = [parseFloat(player_data[player].Data[col][compare_players_season[player]])];
+            if (compareColumns[col].heading) {
+                cell.classList = "fw-bold";
+                cell.colSpan = compare_players.length + 2;
+            } else {
+                let statValues = [parseFloat(player_data[player].Data[col][compare_players_season[player]])];
 
-            for (id of compare_players) {
-                statValues.push(parseFloat(player_data[id].Data[col][compare_players_season[id]]));
-            }
-
-            let statValuesValid = statValues.filter((v) => { return !Number.isNaN(v) });
-
-            for (value of statValues) {
-                let cell = row.insertCell();
-                cell.classList = "text-center";
-                let dec = compareColumns[col].dec;
-                let best;
-                if (compareColumns[col].reverse) {
-                    best = Math.min(...statValuesValid).toFixed(dec);
-                } else {
-                    best = Math.max(...statValuesValid).toFixed(dec);
+                for (id of compare_players) {
+                    statValues.push(parseFloat(player_data[id].Data[col][compare_players_season[id]]));
                 }
-                if (!isNaN(value)) {
-                    if (statValues.length > 1 && value.toFixed(dec) === best) {
-                        cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
+
+                let statValuesValid = statValues.filter((v) => { return !Number.isNaN(v) });
+
+                for (value of statValues) {
+                    let cell = row.insertCell();
+                    cell.classList = "text-center";
+                    let dec = compareColumns[col].dec;
+                    let best;
+                    if (compareColumns[col].reverse) {
+                        best = Math.min(...statValuesValid).toFixed(dec);
                     } else {
-                        cell.innerText = value.toFixed(dec);
+                        best = Math.max(...statValuesValid).toFixed(dec);
+                    }
+                    if (!isNaN(value)) {
+                        if (statValues.length > 1 && value.toFixed(dec) === best) {
+                            cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
+                        } else {
+                            cell.innerText = value.toFixed(dec);
+                        }
                     }
                 }
             }
