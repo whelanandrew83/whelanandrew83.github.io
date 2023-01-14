@@ -289,6 +289,20 @@ const updateChart = function () {
 
     chart.data.datasets = datasets;
     chart.options.scales.x.labels = chartSeasons;
+    if (typeof chartColumns !== 'undefined' && chartColumns[statDropdown.value].reverse) {
+        chart.options.scales.y.reverse = true;
+    } else {
+        chart.options.scales.y.reverse = false;
+    }
+
+    // const chartConfig = chart.config;
+    // chart = new Chart(ctx, chartConfig);
+
+    if (typeof chartColumns !== 'undefined' && chartColumns[statDropdown.value].line) {
+        chart.config.type = 'line';
+    } else {
+        chart.config.type = 'bar';
+    }
     chart.update();
 }
 
@@ -296,6 +310,7 @@ const ctx = document.getElementById('stats-chart');
 
 const chart = new Chart(ctx, {
     type: 'bar',
+    // type: 'line',
     data: {
         // labels: player_data[player].Data.Season.slice(0, -excludeRows),
         datasets: []
