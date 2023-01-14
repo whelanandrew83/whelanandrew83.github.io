@@ -256,7 +256,7 @@ const updateChart = function () {
     for (id of [player, ...compare_players]) {
         const data = [];
         let x;
-        player_data[id].Data.Season.slice(0, -1).forEach((element, index) => {
+        player_data[id].Data.Season.slice(0, -excludeRows).forEach((element, index) => {
             if (chartAgeSelect.checked) {
                 x = player_data[id].Data.Age[index];
             } else {
@@ -297,7 +297,7 @@ const ctx = document.getElementById('stats-chart');
 const chart = new Chart(ctx, {
     type: 'bar',
     data: {
-        // labels: player_data[player].Data.Season.slice(0, -1),
+        // labels: player_data[player].Data.Season.slice(0, -excludeRows),
         datasets: []
     },
     options: {
@@ -432,8 +432,18 @@ const printCompare = function () {
             cell.innerText = compareColumns[col].name;
 
             if (compareColumns[col].heading) {
-                cell.classList = "fw-bold";
-                cell.colSpan = compare_players.length + 2;
+                row.classList = "fw-bold";
+                // cell.classList = "fw-bold bg-primary";
+                // cell.colSpan = compare_players.length + 2;
+                if (Object.keys(compareColumns).indexOf(col) > 0) {
+                    // Don't add player names if it's the first row
+                    for (id of [player, ...compare_players]) {
+                        td = document.createElement("td");
+                        td.innerText = player_data[id].Summary.Player;
+                        td.classList = "text-center";
+                        row.appendChild(td);
+                    }
+                }
             } else {
                 let statValues = [parseFloat(player_data[player].Data[col][compare_players_season[player]])];
 
@@ -479,7 +489,6 @@ const printCompare = function () {
             td.classList = "text-center";
             row.appendChild(td);
         }
-
 
         tblDiv.innerHTML = "";
         tblDiv.appendChild(tbl);
