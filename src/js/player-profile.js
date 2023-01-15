@@ -300,8 +300,10 @@ const updateChart = function () {
 
     if (typeof chartColumns !== 'undefined' && chartColumns[statDropdown.value].line) {
         chart.config.type = 'line';
+        chart.options.scales.y.beginAtZero = false;
     } else {
         chart.config.type = 'bar';
+        chart.options.scales.y.beginAtZero = true;
     }
     chart.update();
 }
