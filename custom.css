@@ -328,6 +328,10 @@ ul.nav.navbar-nav>li>a {
   width: 130px;
 }
 
+.table-auto {
+  width: auto;
+}
+
 #results {
   /* max-height: 400px; */
   /* overflow: auto; */

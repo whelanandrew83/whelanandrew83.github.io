@@ -341,7 +341,7 @@ const printCompare = function () {
     if (player_data) {
         const tbl = document.createElement('table');
         tbl.id = "compare-tbl";
-        tbl.classList = "table table-condensed table-sm table-hover";
+        tbl.classList = "table table-condensed table-sm table-hover table-auto";
         const thead = tbl.createTHead();
         // thead.classList = "table-primary";
         let row = thead.insertRow();
@@ -443,48 +443,50 @@ const printCompare = function () {
         const tbody = tbl.createTBody();
 
         for (col of Object.keys(compareColumns)) {
-            row = tbody.insertRow();
+            if (player_data[player].Data[col]) {
+                row = tbody.insertRow();
 
-            let cell = row.insertCell();
-            cell.innerText = compareColumns[col].name;
+                let cell = row.insertCell();
+                cell.innerText = compareColumns[col].name;
 
-            if (compareColumns[col].heading) {
-                row.classList = "fw-bold";
-                // cell.classList = "fw-bold bg-primary";
-                // cell.colSpan = compare_players.length + 2;
-                if (Object.keys(compareColumns).indexOf(col) > 0) {
-                    // Don't add player names if it's the first row
-                    for (id of [player, ...compare_players]) {
-                        td = document.createElement("td");
-                        td.innerText = player_data[id].Summary.Player;
-                        td.classList = "text-center";
-                        row.appendChild(td);
+                if (compareColumns[col].heading) {
+                    row.classList = "fw-bold";
+                    // cell.classList = "fw-bold bg-primary";
+                    // cell.colSpan = compare_players.length + 2;
+                    if (Object.keys(compareColumns).indexOf(col) > 0) {
+                        // Don't add player names if it's the first row
+                        for (id of [player, ...compare_players]) {
+                            td = document.createElement("td");
+                            td.innerText = player_data[id].Summary.Player;
+                            td.classList = "text-center";
+                            row.appendChild(td);
+                        }
                     }
-                }
-            } else {
-                let statValues = [parseFloat(player_data[player].Data[col][compare_players_season[player]])];
+                } else {
+                    let statValues = [parseFloat(player_data[player].Data[col][compare_players_season[player]])];
 
-                for (id of compare_players) {
-                    statValues.push(parseFloat(player_data[id].Data[col][compare_players_season[id]]));
-                }
-
-                let statValuesValid = statValues.filter((v) => { return !Number.isNaN(v) });
-
-                for (value of statValues) {
-                    let cell = row.insertCell();
-                    cell.classList = "text-center";
-                    let dec = compareColumns[col].dec;
-                    let best;
-                    if (compareColumns[col].reverse) {
-                        best = Math.min(...statValuesValid).toFixed(dec);
-                    } else {
-                        best = Math.max(...statValuesValid).toFixed(dec);
+                    for (id of compare_players) {
+                        statValues.push(parseFloat(player_data[id].Data[col][compare_players_season[id]]));
                     }
-                    if (!isNaN(value)) {
-                        if (statValues.length > 1 && value.toFixed(dec) === best) {
-                            cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
+
+                    let statValuesValid = statValues.filter((v) => { return !Number.isNaN(v) });
+
+                    for (value of statValues) {
+                        let cell = row.insertCell();
+                        cell.classList = "text-center";
+                        let dec = compareColumns[col].dec;
+                        let best;
+                        if (compareColumns[col].reverse) {
+                            best = Math.min(...statValuesValid).toFixed(dec);
                         } else {
-                            cell.innerText = value.toFixed(dec);
+                            best = Math.max(...statValuesValid).toFixed(dec);
+                        }
+                        if (!isNaN(value)) {
+                            if (statValues.length > 1 && value.toFixed(dec) === best) {
+                                cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
+                            } else {
+                                cell.innerText = value.toFixed(dec);
+                            }
                         }
                     }
                 }
