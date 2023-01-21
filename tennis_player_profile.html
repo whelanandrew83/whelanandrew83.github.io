@@ -603,6 +603,9 @@ if (player) {
           tbody = tbl.createTBody();
           
           const titles = player_data[player].Summary.TitleList[0];
+          if (typeof titles.Tournament === "string") {
+            titles.Tournament = [titles.Tournament];
+          }
 
           for (let idx = 0; idx < titles.Tournament.length; idx++) {
             row = tbody.insertRow();
