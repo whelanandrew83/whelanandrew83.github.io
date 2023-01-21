@@ -443,7 +443,7 @@ const printCompare = function () {
         const tbody = tbl.createTBody();
 
         for (col of Object.keys(compareColumns)) {
-            if (player_data[player].Data[col]) {
+            if (compareColumns[col].heading || player_data[player].Data[col]) {
                 row = tbody.insertRow();
 
                 let cell = row.insertCell();
