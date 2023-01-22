@@ -1,6 +1,6 @@
 const tableDataUrl = 'https://www.wheeloratings.com/src/player_profiles_tennis/table_data';
 const profileUrl = `tennis_player_profile.html?ID`;
-const excludeRows = 2;
+let excludeRows = 2;
 
 const compareColumns = {
     "Age": { name: "Age", dec: 0 },

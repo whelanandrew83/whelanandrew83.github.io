@@ -4,6 +4,10 @@ const max_compare_players = 4;
 
 if (player_data) {
     compare_players_season[player] = player_data[player].Data['Season'].length - 1;
+
+    if (parseInt(player_data[player].Data.Season[player_data[player].Data.Season.length - excludeRows])) {
+        excludeRows = excludeRows - 1;
+    }
 }
 
 const toggleCompare = function (id, e) {
