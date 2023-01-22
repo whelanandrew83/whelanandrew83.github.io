@@ -441,6 +441,8 @@ const printCompare = function () {
 
         // TABLE BODY
         const tbody = tbl.createTBody();
+        let nonHeadingRow = true;
+        let lastHeadingRow;
 
         for (col of Object.keys(compareColumns)) {
             if (compareColumns[col].heading || player_data[player].Data[col]) {
@@ -450,7 +452,9 @@ const printCompare = function () {
                 cell.innerText = compareColumns[col].name;
 
                 if (compareColumns[col].heading) {
-                    row.classList = "fw-bold";
+                    row.classList = "fw-bold d-none";
+                    nonHeadingRow = false;
+                    lastHeadingRow = row;
                     // cell.classList = "fw-bold bg-primary";
                     // cell.colSpan = compare_players.length + 2;
                     if (Object.keys(compareColumns).indexOf(col) > 0) {
@@ -463,6 +467,10 @@ const printCompare = function () {
                         }
                     }
                 } else {
+                    if (!nonHeadingRow) {
+                        lastHeadingRow.classList.remove("d-none");
+                        nonHeadingRow = true;
+                    }
                     let statValues = [parseFloat(player_data[player].Data[col][compare_players_season[player]])];
 
                     for (id of compare_players) {
