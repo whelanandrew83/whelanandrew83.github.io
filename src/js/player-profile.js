@@ -495,7 +495,8 @@ const printCompare = function () {
                         }
                         if (!isNaN(value)) {
                             if (statValues.length > 1 && value.toFixed(dec) === best) {
-                                cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
+                                // cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #91D1A2'><b>" + value.toFixed(dec) + "</b></span>";
+                                cell.innerHTML = "<span class='rounded' style='display: inline-block; width: 75px; background-color: #e0baf2'><b>" + value.toFixed(dec) + "</b></span>";
                             } else {
                                 cell.innerText = value.toFixed(dec);
                             }

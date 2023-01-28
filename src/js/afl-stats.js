@@ -113,6 +113,19 @@ const statsColumns = {
 // h2.appendChild(statCategoryButton);
 
 const statSelectDiv = document.querySelector('#stat-select-div');
+// const playerStatsDiv = document.querySelector('#player-stats-div');
+const filtersDiv = document.querySelector("#filters");
+
+const csvDownloadButton = document.createElement('button');
+csvDownloadButton.id = "download-csv-button";
+csvDownloadButton.classList = "btn btn-primary btn-sm mx-1 my-2";
+csvDownloadButton.innerText = "Download as CSV";
+csvDownloadButton.addEventListener('click', (e) => {
+    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["WebsiteId", "Team", "Image"].includes(value) })] });
+    gtag('event', 'data_download');
+});
+// playerStatsDiv.appendChild(csvDownloadButton);
+filtersDiv.insertAdjacentElement('afterend', csvDownloadButton);
 
 const statCategoryAccordian = document.querySelector('#accordion-stat-categories');
 statCategoryAccordian.classList.remove('d-none');
