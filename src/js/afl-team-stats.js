@@ -50,11 +50,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     Reactable.setHiddenColumns('team-stats-table', hiddenColumns.For);
 });
 
-// const csvDownloadButton = document.createElement('button');
-// csvDownloadButton.id = "download-csv-button";
-// csvDownloadButton.classList = "btn btn-primary btn-sm mx-1 my-2";
-// csvDownloadButton.innerText = "Download as CSV";
-// csvDownloadButton.addEventListener('click', (e) => {
-//     Reactable.downloadDataCSV('team-stats-table', `afl-team-stats-${year}.csv`, { columnIds: [...new Set([...columnsAlwaysDisplayed, ...statsColumns.For, ...statsColumns.Against, ...statsColumns.Difference])] });
-//     gtag('event', 'data_download');
-// });
+const csvDownloadButton = document.querySelector('#download-csv-button');
+csvDownloadButton.addEventListener('click', (e) => {
+    Reactable.downloadDataCSV('team-stats-table', `afl-team-stats-${year}.csv`, { columnIds: [...new Set([...columnsAlwaysDisplayed, ...statsColumns.For, ...statsColumns.Against, ...statsColumns.Difference])] });
+    gtag('event', 'data_download');
+});
