@@ -1,10 +1,9 @@
 const columnsAlwaysHidden = ["WebsiteId", "Image", "Colour", "SurfaceLong", "TieBreaksLost"];
 const columnsAlwaysDisplayed = ["Player", "PlayerIOC", "Surface", "Matches"];
-const columnsAlwaysExported = ["TieBreaksLost"];
 
 const statsColumns = {
     "Summary": ["EloRank", "Elo", "EloRankSurface", "Wins", "Losses", "WinPercentage", "Titles",
-        "PointsWonPercentage", "GamesWonPercentage", "SetsWonPercentage", "TieBreaks", "TieBreaksWon", "TieBreaksWonPercentage",
+        "PointsWonPercentage", "GamesWonPercentage", "SetsWonPercentage", "DecSets", "DecSetWins", "DecSetWinPercentage", "TieBreaks", "TieBreaksWon", "TieBreaksWonPercentage",
         "ServiceGamesWonPercentage", "ReturnGamesWonPercentage"],
     "Serve": ["EloServeRank", "EloServe", "FirstServePercentage", "FirstServeWonPercentage", "SecondServeWonPercentage",
         "ServicePointsWonPercentage", "ServiceGamesWonPercentage", "Aces", "AcePercentage", "AcesPerServiceGame",
