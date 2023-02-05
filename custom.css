@@ -375,6 +375,17 @@ ul.nav.navbar-nav>li>a {
   margin: auto;
 }
 
+@media (max-width: 1199px) {
+  .overlay-fullscreen {
+    z-index: 1200;
+  }
+
+  .overlay-fullscreen-content {
+    top: 10px;
+    max-height: 100%;
+  }
+}
+
 .maxw-800 {
   max-width: 800px;
 }
