@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     const dataTemp = Reactable.getInstance(reactableId).data;
     for (dataRow of dataTemp) {
-        for (col of [...labelColumns, ...Object.keys(chartColumns)]) {
+        for (col of [...new Set([...labelColumns, ...Object.keys(chartColumns)])]) {
             chartStats[col].push(dataRow[col])
         }
     }
