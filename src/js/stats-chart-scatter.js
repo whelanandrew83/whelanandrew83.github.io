@@ -2,86 +2,63 @@ const viewChartButton = document.querySelector("#view-chart-button");
 const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
 
-viewChartButton.addEventListener('click', () => { overlay.style.display = "block" });
+viewChartButton.addEventListener('click', () => { overlay.style.display = "block"; updateChart(); });
 closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; });
-
-const chartColumns = {
-    "RatingPoints_Avg": { name: "Rating Points" },
-    "Supercoach_Avg": { name: "Supercoach Points" },
-    "DreamTeamPoints_Avg": { name: "Fantasy Points" },
-    "CoachesVotes_Total": { name: "Coaches Votes", dec: 0 },
-    "CoachesVotes_Avg": { name: "Coaches Votes (Average)" },
-    "TimeOnGround": { name: "Time On Ground" },
-    "Kicks": { name: "Kicks" },
-    "Handballs": { name: "Handballs" },
-    "Disposals": { name: "Disposals" },
-    "DisposalEfficiency": { name: "Disposal Efficiency" },
-    "KickingEfficiency": { name: "Kicking Efficiency" },
-    "Inside50s": { name: "Inside 50s" },
-    "MetresGained": { name: "Metres Gained" },
-    "ContestedPossessions": { name: "Contested Possessions" },
-    "CentreBounceAttendances": { name: "Centre Bounce Attendances" },
-    "CentreClearances": { name: "Centre Clearances" },
-    "TotalClearances": { name: "Total Clearances" },
-    "Marks": { name: "Marks" },
-    "ContestedMarks": { name: "Contested Marks" },
-    "RuckContests": { name: "Ruck Contests" },
-    "Hitouts": { name: "Hitouts" },
-    "HitoutsWinPercentage": { name: "Hitout Win %" },
-    "HitoutsToAdvantage": { name: "Hitout To Advantage" },
-    "Tackles": { name: "Tackles" },
-    "ContestDefensiveOneOnOnes": { name: "Defensive one-on-one contests" },
-    "ContestDefensiveLossPercentage": { name: "Defensive one-on-one loss %" },
-    "ContestOffensiveOneOnOnes": { name: "Offensive one-on-one contests" },
-    "ContestOffensiveWinPercentage": { name: "Offensive one-on-one win %" },
-    "Goals_Total": { name: "Goals (Total)", dec: 0 },
-    "Goals_Avg": { name: "Goals (Average)" },
-    "ShotsAtGoal": { name: "Shots At Goal" },
-    "GoalAssists": { name: "Goal Assists" },
-    "GoalAccuracy": { name: "Goal Accuracy" },
-    "ScoreInvolvements": { name: "Score Involvements" },
-    "ScoreInvolvementPercentage": { name: "Score Involvement %" },
-    "Spoils": { name: "Spoils" }
-};
 
 const statDropdownX = document.querySelector("#stat-select-x");
 const statDropdownY = document.querySelector("#stat-select-y");
 
+let optionGroupX;
+let optionGroupY;
+
+const nonHeadingOptions = [];
+
 for (col of Object.keys(chartColumns)) {
-    const option = document.createElement("option");
-    option.value = col;
-    option.text = chartColumns[col].name;
-    statDropdownX.appendChild(option);
-    statDropdownY.appendChild(option.cloneNode(true));
+    if (chartColumns[col].heading) {
+        optionGroupX = document.createElement("optgroup");
+        optionGroupX.label = chartColumns[col].name;
+        optionGroupY = optionGroupX.cloneNode(true);
+        statDropdownX.appendChild(optionGroupX);
+        statDropdownY.appendChild(optionGroupY);
+    } else {
+        const option = document.createElement("option");
+        option.value = col;
+        option.text = chartColumns[col].name;
+        nonHeadingOptions.push(col);
+        if (optionGroupX) {
+            optionGroupX.appendChild(option);
+            optionGroupY.appendChild(option.cloneNode(true));
+        } else {
+            statDropdownX.appendChild(option);
+            statDropdownY.appendChild(option.cloneNode(true));
+        }
+    }
 }
 
-statDropdownX.selectedIndex = 8;
-statDropdownY.selectedIndex = 0;
+statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
+statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
 
-let playerStats = {
-    Player: [],
-    Team: []
-};
-for (col of Object.keys(chartColumns)) {
-    playerStats[col] = [];
+let chartStats = {};
+for (col of [...labelColumns, ...Object.keys(chartColumns)]) {
+    chartStats[col] = [];
 }
 
-let filteredRowCountPrevious = 0;
-let filteredRowCount = 0;
+// let filteredRowCountPrevious = 0;
+// let filteredRowCount = 0;
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    const dataTemp = Reactable.getInstance('player-stats-table').data;
-    Reactable.onStateChange('player-stats-table', state => {
-        filteredRowCount = Reactable.getInstance('player-stats-table').filteredRows.length;
-        if (filteredRowCount !== filteredRowCountPrevious) {
-            updateChart();
-            filteredRowCountPrevious = filteredRowCount;
-        }
-    })
+    // Reactable.onStateChange(reactableId, state => {
+    //     filteredRowCount = Reactable.getInstance(reactableId).filteredRows.length;
+    //     if (filteredRowCount !== filteredRowCountPrevious) {
+    //         updateChart();
+    //         filteredRowCountPrevious = filteredRowCount;
+    //     }
+    // })
 
+    const dataTemp = Reactable.getInstance(reactableId).data;
     for (dataRow of dataTemp) {
-        for (col of ['Player', 'Team', ...Object.keys(chartColumns)]) {
-            playerStats[col].push(dataRow[col])
+        for (col of [...labelColumns, ...Object.keys(chartColumns)]) {
+            chartStats[col].push(dataRow[col])
         }
     }
     updateChart();
@@ -94,16 +71,16 @@ const updateChart = function () {
     const datasets = [];
 
     const data = [];
-    const players = [];
+    const labels = [];
     let x;
 
-    const filteredRows = Object.keys(Reactable.getInstance('player-stats-table').filteredRowsById);
+    const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
 
-    playerStats[statDropdownX.value].forEach((element, index) => {
+    chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
-            data.push({ x: x, y: playerStats[statDropdownY.value][index] });
-            players.push(playerStats.Player[index]);
+            data.push({ x: x, y: chartStats[statDropdownY.value][index] });
+            labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
         }
     });
 
@@ -123,6 +100,17 @@ const updateChart = function () {
     if (typeof xDec === 'undefined') { xDec = 1 };
     if (typeof yDec === 'undefined') { yDec = 1 };
 
+    if (typeof chartColumns !== 'undefined' && chartColumns[statDropdownX.value].reverse) {
+        chart.options.scales.x.reverse = true;
+    } else {
+        chart.options.scales.x.reverse = false;
+    }
+    if (typeof chartColumns !== 'undefined' && chartColumns[statDropdownY.value].reverse) {
+        chart.options.scales.y.reverse = true;
+    } else {
+        chart.options.scales.y.reverse = false;
+    }
+
     chart.options.scales.x.title.text = xLabel;
     chart.options.scales.y.title.text = yLabel;
     chart.options.plugins.tooltip.callbacks.label = function (context) {
@@ -131,7 +119,7 @@ const updateChart = function () {
         return tooltip;
     };
     chart.options.plugins.tooltip.callbacks.beforeLabel = function (context) {
-        let tooltip = players[context.dataIndex];
+        let tooltip = labels[context.dataIndex];
         return tooltip;
     };
     chart.update();
@@ -149,13 +137,19 @@ const chart = new Chart(ctx, {
             x: {
                 title: {
                     display: true,
-                    text: ""
+                    text: "",
+                    font: {
+                        weight: "bold"
+                    }
                 }
             },
             y: {
                 title: {
                     display: true,
-                    text: ""
+                    text: "",
+                    font: {
+                        weight: "bold"
+                    }
                 }
             }
         },
