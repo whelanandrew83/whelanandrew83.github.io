@@ -5,6 +5,7 @@ const chartColumns = {
     "RatingAttSeasonZ": { name: "Overall Season Attack Rating (Relative)", dec: 2 },
     "RatingDefSeason": { name: "Overall Season Defense Rating" },
     "RatingDefSeasonZ": { name: "Overall Season Defense Rating (Relative)", dec: 2 },
+    "Year": { name: "Year", dec: 0 },
     "Wins": { name: "Wins", dec: 0 },
     "Losses": { name: "Losses", dec: 0 },
     "For": { name: "For (Total)", dec: 0 },
@@ -15,7 +16,7 @@ const chartColumns = {
     "Against_Acc": { name: "Accuracy Against" },
     "Percentage": { name: "Percentage" },
     "MR": { name: "Match Ratio" },
-    "HALadderPosition": { name: "Home & Away Ladder Position", dec: 0 }
+    "HALadderPosition": { name: "Home & Away Ladder Position", dec: 0, reverse: true }
 };
 
 const defaultX = 'RatingDefSeason';
