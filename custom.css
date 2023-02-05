@@ -376,6 +376,10 @@ ul.nav.navbar-nav>li>a {
   margin: auto;
 }
 
+.maxw-800 {
+  max-width: 800px;
+}
+
 #compare-tbl {
   width: auto;
 }
