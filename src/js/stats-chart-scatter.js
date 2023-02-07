@@ -7,6 +7,16 @@ closeSearchButton.addEventListener('click', () => { overlay.style.display = "non
 
 const statDropdownX = document.querySelector("#stat-select-x");
 const statDropdownY = document.querySelector("#stat-select-y");
+const statHighlight = document.querySelector("#stat-highlight");
+
+if (statHighlight) {
+    let option = document.createElement("option");
+    option.value = "";
+    option.text = "";
+    statHighlight.appendChild(option);
+
+    statHighlight.addEventListener('change', () => { updateChart(false); });
+}
 
 let optionGroupX;
 let optionGroupY;
@@ -46,6 +56,8 @@ for (col of [...labelColumns, ...Object.keys(chartColumns)]) {
 // let filteredRowCountPrevious = 0;
 // let filteredRowCount = 0;
 
+const highlightValueOptions = [];
+
 window.addEventListener('DOMContentLoaded', (event) => {
     // Reactable.onStateChange(reactableId, state => {
     //     filteredRowCount = Reactable.getInstance(reactableId).filteredRows.length;
@@ -58,35 +70,69 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const dataTemp = Reactable.getInstance(reactableId).data;
     for (dataRow of dataTemp) {
         for (col of [...new Set([...labelColumns, ...Object.keys(chartColumns)])]) {
-            chartStats[col].push(dataRow[col])
+            chartStats[col].push(dataRow[col]);
+            if (typeof highlightColumn === 'string' && col === highlightColumn && !highlightValueOptions.includes(dataRow[col])) {
+                highlightValueOptions.push(dataRow[col]);
+            }
         }
     }
+
+    if (statHighlight) {
+        for (col of highlightValueOptions.sort()) {
+            const option = document.createElement("option");
+            option.value = col;
+            option.text = col;
+            if (typeof defaultHighlight === "string") {
+                option.selected = col === defaultHighlight ||
+                    (defaultHighlight === "_max" && col === Math.max(...highlightValueOptions)) ||
+                    (defaultHighlight === "_min" && col === Math.min(...highlightValueOptions)) ? true : false;
+            }
+            statHighlight.appendChild(option);
+        }
+    }
+
     updateChart();
 });
 
 statDropdownX.addEventListener('change', (e) => { updateChart(); });
 statDropdownY.addEventListener('change', (e) => { updateChart(); });
 
-const updateChart = function () {
+const updateChart = function (animation = true) {
     const datasets = [];
 
     const data = [];
     const labels = [];
+    const highlightedValues = [];
     let x;
 
     const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
+
+    const highlightValue = statHighlight ? statHighlight.options[statHighlight.selectedIndex].text : null;
 
     chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
             data.push({ x: x, y: chartStats[statDropdownY.value][index] });
             labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
+            if (typeof highlightColumn === 'string' && highlightValue && chartStats[highlightColumn][index].toString() === highlightValue) {
+                highlightedValues.push(true);
+            } else {
+                highlightedValues.push(false);
+            }
         }
     });
 
     const dataset = {
         data: data,
-        pointRadius: 4
+        pointRadius: 4,
+        borderColor: function (context) {
+            var index = context.dataIndex;
+            return highlightedValues[index] ? '#ed5858' : '#58afed';
+        },
+        backgroundColor: function (context) {
+            var index = context.dataIndex;
+            return highlightedValues[index] ? '#f59a9a' : '#9ad0f5';
+        }
     }
     datasets.push(dataset);
 
@@ -122,7 +168,12 @@ const updateChart = function () {
         let tooltip = labels[context.dataIndex];
         return tooltip;
     };
-    chart.update();
+
+    if (animation) {
+        chart.update();
+    } else {
+        chart.update('none');
+    }
 }
 
 const ctx = document.getElementById('stats-chart');
