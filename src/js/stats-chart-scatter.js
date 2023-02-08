@@ -7,15 +7,60 @@ closeSearchButton.addEventListener('click', () => { overlay.style.display = "non
 
 const statDropdownX = document.querySelector("#stat-select-x");
 const statDropdownY = document.querySelector("#stat-select-y");
+const statHighlightColumn = document.querySelector("#stat-highlight-column");
 const statHighlight = document.querySelector("#stat-highlight");
 
-if (statHighlight) {
-    let option = document.createElement("option");
-    option.value = "";
-    option.text = "";
-    statHighlight.appendChild(option);
+const updateHighlightOptions = function () {
+    if (statHighlight) {
+        statHighlight.innerHTML = "";
+        let option = document.createElement("option");
+        option.value = "";
+        option.text = "";
+        statHighlight.appendChild(option);
 
-    statHighlight.addEventListener('change', () => { updateChart(false); });
+        highlightColumn = statHighlightColumn ? statHighlightColumn.value : highlightColumn;
+
+        for (col of highlightValueOptions[highlightColumn].sort()) {
+            const option = document.createElement("option");
+            option.value = col;
+            option.text = col;
+            if (typeof highlightColumns !== "undefined" && highlightColumns[highlightColumn].default) {
+                option.selected = col.toString() === highlightColumns[highlightColumn].default.toString() ||
+                    (highlightColumns[highlightColumn].default === "_max" && col === Math.max(...highlightValueOptions[highlightColumn])) ||
+                    (highlightColumns[highlightColumn].default === "_min" && col === Math.min(...highlightValueOptions[highlightColumn])) ? true : false;
+            }
+            statHighlight.appendChild(option);
+        }
+    }
+}
+
+const highlightValueOptions = {};
+
+if (statHighlightColumn && highlightColumns) {
+    for (col of Object.keys(highlightColumns)) {
+        let option = document.createElement("option");
+        option.value = col;
+        option.text = highlightColumns[col].name;
+        statHighlightColumn.appendChild(option);
+
+        highlightValueOptions[col] = [];
+    }
+
+    statHighlightColumn.addEventListener('change', () => {
+        updateHighlightOptions();
+        updateChart(false);
+    });
+} else if (typeof highlightColumn !== 'undefined') {
+    highlightValueOptions[highlightColumn] = [];
+}
+
+if (statHighlight) {
+    statHighlight.addEventListener('change', () => {
+        if (typeof highlightColumns !== "undefined" && highlightColumns[highlightColumn]) {
+            highlightColumns[highlightColumn].default = statHighlight.value;
+        }
+        updateChart(false);
+    });
 }
 
 let optionGroupX;
@@ -49,14 +94,15 @@ statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonH
 statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
 
 let chartStats = {};
-for (col of [...labelColumns, ...Object.keys(chartColumns)]) {
+let chartStatColumns = [...labelColumns, ...Object.keys(chartColumns)];
+if (typeof highlightColumns !== "undefined") { chartStatColumns = [...new Set([...chartStatColumns, ...Object.keys(highlightColumns)])] };
+
+for (col of chartStatColumns) {
     chartStats[col] = [];
 }
 
 // let filteredRowCountPrevious = 0;
 // let filteredRowCount = 0;
-
-const highlightValueOptions = [];
 
 window.addEventListener('DOMContentLoaded', (event) => {
     // Reactable.onStateChange(reactableId, state => {
@@ -69,28 +115,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     const dataTemp = Reactable.getInstance(reactableId).data;
     for (dataRow of dataTemp) {
-        for (col of [...new Set([...labelColumns, ...Object.keys(chartColumns)])]) {
+        for (col of chartStatColumns) {
             chartStats[col].push(dataRow[col]);
-            if (typeof highlightColumn === 'string' && col === highlightColumn && !highlightValueOptions.includes(dataRow[col])) {
-                highlightValueOptions.push(dataRow[col]);
+            if ((typeof highlightColumns !== 'undefined' && Object.keys(highlightColumns).indexOf(col) >= 0 ||
+                typeof highlightColumn !== 'undefined' && col === highlightColumn) && !highlightValueOptions[col].includes(dataRow[col])) {
+                highlightValueOptions[col].push(dataRow[col]);
             }
         }
     }
 
-    if (statHighlight) {
-        for (col of highlightValueOptions.sort()) {
-            const option = document.createElement("option");
-            option.value = col;
-            option.text = col;
-            if (typeof defaultHighlight === "string") {
-                option.selected = col === defaultHighlight ||
-                    (defaultHighlight === "_max" && col === Math.max(...highlightValueOptions)) ||
-                    (defaultHighlight === "_min" && col === Math.min(...highlightValueOptions)) ? true : false;
-            }
-            statHighlight.appendChild(option);
-        }
-    }
-
+    updateHighlightOptions();
     updateChart();
 });
 
@@ -101,8 +135,9 @@ const updateChart = function (animation = true) {
     const datasets = [];
 
     const data = [];
+    const dataHighlight = [];
     const labels = [];
-    const highlightedValues = [];
+    const labelsHighlight = [];
     let x;
 
     const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
@@ -112,12 +147,12 @@ const updateChart = function (animation = true) {
     chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
-            data.push({ x: x, y: chartStats[statDropdownY.value][index] });
-            labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
             if (typeof highlightColumn === 'string' && highlightValue && chartStats[highlightColumn][index].toString() === highlightValue) {
-                highlightedValues.push(true);
+                dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index] });
+                labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
             } else {
-                highlightedValues.push(false);
+                data.push({ x: x, y: chartStats[statDropdownY.value][index] });
+                labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
             }
         }
     });
@@ -125,16 +160,31 @@ const updateChart = function (animation = true) {
     const dataset = {
         data: data,
         pointRadius: 4,
-        borderColor: function (context) {
-            var index = context.dataIndex;
-            return highlightedValues[index] ? '#ed5858' : '#58afed';
-        },
-        backgroundColor: function (context) {
-            var index = context.dataIndex;
-            return highlightedValues[index] ? '#f59a9a' : '#9ad0f5';
-        }
+        order: 2,
+        borderColor: '#58afed',
+        backgroundColor: '#9ad0f5'
+        //,
+        // borderColor: function (context) {
+        //     var index = context.dataIndex;
+        //     return highlightedValues[index] ? '#ed5858' : '#58afed';
+        // },
+        // backgroundColor: function (context) {
+        //     var index = context.dataIndex;
+        //     return highlightedValues[index] ? '#f59a9a' : '#9ad0f5';
+        // }
     }
     datasets.push(dataset);
+
+    if (typeof highlightColumn === 'string' && highlightValue) {
+        const datasetHighlight = {
+            data: dataHighlight,
+            pointRadius: 4,
+            order: 1,
+            borderColor: '#ed5858',
+            backgroundColor: '#f59a9a'
+        }
+        datasets.push(datasetHighlight);
+    }
 
     chart.data.datasets = datasets;
 
@@ -165,8 +215,13 @@ const updateChart = function (animation = true) {
         return tooltip;
     };
     chart.options.plugins.tooltip.callbacks.beforeLabel = function (context) {
-        let tooltip = labels[context.dataIndex];
-        return tooltip;
+        if (context.datasetIndex == 0) {
+            let tooltip = labels[context.dataIndex];
+            return tooltip;
+        } else {
+            let tooltip = labelsHighlight[context.dataIndex];
+            return tooltip;
+        }
     };
 
     if (animation) {

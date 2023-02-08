@@ -35,3 +35,15 @@ const defaultY = 'WinPercentage';
 const reactableId = 'player-stats-table';
 
 let labelColumns = ['Player', 'Surface'];
+
+let highlightColumns = {
+    'Surface': {
+        name: 'Surface',
+        default: null
+    },
+    'PlayerIOC': {
+        name: 'Country',
+        default: null
+    }
+};
+let highlightColumn = 'Team';

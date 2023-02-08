@@ -28,4 +28,30 @@ let labelColumns = ['TeamName', 'Year'];
 // let highlightColumn = 'Year';
 // let defaultHighlight = '_max';
 
+let highlightColumns = {
+    'TeamName': {
+        name: 'Team',
+        default: null
+    },
+    'Year': {
+        name: 'Year',
+        default: '_max'
+    },
+    'IsPremier': {
+        name: 'Premiership teams',
+        default: "Yes"
+    },
+    'IsGrandFinalist': {
+        name: 'Grand final teams',
+        default: "Yes"
+    },
+    'IsFinalist': {
+        name: 'Finals teams',
+        default: "Yes"
+    },
+    'IsWoodenSpoon': {
+        name: 'Wooden spoon teams',
+        default: "Yes"
+    }
+};
 let highlightColumn = 'TeamName';

@@ -44,6 +44,20 @@ const reactableId = 'player-stats-table';
 
 let labelColumns = ['Player', 'Team'];
 
+let highlightColumns = {
+    'Team': {
+        name: 'Team',
+        default: null
+    },
+    'Position': {
+        name: 'Position',
+        default: null
+    },
+    'Age': {
+        name: 'Age',
+        default: null
+    }
+};
 let highlightColumn = 'Team';
 
 const viewChartButtonTemp = document.createElement('button');
