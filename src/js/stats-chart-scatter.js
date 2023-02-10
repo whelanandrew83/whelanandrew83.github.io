@@ -95,7 +95,12 @@ statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonH
 
 let chartStats = {};
 let chartStatColumns = [...labelColumns, ...Object.keys(chartColumns)];
-if (typeof highlightColumns !== "undefined") { chartStatColumns = [...new Set([...chartStatColumns, ...Object.keys(highlightColumns)])] };
+if (typeof highlightColumns !== "undefined") {
+    chartStatColumns = [...new Set([...chartStatColumns, ...Object.keys(highlightColumns)])]
+}
+if (typeof highlightColumn !== "undefined") {
+    chartStatColumns = [...new Set([...chartStatColumns, highlightColumn])]
+};
 
 for (col of chartStatColumns) {
     chartStats[col] = [];
