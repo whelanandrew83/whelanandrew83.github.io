@@ -32,7 +32,7 @@ const defaultX = 'Points_A';
 const defaultY = 'PlusMinusPoints_A';
 const reactableId = 'player-stats-table';
 
-let labelColumns = ['Player'];
+let labelColumns = ['Player', 'Team'];
 
 let highlightColumn = 'Team';
 

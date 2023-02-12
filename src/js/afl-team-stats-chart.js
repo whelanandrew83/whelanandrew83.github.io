@@ -69,6 +69,7 @@ const reactableId = 'team-stats-table';
 let labelColumns = ['Team'];
 
 let highlightColumn = 'Team';
+let pointImageColumn = 'Image';
 
 const viewChartButtonTemp = document.createElement('button');
 viewChartButtonTemp.id = "view-chart-button";

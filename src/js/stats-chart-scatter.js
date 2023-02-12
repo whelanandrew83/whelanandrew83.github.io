@@ -34,6 +34,7 @@ const updateHighlightOptions = function () {
     }
 }
 
+let pointStyleImages = [];
 const highlightValueOptions = {};
 
 if (statHighlightColumn && highlightColumns) {
@@ -127,6 +128,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 highlightValueOptions[col].push(dataRow[col]);
             }
         }
+        if (typeof pointImageColumn !== "undefined") {
+            if (dataRow[pointImageColumn]) {
+                const img = new Image();
+                img.src = dataRow[pointImageColumn];
+                if (window.innerWidth < 800) {
+                    img.height = "15";
+                    img.width = "15";
+                } else {
+                    img.height = "20";
+                    img.width = "20";
+                }
+                pointStyleImages.push(img);
+            } else {
+                pointStyleImages.push('circle');
+            }
+        }
     }
 
     updateHighlightOptions();
@@ -136,13 +153,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 statDropdownX.addEventListener('change', (e) => { updateChart(); });
 statDropdownY.addEventListener('change', (e) => { updateChart(); });
 
-const updateChart = function (animation = true) {
+const updateChart = function (animation = false) {
     const datasets = [];
 
     const data = [];
     const dataHighlight = [];
     const labels = [];
     const labelsHighlight = [];
+    const pointStyles = [];
+    const pointStylesHighlight = [];
     let x;
 
     const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
@@ -155,9 +174,15 @@ const updateChart = function (animation = true) {
             if (typeof highlightColumn === 'string' && highlightValue && chartStats[highlightColumn][index].toString() === highlightValue) {
                 dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index] });
                 labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
+                if (pointStyleImages.length > 0) {
+                    pointStylesHighlight.push(pointStyleImages[index]);
+                }
             } else {
                 data.push({ x: x, y: chartStats[statDropdownY.value][index] });
                 labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
+                if (pointStyleImages.length > 0) {
+                    pointStyles.push(pointStyleImages[index]);
+                }
             }
         }
     });
@@ -168,15 +193,9 @@ const updateChart = function (animation = true) {
         order: 2,
         borderColor: '#58afed',
         backgroundColor: '#9ad0f5'
-        //,
-        // borderColor: function (context) {
-        //     var index = context.dataIndex;
-        //     return highlightedValues[index] ? '#ed5858' : '#58afed';
-        // },
-        // backgroundColor: function (context) {
-        //     var index = context.dataIndex;
-        //     return highlightedValues[index] ? '#f59a9a' : '#9ad0f5';
-        // }
+    }
+    if (pointStyleImages.length > 0 && pointStylesHighlight.length == 0) {
+        dataset.pointStyle = pointStyles;
     }
     datasets.push(dataset);
 
@@ -187,6 +206,9 @@ const updateChart = function (animation = true) {
             order: 1,
             borderColor: '#ed5858',
             backgroundColor: '#f59a9a'
+        }
+        if (pointStyleImages.length > 0) {
+            datasetHighlight.pointStyle = pointStylesHighlight;
         }
         datasets.push(datasetHighlight);
     }
