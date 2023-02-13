@@ -35,3 +35,4 @@ const reactableId = 'player-stats-table';
 let labelColumns = ['Player', 'Team'];
 
 let highlightColumn = 'Team';
+let pointImageColumn = 'Image';

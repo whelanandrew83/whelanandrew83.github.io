@@ -1,7 +1,7 @@
 const chartColumns = {
     "Summary_Heading": { name: "Summary Stats", heading: true },
-    "Wins": { name: "Wins" },
-    "Losses": { name: "Losses" },
+    "Wins": { name: "Wins", dec: 0 },
+    "Losses": { name: "Losses", dec: 0 },
     "Percentage": { name: "Percentage" },
     "WinPercentage": { name: "Win Percentage" },
     "Team_Heading": { name: "Team Averages", heading: true },

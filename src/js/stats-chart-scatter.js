@@ -34,7 +34,8 @@ const updateHighlightOptions = function () {
     }
 }
 
-let pointStyleImages = [];
+let pointStyleImages = {};
+let pointStyleImageSource = [];
 const highlightValueOptions = {};
 
 if (statHighlightColumn && highlightColumns) {
@@ -120,6 +121,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // })
 
     const dataTemp = Reactable.getInstance(reactableId).data;
+    let imgSrc;
+    let img;
+
     for (dataRow of dataTemp) {
         for (col of chartStatColumns) {
             chartStats[col].push(dataRow[col]);
@@ -130,8 +134,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
         if (typeof pointImageColumn !== "undefined") {
             if (dataRow[pointImageColumn]) {
-                const img = new Image();
-                img.src = dataRow[pointImageColumn];
+                imgSrc = dataRow[pointImageColumn];
+
+                img = new Image();
+                img.src = imgSrc;
                 if (window.innerWidth < 800) {
                     img.height = "15";
                     img.width = "15";
@@ -139,10 +145,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
                     img.height = "20";
                     img.width = "20";
                 }
-                pointStyleImages.push(img);
             } else {
-                pointStyleImages.push('circle');
+                imgSrc = 'circle';
+                img = 'circle';
             }
+            if (!pointStyleImages[imgSrc]) {
+                pointStyleImages[imgSrc] = img;
+            }
+            pointStyleImageSource.push(imgSrc);
         }
     }
 
@@ -174,14 +184,14 @@ const updateChart = function (animation = false) {
             if (typeof highlightColumn === 'string' && highlightValue && chartStats[highlightColumn][index].toString() === highlightValue) {
                 dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index] });
                 labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
-                if (pointStyleImages.length > 0) {
-                    pointStylesHighlight.push(pointStyleImages[index]);
+                if (Object.keys(pointStyleImages).length > 0) {
+                    pointStylesHighlight.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
             } else {
                 data.push({ x: x, y: chartStats[statDropdownY.value][index] });
                 labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
-                if (pointStyleImages.length > 0) {
-                    pointStyles.push(pointStyleImages[index]);
+                if (Object.keys(pointStyleImages).length > 0) {
+                    pointStyles.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
             }
         }
@@ -194,7 +204,7 @@ const updateChart = function (animation = false) {
         borderColor: '#58afed',
         backgroundColor: '#9ad0f5'
     }
-    if (pointStyleImages.length > 0 && pointStylesHighlight.length == 0) {
+    if (Object.keys(pointStyleImages).length > 0 && pointStylesHighlight.length == 0 && pointStyles.length <= 50) {
         dataset.pointStyle = pointStyles;
     }
     datasets.push(dataset);
@@ -207,7 +217,7 @@ const updateChart = function (animation = false) {
             borderColor: '#ed5858',
             backgroundColor: '#f59a9a'
         }
-        if (pointStyleImages.length > 0) {
+        if (Object.keys(pointStyleImages).length > 0 && pointStylesHighlight.length <= 50) {
             datasetHighlight.pointStyle = pointStylesHighlight;
         }
         datasets.push(datasetHighlight);

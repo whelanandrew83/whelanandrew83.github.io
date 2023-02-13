@@ -59,6 +59,7 @@ let highlightColumns = {
     }
 };
 let highlightColumn = 'Team';
+let pointImageColumn = 'Image';
 
 const viewChartButtonTemp = document.createElement('button');
 viewChartButtonTemp.id = "view-chart-button";

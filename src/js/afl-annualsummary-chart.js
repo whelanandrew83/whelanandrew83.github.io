@@ -55,3 +55,4 @@ let highlightColumns = {
     }
 };
 let highlightColumn = 'TeamName';
+let pointImageColumn = 'Image';
