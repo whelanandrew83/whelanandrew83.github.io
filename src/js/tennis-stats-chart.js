@@ -46,4 +46,4 @@ let highlightColumns = {
         default: null
     }
 };
-let highlightColumn = 'Team';
+let highlightColumn = 'Surface';

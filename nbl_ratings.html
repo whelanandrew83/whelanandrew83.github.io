@@ -35,6 +35,7 @@
 <link href="site_libs/reactable-0.4.1/reactable.css" rel="stylesheet" />
 <script src="site_libs/reactable-binding-0.4.1/reactable.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="icon" href="favicon.ico" />
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="logo_192.png">
@@ -341,13 +342,106 @@
 <main>
 <p class="small">
 <b>Latest game(s): </b>
-South East Melbourne Phoenix v Perth Wildcats, Cairns Taipans v Tasmania JackJumpers
- (09 February 2023).
+Cairns Taipans v Perth Wildcats, New Zealand Breakers v Tasmania JackJumpers
+ (12 February 2023).
 </p>
-<div>
-<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5c527ad077a2266487ca" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5c527ad077a2266487ca">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Rank":[1,2,3,4,5,6,7,8,9,10],"Image":["images/nbl_logos/Sydney-40.png","images/nbl_logos/Tasmania-40.png","images/nbl_logos/Melbourne-40.png","images/nbl_logos/New Zealand-40.png","images/nbl_logos/Perth-40.png","images/nbl_logos/Cairns-40.png","images/nbl_logos/South East Melbourne-40.png","images/nbl_logos/Adelaide-40.png","images/nbl_logos/Brisbane-40.png","images/nbl_logos/Illawarra-40.png"],"Team":["Sydney","Tasmania","Melbourne","New Zealand","Perth","Cairns","South East Melbourne","Adelaide","Brisbane","Illawarra"],"Elo":[1584.13838291966,1558.47634462833,1542.802001505,1539.44459373559,1539.32071212332,1524.93838094292,1495.96220329456,1468.01716117285,1380.17545070616,1314.61202932425],"ChangeRound":["NA",14.5628392616732,"NA","NA",13.6719661903398,-14.5628392616732,-13.6719661903398,"NA","NA","NA"],"RoundResults":[null,"W",null,null,"W","L","L",null,null,null],"Change":[-21.2719876126628,14.5628392616732,12.3621122687593,7.20937272186688,13.6719661903398,-14.5628392616732,-13.6719661903398,-12.3621122687593,-7.20937272186688,-7.23895718979475],"AgainstTeam":["Perth","Cairns","Adelaide","Brisbane","South East Melbourne","Tasmania","Perth","Melbourne","New Zealand","Tasmania"],"Score":["84-96","87-79","116-107","80-75","106-99","79-87","99-106","107-116","75-80","63-87"],"Margin":[-12,8,9,5,7,-8,-7,-9,-5,-24],"Matches":[28,29,28,28,29,29,29,28,28,28],"Wins":[19,17,15,18,16,18,15,13,8,3],"Losses":[9,12,13,10,13,11,14,15,20,25],"WinPercentage":[67.8571428571429,58.6206896551724,53.5714285714286,64.2857142857143,55.1724137931034,62.0689655172414,51.7241379310345,46.4285714285714,28.5714285714286,10.7142857142857],"Percentage":[108.54943273906,103.691275167785,100.412541254125,107.880676758682,100.712410948631,102.882663418595,101.298701298701,98.0361956103196,90.9615384615385,87.4661508704062]},"columns":[{"id":"Rank","name":"Rank","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","defaultSortDesc":false},{"id":"Image","name":"Image","type":["glue","character"],"sortNALast":true,"minWidth":50,"align":"center","show":false},{"id":"Team","name":"Team","type":"character","sortNALast":true,"minWidth":170,"align":"left","filterable":true,"defaultSortDesc":false,"cell":["<img src=\"images/nbl_logos/Sydney-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Sydney<\/span>","<img src=\"images/nbl_logos/Tasmania-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Tasmania<\/span>","<img src=\"images/nbl_logos/Melbourne-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Melbourne<\/span>","<img src=\"images/nbl_logos/New Zealand-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>New Zealand<\/span>","<img src=\"images/nbl_logos/Perth-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Perth<\/span>","<img src=\"images/nbl_logos/Cairns-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Cairns<\/span>","<img src=\"images/nbl_logos/South East Melbourne-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>South East Melbourne<\/span>","<img src=\"images/nbl_logos/Adelaide-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Adelaide<\/span>","<img src=\"images/nbl_logos/Brisbane-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Brisbane<\/span>","<img src=\"images/nbl_logos/Illawarra-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Illawarra<\/span>"],"html":true,"className":"sticky","headerClassName":"sticky"},{"id":"Elo","name":"Elo","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}},"style":[{"background":"#63BE7B"},{"background":"#80CA94"},{"background":"#92D1A3"},{"background":"#96D3A6"},{"background":"#96D3A6"},{"background":"#A7DAB4"},{"background":"#C9E8D1"},{"background":"#E9F6EC"},{"background":"#FBB1B3"},{"background":"#F8696B"}]},{"id":"ChangeRound","name":"+/-","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","cell":["•","+14.6","•","•","+13.7","-14.6","-13.7","•","•","•"],"style":"function(rowInfo) {\n              var value = rowInfo.row['ChangeRound']\n              if (value > 0) {\n                  var color = '#008000'\n              } else if (value < 0) {\n                  var color = '#e00000'\n              } else {\n                  var color = '#777'\n              }\n              return { color: color, fontWeight: 'bold' }\n          }"},{"id":"RoundResults","name":"Results","type":"character","sortNALast":true,"minWidth":60,"align":"center"},{"id":"Change","name":"+/-","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","cell":["-21.3","+14.6","+12.4","+7.2","+13.7","-14.6","-13.7","-12.4","-7.2","-7.2"],"style":"function(rowInfo) {\n              var value = rowInfo.row['Change']\n              if (value > 0) {\n                  var color = '#008000'\n              } else if (value < 0) {\n                  var color = '#e00000'\n              } else {\n                  var color = '#777'\n              }\n              return { color: color, fontWeight: 'bold' }\n          }"},{"id":"AgainstTeam","name":"Against","type":"character","sortNALast":true,"minWidth":150,"align":"left"},{"id":"Score","name":"Score","type":["glue","character"],"sortNALast":true,"minWidth":60,"align":"center"},{"id":"Margin","name":"Margin","type":"numeric","sortNALast":true,"minWidth":55,"align":"center","cell":["-12","+8","+9","+5","+7","-8","-7","-9","-5","-24"],"style":"function(rowInfo) {\n              var value = rowInfo.row['Margin']\n              if (value > 0) {\n                  var color = '#008000'\n              } else if (value < 0) {\n                  var color = '#e00000'\n              } else {\n                  var color = '#777'\n              }\n              return { color: color, fontWeight: 'bold' }\n          }"},{"id":"Matches","name":"GP","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"id":"Wins","name":"W","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"id":"Losses","name":"L","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"id":"WinPercentage","name":"Win %","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}},{"id":"Percentage","name":"%","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}}],"columnGroups":[{"name":"Latest round","columns":["ChangeRound","RoundResults"]},{"name":"Latest game","columns":["Change","AgainstTeam","Score","Margin"]},{"name":"Season Summary","columns":["Matches","Wins","Losses","Percentage","WinPercentage"]}],"defaultSortDesc":true,"defaultSorted":[{"id":"Rank","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"nbl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"a1564bd4c8571604ecda11a76cf0236d"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.4.style","tag.attribs.columns.6.style","tag.attribs.columns.9.style"],"jsHooks":[]}</script>
+<div id="ratings-table">
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f544b33a04b74a6b0d16" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f544b33a04b74a6b0d16">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Rank":[1,2,3,4,5,6,7,8,9,10],"Image":["images/nbl_logos/Sydney-40.png","images/nbl_logos/New Zealand-40.png","images/nbl_logos/Melbourne-40.png","images/nbl_logos/Cairns-40.png","images/nbl_logos/Tasmania-40.png","images/nbl_logos/Perth-40.png","images/nbl_logos/South East Melbourne-40.png","images/nbl_logos/Adelaide-40.png","images/nbl_logos/Brisbane-40.png","images/nbl_logos/Illawarra-40.png"],"Team":["Sydney","New Zealand","Melbourne","Cairns","Tasmania","Perth","South East Melbourne","Adelaide","Brisbane","Illawarra"],"Elo":[1584.13838291966,1557.42531783738,1542.802001505,1541.66917216987,1540.49562052653,1522.58992089637,1495.96220329456,1468.01716117285,1380.17545070616,1314.61202932425],"ChangeRound":["NA",17.9807241017984,"NA",16.7307912269512,-17.9807241017984,-16.7307912269512,"NA","NA","NA","NA"],"RoundResults":[null,"W",null,"W","L","L",null,null,null,null],"Change":[-21.2719876126628,17.9807241017984,12.3621122687593,16.7307912269512,-17.9807241017984,-16.7307912269512,-13.6719661903398,-12.3621122687593,-7.20937272186688,-7.23895718979475],"AgainstTeam":["Perth","Tasmania","Adelaide","Perth","New Zealand","Cairns","Perth","Melbourne","New Zealand","Tasmania"],"Score":["84-96","88-68","116-107","91-78","68-88","78-91","99-106","107-116","75-80","63-87"],"Margin":[-12,20,9,13,-20,-13,-7,-9,-5,-24],"Matches":[28,29,28,30,30,30,29,28,28,28],"Wins":[19,19,15,19,17,16,15,13,8,3],"Losses":[9,10,13,11,13,14,14,15,20,25],"WinPercentage":[67.8571428571429,65.5172413793103,53.5714285714286,63.3333333333333,56.6666666666667,53.3333333333333,51.7241379310345,46.4285714285714,28.5714285714286,10.7142857142857],"Percentage":[108.54943273906,108.513396715644,100.412541254125,103.305785123967,102.750809061489,100.217548948513,101.298701298701,98.0361956103196,90.9615384615385,87.4661508704062]},"columns":[{"id":"Rank","name":"Rank","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","defaultSortDesc":false},{"id":"Image","name":"Image","type":["glue","character"],"sortNALast":true,"minWidth":50,"align":"center","show":false},{"id":"Team","name":"Team","type":"character","sortNALast":true,"minWidth":170,"align":"left","filterable":true,"defaultSortDesc":false,"cell":["<img src=\"images/nbl_logos/Sydney-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Sydney<\/span>","<img src=\"images/nbl_logos/New Zealand-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>New Zealand<\/span>","<img src=\"images/nbl_logos/Melbourne-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Melbourne<\/span>","<img src=\"images/nbl_logos/Cairns-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Cairns<\/span>","<img src=\"images/nbl_logos/Tasmania-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Tasmania<\/span>","<img src=\"images/nbl_logos/Perth-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Perth<\/span>","<img src=\"images/nbl_logos/South East Melbourne-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>South East Melbourne<\/span>","<img src=\"images/nbl_logos/Adelaide-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Adelaide<\/span>","<img src=\"images/nbl_logos/Brisbane-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Brisbane<\/span>","<img src=\"images/nbl_logos/Illawarra-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/> <span>Illawarra<\/span>"],"html":true,"className":"sticky","headerClassName":"sticky"},{"id":"Elo","name":"Elo","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}},"style":[{"background":"#63BE7B"},{"background":"#81CA95"},{"background":"#92D1A3"},{"background":"#94D2A4"},{"background":"#95D3A5"},{"background":"#AADBB7"},{"background":"#C9E8D1"},{"background":"#E9F6EC"},{"background":"#FBB1B3"},{"background":"#F8696B"}]},{"id":"ChangeRound","name":"+/-","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","cell":["•","+18.0","•","+16.7","-18.0","-16.7","•","•","•","•"],"style":"function(rowInfo) {\n              var value = rowInfo.row['ChangeRound']\n              if (value > 0) {\n                  var color = '#008000'\n              } else if (value < 0) {\n                  var color = '#e00000'\n              } else {\n                  var color = '#777'\n              }\n              return { color: color, fontWeight: 'bold' }\n          }"},{"id":"RoundResults","name":"Results","type":"character","sortNALast":true,"minWidth":60,"align":"center"},{"id":"Change","name":"+/-","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","cell":["-21.3","+18.0","+12.4","+16.7","-18.0","-16.7","-13.7","-12.4","-7.2","-7.2"],"style":"function(rowInfo) {\n              var value = rowInfo.row['Change']\n              if (value > 0) {\n                  var color = '#008000'\n              } else if (value < 0) {\n                  var color = '#e00000'\n              } else {\n                  var color = '#777'\n              }\n              return { color: color, fontWeight: 'bold' }\n          }"},{"id":"AgainstTeam","name":"Against","type":"character","sortNALast":true,"minWidth":150,"align":"left"},{"id":"Score","name":"Score","type":["glue","character"],"sortNALast":true,"minWidth":60,"align":"center"},{"id":"Margin","name":"Margin","type":"numeric","sortNALast":true,"minWidth":55,"align":"center","cell":["-12","+20","+9","+13","-20","-13","-7","-9","-5","-24"],"style":"function(rowInfo) {\n              var value = rowInfo.row['Margin']\n              if (value > 0) {\n                  var color = '#008000'\n              } else if (value < 0) {\n                  var color = '#e00000'\n              } else {\n                  var color = '#777'\n              }\n              return { color: color, fontWeight: 'bold' }\n          }"},{"id":"Matches","name":"GP","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"id":"Wins","name":"W","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"id":"Losses","name":"L","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"id":"WinPercentage","name":"Win %","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}},{"id":"Percentage","name":"%","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}}],"columnGroups":[{"name":"Latest round","columns":["ChangeRound","RoundResults"]},{"name":"Latest game","columns":["Change","AgainstTeam","Score","Margin"]},{"name":"Season Summary","columns":["Matches","Wins","Losses","Percentage","WinPercentage"]}],"defaultSortDesc":true,"defaultSorted":[{"id":"Rank","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"nbl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"dcaef519738a703e9ed86010cf04a31f"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.4.style","tag.attribs.columns.6.style","tag.attribs.columns.9.style"],"jsHooks":[]}</script>
 </div>
+<h3>
+Overall Ratings chart
+</h3>
+<div class="chart-container"
+style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
+<canvas id="ratings-chart">
+</canvas>
+</div>
+<script>
+const ctx = document.getElementById('ratings-chart');
+const dataScript = document.querySelector('#ratings-table script[data-for^="htmlwidget"]')
+const data = JSON.parse(dataScript.innerText).x.tag.attribs.data;
+
+const pointStyles = [];
+const chartData = [];
+data.Team.forEach((element, index) => {
+    chartData.push({ x: data.Rank[index], y: data.Elo[index] });
+
+    const img = new Image();
+    img.src = data.Image[index];
+    if (window.innerWidth < 800) {
+        img.height = "20";
+        img.width = "20";
+    } else {
+        img.height = "25";
+        img.width = "25";
+    }
+    pointStyles.push(img);
+});
+
+const chart = new Chart(ctx, {
+    data: {
+        datasets: [{
+            type: 'scatter',
+            data: chartData,
+            pointStyle: pointStyles,
+            pointRadius: 10
+        }, {
+            type: 'bar',
+            data: chartData,
+            backgroundColor: "#dbdbdb",
+            barThickness: 5,
+            base: 1500
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                display: false,
+                offset: false,
+                min: 0,
+                max: Math.max(...data.Rank) + 1
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: "Overall rating",
+                    font: {
+                        weight: "bold"
+                    }
+                },
+                beginAtZero: false,
+                grid: {
+                    color: function (context) {
+                        if (context.tick.value == 1500) {
+                            return "#878787"
+                        } else {
+                            return "#e8e8e8"
+                        }
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    beforeLabel: function (context) {
+                        return data.Team[context.dataIndex];
+                    },
+                    label: function (context) {
+                        let label = "Overall rating: " + data.Elo[context.dataIndex].toFixed(1);
+
+                        return label;
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
 </main>
 
 <footer>

@@ -35,8 +35,3 @@ const reactableId = 'player-stats-table';
 let labelColumns = ['Player', 'Team'];
 
 let highlightColumn = 'Team';
-
-const viewChartButtonTemp = document.createElement('button');
-viewChartButtonTemp.id = "view-chart-button";
-viewChartButtonTemp.classList = "btn btn-primary btn-sm mx-1 my-2";
-viewChartButtonTemp.innerText = "View scatter chart";
