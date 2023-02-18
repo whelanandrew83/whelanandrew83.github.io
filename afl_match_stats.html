@@ -355,6 +355,7 @@
 <div id="round-div">
 <h2>
 </h2>
+<select id="round-list" class="form-select"></select> <br>
 <ul id="match-list" class="nav nav-pills">
 </ul>
 <div id="stats-div">
@@ -381,6 +382,7 @@ matchId = urlParams.get("ID");
 
 const h1 = document.querySelector("h1");
 const h2 = document.querySelector("h2");
+const roundList = document.querySelector("#round-list");
 const matchList = document.querySelector("#match-list");
 const matchBanner = document.querySelector("#match-banner");
 const roundDiv = document.querySelector("#round-div");
@@ -389,11 +391,30 @@ const statsDiv = document.querySelector("#stats-div");
 let round_data = "";
 let match_data = "";
 
-const noValidMatch = function() {
-  statsDiv.style.display = "none";
-}
-
 if (matchId) {
+  fetch(`https://www.wheeloratings.com/src/match_stats/table_data/${matchId.slice(0, 4)}.json`)
+    .then((res) => res.json())
+    .then((data) => {
+        if (typeof data.RoundId === "string") {
+          for (key of Object.keys(data)) {
+            data[key] = [data[key]];
+          }
+        }
+        for (let i = 0; i < data.RoundId.length; i++) {
+          const li = document.createElement('option');
+          li.value = data.RoundId[i];
+          li.innerText = `Round ${data.RoundNumber[i]}`;
+          if (data.RoundId[i] === matchId.slice(0, 6)) {
+            li.selected = true;
+          }
+          roundList.appendChild(li);
+        }
+        
+        roundList.addEventListener('change', (e) => {
+          window.location.href = `afl_match_stats.html?ID=${roundList.value}`;
+        })
+    });
+  
   const xmlhttp = new XMLHttpRequest();
   const url = `https://www.wheeloratings.com/src/match_stats/table_data/${matchId.slice(0, 6)}.json`;
 
@@ -420,10 +441,16 @@ if (matchId) {
       }
       
       if (round_data) {
-        h2.innerText = `Round ${match_data.Summary[0].RoundNumber}, ${match_data.Summary[0].Season}`;
+        h2.innerText = `Round ${round_data.Summary[0].RoundNumber}, ${round_data.Summary[0].Season}`;
         
         const matches = round_data.Matches[0];
         
+        if (typeof matches.MatchId === "string") {
+          for (key of Object.keys(matches)) {
+            matches[key] = [matches[key]];
+          }
+        }
+
         for (let i = 0; i < matches.MatchId.length; i++) {
           const li = document.createElement('li');
           li.innerHTML = `<a href="afl_match_stats.html?ID=${matches.MatchId[i]}">${matches.HomeAbbreviation[i]} v ${matches.AwayAbbreviation[i]}`
@@ -467,12 +494,14 @@ if (matchId) {
           s.innerText = JSON.stringify(data);
   
           div.append(s);
+        } else {
+          statsDiv.style.display = "none";
         }
       } else {
-        noValidMatch();
+        roundDiv.style.display = "none";
       }
     } else if (this.readyState == 4) {
-      noValidMatch();
+      roundDiv.style.display = "none";
     }
   };
 
