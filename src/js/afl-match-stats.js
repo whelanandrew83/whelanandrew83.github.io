@@ -4,11 +4,11 @@ let seasonId;
 
 const urlParams = new URLSearchParams(location.search);
 const paramId = urlParams.get("ID");
-// if (paramId.length === 8) {
-//     matchId = parseInt(paramId);
-// }
+if (paramId.length === 8) {
+    matchId = parseInt(paramId).toString();
+}
 if (paramId.length >= 6) {
-    roundId = parseInt(paramId.slice(0, 6));
+    roundId = parseInt(paramId.slice(0, 6)).toString();
 }
 if (paramId.length >= 4) {
     seasonId = parseInt(paramId.slice(0, 4));
@@ -39,7 +39,7 @@ const loadMatch = function () {
         matchBanner.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="40px" alt=""> ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]} <img src="${round_data.Matches[0].AwayImage[match_number]}" height="40px" alt="">`;
         document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, Round ${round_data.Summary[0].RoundNumber} - ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]}`;
     } else {
-        matchBanner.innerHTML = `All Round ${round_data.Summary[0].RoundNumber} Stats`;
+        matchBanner.innerHTML = `All Round ${round_data.Summary[0].RoundNumber} Matches`;
         document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, Round ${round_data.Summary[0].RoundNumber}`;
     }
 }
@@ -53,14 +53,16 @@ if (validYears.includes(seasonId)) {
                     data[key] = [data[key]];
                 }
             }
-            if (!roundId && data.RoundId[0]) {
-                window.location.href = `afl_match_stats.html?ID=${data.RoundId[0]}`;
+            console.log(data);
+            console.log(data.RoundId.slice(-1))
+            if (!roundId && data.RoundId.slice(-1)) {
+                window.location.href = `afl_match_stats.html?ID=${data.RoundId.slice(-1)}`;
             } else {
                 for (let i = 0; i < data.RoundId.length; i++) {
                     const li = document.createElement('option');
                     li.value = data.RoundId[i];
                     li.innerText = `Round ${data.RoundNumber[i]}`;
-                    if (data.RoundId[i] === roundId.toString()) {
+                    if (data.RoundId[i] === roundId) {
                         li.selected = true;
                     }
                     roundList.appendChild(li);
@@ -90,19 +92,42 @@ if (validYears.includes(seasonId)) {
             if (this.readyState == 4 && this.status == 200) {
                 res = JSON.parse(this.responseText);
 
+                // if (res) {
+                //     round_data = res;
+                //     if (matchId) {
+                //         match_number = round_data.Matches[0].MatchId.indexOf(matchId);
+                //     } else {
+                //         match_number = -1;
+                //     }
+                //     if (match_number < 0 && (typeof round_data.Matches[0].MatchId === "string" || round_data.Matches[0].MatchId.length === 1)) {
+                //         match_number = 0;
+                //         matchId = round_data.Matches[0].MatchId[match_number];
+                //         history.replaceState(null, '', `afl_match_stats.html?ID=${matchId}`);
+                //     }
+                // }
+
                 if (res) {
                     round_data = res;
-                    if (matchId) {
-                        match_number = round_data.Matches[0].MatchId.indexOf(matchId.toString());
-                    }
-                    if (match_number < 0 && round_data.Matches[0].MatchId.length === 1) {
-                        match_number = 0;
-                        matchId = round_data.Matches[0].MatchId[match_number];
-                        //history.replaceState(null, '', `afl_match_stats.html?ID=${matchId}`);
-                    }
-                }
 
-                if (round_data) {
+                    const matches = round_data.Matches[0];
+
+                    if (typeof matches.MatchId === "string") {
+                        for (key of Object.keys(matches)) {
+                            matches[key] = [matches[key]];
+                        }
+                    }
+
+                    if (matchId) {
+                        match_number = matches.MatchId.indexOf(matchId);
+                    } else {
+                        match_number = -1;
+                    }
+                    if (match_number < 0 && matches.MatchId.length === 1) {
+                        match_number = 0;
+                        matchId = matches.MatchId[match_number];
+                        history.replaceState(null, '', `afl_match_stats.html?ID=${matchId}`);
+                    }
+
                     reactableData = JSON.parse(JSON.stringify(round_data.Data[0]));
 
                     // Remove columns from data if column isn't defined in Reactable
@@ -120,9 +145,9 @@ if (validYears.includes(seasonId)) {
                     }
 
                     addEventListener('DOMContentLoaded', (event) => {
-                        // if (matchId) {
-                        //     Reactable.setFilter('match-stats', 'MatchId', matchId);
-                        // }
+                        if (matchId) {
+                            Reactable.setFilter('match-stats', 'MatchId', matchId);
+                        }
                         Reactable.setHiddenColumns("match-stats", prevColumns => { return prevColumns.concat(columnsMissing) });
                     });
 
@@ -138,14 +163,6 @@ if (validYears.includes(seasonId)) {
                     div.append(s);
 
                     h2.innerText = `Round ${round_data.Summary[0].RoundNumber}, ${round_data.Summary[0].Season}`;
-
-                    const matches = round_data.Matches[0];
-
-                    if (typeof matches.MatchId === "string") {
-                        for (key of Object.keys(matches)) {
-                            matches[key] = [matches[key]];
-                        }
-                    }
 
                     if (matches.MatchId.length > 1) {
                         const button = document.createElement('button');
@@ -181,13 +198,6 @@ if (validYears.includes(seasonId)) {
                     }
 
                     for (let i = 0; i < matches.MatchId.length; i++) {
-                        // const li = document.createElement('li');
-                        // li.innerHTML = `<a href="afl_match_stats.html?ID=${matches.MatchId[i]}">${matches.HomeAbbreviation[i]} v ${matches.AwayAbbreviation[i]}`
-                        // if (matches.MatchId[i] === matchId) {
-                        //     li.classList = "active";
-                        // }
-                        // matchList.appendChild(li);
-
                         const button = document.createElement('button');
                         button.id = `match-${matches.MatchId[i]}`;
                         button.type = "button";
@@ -203,10 +213,10 @@ if (validYears.includes(seasonId)) {
 
                         button.addEventListener('click', (e) => {
                             matchId = matches.MatchId[i];
-                            match_number = round_data.Matches[0].MatchId.indexOf(matchId.toString());
+                            match_number = round_data.Matches[0].MatchId.indexOf(matchId);
                             loadMatch();
                             Reactable.setFilter('match-stats', 'MatchId', matchId);
-                            //history.replaceState(null, '', `afl_match_stats.html?ID=${matchId}`);
+                            history.replaceState(null, '', `afl_match_stats.html?ID=${matchId}`);
 
                             for (btn of matchButtons) {
                                 if (btn.id === `match-${matchId}`) {
