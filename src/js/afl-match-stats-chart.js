@@ -1,5 +1,6 @@
 const chartColumns = {
-    "RatingPoints": { name: "Rating Points" },
+    "RatingPoints": { name: "Player Rating" },
+    "EstimatedRating": { name: "Estimated Rating" },
     "Supercoach": { name: "Supercoach Points", dec: 0 },
     "DreamTeamPoints": { name: "Fantasy Points", dec: 0 },
     "CoachesVotes": { name: "Coaches Votes", dec: 0 },
@@ -22,7 +23,7 @@ const chartColumns = {
     "Hitouts": { name: "Hitouts", dec: 0 }
 };
 
-const defaultX = 'Disposals';
+const defaultX = 'EstimatedRating';
 const defaultY = 'RatingPoints';
 const reactableId = 'match-stats';
 
