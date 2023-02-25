@@ -391,18 +391,36 @@
 const validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
 </script>
 <div id="season-div">
-<select id="round-list" class="form-select"></select>
+<div id="round-select-div" class="d-none">
+<label for="round-list" class="form-label fw-bold">Select round</label>
+<!-- <select id="round-list" class="form-select"></select> -->
+<!-- <button id="first-round-button" class="btn btn-light btn-sm mx-1 my-2 disabled">Round 1</button> -->
+<!-- <button id="previous-round-button" class="btn btn-light btn-sm mx-1 my-2 disabled">Previous</button> -->
+<!-- <button id="next-round-button" class="btn btn-light btn-sm mx-1 my-2 disabled">Next</button> -->
+<!-- <button id="last-round-button" class="btn btn-light btn-sm mx-1 my-2 disabled">Last</button></div> -->
+<div class="input-group">
+<button style="min-width: 40px" id="first-round-button" class="btn btn-secondary disabled">
+&lt;&lt;
+</button>
+<button style="min-width: 40px" id="previous-round-button" class="btn btn-secondary disabled">
+&lt;
+</button>
+<select style="min-width: 120px" id="round-list" class="form-select"></select>
+<button style="min-width: 40px" id="next-round-button" class="btn btn-secondary disabled">&gt;</button>
+<button style="min-width: 40px" id="last-round-button" class="btn btn-secondary disabled">&gt;&gt;</button>
+</div>
+</div>
+<hr>
+<div id="round-div">
 <h2>
 </h2>
-<!-- <ul id="match-list" class="nav nav-pills"></ul> -->
-<div id="round-div">
 <div id="match-list">
 
 </div>
-<div id="stats-div">
 <hr>
+<div id="stats-div">
 <div class="row">
-<div id="match-banner" class="col text-center fs-1 fw-bold">
+<div id="match-banner" class="col text-center fs-1 fw-bold mb-2">
 
 </div>
 </div>
@@ -411,7 +429,7 @@ const validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
 View scatter chart
 </button>
 </div>
-<h3>
+<h3 class="mt-2">
 Player stats
 </h3>
 <div id="react-div">
@@ -435,17 +453,17 @@ Scatter chart
 <div class="container-fluid">
 <div class="row">
 <div class="col-sm-4">
-<p><label class="fw-bold" for="stat-select-x">X-axis</label>
+<p><label class="form-label fw-bold" for="stat-select-x">X-axis</label>
 <select id="stat-select-x" class="form-select" aria-label="Select stat for chart x axis">
 </select></p>
 </div>
 <div class="col-sm-4">
-<p><label class="fw-bold" for="stat-select-y">Y-axis</label>
+<p><label class="form-label fw-bold" for="stat-select-y">Y-axis</label>
 <select id="stat-select-y" class="form-select" aria-label="Select stat for chart y axis">
 </select></p>
 </div>
 <div class="col-sm-4">
-<p><label class="fw-bold" for="stat-highlight">Highlight</label>
+<p><label class="form-label fw-bold" for="stat-highlight">Highlight</label>
 <select id="stat-highlight" class="form-select" aria-label="Select highlight value">
 </select></p>
 </div>
@@ -458,8 +476,8 @@ style="position: relative; margin:auto; height:45vw; width:100%; max-height:600p
 </div>
 </div>
 <p class="py-3">
-Filters applied to the table will also apply to this chart. Chart built
-using <a href="https://www.chartjs.org" target="_blank">chartjs.org</a>
+Chart built using
+<a href="https://www.chartjs.org" target="_blank">chartjs.org</a>
 <p>
 </div>
 </div>

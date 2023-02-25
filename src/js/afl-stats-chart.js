@@ -1,5 +1,5 @@
 const chartColumns = {
-    "RatingPoints_Avg": { name: "Rating Points" },
+    "RatingPoints_Avg": { name: "Player Rating" },
     "Supercoach_Avg": { name: "Supercoach Points" },
     "DreamTeamPoints_Avg": { name: "Fantasy Points" },
     "CoachesVotes_Total": { name: "Coaches Votes", dec: 0 },

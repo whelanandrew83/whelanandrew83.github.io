@@ -48,6 +48,8 @@ const loadMatch = function () {
     }
 }
 
+const goToRound = () => { window.location.href = `afl_match_stats.html?ID=${roundList.value}` };
+
 if (validYears.includes(seasonId)) {
     fetch(`https://www.wheeloratings.com/src/match_stats/table_data/${seasonId}.json`)
         .then((res) => res.json())
@@ -60,19 +62,49 @@ if (validYears.includes(seasonId)) {
             if (!roundId && data.RoundId.slice(-1)) {
                 window.location.href = `afl_match_stats.html?ID=${data.RoundId.slice(-1)}`;
             } else {
-                for (let i = 0; i < data.RoundId.length; i++) {
-                    const li = document.createElement('option');
-                    li.value = data.RoundId[i];
-                    li.innerText = `Round ${data.RoundNumber[i]}`;
-                    if (data.RoundId[i] === roundId) {
-                        li.selected = true;
+                if (data.RoundId.length > 1) {
+                    for (let i = 0; i < data.RoundId.length; i++) {
+                        const li = document.createElement('option');
+                        li.value = data.RoundId[i];
+                        li.innerText = `Round ${data.RoundNumber[i]}`;
+                        if (data.RoundId[i] === roundId) {
+                            li.selected = true;
+                        }
+                        roundList.appendChild(li);
                     }
-                    roundList.appendChild(li);
-                }
 
-                roundList.addEventListener('change', (e) => {
-                    window.location.href = `afl_match_stats.html?ID=${roundList.value}`;
-                })
+                    document.querySelector("#round-select-div").classList.remove("d-none");
+
+                    if (roundList.selectedIndex > 0) {
+                        document.querySelector("#first-round-button").classList.remove("disabled");
+                        document.querySelector("#previous-round-button").classList.remove("disabled");
+                    }
+                    if (roundList.selectedIndex < (roundList.length - 1)) {
+                        document.querySelector("#next-round-button").classList.remove("disabled");
+                        document.querySelector("#last-round-button").classList.remove("disabled");
+                    }
+
+                    document.querySelector("#first-round-button").addEventListener('click', (e) => {
+                        roundList.selectedIndex = 0;
+                        goToRound();
+                    });
+                    document.querySelector("#previous-round-button").addEventListener('click', (e) => {
+                        roundList.selectedIndex -= 1;
+                        goToRound();
+                    });
+                    document.querySelector("#next-round-button").addEventListener('click', (e) => {
+                        roundList.selectedIndex += 1;
+                        goToRound();
+                    });
+                    document.querySelector("#last-round-button").addEventListener('click', (e) => {
+                        roundList.selectedIndex = roundList.length - 1;
+                        goToRound();
+                    });
+
+                    roundList.addEventListener('change', (e) => {
+                        goToRound();
+                    })
+                }
             }
         });
 
