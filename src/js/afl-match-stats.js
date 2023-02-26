@@ -38,7 +38,7 @@ const columnsMissing = [];
 const matchButtons = [];
 
 const playerDisplay = function (cellInfo) {
-    return `<img src='${cellInfo.row['Image']}' height='15px' width='15px' alt=''> <a href='afl_player_profile.html?ID='${cellInfo.row['WebsiteId']}'>${cellInfo.row['Player']}</a>`
+    return `<img src='${cellInfo.row['Image']}' height='15px' width='15px' alt=''> <a href='afl_player_profile.html?ID=${cellInfo.row['WebsiteId']}'>${cellInfo.row['Player']}</a>`
 }
 
 const loadMatch = function () {
