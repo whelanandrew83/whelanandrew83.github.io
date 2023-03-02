@@ -70,42 +70,50 @@ let optionGroupY;
 
 const nonHeadingOptions = [];
 
-for (col of Object.keys(chartColumns)) {
-    if (chartColumns[col].heading) {
-        optionGroupX = document.createElement("optgroup");
-        optionGroupX.label = chartColumns[col].name;
-        optionGroupY = optionGroupX.cloneNode(true);
-        statDropdownX.appendChild(optionGroupX);
-        statDropdownY.appendChild(optionGroupY);
-    } else {
-        const option = document.createElement("option");
-        option.value = col;
-        option.text = chartColumns[col].name;
-        nonHeadingOptions.push(col);
-        if (optionGroupX) {
-            optionGroupX.appendChild(option);
-            optionGroupY.appendChild(option.cloneNode(true));
+let chartStats = {};
+let chartStatColumns = [];
+
+const updateChartColumns = (cols) => {
+    Object.keys(chartColumns).forEach(key => {
+        if (cols.indexOf(key) === -1 && !chartColumns[key].heading) { delete chartColumns[key] }
+    });
+
+    for (col of Object.keys(chartColumns)) {
+        if (chartColumns[col].heading) {
+            optionGroupX = document.createElement("optgroup");
+            optionGroupX.label = chartColumns[col].name;
+            optionGroupY = optionGroupX.cloneNode(true);
+            statDropdownX.appendChild(optionGroupX);
+            statDropdownY.appendChild(optionGroupY);
         } else {
-            statDropdownX.appendChild(option);
-            statDropdownY.appendChild(option.cloneNode(true));
+            const option = document.createElement("option");
+            option.value = col;
+            option.text = chartColumns[col].name;
+            nonHeadingOptions.push(col);
+            if (optionGroupX) {
+                optionGroupX.appendChild(option);
+                optionGroupY.appendChild(option.cloneNode(true));
+            } else {
+                statDropdownX.appendChild(option);
+                statDropdownY.appendChild(option.cloneNode(true));
+            }
         }
     }
-}
 
-statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
-statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
+    statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
+    statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
 
-let chartStats = {};
-let chartStatColumns = [...labelColumns, ...Object.keys(chartColumns)];
-if (typeof highlightColumns !== "undefined") {
-    chartStatColumns = [...new Set([...chartStatColumns, ...Object.keys(highlightColumns)])]
-}
-if (typeof highlightColumn !== "undefined") {
-    chartStatColumns = [...new Set([...chartStatColumns, highlightColumn])]
-};
+    chartStatColumns = [...labelColumns, ...Object.keys(chartColumns)];
+    if (typeof highlightColumns !== "undefined") {
+        chartStatColumns = [...new Set([...chartStatColumns, ...Object.keys(highlightColumns)])]
+    }
+    if (typeof highlightColumn !== "undefined") {
+        chartStatColumns = [...new Set([...chartStatColumns, highlightColumn])]
+    };
 
-for (col of chartStatColumns) {
-    chartStats[col] = [];
+    for (col of chartStatColumns) {
+        chartStats[col] = [];
+    }
 }
 
 // let filteredRowCountPrevious = 0;
@@ -121,6 +129,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // })
 
     const dataTemp = Reactable.getInstance(reactableId).data;
+    updateChartColumns(Object.keys(Reactable.getInstance(reactableId).data[0]));
     let imgSrc;
     let img;
 
@@ -173,6 +182,8 @@ const updateChart = function (animation = false) {
     const pointStyles = [];
     const pointStylesHighlight = [];
     let x;
+    const xRange = [];
+    const drawDiagonalLine = typeof diagonalLines !== "undefined" && diagonalLines[statDropdownX.value] === statDropdownY.value;
 
     const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
 
@@ -192,6 +203,14 @@ const updateChart = function (animation = false) {
                 labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
                 if (Object.keys(pointStyleImages).length > 0) {
                     pointStyles.push(pointStyleImages[pointStyleImageSource[index]]);
+                }
+            }
+            if (drawDiagonalLine) {
+                if (xRange.length === 0) {
+                    xRange.push(x, x);
+                } else {
+                    if (x < xRange[0]) xRange[0] = x;
+                    if (x > xRange[1]) xRange[1] = x;
                 }
             }
         }
@@ -260,6 +279,23 @@ const updateChart = function (animation = false) {
             return tooltip;
         }
     };
+    if (drawDiagonalLine && xRange[0] < xRange[1]) {
+        chart.options.plugins.annotation = {
+            annotations: {
+                diagonalLine: {
+                    drawTime: 'beforeDatasetsDraw',
+                    type: 'line',
+                    borderWidth: 1,
+                    xMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
+                    xMax: xRange[1] + 0.05 * (xRange[1] - xRange[0]),
+                    yMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
+                    yMax: xRange[1] + 0.05 * (xRange[1] - xRange[0])
+                }
+            }
+        }
+    } else {
+        delete chart.options.plugins.annotation;
+    }
 
     if (animation) {
         chart.update();
