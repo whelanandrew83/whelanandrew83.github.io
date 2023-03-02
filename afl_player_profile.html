@@ -253,6 +253,9 @@
             <li class="divider"></li>
             <li class="dropdown-header">STATISTICS</li>
             <li>
+              <a href="afl_match_stats.html">Match Stats</a>
+            </li>
+            <li>
               <a href="afl_stats.html">Player Stats</a>
             </li>
             <li>
@@ -324,6 +327,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="afl_match_previews.html">Match Previews</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_stats.html"><span class="badge bg-secondary">New</span> Match Stats</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="afl_stats.html">Player Stats</a>
@@ -522,7 +528,11 @@ if (player) {
         cell.innerText = "Debut";
         
         cell = row.insertCell();
-        cell.innerText = `${player_data[player].Summary.DebutSeason} v ${player_data[player].Summary.DebutOpposition}`;
+        cell.innerHTML = `${player_data[player].Summary.DebutSeason} v ${player_data[player].Summary.DebutOpposition}`;
+        
+        if (parseInt(player_data[player].Summary.DebutMatchId)) {
+            cell.innerHTML += ` (<a href='afl_match_stats.html?ID=${parseInt(player_data[player].Summary.DebutMatchId)}'>Match stats</a>)`;
+        }
 
         row = tbody.insertRow();
         cell = row.insertCell();
@@ -530,7 +540,11 @@ if (player) {
         cell.innerText = "Last Match";
         
         cell = row.insertCell();
-        cell.innerText = `${player_data[player].Summary.LastMatchSeason} v ${player_data[player].Summary.LastMatchOpposition}`;
+        cell.innerHTML = `${player_data[player].Summary.LastMatchSeason} v ${player_data[player].Summary.LastMatchOpposition}`;
+        
+        if (parseInt(player_data[player].Summary.LastMatchId)) {
+            cell.innerHTML += ` (<a href='afl_match_stats.html?ID=${parseInt(player_data[player].Summary.LastMatchId)}'>Match stats</a>)`;
+        }
 
         row = tbody.insertRow();
         cell = row.insertCell();
