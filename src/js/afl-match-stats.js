@@ -35,6 +35,8 @@ let reactableData;
 
 const columns = [];
 const columnsMissing = [];
+const columnsTeam = [];
+const columnsTeamMissing = [];
 const matchButtons = [];
 
 const playerDisplay = function (cellInfo) {
