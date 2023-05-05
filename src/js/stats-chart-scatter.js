@@ -21,15 +21,17 @@ const updateHighlightOptions = function () {
         highlightColumn = statHighlightColumn ? statHighlightColumn.value : highlightColumn;
 
         for (col of highlightValueOptions[highlightColumn].sort()) {
-            const option = document.createElement("option");
-            option.value = col;
-            option.text = col;
-            if (typeof highlightColumns !== "undefined" && highlightColumns[highlightColumn].default) {
-                option.selected = col.toString() === highlightColumns[highlightColumn].default.toString() ||
-                    (highlightColumns[highlightColumn].default === "_max" && col === Math.max(...highlightValueOptions[highlightColumn])) ||
-                    (highlightColumns[highlightColumn].default === "_min" && col === Math.min(...highlightValueOptions[highlightColumn])) ? true : false;
+            if (col) {
+                const option = document.createElement("option");
+                option.value = col;
+                option.text = col;
+                if (typeof highlightColumns !== "undefined" && highlightColumns[highlightColumn].default) {
+                    option.selected = col.toString() === highlightColumns[highlightColumn].default.toString() ||
+                        (highlightColumns[highlightColumn].default === "_max" && col === Math.max(...highlightValueOptions[highlightColumn])) ||
+                        (highlightColumns[highlightColumn].default === "_min" && col === Math.min(...highlightValueOptions[highlightColumn])) ? true : false;
+                }
+                statHighlight.appendChild(option);
             }
-            statHighlight.appendChild(option);
         }
     }
 }
@@ -192,7 +194,7 @@ const updateChart = function (animation = false) {
     chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
-            if (typeof highlightColumn === 'string' && highlightValue && chartStats[highlightColumn][index].toString() === highlightValue) {
+            if (typeof highlightColumn === 'string' && highlightValue && chartStats[highlightColumn][index] && chartStats[highlightColumn][index].toString() === highlightValue) {
                 dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index] });
                 labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
                 if (Object.keys(pointStyleImages).length > 0) {
