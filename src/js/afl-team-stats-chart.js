@@ -22,6 +22,7 @@ const chartColumns = {
     "Marks": { name: "Marks" },
     "MarksInside50": { name: "Marks Inside 50" },
     "ContestedMarks": { name: "Contested Marks" },
+    "InterceptMarks": { name: "Intercept Marks" },
     "Goals": { name: "Goals" },
     "GoalScorers": { name: "Goal Scorers" },
     "ShotsAtGoal": { name: "Shots At Goal" },
