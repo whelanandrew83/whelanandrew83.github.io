@@ -29,12 +29,12 @@ const defaultX = 'Match';
 const defaultY = 'RatingPoints';
 const reactableId = 'match-stats';
 
-let labelColumns = ['Player', 'Match'];
+let labelColumns = ['Season', 'RoundNumber'];
 
 let highlightColumns = {
     'Season': {
         name: 'Season',
-        default: '_max'
+        default: null
     },
     'Opposition': {
         name: 'Opposition',
