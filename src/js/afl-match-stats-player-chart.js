@@ -36,6 +36,14 @@ let highlightColumns = {
         name: 'Season',
         default: null
     },
+    'Result': {
+        name: 'Result',
+        default: null
+    },
+    'Milestone': {
+        name: 'Milestone',
+        default: 'Yes'
+    },
     'Opposition': {
         name: 'Opposition',
         default: null

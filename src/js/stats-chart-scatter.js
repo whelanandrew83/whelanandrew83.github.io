@@ -2,8 +2,16 @@ const viewChartButton = document.querySelector("#view-chart-button");
 const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
 
-viewChartButton.addEventListener('click', () => { overlay.style.display = "block"; updateChart(); });
+viewChartButton.addEventListener('click', () => { overlay.style.display = "block"; statDropdownX.focus(); updateChart(); });
 closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; });
+document.addEventListener('keyup', (e) => {
+    if (e.code === "Escape") {
+        if (document.activeElement.id === "close-search-button")
+            overlay.style.display = "none";
+        else
+            closeSearchButton.focus();
+    }
+});
 
 const statDropdownX = document.querySelector("#stat-select-x");
 const statDropdownY = document.querySelector("#stat-select-y");
