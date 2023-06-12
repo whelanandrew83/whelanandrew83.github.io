@@ -365,6 +365,7 @@
 since 2012.
 </p>
 <div id="player-div">
+<a id="match-stats-link" href="#">View match stats</a>
 <h3>
 Summary
 </h3>
@@ -475,6 +476,8 @@ const noValidPlayer = function() {
 }
 
 if (player) {
+  document.querySelector("#match-stats-link").href = `afl_match_stats_player.html?ID=${player}`;
+  
   const xmlhttp = new XMLHttpRequest();
   const url = `https://www.wheeloratings.com/src/player_profiles/table_data/${player.slice(-2)}.json`;
 
