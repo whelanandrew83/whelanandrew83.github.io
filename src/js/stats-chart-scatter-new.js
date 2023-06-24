@@ -3,12 +3,13 @@ const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
 
 viewChartButton.addEventListener('click', () => { overlay.style.display = "block"; statDropdownX.focus(); updateChart(); });
-closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; });
+closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; Reactable.setFilter('player-stats-table', 'Select', undefined); });
 document.addEventListener('keyup', (e) => {
     if (e.code === "Escape") {
-        if (document.activeElement.id === "close-search-button")
+        if (document.activeElement.id === "close-search-button") {
             overlay.style.display = "none";
-        else
+            Reactable.setFilter('player-stats-table', 'Select', undefined);
+        } else
             closeSearchButton.focus();
     }
 });
