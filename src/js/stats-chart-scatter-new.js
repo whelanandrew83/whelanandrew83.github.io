@@ -360,7 +360,7 @@ const chart = new Chart(ctx, {
             }
         },
         onClick: (event, elements, chart) => {
-            if (elements[0]) {
+            if (highlightColumn === 'Selection' && elements[0]) {
                 for (i = 0; i < elements.length; i++) selectRow(elements[i].element.$context.raw.index);
                 updateChart(false);
             }
