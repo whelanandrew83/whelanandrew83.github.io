@@ -2,13 +2,21 @@ const viewChartButton = document.querySelector("#view-chart-button");
 const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
 
+const refreshView = function () {
+    if (isTableSelect) {
+        const page = Reactable.getState(reactableId).pageIndex;
+        Reactable.setFilter(reactableId, 'Select', undefined);
+        Reactable.gotoPage(reactableId, page);
+    }
+}
+
 viewChartButton.addEventListener('click', () => { overlay.style.display = "block"; statDropdownX.focus(); updateChart(); });
-closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; if (isTableSelect) Reactable.setFilter('player-stats-table', 'Select', undefined); });
+closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; refreshView(); });
 document.addEventListener('keyup', (e) => {
     if (e.code === "Escape") {
         if (document.activeElement.id === "close-search-button") {
             overlay.style.display = "none";
-            if (isTableSelect) Reactable.setFilter('player-stats-table', 'Select', undefined);
+            refreshView();
         } else
             closeSearchButton.focus();
     }

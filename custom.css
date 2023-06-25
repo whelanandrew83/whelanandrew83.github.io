@@ -203,6 +203,15 @@ ul.nav.navbar-nav>li>a {
 /* .rt-tr-striped {
     background-color: #fff;
 } */
+
+.rt-td.sticky.selected {
+  background-color: #d79ff5 !important;
+}
+
+.rt-td.selected {
+  background-color: #d79ff5 !important;
+}
+
 .rt-tr-striped .sticky {
   background-color: rgb(246, 248, 250) !important;
 }
