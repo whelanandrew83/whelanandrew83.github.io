@@ -3,12 +3,12 @@ const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
 
 viewChartButton.addEventListener('click', () => { overlay.style.display = "block"; statDropdownX.focus(); updateChart(); });
-closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; Reactable.setFilter('player-stats-table', 'Select', undefined); });
+closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; if (isTableSelect) Reactable.setFilter('player-stats-table', 'Select', undefined); });
 document.addEventListener('keyup', (e) => {
     if (e.code === "Escape") {
         if (document.activeElement.id === "close-search-button") {
             overlay.style.display = "none";
-            Reactable.setFilter('player-stats-table', 'Select', undefined);
+            if (isTableSelect) Reactable.setFilter('player-stats-table', 'Select', undefined);
         } else
             closeSearchButton.focus();
     }
@@ -19,9 +19,11 @@ const statDropdownY = document.querySelector("#stat-select-y");
 const statHighlightColumn = document.querySelector("#stat-highlight-column");
 const statHighlight = document.querySelector("#stat-highlight");
 
-if (typeof selectedRows !== "undefined") {
-    highlightColumns.Selection = { name: "Selected", default: null };
-}
+let isTableSelect = false;
+
+// if (typeof selectedRows !== "undefined") {
+//     highlightColumns.Selection = { name: "Selected", default: null };
+// }
 
 const updateHighlightOptions = function () {
     if (statHighlight) {
@@ -54,6 +56,15 @@ let pointStyleImageSource = [];
 const highlightValueOptions = {};
 
 if (statHighlightColumn && highlightColumns) {
+    if (typeof selectedRows !== "undefined") {
+        let option = document.createElement("option");
+        option.value = 'Selection';
+        option.text = 'Selected';
+        statHighlightColumn.appendChild(option);
+
+        highlightValueOptions['Selection'] = [];
+    }
+
     for (col of Object.keys(highlightColumns)) {
         let option = document.createElement("option");
         option.value = col;
@@ -89,6 +100,8 @@ let chartStats = {};
 let chartStatColumns = [];
 
 const updateChartColumns = (cols) => {
+    if (cols.indexOf('Select') >= 0) isTableSelect = true;
+
     Object.keys(chartColumns).forEach(key => {
         if (cols.indexOf(key) === -1 && !chartColumns[key].heading) { delete chartColumns[key] }
     });
@@ -125,9 +138,9 @@ const updateChartColumns = (cols) => {
     if (typeof highlightColumn !== "undefined") {
         chartStatColumns = [...new Set([...chartStatColumns, highlightColumn])]
     };
-    if (chartStatColumns.indexOf('Selection') >= 0) {
-        chartStatColumns.splice(chartStatColumns.indexOf('Selection'), 1);
-    }
+    // if (chartStatColumns.indexOf('Selection') >= 0) {
+    //     chartStatColumns.splice(chartStatColumns.indexOf('Selection'), 1);
+    // }
 
     for (col of chartStatColumns) {
         chartStats[col] = [];

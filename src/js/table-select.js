@@ -14,3 +14,12 @@ const rowStyle = function (index) {
         return { backgroundColor: '#d79ff5' }
     }
 }
+
+const cellClass = function (index) {
+    if (selectedRows.indexOf(index) >= 0) {
+        // return { backgroundColor: '#d79ff5', boxShadow: 'inset 2px 0 0 0 #670099' }
+        return ' selected'
+    } else {
+        return ''
+    }
+}
