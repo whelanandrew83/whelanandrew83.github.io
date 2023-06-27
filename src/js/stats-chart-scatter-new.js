@@ -5,8 +5,9 @@ const overlay = document.querySelector("#overlay");
 const refreshView = function () {
     if (isTableSelect) {
         const page = Reactable.getState(reactableId).pageIndex;
-        Reactable.setFilter(reactableId, 'Select', undefined);
-        Reactable.gotoPage(reactableId, page);
+        // Reactable.setFilter(reactableId, 'Select', undefined);
+        Reactable.toggleHideColumn(reactableId, 'Select', false)
+        // Reactable.gotoPage(reactableId, page);
     }
 }
 
@@ -383,7 +384,10 @@ const chart = new Chart(ctx, {
         },
         onClick: (event, elements, chart) => {
             if (highlightColumn === 'Selection' && elements[0]) {
-                for (i = 0; i < elements.length; i++) selectRow(elements[i].element.$context.raw.index);
+                for (i = 0; i < elements.length; i++) {
+                    if (typeof elements[i].element.$context.raw !== 'undefined')
+                        selectRow(elements[i].element.$context.raw.index);
+                }
                 updateChart(false);
             }
         }
