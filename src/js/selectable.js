@@ -22,7 +22,7 @@ let selectedPlayersOnly = false;
 const toggleSelectionButton = document.querySelector("#toggle-selection-button");
 
 if (toggleSelectionButton) {
-    const selectedPlayersHandle = toggleSelectionButton.dataset.crosstalkTable;
+    const selectedPlayersHandle = new window.crosstalk.FilterHandle(toggleSelectionButton.dataset.crosstalkTable);
     toggleSelectionButton.addEventListener('click', () => {
         const selectedPlayerKeys = [];
         selectedRows.forEach(e => { selectedPlayerKeys.push(`${e + 1}`) });

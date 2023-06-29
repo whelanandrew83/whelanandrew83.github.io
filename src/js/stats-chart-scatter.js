@@ -2,13 +2,31 @@ const viewChartButton = document.querySelector("#view-chart-button");
 const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
 
+const clearSelectionButton = document.querySelector("#clear-selection-button");
+if (clearSelectionButton) clearSelectionButton.addEventListener('click', () => { selectedRows = []; refreshView(); updateChart(false); });
+
+const updateSelectionText = () => { selectionText.innerHTML = selectedRows.length == 0 ? 'No players selected' : selectedRows.length == 1 ? '1 player selected' : `${selectedRows.length} players selected` }
+
+const selectionText = document.querySelector("#selection-text");
+
+let showLabels = true;
+const showLabelsButton = document.querySelector("#show-labels-button");
+if (showLabelsButton) showLabelsButton.addEventListener('click', () => { showLabels = !showLabels; showLabelsButton.innerHTML = showLabels ? "Hide labels" : "Show labels"; updateChart(false); });
+
+const refreshView = function () {
+    if (isTableSelect) {
+        Reactable.toggleHideColumn(reactableId, 'Select', false)
+    }
+}
+
 viewChartButton.addEventListener('click', () => { overlay.style.display = "block"; statDropdownX.focus(); updateChart(); });
-closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; });
+closeSearchButton.addEventListener('click', () => { overlay.style.display = "none"; refreshView(); });
 document.addEventListener('keyup', (e) => {
     if (e.code === "Escape") {
-        if (document.activeElement.id === "close-search-button")
+        if (document.activeElement.id === "close-search-button") {
             overlay.style.display = "none";
-        else
+            refreshView();
+        } else
             closeSearchButton.focus();
     }
 });
@@ -17,6 +35,8 @@ const statDropdownX = document.querySelector("#stat-select-x");
 const statDropdownY = document.querySelector("#stat-select-y");
 const statHighlightColumn = document.querySelector("#stat-highlight-column");
 const statHighlight = document.querySelector("#stat-highlight");
+
+let isTableSelect = false;
 
 const updateHighlightOptions = function () {
     if (statHighlight) {
@@ -49,6 +69,15 @@ let pointStyleImageSource = [];
 const highlightValueOptions = {};
 
 if (statHighlightColumn && highlightColumns) {
+    if (typeof selectedRows !== "undefined") {
+        let option = document.createElement("option");
+        option.value = 'Selection';
+        option.text = 'Selected';
+        statHighlightColumn.appendChild(option);
+
+        highlightValueOptions['Selection'] = [];
+    }
+
     for (col of Object.keys(highlightColumns)) {
         let option = document.createElement("option");
         option.value = col;
@@ -84,6 +113,8 @@ let chartStats = {};
 let chartStatColumns = [];
 
 const updateChartColumns = (cols) => {
+    if (cols.indexOf('Select') >= 0) isTableSelect = true;
+
     Object.keys(chartColumns).forEach(key => {
         if (cols.indexOf(key) === -1 && !chartColumns[key].heading) { delete chartColumns[key] }
     });
@@ -120,6 +151,9 @@ const updateChartColumns = (cols) => {
     if (typeof highlightColumn !== "undefined") {
         chartStatColumns = [...new Set([...chartStatColumns, highlightColumn])]
     };
+    // if (chartStatColumns.indexOf('Selection') >= 0) {
+    //     chartStatColumns.splice(chartStatColumns.indexOf('Selection'), 1);
+    // }
 
     for (col of chartStatColumns) {
         chartStats[col] = [];
@@ -191,6 +225,7 @@ const updateChart = function (animation = false) {
     const labelsHighlight = [];
     const pointStyles = [];
     const pointStylesHighlight = [];
+    const selectedAnnotations = {};
     let x;
     const xRange = [];
     const drawDiagonalLine = typeof diagonalLines !== "undefined" && diagonalLines[statDropdownX.value] === statDropdownY.value;
@@ -199,17 +234,29 @@ const updateChart = function (animation = false) {
 
     const highlightValue = statHighlight ? statHighlight.options[statHighlight.selectedIndex].text : null;
 
+    if (selectionText) updateSelectionText();
+
     chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
-            if (typeof highlightColumn === 'string' && highlightValue && chartStats[highlightColumn][index] && chartStats[highlightColumn][index].toString() === highlightValue) {
-                dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index] });
+            if (typeof highlightColumn === 'string' && ((highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0) || (highlightValue && chartStats[highlightColumn][index] && chartStats[highlightColumn][index].toString() === highlightValue))) {
+                dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
                 labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
-                if (Object.keys(pointStyleImages).length > 0) {
+                if (Object.keys(pointStyleImages).length > 0 && (highlightColumn !== 'Selection' || !showLabels)) {
                     pointStylesHighlight.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
+                if (highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0 && showLabels) {
+                    selectedAnnotations[`label${index}`] = {
+                        type: 'label',
+                        xValue: x,
+                        yValue: chartStats[statDropdownY.value][index],
+                        content: chartStats[labelColumns[0]][index],
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                        font: { size: 10 }
+                    }
+                }
             } else {
-                data.push({ x: x, y: chartStats[statDropdownY.value][index] });
+                data.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
                 labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
                 if (Object.keys(pointStyleImages).length > 0) {
                     pointStyles.push(pointStyleImages[pointStyleImageSource[index]]);
@@ -238,7 +285,7 @@ const updateChart = function (animation = false) {
     }
     datasets.push(dataset);
 
-    if (typeof highlightColumn === 'string' && highlightValue) {
+    if (typeof highlightColumn === 'string' && (highlightColumn === 'Selection' || highlightValue)) {
         const datasetHighlight = {
             data: dataHighlight,
             pointRadius: 4,
@@ -290,18 +337,19 @@ const updateChart = function (animation = false) {
         }
     };
     if (drawDiagonalLine && xRange[0] < xRange[1]) {
+        selectedAnnotations['diagonalLine'] = {
+            drawTime: 'beforeDatasetsDraw',
+            type: 'line',
+            borderWidth: 1,
+            xMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
+            xMax: xRange[1] + 0.05 * (xRange[1] - xRange[0]),
+            yMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
+            yMax: xRange[1] + 0.05 * (xRange[1] - xRange[0])
+        }
+    }
+    if (Object.keys(selectedAnnotations).length > 0) {
         chart.options.plugins.annotation = {
-            annotations: {
-                diagonalLine: {
-                    drawTime: 'beforeDatasetsDraw',
-                    type: 'line',
-                    borderWidth: 1,
-                    xMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
-                    xMax: xRange[1] + 0.05 * (xRange[1] - xRange[0]),
-                    yMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
-                    yMax: xRange[1] + 0.05 * (xRange[1] - xRange[0])
-                }
-            }
+            annotations: selectedAnnotations
         }
     } else {
         delete chart.options.plugins.annotation;
@@ -315,6 +363,8 @@ const updateChart = function (animation = false) {
 }
 
 const ctx = document.getElementById('stats-chart');
+
+let selectedPoints;
 
 const chart = new Chart(ctx, {
     type: 'scatter',
@@ -348,6 +398,15 @@ const chart = new Chart(ctx, {
             },
             tooltip: {
                 callbacks: {}
+            }
+        },
+        onClick: (event, elements, chart) => {
+            if (highlightColumn === 'Selection' && elements[0]) {
+                for (i = 0; i < elements.length; i++) {
+                    if ('raw' in elements[i].element.$context)
+                        selectRow(elements[i].element.$context.raw.index);
+                }
+                updateChart(false);
             }
         }
     }

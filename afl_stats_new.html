@@ -424,7 +424,7 @@ document.querySelector('h1').innerText = `AFL Player Statistics - ${year}`;
 // document.querySelector("#year-label").innerText = year;
 
 const xmlhttp = new XMLHttpRequest();
-const url = `https://www.wheeloratings.com/src/player_stats_snippet/${year}_new.html`;
+const url = `https://www.wheeloratings.com/src/player_stats_snippet/${year}.html`;
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
