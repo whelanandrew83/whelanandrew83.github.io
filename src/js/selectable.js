@@ -15,3 +15,14 @@ const cellClass = function (index) {
         return ''
     }
 }
+
+let selectedPlayersOnly = false;
+const toggleSelectionButton = document.querySelector("#toggle-selection-button");
+
+if (toggleSelectionButton) toggleSelectionButton.addEventListener('click', () => {
+    const selectedPlayerKeys = [];
+    selectedRows.forEach(e => { selectedPlayerKeys.push(`${e + 1}`) });
+
+    selectedPlayersOnly = !selectedPlayersOnly;
+    if (selectedPlayersOnly) selectedPlayersHandle.set(selectedPlayerKeys); else selectedPlayersHandle.clear();
+});
