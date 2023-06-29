@@ -2,12 +2,20 @@ const viewChartButton = document.querySelector("#view-chart-button");
 const closeSearchButton = document.querySelector("#close-search-button");
 const overlay = document.querySelector("#overlay");
 
+const clearSelectionButton = document.querySelector("#clear-selection-button");
+if (clearSelectionButton) clearSelectionButton.addEventListener('click', () => { selectedRows = []; refreshView(); updateChart(false); });
+
+const updateSelectionText = () => { selectionText.innerHTML = selectedRows.length == 0 ? 'No players selected' : selectedRows.length == 1 ? '1 player selected' : `${selectedRows.length} players selected` }
+
+const selectionText = document.querySelector("#selection-text");
+
+let showLabels = true;
+const showLabelsButton = document.querySelector("#show-labels-button");
+if (showLabelsButton) showLabelsButton.addEventListener('click', () => { showLabels = !showLabels; showLabelsButton.innerHTML = showLabels ? "Hide labels" : "Show labels"; updateChart(false); });
+
 const refreshView = function () {
     if (isTableSelect) {
-        const page = Reactable.getState(reactableId).pageIndex;
-        // Reactable.setFilter(reactableId, 'Select', undefined);
         Reactable.toggleHideColumn(reactableId, 'Select', false)
-        // Reactable.gotoPage(reactableId, page);
     }
 }
 
@@ -29,10 +37,6 @@ const statHighlightColumn = document.querySelector("#stat-highlight-column");
 const statHighlight = document.querySelector("#stat-highlight");
 
 let isTableSelect = false;
-
-// if (typeof selectedRows !== "undefined") {
-//     highlightColumns.Selection = { name: "Selected", default: null };
-// }
 
 const updateHighlightOptions = function () {
     if (statHighlight) {
@@ -221,6 +225,7 @@ const updateChart = function (animation = false) {
     const labelsHighlight = [];
     const pointStyles = [];
     const pointStylesHighlight = [];
+    const selectedAnnotations = {};
     let x;
     const xRange = [];
     const drawDiagonalLine = typeof diagonalLines !== "undefined" && diagonalLines[statDropdownX.value] === statDropdownY.value;
@@ -229,14 +234,26 @@ const updateChart = function (animation = false) {
 
     const highlightValue = statHighlight ? statHighlight.options[statHighlight.selectedIndex].text : null;
 
+    if (selectionText) updateSelectionText();
+
     chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
             if (typeof highlightColumn === 'string' && ((highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0) || (highlightValue && chartStats[highlightColumn][index] && chartStats[highlightColumn][index].toString() === highlightValue))) {
                 dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
                 labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
-                if (Object.keys(pointStyleImages).length > 0) {
+                if (Object.keys(pointStyleImages).length > 0 && (highlightColumn !== 'Selection' || !showLabels)) {
                     pointStylesHighlight.push(pointStyleImages[pointStyleImageSource[index]]);
+                }
+                if (highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0 && showLabels) {
+                    selectedAnnotations[`label${index}`] = {
+                        type: 'label',
+                        xValue: x,
+                        yValue: chartStats[statDropdownY.value][index],
+                        content: chartStats[labelColumns[0]][index],
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                        font: { size: 10 }
+                    }
                 }
             } else {
                 data.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
@@ -320,18 +337,19 @@ const updateChart = function (animation = false) {
         }
     };
     if (drawDiagonalLine && xRange[0] < xRange[1]) {
+        selectedAnnotations['diagonalLine'] = {
+            drawTime: 'beforeDatasetsDraw',
+            type: 'line',
+            borderWidth: 1,
+            xMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
+            xMax: xRange[1] + 0.05 * (xRange[1] - xRange[0]),
+            yMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
+            yMax: xRange[1] + 0.05 * (xRange[1] - xRange[0])
+        }
+    }
+    if (Object.keys(selectedAnnotations).length > 0) {
         chart.options.plugins.annotation = {
-            annotations: {
-                diagonalLine: {
-                    drawTime: 'beforeDatasetsDraw',
-                    type: 'line',
-                    borderWidth: 1,
-                    xMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
-                    xMax: xRange[1] + 0.05 * (xRange[1] - xRange[0]),
-                    yMin: xRange[0] - 0.05 * (xRange[1] - xRange[0]),
-                    yMax: xRange[1] + 0.05 * (xRange[1] - xRange[0])
-                }
-            }
+            annotations: selectedAnnotations
         }
     } else {
         delete chart.options.plugins.annotation;
@@ -385,7 +403,7 @@ const chart = new Chart(ctx, {
         onClick: (event, elements, chart) => {
             if (highlightColumn === 'Selection' && elements[0]) {
                 for (i = 0; i < elements.length; i++) {
-                    if (typeof elements[i].element.$context.raw !== 'undefined')
+                    if ('raw' in elements[i].element.$context)
                         selectRow(elements[i].element.$context.raw.index);
                 }
                 updateChart(false);
