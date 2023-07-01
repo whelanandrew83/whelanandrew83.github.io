@@ -227,7 +227,9 @@ const updateChart = function (animation = false) {
     const pointStylesHighlight = [];
     const selectedAnnotations = {};
     let x;
+    let y;
     const xRange = [];
+    const yRange = [];
     const drawDiagonalLine = typeof diagonalLines !== "undefined" && diagonalLines[statDropdownX.value] === statDropdownY.value;
 
     const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
@@ -239,35 +241,44 @@ const updateChart = function (animation = false) {
     chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
+            y = parseFloat(chartStats[statDropdownY.value][index]);
             if (typeof highlightColumn === 'string' && ((highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0) || (highlightValue && chartStats[highlightColumn][index] && chartStats[highlightColumn][index].toString() === highlightValue))) {
-                dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
+                dataHighlight.push({ x: x, y: y, index: index });
                 labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
                 if (Object.keys(pointStyleImages).length > 0 && (highlightColumn !== 'Selection' || !showLabels)) {
                     pointStylesHighlight.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
-                if (highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0 && showLabels) {
+                if (highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0 && showLabels && !isNaN(x) && !isNaN(y)) {
                     selectedAnnotations[`label${index}`] = {
                         type: 'label',
                         xValue: x,
-                        yValue: chartStats[statDropdownY.value][index],
+                        yValue: y,
                         content: chartStats[labelColumns[0]][index],
                         backgroundColor: 'rgba(255,255,255,0.7)',
                         font: { size: 10 }
                     }
                 }
             } else {
-                data.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
+                data.push({ x: x, y: y, index: index });
                 labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
                 if (Object.keys(pointStyleImages).length > 0) {
                     pointStyles.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
             }
-            if (drawDiagonalLine) {
+            if (!isNaN(x)) {
                 if (xRange.length === 0) {
                     xRange.push(x, x);
                 } else {
                     if (x < xRange[0]) xRange[0] = x;
                     if (x > xRange[1]) xRange[1] = x;
+                }
+            }
+            if (!isNaN(y)) {
+                if (yRange.length === 0) {
+                    yRange.push(y, y);
+                } else {
+                    if (y < yRange[0]) yRange[0] = y;
+                    if (y > yRange[1]) yRange[1] = y;
                 }
             }
         }
@@ -319,6 +330,11 @@ const updateChart = function (animation = false) {
     } else {
         chart.options.scales.y.reverse = false;
     }
+
+    chart.options.scales.x.suggestedMin = xRange[0] - 0.05 * (xRange[1] - xRange[0]);
+    chart.options.scales.x.suggestedMax = xRange[1] + 0.05 * (xRange[1] - xRange[0]);
+    chart.options.scales.y.suggestedMin = yRange[0] - 0.05 * (yRange[1] - yRange[0]);
+    chart.options.scales.y.suggestedMax = yRange[1] + 0.05 * (yRange[1] - yRange[0]);
 
     chart.options.scales.x.title.text = xLabel;
     chart.options.scales.y.title.text = yLabel;
