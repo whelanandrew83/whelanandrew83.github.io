@@ -367,7 +367,7 @@
 
 
 <main>
-<ul class='nav nav-pills'>
+<ul id='year-select' class='nav nav-pills'>
 <li id="year-2012">
 <a href="afl_stats.html?year=2012">2012</a>
 </li>
@@ -419,6 +419,11 @@ year = parseInt(urlParams.get("year"));
 
 if (!year) year = 2023;
 year_label = year === -1 ? "Last 5 matches" : year;
+
+if (year === -1) {
+  const yearSelect = document.querySelector("#year-select")
+  yearSelect.insertAdjacentHTML("afterend", "<p class='small'>Note: statistics are limited to each team's last five matches in the current season.</p>");
+}
 
 if (validYears.includes(year)) {
 document.querySelector(`#year-${year}`).classList = "active";
