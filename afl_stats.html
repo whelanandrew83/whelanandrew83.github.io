@@ -404,6 +404,9 @@
 <li id="year-2023">
 <a href="afl_stats.html?year=2023">2023</a>
 </li>
+<li id="year--1">
+<a href="afl_stats.html?year=-1">Last 5 matches</a>
+</li>
 </ul>
 <div id="player-stats-div">
 
@@ -411,17 +414,18 @@
 <script id="year-load">
 const urlParams = new URLSearchParams(location.search);
 
-validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023]
+validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,-1]
 year = parseInt(urlParams.get("year"));
 
 if (!year) year = 2023;
+year_label = year === -1 ? "Last 5 matches" : year;
 
 if (validYears.includes(year)) {
 document.querySelector(`#year-${year}`).classList = "active";
-document.title = `AFL Player Statistics - ${year}`;
-document.querySelector('meta[name="description"]').setAttribute('content', `AFL player statistics for ${year}.`);
-document.querySelector('h1').innerText = `AFL Player Statistics - ${year}`;
-// document.querySelector("#year-label").innerText = year;
+document.title = `AFL Player Statistics - ${year_label}`;
+document.querySelector('meta[name="description"]').setAttribute('content', `AFL player statistics for ${year_label}.`);
+document.querySelector('h1').innerText = `AFL Player Statistics - ${year_label}`;
+// document.querySelector("#year-label").innerText = year_label;
 
 const xmlhttp = new XMLHttpRequest();
 const url = `https://www.wheeloratings.com/src/player_stats_snippet/${year}.html`;
