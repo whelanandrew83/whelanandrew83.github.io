@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>ATP Tournament Statistics</title>
+<meta name="description" content="Men’s tennis (ATP) tournament
+statistics for the last 52 weeks.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+</head>
+<body>
+<div class="container-fluid main-container container">
+
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_atp_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_atp_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_atp_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_wta_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_wta_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="afl_match_stats.html">Match Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav id="navbar-banner">
+    <ul class="nav navbar-banner-heading justify-content-center">
+        <li class="fw-bold text-center">
+            Men's Tennis (ATP)
+        </li>
+    </ul>
+    <ul class="nav navbar-banner-nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_atp_ratings.html">Elo Ratings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_atp_race.html">Elo Race</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_atp_stats_last52.html">Player Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_player_profile.html">Player Profiles</a>
+        </li>
+    </ul>
+</nav>
+
+<header id="header">
+
+
+<h1 class="title toc-ignore">ATP Tournament Statistics</h1>
+<h3 class="subtitle">Last 52 weeks</h3>
+
+</header>
+
+
+<main>
+<p>
+<a href="tennis_wta_stats_tournament_last52.html">View WTA</a>
+</p>
+<p>Tournament stats as at 31 July 2023.</p>
+<p>Tournaments with at least 10 matches are included in the table.</p>
+<p>
+View 
+<a href="tennis_atp_stats_last52.html">individual player statistics.</a>
+</p>
+<p class="mb-1">
+<span class="me-2"
+style="display: inline-block; border: solid 1px black; background: linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B); width: 2em; height: 1em;"></span><b>Background
+shading</b>
+</p>
+<div class="form-check form-switch">
+<p><input class="form-check-input" type="checkbox" id="showColorScale">
+<label class="form-check-label" for="showColorScale">Add background
+shading to show relative values.</label></p>
+</div>
+<div id="tournament-stats" class="bg-hide">
+<h4>Surface statistics</h4>
+<div>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-18d83eac8da395dafe70" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-18d83eac8da395dafe70">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"competition":["atp","atp","atp","atp"],"Image":[null,"images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_hard_100.png"],"Colour":["#cccccc","#cc6435","#72a836","#4a80c7"],"surface":["All","Clay","Grass","Hard"],"Matches":[2972,876,324,1772],"FirstServePercentage":[0.62628,0.62506,0.62919,0.62623],"FirstServeWonPercentage":[0.71444,0.68666,0.73591,0.72397],"SecondServeWonPercentage":[0.50923,0.50326,0.5191,0.51007],"ServicePointsWonPercentage":[0.63775,0.61789,0.65552,0.64402],"ServiceGamesWonPercentage":[0.79527,0.75915,0.83081,0.80552],"Aces":[33406,6761,5411,21234],"AcePercentage":[0.07661,0.05176,0.09192,0.08612],"AcesPerServiceGame":[0.48887,0.33485,0.58052,0.54697],"DoubleFaultPercentage":[0.03566,0.0342,0.03929,0.03557],"DoubleFaultsPerServiceGame":[0.22758,0.22129,0.24815,0.22591],"AcesPerDoubleFault":[2.14816,1.51321,2.33939,2.42121],"BreakPointsFacedPerServiceGame":[0.52508,0.59269,0.47473,0.502],"BreakPointsSavedPercentage":[0.61009,0.59363,0.64362,0.61258]},"columns":[{"id":"competition","name":"competition","type":"character","minWidth":60,"align":"center","show":false},{"id":"Image","name":"Image","type":"character","minWidth":60,"align":"center","show":false},{"id":"Colour","name":"Colour","type":"character","minWidth":60,"align":"center","show":false},{"id":"surface","name":"Surface","type":"character","minWidth":65,"align":"center","filterable":false,"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[""," ",{"name":"span","attribs":{},"children":["All"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Clay"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Grass"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Hard"]}]}],"className":"sticky","headerClassName":"sticky"},{"id":"Matches","name":"Matches","type":"numeric","minWidth":70,"align":"center"},{"id":"FirstServePercentage","name":"1st Serve %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["1st Serve %"]}]},"className":"shaded","style":[{"background":"#FDD291"},{"background":"#FDCF90"},{"background":"#FDDB94"},{"background":"#FDD291"}]},{"id":"FirstServeWonPercentage","name":"1st Serve Won %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["1st Serve Won %"]}]},"className":"shaded","style":[{"background":"#FEEC9B"},{"background":"#FCBC89"},{"background":"#D6E293"},{"background":"#EEE998"}]},{"id":"SecondServeWonPercentage","name":"2nd Serve Won %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["2nd Serve Won %"]}]},"className":"shaded","style":[{"background":"#FDD793"},{"background":"#FCC38C"},{"background":"#F3EB99"},{"background":"#FDDA94"}]},{"id":"ServicePointsWonPercentage","name":"Service Pts Won %","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Service Pts Won %"]}]},"className":"shaded","style":[{"background":"#FDD793"},{"background":"#FBAC83"},{"background":"#ECE998"},{"background":"#FEE598"}]},{"id":"ServiceGamesWonPercentage","name":"Service Gms Won %","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Service Gms Won %"]}]},"className":"shaded","style":[{"background":"#FCEE9B"},{"background":"#FCBF8A"},{"background":"#C4DC8F"},{"background":"#ECE998"}]},{"id":"Aces","name":"Aces","type":"numeric","minWidth":50,"align":"center","show":true},{"id":"AcePercentage","name":"Ace %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Ace %"]}]},"className":"shaded","style":[{"background":"#FEDF96"},{"background":"#FA9E7E"},{"background":"#E1E595"},{"background":"#F3EB99"}]},{"id":"AcesPerServiceGame","name":"Aces / Service Gm","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Aces / Service Gm"]}]},"className":"shaded","style":[{"background":"#FEDC95"},{"background":"#FA9B7D"},{"background":"#E7E796"},{"background":"#F7EC9A"}]},{"id":"DoubleFaultPercentage","name":"Double Fault %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":false,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Double Fault %"]}]},"className":"shaded","style":[{"background":"#E7E796"},{"background":"#DAE394"},{"background":"#FEE899"},{"background":"#E6E796"}]},{"id":"DoubleFaultsPerServiceGame","name":"DF / Service Gm","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":false,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["DF / Service Gm"]}]},"className":"shaded","style":[{"background":"#E3E696"},{"background":"#DBE394"},{"background":"#FEEE9B"},{"background":"#E1E595"}]},{"id":"AcesPerDoubleFault","name":"Aces / Double Fault","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Aces / Double Fault"]}]},"className":"shaded","style":[{"background":"#FBAB83"},{"background":"#F98C77"},{"background":"#FBB586"},{"background":"#FCB988"}]},{"id":"BreakPointsFacedPerServiceGame","name":"BP Faced / Service Gm","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":false,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["BP Faced / Service Gm"]}]},"className":"shaded","style":[{"background":"#FDD090"},{"background":"#FBA781"},{"background":"#FDEE9B"},{"background":"#FEDF96"}]},{"id":"BreakPointsSavedPercentage","name":"BP Saved %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["BP Saved %"]}]},"className":"shaded","style":[{"background":"#FEE498"},{"background":"#FCC88D"},{"background":"#C8DD90"},{"background":"#FEE899"}]}],"defaultSortDesc":true,"defaultSorted":[{"id":"surface","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"1d5c0aea901261c9f3aae7a55f344272"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<h4>Tournament statistics</h4>
+<div>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-87f21339a50d58a32b43" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-87f21339a50d58a32b43">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"competition":["atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp","atp"],"tourney_name":["Basel","Tokyo","Vienna","Metz","Paris Masters","Washington","Canada Masters","Cincinnati Masters","Stockholm","Tour Finals","Florence","Gijon","Naples","Tel Aviv","Seoul","Us Open","Winston-Salem","Sofia","Los Cabos","Antwerp","NextGen Finals","Astana","San Diego","Auckland","Munich","Queen's Club","Gstaad","Newport","Bastad","Stuttgart","Geneva","Marrakech","Montpellier","Miami Masters","Indian Wells Masters","Rotterdam","Monte Carlo Masters","Hamburg","Rome Masters","Dallas","Barcelona","Umag","s Hertogenbosch","Doha","Dubai","Marseille","Delray Beach","Halle","Buenos Aires","Houston","Eastbourne","Acapulco","Pune","Madrid Masters","Banja Luka","Adelaide 1","Roland Garros","Wimbledon","Australian Open","Atlanta","Rio De Janeiro","Estoril","Lyon","Mallorca","Santiago","Adelaide 2","Cordoba","United Cup"],"tourney_date":["2022-10-24","2022-10-03","2022-10-24","2022-09-19","2022-10-31","2022-08-01","2022-08-08","2022-08-15","2022-10-17","2022-11-14","2022-10-10","2022-10-10","2022-10-17","2022-09-26","2022-09-26","2022-08-29","2022-08-22","2022-09-26","2022-08-01","2022-10-17","2022-11-07","2022-10-03","2022-09-19","2023-01-09","2023-04-17","2023-06-19","2023-07-17","2023-07-17","2023-07-17","2023-06-12","2023-05-22","2023-04-03","2023-02-06","2023-03-20","2023-03-06","2023-02-13","2023-04-10","2023-07-24","2023-05-08","2023-02-06","2023-04-17","2023-07-24","2023-06-12","2023-02-20","2023-02-27","2023-02-20","2023-02-13","2023-06-19","2023-02-13","2023-04-03","2023-06-26","2023-02-27","2023-01-02","2023-04-24","2023-04-17","2023-01-02","2023-05-29","2023-07-03","2023-01-16","2023-07-24","2023-02-20","2023-04-03","2023-05-22","2023-06-26","2023-02-27","2023-01-09","2023-02-06","2023-01-02"],"Image":["images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_grass_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_hard_100.png","images/tennis/Tennis_ball_clay_100.png","images/tennis/Tennis_ball_hard_100.png"],"Colour":["#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#cc6435","#72a836","#cc6435","#72a836","#cc6435","#72a836","#cc6435","#cc6435","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#cc6435","#cc6435","#cc6435","#4a80c7","#cc6435","#cc6435","#72a836","#4a80c7","#4a80c7","#4a80c7","#4a80c7","#72a836","#cc6435","#cc6435","#72a836","#4a80c7","#4a80c7","#cc6435","#cc6435","#4a80c7","#cc6435","#72a836","#4a80c7","#4a80c7","#cc6435","#cc6435","#cc6435","#72a836","#cc6435","#4a80c7","#cc6435","#4a80c7"],"surface":["Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Clay","Grass","Clay","Grass","Clay","Grass","Clay","Clay","Hard","Hard","Hard","Hard","Clay","Clay","Clay","Hard","Clay","Clay","Grass","Hard","Hard","Hard","Hard","Grass","Clay","Clay","Grass","Hard","Hard","Clay","Clay","Hard","Clay","Grass","Hard","Hard","Clay","Clay","Clay","Grass","Clay","Hard","Clay","Hard"],"Matches":[31,31,31,27,55,47,55,55,27,15,27,27,27,27,27,127,47,27,27,27,15,31,27,27,27,31,27,27,27,27,27,27,27,95,95,31,55,31,95,27,47,27,27,27,31,27,27,31,27,27,27,31,27,95,27,31,127,127,127,27,31,27,27,27,27,27,27,48],"FirstServePercentage":[0.66598,0.63865,0.63245,0.63478,0.62904,0.60351,0.6336,0.60203,0.63924,0.67808,0.65858,0.64684,0.63878,0.62829,0.63494,0.6013,0.59033,0.62542,0.59638,0.64926,0.68186,0.63995,0.63325,0.63745,0.60896,0.62038,0.62185,0.61125,0.63997,0.60122,0.61515,0.61099,0.637,0.62971,0.60155,0.61738,0.59009,0.65127,0.62312,0.65774,0.6209,0.60357,0.60683,0.63307,0.64294,0.61944,0.60933,0.62886,0.64198,0.63552,0.62569,0.5947,0.64579,0.64344,0.64238,0.62771,0.62398,0.63851,0.64266,0.63851,0.6343,0.63005,0.61285,0.64165,0.63038,0.62181,0.61343,0.62672],"FirstServeWonPercentage":[0.72923,0.71783,0.74525,0.71274,0.7337,0.71187,0.71847,0.74152,0.70891,0.79297,0.69094,0.68487,0.70369,0.73587,0.72262,0.71839,0.73248,0.74304,0.70172,0.71884,0.73329,0.71968,0.69277,0.70993,0.71135,0.72306,0.6972,0.70756,0.68733,0.78106,0.71121,0.69023,0.73605,0.73215,0.71114,0.72071,0.69339,0.68243,0.68986,0.75763,0.65694,0.68775,0.74092,0.70982,0.73409,0.74745,0.70975,0.7549,0.63854,0.7046,0.70252,0.71626,0.7231,0.72543,0.64433,0.74368,0.67577,0.73556,0.72124,0.75186,0.66187,0.68123,0.69237,0.74176,0.69937,0.73966,0.67599,0.73434],"SecondServeWonPercentage":[0.52624,0.50322,0.5111,0.51227,0.51477,0.4946,0.48481,0.50836,0.49333,0.53297,0.51923,0.51029,0.50375,0.52315,0.50898,0.50264,0.5128,0.51935,0.49163,0.52381,0.50077,0.50247,0.53343,0.51073,0.48768,0.5117,0.49175,0.48987,0.47667,0.52959,0.51426,0.48203,0.54197,0.50816,0.51046,0.50713,0.4876,0.50736,0.5151,0.53561,0.47998,0.53347,0.54723,0.50963,0.52715,0.51557,0.49907,0.50028,0.49543,0.51349,0.5052,0.50492,0.51447,0.54131,0.48756,0.52455,0.49651,0.52395,0.50705,0.55548,0.48417,0.51099,0.49108,0.51651,0.52276,0.51123,0.50064,0.50991],"ServicePointsWonPercentage":[0.66143,0.64028,0.65919,0.63953,0.65248,0.62572,0.63286,0.64873,0.63114,0.70927,0.63232,0.62321,0.63146,0.6568,0.64463,0.63237,0.64248,0.65926,0.61692,0.65044,0.65931,0.64148,0.63433,0.63771,0.62389,0.64282,0.61951,0.62293,0.61149,0.68078,0.63542,0.60924,0.6656,0.64921,0.63118,0.63899,0.60903,0.62137,0.62399,0.68164,0.58986,0.62659,0.66477,0.63636,0.6602,0.6592,0.62745,0.6604,0.5873,0.63494,0.62866,0.6306,0.6492,0.65978,0.58826,0.6621,0.60836,0.65906,0.6447,0.68087,0.59688,0.61825,0.61445,0.66104,0.63409,0.65327,0.60821,0.65057],"ServiceGamesWonPercentage":[0.82841,0.79529,0.83144,0.79829,0.82094,0.77788,0.79533,0.82038,0.77508,0.89305,0.75779,0.76717,0.79086,0.8266,0.81056,0.78933,0.80037,0.83564,0.76644,0.81846,0.82958,0.79213,0.7868,0.78713,0.78125,0.81029,0.76333,0.7695,0.7536,0.87422,0.76655,0.74121,0.84422,0.81809,0.7841,0.79627,0.74776,0.77021,0.77085,0.86637,0.69484,0.77414,0.85266,0.78326,0.83185,0.83139,0.78527,0.85121,0.69802,0.79235,0.78321,0.77829,0.80526,0.83012,0.71242,0.82901,0.7429,0.83529,0.80846,0.86047,0.70665,0.75891,0.7672,0.83281,0.79454,0.81951,0.74632,0.81418],"Aces":[387,384,468,259,650,674,669,792,259,303,292,229,212,387,267,2434,592,349,307,341,198,296,279,345,214,324,240,316,196,547,254,168,333,1206,923,395,410,232,688,541,225,149,384,304,426,406,296,529,134,288,323,255,304,1064,131,430,1399,2597,2538,443,200,174,184,391,226,443,185,618],"AcePercentage":[0.08811,0.08941,0.10605,0.06825,0.0828,0.09302,0.08276,0.09246,0.06557,0.13128,0.08336,0.05947,0.05741,0.10409,0.07609,0.08265,0.08625,0.08434,0.083,0.08022,0.09706,0.07532,0.07518,0.08947,0.05153,0.07574,0.06242,0.08585,0.04771,0.13309,0.07151,0.04195,0.08901,0.09114,0.06995,0.08985,0.05144,0.05176,0.04987,0.1293,0.03881,0.04035,0.09507,0.0716,0.10073,0.10693,0.07151,0.11048,0.03376,0.08331,0.07395,0.05985,0.08656,0.07306,0.03151,0.10342,0.04833,0.08765,0.08639,0.11106,0.04454,0.04562,0.04886,0.09846,0.05591,0.10172,0.04602,0.09328],"AcesPerServiceGame":[0.5443,0.56554,0.66289,0.44274,0.51958,0.60125,0.53908,0.59774,0.41909,0.81016,0.50519,0.38358,0.37258,0.65152,0.48634,0.51743,0.55483,0.5361,0.53114,0.51589,0.63666,0.46614,0.47208,0.56931,0.33437,0.47647,0.4,0.56028,0.3136,0.84938,0.44251,0.26837,0.55779,0.58037,0.45289,0.56671,0.3336,0.32908,0.3224,0.81231,0.24698,0.2569,0.60188,0.45441,0.63393,0.6778,0.46395,0.70912,0.22112,0.52459,0.49313,0.38991,0.53333,0.46585,0.21405,0.65649,0.31552,0.54559,0.55054,0.68682,0.28902,0.29542,0.32451,0.61672,0.36276,0.64483,0.30278,0.59195],"DoubleFaultPercentage":[0.02664,0.02887,0.02833,0.03162,0.03325,0.05658,0.03798,0.04891,0.0362,0.02123,0.02769,0.02025,0.02735,0.04223,0.03078,0.04404,0.04138,0.03504,0.04082,0.02094,0.02353,0.03104,0.02587,0.03008,0.03708,0.04091,0.03745,0.04645,0.0314,0.05158,0.03857,0.05169,0.0401,0.03544,0.03994,0.0364,0.03777,0.0261,0.03182,0.02223,0.03743,0.03412,0.04382,0.02803,0.03854,0.0345,0.0389,0.03906,0.02721,0.0269,0.03823,0.04506,0.03331,0.02843,0.02309,0.04016,0.038,0.03557,0.03081,0.02808,0.02984,0.03513,0.03186,0.04281,0.03785,0.03238,0.03607,0.03004],"DoubleFaultsPerServiceGame":[0.16456,0.18262,0.17705,0.20513,0.20863,0.36574,0.24738,0.31623,0.23139,0.13102,0.16782,0.13065,0.1775,0.26431,0.19672,0.27572,0.26617,0.22273,0.26125,0.13464,0.15434,0.19213,0.16244,0.19142,0.24062,0.25735,0.24,0.30319,0.2064,0.32919,0.23868,0.33067,0.25126,0.2257,0.25859,0.22956,0.24491,0.16596,0.20572,0.13964,0.2382,0.21724,0.27743,0.17788,0.24256,0.2187,0.25235,0.25067,0.17822,0.1694,0.25496,0.29358,0.20526,0.18126,0.15686,0.25496,0.24808,0.22143,0.19631,0.17364,0.19364,0.2275,0.21164,0.26814,0.24559,0.20524,0.23732,0.19061],"AcesPerDoubleFault":[3.30769,3.09677,3.744,2.15833,2.49042,1.6439,2.17915,1.89021,1.81119,6.18367,3.01031,2.9359,2.09901,2.46497,2.47222,1.87664,2.08451,2.4069,2.03311,3.83146,4.125,2.42623,2.90625,2.97414,1.38961,1.85143,1.66667,1.84795,1.51938,2.58019,1.85401,0.81159,2.22,2.57143,1.75142,2.46875,1.36213,1.98291,1.5672,5.8172,1.03687,1.18254,2.16949,2.55462,2.6135,3.09924,1.83851,2.82888,1.24074,3.09677,1.93413,1.32812,2.59829,2.57005,1.36458,2.57485,1.27182,2.46395,2.80442,3.95536,1.49254,1.29851,1.53333,2.3,1.47712,3.14184,1.27586,3.10553],"BreakPointsFacedPerServiceGame":[0.46273,0.49043,0.44193,0.47009,0.4964,0.53078,0.56728,0.48679,0.5356,0.25936,0.52422,0.54271,0.56239,0.46296,0.52641,0.53061,0.49391,0.43318,0.56747,0.4584,0.45981,0.53858,0.54992,0.5396,0.57969,0.50735,0.58167,0.58865,0.632,0.37578,0.51045,0.57827,0.44054,0.46872,0.56428,0.47633,0.62408,0.58298,0.58622,0.41892,0.67069,0.56897,0.44044,0.52915,0.4494,0.4975,0.55643,0.4866,0.69307,0.50273,0.61527,0.58869,0.45263,0.45184,0.67647,0.47939,0.63306,0.4542,0.50282,0.4093,0.6763,0.59253,0.64374,0.46845,0.51204,0.48326,0.61702,0.4636],"BreakPointsSavedPercentage":[0.62918,0.58258,0.61859,0.57091,0.63929,0.58151,0.6392,0.63101,0.58006,0.58763,0.53795,0.57099,0.62813,0.62545,0.64014,0.60296,0.59583,0.62057,0.58841,0.60396,0.62937,0.61404,0.61231,0.6055,0.62264,0.62609,0.59312,0.60843,0.61013,0.66529,0.54266,0.55249,0.64639,0.61191,0.61739,0.57229,0.59583,0.60584,0.60911,0.681,0.54501,0.60303,0.66548,0.5904,0.62583,0.66107,0.61408,0.69421,0.56429,0.58696,0.64764,0.62338,0.56977,0.62403,0.57488,0.64331,0.59387,0.63737,0.61907,0.65909,0.56624,0.59312,0.63836,0.6431,0.59875,0.62651,0.58886,0.59917]},"columns":[{"id":"competition","name":"competition","type":"character","minWidth":60,"align":"center","show":false},{"id":"tourney_name","name":"Tournament","type":"character","minWidth":180,"align":"left","filterable":true,"defaultSortDesc":false,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Basel"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Tokyo"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Vienna"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Metz"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Paris Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Washington"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Canada Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Cincinnati Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Stockholm"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Tour Finals"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Florence"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Gijon"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Naples"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Tel Aviv"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Seoul"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Us Open"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Winston-Salem"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Sofia"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Los Cabos"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Antwerp"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["NextGen Finals"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Astana"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["San Diego"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Auckland"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Munich"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Queen's Club"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Gstaad"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Newport"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Bastad"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Stuttgart"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Geneva"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Marrakech"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Montpellier"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Miami Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Indian Wells Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Rotterdam"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Monte Carlo Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Hamburg"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Rome Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Dallas"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Barcelona"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Umag"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["s Hertogenbosch"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Doha"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Dubai"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Marseille"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Delray Beach"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Halle"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Buenos Aires"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Houston"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Eastbourne"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Acapulco"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Pune"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Madrid Masters"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Banja Luka"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Adelaide 1"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Roland Garros"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Wimbledon"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Australian Open"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Atlanta"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Rio De Janeiro"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Estoril"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Lyon"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#72a836"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_grass_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Mallorca"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Santiago"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Adelaide 2"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#cc6435"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_clay_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["Cordoba"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"color":"#4a80c7"}},"children":[{"name":"img","attribs":{"src":"images/tennis/Tennis_ball_hard_100.png","height":"15px","alt":"⬤"},"children":[]}]}," ",{"name":"span","attribs":{},"children":["United Cup"]}]}],"className":"sticky","headerClassName":"sticky"},{"id":"tourney_date","name":"Date","type":"Date","minWidth":90,"align":"center","cell":["24 Oct 2022","03 Oct 2022","24 Oct 2022","19 Sep 2022","31 Oct 2022","01 Aug 2022","08 Aug 2022","15 Aug 2022","17 Oct 2022","14 Nov 2022","10 Oct 2022","10 Oct 2022","17 Oct 2022","26 Sep 2022","26 Sep 2022","29 Aug 2022","22 Aug 2022","26 Sep 2022","01 Aug 2022","17 Oct 2022","07 Nov 2022","03 Oct 2022","19 Sep 2022","09 Jan 2023","17 Apr 2023","19 Jun 2023","17 Jul 2023","17 Jul 2023","17 Jul 2023","12 Jun 2023","22 May 2023","03 Apr 2023","06 Feb 2023","20 Mar 2023","06 Mar 2023","13 Feb 2023","10 Apr 2023","24 Jul 2023","08 May 2023","06 Feb 2023","17 Apr 2023","24 Jul 2023","12 Jun 2023","20 Feb 2023","27 Feb 2023","20 Feb 2023","13 Feb 2023","19 Jun 2023","13 Feb 2023","03 Apr 2023","26 Jun 2023","27 Feb 2023","02 Jan 2023","24 Apr 2023","17 Apr 2023","02 Jan 2023","29 May 2023","03 Jul 2023","16 Jan 2023","24 Jul 2023","20 Feb 2023","03 Apr 2023","22 May 2023","26 Jun 2023","27 Feb 2023","09 Jan 2023","06 Feb 2023","02 Jan 2023"]},{"id":"Image","name":"Image","type":"character","minWidth":60,"align":"center","show":false},{"id":"Colour","name":"Colour","type":"character","minWidth":60,"align":"center","show":false},{"id":"surface","name":"Surface","type":"character","minWidth":60,"align":"center","filterable":true,"defaultSortDesc":false,"cell":["Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Hard","Clay","Grass","Clay","Grass","Clay","Grass","Clay","Clay","Hard","Hard","Hard","Hard","Clay","Clay","Clay","Hard","Clay","Clay","Grass","Hard","Hard","Hard","Hard","Grass","Clay","Clay","Grass","Hard","Hard","Clay","Clay","Hard","Clay","Grass","Hard","Hard","Clay","Clay","Clay","Grass","Clay","Hard","Clay","Hard"],"className":"","headerClassName":""},{"id":"Matches","name":"Matches","type":"numeric","minWidth":70,"align":"center"},{"id":"FirstServePercentage","name":"1st Serve %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["1st Serve %"]}]},"className":"shaded","style":[{"background":"#98CE86"},{"background":"#F5EC9A"},{"background":"#FEE498"},{"background":"#FEEB9A"},{"background":"#FDDA94"},{"background":"#FA9079"},{"background":"#FEE899"},{"background":"#F98B77"},{"background":"#F3EB99"},{"background":"#6FC27D"},{"background":"#B2D68B"},{"background":"#DAE394"},{"background":"#F5EC99"},{"background":"#FDD893"},{"background":"#FEEB9A"},{"background":"#F98976"},{"background":"#F8696B"},{"background":"#FDD090"},{"background":"#F87B71"},{"background":"#D1E092"},{"background":"#63BE7B"},{"background":"#F1EA99"},{"background":"#FEE799"},{"background":"#F9ED9A"},{"background":"#FAA07F"},{"background":"#FCC18B"},{"background":"#FCC58C"},{"background":"#FBA681"},{"background":"#F1EA99"},{"background":"#F98976"},{"background":"#FBB285"},{"background":"#FBA681"},{"background":"#FBED9B"},{"background":"#FEDC95"},{"background":"#F98A77"},{"background":"#FCB888"},{"background":"#F8696B"},{"background":"#CBDE91"},{"background":"#FDC98E"},{"background":"#B5D78C"},{"background":"#FCC28B"},{"background":"#FA9079"},{"background":"#FA997C"},{"background":"#FEE698"},{"background":"#E7E796"},{"background":"#FCBE8A"},{"background":"#FAA17F"},{"background":"#FDDA94"},{"background":"#EAE897"},{"background":"#FEED9B"},{"background":"#FDD091"},{"background":"#F8766F"},{"background":"#DDE494"},{"background":"#E5E796"},{"background":"#E9E897"},{"background":"#FDD693"},{"background":"#FDCB8F"},{"background":"#F6EC9A"},{"background":"#E8E797"},{"background":"#F6EC9A"},{"background":"#FEEA9A"},{"background":"#FEDD95"},{"background":"#FBAB83"},{"background":"#EBE897"},{"background":"#FEDE96"},{"background":"#FCC58C"},{"background":"#FBAD83"},{"background":"#FDD392"}]},{"id":"FirstServeWonPercentage","name":"1st Serve Won %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["1st Serve Won %"]}]},"className":"shaded","style":[{"background":"#E3E696"},{"background":"#FAED9B"},{"background":"#C3DC8F"},{"background":"#FEE99A"},{"background":"#DAE394"},{"background":"#FEE899"},{"background":"#F9ED9A"},{"background":"#CADE90"},{"background":"#FEE397"},{"background":"#63BE7B"},{"background":"#FCC38C"},{"background":"#FCB988"},{"background":"#FDDA94"},{"background":"#D6E293"},{"background":"#F1EA99"},{"background":"#F9ED9A"},{"background":"#DDE494"},{"background":"#C7DD90"},{"background":"#FDD693"},{"background":"#F8ED9A"},{"background":"#DBE394"},{"background":"#F7EC9A"},{"background":"#FCC78D"},{"background":"#FEE498"},{"background":"#FEE799"},{"background":"#F0EA98"},{"background":"#FDCE90"},{"background":"#FEE096"},{"background":"#FCBD89"},{"background":"#7BC580"},{"background":"#FEE799"},{"background":"#FCC28B"},{"background":"#D5E293"},{"background":"#DDE494"},{"background":"#FEE699"},{"background":"#F4EB99"},{"background":"#FCC88D"},{"background":"#FBB586"},{"background":"#FCC28B"},{"background":"#AAD48A"},{"background":"#F98876"},{"background":"#FCBE8A"},{"background":"#CCDF91"},{"background":"#FEE498"},{"background":"#D9E394"},{"background":"#BEDA8E"},{"background":"#FEE498"},{"background":"#AFD68B"},{"background":"#F8696B"},{"background":"#FDDB94"},{"background":"#FDD893"},{"background":"#FDEE9B"},{"background":"#F0EA98"},{"background":"#EBE897"},{"background":"#F8736E"},{"background":"#C6DD90"},{"background":"#FBA982"},{"background":"#D6E293"},{"background":"#F3EB99"},{"background":"#B6D88C"},{"background":"#FA9179"},{"background":"#FBB386"},{"background":"#FCC68D"},{"background":"#CADE90"},{"background":"#FDD291"},{"background":"#CEDF91"},{"background":"#FBA982"},{"background":"#D9E394"}]},{"id":"SecondServeWonPercentage","name":"2nd Serve Won %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["2nd Serve Won %"]}]},"className":"shaded","style":[{"background":"#D6E293"},{"background":"#FCC38C"},{"background":"#FEDE95"},{"background":"#FEE297"},{"background":"#FEEA9A"},{"background":"#FBA581"},{"background":"#F98475"},{"background":"#FDD492"},{"background":"#FAA17F"},{"background":"#BCD98D"},{"background":"#F2EB99"},{"background":"#FDDB94"},{"background":"#FCC58C"},{"background":"#E2E696"},{"background":"#FDD693"},{"background":"#FCC18B"},{"background":"#FEE397"},{"background":"#F2EA99"},{"background":"#FA9B7D"},{"background":"#E0E595"},{"background":"#FCBA88"},{"background":"#FCC08B"},{"background":"#BAD98D"},{"background":"#FEDC95"},{"background":"#F98E78"},{"background":"#FEE096"},{"background":"#FA9C7D"},{"background":"#FA957B"},{"background":"#F8696B"},{"background":"#C9DE90"},{"background":"#FEE899"},{"background":"#F87B71"},{"background":"#98CE86"},{"background":"#FDD492"},{"background":"#FEDB95"},{"background":"#FDD090"},{"background":"#F98E78"},{"background":"#FDD191"},{"background":"#FEEB9A"},{"background":"#B1D68B"},{"background":"#F8746F"},{"background":"#BAD98D"},{"background":"#83C881"},{"background":"#FDD993"},{"background":"#D3E192"},{"background":"#FEED9B"},{"background":"#FBB586"},{"background":"#FCB988"},{"background":"#FBA882"},{"background":"#FEE698"},{"background":"#FDCA8E"},{"background":"#FDC98E"},{"background":"#FEE99A"},{"background":"#9BCF86"},{"background":"#F98E78"},{"background":"#DDE494"},{"background":"#FBAC83"},{"background":"#DFE595"},{"background":"#FDD090"},{"background":"#63BE7B"},{"background":"#F98274"},{"background":"#FEDD95"},{"background":"#FA9A7C"},{"background":"#FDEE9B"},{"background":"#E4E696"},{"background":"#FEDE95"},{"background":"#FCBA88"},{"background":"#FDDA94"}]},{"id":"ServicePointsWonPercentage","name":"Service Pts Won %","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Service Pts Won %"]}]},"className":"shaded","style":[{"background":"#DDE494"},{"background":"#FEDD95"},{"background":"#E3E696"},{"background":"#FDDB94"},{"background":"#F4EB99"},{"background":"#FCBD89"},{"background":"#FDCD8F"},{"background":"#FDEE9B"},{"background":"#FDC98E"},{"background":"#63BE7B"},{"background":"#FDCB8F"},{"background":"#FCB787"},{"background":"#FDCA8E"},{"background":"#E9E897"},{"background":"#FEE699"},{"background":"#FDCC8F"},{"background":"#FEE297"},{"background":"#E2E696"},{"background":"#FBAA82"},{"background":"#F9ED9A"},{"background":"#E2E696"},{"background":"#FEE096"},{"background":"#FDD090"},{"background":"#FDD793"},{"background":"#FCB988"},{"background":"#FEE297"},{"background":"#FBAF84"},{"background":"#FCB787"},{"background":"#FA9E7E"},{"background":"#ABD48A"},{"background":"#FDD291"},{"background":"#FA997C"},{"background":"#D2E192"},{"background":"#FCEE9B"},{"background":"#FDC98E"},{"background":"#FDDA94"},{"background":"#FA987C"},{"background":"#FBB386"},{"background":"#FCB988"},{"background":"#A9D489"},{"background":"#F86E6D"},{"background":"#FCBF8A"},{"background":"#D4E193"},{"background":"#FDD492"},{"background":"#E0E595"},{"background":"#E3E696"},{"background":"#FCC18B"},{"background":"#E0E595"},{"background":"#F8696B"},{"background":"#FDD191"},{"background":"#FCC38C"},{"background":"#FCC88D"},{"background":"#FCEE9B"},{"background":"#E1E595"},{"background":"#F86B6B"},{"background":"#DBE394"},{"background":"#FA977B"},{"background":"#E3E696"},{"background":"#FEE799"},{"background":"#ABD48A"},{"background":"#F97E72"},{"background":"#FBAD83"},{"background":"#FBA480"},{"background":"#DEE495"},{"background":"#FDCF90"},{"background":"#F2EA99"},{"background":"#FA967B"},{"background":"#F9ED9A"}]},{"id":"ServiceGamesWonPercentage","name":"Service Gms Won %","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Service Gms Won %"]}]},"className":"shaded","style":[{"background":"#C8DD90"},{"background":"#FCEE9B"},{"background":"#C3DC8F"},{"background":"#F8EC9A"},{"background":"#D4E193"},{"background":"#FDD994"},{"background":"#FCEE9B"},{"background":"#D5E193"},{"background":"#FDD592"},{"background":"#63BE7B"},{"background":"#FCBE8A"},{"background":"#FDCA8E"},{"background":"#FEEA9A"},{"background":"#CBDE91"},{"background":"#E4E696"},{"background":"#FEE899"},{"background":"#F4EB99"},{"background":"#BDDA8E"},{"background":"#FDC98E"},{"background":"#D8E293"},{"background":"#C6DD90"},{"background":"#FEEC9B"},{"background":"#FEE598"},{"background":"#FEE598"},{"background":"#FEDD95"},{"background":"#E5E696"},{"background":"#FCC58C"},{"background":"#FDCD8F"},{"background":"#FCB888"},{"background":"#80C781"},{"background":"#FDC98E"},{"background":"#FBA781"},{"background":"#AFD68B"},{"background":"#D8E393"},{"background":"#FEE197"},{"background":"#FBED9B"},{"background":"#FBB085"},{"background":"#FDCE90"},{"background":"#FDCF90"},{"background":"#8CCB83"},{"background":"#F8696B"},{"background":"#FDD492"},{"background":"#A2D188"},{"background":"#FEE096"},{"background":"#C3DC8F"},{"background":"#C4DC8F"},{"background":"#FEE397"},{"background":"#A4D288"},{"background":"#F86D6C"},{"background":"#FEEC9B"},{"background":"#FEE096"},{"background":"#FDD994"},{"background":"#EDE998"},{"background":"#C6DD8F"},{"background":"#F98073"},{"background":"#C7DD90"},{"background":"#FBA982"},{"background":"#BDDA8E"},{"background":"#E8E797"},{"background":"#96CE85"},{"background":"#F87870"},{"background":"#FCBF8A"},{"background":"#FDCA8E"},{"background":"#C1DB8F"},{"background":"#FEEE9B"},{"background":"#D6E293"},{"background":"#FBAE84"},{"background":"#DFE495"}]},{"id":"Aces","name":"Aces","type":"numeric","minWidth":50,"align":"center","show":true},{"id":"AcePercentage","name":"Ace %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Ace %"]}]},"className":"shaded","style":[{"background":"#EDE998"},{"background":"#E9E897"},{"background":"#B6D88C"},{"background":"#FDC98E"},{"background":"#FDEE9B"},{"background":"#DEE495"},{"background":"#FDEE9B"},{"background":"#DFE595"},{"background":"#FCC28B"},{"background":"#68BF7C"},{"background":"#FBED9B"},{"background":"#FBB285"},{"background":"#FBAD83"},{"background":"#BCD98D"},{"background":"#FEDE96"},{"background":"#FDEE9B"},{"background":"#F2EB99"},{"background":"#F8ED9A"},{"background":"#FCEE9B"},{"background":"#FEE999"},{"background":"#D1E092"},{"background":"#FEDC95"},{"background":"#FEDC95"},{"background":"#E8E897"},{"background":"#FA9D7E"},{"background":"#FEDD95"},{"background":"#FCBA88"},{"background":"#F4EB99"},{"background":"#FA937A"},{"background":"#63BE7B"},{"background":"#FDD291"},{"background":"#F98475"},{"background":"#EAE897"},{"background":"#E3E696"},{"background":"#FDCE90"},{"background":"#E7E797"},{"background":"#FA9D7E"},{"background":"#FA9E7E"},{"background":"#FA997C"},{"background":"#6EC17D"},{"background":"#F97C72"},{"background":"#F98073"},{"background":"#D7E293"},{"background":"#FDD291"},{"background":"#C6DD90"},{"background":"#B3D78B"},{"background":"#FDD291"},{"background":"#A8D389"},{"background":"#F86E6D"},{"background":"#FBEE9B"},{"background":"#FDD893"},{"background":"#FBB386"},{"background":"#F1EA99"},{"background":"#FDD693"},{"background":"#F8696B"},{"background":"#BEDA8E"},{"background":"#FA957B"},{"background":"#EEE998"},{"background":"#F2EB99"},{"background":"#A6D389"},{"background":"#F98B77"},{"background":"#F98E78"},{"background":"#FA967B"},{"background":"#CDDF91"},{"background":"#FBA982"},{"background":"#C3DC8F"},{"background":"#F98F78"},{"background":"#DDE494"}]},{"id":"AcesPerServiceGame","name":"Aces / Service Gm","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Aces / Service Gm"]}]},"className":"shaded","style":[{"background":"#F8ED9A"},{"background":"#EEE998"},{"background":"#BEDA8E"},{"background":"#FDC98E"},{"background":"#FEE99A"},{"background":"#DCE494"},{"background":"#FBED9B"},{"background":"#DEE495"},{"background":"#FCBF8A"},{"background":"#76C47F"},{"background":"#FEE397"},{"background":"#FBB085"},{"background":"#FBAB83"},{"background":"#C4DC8F"},{"background":"#FEDB95"},{"background":"#FEE899"},{"background":"#F3EB99"},{"background":"#FCEE9B"},{"background":"#FEEE9B"},{"background":"#FEE899"},{"background":"#CBDE91"},{"background":"#FDD391"},{"background":"#FDD592"},{"background":"#ECE998"},{"background":"#FA9B7D"},{"background":"#FDD793"},{"background":"#FCB787"},{"background":"#F0EA99"},{"background":"#FA927A"},{"background":"#63BE7B"},{"background":"#FDC98E"},{"background":"#F97F73"},{"background":"#F2EA99"},{"background":"#E7E796"},{"background":"#FDCD8F"},{"background":"#EDE998"},{"background":"#FA9B7D"},{"background":"#FA997C"},{"background":"#FA967B"},{"background":"#75C37E"},{"background":"#F87670"},{"background":"#F87B71"},{"background":"#DCE494"},{"background":"#FDCE90"},{"background":"#CCDF91"},{"background":"#B7D88C"},{"background":"#FDD291"},{"background":"#A7D389"},{"background":"#F86B6C"},{"background":"#FEEB9A"},{"background":"#FEDE96"},{"background":"#FBB386"},{"background":"#FEEE9B"},{"background":"#FDD391"},{"background":"#F8696B"},{"background":"#C1DB8F"},{"background":"#FA937A"},{"background":"#F8EC9A"},{"background":"#F5EC9A"},{"background":"#B2D78B"},{"background":"#F98876"},{"background":"#F98B77"},{"background":"#FA977C"},{"background":"#D5E193"},{"background":"#FBA781"},{"background":"#C7DD90"},{"background":"#F98E78"},{"background":"#E1E595"}]},{"id":"DoubleFaultPercentage","name":"Double Fault %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":false,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Double Fault %"]}]},"className":"shaded","style":[{"background":"#99CF86"},{"background":"#ADD58A"},{"background":"#A8D389"},{"background":"#C4DC8F"},{"background":"#D2E192"},{"background":"#F8696B"},{"background":"#FBED9B"},{"background":"#FAA17F"},{"background":"#EBE997"},{"background":"#6BC07C"},{"background":"#A2D288"},{"background":"#63BE7B"},{"background":"#9FD187"},{"background":"#FDD291"},{"background":"#BDDA8E"},{"background":"#FCC58C"},{"background":"#FDD994"},{"background":"#E2E595"},{"background":"#FEDD95"},{"background":"#68BF7C"},{"background":"#7FC680"},{"background":"#BFDB8E"},{"background":"#93CD85"},{"background":"#B7D88C"},{"background":"#F3EB99"},{"background":"#FEDC95"},{"background":"#F6EC9A"},{"background":"#FBB386"},{"background":"#C2DC8F"},{"background":"#F98D78"},{"background":"#FEED9B"},{"background":"#F98D78"},{"background":"#FEE297"},{"background":"#E5E696"},{"background":"#FEE397"},{"background":"#EDE998"},{"background":"#F9ED9A"},{"background":"#95CD85"},{"background":"#C6DD90"},{"background":"#74C37E"},{"background":"#F6EC9A"},{"background":"#DAE394"},{"background":"#FCC78D"},{"background":"#A5D289"},{"background":"#FEEE9B"},{"background":"#DDE494"},{"background":"#FEEB9A"},{"background":"#FEEA9A"},{"background":"#9ED087"},{"background":"#9CCF87"},{"background":"#FDEE9B"},{"background":"#FCBD8A"},{"background":"#D3E192"},{"background":"#A9D489"},{"background":"#7BC580"},{"background":"#FEE297"},{"background":"#FBED9B"},{"background":"#E6E796"},{"background":"#BDDA8E"},{"background":"#A6D389"},{"background":"#B5D78C"},{"background":"#E2E696"},{"background":"#C6DD90"},{"background":"#FDCE90"},{"background":"#FAED9A"},{"background":"#CBDE91"},{"background":"#EAE897"},{"background":"#B7D88C"}]},{"id":"DoubleFaultsPerServiceGame","name":"DF / Service Gm","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":false,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["DF / Service Gm"]}]},"className":"shaded","style":[{"background":"#90CC84"},{"background":"#A7D389"},{"background":"#A0D188"},{"background":"#C5DD8F"},{"background":"#CADE90"},{"background":"#F8696B"},{"background":"#FDEE9B"},{"background":"#FAA17F"},{"background":"#E8E797"},{"background":"#63BE7B"},{"background":"#94CD85"},{"background":"#63BE7B"},{"background":"#A1D188"},{"background":"#FEDC95"},{"background":"#BAD98D"},{"background":"#FDCF90"},{"background":"#FDDA94"},{"background":"#DDE494"},{"background":"#FEE096"},{"background":"#68BF7C"},{"background":"#82C781"},{"background":"#B4D78C"},{"background":"#8DCB83"},{"background":"#B3D78C"},{"background":"#F4EB99"},{"background":"#FEE498"},{"background":"#F4EB99"},{"background":"#FBB085"},{"background":"#C7DD90"},{"background":"#FA927A"},{"background":"#F2EB99"},{"background":"#FA9079"},{"background":"#FEEB9A"},{"background":"#E1E595"},{"background":"#FEE397"},{"background":"#E6E796"},{"background":"#FAED9B"},{"background":"#91CC84"},{"background":"#C6DD90"},{"background":"#6EC17D"},{"background":"#F1EA99"},{"background":"#D5E293"},{"background":"#FDCD8F"},{"background":"#A1D188"},{"background":"#F7EC9A"},{"background":"#D7E293"},{"background":"#FEEA9A"},{"background":"#FEEC9A"},{"background":"#A2D188"},{"background":"#96CE85"},{"background":"#FEE799"},{"background":"#FCBB89"},{"background":"#C6DD8F"},{"background":"#A6D389"},{"background":"#85C882"},{"background":"#FEE799"},{"background":"#FEEE9B"},{"background":"#DBE394"},{"background":"#BAD98D"},{"background":"#9CCF87"},{"background":"#B6D88C"},{"background":"#E3E696"},{"background":"#CEDF91"},{"background":"#FDD893"},{"background":"#FBED9B"},{"background":"#C5DD8F"},{"background":"#F0EA98"},{"background":"#B2D68B"}]},{"id":"AcesPerDoubleFault","name":"Aces / Double Fault","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["Aces / Double Fault"]}]},"className":"shaded","style":[{"background":"#FEE598"},{"background":"#FDDB94"},{"background":"#F0EA98"},{"background":"#FBAC83"},{"background":"#FCBC89"},{"background":"#FA927A"},{"background":"#FBAD83"},{"background":"#FA9E7E"},{"background":"#FA9A7D"},{"background":"#63BE7B"},{"background":"#FDD693"},{"background":"#FDD291"},{"background":"#FBA982"},{"background":"#FCBB89"},{"background":"#FCBB89"},{"background":"#FA9E7E"},{"background":"#FBA882"},{"background":"#FCB888"},{"background":"#FBA581"},{"background":"#EBE897"},{"background":"#DAE394"},{"background":"#FCB988"},{"background":"#FDD191"},{"background":"#FDD492"},{"background":"#F98575"},{"background":"#FA9C7D"},{"background":"#FA937A"},{"background":"#FA9C7D"},{"background":"#F98C77"},{"background":"#FCC18B"},{"background":"#FA9D7E"},{"background":"#F8696B"},{"background":"#FBAF84"},{"background":"#FCC08B"},{"background":"#FA977C"},{"background":"#FCBB89"},{"background":"#F98475"},{"background":"#FBA380"},{"background":"#F98E78"},{"background":"#78C47F"},{"background":"#F8746F"},{"background":"#F87B71"},{"background":"#FBAC83"},{"background":"#FCBF8A"},{"background":"#FCC28B"},{"background":"#FDDB94"},{"background":"#FA9C7D"},{"background":"#FDCD8F"},{"background":"#F97E72"},{"background":"#FDDB94"},{"background":"#FAA17F"},{"background":"#F98274"},{"background":"#FCC28B"},{"background":"#FCC08B"},{"background":"#F98475"},{"background":"#FCC08B"},{"background":"#F97F73"},{"background":"#FCBB89"},{"background":"#FDCC8F"},{"background":"#E4E696"},{"background":"#F98A77"},{"background":"#F98173"},{"background":"#F98D78"},{"background":"#FBB386"},{"background":"#F98A77"},{"background":"#FEDD95"},{"background":"#F98073"},{"background":"#FDDB94"}]},{"id":"BreakPointsFacedPerServiceGame","name":"BP Faced / Service Gm","type":"numeric","minWidth":70,"align":"center","show":true,"defaultSortDesc":false,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #63BE7B, #FFEF9C, #F8696B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["BP Faced / Service Gm"]}]},"className":"shaded","style":[{"background":"#F5EB99"},{"background":"#FEE698"},{"background":"#E6E796"},{"background":"#FAED9B"},{"background":"#FEE297"},{"background":"#FDCD8F"},{"background":"#FCB687"},{"background":"#FEE899"},{"background":"#FDCA8E"},{"background":"#63BE7B"},{"background":"#FDD191"},{"background":"#FCC58C"},{"background":"#FCB988"},{"background":"#F5EC99"},{"background":"#FDCF90"},{"background":"#FDCD8F"},{"background":"#FEE498"},{"background":"#E0E595"},{"background":"#FCB687"},{"background":"#F2EA99"},{"background":"#F3EB99"},{"background":"#FCC88D"},{"background":"#FCC18B"},{"background":"#FCC78D"},{"background":"#FBAF84"},{"background":"#FDDB94"},{"background":"#FBAD84"},{"background":"#FBA982"},{"background":"#F98E78"},{"background":"#B6D88C"},{"background":"#FDD994"},{"background":"#FBAF84"},{"background":"#E5E696"},{"background":"#F9ED9A"},{"background":"#FCB888"},{"background":"#FEEE9B"},{"background":"#FA937A"},{"background":"#FBAD83"},{"background":"#FBAB83"},{"background":"#D5E293"},{"background":"#F87670"},{"background":"#FCB587"},{"background":"#E5E696"},{"background":"#FDCE90"},{"background":"#EBE897"},{"background":"#FEE197"},{"background":"#FCBD89"},{"background":"#FEE899"},{"background":"#F8696B"},{"background":"#FEDE96"},{"background":"#FA997C"},{"background":"#FBA982"},{"background":"#EEE998"},{"background":"#EDE998"},{"background":"#F8736E"},{"background":"#FEED9B"},{"background":"#F98E78"},{"background":"#EFEA98"},{"background":"#FEDE95"},{"background":"#CEDF91"},{"background":"#F8736E"},{"background":"#FBA781"},{"background":"#F98776"},{"background":"#F9ED9A"},{"background":"#FDD893"},{"background":"#FEEA9A"},{"background":"#FA977C"},{"background":"#F5EC9A"}]},{"id":"BreakPointsSavedPercentage","name":"BP Saved %","type":"numeric","minWidth":60,"align":"center","show":true,"defaultSortDesc":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"header":{"name":"Fragment","attribs":[],"children":[{"name":"div","attribs":{"style":{"border":"solid 1px black","background":"linear-gradient(.25turn, #F8696B, #FFEF9C, #63BE7B)","width":"100%","height":"15px"},"className":"colour-hint"},"children":[]},{"name":"div","attribs":{},"children":["BP Saved %"]}]},"className":"shaded","style":[{"background":"#E4E696"},{"background":"#FBB586"},{"background":"#F9ED9A"},{"background":"#FAA17F"},{"background":"#D0E092"},{"background":"#FBB386"},{"background":"#D0E092"},{"background":"#E1E595"},{"background":"#FBB185"},{"background":"#FCBE8A"},{"background":"#F8696B"},{"background":"#FAA17F"},{"background":"#E6E796"},{"background":"#ECE998"},{"background":"#CEDF91"},{"background":"#FDD893"},{"background":"#FDCC8F"},{"background":"#F6EC9A"},{"background":"#FCBF8A"},{"background":"#FDDA94"},{"background":"#E4E696"},{"background":"#FEEB9A"},{"background":"#FEE899"},{"background":"#FEDC95"},{"background":"#F1EA99"},{"background":"#EBE897"},{"background":"#FCC78D"},{"background":"#FEE197"},{"background":"#FEE498"},{"background":"#9CD087"},{"background":"#F8716D"},{"background":"#F98174"},{"background":"#C2DB8F"},{"background":"#FEE799"},{"background":"#FCEE9B"},{"background":"#FBA380"},{"background":"#FDCC8F"},{"background":"#FEDD95"},{"background":"#FEE397"},{"background":"#7DC680"},{"background":"#F8756F"},{"background":"#FDD893"},{"background":"#9CD087"},{"background":"#FCC28B"},{"background":"#EBE897"},{"background":"#A5D288"},{"background":"#FEEB9A"},{"background":"#63BE7B"},{"background":"#FA967B"},{"background":"#FCBD89"},{"background":"#BFDB8E"},{"background":"#F0EA98"},{"background":"#FA9F7E"},{"background":"#EFEA98"},{"background":"#FBA882"},{"background":"#C8DD90"},{"background":"#FDC88E"},{"background":"#D4E193"},{"background":"#F9ED9A"},{"background":"#A9D489"},{"background":"#FA997C"},{"background":"#FCC78D"},{"background":"#D2E192"},{"background":"#C9DE90"},{"background":"#FDD191"},{"background":"#EAE897"},{"background":"#FCC08A"},{"background":"#FDD191"}]}],"defaultSortDesc":true,"defaultSorted":[{"id":"tourney_date","desc":true}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"175ea44e7a0e97176a940bfe4baf43aa"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p></p>
+<p>
+Tennis match results sourced from 
+<a href="https://www.tennisabstract.com/blog/2015/03/24/free-atp-and-wta-results-and-stats-databases/" target="_blank">tennisabstract.com</a>
+</p>
+<script>
+var checkbox = document.getElementById("showColorScale");
+
+checkbox.addEventListener('change', function() {
+  var element = document.getElementById("tournament-stats");
+  element.classList.toggle("bg-hide");
+  element.classList.toggle("bg-show");
+});
+</script>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
+</footer>
+
+
+
+</div>
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
+  
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
+})();
+</script>
+<!-- <script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("nav").style.top = "0";
+  } else {
+    document.getElementById("nav").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script> -->
+</body>
+</html>

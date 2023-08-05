@@ -17,14 +17,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link href="site_libs/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
-<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
-<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
-<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 <link rel="icon" href="favicon.ico" />
@@ -35,22 +35,19 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
 </script>
 
 <link rel="stylesheet" href="custom.css" type="text/css" />
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ae8a2litjx");
-</script>
-
 <style type="text/css">
   code{white-space: pre-wrap;}
   span.smallcaps{font-variant: small-caps;}
@@ -74,7 +71,6 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
 .tabset-dropdown > .nav-tabs > li.active:before {
   content: "";
   font-family: 'Glyphicons Halflings';
@@ -82,12 +78,10 @@
   padding: 10px;
   border-right: 1px solid #ddd;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
   content: "&#xe258;";
   border: none;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
   content: "";
   font-family: 'Glyphicons Halflings';
@@ -95,11 +89,9 @@
   padding: 10px;
   border-right: 1px solid #ddd;
 }
-
 .tabset-dropdown > .nav-tabs > li.active {
   display: block;
 }
-
 .tabset-dropdown > .nav-tabs > li > a,
 .tabset-dropdown > .nav-tabs > li > a:focus,
 .tabset-dropdown > .nav-tabs > li > a:hover {
@@ -108,12 +100,10 @@
   border-radius: 4px;
   background-color: transparent;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
   display: block;
   float: none;
 }
-
 .tabset-dropdown > .nav-tabs > li {
   display: none;
 }
@@ -234,18 +224,37 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
             <li class="dropdown-header">MODEL</li>
             <li>
               <a href="afl_ratings.html">Ratings</a>
             </li>
             <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
               <a href="afl_simulations.html">Simulations</a>
             </li>
-            <!-- <li class="divider"></li>
+            <li class="divider"></li>
             <li class="dropdown-header">STATISTICS</li>
             <li>
-              <a href="....html">...</a>
-            </li> -->
+              <a href="afl_match_stats.html">Match Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
             <li class="divider"></li>
             <li class="dropdown-header">RECORDS</li>
             <li>
@@ -253,6 +262,29 @@
             </li>
             <li>
               <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
             </li>
           </ul>
         </li>
@@ -263,8 +295,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="https://twitter.com/WheeloRatings">
-            <span class="ion ion-social-twitter"></span>
-
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
           </a>
         </li>
       </ul>
@@ -285,9 +320,16 @@
 <h2>Elo Ratings</h2>
 <div id="introduction" class="section level3">
 <h3>Introduction</h3>
-<p>An Elo rating system is a metho <a href="https://en.wikipedia.org/wiki/Elo_rating_system" target="_blank">Wikipedia article</a> <a href="http://www.tennisabstract.com/blog/2019/12/03/an-introduction-to-tennis-elo/" target="_blank">An Introduction to Tennis Elo</a></p>
-<p>If Player A has a rating of <span class="math inline">\(R_A\)</span> and Player B a rating of <span class="math inline">\(R_B\)</span>, the formula for the expected probability of Player A winning is:</p>
-<p><span class="math display">\[E_A = \frac{1}{1+10^{(R_B-R_A)/400}}\]</span></p>
+<p>An Elo rating system is a metho
+<a href="https://en.wikipedia.org/wiki/Elo_rating_system" target="_blank">Wikipedia
+article</a>
+<a href="http://www.tennisabstract.com/blog/2019/12/03/an-introduction-to-tennis-elo/" target="_blank">An
+Introduction to Tennis Elo</a></p>
+<p>If Player A has a rating of <span class="math inline">\(R_A\)</span>
+and Player B a rating of <span class="math inline">\(R_B\)</span>, the
+formula for the expected probability of Player A winning is:</p>
+<p><span class="math display">\[E_A =
+\frac{1}{1+10^{(R_B-R_A)/400}}\]</span></p>
 </div>
 <div id="inexperienced-players" class="section level3">
 <h3>Inexperienced players</h3>
@@ -304,10 +346,17 @@
 </div>
 <div id="elo-race" class="section level2">
 <h2>Elo Race</h2>
-<p>The Elo Race is an attempt to rate a player’s season using some elo rating concepts. A player is awarded points for each match based on the result (win or loss) and their opponent’s elo rating, but not the player’s own rating.</p>
-<p>A value of 1700 is used for the player’s own rating in the elo formula (outlined in the section above).</p>
-<p>The expected probability of a player rated at 1700 defeating a player with a rating of <span class="math inline">\(R_B\)</span> is:</p>
-<p><span class="math display">\[E_A = \frac{1}{1+10^{(R_B-1700)/400}}\]</span> For the Elo Race, a win against</p>
+<p>The Elo Race is an attempt to rate a player’s season using some elo
+rating concepts. A player is awarded points for each match based on the
+result (win or loss) and their opponent’s elo rating, but not the
+player’s own rating.</p>
+<p>A value of 1700 is used for the player’s own rating in the elo
+formula (outlined in the section above).</p>
+<p>The expected probability of a player rated at 1700 defeating a player
+with a rating of <span class="math inline">\(R_B\)</span> is:</p>
+<p><span class="math display">\[E_A =
+\frac{1}{1+10^{(R_B-1700)/400}}\]</span> For the Elo Race, a win
+against</p>
 </div>
 </main>
 
@@ -319,7 +368,7 @@
     <!-- &nbsp; -->
     <hr />
     <p style="text-align: center;"><a href="#top">Back to top</a></p>
-    <p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
 </footer>
 
 
@@ -355,25 +404,35 @@ $(document).ready(function () {
 <script type="text/javascript">
 // manage active state of menu based on current page
 (function() {
-  // active menu anchor
   href = window.location.pathname;
   href = href.substr(href.lastIndexOf('/') + 1);
   if (href === "")
     href = "index.html";
-  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
 
-  //menuAnchor.classList.add("active");
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
   
-  const li = menuAnchor.closest('li');
-  li.classList.add('active');
-  
-  const parent = li.parentElement.closest('li')
-  
-  if (parent !== null)
-    parent.classList.add('active');
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
 })();
 </script>
-
 <!-- <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
@@ -386,6 +445,5 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 </script> -->
-
 </body>
 </html>

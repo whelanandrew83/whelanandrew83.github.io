@@ -17,14 +17,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link href="site_libs/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
-<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
-<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
-<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 <link rel="icon" href="favicon.ico" />
@@ -35,22 +35,19 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
 </script>
 
 <link rel="stylesheet" href="custom.css" type="text/css" />
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ae8a2litjx");
-</script>
-
 <style type="text/css">
   code{white-space: pre-wrap;}
   span.smallcaps{font-variant: small-caps;}
@@ -74,7 +71,6 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
 .tabset-dropdown > .nav-tabs > li.active:before {
   content: "";
   font-family: 'Glyphicons Halflings';
@@ -82,12 +78,10 @@
   padding: 10px;
   border-right: 1px solid #ddd;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
   content: "&#xe258;";
   border: none;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
   content: "";
   font-family: 'Glyphicons Halflings';
@@ -95,11 +89,9 @@
   padding: 10px;
   border-right: 1px solid #ddd;
 }
-
 .tabset-dropdown > .nav-tabs > li.active {
   display: block;
 }
-
 .tabset-dropdown > .nav-tabs > li > a,
 .tabset-dropdown > .nav-tabs > li > a:focus,
 .tabset-dropdown > .nav-tabs > li > a:hover {
@@ -108,12 +100,10 @@
   border-radius: 4px;
   background-color: transparent;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
   display: block;
   float: none;
 }
-
 .tabset-dropdown > .nav-tabs > li {
   display: none;
 }
@@ -234,18 +224,37 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
             <li class="dropdown-header">MODEL</li>
             <li>
               <a href="afl_ratings.html">Ratings</a>
             </li>
             <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
               <a href="afl_simulations.html">Simulations</a>
             </li>
-            <!-- <li class="divider"></li>
+            <li class="divider"></li>
             <li class="dropdown-header">STATISTICS</li>
             <li>
-              <a href="....html">...</a>
-            </li> -->
+              <a href="afl_match_stats.html">Match Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
             <li class="divider"></li>
             <li class="dropdown-header">RECORDS</li>
             <li>
@@ -253,6 +262,29 @@
             </li>
             <li>
               <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
             </li>
           </ul>
         </li>
@@ -263,13 +295,49 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="https://twitter.com/WheeloRatings">
-            <span class="ion ion-social-twitter"></span>
-
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
           </a>
         </li>
       </ul>
     </div>
   </div>
+</nav>
+<nav id="navbar-banner">
+    <ul class="nav navbar-banner-heading justify-content-center">
+        <li class="fw-bold text-center">
+            Australian Football League (AFL)
+        </li>
+    </ul>
+    <ul class="nav navbar-banner-nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="afl_index.html">AFL Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_previews.html">Match Previews</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_stats.html">Match Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats.html">Player Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats_team.html">Team Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_ratings.html">Team Ratings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_simulations.html">Simulations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_brownlow.html">Brownlow Medal</a>
+        </li>
+    </ul>
 </nav>
 
 <header id="header">
@@ -282,35 +350,155 @@
 
 <main>
 <!-- https://rpruim.github.io/s341/S19/from-class/MathinRmd.html -->
-<div id="overview" class="section level2">
-<h2>Overview</h2>
+<div id="match-prediction-model" class="section level2">
+<h2>Match Prediction Model</h2>
 <div id="team-ratings" class="section level3">
 <h3>Team ratings</h3>
-<p>Each team has an attacking and defensive rating.</p>
+<p>Each team has an attacking and defensive rating which gets updated
+following every match.</p>
 <div id="expected-margin" class="section level4">
 <h4>Expected Margin</h4>
-<p><span class="math display">\[\text{Expected Margin} = (\text{Att}_h + \text{Def}_h) - (\text{Att}_a + \text{Def}_a) + \text{Venue}\]</span> Where <span class="math inline">\(\text{Att}_h\)</span> denotes the attacking rating of the designated home team, <span class="math inline">\(\text{Def}_h\)</span> denotes the defensive rating of the designated home team, <span class="math inline">\(\text{Att}_a\)</span> denotes the attacking rating of the designated away team, <span class="math inline">\(\text{Def}_a\)</span> denotes the defensive rating of the designated away team, and <span class="math inline">\(\text{Venue}\)</span> denotes the net venue effect.</p>
+<p><span class="math display">\[\text{Expected Margin} = (\text{Att}_h +
+\text{Def}_h) - (\text{Att}_a + \text{Def}_a) + \text{Venue}\]</span>
+Where <span class="math inline">\(\text{Att}_h\)</span> denotes the
+<em>attacking</em> rating of the designated home team, <span
+class="math inline">\(\text{Def}_h\)</span> denotes the
+<em>defensive</em> rating of the designated home team, <span
+class="math inline">\(\text{Att}_a\)</span> denotes the
+<em>attacking</em> rating of the designated away team, <span
+class="math inline">\(\text{Def}_a\)</span> denotes the
+<em>defensive</em> rating of the designated away team, and <span
+class="math inline">\(\text{Venue}\)</span> denotes the net venue
+effect.</p>
 </div>
-<div id="updating-team-ratings-following-a-match" class="section level4">
+<div id="updating-team-ratings-following-a-match"
+class="section level4">
 <h4>Updating team ratings following a match</h4>
-<p>These ratings are updated following each match based on the <em>adjusted</em> margin compared to the <em>expected</em> margin.</p>
+<p>These ratings are updated following each match based on the
+<em>adjusted</em> margin compared to the <em>expected</em> margin.</p>
+<div id="expected-scores" class="section level5">
+<h5>Expected scores</h5>
+<p><span class="math display">\[\text{Expected}_h = \mu +
+(\text{Att}_h-\text{Def}_a)\]</span> <span
+class="math display">\[\text{Expected}_a = \mu +
+(\text{Att}_a-\text{Def}_h)\]</span> Where <span
+class="math inline">\(\mu\)</span> is the AFL average score.</p>
+</div>
+<div id="adjusted-scores" class="section level5">
+<h5>Adjusted scores</h5>
+<p>Adjusted scores are a weighted average of a team’s actual score and
+their score had they kicked at an expected accuracy. The expected
+accuracy is a weighted average of the competition-wide accuracy and the
+team’s accuracy in the current season.</p>
+<p><span class="math display">\[\text{Adjusted} = w\cdot(6\cdot\text{G}
++ \text{B}) + (1-w)\cdot(c\cdot(\text{G}+\text{B}) +
+(1-c)\cdot(\text{G}+\text{B}))\]</span></p>
+</div>
 <div id="attacking-rating" class="section level5">
 <h5>Attacking rating</h5>
-<p>Each team’s attacking rating is updated based on their <em>adjusted</em> score compared to their <em>expected</em> score. <span class="math display">\[\text{New attacking rating} = \text{Att}_h + k_t(\text{Adjusted}_h-\text{Expected}_h)\]</span></p>
+<p>Each team’s attacking rating is updated based on their
+<em>adjusted</em> score compared to their <em>expected</em> score. <span
+class="math display">\[\text{New attacking rating} = \text{Att}_h +
+k_t(\text{Adjusted}_h-\text{Expected}_h)\]</span></p>
 </div>
 <div id="defensive-rating" class="section level5">
 <h5>Defensive rating</h5>
-<p>Each team’s defensive rating is updated based their opponent’s <em>adjusted</em> score compared to their opponent’s <em>expected</em> score. <span class="math display">\[\text{New defensive rating} = \text{Def}_h - k_t(\text{Adjusted}_a-\text{Expected}_a)\]</span></p>
+<p>Each team’s defensive rating is updated based their opponent’s
+<em>adjusted</em> score compared to their opponent’s <em>expected</em>
+score. <span class="math display">\[\text{New defensive rating} =
+\text{Def}_h - k_t(\text{Adjusted}_a-\text{Expected}_a)\]</span></p>
 </div>
 </div>
 </div>
 </div>
 <div id="venue-advantage" class="section level2">
 <h2>Venue advantage</h2>
-<p><span class="math display">\[\text{Venue}=\text{Travel}+\text{Venue Experience}+\text{Venue Performance}+\text{Home Advantage}\]</span> <span class="math display">\[\text{Travel}=w_d \cdot ({\text{Distance}_h}^w - {\text{Distance}_a}^w)\]</span></p>
+<p>Venue advantage is based on the following four factors:</p>
+<ul>
+<li>travel distances for the two teams;</li>
+<li>number of matches the teams have played at the particular venue over
+the past five seasons;</li>
+<li>a constant home advantage which applies to all matches, with the
+exception of Grand Finals, where the designated home team is playing in
+its home state; and</li>
+<li>historical performance of the teams at the particular venue compared
+to expected performance.</li>
+</ul>
+<p><span class="math display">\[\text{Venue}=\text{Travel}+\text{Venue
+Experience}+\text{Home Advantage}+\text{Venue Performance}\]</span>
+<span class="math display">\[\text{Travel}=k \cdot ({\text{Travel}_h}^w
+- {\text{Travel}_a}^w)\]</span> Where <span
+class="math inline">\(\text{Travel}_h\)</span> and <span
+class="math inline">\(\text{Travel}_a\)</span> are the travel distances
+in kilometres for the home and away teams, respectively.</p>
+<p><span class="math display">\[\text{Venue Experience}=k \cdot
+(({\text{Matches}_h + c})^w - ({\text{Matches}_a} + c)^w)\]</span> Where
+<span class="math inline">\(\text{Matches}_h\)</span> and <span
+class="math inline">\(\text{Matches}_a\)</span> are the numbers of
+matches played at the venue in the past five years by the home and away
+teams, respectively.</p>
 </div>
 <div id="incorporating-player-information" class="section level2">
 <h2>Incorporating player information</h2>
+<p>The official AFL Player Ratings are used to supplement the Team
+Ratings in order to obtain an improved prediction based on the named
+team lineups for the two teams. Detailed information on the AFL Player
+Ratings can be found below.</p>
+<p>For the purpose of this model, a player’s estimated rating for a
+match is calculated using a weighted average of their rating in previous
+matches with their latest match carrying the greatest weight. The
+estimated rating for all players listed in the team lineups are
+aggregated for each team.</p>
+<p><span class="math display">\[\text{Expected Margin}_p=w_s \cdot
+((\text{Att}_h + \text{Def}_h) - (\text{Att}_a + \text{Def}_a)) + w_p
+\cdot (\text{Player Rating}_h - \text{Player Rating}_a) +
+\text{Venue}\]</span> Where <span class="math inline">\(\text{Player
+Rating}_h\)</span> and <span class="math inline">\(\text{Player
+Rating}_a\)</span> are the totals of the estimated player ratings for
+the home and away teams, respectively.</p>
+<div id="afl-player-ratings" class="section level3">
+<h3>AFL Player Ratings</h3>
+<ul>
+<li><a
+href="https://s.afl.com.au/staticfile/AFL%20Tenant/AFL/PlayerRatings/PlayerRatings_HOW.pdf">AFL
+Player Ratings Overview</a></li>
+<li><a
+href="https://researchbank.swinburne.edu.au/file/248ec147-72d7-448c-a19d-49f01d90b12f/1/Karl%20Jackson%20Thesis.pdf">Assessing
+Player Performance in Australian Football Using Spatial Data (Karl
+Jackson thesis)</a></li>
+</ul>
+</div>
+</div>
+<div id="brownlow" class="section level2">
+<h2>Brownlow Medal Prediction Model</h2>
+<p>The Brownlow Medal prediction model uses an ordinal logistic
+regression model and was based on Chew The Stat’s <a
+href="https://chewthestat.com/monte-charlo-using-data-to-predict-the-brownlow-medal/">Monte
+ChaRlo model</a> methodology. The Wheelo Ratings model uses in-game
+statistics only which would generally not perform as well as a model
+which takes into account coaches and media votes.</p>
+<div id="statistics" class="section level3">
+<h3>Statistics</h3>
+<ul>
+<li>Match result and margin</li>
+<li>AFL Player Rating points</li>
+<li>Kicks</li>
+<li>Handballs</li>
+<li>Total possessions and contested possessions</li>
+<li>Metres gained</li>
+<li>Centre clearances and stoppage clearances</li>
+<li>Total marks, contested marks and intercept marks</li>
+<li>Hitouts and hit outs to advantage</li>
+<li>Tackles</li>
+<li>Frees for and against</li>
+<li>Goals</li>
+<li>Goal assists</li>
+<li>Score involvements</li>
+<li>Bounces</li>
+<li>Spoils</li>
+<li>Defensive one-one-one contests won or neutralised</li>
+</ul>
+</div>
 </div>
 </main>
 
@@ -322,7 +510,7 @@
     <!-- &nbsp; -->
     <hr />
     <p style="text-align: center;"><a href="#top">Back to top</a></p>
-    <p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
 </footer>
 
 
@@ -358,25 +546,35 @@ $(document).ready(function () {
 <script type="text/javascript">
 // manage active state of menu based on current page
 (function() {
-  // active menu anchor
   href = window.location.pathname;
   href = href.substr(href.lastIndexOf('/') + 1);
   if (href === "")
     href = "index.html";
-  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
 
-  //menuAnchor.classList.add("active");
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
   
-  const li = menuAnchor.closest('li');
-  li.classList.add('active');
-  
-  const parent = li.parentElement.closest('li')
-  
-  if (parent !== null)
-    parent.classList.add('active');
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
 })();
 </script>
-
 <!-- <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
@@ -389,6 +587,5 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 </script> -->
-
 </body>
 </html>

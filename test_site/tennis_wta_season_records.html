@@ -17,21 +17,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<link href="site_libs/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-5.1.0/bootstrap.bundle.min.js"></script>
-<script src="site_libs/bs3compat-0.3.1/transition.js"></script>
-<script src="site_libs/bs3compat-0.3.1/tabs.js"></script>
-<script src="site_libs/bs3compat-0.3.1/bs3compat.js"></script>
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/core-js-2.5.3/shim.min.js"></script>
 <script src="site_libs/react-17.0.0/react.min.js"></script>
 <script src="site_libs/react-17.0.0/react-dom.min.js"></script>
 <script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
-<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
-<script src="site_libs/reactable-binding-0.2.3/reactable.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 <link rel="icon" href="favicon.ico" />
 <link rel="manifest" href="manifest.json">
@@ -41,22 +42,19 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
 </script>
 
 <link rel="stylesheet" href="custom.css" type="text/css" />
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ae8a2litjx");
-</script>
-
 <style type="text/css">
   code{white-space: pre-wrap;}
   span.smallcaps{font-variant: small-caps;}
@@ -80,7 +78,6 @@
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
 .tabset-dropdown > .nav-tabs > li.active:before {
   content: "";
   font-family: 'Glyphicons Halflings';
@@ -88,12 +85,10 @@
   padding: 10px;
   border-right: 1px solid #ddd;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
   content: "&#xe258;";
   border: none;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
   content: "";
   font-family: 'Glyphicons Halflings';
@@ -101,11 +96,9 @@
   padding: 10px;
   border-right: 1px solid #ddd;
 }
-
 .tabset-dropdown > .nav-tabs > li.active {
   display: block;
 }
-
 .tabset-dropdown > .nav-tabs > li > a,
 .tabset-dropdown > .nav-tabs > li > a:focus,
 .tabset-dropdown > .nav-tabs > li > a:hover {
@@ -114,12 +107,10 @@
   border-radius: 4px;
   background-color: transparent;
 }
-
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
   display: block;
   float: none;
 }
-
 .tabset-dropdown > .nav-tabs > li {
   display: none;
 }
@@ -240,18 +231,37 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
             <li class="dropdown-header">MODEL</li>
             <li>
               <a href="afl_ratings.html">Ratings</a>
             </li>
             <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
               <a href="afl_simulations.html">Simulations</a>
             </li>
-            <!-- <li class="divider"></li>
+            <li class="divider"></li>
             <li class="dropdown-header">STATISTICS</li>
             <li>
-              <a href="....html">...</a>
-            </li> -->
+              <a href="afl_match_stats.html">Match Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
             <li class="divider"></li>
             <li class="dropdown-header">RECORDS</li>
             <li>
@@ -259,6 +269,29 @@
             </li>
             <li>
               <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
             </li>
           </ul>
         </li>
@@ -269,13 +302,37 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="https://twitter.com/WheeloRatings">
-            <span class="ion ion-social-twitter"></span>
-
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
           </a>
         </li>
       </ul>
     </div>
   </div>
+</nav>
+<nav id="navbar-banner">
+    <ul class="nav navbar-banner-heading justify-content-center">
+        <li class="fw-bold text-center">
+            Women's Tennis (WTA)
+        </li>
+    </ul>
+    <ul class="nav navbar-banner-nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_wta_ratings.html">Elo Ratings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_wta_race.html">Elo Race</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_wta_stats_last52.html">Player Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tennis_player_profile.html">Player Profiles</a>
+        </li>
+    </ul>
 </nav>
 
 <header id="header">
@@ -292,14 +349,14 @@
 <p>
 <a href="tennis_atp_season_records.html">View ATP</a>
 </p>
-<p><p>Includes all tour-level matches since 1968, excluding qualifying matches.</p></p>
+<p>Includes all tour-level matches since 1968, excluding qualifying matches.</p>
 <div class="row">
 <div class="col-md-4">
 <div class="card border-primary">
 <div class="card-header bg-primary">Most Grand Slams</div>
 <div class="card-body">
-<div id="htmlwidget-893274ce4e2e305a42ff" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-893274ce4e2e305a42ff">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[4,4,3,3,3,3,3,3,3,3,3,3,3,3,3],"player_name":["Margaret Court","Steffi Graf","Margaret Court","Martina Navratilova","Steffi Graf","Martina Navratilova","Martina Hingis","Billie Jean King","Steffi Graf","Monica Seles","Monica Seles","Steffi Graf","Serena Williams","Steffi Graf","Serena Williams"],"player_ioc":["AUS","GER","AUS","USA","GER","USA","SUI","USA","GER","USA","USA","GER","USA","GER","USA"],"year":[1970,1988,1969,1983,1989,1984,1997,1972,1993,1991,1992,1995,2002,1996,2015],"Rank":[1,1,3,3,3,3,3,3,3,3,3,3,3,3,3]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Hingis"]},{"name":"span","attribs":{"className":"small-2"},"children":["SUI"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Monica Seles"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Monica Seles"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Serena Williams"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":15,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"4effdebae4703761fa6ea0a63055b876","key":"4effdebae4703761fa6ea0a63055b876"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-23c0752f901eb2afb7c2" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-23c0752f901eb2afb7c2">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[4,4,3,3,3,3,3,3,3,3,3,3,3,3,3],"player_name":["Margaret Court","Steffi Graf","Margaret Court","Martina Navratilova","Steffi Graf","Martina Navratilova","Martina Hingis","Billie Jean King","Steffi Graf","Monica Seles","Monica Seles","Steffi Graf","Serena Williams","Steffi Graf","Serena Williams"],"player_ioc":["AUS","GER","AUS","USA","GER","USA","SUI","USA","GER","USA","USA","GER","USA","GER","USA"],"year":[1970,1988,1969,1983,1989,1984,1997,1972,1993,1991,1992,1995,2002,1996,2015],"WebsiteId":["7a1b0","7a2be","7a1b0","7a245","7a2be","7a245","7a121","7a1de","7a2be","7a3ac","7a3ac","7a2be","7a141","7a2be","7a141"],"Rank":[1,1,3,3,3,3,3,3,3,3,3,3,3,3,3]},"columns":[{"id":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"id":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":["<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a121\">Martina Hingis<\/a>\n<span class=\"small-2\">SUI<\/span>","<a href=\"tennis_player_profile.html?ID=7a1de\">Billie Jean King<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a3ac\">Monica Seles<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a3ac\">Monica Seles<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a141\">Serena Williams<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a141\">Serena Williams<\/a>\n<span class=\"small-2\">USA<\/span>"],"html":true},{"id":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"id":"WebsiteId","name":"WebsiteId","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"pagination":false,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"216a5a5f61d2af70604f7b4dc07bd1fd"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -307,8 +364,8 @@
 <div class="card border-primary">
 <div class="card-header bg-primary">Most Titles</div>
 <div class="card-body">
-<div id="htmlwidget-6994f8259e6c84f8cd82" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-6994f8259e6c84f8cd82">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[21,20,18,18,17,17,16,15,15,15],"player_name":["Margaret Court","Margaret Court","Martina Navratilova","Margaret Court","Billie Jean King","Gail Benedetti","Chris Evert","Martina Navratilova","Margaret Court","Evonne Goolagong"],"player_ioc":["AUS","AUS","USA","AUS","USA","FRA","USA","USA","AUS","AUS"],"year":[1970,1969,1983,1973,1971,1968,1975,1982,1968,1970],"Rank":[1,2,3,3,5,5,7,8,8,8]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Gail Benedetti"]},{"name":"span","attribs":{"className":"small-2"},"children":["FRA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"d15778d85ba4c9142bcaf1b52e279efa","key":"d15778d85ba4c9142bcaf1b52e279efa"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1a22a5250e96d4cf1ddc" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1a22a5250e96d4cf1ddc">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[21,20,18,18,17,17,17,15,15,15],"player_name":["Margaret Court","Margaret Court","Martina Navratilova","Margaret Court","Chris Evert","Billie Jean King","Gail Sherriff","Martina Navratilova","Margaret Court","Evonne Goolagong"],"player_ioc":["AUS","AUS","USA","AUS","USA","USA","FRA","USA","AUS","AUS"],"year":[1970,1969,1983,1973,1975,1971,1968,1982,1968,1970],"WebsiteId":["7a1b0","7a1b0","7a245","7a1b0","7a223","7a1de","7a1b8","7a245","7a1b0","7a1b6"],"Rank":[1,2,3,3,5,5,5,8,8,8]},"columns":[{"id":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"id":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":["<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a223\">Chris Evert<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1de\">Billie Jean King<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b8\">Gail Sherriff<\/a>\n<span class=\"small-2\">FRA<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>"],"html":true},{"id":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"id":"WebsiteId","name":"WebsiteId","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"pagination":false,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"50f1c62eecb8a4b3b479fb7c1b713d89"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -316,8 +373,8 @@
 <div class="card border-primary">
 <div class="card-header bg-primary">Most Finals</div>
 <div class="card-body">
-<div id="htmlwidget-226ed83f7171ee970364" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-226ed83f7171ee970364">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[24,23,23,22,21,21,19,19,19,18,18,18,18,18,18],"player_name":["Billie Jean King","Margaret Court","Evonne Goolagong","Margaret Court","Margaret Court","Evonne Goolagong","Margaret Court","Virginia Wade","Gail Benedetti","Martina Navratilova","Chris Evert","Martina Navratilova","Ann Jones","Evonne Goolagong","Evonne Goolagong"],"player_ioc":["USA","AUS","AUS","AUS","AUS","AUS","AUS","GBR","FRA","USA","USA","USA","GBR","AUS","AUS"],"year":[1971,1970,1973,1968,1969,1971,1973,1968,1968,1983,1975,1979,1969,1970,1972],"Rank":[1,2,2,4,5,5,7,7,7,10,10,10,10,10,10]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Gail Benedetti"]},{"name":"span","attribs":{"className":"small-2"},"children":["FRA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Ann Jones"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":15,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"5a61be581be1d69fde4e767690f73e45","key":"5a61be581be1d69fde4e767690f73e45"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-668eaf37d1548f7029b8" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-668eaf37d1548f7029b8">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[24,23,23,22,21,21,19,19,19,19],"player_name":["Billie Jean King","Margaret Court","Evonne Goolagong","Margaret Court","Margaret Court","Evonne Goolagong","Margaret Court","Chris Evert","Virginia Wade","Gail Sherriff"],"player_ioc":["USA","AUS","AUS","AUS","AUS","AUS","AUS","USA","GBR","FRA"],"year":[1971,1970,1973,1968,1969,1971,1973,1975,1968,1968],"WebsiteId":["7a1de","7a1b0","7a1b6","7a1b0","7a1b0","7a1b6","7a1b0","7a223","7a20d","7a1b8"],"Rank":[1,2,2,4,5,5,7,7,7,7]},"columns":[{"id":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"id":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":["<a href=\"tennis_player_profile.html?ID=7a1de\">Billie Jean King<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a223\">Chris Evert<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a20d\">Virginia Wade<\/a>\n<span class=\"small-2\">GBR<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b8\">Gail Sherriff<\/a>\n<span class=\"small-2\">FRA<\/span>"],"html":true},{"id":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"id":"WebsiteId","name":"WebsiteId","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"pagination":false,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"5b1ad9773e4e178ed0607a97790c4b19"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -327,8 +384,8 @@
 <div class="card border-primary">
 <div class="card-header bg-primary">Most Semi Finals</div>
 <div class="card-body">
-<div id="htmlwidget-5f389bf847c664071ac1" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5f389bf847c664071ac1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[30,27,26,26,26,26,25,24,23,23,23],"player_name":["Billie Jean King","Margaret Court","Margaret Court","Evonne Goolagong","Ann Jones","Rosie Casals","Virginia Wade","Margaret Court","Evonne Goolagong","Judy Tegart","Francoise Durr"],"player_ioc":["USA","AUS","AUS","AUS","GBR","USA","GBR","AUS","AUS","AUS","FRA"],"year":[1971,1970,1969,1973,1969,1971,1968,1968,1971,1968,1971],"Rank":[1,2,3,3,3,3,7,8,9,9,9]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Ann Jones"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Rosie Casals"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Judy Tegart"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Francoise Durr"]},{"name":"span","attribs":{"className":"small-2"},"children":["FRA"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":11,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"bd73fd07d296d39f4e78c2f31533bd9e","key":"bd73fd07d296d39f4e78c2f31533bd9e"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-996dcf59d0ab4b2f584b" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-996dcf59d0ab4b2f584b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[30,27,27,26,26,26,25,24,23,23,23],"player_name":["Billie Jean King","Margaret Court","Ann Jones","Margaret Court","Evonne Goolagong","Rosie Casals","Virginia Wade","Margaret Court","Evonne Goolagong","Judy Tegart","Francoise Durr"],"player_ioc":["USA","AUS","GBR","AUS","AUS","USA","GBR","AUS","AUS","AUS","FRA"],"year":[1971,1970,1969,1969,1973,1971,1968,1968,1971,1968,1971],"WebsiteId":["7a1de","7a1b0","7a1e1","7a1b0","7a1b6","7a1bf","7a20d","7a1b0","7a1b6","7a1c0","7a1e2"],"Rank":[1,2,2,4,4,4,7,8,9,9,9]},"columns":[{"id":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"id":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":["<a href=\"tennis_player_profile.html?ID=7a1de\">Billie Jean King<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1e1\">Ann Jones<\/a>\n<span class=\"small-2\">GBR<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1bf\">Rosie Casals<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a20d\">Virginia Wade<\/a>\n<span class=\"small-2\">GBR<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1c0\">Judy Tegart<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1e2\">Francoise Durr<\/a>\n<span class=\"small-2\">FRA<\/span>"],"html":true},{"id":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"id":"WebsiteId","name":"WebsiteId","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"pagination":false,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"d1398bf6869ee0f1b4707678ff0beedf"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -336,8 +393,8 @@
 <div class="card border-primary">
 <div class="card-header bg-primary">Most Matches</div>
 <div class="card-body">
-<div id="htmlwidget-c633fad2f693e548dfb4" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c633fad2f693e548dfb4">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[129,127,123,122,120,118,117,116,116,112],"player_name":["Billie Jean King","Evonne Goolagong","Rosie Casals","Francoise Durr","Margaret Court","Margaret Court","Evonne Goolagong","Margaret Court","Virginia Wade","Rosie Casals"],"player_ioc":["USA","AUS","USA","FRA","AUS","AUS","AUS","AUS","GBR","USA"],"year":[1971,1973,1971,1971,1968,1970,1971,1969,1968,1973],"Rank":[1,2,3,4,5,6,7,8,8,10]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Rosie Casals"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Francoise Durr"]},{"name":"span","attribs":{"className":"small-2"},"children":["FRA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Rosie Casals"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"6896d29e08ea21721469c23678eade56","key":"6896d29e08ea21721469c23678eade56"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b577748984895209a7bb" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b577748984895209a7bb">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[129,127,123,122,120,118,117,116,116,112],"player_name":["Billie Jean King","Evonne Goolagong","Rosie Casals","Francoise Durr","Margaret Court","Margaret Court","Evonne Goolagong","Margaret Court","Virginia Wade","Rosie Casals"],"player_ioc":["USA","AUS","USA","FRA","AUS","AUS","AUS","AUS","GBR","USA"],"year":[1971,1973,1971,1971,1968,1970,1971,1969,1968,1973],"WebsiteId":["7a1de","7a1b6","7a1bf","7a1e2","7a1b0","7a1b0","7a1b6","7a1b0","7a20d","7a1bf"],"Rank":[1,2,3,4,5,6,7,8,8,10]},"columns":[{"id":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"id":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":["<a href=\"tennis_player_profile.html?ID=7a1de\">Billie Jean King<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1bf\">Rosie Casals<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1e2\">Francoise Durr<\/a>\n<span class=\"small-2\">FRA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a20d\">Virginia Wade<\/a>\n<span class=\"small-2\">GBR<\/span>","<a href=\"tennis_player_profile.html?ID=7a1bf\">Rosie Casals<\/a>\n<span class=\"small-2\">USA<\/span>"],"html":true},{"id":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"id":"WebsiteId","name":"WebsiteId","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"pagination":false,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"1eb65823a07b4cd64a113d2a77e45ad9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -345,8 +402,8 @@
 <div class="card border-primary">
 <div class="card-header bg-primary">Most Wins</div>
 <div class="card-body">
-<div id="htmlwidget-a0b1e1778d7bc416b590" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a0b1e1778d7bc416b590">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[114,112,111,110,108,102,100,97,95,95],"player_name":["Billie Jean King","Margaret Court","Evonne Goolagong","Margaret Court","Margaret Court","Margaret Court","Evonne Goolagong","Martina Navratilova","Chris Evert","Virginia Wade"],"player_ioc":["USA","AUS","AUS","AUS","AUS","AUS","AUS","USA","USA","GBR"],"year":[1971,1970,1973,1969,1968,1973,1971,1979,1975,1968],"Rank":[1,2,3,4,5,6,7,8,9,9]},"columns":[{"accessor":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Billie Jean King"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Evonne Goolagong"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Chris Evert"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Virginia Wade"]},{"name":"span","attribs":{"className":"small-2"},"children":["GBR"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"cadc2c7345abdc8d7e188fd592aaa978","key":"cadc2c7345abdc8d7e188fd592aaa978"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a15fbbec3c5c3b945907" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a15fbbec3c5c3b945907">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":[114,112,111,110,108,102,100,99,97,95],"player_name":["Billie Jean King","Margaret Court","Evonne Goolagong","Margaret Court","Margaret Court","Margaret Court","Evonne Goolagong","Chris Evert","Martina Navratilova","Virginia Wade"],"player_ioc":["USA","AUS","AUS","AUS","AUS","AUS","AUS","USA","USA","GBR"],"year":[1971,1970,1973,1969,1968,1973,1971,1975,1979,1968],"WebsiteId":["7a1de","7a1b0","7a1b6","7a1b0","7a1b0","7a1b0","7a1b6","7a223","7a245","7a20d"],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"id":"Value","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"id":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":["<a href=\"tennis_player_profile.html?ID=7a1de\">Billie Jean King<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b6\">Evonne Goolagong<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a223\">Chris Evert<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a20d\">Virginia Wade<\/a>\n<span class=\"small-2\">GBR<\/span>"],"html":true},{"id":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"id":"WebsiteId","name":"WebsiteId","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"pagination":false,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"05e52e362d547224c640f011018c9081"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -359,12 +416,17 @@ Highest Win Percentage
 <small>(20+ matches)</small>
 </div>
 <div class="card-body">
-<div id="htmlwidget-2688266222bc5e35a7a6" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-2688266222bc5e35a7a6">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":["98.9","97.8","97.5","97.4","96.7","96.1","96.0","95.9","94.9","94.8"],"player_name":["Martina Navratilova","Steffi Graf","Martina Navratilova","Steffi Graf","Martina Navratilova","Steffi Graf","Steffi Graf","Martina Navratilova","Margaret Court","Margaret Court"],"player_ioc":["USA","GER","USA","GER","USA","GER","GER","USA","AUS","AUS"],"year":[1983,1989,1984,1987,1986,1988,1995,1982,1970,1969],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"accessor":"Value","name":"","type":"character","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"accessor":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Steffi Graf"]},{"name":"span","attribs":{"className":"small-2"},"children":["GER"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Martina Navratilova"]},{"name":"span","attribs":{"className":"small-2"},"children":["USA"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{},"children":["Margaret Court"]},{"name":"span","attribs":{"className":"small-2"},"children":["AUS"]}]}]},{"accessor":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"accessor":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"accessor":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"b4e748207541bafc8e39314122a4c260","key":"b4e748207541bafc8e39314122a4c260"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c9997a6445011979e011" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c9997a6445011979e011">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Value":["98.9","97.8","97.5","97.4","96.7","96.1","96.0","95.9","94.9","94.8"],"player_name":["Martina Navratilova","Steffi Graf","Martina Navratilova","Steffi Graf","Martina Navratilova","Steffi Graf","Steffi Graf","Martina Navratilova","Margaret Court","Margaret Court"],"player_ioc":["USA","GER","USA","GER","USA","GER","GER","USA","AUS","AUS"],"year":[1983,1989,1984,1987,1986,1988,1995,1982,1970,1969],"WebsiteId":["7a245","7a2be","7a245","7a2be","7a245","7a2be","7a2be","7a245","7a1b0","7a1b0"],"Rank":[1,2,3,4,5,6,7,8,9,10]},"columns":[{"id":"Value","name":"","type":"character","minWidth":45,"align":"center","headerStyle":{"display":"none"},"style":{"fontWeight":"bold"}},{"id":"player_name","name":"","type":"character","minWidth":160,"align":"left","headerStyle":{"display":"none"},"cell":["<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a2be\">Steffi Graf<\/a>\n<span class=\"small-2\">GER<\/span>","<a href=\"tennis_player_profile.html?ID=7a245\">Martina Navratilova<\/a>\n<span class=\"small-2\">USA<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>","<a href=\"tennis_player_profile.html?ID=7a1b0\">Margaret Court<\/a>\n<span class=\"small-2\">AUS<\/span>"],"html":true},{"id":"player_ioc","name":"player_ioc","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"year","name":"","type":"numeric","minWidth":45,"align":"center","headerStyle":{"display":"none"}},{"id":"WebsiteId","name":"WebsiteId","type":"character","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false},{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","headerStyle":{"display":"none"},"show":false}],"sortable":false,"pagination":false,"striped":true,"showSortIcon":false,"className":"tennis-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"455a63751238053947c623adc69687aa"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 </div>
+<p></p>
+<p>
+Tennis match results sourced from 
+<a href="https://www.tennisabstract.com/blog/2015/03/24/free-atp-and-wta-results-and-stats-databases/" target="_blank">tennisabstract.com</a>
+</p>
 </main>
 
 <footer>
@@ -375,7 +437,7 @@ Highest Win Percentage
     <!-- &nbsp; -->
     <hr />
     <p style="text-align: center;"><a href="#top">Back to top</a></p>
-    <p style="text-align: center;">Copyright &copy; 2021 Wheelo Ratings All rights reserved.</p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
 </footer>
 
 
@@ -402,25 +464,35 @@ $(document).ready(function () {
 <script type="text/javascript">
 // manage active state of menu based on current page
 (function() {
-  // active menu anchor
   href = window.location.pathname;
   href = href.substr(href.lastIndexOf('/') + 1);
   if (href === "")
     href = "index.html";
-  const menuAnchor = document.getElementById("navbar").querySelectorAll('[href="' + href + '"]')[0];
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
 
-  //menuAnchor.classList.add("active");
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
   
-  const li = menuAnchor.closest('li');
-  li.classList.add('active');
-  
-  const parent = li.parentElement.closest('li')
-  
-  if (parent !== null)
-    parent.classList.add('active');
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
 })();
 </script>
-
 <!-- <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
@@ -433,6 +505,5 @@ var currentScrollPos = window.pageYOffset;
   prevScrollpos = currentScrollPos;
 }
 </script> -->
-
 </body>
 </html>
