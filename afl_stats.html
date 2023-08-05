@@ -417,7 +417,10 @@ const urlParams = new URLSearchParams(location.search);
 validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,-1]
 year = parseInt(urlParams.get("year"));
 
-if (!year) year = 2023;
+if (!year | !validYears.includes(year)) {
+  year = 2023;
+  window.location.href = `afl_stats.html?year=${year}`
+}
 year_label = year === -1 ? "Last 5 matches" : year;
 
 if (year === -1) {
