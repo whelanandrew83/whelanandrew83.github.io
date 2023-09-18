@@ -3496,9 +3496,9 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 9,NM v Port,Todd Marshall,Port,45,0,0,0,0,0,-1.6,0,0,0,0,0,0,0
 9,NM v Port,Darcy Tucker,NM,46,0,0,0,0,0,2.5,20,3,2,0,11,0,0
 9,Haw v Melb,Christian Petracca,Melb,1,2.139,45,23,31,10,22,148,30,15,6,584,0,12
-9,Haw v Melb,Jack Viney,Melb,2,1.821,28,27,46,7,27.5,149,31,18,3,465,1,8
+9,Haw v Melb,Jack Viney,Melb,2,1.821,28,27,46,7,26.7,149,31,18,3,465,1,8
 9,Haw v Melb,Clayton Oliver,Melb,3,1.219,17,28,16,2,19.8,119,34,14,5,438,1,9
-9,Haw v Melb,Trent Rivers,Melb,4,0.403,4,12,4,6,18.6,117,24,9,0,284,1,4
+9,Haw v Melb,Trent Rivers,Melb,4,0.404,4,12,4,6,18.6,117,24,9,0,284,1,4
 9,Haw v Melb,James Sicily,Haw,5,0.107,1,3,1,3,18.8,134,27,13,2,501,0,1
 9,Haw v Melb,Max Gawn,Melb,6,0.069,1,2,1,0,11.1,94,18,11,6,281,1,5
 9,Haw v Melb,Jai Newcombe,Haw,7,0.058,1,1,1,1,21.3,117,26,12,6,301,1,6
@@ -3506,7 +3506,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 9,Haw v Melb,Angus Brayshaw,Melb,9,0.018,0,0,0,0,10.4,79,25,5,1,379,0,6
 9,Haw v Melb,Will Day,Haw,10,0.017,0,0,0,0,16,88,29,14,5,294,0,3
 9,Haw v Melb,James Worpel,Haw,11,0.014,0,0,0,0,10.6,71,26,10,6,389,0,1
-9,Haw v Melb,Bayley Fritsch,Melb,12,0.013,0,0,0,0,7.7,63,15,5,0,446,2,7
+9,Haw v Melb,Bayley Fritsch,Melb,12,0.013,0,0,0,0,8.5,63,15,5,0,446,2,7
 9,Haw v Melb,Seamus Mitchell,Haw,13,0.012,0,0,0,0,7.2,74,27,4,0,383,0,2
 9,Haw v Melb,Alex Neal-Bullen,Melb,14,0.01,0,0,0,0,11.7,86,17,7,1,295,0,6
 9,Haw v Melb,Steven May,Melb,15,0.01,0,0,0,1,11.4,89,15,2,0,295,0,3
@@ -4290,8 +4290,8 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 11,Geel v GWS,Jesse Hogan,GWS,11,0.037,0,1,1,0,3,106,19,12,0,227,0,4
 11,Geel v GWS,Harry Perryman,GWS,12,0.028,0,1,0,2,14.8,83,19,8,3,331,0,4
 11,Geel v GWS,Jeremy Cameron,Geel,13,0.024,0,1,0,0,4.2,80,17,6,0,304,2,8
-11,Geel v GWS,Isaac Smith,Geel,14,0.024,0,1,0,0,5.9,82,24,5,3,741,0,6
-11,Geel v GWS,Jonathon Ceglar,Geel,15,0.018,0,0,0,0,13.2,84,17,14,5,3,0,8
+11,Geel v GWS,Isaac Smith,Geel,14,0.024,0,1,0,0,5.3,82,24,5,3,741,0,6
+11,Geel v GWS,Jonathon Ceglar,Geel,15,0.018,0,0,0,0,13.7,84,17,14,5,3,0,8
 11,Geel v GWS,Gryan Miers,Geel,16,0.011,0,0,0,0,12.1,91,22,7,1,375,0,9
 11,Geel v GWS,Jake Riccardi,GWS,17,0.01,0,0,0,0,9.8,86,6,3,0,196,3,3
 11,Geel v GWS,Finn Callaghan,GWS,18,0.009,0,0,0,0,14.1,85,18,6,4,335,0,3
@@ -4443,13 +4443,13 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 11,Rich v Port,Miles Bergman,Port,26,0.004,0,0,0,0,0.8,57,13,6,1,234,0,5
 11,Rich v Port,Jack Ross,Rich,27,0.004,0,0,0,0,4,51,16,3,1,278,0,3
 11,Rich v Port,Willem Drew,Port,28,0.004,0,0,0,0,8.6,63,10,6,4,218,1,3
-11,Rich v Port,Dylan Williams,Port,29,0.004,0,0,0,0,4.1,36,13,3,0,348,0,4
+11,Rich v Port,Dylan Williams,Port,29,0.004,0,0,0,0,5,36,13,3,0,348,0,4
 11,Rich v Port,Jackson Mead,Port,30,0.003,0,0,0,0,5.3,48,9,4,2,156,1,3
 11,Rich v Port,Sam Powell-Pepper,Port,31,0.003,0,0,0,0,10.3,56,12,9,1,226,0,4
 11,Rich v Port,Hugo Ralphsmith,Rich,32,0.003,0,0,0,0,10.2,58,17,6,1,210,0,2
 11,Rich v Port,Dylan Grimes,Rich,33,0.003,0,0,0,0,6.6,79,13,3,0,178,0,0
 11,Rich v Port,Rhyan Mansell,Rich,34,0.002,0,0,0,0,9,68,13,5,1,223,0,8
-11,Rich v Port,Kamdyn McIntosh,Rich,35,0.002,0,0,0,0,9.9,60,12,4,0,244,0,4
+11,Rich v Port,Kamdyn McIntosh,Rich,35,0.002,0,0,0,0,10.8,60,12,4,0,244,0,4
 11,Rich v Port,Trent McKenzie,Port,36,0.002,0,0,0,0,7.5,56,10,4,0,208,0,2
 11,Rich v Port,Ryan Burton,Port,37,0.001,0,0,0,0,7.1,49,7,2,0,183,1,4
 11,Rich v Port,Trent Cotchin,Rich,38,0.001,0,0,0,0,10.2,55,11,5,1,113,0,5
