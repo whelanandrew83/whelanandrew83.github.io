@@ -6531,7 +6531,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 17,Rich v Syd,Jake Lloyd,Syd,44,0,0,0,0,0,5.3,31,11,2,0,179,0,1
 17,Rich v Syd,Logan McDonald,Syd,45,0,0,0,0,0,3.1,42,6,6,0,-10,0,2
 17,Rich v Syd,Jacob Bauer,Rich,46,0,0,0,0,0,2.5,7,2,0,0,56,0,0
-17,St K v Melb,Steven May,Melb,1,1.973,37,23,40,10,20.3,147,29,8,0,459,0,4
+17,St K v Melb,Steven May,Melb,1,1.973,37,23,40,10,20.1,147,29,8,0,459,0,4
 17,St K v Melb,Rowan Marshall,St K,2,1.65,26,24,38,7,18,149,30,18,8,299,0,5
 17,St K v Melb,Christian Petracca,Melb,3,1.385,24,25,17,7,18.7,120,20,10,2,276,4,10
 17,St K v Melb,Jack Steele,St K,4,0.362,4,11,2,1,20.6,140,31,13,4,470,1,4
@@ -6557,7 +6557,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 17,St K v Melb,Mitch Owens,St K,24,0.002,0,0,0,0,5,48,13,4,0,251,2,3
 17,St K v Melb,Dougal Howard,St K,25,0.002,0,0,0,0,6,76,17,5,0,145,0,0
 17,St K v Melb,Jimmy Webster,St K,26,0.002,0,0,0,0,6.2,78,20,4,0,273,0,1
-17,St K v Melb,Alex Neal-Bullen,Melb,27,0.002,0,0,0,0,11,49,13,4,0,342,1,5
+17,St K v Melb,Alex Neal-Bullen,Melb,27,0.002,0,0,0,0,11.1,49,13,4,0,342,1,5
 17,St K v Melb,Jack Billings,St K,28,0.002,0,0,0,0,9,77,18,4,0,228,1,4
 17,St K v Melb,Marcus Windhager,St K,29,0.002,0,0,0,0,5.3,75,19,4,0,260,0,0
 17,St K v Melb,Zak Jones,St K,30,0.001,0,0,0,0,17.1,84,20,10,5,81,0,2
@@ -7830,7 +7830,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 20,WB v GWS,Sam Taylor,GWS,9,0.131,1,4,2,7,20.5,107,18,9,0,130,0,5
 20,WB v GWS,Josh Kelly,GWS,10,0.13,1,4,2,1,13.5,98,25,11,2,301,1,5
 20,WB v GWS,Jack Macrae,WB,11,0.044,1,1,1,0,20.8,122,32,16,9,380,0,6
-20,WB v GWS,Marcus Bontempelli,WB,12,0.037,1,1,0,0,18,101,27,17,7,523,0,10
+20,WB v GWS,Marcus Bontempelli,WB,12,0.037,1,1,0,0,18.6,101,27,17,7,523,0,10
 20,WB v GWS,Lachie Ash,GWS,13,0.029,0,1,0,0,7.1,89,30,4,2,520,0,6
 20,WB v GWS,Callan Ward,GWS,14,0.007,0,0,0,0,13.4,86,22,10,4,182,0,6
 20,WB v GWS,Jake Riccardi,GWS,15,0.006,0,0,0,0,6.4,71,9,4,0,204,3,6
@@ -7844,7 +7844,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 20,WB v GWS,Toby Bedford,GWS,23,0.002,0,0,0,0,11.1,71,15,5,4,240,0,8
 20,WB v GWS,Callum M. Brown,GWS,24,0.002,0,0,0,0,4.6,69,12,3,0,206,1,5
 20,WB v GWS,Connor Idun,GWS,25,0.002,0,0,0,0,13.6,83,17,6,0,216,0,5
-20,WB v GWS,Jack Buckley,GWS,26,0.001,0,0,0,0,10.5,62,14,6,0,217,0,2
+20,WB v GWS,Jack Buckley,GWS,26,0.001,0,0,0,0,11,62,14,6,0,217,0,2
 20,WB v GWS,Isaac Cumming,GWS,27,0.001,0,0,0,0,6.5,56,14,1,0,310,0,4
 20,WB v GWS,Rory Lobb,WB,28,0.001,0,0,0,0,8,73,11,6,0,123,0,3
 20,WB v GWS,Bailey Williams,WB,29,0.001,0,0,0,0,11.1,72,14,6,3,367,0,0
@@ -7865,23 +7865,23 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 20,WB v GWS,Josh Bruce,WB,44,0,0,0,0,0,5.9,26,3,4,0,115,0,0
 20,WB v GWS,Aaron Cadman,GWS,45,0,0,0,0,0,2.7,15,3,2,0,28,0,1
 20,WB v GWS,Alex Keath,WB,46,0,0,0,0,0,4.6,17,4,2,0,72,0,0
-21,Adel v GC,Darcy Fogarty,Adel,1,2.066,40,26,34,9,15,120,19,12,0,314,3,7
-21,Adel v GC,Mitchell Hinge,Adel,2,1.961,34,28,38,9,17.1,123,31,15,3,451,0,6
-21,Adel v GC,Matt Crouch,Adel,3,1.354,18,31,20,6,13.8,112,31,11,4,273,1,7
-21,Adel v GC,Brodie Smith,Adel,4,0.17,2,5,2,2,6.1,83,26,6,0,644,0,3
-21,Adel v GC,Lachlan Murphy,Adel,5,0.091,1,2,1,2,12.8,99,17,9,3,451,1,4
-21,Adel v GC,Rory Laird,Adel,6,0.091,1,2,1,0,9.7,93,24,13,7,407,0,2
+21,Adel v GC,Darcy Fogarty,Adel,1,2.071,40,26,33,9,15,120,19,12,0,314,3,7
+21,Adel v GC,Mitchell Hinge,Adel,2,1.949,34,28,39,9,18.1,123,31,15,3,451,0,6
+21,Adel v GC,Matt Crouch,Adel,3,1.356,18,31,20,6,13.8,112,31,11,4,273,1,7
+21,Adel v GC,Brodie Smith,Adel,4,0.171,2,5,2,2,6.1,83,26,6,0,644,0,3
+21,Adel v GC,Lachlan Murphy,Adel,5,0.092,1,2,1,2,12.8,99,17,9,3,451,1,4
+21,Adel v GC,Rory Laird,Adel,6,0.092,1,2,1,0,9.7,93,24,13,7,407,0,2
 21,Adel v GC,Jordan Dawson,Adel,7,0.086,1,2,1,0,15.9,89,23,7,6,411,1,6
 21,Adel v GC,James Borlase,Adel,8,0.029,0,1,0,1,15,112,18,7,1,150,0,4
-21,Adel v GC,Jarrod Witts,GC,9,0.025,0,1,0,0,14.2,109,19,11,3,130,0,4
-21,Adel v GC,Sam Flanders,GC,10,0.018,0,0,0,0,10,91,27,12,3,331,0,5
+21,Adel v GC,Jarrod Witts,GC,9,0.026,0,1,0,0,14.2,109,19,11,3,130,0,4
+21,Adel v GC,Sam Flanders,GC,10,0.018,0,0,0,0,11,91,27,12,3,331,0,5
 21,Adel v GC,Jake Soligo,Adel,11,0.012,0,0,0,0,16.5,102,16,10,5,194,1,3
 21,Adel v GC,Noah Anderson,GC,12,0.01,0,0,0,0,9.9,82,22,10,4,354,0,4
 21,Adel v GC,Ben Keays,Adel,13,0.009,0,0,0,0,10.4,80,17,8,1,318,1,4
 21,Adel v GC,Shane McAdam,Adel,14,0.009,0,0,0,0,12.6,87,8,4,0,104,3,3
 21,Adel v GC,Taylor Walker,Adel,15,0.006,0,0,0,0,8.8,72,13,5,1,184,2,5
 21,Adel v GC,Rory Atkins,GC,16,0.006,0,0,0,0,11.1,84,25,2,0,692,0,3
-21,Adel v GC,Riley Thilthorpe,Adel,17,0.005,0,0,0,0,5.3,80,15,7,1,334,0,6
+21,Adel v GC,Riley Thilthorpe,Adel,17,0.006,0,0,0,0,5.3,80,15,7,1,334,0,6
 21,Adel v GC,Wil Powell,GC,18,0.005,0,0,0,0,11.4,94,20,5,0,493,0,2
 21,Adel v GC,Matt Rowell,GC,19,0.005,0,0,0,0,14.8,80,16,14,4,172,1,3
 21,Adel v GC,Levi Casboult,GC,20,0.005,0,0,0,0,9,83,13,5,1,157,2,7
@@ -8109,7 +8109,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 21,Haw v Coll,Scott Pendlebury,Coll,12,0.017,0,0,0,0,15.9,103,23,8,6,439,1,4
 21,Haw v Coll,Mitch Lewis,Haw,13,0.017,0,0,0,0,12.9,82,16,4,0,282,2,6
 21,Haw v Coll,Jack Scrimshaw,Haw,14,0.011,0,0,0,0,12.5,87,20,7,0,145,0,3
-21,Haw v Coll,Ned Reeves,Haw,15,0.01,0,0,0,0,6.3,64,9,2,2,63,1,3
+21,Haw v Coll,Ned Reeves,Haw,15,0.01,0,0,0,0,7.6,64,9,2,2,63,1,3
 21,Haw v Coll,Josh Weddle,Haw,16,0.009,0,0,0,0,11.5,74,18,2,0,400,1,4
 21,Haw v Coll,Connor Macdonald,Haw,17,0.009,0,0,0,0,11.5,95,18,7,1,348,0,3
 21,Haw v Coll,Jordan De Goey,Coll,18,0.006,0,0,0,0,15.7,83,17,6,4,353,2,4
@@ -8122,7 +8122,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 21,Haw v Coll,Jamie Elliott,Coll,25,0.003,0,0,0,0,13.9,81,11,5,0,195,3,6
 21,Haw v Coll,Isaac Quaynor,Coll,26,0.003,0,0,0,0,11.1,85,18,5,2,228,0,2
 21,Haw v Coll,Beau McCreery,Coll,27,0.003,0,0,0,1,10.5,72,11,5,2,299,1,5
-21,Haw v Coll,Josh Daicos,Coll,28,0.002,0,0,0,0,11.1,74,19,5,2,341,0,2
+21,Haw v Coll,Josh Daicos,Coll,28,0.002,0,0,0,0,12.4,74,19,5,2,341,0,2
 21,Haw v Coll,Darcy Moore,Coll,29,0.002,0,0,0,0,14.5,80,12,6,0,288,0,0
 21,Haw v Coll,Patrick Lipinski,Coll,30,0.002,0,0,0,0,7.6,47,18,7,2,196,0,6
 21,Haw v Coll,Brayden Maynard,Coll,31,0.001,0,0,0,0,12.6,79,16,5,0,239,0,4
@@ -8879,9 +8879,9 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 23,GC v Carl,Darcy Macpherson,GC,46,0,0,0,0,0,2.1,23,4,0,0,49,0,1
 23,GWS v Ess,Jesse Hogan,GWS,1,2.946,95,5,0,10,33.4,197,24,12,0,370,9,16
 23,GWS v Ess,Tom Green,GWS,2,1.513,2,47,51,7,19.4,119,39,18,10,511,1,11
-23,GWS v Ess,Harry Himmelberg,GWS,3,0.433,0,16,9,4,20.5,127,30,7,0,595,1,6
+23,GWS v Ess,Harry Himmelberg,GWS,3,0.433,0,16,9,4,21.1,127,30,7,0,595,1,6
 23,GWS v Ess,Callan Ward,GWS,4,0.407,0,15,9,2,20.7,119,30,10,6,575,0,10
-23,GWS v Ess,Lachie Whitfield,GWS,5,0.16,0,5,5,2,16.4,112,30,9,3,469,0,11
+23,GWS v Ess,Lachie Whitfield,GWS,5,0.161,0,5,5,2,16.4,112,30,9,3,469,0,11
 23,GWS v Ess,Stephen Coniglio,GWS,6,0.13,0,4,5,0,24.7,126,31,13,8,444,1,10
 23,GWS v Ess,Kieren Briggs,GWS,7,0.101,0,3,4,2,19.1,139,15,11,5,269,0,5
 23,GWS v Ess,Brent Daniels,GWS,8,0.057,0,1,3,3,15.7,83,15,5,2,333,3,6
@@ -8894,7 +8894,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 23,GWS v Ess,Toby Bedford,GWS,15,0.015,0,0,1,0,12.9,67,16,7,3,290,2,9
 23,GWS v Ess,Zach Merrett,Ess,16,0.014,0,0,1,0,18.2,99,27,10,7,298,0,5
 23,GWS v Ess,Darcy Parish,Ess,17,0.014,0,0,1,0,10.2,91,25,7,5,508,0,2
-23,GWS v Ess,Nick Hind,Ess,18,0.01,0,0,1,0,9.5,101,28,2,0,547,0,3
+23,GWS v Ess,Nick Hind,Ess,18,0.01,0,0,1,0,10.1,101,28,2,0,547,0,3
 23,GWS v Ess,Ben Hobbs,Ess,19,0.006,0,0,0,0,11.8,68,19,6,5,361,0,3
 23,GWS v Ess,Jye Caldwell,Ess,20,0.005,0,0,0,0,9.9,72,18,7,3,430,1,3
 23,GWS v Ess,Josh Fahey,GWS,21,0.005,0,0,0,0,-0.1,27,13,0,0,408,1,2
@@ -8970,11 +8970,11 @@ Round,Match,Player,Team,Rank,Votes,Votes3,Votes2,Votes1,CoachesVotes,RatingPoint
 23,Melb v Haw,James Blanck,Haw,45,0,0,0,0,0,1.9,26,5,2,0,41,0,0
 23,Melb v Haw,Josh Schache,Melb,46,0,0,0,0,0,-0.4,6,1,0,0,31,0,1
 23,Rich v NM,Dustin Martin,Rich,1,2.403,57,26,17,10,19.9,158,31,11,2,453,3,11
-23,Rich v NM,Shai Bolton,Rich,2,1.921,30,33,37,8,19.2,141,25,8,2,587,4,12
-23,Rich v NM,Nick Larkey,NM,3,0.584,4,15,15,5,13.2,113,13,3,0,196,6,9
-23,Rich v NM,Harry Sheezel,NM,4,0.505,4,13,13,4,13.7,136,37,9,2,544,0,6
+23,Rich v NM,Shai Bolton,Rich,2,1.921,29,33,37,8,19.2,141,25,8,2,587,4,12
+23,Rich v NM,Nick Larkey,NM,3,0.583,4,15,15,5,13.2,113,13,3,0,196,6,9
+23,Rich v NM,Harry Sheezel,NM,4,0.506,4,13,13,4,13.7,136,37,9,2,544,0,6
 23,Rich v NM,Tarryn Thomas,NM,5,0.346,2,9,10,2,24.5,128,25,13,5,708,2,12
-23,Rich v NM,Jacob Hopper,Rich,6,0.084,1,2,3,1,14,101,28,6,4,325,0,8
+23,Rich v NM,Jacob Hopper,Rich,6,0.085,1,2,3,1,14,101,28,6,4,325,0,8
 23,Rich v NM,Toby Nankervis,Rich,7,0.032,0,1,1,0,11.6,135,16,10,5,240,1,7
 23,Rich v NM,Tim Taranto,Rich,8,0.016,0,0,0,0,5.6,96,21,11,3,107,0,4
 23,Rich v NM,Bailey Scott,NM,9,0.015,0,0,0,0,13.2,96,28,4,0,667,0,5
