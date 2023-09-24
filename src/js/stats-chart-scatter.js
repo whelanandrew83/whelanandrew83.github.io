@@ -398,11 +398,11 @@ const chart = new Chart(ctx, {
                     }
                 },
                 ticks: {
-                    callback: function (value, index, values) {
+                    callback: function (value, index, ticks) {
                         if (parseInt(value) >= 1000) {
                             return value.toString();
                         } else {
-                            return value;
+                            return Chart.Ticks.formatters.numeric.apply(this, [value, index, ticks]);
                         }
                     }
                 }
@@ -416,11 +416,11 @@ const chart = new Chart(ctx, {
                     }
                 },
                 ticks: {
-                    callback: function (value, index, values) {
+                    callback: function (value, index, ticks) {
                         if (parseInt(value) >= 1000) {
                             return value.toString();
                         } else {
-                            return value;
+                            return Chart.Ticks.formatters.numeric.apply(this, [value, index, ticks]);
                         }
                     }
                 }
