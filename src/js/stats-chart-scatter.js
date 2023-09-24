@@ -396,6 +396,15 @@ const chart = new Chart(ctx, {
                     font: {
                         weight: "bold"
                     }
+                },
+                ticks: {
+                    callback: function (value, index, values) {
+                        if (parseInt(value) >= 1000) {
+                            return value.toString();
+                        } else {
+                            return value;
+                        }
+                    }
                 }
             },
             y: {
@@ -404,6 +413,15 @@ const chart = new Chart(ctx, {
                     text: "",
                     font: {
                         weight: "bold"
+                    }
+                },
+                ticks: {
+                    callback: function (value, index, values) {
+                        if (parseInt(value) >= 1000) {
+                            return value.toString();
+                        } else {
+                            return value;
+                        }
                     }
                 }
             }
