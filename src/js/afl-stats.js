@@ -176,7 +176,7 @@ const updateTableColumns = function (id = null, custom = false) {
     if (custom) { customTextSpan.innerText = `(${customSelections} selected)` };
 
     if (selectShowAll.checked) {
-        Reactable.setHiddenColumns('player-stats-table', ["Team", "Image"]);
+        Reactable.setHiddenColumns('player-stats-table', ["Age_Decimal", "Team", "Image"]);
     } else if (selectCustom.checked) {
         const selectedInputs = document.querySelectorAll("#stat-select-custom input:checked");
 
