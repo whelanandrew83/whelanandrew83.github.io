@@ -121,7 +121,7 @@ csvDownloadButton.id = "download-csv-button";
 csvDownloadButton.classList = "btn btn-primary btn-sm mx-1 my-2";
 csvDownloadButton.innerText = "Download as CSV";
 csvDownloadButton.addEventListener('click', (e) => {
-    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["WebsiteId", "Team", "Image"].includes(value) })] });
+    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["WebsiteId", "Team", "Image"].includes(value) })] });
     gtag('event', 'data_download');
 });
 // playerStatsDiv.appendChild(csvDownloadButton);
