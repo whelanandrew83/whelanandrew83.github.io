@@ -29,7 +29,7 @@ if (storageAvailable('localStorage')) {
     playerStatSelections = JSON.parse(localStorage.getItem("playerStatSelections"));
 }
 
-const statsColumnsAll = ["Team", "Image", "RatingPoints_Avg", "Supercoach_Avg",
+const statsColumnsAll = ["Age_Decimal", "Team", "Image", "RatingPoints_Avg", "Supercoach_Avg",
     "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "TimeOnGround", "Kicks", "Handballs", "Disposals",
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
     "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
