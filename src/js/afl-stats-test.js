@@ -3,10 +3,13 @@ const filterColumns = {
     'RatingPoints_Avg': 'Player Rating',
     'Supercoach_Avg': 'Supercoach',
     'ContestedPossessions': 'Contested Possessions',
+    'CentreBounceAttendancePercentage': 'Centre Bounce Attendance %',
     'TotalClearances': 'Clearances',
     'Disposals': 'Disposals',
     'Hitouts': 'Hitouts',
-    'Goals_Avg': 'Goals (Average)'
+    'Goals_Total': 'Goals (Total)',
+    'Goals_Avg': 'Goals (Average)',
+    'TimeOnGround': 'Time On Ground %'
 }
 
 const collapseStat = document.querySelector("#collapse-stat :first-child");
