@@ -1,23 +1,26 @@
 const filterColumns = {
     'Matches': 'Matches',
+    'TimeOnGround': 'Time On Ground %',
     'RatingPoints_Avg': 'Player Rating',
     'Supercoach_Avg': 'Supercoach',
+    'Disposals': 'Disposals',
     'ContestedPossessions': 'Contested Possessions',
     'CentreBounceAttendancePercentage': 'Centre Bounce Attendance %',
+    'CentreClearances': 'Centre Clearances',
     'TotalClearances': 'Clearances',
-    'Disposals': 'Disposals',
-    'Hitouts': 'Hitouts',
+    'MetresGained': 'Metres Gained',
+    'Marks': 'Marks',
+    'ContestedMarks': 'Contested Marks',
     'Goals_Total': 'Goals (Total)',
     'Goals_Avg': 'Goals (Average)',
-    'TimeOnGround': 'Time On Ground %'
+    'ShotsAtGoal': 'Shots at Goal',
+    'GoalAssists': 'Goal Assists',
+    'Tackles': 'Tackles',
+    'Hitouts': 'Hitouts'
 }
 
-const collapseStat = document.querySelector("#collapse-stat :first-child");
-collapseStat.innerHTML = "";
-
-const customFilterDiv = document.createElement('div');
-collapseStat.appendChild(customFilterDiv);
-// filtersDiv.insertAdjacentElement('afterend', customFilterDiv)
+const customFilterDiv = document.querySelector('#custom-filters');
+customFilterDiv.innerHTML = "";
 
 const filterSelectLabel = document.createElement('label');
 filterSelectLabel.innerText = "Select a field";
