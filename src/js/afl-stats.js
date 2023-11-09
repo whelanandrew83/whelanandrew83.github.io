@@ -69,6 +69,27 @@ const statsColumns = {
     "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-In Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
 };
 
+const filterColumns = {
+    'Matches': 'Matches',
+    'TimeOnGround': 'Time On Ground %',
+    'RatingPoints_Avg': 'Player Rating',
+    'Supercoach_Avg': 'Supercoach',
+    'Disposals': 'Disposals',
+    'ContestedPossessions': 'Contested Possessions',
+    'CentreBounceAttendancePercentage': 'Centre Bounce Attendance %',
+    'CentreClearances': 'Centre Clearances',
+    'TotalClearances': 'Clearances',
+    'MetresGained': 'Metres Gained',
+    'Marks': 'Marks',
+    'ContestedMarks': 'Contested Marks',
+    'Goals_Total': 'Goals (Total)',
+    'Goals_Avg': 'Goals (Average)',
+    'ShotsAtGoal': 'Shots at Goal',
+    'GoalAssists': 'Goal Assists',
+    'Tackles': 'Tackles',
+    'Hitouts': 'Hitouts'
+}
+
 /* <h4>Select statistical categories to include in the table</h4>
 <div id="stat-select">
 // <select id="stat-select-presets" class="form-select" aria-label="Select stats for include in table">
