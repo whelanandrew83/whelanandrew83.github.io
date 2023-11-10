@@ -90,6 +90,8 @@ const filterColumns = {
     'Hitouts': 'Hitouts'
 }
 
+const filterColumnsDefault = ['Matches']
+
 /* <h4>Select statistical categories to include in the table</h4>
 <div id="stat-select">
 // <select id="stat-select-presets" class="form-select" aria-label="Select stats for include in table">
@@ -159,10 +161,10 @@ if (playerStatSelections && playerStatSelections.length > 0) {
     statCategoryButton.classList.add("collapsed");
     statCategoryButton.ariaExpanded = "false";
 } else {
-    const newAlert = document.createElement("span");
-    newAlert.classList = "badge bg-primary mx-2";
-    newAlert.innerText = "New";
-    statCategoryButton.appendChild(newAlert);
+    // const newAlert = document.createElement("span");
+    // newAlert.classList = "badge bg-primary mx-2";
+    // newAlert.innerText = "New";
+    // statCategoryButton.appendChild(newAlert);
 }
 
 const statSelect = document.createElement("div");

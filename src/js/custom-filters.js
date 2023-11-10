@@ -2,7 +2,7 @@ const customFilterDiv = document.querySelector('#custom-filters');
 customFilterDiv.innerHTML = "";
 
 const filterSelectLabel = document.createElement('label');
-filterSelectLabel.innerText = "Select a field";
+filterSelectLabel.innerText = "Select a field to filter";
 filterSelectLabel.for = "filter-select";
 filterSelectLabel.classList = "form-label fw-bold";
 
@@ -20,12 +20,23 @@ filterAdd.classList = "btn btn-primary btn-sm mx-1 my-2";
 filterAdd.innerText = "Add filter";
 
 const selectOptions = [];
-Object.keys(filterColumns).forEach(key => {
-    filterOption = document.createElement("option");
-    filterOption.value = key;
-    filterOption.text = filterColumns[key];
-    selectOptions.push(filterOption);
-    filterSelect.appendChild(filterOption);
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    Object.keys(filterColumns).forEach(key => {
+        if (Object.keys(Reactable.getInstance(reactableId).data[0]).includes(key)) {
+            if (typeof filterColumnsDefault !== 'undefined' && filterColumnsDefault.includes(key)) {
+                filterCreate(key);
+            } else {
+                filterOption = document.createElement("option");
+                filterOption.value = key;
+                filterOption.text = filterColumns[key];
+                selectOptions.push(filterOption);
+                filterSelect.appendChild(filterOption);
+            }
+        } else {
+            delete filterColumns[key];
+        }
+    })
 })
 
 customFilterDiv.appendChild(filterSelectLabel);
@@ -36,56 +47,59 @@ const customFilterRow = document.createElement('div');
 customFilterRow.classList = "d-flex flex-wrap";
 customFilterDiv.appendChild(customFilterRow);
 
+const filterCreate = function (column) {
+    const div = document.createElement('div');
+    div.classList = "m-2";
+
+    const label = document.createElement('label');
+    label.innerText = filterColumns[column];
+    label.for = `filter-min-${column}`;
+    label.classList = "form-label fw-bold";
+
+    const inputGroup = document.createElement('div');
+    inputGroup.classList = "input-group input-group-sm";
+
+    const labelMin = document.createElement('span');
+    labelMin.innerText = "from";
+    labelMin.classList = "input-group-text";
+    inputGroup.appendChild(labelMin);
+
+    const valueMin = document.createElement('input');
+    valueMin.id = `filter-min-${column}`;
+    valueMin.type = "text";
+    valueMin.size = "4";
+    inputGroup.appendChild(valueMin);
+
+    const labelMax = document.createElement('span');
+    labelMax.innerText = "to";
+    labelMax.classList = "input-group-text";
+    inputGroup.appendChild(labelMax);
+
+    const valueMax = document.createElement('input');
+    valueMax.id = `filter-max-${column}`;
+    valueMax.type = "text";
+    valueMax.size = "4";
+    inputGroup.appendChild(valueMax);
+
+    div.appendChild(label);
+    div.appendChild(inputGroup);
+
+    valueMin.addEventListener('input', () => {
+        filterCustom(column, valueMin.value, valueMax.value);
+    })
+    valueMax.addEventListener('input', () => {
+        filterCustom(column, valueMin.value, valueMax.value);
+    })
+
+    customFilterRow.appendChild(div);
+
+    selectOptions.forEach(opt => { if (column === opt.value) opt.disabled = true });
+}
+
 filterAdd.addEventListener('click', (e) => {
     if (filterSelect.value) {
-        const div = document.createElement('div');
-        div.classList = "m-2";
-
         const filterColumn = filterSelect.value;
-
-        const label = document.createElement('label');
-        label.innerText = filterColumns[filterSelect.value];
-        label.for = `filter-min-${filterColumn}`;
-        label.classList = "form-label fw-bold";
-
-        const inputGroup = document.createElement('div');
-        inputGroup.classList = "input-group input-group-sm";
-
-        const labelMin = document.createElement('span');
-        labelMin.innerText = "from";
-        labelMin.classList = "input-group-text";
-        inputGroup.appendChild(labelMin);
-
-        const valueMin = document.createElement('input');
-        valueMin.id = `filter-min-${filterColumn}`;
-        valueMin.type = "text";
-        valueMin.size = "4";
-        inputGroup.appendChild(valueMin);
-
-        const labelMax = document.createElement('span');
-        labelMax.innerText = "to";
-        labelMax.classList = "input-group-text";
-        inputGroup.appendChild(labelMax);
-
-        const valueMax = document.createElement('input');
-        valueMax.id = `filter-max-${filterColumn}`;
-        valueMax.type = "text";
-        valueMax.size = "4";
-        inputGroup.appendChild(valueMax);
-
-        div.appendChild(label);
-        div.appendChild(inputGroup);
-
-        valueMin.addEventListener('input', () => {
-            filterCustom(filterColumn, valueMin.value, valueMax.value);
-        })
-        valueMax.addEventListener('input', () => {
-            filterCustom(filterColumn, valueMin.value, valueMax.value);
-        })
-
-        customFilterRow.appendChild(div);
-
-        selectOptions.forEach(opt => { if (filterSelect.value === opt.value) opt.disabled = true });
+        filterCreate(filterColumn);
 
         filterSelect.value = "";
     }
@@ -110,9 +124,7 @@ const filterCustom = function (column, min_value, max_value) {
     } else {
         const filtered = [];
 
-        //for (i = 0; i < chartStats[column].length; i++) {
         for (i = 0; i < Reactable.getInstance(reactableId).data.length; i++) {
-            //if (chartStats[column][i] >= min_value) filtered.push(i + 1);
             const value = Reactable.getInstance(reactableId).data[i][column];
             if ((value >= min_value || min_value.length === 0) && (value <= max_value || max_value.length === 0)) filtered.push(i + 1);
         };
