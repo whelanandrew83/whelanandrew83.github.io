@@ -33,6 +33,14 @@ const chartColumns = {
     "GoalsPerInside50": { name: "Goals / Inside 50" },
     "ScoringShotsPerInside50": { name: "Scores / Inside 50" },
     "GoalAccuracy": { name: "Goal Accuracy" },
+    "xScore": { name: "xScore" },
+    "xScoreRating": { name: "xScore Rating" },
+    "xScorePerShot": { name: "xScore / Shot" },
+    "xScoreRatingPerShot": { name: "xScore Rating / Shot" },
+    "xScorePerShot_Set": { name: "xScore / Shot (Set Shots)" },
+    "xScoreRatingPerShot_Set": { name: "xScore Rating / Shot (Set Shots)" },
+    "xScorePerShot_General": { name: "xScore / Shot (General Play)" },
+    "xScoreRatingPerShot_General": { name: "xScore Rating / Shot (General Play)" },
     "ContestOffensiveOneOnOnes": { name: "Offensive one-on-one contests" },
     "ContestOffensiveWinPercentage": { name: "Offensive one-on-one win %" },
     "ContestDefensiveOneOnOnes": { name: "Defensive one-on-one contests" },
@@ -63,6 +71,14 @@ const chartColumns = {
     "GoalsPerInside50_Opposition": { name: "Goals / Inside50 (Opposition)" },
     "ScoringShotsPerInside50_Opposition": { name: "Scoring Shots / Inside50 (Opposition)" },
     "GoalAccuracy_Opposition": { name: "Goal Accuracy (Opposition)" },
+    "xScore_Opposition": { name: "xScore (Opposition)" },
+    "xScoreRating_Opposition": { name: "xScore Rating (Opposition)" },
+    "xScorePerShot_Opposition": { name: "xScore / Shot (Opposition)" },
+    "xScoreRatingPerShot_Opposition": { name: "xScore Rating / Shot (Opposition)" },
+    "xScorePerShot_Set_Opposition": { name: "xScore / Shot (Set Shots) (Opposition)" },
+    "xScoreRatingPerShot_Set_Opposition": { name: "xScore Rating / Shot (Set Shots) (Opposition)" },
+    "xScorePerShot_General_Opposition": { name: "xScore / Shot (General Play) (Opposition)" },
+    "xScoreRatingPerShot_General_Opposition": { name: "xScore Rating / Shot (General Play) (Opposition)" },
     "HitoutsToAdvantagePercentage_Opposition": { name: "Hitout To Advantage % (Opposition)" },
     "Difference_Heading": { name: "Differences", heading: true },
     "RatingPoints_Diff": { name: "Rating Points (Difference)" },
@@ -75,7 +91,10 @@ const chartColumns = {
     "Marks_Diff": { name: "Marks (Difference)" },
     "ContestedMarks_Diff": { name: "Contested Marks (Difference)" },
     "Goals_Diff": { name: "Goals (Difference)" },
-    "ShotsAtGoal_Diff": { name: "Shots At Goal (Difference)" }
+    "ShotsAtGoal_Diff": { name: "Shots At Goal (Difference)" },
+    "xScore_Diff": { name: "xScore (Difference)" },
+    "xScoreRating_Diff": { name: "xScore Rating (Difference)" },
+    "xScorePerShot_Diff": { name: "xScore / Shot (Difference)" }
 };
 
 const defaultX = 'Goals';
