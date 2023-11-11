@@ -396,6 +396,15 @@ const chart = new Chart(ctx, {
                     font: {
                         weight: "bold"
                     }
+                },
+                ticks: {
+                    callback: function (value, index, ticks) {
+                        if (parseInt(value) >= 1000) {
+                            return value.toString();
+                        } else {
+                            return Chart.Ticks.formatters.numeric.apply(this, [value, index, ticks]);
+                        }
+                    }
                 }
             },
             y: {
@@ -404,6 +413,15 @@ const chart = new Chart(ctx, {
                     text: "",
                     font: {
                         weight: "bold"
+                    }
+                },
+                ticks: {
+                    callback: function (value, index, ticks) {
+                        if (parseInt(value) >= 1000) {
+                            return value.toString();
+                        } else {
+                            return Chart.Ticks.formatters.numeric.apply(this, [value, index, ticks]);
+                        }
                     }
                 }
             }

@@ -29,7 +29,7 @@ if (storageAvailable('localStorage')) {
     playerStatSelections = JSON.parse(localStorage.getItem("playerStatSelections"));
 }
 
-const statsColumnsAll = ["Team", "Image", "RatingPoints_Avg", "Supercoach_Avg",
+const statsColumnsAll = ["Age_Decimal", "Team", "Image", "RatingPoints_Avg", "Supercoach_Avg",
     "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "TimeOnGround", "Kicks", "Handballs", "Disposals",
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
     "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
@@ -68,6 +68,29 @@ const statsColumns = {
     "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %" },
     "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-In Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
 };
+
+const filterColumns = {
+    'Matches': 'Matches',
+    'TimeOnGround': 'Time On Ground %',
+    'RatingPoints_Avg': 'Player Rating',
+    'Supercoach_Avg': 'Supercoach',
+    'Disposals': 'Disposals',
+    'ContestedPossessions': 'Contested Possessions',
+    'CentreBounceAttendancePercentage': 'Centre Bounce Attendance %',
+    'CentreClearances': 'Centre Clearances',
+    'TotalClearances': 'Clearances',
+    'MetresGained': 'Metres Gained',
+    'Marks': 'Marks',
+    'ContestedMarks': 'Contested Marks',
+    'Goals_Total': 'Goals (Total)',
+    'Goals_Avg': 'Goals (Average)',
+    'ShotsAtGoal': 'Shots at Goal',
+    'GoalAssists': 'Goal Assists',
+    'Tackles': 'Tackles',
+    'Hitouts': 'Hitouts'
+}
+
+const filterColumnsDefault = ['Matches']
 
 /* <h4>Select statistical categories to include in the table</h4>
 <div id="stat-select">
@@ -121,7 +144,7 @@ csvDownloadButton.id = "download-csv-button";
 csvDownloadButton.classList = "btn btn-primary btn-sm mx-1 my-2";
 csvDownloadButton.innerText = "Download as CSV";
 csvDownloadButton.addEventListener('click', (e) => {
-    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["WebsiteId", "Team", "Image"].includes(value) })] });
+    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["WebsiteId", "Team", "Image"].includes(value) })] });
     gtag('event', 'data_download');
 });
 // playerStatsDiv.appendChild(csvDownloadButton);
@@ -138,10 +161,10 @@ if (playerStatSelections && playerStatSelections.length > 0) {
     statCategoryButton.classList.add("collapsed");
     statCategoryButton.ariaExpanded = "false";
 } else {
-    const newAlert = document.createElement("span");
-    newAlert.classList = "badge bg-primary mx-2";
-    newAlert.innerText = "New";
-    statCategoryButton.appendChild(newAlert);
+    // const newAlert = document.createElement("span");
+    // newAlert.classList = "badge bg-primary mx-2";
+    // newAlert.innerText = "New";
+    // statCategoryButton.appendChild(newAlert);
 }
 
 const statSelect = document.createElement("div");
@@ -176,7 +199,7 @@ const updateTableColumns = function (id = null, custom = false) {
     if (custom) { customTextSpan.innerText = `(${customSelections} selected)` };
 
     if (selectShowAll.checked) {
-        Reactable.setHiddenColumns('player-stats-table', ["Team", "Image"]);
+        Reactable.setHiddenColumns('player-stats-table', ["Age_Decimal", "Team", "Image"]);
     } else if (selectCustom.checked) {
         const selectedInputs = document.querySelectorAll("#stat-select-custom input:checked");
 

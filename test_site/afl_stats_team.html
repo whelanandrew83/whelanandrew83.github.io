@@ -358,7 +358,7 @@
 
 
 <main>
-<ul class='nav nav-pills'>
+<ul id='year-select' class='nav nav-pills'>
 <li id="year-2012">
 <a href="afl_stats_team.html?year=2012">2012</a>
 </li>
@@ -405,12 +405,20 @@ const urlParams = new URLSearchParams(location.search);
 validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,-1]
 year = parseInt(urlParams.get("year"));
 
-if (!year) year = 2023;
+if (!year | !validYears.includes(year)) {
+  year = 2023;
+  window.location.href = `afl_stats_team.html?year=${year}`
+}
 year_label = year === -1 ? "Last 5 matches" : year;
+
+if (year === -1) {
+  const yearSelect = document.querySelector("#year-select")
+  yearSelect.insertAdjacentHTML("afterend", "<p class='small'>Note: statistics are limited to each team's last five matches in the current season.</p>");
+}
 
 if (validYears.includes(year)) {
 document.querySelector(`#year-${year}`).classList = "active";
-document.title = `AFL Team Statistics - ${year}`;
+document.title = `AFL Team Statistics - ${year_label}`;
 document.querySelector('meta[name="description"]').setAttribute('content', `AFL team statistics for ${year_label}.`);
 document.querySelector('h1').innerText = `AFL Team Statistics - ${year_label}`;
 <!-- document.querySelector("#year-label").innerText = year_label; -->
@@ -485,6 +493,12 @@ General
 <li>
 <b>Players:</b> Total players used, including medical subs who have not
 played any game time.
+</li>
+<li>
+<b>Age:</b> Average age of players in each match played.
+</li>
+<li>
+<b>Exp.:</b> Average career games experience for players in each match.
 </li>
 <li>
 <b>Rating:</b> Official AFL Player Ratings

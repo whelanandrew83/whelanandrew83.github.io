@@ -5,6 +5,7 @@ const chartColumns = {
     "CoachesVotes_Total": { name: "Coaches Votes", dec: 0 },
     "CoachesVotes_Avg": { name: "Coaches Votes (Average)" },
     "Age": { name: "Age", dec: 0 },
+    "Age_Decimal": { name: "Age (Decimal)" },
     "TimeOnGround": { name: "Time On Ground" },
     "Kicks": { name: "Kicks" },
     "Handballs": { name: "Handballs" },

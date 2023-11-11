@@ -1,5 +1,7 @@
 const chartColumns = {
     "Team_Heading": { name: "Team Averages", heading: true },
+    "Age": { name: "Age" },
+    "Experience": { name: "Experience" },
     "RatingPoints": { name: "Rating Points" },
     "Supercoach": { name: "Supercoach Points" },
     "DreamTeamPoints": { name: "Fantasy Points" },
