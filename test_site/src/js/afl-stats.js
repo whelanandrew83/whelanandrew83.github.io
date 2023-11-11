@@ -40,7 +40,10 @@ const statsColumnsAll = ["Age_Decimal", "Team", "Image", "RatingPoints_Avg", "Su
     "HitoutsToAdvantage", "HitoutsToAdvantagePercentage", "Tackles", "TacklesInside50", "ContestDefensiveOneOnOnes",
     "ContestDefensiveLossPercentage", "ContestOffensiveOneOnOnes", "ContestOffensiveWinPercentage",
     "Goals_Total", "Goals_Avg", "Behinds", "ShotsAtGoal", "GoalAssists", "GoalAccuracy", "ScoreInvolvements",
-    "ScoreInvolvementPercentage", "ScoreLaunches", "KickIns", "KickInPercentage", "KickInsPlayOnPercentage",
+    "ScoreInvolvementPercentage", "ScoreLaunches",
+    "xScoreShots_Total", "xScorePerShot", "xScoreRatingPerShot", "xScoreShots_Set_Total", "xScorePerShot_Set", "xScoreRatingPerShot_Set",
+    "xScoreShots_General_Total", "xScorePerShot_General", "xScoreRatingPerShot_General",
+    "KickIns", "KickInPercentage", "KickInsPlayOnPercentage",
     "Bounces", "OnePercenters", "PressureActs", "Spoils"];
 
 const statsColumns = {
@@ -63,6 +66,11 @@ const statsColumns = {
     "Scoring/Attack": {
         "Goals_Total": "Goals (Total)", "Goals_Avg": "Goals (Average)", "Behinds": "Behinds", "ShotsAtGoal": "Shots At Goal", "GoalAssists": "Goal Assists", "GoalAccuracy": "Goal Accuracy", "ScoreInvolvements": "Score Involvements", "ScoreInvolvementPercentage": "Score Involvement %", "ScoreLaunches": "Score Launches",
         "ContestOffensiveOneOnOnes": "Offensive One-On-One Contests", "ContestOffensiveWinPercentage": "Offensive One-On-One Contest Win %"
+    },
+    "Expected Scores": {
+        "xScoreShots_Total": "Total Shots", "xScorePerShot": "xScore / Shot", "xScoreRatingPerShot": "Rating / Shot",
+        "xScoreShots_Set_Total": "Total Set Shots", "xScorePerShot_Set": "xScore / Set Shot", "xScoreRatingPerShot_Set": "Rating / Set Shot",
+        "xScoreShots_General_Total": "Total General Play Shots", "xScorePerShot_General": "xScore / General Play Shot", "xScoreRatingPerShot_General": "Rating / General Play Shot"
     },
     "Defence": { "ContestDefensiveOneOnOnes": "Defensive One-On-One Contests", "ContestDefensiveLossPercentage": "Defensive One-On-One Contest Loss %", "Tackles": "Tackles", "TacklesInside50": "Tackles Inside Forward 50", "PressureActs": "Pressure Acts", "Spoils": "Spoils" },
     "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %" },
