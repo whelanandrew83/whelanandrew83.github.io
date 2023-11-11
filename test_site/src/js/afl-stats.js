@@ -69,8 +69,8 @@ const statsColumns = {
     },
     "Expected Scores": {
         "xScoreShots": "Total Shots", "xScorePerShot": "xScore / Shot", "xScoreRatingPerShot": "Rating / Shot",
-        "xScoreShots_Set": "Total Set Shots", "xScorePerShot_Set": "xScore / Set Shot", "xScoreRatingPerShot_Set": "Rating / Set Shot",
-        "xScoreShots_General": "Total General Play Shots", "xScorePerShot_General": "xScore / General Play Shot", "xScoreRatingPerShot_General": "Rating / General Play Shot"
+        "xScoreShots_Set": "Total Set Shots", "xScorePerShot_Set": "xScore / Shot (Set Shots)", "xScoreRatingPerShot_Set": "Rating / Shot (Set Shots)",
+        "xScoreShots_General": "Total General Play Shots", "xScorePerShot_General": "xScore / Shot (General Play)", "xScoreRatingPerShot_General": "Rating / Shot (General Play)"
     },
     "Defence": { "ContestDefensiveOneOnOnes": "Defensive One-On-One Contests", "ContestDefensiveLossPercentage": "Defensive One-On-One Contest Loss %", "Tackles": "Tackles", "TacklesInside50": "Tackles Inside Forward 50", "PressureActs": "Pressure Acts", "Spoils": "Spoils" },
     "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %" },
@@ -92,8 +92,11 @@ const filterColumns = {
     'ContestedMarks': 'Contested Marks',
     'Goals_Total': 'Goals (Total)',
     'Goals_Avg': 'Goals (Average)',
-    'ShotsAtGoal': 'Shots at Goal',
     'GoalAssists': 'Goal Assists',
+    'ShotsAtGoal': 'Shots at Goal (Average)',
+    'xScoreShots': 'Shots at Goal (Total)',
+    'xScoreShots_Set': 'Set Shots (Total)',
+    'xScoreShots_General': 'General Play Shots (Total)',
     'Tackles': 'Tackles',
     'Hitouts': 'Hitouts'
 }
