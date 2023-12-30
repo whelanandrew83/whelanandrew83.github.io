@@ -5,7 +5,10 @@ const overlay = document.querySelector("#overlay");
 const clearSelectionButton = document.querySelector("#clear-selection-button");
 if (clearSelectionButton) clearSelectionButton.addEventListener('click', () => { selectedRows = []; refreshView(); updateChart(false); });
 
-const updateSelectionText = () => { selectionText.innerHTML = selectedRows.length == 0 ? 'No players selected' : selectedRows.length == 1 ? '1 player selected' : `${selectedRows.length} players selected` }
+let selectionObjectTypeLabel;
+if (typeof selectionObjectType !== "undefined") selectionObjectTypeLabel = selectionObjectType; else selectionObjectTypeLabel = 'player';
+
+const updateSelectionText = () => { selectionText.innerHTML = selectedRows.length == 0 ? `No ${selectionObjectTypeLabel}s selected` : selectedRows.length == 1 ? `1 ${selectionObjectTypeLabel} selected` : `${selectedRows.length} ${selectionObjectTypeLabel}s selected` }
 
 const selectionText = document.querySelector("#selection-text");
 
@@ -228,6 +231,7 @@ const updateChart = function (animation = false) {
     const selectedAnnotations = {};
     let x;
     let y;
+    let labelText;
     const xRange = [];
     const yRange = [];
     const drawDiagonalLine = typeof diagonalLines !== "undefined" && diagonalLines[statDropdownX.value] === statDropdownY.value;
@@ -249,13 +253,19 @@ const updateChart = function (animation = false) {
                     pointStylesHighlight.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
                 if (highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0 && showLabels && !isNaN(x) && !isNaN(y)) {
+                    labelText = chartStats[labelColumns[0]][index];
+                    if (typeof labelColumnsSticky !== "undefined" && labelColumnsSticky > 1 && labelColumns.length > 1) {
+                        labelText = labelText + " (" + chartStats[labelColumns[1]][index] + ")";
+                    }
+
                     selectedAnnotations[`label${index}`] = {
                         type: 'label',
                         xValue: x,
                         yValue: y,
-                        content: chartStats[labelColumns[0]][index],
+                        content: labelText,
                         backgroundColor: 'rgba(255,255,255,0.7)',
-                        font: { size: 10 }
+                        font: { size: 10 },
+                        padding: 1
                     }
                 }
             } else {
@@ -371,6 +381,8 @@ const updateChart = function (animation = false) {
         delete chart.options.plugins.annotation;
     }
 
+    chart.options.animation = false; // disable all animations
+
     if (animation) {
         chart.update();
     } else {
@@ -379,8 +391,6 @@ const updateChart = function (animation = false) {
 }
 
 const ctx = document.getElementById('stats-chart');
-
-let selectedPoints;
 
 const chart = new Chart(ctx, {
     type: 'scatter',
