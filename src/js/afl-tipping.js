@@ -28,7 +28,6 @@ if (typeof teams.Team !== 'undefined') {
     }
 }
 
-
 window.addEventListener('DOMContentLoaded', (event) => {
     Reactable.setAllFilters('tips-table', [
         { id: 'IsCurrent', value: 'TRUE' },
