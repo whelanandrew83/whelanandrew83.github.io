@@ -40,9 +40,7 @@ if (typeof teams.Team !== 'undefined') {
         const team = i == teams.Team.length ? undefined : teams.Team[i];
 
         teamLink.addEventListener('click', function (event) {
-            Reactable.setAllFilters('team-lists-table', [
-                { id: 'Abbreviation', value: team }
-            ]);
+            Reactable.setFilter('team-lists-table', 'Abbreviation', team);
         });
     }
 }
