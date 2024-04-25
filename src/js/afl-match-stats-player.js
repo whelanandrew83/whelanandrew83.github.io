@@ -1,3 +1,10 @@
+const filterColumns = {
+    'CoachesVotes': 'Coaches Votes',
+    'RatingPoints': 'Rating Points'
+}
+
+//const filterColumnsDefault = ['Age', 'Matches_Career']
+
 let matchId;
 let roundId;
 let seasonId;
