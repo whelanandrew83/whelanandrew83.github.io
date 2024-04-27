@@ -14,10 +14,12 @@ const chartColumns = {
     "Inside50s": { name: "Inside 50s", dec: 0 },
     "MetresGained": { name: "Metres Gained", dec: 0 },
     "ContestedPossessions": { name: "Contested Possessions", dec: 0 },
+    "Intercepts": { name: "Intercept Possessions", dec: 0 },
     "CentreBounceAttendancePercentage": { name: "Centre Bounce Attendance %", dec: 0 },
     "TotalClearances": { name: "Total Clearances", dec: 0 },
     "Marks": { name: "Marks", dec: 0 },
     "ContestedMarks": { name: "Contested Marks", dec: 0 },
+    "InterceptMarks": { name: "Intercept Marks", dec: 0 },
     "Goals": { name: "Goals", dec: 0 },
     "ShotsAtGoal": { name: "Shots At Goal", dec: 0 },
     "xScore": { name: "xScore", dec: 1 },
@@ -25,6 +27,7 @@ const chartColumns = {
     "GoalAssists": { name: "Goal Assists", dec: 0 },
     "ScoreInvolvements": { name: "Score Involvements", dec: 0 },
     "Tackles": { name: "Tackles", dec: 0 },
+    "PressureActs": { name: "Pressure Acts", dec: 0 },
     "Hitouts": { name: "Hitouts", dec: 0 }
 };
 
