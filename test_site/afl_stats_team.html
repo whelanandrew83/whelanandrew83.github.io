@@ -4,192 +4,164 @@
 
 <head>
 
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-  <title>AFL Team Statistics</title>
-  <meta name="description" content="AFL team statistics.">
+<title>AFL Team Statistics</title>
+<meta name="description" content="AFL team statistics.">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-  <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
-  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
-  <script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
-  <script src="site_libs/bs3compat-0.4.2/transition.js"></script>
-  <script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
-  <script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
-  <script src="site_libs/navigation-1.1/tabsets.js"></script>
-  <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
-  <script src="site_libs/core-js-2.5.3/shim.min.js"></script>
-  <script src="site_libs/react-17.0.0/react.min.js"></script>
-  <script src="site_libs/react-17.0.0/react-dom.min.js"></script>
-  <script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
-  <script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-  <link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
-  <script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="icon" href="favicon.ico" />
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="logo_192.png">
-  <meta name="theme-color" content="#670099">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-L04L041MGC');
-  </script>
-  <script type="text/javascript">
-    (function (c, l, a, r, i, t, y) {
-      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-    })(window, document, "clarity", "script", "ae8a2litjx");
-  </script>
+<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
 
-  <link rel="stylesheet" href="custom.css" type="text/css" />
-  <style type="text/css">
-    code {
-      white-space: pre-wrap;
-    }
-
-    span.smallcaps {
-      font-variant: small-caps;
-    }
-
-    span.underline {
-      text-decoration: underline;
-    }
-
-    div.column {
-      display: inline-block;
-      vertical-align: top;
-      width: 50%;
-    }
-
-    div.hanging-indent {
-      margin-left: 1.5em;
-      text-indent: -1.5em;
-    }
-
-    ul.task-list {
-      list-style: none;
-    }
-  </style>
+<link rel="stylesheet" href="custom.css" type="text/css" />
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
 
 
 
-  <!-- tabsets -->
-  <style type="text/css">
-    .tabset-dropdown>.nav-tabs {
-      display: inline-table;
-      max-height: 500px;
-      min-height: 44px;
-      overflow-y: auto;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
-    .tabset-dropdown>.nav-tabs>li.active:before {
-      content: "";
-      font-family: 'Glyphicons Halflings';
-      display: inline-block;
-      padding: 10px;
-      border-right: 1px solid #ddd;
-    }
-
-    .tabset-dropdown>.nav-tabs.nav-tabs-open>li.active:before {
-      content: "&#xe258;";
-      border: none;
-    }
-
-    .tabset-dropdown>.nav-tabs.nav-tabs-open:before {
-      content: "";
-      font-family: 'Glyphicons Halflings';
-      display: inline-block;
-      padding: 10px;
-      border-right: 1px solid #ddd;
-    }
-
-    .tabset-dropdown>.nav-tabs>li.active {
-      display: block;
-    }
-
-    .tabset-dropdown>.nav-tabs>li>a,
-    .tabset-dropdown>.nav-tabs>li>a:focus,
-    .tabset-dropdown>.nav-tabs>li>a:hover {
-      border: none;
-      display: inline-block;
-      border-radius: 4px;
-      background-color: transparent;
-    }
-
-    .tabset-dropdown>.nav-tabs.nav-tabs-open>li {
-      display: block;
-      float: none;
-    }
-
-    .tabset-dropdown>.nav-tabs>li {
-      display: none;
-    }
-  </style>
-
-  <!-- code folding -->
+<!-- code folding -->
 
 </head>
-
 <body>
-  <div class="container-fluid main-container container">
+<div class="container-fluid main-container container">
 
-    <nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
-      <div class="container">
-        <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
-            alt="Wheelo Ratings logo" /></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
-          aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
             <li>
-              <a href="index.html">Home</a>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                ATP Tennis
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-header">RATINGS</li>
-                <li>
-                  <a href="tennis_atp_ratings.html">Elo Ratings</a>
-                </li>
-                <li>
-                  <a href="tennis_atp_race.html">Elo Race</a>
-                </li>
-                <!-- <li>
+            <li>
+              <a href="tennis_atp_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
               <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
             </li>
             <li>
               <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
             </li> -->
-                <li class="divider"></li>
-                <li class="dropdown-header">STATISTICS</li>
-                <li>
-                  <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
-                </li>
-                <!-- <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
             <li class="dropdown-header">HISTORY</li>
             <li>
               <a href="tennis_atp_players.html">Players</a>
@@ -197,44 +169,44 @@
             <li>
               <a href="tennis_atp_tournaments.html">Tournaments</a>
             </li> -->
-                <li class="divider"></li>
-                <li class="dropdown-header">RECORDS</li>
-                <li>
-                  <a href="tennis_atp_records.html">Overall Records</a>
-                </li>
-                <li>
-                  <a href="tennis_atp_season_records.html">Season Records</a>
-                </li>
-                <li>
-                  <a href="tennis_atp_goat.html">Greatest players</a>
-                </li>
-              </ul>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
             </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                WTA Tennis
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-header">RATINGS</li>
-                <li>
-                  <a href="tennis_wta_ratings.html">Elo Ratings</a>
-                </li>
-                <li>
-                  <a href="tennis_wta_race.html">Elo Race</a>
-                </li>
-                <!-- <li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
               <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
             </li>
             <li>
               <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
             </li> -->
-                <li class="divider"></li>
-                <li class="dropdown-header">STATISTICS</li>
-                <li>
-                  <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
-                </li>
-                <!-- <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
             <li class="dropdown-header">HISTORY</li>
             <li>
               <a href="tennis_wta_players.html">Players</a>
@@ -242,639 +214,635 @@
             <li>
               <a href="tennis_wta_tournaments.html">Tournaments</a>
             </li> -->
-                <li class="divider"></li>
-                <li class="dropdown-header">RECORDS</li>
-                <li>
-                  <a href="tennis_wta_records.html">Overall Records</a>
-                </li>
-                <li>
-                  <a href="tennis_wta_season_records.html">Season Records</a>
-                </li>
-                <li>
-                  <a href="tennis_wta_goat.html">Greatest players</a>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                AFL
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="afl_index.html">AFL Home</a>
-                </li>
-                <li>
-                  <a href="afl_match_previews.html">Match Previews</a>
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown-header">MODEL</li>
-                <li>
-                  <a href="afl_ratings.html">Ratings</a>
-                </li>
-                <li>
-                  <a href="afl_tipping.html">Tipping</a>
-                </li>
-                <li>
-                  <a href="afl_simulations.html">Simulations</a>
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown-header">STATISTICS</li>
-                <li>
-                  <a href="afl_team_lists.html">Team Lists</a>
-                </li>
-                <li>
-                  <a href="afl_match_stats.html">Match Stats</a>
-                </li>
-                <li>
-                  <a href="afl_stats.html">Player Stats</a>
-                </li>
-                <li>
-                  <a href="afl_stats_team.html">Team Stats</a>
-                </li>
-                <li>
-                  <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown-header">RECORDS</li>
-                <li>
-                  <a href="afl_premierships.html">Premierships</a>
-                </li>
-                <li>
-                  <a href="afl_annual_summary.html">Team Annual Summary</a>
-                </li>
-                <li>
-                  <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                NBL
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-header">MODEL</li>
-                <li>
-                  <a href="nbl_ratings.html">Team Ratings</a>
-                </li>
-                <li class="divider"></li>
-                <li class="dropdown-header">STATISTICS</li>
-                <li>
-                  <a href="nbl_stats.html">Player Stats</a>
-                </li>
-                <li>
-                  <a href="nbl_stats_team.html">Team Stats</a>
-                </li>
-              </ul>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
             </li>
             <li>
-              <a href="about.html">About</a>
+              <a href="tennis_wta_season_records.html">Season Records</a>
             </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="https://twitter.com/WheeloRatings">
-                <!-- <span class="ion ion-social-twitter"></span> -->
-                <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
-                  <path
-                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                </svg>
-              </a>
+              <a href="tennis_wta_goat.html">Greatest players</a>
             </li>
           </ul>
-        </div>
-      </div>
-    </nav>
-    <nav id="navbar-banner">
-      <ul class="nav navbar-banner-heading justify-content-center">
-        <li class="fw-bold text-center">
-          Australian Football League (AFL)
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="afl_team_lists.html">Team Lists</a>
+            </li>
+            <li>
+              <a href="afl_match_stats.html">Match Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
         </li>
       </ul>
-      <ul class="nav navbar-banner-nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" href="afl_index.html">AFL Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_match_previews.html">Match Previews</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_team_lists.html">Team Lists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_match_stats.html">Match Stats</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_stats.html">Player Stats</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_stats_team.html">Team Stats</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_ratings.html">Team Ratings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_simulations.html">Simulations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="afl_brownlow.html">Brownlow</a>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </a>
         </li>
       </ul>
-    </nav>
-
-    <header id="header">
-
-
-      <h1 class="title toc-ignore">AFL Team Statistics</h1>
-
-    </header>
-
-
-    <main>
-      <ul id='year-select' class='nav nav-pills'>
-        <li id="year-2012">
-          <a href="afl_stats_team.html?year=2012">2012</a>
-        </li>
-        <li id="year-2013">
-          <a href="afl_stats_team.html?year=2013">2013</a>
-        </li>
-        <li id="year-2014">
-          <a href="afl_stats_team.html?year=2014">2014</a>
-        </li>
-        <li id="year-2015">
-          <a href="afl_stats_team.html?year=2015">2015</a>
-        </li>
-        <li id="year-2016">
-          <a href="afl_stats_team.html?year=2016">2016</a>
-        </li>
-        <li id="year-2017">
-          <a href="afl_stats_team.html?year=2017">2017</a>
-        </li>
-        <li id="year-2018">
-          <a href="afl_stats_team.html?year=2018">2018</a>
-        </li>
-        <li id="year-2019">
-          <a href="afl_stats_team.html?year=2019">2019</a>
-        </li>
-        <li id="year-2020">
-          <a href="afl_stats_team.html?year=2020">2020</a>
-        </li>
-        <li id="year-2021">
-          <a href="afl_stats_team.html?year=2021">2021</a>
-        </li>
-        <li id="year-2022">
-          <a href="afl_stats_team.html?year=2022">2022</a>
-        </li>
-        <li id="year-2023">
-          <a href="afl_stats_team.html?year=2023">2023</a>
-        </li>
-        <li id="year-2024">
-          <a href="afl_stats_team.html?year=2024">2024</a>
-        </li>
-        <li id="year--1">
-          <a href="afl_stats_team.html?year=-1">Last 5 matches</a>
-        </li>
-      </ul>
-      <script id="year-load">
-        const urlParams = new URLSearchParams(location.search);
-
-        validYears = [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, -1]
-        year = parseInt(urlParams.get("year"));
-
-        if (!year | !validYears.includes(year)) {
-          year = 2024;
-          window.location.href = `afl_stats_team.html?year=${year}`
-        }
-        year_label = year === -1 ? "Last 5 matches" : year;
-
-        if (year === -1) {
-          const yearSelect = document.querySelector("#year-select")
-          yearSelect.insertAdjacentHTML("afterend", "<p class='small'>Note: statistics are limited to each team's last five matches in the current season.</p>");
-        }
-
-        if (validYears.includes(year)) {
-          document.querySelector(`#year-${year}`).classList = "active";
-          document.title = `AFL Team Statistics - ${year_label}`;
-          document.querySelector('meta[name="description"]').setAttribute('content', `AFL team statistics for ${year_label}.`);
-          document.querySelector('h1').innerText = `AFL Team Statistics - ${year_label}`;
-          <!-- document.querySelector("#year-label").innerText = year_label; -->
-
-          const xmlhttp = new XMLHttpRequest();
-          const url = `https://www.wheeloratings.com/test_site/src/team_stats_snippet/${year}.html`;
-
-          xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-              const contents = this.responseText;
-              const main = document.querySelector("main");
-              main.innerHTML = main.innerHTML += contents;
-            }
-          };
-          xmlhttp.open("GET", url, false);
-          xmlhttp.send();
-        } else {
-  < !--document.querySelector("#year-label").innerText = "Invalid year."; -->
-}
-      </script>
-      <div id="overlay" class="overlay overlay-fullscreen">
-        <div class="overlay-content overlay-fullscreen-content">
-          <div class="d-flex justify-content-between">
-            <p class="fw-bold">
-              Scatter chart
-            </p>
-            <button id="close-search-button" type="button" class="btn-close" aria-label="Close">
-            </button>
-          </div>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-4">
-                <p><label class="form-label fw-bold" for="stat-select-x">X-axis</label>
-                  <select id="stat-select-x" class="form-select" aria-label="Select stat for chart x axis">
-                  </select>
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p><label class="form-label fw-bold" for="stat-select-y">Y-axis</label>
-                  <select id="stat-select-y" class="form-select" aria-label="Select stat for chart y axis">
-                  </select>
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p><label class="form-label fw-bold" for="stat-highlight">Highlight</label>
-                  <select id="stat-highlight" class="form-select" aria-label="Select highlight value">
-                  </select>
-                </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="chart-container"
-                style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
-                <canvas id="stats-chart">
-                </canvas>
-              </div>
-            </div>
-            <p class="py-3">
-              Chart built using
-              <a href="https://www.chartjs.org" target="_blank">chartjs.org</a>
-            <p>
-          </div>
-        </div>
-      </div>
-      <script src="./src/js/afl-team-stats.js"></script>
-      <script src="./src/js/afl-team-stats-chart.js"></script>
-      <script src="./src/js/stats-chart-scatter.js"></script>
-      <h3>
-        Abbreviations
-      </h3>
-      <h4>
-        General
-      </h4>
-      <ul>
-        <li>
-          <b>Players:</b> Total players used, including medical subs who have not
-          played any game time.
-        </li>
-        <li>
-          <b>Age:</b> Average age of players in each match played.
-        </li>
-        <li>
-          <b>Exp.:</b> Average career games experience for players in each match.
-        </li>
-        <li>
-          <b>Rating:</b> Official AFL Player Ratings
-          (<a href="https://s.afl.com.au/staticfile/AFL%20Tenant/AFL/PlayerRatings/PlayerRatings_HOW.pdf"
-            target="_blank">Overview</a>)
-        </li>
-      </ul>
-      <h4>
-        Disposals
-      </h4>
-      <ul>
-        <li>
-          <b>Kick:</b> Kicks
-        </li>
-        <li>
-          <b>HB:</b> Handballs
-        </li>
-        <li>
-          <b>Dis.:</b> Disposals
-        </li>
-        <li>
-          <b>Eff %:</b> Disposal Efficiency
-        </li>
-        <li>
-          <b>Kick Eff %:</b> Kick Efficiency
-        </li>
-        <li>
-          <b>Kick %:</b> Kicks / Disposals
-        </li>
-        <li>
-          <b>D / O Tk:</b> Disposals / Opposition Tackle
-        </li>
-        <li>
-          <b>In 50s:</b> Inside 50s
-        </li>
-        <li>
-          <b>Reb 50s:</b> Rebound 50s
-        </li>
-        <li>
-          <b>R50 Rate:</b> Rebound 50s per Opposition Inside 50
-        </li>
-        <li>
-          <b>Mtrs Gnd:</b> Metres gained
-        </li>
-        <li>
-          <b>Mtrs / D:</b> Metres gained per Disposal
-        </li>
-        <li>
-          <b>Clng:</b> Clangers
-        </li>
-        <li>
-          <b>D/Cg:</b> Disposals per clanger
-        </li>
-        <li>
-          <b>TO:</b> Turnovers
-        </li>
-        <li>
-          <b>D/TO:</b> Disposals per turnover
-        </li>
-      </ul>
-      <h4>
-        Possessions
-      </h4>
-      <ul>
-        <li>
-          <b>CP:</b> Contested possessions
-        </li>
-        <li>
-          <b>UP:</b> Uncontested possessions
-        </li>
-        <li>
-          <b>Poss:</b> Total possessions
-        </li>
-        <li>
-          <b>CP%:</b> Contested possessions / total possessions
-        </li>
-        <li>
-          <b>Int Poss:</b> Intercept possessions
-        </li>
-        <li>
-          <b>GB Gets:</b> Ground ball gets
-        </li>
-      </ul>
-      <h4>
-        Clearances
-      </h4>
-      <ul>
-        <li>
-          <b>Ctr Clr:</b> Centre clearances
-        </li>
-        <li>
-          <b>Stp Clr:</b> Stoppage clearances
-        </li>
-        <li>
-          <b>Tot:</b> Total clearances
-        </li>
-      </ul>
-      <h4>
-        Marks
-      </h4>
-      <ul>
-        <li>
-          <b>Tot:</b> Total marks
-        </li>
-        <li>
-          <b>CM:</b> Contested marks
-        </li>
-        <li>
-          <b>In 50:</b> Marks inside forward 50
-        </li>
-        <li>
-          <b>M50 Rate:</b> Marks inside forward 50 per inside 50
-        </li>
-        <li>
-          <b>Int Mks:</b> Intercept marks
-        </li>
-        <li>
-          <b>On lead:</b> Marks on lead
-        </li>
-      </ul>
-      <h4>
-        Scoring
-      </h4>
-      <ul>
-        <li>
-          <b>Goal Sc.:</b> Total goal scorers.
-        </li>
-        <li>
-          <b>Avg GS:</b> Average goal scorers per match.
-        </li>
-        <li>
-          <b>Gls:</b> Goals
-        </li>
-        <li>
-          <b>Beh:</b> Behinds (includes rushed behinds)
-        </li>
-        <li>
-          <b>RB:</b> Rushed behinds
-        </li>
-        <li>
-          <b>Shots:</b> Shots at goal
-        </li>
-        <li>
-          <b>Goal Ass.:</b> Goal assists
-        </li>
-        <li>
-          <b>Acc:</b> Accuracy (Goals / shots at goal)
-        </li>
-        <li>
-          <b>G / In 50:</b> Goals / Inside 50
-        </li>
-        <li>
-          <b>SS / In 50:</b> Scoring shots / Inside 50 (includes rushed behinds)
-        </li>
-        <li>
-          <b>S / In 50:</b> Shots at goal / Inside 50
-        </li>
-        <li>
-          <b>SI:</b> Score involvements
-        </li>
-        <li>
-          <b>Launch:</b> Score launches
-        </li>
-        <li>
-          <b>Off 1v1:</b> Offensive one-on-one contests
-        </li>
-        <li>
-          <b>Win %:</b> Percentage of offensive one-on-one contests won
-        </li>
-      </ul>
-      <h4>
-        Expected Scores (xScores)
-      </h4>
-      <ul>
-        <li>
-          <b>xSc:</b> Average expected score per game (excludes rushed behinds).
-        </li>
-        <li>
-          <b>+/-:</b> Average score above or below expected per game (excludes
-          rushed behinds).
-        </li>
-        <li>
-          <b>xSc / Shot:</b> Average expected score per shot at goal, reflecting
-          the average difficulty of shots taken.
-        </li>
-        <li>
-          <b>Rating:</b> Average score above or below expected score per shot at
-          goal.
-        </li>
-        <li>
-          <b>xSc / Sh (Set):</b> Average expected score per shot at goal for set
-          shots, reflecting the average difficulty of shots taken.
-        </li>
-        <li>
-          <b>Rating (Set):</b> Average score above or below expected score per
-          shot at goal for set shots.
-        </li>
-        <li>
-          <b>xSc / Sh (Gen):</b> Average expected score per shot at goal for shots
-          in general play, reflecting the average difficulty of shots taken.
-        </li>
-        <li>
-          <b>Rating (Gen):</b> Average score above or below expected score per
-          shot at goal for shots in general play.
-        </li>
-      </ul>
-      <h4>
-        Defence
-      </h4>
-      <ul>
-        <li>
-          <b>Def 1v1:</b> Defensive one-on-one contests
-        </li>
-        <li>
-          <b>Loss %:</b> Percentage of defensive one-on-one contests lost
-        </li>
-        <li>
-          <b>Tack:</b> Total tackles
-        </li>
-        <li>
-          <b>Tack In 50:</b> Tackles inside forward 50
-        </li>
-        <li>
-          <b>Press. Acts:</b> Pressure acts
-        </li>
-      </ul>
-      <h4>
-        Ruck contests
-      </h4>
-      <ul>
-        <li>
-          <b>Ruck Cont:</b> Total ruck contests
-        </li>
-        <li>
-          <b>Hit Outs:</b> Total hit outs
-        </li>
-        <li>
-          <b>Win %:</b> Hit outs / ruck contests
-        </li>
-        <li>
-          <b>To Adv:</b> Hit outs to advantage
-        </li>
-        <li>
-          <b>Adv %:</b> Hit outs to advantage / total hit outs
-        </li>
-      </ul>
-      <h4>
-        Other
-      </h4>
-      <ul>
-        <li>
-          <b>KI Play On %:</b> Play on percentage from kick-ins
-        </li>
-        <li>
-          <b>Bounce:</b> Bounces
-        </li>
-        <li>
-          <b>1%s:</b> One percenters
-        </li>
-      </ul>
-      <script>
-        var checkbox = document.getElementById("showColorScale");
-
-        checkbox.addEventListener('change', function () {
-          var element = document.getElementById("team-stats");
-          element.classList.toggle("bg-hide");
-          element.classList.toggle("bg-show");
-        });
-      </script>
-    </main>
-
-    <footer>
-      <!-- <br> -->
-      <!-- <div class="addthis_inline_share_toolbox"></div>
-    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-      <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
-      <!-- &nbsp; -->
-      <hr />
-      <p style="text-align: center;"><a href="#top">Back to top</a></p>
-      <p style="text-align: center;">&copy; Wheelo Ratings</p>
-    </footer>
-
-
-
+    </div>
   </div>
+</nav>
+<nav id="navbar-banner">
+    <ul class="nav navbar-banner-heading justify-content-center">
+        <li class="fw-bold text-center">
+            Australian Football League (AFL)
+        </li>
+    </ul>
+    <ul class="nav navbar-banner-nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="afl_index.html">AFL Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_previews.html">Match Previews</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_team_lists.html">Team Lists</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_stats.html">Match Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats.html">Player Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats_team.html">Team Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_ratings.html">Team Ratings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_simulations.html">Simulations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_brownlow.html">Brownlow</a>
+        </li>
+    </ul>
+</nav>
 
-  <!-- tabsets -->
-  <script>
-    $(document).ready(function () {
-      window.buildTabsets("TOC");
-    });
-
-    $(document).ready(function () {
-      $('.tabset-dropdown > .nav-tabs > li').click(function () {
-        $(this).parent().toggleClass('nav-tabs-open');
-      });
-    });
-  </script>
-
-  <!-- code folding -->
+<header id="header">
 
 
+<h1 class="title toc-ignore">AFL Team Statistics</h1>
 
-  <script type="text/javascript">
-    // manage active state of menu based on current page
-    (function () {
-      href = window.location.pathname;
-      href = href.substr(href.lastIndexOf('/') + 1);
-      if (href === "")
-        href = "index.html";
+</header>
 
-      let li = null;
 
-      // main menu
-      let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
+<main>
+<ul id='year-select' class='nav nav-pills'>
+<li id="year-2012">
+<a href="afl_stats_team.html?year=2012">2012</a>
+</li>
+<li id="year-2013">
+<a href="afl_stats_team.html?year=2013">2013</a>
+</li>
+<li id="year-2014">
+<a href="afl_stats_team.html?year=2014">2014</a>
+</li>
+<li id="year-2015">
+<a href="afl_stats_team.html?year=2015">2015</a>
+</li>
+<li id="year-2016">
+<a href="afl_stats_team.html?year=2016">2016</a>
+</li>
+<li id="year-2017">
+<a href="afl_stats_team.html?year=2017">2017</a>
+</li>
+<li id="year-2018">
+<a href="afl_stats_team.html?year=2018">2018</a>
+</li>
+<li id="year-2019">
+<a href="afl_stats_team.html?year=2019">2019</a>
+</li>
+<li id="year-2020">
+<a href="afl_stats_team.html?year=2020">2020</a>
+</li>
+<li id="year-2021">
+<a href="afl_stats_team.html?year=2021">2021</a>
+</li>
+<li id="year-2022">
+<a href="afl_stats_team.html?year=2022">2022</a>
+</li>
+<li id="year-2023">
+<a href="afl_stats_team.html?year=2023">2023</a>
+</li>
+<li id="year-2024">
+<a href="afl_stats_team.html?year=2024">2024</a>
+</li>
+<li id="year--1">
+<a href="afl_stats_team.html?year=-1">Last 5 matches</a>
+</li>
+</ul>
+<script id="year-load">
+const urlParams = new URLSearchParams(location.search);
 
-      if (menuAnchor !== null) {
-        li = menuAnchor.closest('li');
-        li.classList.add('active');
+validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,-1]
+year = parseInt(urlParams.get("year"));
 
-        let parent = li.parentElement.closest('li')
+if (!year | !validYears.includes(year)) {
+  year = 2024;
+  window.location.href = `afl_stats_team.html?year=${year}`
+}
+year_label = year === -1 ? "Last 5 matches" : year;
 
-        if (parent !== null)
-          parent.classList.add('active');
-      }
+if (year === -1) {
+  const yearSelect = document.querySelector("#year-select")
+  yearSelect.insertAdjacentHTML("afterend", "<p class='small'>Note: statistics are limited to each team's last five matches in the current season.</p>");
+}
 
-      // banner menu
-      menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+if (validYears.includes(year)) {
+document.querySelector(`#year-${year}`).classList = "active";
+document.title = `AFL Team Statistics - ${year_label}`;
+document.querySelector('meta[name="description"]').setAttribute('content', `AFL team statistics for ${year_label}.`);
+document.querySelector('h1').innerText = `AFL Team Statistics - ${year_label}`;
+<!-- document.querySelector("#year-label").innerText = year_label; -->
 
-      if (menuAnchor !== null) {
-        li = menuAnchor.closest('li');
-        li.classList.add('active');
-      }
-    })();
-  </script>
-  <!-- <script>
+const xmlhttp = new XMLHttpRequest();
+const url = `https://www.wheeloratings.com/test_site/src/team_stats_snippet/${year}.html`;
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      const contents = this.responseText;
+      const main = document.querySelector("main");
+      main.innerHTML = main.innerHTML += contents;
+    }
+};
+xmlhttp.open("GET", url, false);
+xmlhttp.send();
+} else {
+  <!-- document.querySelector("#year-label").innerText = "Invalid year."; -->
+}
+</script>
+<div id="overlay" class="overlay overlay-fullscreen">
+<div class="overlay-content overlay-fullscreen-content">
+<div class="d-flex justify-content-between">
+<p class="fw-bold">
+Scatter chart
+</p>
+<button id="close-search-button" type="button" class="btn-close" aria-label="Close">
+</button>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-4">
+<p><label class="form-label fw-bold" for="stat-select-x">X-axis</label>
+<select id="stat-select-x" class="form-select" aria-label="Select stat for chart x axis">
+</select></p>
+</div>
+<div class="col-sm-4">
+<p><label class="form-label fw-bold" for="stat-select-y">Y-axis</label>
+<select id="stat-select-y" class="form-select" aria-label="Select stat for chart y axis">
+</select></p>
+</div>
+<div class="col-sm-4">
+<p><label class="form-label fw-bold" for="stat-highlight">Highlight</label>
+<select id="stat-highlight" class="form-select" aria-label="Select highlight value">
+</select></p>
+</div>
+</div>
+<div class="row">
+<div class="chart-container"
+style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
+<canvas id="stats-chart">
+</canvas>
+</div>
+</div>
+<p class="py-3">
+Chart built using
+<a href="https://www.chartjs.org" target="_blank">chartjs.org</a>
+<p>
+</div>
+</div>
+</div>
+<script src="./src/js/afl-team-stats.js"></script>
+<script src="./src/js/afl-team-stats-chart.js"></script>
+<script src="./src/js/stats-chart-scatter.js"></script>
+<h3>
+Abbreviations
+</h3>
+<h4>
+General
+</h4>
+<ul>
+<li>
+<b>Players:</b> Total players used, including medical subs who have not
+played any game time.
+</li>
+<li>
+<b>Age:</b> Average age of players in each match played.
+</li>
+<li>
+<b>Exp.:</b> Average career games experience for players in each match.
+</li>
+<li>
+<b>Rating:</b> Official AFL Player Ratings
+(<a href="https://s.afl.com.au/staticfile/AFL%20Tenant/AFL/PlayerRatings/PlayerRatings_HOW.pdf" target="_blank">Overview</a>)
+</li>
+</ul>
+<h4>
+Disposals
+</h4>
+<ul>
+<li>
+<b>Kick:</b> Kicks
+</li>
+<li>
+<b>HB:</b> Handballs
+</li>
+<li>
+<b>Dis.:</b> Disposals
+</li>
+<li>
+<b>Eff %:</b> Disposal Efficiency
+</li>
+<li>
+<b>Kick Eff %:</b> Kick Efficiency
+</li>
+<li>
+<b>Kick %:</b> Kicks / Disposals
+</li>
+<li>
+<b>D / O Tk:</b> Disposals / Opposition Tackle
+</li>
+<li>
+<b>In 50s:</b> Inside 50s
+</li>
+<li>
+<b>Reb 50s:</b> Rebound 50s
+</li>
+<li>
+<b>R50 Rate:</b> Rebound 50s per Opposition Inside 50
+</li>
+<li>
+<b>Mtrs Gnd:</b> Metres gained
+</li>
+<li>
+<b>Mtrs / D:</b> Metres gained per Disposal
+</li>
+<li>
+<b>Clng:</b> Clangers
+</li>
+<li>
+<b>D/Cg:</b> Disposals per clanger
+</li>
+<li>
+<b>TO:</b> Turnovers
+</li>
+<li>
+<b>D/TO:</b> Disposals per turnover
+</li>
+</ul>
+<h4>
+Possessions
+</h4>
+<ul>
+<li>
+<b>CP:</b> Contested possessions
+</li>
+<li>
+<b>UP:</b> Uncontested possessions
+</li>
+<li>
+<b>Poss:</b> Total possessions
+</li>
+<li>
+<b>CP%:</b> Contested possessions / total possessions
+</li>
+<li>
+<b>Int Poss:</b> Intercept possessions
+</li>
+<li>
+<b>GB Gets:</b> Ground ball gets
+</li>
+</ul>
+<h4>
+Clearances
+</h4>
+<ul>
+<li>
+<b>Ctr Clr:</b> Centre clearances
+</li>
+<li>
+<b>Stp Clr:</b> Stoppage clearances
+</li>
+<li>
+<b>Tot:</b> Total clearances
+</li>
+</ul>
+<h4>
+Marks
+</h4>
+<ul>
+<li>
+<b>Tot:</b> Total marks
+</li>
+<li>
+<b>CM:</b> Contested marks
+</li>
+<li>
+<b>In 50:</b> Marks inside forward 50
+</li>
+<li>
+<b>M50 Rate:</b> Marks inside forward 50 per inside 50
+</li>
+<li>
+<b>Int Mks:</b> Intercept marks
+</li>
+<li>
+<b>On lead:</b> Marks on lead
+</li>
+</ul>
+<h4>
+Scoring
+</h4>
+<ul>
+<li>
+<b>Goal Sc.:</b> Total goal scorers.
+</li>
+<li>
+<b>Avg GS:</b> Average goal scorers per match.
+</li>
+<li>
+<b>Gls:</b> Goals
+</li>
+<li>
+<b>Beh:</b> Behinds (includes rushed behinds)
+</li>
+<li>
+<b>RB:</b> Rushed behinds
+</li>
+<li>
+<b>Shots:</b> Shots at goal
+</li>
+<li>
+<b>Goal Ass.:</b> Goal assists
+</li>
+<li>
+<b>Acc:</b> Accuracy (Goals / shots at goal)
+</li>
+<li>
+<b>G / In 50:</b> Goals / Inside 50
+</li>
+<li>
+<b>SS / In 50:</b> Scoring shots / Inside 50 (includes rushed behinds)
+</li>
+<li>
+<b>S / In 50:</b> Shots at goal / Inside 50
+</li>
+<li>
+<b>SI:</b> Score involvements
+</li>
+<li>
+<b>Launch:</b> Score launches
+</li>
+<li>
+<b>Off 1v1:</b> Offensive one-on-one contests
+</li>
+<li>
+<b>Win %:</b> Percentage of offensive one-on-one contests won
+</li>
+</ul>
+<h4>
+Expected Scores (xScores)
+</h4>
+<ul>
+<li>
+<b>xSc:</b> Average expected score per game (excludes rushed behinds).
+</li>
+<li>
+<b>+/-:</b> Average score above or below expected per game (excludes
+rushed behinds).
+</li>
+<li>
+<b>xSc / Shot:</b> Average expected score per shot at goal, reflecting
+the average difficulty of shots taken.
+</li>
+<li>
+<b>Rating:</b> Average score above or below expected score per shot at
+goal.
+</li>
+<li>
+<b>xSc / Sh (Set):</b> Average expected score per shot at goal for set
+shots, reflecting the average difficulty of shots taken.
+</li>
+<li>
+<b>Rating (Set):</b> Average score above or below expected score per
+shot at goal for set shots.
+</li>
+<li>
+<b>xSc / Sh (Gen):</b> Average expected score per shot at goal for shots
+in general play, reflecting the average difficulty of shots taken.
+</li>
+<li>
+<b>Rating (Gen):</b> Average score above or below expected score per
+shot at goal for shots in general play.
+</li>
+</ul>
+<h4>
+Defence
+</h4>
+<ul>
+<li>
+<b>Def 1v1:</b> Defensive one-on-one contests
+</li>
+<li>
+<b>Loss %:</b> Percentage of defensive one-on-one contests lost
+</li>
+<li>
+<b>Tack:</b> Total tackles
+</li>
+<li>
+<b>Tack In 50:</b> Tackles inside forward 50
+</li>
+<li>
+<b>Press. Acts:</b> Pressure acts
+</li>
+</ul>
+<h4>
+Ruck contests
+</h4>
+<ul>
+<li>
+<b>Ruck Cont:</b> Total ruck contests
+</li>
+<li>
+<b>Hit Outs:</b> Total hit outs
+</li>
+<li>
+<b>Win %:</b> Hit outs / ruck contests
+</li>
+<li>
+<b>To Adv:</b> Hit outs to advantage
+</li>
+<li>
+<b>Adv %:</b> Hit outs to advantage / total hit outs
+</li>
+</ul>
+<h4>
+Other
+</h4>
+<ul>
+<li>
+<b>KI Play On %:</b> Play on percentage from kick-ins
+</li>
+<li>
+<b>Bounce:</b> Bounces
+</li>
+<li>
+<b>1%s:</b> One percenters
+</li>
+</ul>
+<script>
+var checkbox = document.getElementById("showColorScale");
+
+checkbox.addEventListener('change', function() {
+  var element = document.getElementById("team-stats");
+  element.classList.toggle("bg-hide");
+  element.classList.toggle("bg-show");
+});
+</script>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
+</footer>
+
+
+
+</div>
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
+  
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
+})();
+</script>
+<!-- <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
@@ -887,5 +855,4 @@ var currentScrollPos = window.pageYOffset;
 }
 </script> -->
 </body>
-
 </html>
