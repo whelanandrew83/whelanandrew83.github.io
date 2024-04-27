@@ -60,7 +60,7 @@ const loadMatch = function () {
 const goToRound = () => { window.location.href = `afl_match_stats.html?ID=${roundList.value}` };
 
 if (validYears.includes(seasonId)) {
-    fetch(`https://www.wheeloratings.com/test_site/src/match_stats/table_data/${seasonId}.json`)
+    fetch(`https://www.wheeloratings.com/src/match_stats/table_data/${seasonId}.json`)
         .then((res) => res.json())
         .then((data) => {
             if (typeof data.RoundId === "string") {
@@ -316,7 +316,7 @@ if (validYears.includes(seasonId)) {
 }
 
 const columnsAlwaysDisplayed = ["MatchId", "Player", "Team"];
-const statsColumns = ["CoachesVotes", "RatingPoints", "EstimatedRating", "Supercoach", "DreamTeamPoints", "ExpVotes", "Votes3", "Votes2", "Votes1", "TimeOnGround", "Kicks", "Handballs", "Disposals", "DisposalEfficiency", "MetresGained", "Inside50s", "ContestedPossessions", "CentreBounceAttendancePercentage", "TotalClearances", "Marks", "ContestedMarks", "ShotsAtGoal", "Goals", "Behinds", "GoalAssists", "ScoreInvolvements", "Tackles", "Hitouts"];
+const statsColumns = ["CoachesVotes", "RatingPoints", "EstimatedRating", "Supercoach", "DreamTeamPoints", "ExpVotes", "Votes3", "Votes2", "Votes1", "TimeOnGround", "Kicks", "Handballs", "Disposals", "DisposalEfficiency", "MetresGained", "Inside50s", "ContestedPossessions", "Intercepts", "CentreBounceAttendancePercentage", "TotalClearances", "Marks", "InterceptMarks", "ContestedMarks", "ShotsAtGoal", "Goals", "Behinds", "GoalAssists", "ScoreInvolvements", "Tackles", "PressureActs", "Hitouts"];
 
 const csvDownloadButton = document.querySelector('#download-csv-button');
 csvDownloadButton.addEventListener('click', (e) => {
