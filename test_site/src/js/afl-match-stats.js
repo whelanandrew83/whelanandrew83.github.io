@@ -60,7 +60,7 @@ const loadMatch = function () {
 const goToRound = () => { window.location.href = `afl_match_stats.html?ID=${roundList.value}` };
 
 if (validYears.includes(seasonId)) {
-    fetch(`https://www.wheeloratings.com/src/match_stats/table_data/${seasonId}.json`)
+    fetch(`https://www.wheeloratings.com/test_site/src/match_stats/table_data/${seasonId}.json`)
         .then((res) => res.json())
         .then((data) => {
             if (typeof data.RoundId === "string") {
