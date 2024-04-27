@@ -19,6 +19,8 @@ const chartColumns = {
     "ContestedMarks": { name: "Contested Marks", dec: 0 },
     "Goals": { name: "Goals", dec: 0 },
     "ShotsAtGoal": { name: "Shots At Goal", dec: 0 },
+    "xScore": { name: "xScore", dec: 1 },
+    "xScoreRating": { name: "xScore +/-", dec: 1 },
     "GoalAssists": { name: "Goal Assists", dec: 0 },
     "ScoreInvolvements": { name: "Score Involvements", dec: 0 },
     "Tackles": { name: "Tackles", dec: 0 },

@@ -126,7 +126,7 @@ const filterCustom = function (column, min_value, max_value) {
 
         for (i = 0; i < Reactable.getInstance(reactableId).data.length; i++) {
             const value = Reactable.getInstance(reactableId).data[i][column];
-            if ((value >= min_value || min_value.length === 0) && (value <= max_value || max_value.length === 0)) filtered.push(i + 1);
+            if ((value !== null) && (value >= min_value || min_value.length === 0) && (value <= max_value || max_value.length === 0)) filtered.push(i + 1);
         };
 
         handle.set(filtered);

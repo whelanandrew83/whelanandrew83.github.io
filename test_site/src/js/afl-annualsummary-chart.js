@@ -32,6 +32,8 @@ const defaultY = 'RatingAttSeason';
 const reactableId = 'annual-summary-table';
 
 let labelColumns = ['TeamName', 'Year'];
+let labelColumnsSticky = 2;
+let selectionObjectType = 'team';
 
 // let highlightColumn = 'Year';
 // let defaultHighlight = '_max';
