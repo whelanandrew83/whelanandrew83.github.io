@@ -8,6 +8,10 @@ const seasonList = document.querySelector("#season-list");
 const playerDiv = document.querySelector("#player-div");
 const statsDiv = document.querySelector("#stats-div");
 
+const forButton = document.querySelector('#for-stats');
+const againstButton = document.querySelector('#against-stats');
+const differenceButton = document.querySelector('#difference-stats');
+
 let player_data = "";
 let season;
 let reactableData;
@@ -96,6 +100,35 @@ if (player) {
                         Reactable.setFilter('match-stats', 'Season', `${season}`);
                     }
                     Reactable.setHiddenColumns('match-stats', hiddenColumns.For);
+
+                    forButton.addEventListener('click', (e) => {
+                        Reactable.setHiddenColumns('match-stats', hiddenColumns.For);
+                        forButton.classList.add('btn-primary');
+                        forButton.classList.remove('btn-light');
+                        againstButton.classList.remove('btn-primary');
+                        againstButton.classList.add('btn-light');
+                        differenceButton.classList.remove('btn-primary');
+                        differenceButton.classList.add('btn-light');
+                    });
+                    againstButton.addEventListener('click', (e) => {
+                        Reactable.setHiddenColumns('match-stats', hiddenColumns.Against);
+                        forButton.classList.remove('btn-primary');
+                        forButton.classList.add('btn-light');
+                        againstButton.classList.add('btn-primary');
+                        againstButton.classList.remove('btn-light');
+                        differenceButton.classList.remove('btn-primary');
+                        differenceButton.classList.add('btn-light');
+                    });
+                    differenceButton.addEventListener('click', (e) => {
+                        Reactable.setHiddenColumns('match-stats', hiddenColumns.Difference);
+                        forButton.classList.remove('btn-primary');
+                        forButton.classList.add('btn-light');
+                        againstButton.classList.remove('btn-primary');
+                        againstButton.classList.add('btn-light');
+                        differenceButton.classList.add('btn-primary');
+                        differenceButton.classList.remove('btn-light');
+                    });
+
                 });
 
                 data.x.tag.attribs.data = reactableData;
@@ -187,38 +220,6 @@ if (player) {
 } else {
     noValidPlayer();
 }
-
-const forButton = document.querySelector('#for-stats');
-const againstButton = document.querySelector('#against-stats');
-const differenceButton = document.querySelector('#difference-stats');
-
-forButton.addEventListener('click', (e) => {
-    Reactable.setHiddenColumns('match-stats', hiddenColumns.For);
-    forButton.classList.add('btn-primary');
-    forButton.classList.remove('btn-light');
-    againstButton.classList.remove('btn-primary');
-    againstButton.classList.add('btn-light');
-    differenceButton.classList.remove('btn-primary');
-    differenceButton.classList.add('btn-light');
-});
-againstButton.addEventListener('click', (e) => {
-    Reactable.setHiddenColumns('match-stats', hiddenColumns.Against);
-    forButton.classList.remove('btn-primary');
-    forButton.classList.add('btn-light');
-    againstButton.classList.add('btn-primary');
-    againstButton.classList.remove('btn-light');
-    differenceButton.classList.remove('btn-primary');
-    differenceButton.classList.add('btn-light');
-});
-differenceButton.addEventListener('click', (e) => {
-    Reactable.setHiddenColumns('match-stats', hiddenColumns.Difference);
-    forButton.classList.remove('btn-primary');
-    forButton.classList.add('btn-light');
-    againstButton.classList.remove('btn-primary');
-    againstButton.classList.add('btn-light');
-    differenceButton.classList.add('btn-primary');
-    differenceButton.classList.remove('btn-light');
-});
 
 const csvDownloadButton = document.querySelector('#download-csv-button');
 csvDownloadButton.addEventListener('click', (e) => {
