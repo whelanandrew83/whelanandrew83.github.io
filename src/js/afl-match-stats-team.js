@@ -11,6 +11,7 @@ const statsDiv = document.querySelector("#stats-div");
 const forButton = document.querySelector('#for-stats');
 const againstButton = document.querySelector('#against-stats');
 const differenceButton = document.querySelector('#difference-stats');
+const csvDownloadButton = document.querySelector('#download-csv-button');
 
 let player_data = "";
 let season;
@@ -60,12 +61,9 @@ if (player) {
         if (this.readyState == 4 && this.status == 200) {
             res = JSON.parse(this.responseText);
 
-            if (res[player]) {
-                player_data = {};
+            if (res) {
                 player_data = res.TeamData[0];
-            }
 
-            if (player_data) {
                 reactableData = JSON.parse(JSON.stringify(player_data.Data));
 
                 if (typeof reactableData.Season === "number") {
@@ -129,6 +127,17 @@ if (player) {
                         differenceButton.classList.remove('btn-light');
                     });
 
+                    csvDownloadButton.addEventListener('click', (e) => {
+                        let seasonString;
+                        if (season) {
+                            seasonString = season;
+                        } else {
+                            seasonString = "All";
+                        }
+
+                        Reactable.downloadDataCSV('match-stats', `afl-match-stats-player-${player_data.Summary.Player}-${seasonString}.csv`, { columnIds: [...new Set([...columnsAlwaysDisplayed, ...statsColumns])] });
+                        gtag('event', 'data_download');
+                    });
                 });
 
                 data.x.tag.attribs.data = reactableData;
@@ -220,16 +229,3 @@ if (player) {
 } else {
     noValidPlayer();
 }
-
-const csvDownloadButton = document.querySelector('#download-csv-button');
-csvDownloadButton.addEventListener('click', (e) => {
-    let seasonString;
-    if (season) {
-        seasonString = season;
-    } else {
-        seasonString = "All";
-    }
-
-    Reactable.downloadDataCSV('match-stats', `afl-match-stats-player-${player_data.Summary.Player}-${seasonString}.csv`, { columnIds: [...new Set([...columnsAlwaysDisplayed, ...statsColumns])] });
-    gtag('event', 'data_download');
-});
