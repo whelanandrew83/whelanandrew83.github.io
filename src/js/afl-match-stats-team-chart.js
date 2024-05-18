@@ -28,6 +28,10 @@ const chartColumns = {
     "xScoreRating": { name: "xScore +/-", dec: 1 },
     "GoalAssists": { name: "Goal Assists", dec: 0 },
     "Tackles": { name: "Tackles", dec: 0 },
+    "PointsFromKickIn": { name: "Points from Kick-in", dec: 0 },
+    "PointsFromStoppage": { name: "Points from Stoppage", dec: 0 },
+    "PointsFromTurnover": { name: "Points from Turnover", dec: 0 },
+    "PointsFromDefensiveHalf": { name: "Points from Defensive Half", dec: 0 },
 
     "Opposition_Heading": { name: "Opposition Averages", heading: true },
     "Age_Opposition": { name: "Age (Opposition)" },
@@ -50,6 +54,10 @@ const chartColumns = {
     "xScoreRating_Opposition": { name: "xScore +/- (Opposition)", dec: 1 },
     "GoalAssists_Opposition": { name: "Goal Assists (Opposition)", dec: 0 },
     "Tackles_Opposition": { name: "Tackles (Opposition)", dec: 0 },
+    "PointsFromKickIn_Opposition": { name: "Points from Kick-in (Opposition)", dec: 0 },
+    "PointsFromStoppage_Opposition": { name: "Points from Stoppage (Opposition)", dec: 0 },
+    "PointsFromTurnover_Opposition": { name: "Points from Turnover (Opposition)", dec: 0 },
+    "PointsFromDefensiveHalf_Opposition": { name: "Points from Defensive Half (Opposition)", dec: 0 },
 
     "Difference_Heading": { name: "Differences", heading: true },
     "Age_Diff": { name: "Age (Difference)" },
@@ -71,7 +79,11 @@ const chartColumns = {
     "xScore_Diff": { name: "xScore (Difference)", dec: 1 },
     "xScoreRating_Diff": { name: "xScore +/- (Difference)", dec: 1 },
     "GoalAssists_Diff": { name: "Goal Assists (Difference)", dec: 0 },
-    "Tackles_Diff": { name: "Tackles (Difference)", dec: 0 }
+    "Tackles_Diff": { name: "Tackles (Difference)", dec: 0 },
+    "PointsFromKickIn_Diff": { name: "Points from Kick-in (Difference)", dec: 0 },
+    "PointsFromStoppage_Diff": { name: "Points from Stoppage (Difference)", dec: 0 },
+    "PointsFromTurnover_Diff": { name: "Points from Turnover (Difference)", dec: 0 },
+    "PointsFromDefensiveHalf_Diff": { name: "Points from Defensive Half (Difference)", dec: 0 }
 };
 
 const defaultX = 'Match';
