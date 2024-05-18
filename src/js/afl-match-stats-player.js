@@ -1,7 +1,3 @@
-let matchId;
-let roundId;
-let seasonId;
-
 const urlParams = new URLSearchParams(location.search);
 const player = urlParams.get("ID");
 const paramSeason = urlParams.get("Season");
