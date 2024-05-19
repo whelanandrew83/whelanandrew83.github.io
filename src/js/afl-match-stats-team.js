@@ -1,5 +1,5 @@
 const urlParams = new URLSearchParams(location.search);
-const player = urlParams.get("ID");
+let player = urlParams.get("ID");
 const paramSeason = urlParams.get("Season");
 
 const h1 = document.querySelector("h1");
