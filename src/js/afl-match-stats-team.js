@@ -42,6 +42,19 @@ const noValidPlayer = function () {
     playerDiv.style.display = "none";
 }
 
+const teamFiltersDiv = document.querySelector("#team-filters");
+
+if (typeof teams !== 'undefined' & typeof teams.Team !== 'undefined') {
+    for (i = 0; i < teams.Team.length; i++) {
+        const teamLink = document.createElement('a');
+        teamLink.classList = 'btn btn-sm p-1';
+        teamLink.href = `${window.location.pathname}?ID=${teams.WebsiteId[i]}`;
+        teamLink.innerHTML = `<img src='${teams.Image[i]}' height='25px'>`;
+
+        teamFiltersDiv.appendChild(teamLink);
+    }
+}
+
 if (player) {
     player = player.toLowerCase();
 
