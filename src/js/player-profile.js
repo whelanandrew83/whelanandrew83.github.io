@@ -492,6 +492,7 @@ const printCompare = function () {
                             best = Math.min(...statValuesValid).toFixed(dec);
                         } else {
                             best = Math.max(...statValuesValid).toFixed(dec);
+                            best = best === 0 ? undefined : best;
                         }
                         if (!isNaN(value)) {
                             if (statValues.length > 1 && value.toFixed(dec) === best) {
