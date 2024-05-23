@@ -1,7 +1,7 @@
 const chartColumns = {
     "Match": { name: "Match Number" },
     "RatingPoints": { name: "Player Rating" },
-    "EstimatedRating": { name: "Estimated Rating" },
+    "EstimatedRating": { name: "Predicted Rating" },
     "Supercoach": { name: "Supercoach Points", dec: 0 },
     "DreamTeamPoints": { name: "Fantasy Points", dec: 0 },
     "CoachesVotes": { name: "Coaches Votes", dec: 0 },
