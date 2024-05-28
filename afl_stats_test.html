@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
@@ -410,6 +410,9 @@
 <li id="year-2023">
 <a href="afl_stats.html?year=2023">2023</a>
 </li>
+<li id="year-2024">
+<a href="afl_stats.html?year=2024">2024</a>
+</li>
 <li id="year--1">
 <a href="afl_stats.html?year=-1">Last 5 matches</a>
 </li>
@@ -420,11 +423,11 @@
 <script id="year-load">
 const urlParams = new URLSearchParams(location.search);
 
-validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,-1]
+validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,-1]
 year = parseInt(urlParams.get("year"));
 
 if (!year | !validYears.includes(year)) {
-  year = 2023;
+  year = 2024;
   window.location.href = `afl_stats.html?year=${year}`
 }
 year_label = year === -1 ? "Last 5 matches" : year;
