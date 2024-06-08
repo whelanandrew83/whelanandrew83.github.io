@@ -34,6 +34,8 @@ const chartColumns = {
     "PointsFromStoppage": { name: "Points from Stoppage", dec: 0 },
     "PointsFromTurnover": { name: "Points from Turnover", dec: 0 },
     "PointsFromDefensiveHalf": { name: "Points from Defensive Half", dec: 0 },
+    "PointsFromForwardHalf": { name: "Points from Forward Half", dec: 0 },
+    "PointsFromCentreBounce": { name: "Points from Centre Bounce", dec: 0 },
 
     "Opposition_Heading": { name: "Opposition Averages", heading: true },
     "Age_Opposition": { name: "Age (Opposition)" },
@@ -62,6 +64,8 @@ const chartColumns = {
     "PointsFromStoppage_Opposition": { name: "Points from Stoppage (Opposition)", dec: 0 },
     "PointsFromTurnover_Opposition": { name: "Points from Turnover (Opposition)", dec: 0 },
     "PointsFromDefensiveHalf_Opposition": { name: "Points from Defensive Half (Opposition)", dec: 0 },
+    "PointsFromForwardHalf_Opposition": { name: "Points from Forward Half (Opposition)", dec: 0 },
+    "PointsFromCentreBounce_Opposition": { name: "Points from Centre Bounce (Opposition)", dec: 0 },
 
     "Difference_Heading": { name: "Differences", heading: true },
     "Age_Diff": { name: "Age (Difference)" },
@@ -87,7 +91,9 @@ const chartColumns = {
     "PointsFromKickIn_Diff": { name: "Points from Kick-in (Difference)", dec: 0 },
     "PointsFromStoppage_Diff": { name: "Points from Stoppage (Difference)", dec: 0 },
     "PointsFromTurnover_Diff": { name: "Points from Turnover (Difference)", dec: 0 },
-    "PointsFromDefensiveHalf_Diff": { name: "Points from Defensive Half (Difference)", dec: 0 }
+    "PointsFromDefensiveHalf_Diff": { name: "Points from Defensive Half (Difference)", dec: 0 },
+    "PointsFromForwardHalf_Diff": { name: "Points from Forward Half (Difference)", dec: 0 },
+    "PointsFromCentreBounce_Diff": { name: "Points from Centre Bounce (Difference)", dec: 0 }
 };
 
 const defaultX = 'Match';

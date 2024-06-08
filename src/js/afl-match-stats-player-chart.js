@@ -26,6 +26,7 @@ const chartColumns = {
     "xScoreRating": { name: "xScore +/-", dec: 1 },
     "GoalAssists": { name: "Goal Assists", dec: 0 },
     "ScoreInvolvements": { name: "Score Involvements", dec: 0 },
+    "ScoreLaunches": { name: "Score Launches", dec: 0 },
     "Tackles": { name: "Tackles", dec: 0 },
     "PressureActs": { name: "Pressure Acts", dec: 0 },
     "Hitouts": { name: "Hitouts", dec: 0 }
