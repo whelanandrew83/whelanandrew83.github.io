@@ -1,9 +1,11 @@
 let xscore;
+let filterLookups;
 fetch(`https://www.wheeloratings.com/src/xscore/xscore_testing.json`)
     .then((res) => res.json())
     .then((data) => {
         console.log(data);
-        xscore = data;
+        xscore = data.Data[0];
+        filterLookups = data.Filters;
     });
 
 
@@ -57,11 +59,11 @@ const aggregate = (obj, groupBy, filter) => {
 let filters = { Team: ["gc", "melb"], Pocket: [] };
 filters = {};
 
-aggregate(xscore, "Player", filters)
+aggregate(xscore, "PlayerIndex", filters)
 aggregate(xscore, "Team", filters)
 aggregate(xscore, "Team", {})
 
 aggregate(xscore, "Distance", {})
 aggregate(xscore, "Pocket", {})
 
-Reactable.setData("xscore-table", aggregate(xscore, ["Player"], filters))
+Reactable.setData("xscore-table", aggregate(xscore, ["PlayerIndex"], filters))
