@@ -1,13 +1,8 @@
 let xscore;
-let filterLookups;
-fetch(`https://www.wheeloratings.com/src/xscore/xscore_testing.json`)
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        xscore = data.Data[0];
-        filterLookups = data.Filters;
-    });
+let lookups;
 
+let filters = { Team: ["gc", "melb"], Pocket: [] };
+filters = {};
 
 const aggregate = (obj, groupBy, filter) => {
     // using reduce() method to aggregate 
@@ -30,9 +25,12 @@ const aggregate = (obj, groupBy, filter) => {
             index = res.Index.indexOf(groupByIndex);
 
             if (index < 0) {
+                grouping1 = typeof lookups[groupBy[0]] !== "undefined" ? lookups[groupBy[0]].Label[lookups[groupBy[0]].Index.indexOf(groupByValue)] : groupByValue;
+                grouping2 = groupBy.length > 1 && typeof lookups[groupBy[1]] !== "undefined" ? lookups[groupBy[1]].Label[lookups[groupBy[1]].Index.indexOf(groupByValue)] : groupByValue2;
+
                 res.Index.push(groupByIndex);
-                res.Grouping1.push(groupByValue);
-                res.Grouping2.push(groupByValue2);
+                res.Grouping1.push(grouping1);
+                res.Grouping2.push(grouping2);
                 res.Shots.push(0);
                 res.Score.push(0);
                 res.xScore.push(0);
@@ -55,15 +53,19 @@ const aggregate = (obj, groupBy, filter) => {
     return res;
 }
 
+fetch(`https://www.wheeloratings.com/src/xscore/xscore_testing.json`)
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+        xscore = data.Data[0];
+        lookups = data.Lookups;
 
-let filters = { Team: ["gc", "melb"], Pocket: [] };
-filters = {};
+        Reactable.setData("xscore-table", aggregate(xscore, ["Player"], filters))
+    });
 
-aggregate(xscore, "PlayerIndex", filters)
-aggregate(xscore, "Team", filters)
-aggregate(xscore, "Team", {})
+// aggregate(xscore, "Player", filters)
+// aggregate(xscore, "Team", filters)
+// aggregate(xscore, "Team", {})
 
-aggregate(xscore, "Distance", {})
-aggregate(xscore, "Pocket", {})
-
-Reactable.setData("xscore-table", aggregate(xscore, ["PlayerIndex"], filters))
+// aggregate(xscore, "Distance", {})
+// aggregate(xscore, "Pocket", {})
