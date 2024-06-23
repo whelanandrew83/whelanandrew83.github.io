@@ -25,8 +25,8 @@ const aggregate = (obj, groupBy, filter) => {
             index = res.Index.indexOf(groupByIndex);
 
             if (index < 0) {
-                grouping1 = typeof lookups[groupBy[0]] !== "undefined" ? lookups[groupBy[0]].Label[lookups[groupBy[0]].Index.indexOf(groupByValue)] : groupByValue;
-                grouping2 = groupBy.length > 1 && typeof lookups[groupBy[1]] !== "undefined" ? lookups[groupBy[1]].Label[lookups[groupBy[1]].Index.indexOf(groupByValue)] : groupByValue2;
+                grouping1 = typeof lookups[groupBy[0]] !== "undefined" ? lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)] : groupByValue;
+                grouping2 = groupBy.length > 1 && typeof lookups[groupBy[1]] !== "undefined" ? lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)] : groupByValue2;
 
                 res.Index.push(groupByIndex);
                 res.Grouping1.push(grouping1);
@@ -60,7 +60,7 @@ fetch(`https://www.wheeloratings.com/src/xscore/xscore_testing.json`)
         xscore = data.Data[0];
         lookups = data.Lookups;
 
-        Reactable.setData("xscore-table", aggregate(xscore, ["Player"], filters))
+        Reactable.setData("xscore-table", aggregate(xscore, ["Player"], filters));
     });
 
 // aggregate(xscore, "Player", filters)
