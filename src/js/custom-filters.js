@@ -23,8 +23,12 @@ const selectOptions = [];
 
 window.addEventListener('DOMContentLoaded', (event) => {
     try {
+        //columnIds = [];
+        //Reactable.getInstance(reactableId).allColumns.forEach((o) => columnIds.push(o.id));
+
         Object.keys(filterColumns).forEach(key => {
             if (Object.keys(Reactable.getInstance(reactableId).data[0]).includes(key)) {
+                //if (columnIds.includes(key)) {
                 if (typeof filterColumnsDefault !== 'undefined' && filterColumnsDefault.includes(key)) {
                     filterCreate(key);
                 } else {

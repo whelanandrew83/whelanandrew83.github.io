@@ -1,3 +1,17 @@
+// const filterColumns = {
+//     'Shots': 'Shots',
+//     'Goals': 'Goals',
+//     'Behinds': 'Behinds',
+//     'NoScore': 'No Score',
+//     'ScorePerShot': 'Score / Shot',
+//     'xScorePerShot': 'xScore / Shot',
+//     'DiffPerShot': 'Shot Rating',
+//     'Accuracy': 'Accuracy'
+// }
+
+// const filterColumnsDefault = ['Shots']
+const reactableId = 'xscore-table';
+
 let xscore;
 let lookups;
 let lookupNames = {
@@ -14,12 +28,11 @@ let groupingColumns = {
     Pocket: "Pocket"
 }
 
-let filters = { Team: ["gc", "melb"], Pocket: [] };
-filters = {};
+let filters = {};
 
 const aggregate = (obj, groupBy, filter) => {
     // using reduce() method to aggregate 
-    const res = { Index: [], Grouping1: [], Grouping2: [], Shots: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [] };
+    const res = { Index: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
     let groupByValue2;
 
     obj[groupBy[0]].forEach((groupByValue, i) => {
@@ -44,23 +57,28 @@ const aggregate = (obj, groupBy, filter) => {
                 res.Index.push(groupByIndex);
                 res.Grouping1.push(grouping1);
                 res.Grouping2.push(grouping2);
-                res.Shots.push(0);
-                res.Score.push(0);
+                res.Goals.push(0);
+                res.Behinds.push(0);
+                res.NoScore.push(0);
                 res.xScore.push(0);
                 index = res.Index.length - 1;
             }
 
-            res.Shots[index] += obj.Shots[i];
-            res.Score[index] += obj.Score[i];
+            res.Goals[index] += obj.Goals[i];
+            res.Behinds[index] += obj.Behinds[i];
+            res.NoScore[index] += obj.NoScore[i];
             res.xScore[index] += obj.xScore[i];
         }
     });
 
     res.Index.forEach((groupByValue, i) => {
+        res.Shots[i] = res.Goals[i] + res.Behinds[i] + res.NoScore[i];
+        res.Score[i] = res.Goals[i] * 6 + res.Behinds[i];
         res.Diff[i] = res.Score[i] - res.xScore[i];
         res.ScorePerShot[i] = res.Score[i] / res.Shots[i];
         res.xScorePerShot[i] = res.xScore[i] / res.Shots[i];
         res.DiffPerShot[i] = res.Diff[i] / res.Shots[i];
+        res.Accuracy[i] = res.Goals[i] / res.Shots[i] * 100;
     });
 
     return res;
@@ -88,8 +106,14 @@ const updateTable = () => {
     }
 
     const groupings = [statGrouping1.value];
-    if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) groupings.push(statGrouping2.value);
+    const hiddenColumns = ["Index"];
+    if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) {
+        groupings.push(statGrouping2.value);
+    } else {
+        hiddenColumns.push("Grouping2");
+    }
 
+    Reactable.setHiddenColumns('xscore-table', hiddenColumns);
     Reactable.setData("xscore-table", aggregate(xscore, groupings, filters));
 }
 
@@ -148,25 +172,15 @@ const initialiseFilters = () => {
         statGrouping2.appendChild(option.cloneNode(true));
     }
 
-    //statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
-    //statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
+    updateTable();
 }
 
 fetch(`https://www.wheeloratings.com/src/xscore/xscore_testing.json`)
     .then((res) => res.json())
     .then((data) => {
-        console.log(data);
         xscore = data.Data[0];
         lookups = data.Lookups;
 
+        Reactable.setFilter('xscore-table', "Shots", 10);
         initialiseFilters();
-
-        Reactable.setData("xscore-table", aggregate(xscore, ["Player"], filters));
     });
-
-// aggregate(xscore, "Player", filters)
-// aggregate(xscore, "Team", filters)
-// aggregate(xscore, "Team", {})
-
-// aggregate(xscore, "Distance", {})
-// aggregate(xscore, "Pocket", {})
