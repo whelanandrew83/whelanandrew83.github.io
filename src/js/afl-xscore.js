@@ -1,5 +1,18 @@
 let xscore;
 let lookups;
+let lookupNames = {
+    ShotType: "Shot Type",
+    Distance: "Distance",
+    Pocket: "Pocket"
+}
+let groupingColumns = {
+    Team: "Team",
+    Player: "Player",
+    Season: "Season",
+    ShotType: "Shot Type",
+    Distance: "Distance",
+    Pocket: "Pocket"
+}
 
 let filters = { Team: ["gc", "melb"], Pocket: [] };
 filters = {};
@@ -53,12 +66,100 @@ const aggregate = (obj, groupBy, filter) => {
     return res;
 }
 
+const filtersDiv = document.querySelector("#filters");
+const checkboxFiltersDiv = document.querySelector("#checkbox-filters");
+const statGrouping1 = document.querySelector("#stat-grouping-1");
+const statGrouping2 = document.querySelector("#stat-grouping-2");
+statGrouping1.addEventListener('change', (e) => { updateTable(); });
+statGrouping2.addEventListener('change', (e) => { updateTable(); });
+
+let checkboxLookups = { Id: [], Lookup: [], LookupIndex: [] };
+
+const updateTable = () => {
+    const selectedInputs = document.querySelectorAll("#checkbox-filters input:checked");
+
+    filters = {};
+    for (input of selectedInputs) {
+        i = checkboxLookups.Id.indexOf(input.id);
+        key = checkboxLookups.Lookup[i];
+        if (!(Object.keys(filters).includes(key))) filters[key] = [];
+
+        filters[key].push(checkboxLookups.LookupIndex[i]);
+    }
+
+    const groupings = [statGrouping1.value];
+    if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) groupings.push(statGrouping2.value);
+
+    Reactable.setData("xscore-table", aggregate(xscore, groupings, filters));
+}
+
+const initialiseFilters = () => {
+    for (c of Object.keys(lookupNames)) {
+        const filterDiv = document.createElement('div');
+        filterDiv.classList = "m-2";
+
+        const h5 = document.createElement('h5');
+        h5.classList = "my-1"
+        h5.innerText = lookupNames[c];
+
+        checkboxFiltersDiv.appendChild(h5);
+
+        lookups[c][0].Index.forEach((index, i) => {
+            const div = document.createElement('div');
+            div.classList = "form-check form-switch";
+
+            const id = "select-filter-" + c.toLowerCase().replaceAll(' ', '-') + "-" + index.toLowerCase().replaceAll(' ', '-');
+
+            const input = document.createElement('input');
+            input.classList = "form-check-input"
+            input.type = "checkbox"
+            input.value = index;
+            input.id = id;
+
+            input.addEventListener('change', (e) => { updateTable(); });
+
+            const label = document.createElement('label');
+            label.classList = "form-check-label stat-selection-label"
+            label.htmlFor = id;
+            label.innerText = lookups[c][0].Label[i];
+
+            checkboxLookups.Id.push(id);
+            checkboxLookups.Lookup.push(c);
+            checkboxLookups.LookupIndex.push(index);
+
+            div.appendChild(input);
+            div.appendChild(label);
+            filterDiv.appendChild(div)
+        });
+
+        checkboxFiltersDiv.appendChild(filterDiv);
+    }
+
+    let option = document.createElement("option");
+    option.value = "";
+    option.text = "None";
+    statGrouping2.appendChild(option);
+
+    for (col of Object.keys(groupingColumns)) {
+        option = document.createElement("option");
+        option.value = col;
+        option.text = groupingColumns[col];
+        statGrouping1.appendChild(option);
+        statGrouping2.appendChild(option.cloneNode(true));
+    }
+
+    //statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
+    //statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
+}
+
 fetch(`https://www.wheeloratings.com/src/xscore/xscore_testing.json`)
     .then((res) => res.json())
     .then((data) => {
         console.log(data);
         xscore = data.Data[0];
         lookups = data.Lookups;
+
+        initialiseFilters();
 
         Reactable.setData("xscore-table", aggregate(xscore, ["Player"], filters));
     });
