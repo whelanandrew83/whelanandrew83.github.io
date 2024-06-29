@@ -37,18 +37,23 @@ const aggregate = (obj, groupBy, filter) => {
     let groupByValue2;
 
     // Loop seasons
-    Object.keys(obj).forEach((season, i) => {
-        if (typeof filter["Season"] === "undefined" | filter["Season"].includes(season)) {
-            obj[season][groupBy[0]].forEach((groupByValue, i) => {
+    Object.keys(obj).forEach(season => {
+        data_season = obj[season];
+        if (typeof filter["Season"] === "undefined" || filter["Season"].includes(season)) {
+
+            //data_season[groupBy[0]].forEach((groupByValue, i) => {
+            for (i = 0; i < data_season[Object.keys(data_season)[0]].length; i++) {
+                groupByValue = groupBy[0] === "Season" ? season : data_season[groupBy[0]][i];
 
                 let filtered = true;
-                Object.keys(filter).forEach((filterColumn) => {
-                    filtered = filtered & (filter[filterColumn].length == 0 | filter[filterColumn].includes(obj[filterColumn][i]));
+                Object.keys(filter).forEach(filterColumn => {
+                    if (filterColumn !== "Season")
+                        filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(data_season[filterColumn][i]));
                 });
 
                 if (filtered) {
                     if (groupBy.length > 1) {
-                        groupByValue2 = obj[groupBy[1]][i];
+                        groupByValue2 = groupBy[1] === "Season" ? season : data_season[groupBy[1]][i];
                         groupByIndex = `${groupByValue}|${groupByValue2}`;
                     } else groupByIndex = groupByValue;
 
@@ -68,12 +73,12 @@ const aggregate = (obj, groupBy, filter) => {
                         index = res.Index.length - 1;
                     }
 
-                    res.Goals[index] += obj.Goals[i];
-                    res.Behinds[index] += obj.Behinds[i];
-                    res.NoScore[index] += obj.NoScore[i];
-                    res.xScore[index] += obj.xScore[i];
+                    res.Goals[index] += data_season.Goals[i];
+                    res.Behinds[index] += data_season.Behinds[i];
+                    res.NoScore[index] += data_season.NoScore[i];
+                    res.xScore[index] += data_season.xScore[i];
                 }
-            })
+            }
         }
     });
 
@@ -132,7 +137,7 @@ const initialiseFilters = () => {
         h5.classList = "my-1"
         h5.innerText = lookupNames[c];
 
-        checkboxFiltersDiv.appendChild(h5);
+        filterDiv.appendChild(h5);
 
         lookups[c][0].Index.forEach((index, i) => {
             const div = document.createElement('div');
