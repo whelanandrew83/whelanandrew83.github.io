@@ -34,7 +34,7 @@ let filters = {};
 const aggregate = (obj, groupBy, filter) => {
     // using reduce() method to aggregate 
     const res = { Index: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
-    let groupByValue2;
+    let data_season, groupByValue, groupByValue2;
 
     // Loop seasons
     Object.keys(obj).forEach(season => {
