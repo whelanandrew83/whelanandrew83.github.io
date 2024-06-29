@@ -15,6 +15,7 @@ const reactableId = 'xscore-table';
 let xscore;
 let lookups;
 let lookupNames = {
+    Season: "Season",
     ShotType: "Shot Type",
     Distance: "Distance",
     Pocket: "Pocket"
@@ -35,39 +36,44 @@ const aggregate = (obj, groupBy, filter) => {
     const res = { Index: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
     let groupByValue2;
 
-    obj[groupBy[0]].forEach((groupByValue, i) => {
+    // Loop seasons
+    Object.keys(obj).forEach((season, i) => {
+        if (typeof filter["Season"] === "undefined" | filter["Season"].includes(season)) {
+            obj[season][groupBy[0]].forEach((groupByValue, i) => {
 
-        let filtered = true;
-        Object.keys(filter).forEach((filterColumn) => {
-            filtered = filtered & (filter[filterColumn].length == 0 | filter[filterColumn].includes(obj[filterColumn][i]));
-        });
+                let filtered = true;
+                Object.keys(filter).forEach((filterColumn) => {
+                    filtered = filtered & (filter[filterColumn].length == 0 | filter[filterColumn].includes(obj[filterColumn][i]));
+                });
 
-        if (filtered) {
-            if (groupBy.length > 1) {
-                groupByValue2 = obj[groupBy[1]][i];
-                groupByIndex = `${groupByValue}|${groupByValue2}`;
-            } else groupByIndex = groupByValue;
+                if (filtered) {
+                    if (groupBy.length > 1) {
+                        groupByValue2 = obj[groupBy[1]][i];
+                        groupByIndex = `${groupByValue}|${groupByValue2}`;
+                    } else groupByIndex = groupByValue;
 
-            index = res.Index.indexOf(groupByIndex);
+                    index = res.Index.indexOf(groupByIndex);
 
-            if (index < 0) {
-                grouping1 = typeof lookups[groupBy[0]] !== "undefined" ? lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)] : groupByValue;
-                grouping2 = groupBy.length > 1 && typeof lookups[groupBy[1]] !== "undefined" ? lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)] : groupByValue2;
+                    if (index < 0) {
+                        grouping1 = typeof lookups[groupBy[0]] !== "undefined" ? lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)] : groupByValue;
+                        grouping2 = groupBy.length > 1 && typeof lookups[groupBy[1]] !== "undefined" ? lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)] : groupByValue2;
 
-                res.Index.push(groupByIndex);
-                res.Grouping1.push(grouping1);
-                res.Grouping2.push(grouping2);
-                res.Goals.push(0);
-                res.Behinds.push(0);
-                res.NoScore.push(0);
-                res.xScore.push(0);
-                index = res.Index.length - 1;
-            }
+                        res.Index.push(groupByIndex);
+                        res.Grouping1.push(grouping1);
+                        res.Grouping2.push(grouping2);
+                        res.Goals.push(0);
+                        res.Behinds.push(0);
+                        res.NoScore.push(0);
+                        res.xScore.push(0);
+                        index = res.Index.length - 1;
+                    }
 
-            res.Goals[index] += obj.Goals[i];
-            res.Behinds[index] += obj.Behinds[i];
-            res.NoScore[index] += obj.NoScore[i];
-            res.xScore[index] += obj.xScore[i];
+                    res.Goals[index] += obj.Goals[i];
+                    res.Behinds[index] += obj.Behinds[i];
+                    res.NoScore[index] += obj.NoScore[i];
+                    res.xScore[index] += obj.xScore[i];
+                }
+            })
         }
     });
 
@@ -178,8 +184,9 @@ const initialiseFilters = () => {
 fetch(`https://www.wheeloratings.com/src/xscore/xscore_testing.json`)
     .then((res) => res.json())
     .then((data) => {
-        xscore = data.Data[0];
+        xscore = data.Data;
         lookups = data.Lookups;
+        lookups.Season = [{ Index: Object.keys(xscore), Label: Object.keys(xscore) }];
 
         Reactable.setFilter('xscore-table', "Shots", 10);
         initialiseFilters();
