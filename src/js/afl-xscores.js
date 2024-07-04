@@ -10,9 +10,9 @@
 // }
 
 // const filterColumnsDefault = ['Shots']
-const reactableId = 'xscore-table';
+const reactableId = 'xscores-table';
 const clearPlayerButton = document.querySelector("#clear-player-button");
-clearPlayerButton.addEventListener('click', () => { player = undefined; Reactable.setFilter('xscore-table', "Shots", shotsFilter); updatePlayer(); });
+clearPlayerButton.addEventListener('click', () => { selectedPlayer = undefined; Reactable.setFilter(reactableId, "Shots", shotsFilter); updatePlayer(); });
 const shotChartDiv = document.querySelector("#shot-chart-div");
 
 let view = "Player";
@@ -33,15 +33,16 @@ let groupingColumns = {
 }
 let shotsFilter = 10;
 
-//let player = urlParams.get("ID");
-let player; //= "2db9fb";
+//let selectedPlayer = urlParams.get("ID");
+let selectedPlayer; //= "2db9fb";
+let selectedTeam; //= "2db9fb";
 
 let filters = {};
 
 const getFilter = (filter) => {
     let returnValue;
 
-    Reactable.getState('xscore-table').filters.forEach(f => {
+    Reactable.getState(reactableId).filters.forEach(f => {
         if (f.id === filter) returnValue = f.value;
     });
     return returnValue;
@@ -129,6 +130,7 @@ statGrouping1.addEventListener('change', (e) => { updateTable(); });
 statGrouping2.addEventListener('change', (e) => { updateTable(); });
 
 const statGrouping2Div = document.querySelector("#stat-grouping-2-div");
+const teamFiltersDiv = document.querySelector("#team-filters");
 const tableHeading = document.querySelector("#table-heading");
 
 const viewPlayersButton = document.querySelector("#view-players");
@@ -137,24 +139,28 @@ const viewAllButton = document.querySelector("#view-all");
 
 viewPlayersButton.addEventListener('click', () => {
     view = "Player";
-    player = undefined;
-    Reactable.setFilter('xscore-table', "Shots", shotsFilter);
+    selectedPlayer = undefined;
+    Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    teamFiltersDiv.classList.remove("d-none");
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
     updatePlayer();
 });
 viewTeamsButton.addEventListener('click', () => {
     view = "Team";
-    player = undefined;
-    Reactable.setFilter('xscore-table', "Shots", shotsFilter);
+    selectedPlayer = undefined;
+    Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    teamFiltersDiv.classList.remove("d-none");
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
     updatePlayer();
 });
 viewAllButton.addEventListener('click', () => {
     view = undefined;
-    player = undefined;
-    Reactable.setFilter('xscore-table', "Shots", shotsFilter);
+    selectedPlayer = undefined;
+    selectedTeam = undefined;
+    Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    teamFiltersDiv.classList.add("d-none");
     statGrouping1.options[0].disabled = true;
     statGrouping1.selectedIndex = 1;
     updatePlayer();
@@ -374,44 +380,57 @@ const chart = new Chart(ctx, {
 });
 
 const selectPlayer = (id) => {
-    player = id;
+    selectedPlayer = id;
     shotsFilter = getFilter("Shots");
 
     updatePlayer(true);
 }
 
+const selectTeam = (id) => {
+    selectedTeam = id;
+
+    updatePlayer();
+}
+
 const updatePlayer = (clearFilter = false) => {
-    if (view === "Player" && typeof player !== "undefined") {
-        fetch(`https://www.wheeloratings.com/src/xscore/${player.slice(-2)}.json`)
+    if (view === "Player" && typeof selectedPlayer !== "undefined") {
+        fetch(`https://www.wheeloratings.com/src/xscores/${selectedPlayer.slice(-2)}.json`)
             .then((res) => res.json())
             .then((data) => {
-                xscoreShots = data[player].Data;
+                xscoreShots = data[selectedPlayer].Data;
                 updateTable();
                 updateShotChart(filters);
+                teamFiltersDiv.classList.add("d-none");
                 clearPlayerButton.classList.remove("d-none");
                 shotChartDiv.classList.remove("d-none");
-                if (clearFilter) Reactable.setFilter('xscore-table', "Shots", undefined);
+                if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
-                tableHeading.innerHTML = lookups.Player[0].Label[lookups.Player[0].WebsiteId.indexOf(player)];
+                tableHeading.innerHTML = lookups.Player[0].Label[lookups.Player[0].WebsiteId.indexOf(selectedPlayer)];
             });
-    } else if (view === "Team" && typeof player !== "undefined") {
-        xscoreShots = {};
-        updateTable();
-        updateShotChart(filters);
-        clearPlayerButton.classList.remove("d-none");
-        shotChartDiv.classList.add("d-none");
-        if (clearFilter) Reactable.setFilter('xscore-table', "Shots", undefined);
-
-        tableHeading.innerHTML = lookups.Team[0].Label[lookups.Team[0].Index.indexOf(player)];
-    } else {
+    } else if (view === "Team" && typeof selectedTeam !== "undefined") {
         xscoreShots = {};
         updateTable();
         updateShotChart(filters);
         clearPlayerButton.classList.add("d-none");
         shotChartDiv.classList.add("d-none");
-        if (clearFilter) Reactable.setFilter('xscore-table', "Shots", undefined);
+        if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
-        tableHeading.innerHTML = "";
+        tableHeading.innerHTML = lookups.Team[0].Label[lookups.Team[0].Index.indexOf(selectedTeam)];
+    } else {
+        xscoreShots = {};
+        updateTable();
+        updateShotChart(filters);
+        if (view === "Player") teamFiltersDiv.classList.remove("d-none");
+        clearPlayerButton.classList.add("d-none");
+        shotChartDiv.classList.add("d-none");
+        if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
+
+        if (view === "Player" && typeof selectedTeam !== "undefined") {
+            tableHeading.innerHTML = lookups.Team[0].Label[lookups.Team[0].Index.indexOf(selectedTeam)];
+        } else {
+            tableHeading.innerHTML = "All Teams";
+        }
+
     }
 
 }
@@ -420,6 +439,8 @@ const updateTable = () => {
     const selectedInputs = document.querySelectorAll("#checkbox-filters input:checked");
 
     filters = {};
+    //filters = typeof view === "undefined" ? {} : { ...filtersOther };
+
     for (input of selectedInputs) {
         i = checkboxLookups.Id.indexOf(input.id);
         key = checkboxLookups.Lookup[i];
@@ -428,16 +449,16 @@ const updateTable = () => {
         filters[key].push(checkboxLookups.LookupIndex[i]);
     }
 
-    if (view === "Player" && typeof player != "undefined")
-        filters["Player"] = [player];
-    if (view === "Team" && typeof player != "undefined")
-        filters["Team"] = [player];
+    if (view === "Player" && typeof selectedPlayer != "undefined")
+        filters["Player"] = [selectedPlayer];
+    if (typeof selectedTeam != "undefined")
+        filters["Team"] = [selectedTeam];
 
     const groupings = [];
     const hiddenColumns = ["Index"];
 
     if (view === "Player" || view === "Team") {
-        if (typeof player === "undefined") {
+        if ((view === "Player" && typeof selectedPlayer === "undefined") || (view === "Team" && typeof selectedTeam === "undefined")) {
             groupings.push(view);
             if (statGrouping1.value) {
                 groupings.push(statGrouping1.value);
@@ -456,9 +477,9 @@ const updateTable = () => {
             } else {
                 hiddenColumns.push("Grouping2");
             }
-            if (typeof player !== "undefined") hiddenColumns.push("Id");
             statGrouping2Div.classList.remove("d-none");
         }
+        if (typeof selectedPlayer !== "undefined" || view === "Team") hiddenColumns.push("Id");
     } else {
         groupings.push(statGrouping1.value);
         if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) {
@@ -470,8 +491,8 @@ const updateTable = () => {
         statGrouping2Div.classList.remove("d-none");
     }
 
-    Reactable.setHiddenColumns('xscore-table', hiddenColumns);
-    Reactable.setData("xscore-table", aggregate(xscore, groupings, filters));
+    Reactable.setHiddenColumns(reactableId, hiddenColumns);
+    Reactable.setData("xscores-table", aggregate(xscore, groupings, filters));
 }
 
 const initialiseFilters = () => {
@@ -497,7 +518,7 @@ const initialiseFilters = () => {
             input.value = index;
             input.id = id;
 
-            input.addEventListener('change', (e) => { updateTable(); if (typeof player !== "undefined") updateShotChart(filters); });
+            input.addEventListener('change', (e) => { updateTable(); if (typeof selectedPlayer !== "undefined") updateShotChart(filters); });
 
             const label = document.createElement('label');
             label.classList = "form-check-label stat-selection-label"
@@ -530,17 +551,42 @@ const initialiseFilters = () => {
         statGrouping2.appendChild(option.cloneNode(true));
     }
 
+    console.log(lookups.Team)
+    if (typeof lookups.Team !== 'undefined') {
+        for (i = -1; i < lookups.Team[0].Index.length; i++) {
+            const teamLink = document.createElement('a');
+            if (i == -1) {
+                teamLink.classList = 'btn btn-primary btn-sm mx-1 my-1';
+                teamLink.innerText = `ALL`;
+            } else {
+                teamLink.classList = 'btn btn-sm p-1';
+                teamLink.innerHTML = `<img src='${lookups.Team[0].TeamImage[i]}' height='25px'>`;
+            }
+            teamFiltersDiv.appendChild(teamLink);
+
+            const team = i == -1 ? undefined : lookups.Team[0].Index[i];
+            const teamLabel = i == -1 ? "All teams" : lookups.Team[0].Label[i];
+
+            teamLink.addEventListener('click', function (event) {
+                selectTeam(team);
+            });
+            // teamLink.addEventListener('click', function (event) {
+            //     Reactable.setFilter('team-lists-table', 'Abbreviation', team);
+            // });
+        }
+    }
+
     updatePlayer();
 }
 
-fetch(`https://www.wheeloratings.com/src/xscore/xscore_data.json`)
+fetch(`https://www.wheeloratings.com/src/xscores/xscores_data.json`)
     .then((res) => res.json())
     .then((data) => {
         xscore = data.Data;
         lookups = data.Lookups;
         lookups.Season = [{ Index: Object.keys(xscore), Label: Object.keys(xscore) }];
 
-        Reactable.setFilter('xscore-table', "Shots", shotsFilter);
+        Reactable.setFilter(reactableId, "Shots", shotsFilter);
         initialiseFilters();
     });
 
