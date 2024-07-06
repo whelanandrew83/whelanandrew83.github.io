@@ -54,15 +54,15 @@ const getFilter = (filter) => {
 const aggregate = (groupBy, filter) => {
     // using reduce() method to aggregate 
     const data = view === "Player" ? xscore : xscoreTeam;
-    const res = { Index: [], Id: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
+    const res = { Index: [], Id: [], Player: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
     let data_subset, groupByPlayer, groupByValue, groupByValue2;
 
     // Loop player groupings or teams
     Object.keys(data).forEach(dataIndex => {
-        data_subset = data[dataIndex].data[0];
+        data_subset = view === "Player" ? data[dataIndex].data[0] : data[dataIndex];
         if (
             (view === "Player" && (typeof selectedPlayer === "undefined" || dataIndex === selectedPlayer.toString().slice(-1))) ||
-            (view !== "Player" && (typeof selectedTeam === "undefined" || dataIndex === selectedTeam))
+            (view !== "Player" && (typeof selectedTeam === "undefined" || dataIndex === selectedTeam.toString()))
         ) {
 
             for (i = 0; i < data_subset[Object.keys(data_subset)[0]].length; i++) {
@@ -73,11 +73,14 @@ const aggregate = (groupBy, filter) => {
                     // else if (filterColumn === "Team")
                     //     filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(lookups[filterColumn][0].Index[lookups[filterColumn][0].Index.indexOf(data_subset[filterColumn][i])]));
                     // else if (filterColumn !== "Season")
-                    filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(data_subset[filterColumn][i]));
+                    if (view === "Team" && filterColumn === "Team")
+                        filtered = filtered && filter[filterColumn].includes(parseInt(dataIndex));
+                    else
+                        filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(data_subset[filterColumn][i]));
                 });
 
                 if (filtered) {
-                    groupByPlayer = view === "Player" || view === "Team" ? data_subset[view][i] : "";
+                    groupByPlayer = view === "Player" ? data_subset[view][i] : view === "Team" ? parseInt(dataIndex) : "";
                     groupByValue = groupBy.length < 1 ? "" : data_subset[groupBy[0]][i];
                     groupByValue2 = groupBy.length < 2 ? "" : data_subset[groupBy[1]][i];
 
@@ -86,7 +89,7 @@ const aggregate = (groupBy, filter) => {
                     index = res.Index.indexOf(groupByIndex);
 
                     if (index < 0) {
-                        groupingPlayer = typeof groupByPlayer !== "undefined" ? lookups[view][0].Label[lookups[view][0].Index.indexOf(groupByPlayer)] : groupByValue;
+                        groupingPlayer = typeof groupByPlayer !== "undefined" && groupByPlayer !== "" ? lookups[view][0].Label[groupByPlayer - 1] : groupByValue;
                         grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)];
                         grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)];
 
@@ -99,6 +102,7 @@ const aggregate = (groupBy, filter) => {
                         //     res.Id.push("");
                         res.Id.push(groupByPlayer);
 
+                        res.Player.push(groupingPlayer);
                         res.Grouping1.push(grouping1);
                         res.Grouping2.push(grouping2);
                         res.Goals.push(0);
@@ -402,10 +406,11 @@ const selectTeam = (id) => {
 
 const updatePlayer = (clearFilter = false) => {
     if (view === "Player" && typeof selectedPlayer !== "undefined") {
-        fetch(`https://www.wheeloratings.com/src/xscores/${selectedPlayer.slice(-2)}.json`)
+        const playerWebsiteId = lookups.Player[0].WebsiteId[selectedPlayer];
+        fetch(`https://www.wheeloratings.com/src/xscores/${playerWebsiteId.slice(-2)}.json`)
             .then((res) => res.json())
             .then((data) => {
-                xscoreShots = data[selectedPlayer].Data;
+                xscoreShots = data[playerWebsiteId].Data;
                 updateTable();
                 updateShotChart(filters);
                 teamFiltersDiv.classList.add("d-none");
@@ -413,7 +418,7 @@ const updatePlayer = (clearFilter = false) => {
                 shotChartDiv.classList.remove("d-none");
                 if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
-                tableHeading.innerHTML = lookups.Player[0].Label[lookups.Player[0].WebsiteId.indexOf(selectedPlayer)];
+                tableHeading.innerHTML = lookups.Player[0].Label[selectedPlayer];
             });
     } else if (view === "Team" && typeof selectedTeam !== "undefined") {
         xscoreShots = {};
@@ -423,7 +428,7 @@ const updatePlayer = (clearFilter = false) => {
         shotChartDiv.classList.add("d-none");
         if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
-        tableHeading.innerHTML = lookups.Team[0].Label[lookups.Team[0].Index.indexOf(selectedTeam)];
+        tableHeading.innerHTML = lookups.Team[0].Label[selectedTeam];
     } else {
         xscoreShots = {};
         updateTable();
@@ -434,7 +439,7 @@ const updatePlayer = (clearFilter = false) => {
         if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
         if (view === "Player" && typeof selectedTeam !== "undefined") {
-            tableHeading.innerHTML = lookups.Team[0].Label[lookups.Team[0].Index.indexOf(selectedTeam)];
+            tableHeading.innerHTML = lookups.Team[0].Label[selectedTeam];
         } else {
             tableHeading.innerHTML = "All Teams";
         }
@@ -457,10 +462,10 @@ const updateTable = () => {
         filters[key].push(checkboxLookups.LookupIndex[i]);
     }
 
-    // if (view === "Player" && typeof selectedPlayer != "undefined")
-    //     filters["Player"] = selectedPlayer;
-    // if (typeof selectedTeam != "undefined")
-    //     filters["Team"] = selectedTeam;
+    if (view === "Player" && typeof selectedPlayer != "undefined")
+        filters["Player"] = [selectedPlayer];
+    if (typeof selectedTeam != "undefined")
+        filters["Team"] = [selectedTeam];
 
     const groupings = [];
     const hiddenColumns = ["Index"];
@@ -494,6 +499,7 @@ const updateTable = () => {
             hiddenColumns.push("Grouping2");
         }
         hiddenColumns.push("Id");
+        hiddenColumns.push("Player");
         statGrouping2Div.classList.remove("d-none");
     }
 
