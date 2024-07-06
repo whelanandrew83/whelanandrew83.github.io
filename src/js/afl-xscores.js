@@ -17,7 +17,10 @@ const shotChartDiv = document.querySelector("#shot-chart-div");
 
 let view = "Player";
 let xscore;
+let xscoreTeam;
 let xscoreShots;
+let xscoreSavedPlayers;
+
 let lookups;
 let lookupNames = {
     Season: "Season",
@@ -48,48 +51,53 @@ const getFilter = (filter) => {
     return returnValue;
 }
 
-const aggregate = (obj, groupBy, filter) => {
+const aggregate = (groupBy, filter) => {
     // using reduce() method to aggregate 
+    const data = view === "Player" ? xscore : xscoreTeam;
     const res = { Index: [], Id: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
-    let data_season, groupByValue, groupByValue2;
+    let data_subset, groupByPlayer, groupByValue, groupByValue2;
 
-    // Loop seasons
-    Object.keys(obj).forEach(season => {
-        data_season = obj[season];
-        if (typeof filter["Season"] === "undefined" || filter["Season"].includes(season)) {
+    // Loop player groupings or teams
+    Object.keys(data).forEach(dataIndex => {
+        data_subset = data[dataIndex].data[0];
+        if (
+            (view === "Player" && (typeof selectedPlayer === "undefined" || dataIndex === selectedPlayer.toString().slice(-1))) ||
+            (view !== "Player" && (typeof selectedTeam === "undefined" || dataIndex === selectedTeam))
+        ) {
 
-            for (i = 0; i < data_season[Object.keys(data_season)[0]].length; i++) {
-                groupByValue = groupBy[0] === "Season" ? season : data_season[groupBy[0]][i];
-
+            for (i = 0; i < data_subset[Object.keys(data_subset)[0]].length; i++) {
                 let filtered = true;
                 Object.keys(filter).forEach(filterColumn => {
-                    if (filterColumn === "Player")
-                        filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(lookups[filterColumn][0].WebsiteId[lookups[filterColumn][0].Index.indexOf(data_season[filterColumn][i])]));
-                    else if (filterColumn === "Team")
-                        filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(lookups[filterColumn][0].Index[lookups[filterColumn][0].Index.indexOf(data_season[filterColumn][i])]));
-                    else if (filterColumn !== "Season")
-                        filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(data_season[filterColumn][i]));
+                    // if (filterColumn === "Player")
+                    //     filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(lookups[filterColumn][0].WebsiteId[lookups[filterColumn][0].Index.indexOf(data_subset[filterColumn][i])]));
+                    // else if (filterColumn === "Team")
+                    //     filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(lookups[filterColumn][0].Index[lookups[filterColumn][0].Index.indexOf(data_subset[filterColumn][i])]));
+                    // else if (filterColumn !== "Season")
+                    filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(data_subset[filterColumn][i]));
                 });
 
                 if (filtered) {
-                    if (groupBy.length > 1) {
-                        groupByValue2 = groupBy[1] === "Season" ? season : data_season[groupBy[1]][i];
-                        groupByIndex = `${groupByValue}|${groupByValue2}`;
-                    } else groupByIndex = groupByValue;
+                    groupByPlayer = view === "Player" || view === "Team" ? data_subset[view][i] : "";
+                    groupByValue = groupBy.length < 1 ? "" : data_subset[groupBy[0]][i];
+                    groupByValue2 = groupBy.length < 2 ? "" : data_subset[groupBy[1]][i];
+
+                    groupByIndex = `${groupByPlayer}|${groupByValue}|${groupByValue2}`;
 
                     index = res.Index.indexOf(groupByIndex);
 
                     if (index < 0) {
-                        grouping1 = typeof lookups[groupBy[0]] !== "undefined" ? lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)] : groupByValue;
-                        grouping2 = groupBy.length > 1 && typeof lookups[groupBy[1]] !== "undefined" ? lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)] : groupByValue2;
+                        groupingPlayer = typeof groupByPlayer !== "undefined" ? lookups[view][0].Label[lookups[view][0].Index.indexOf(groupByPlayer)] : groupByValue;
+                        grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)];
+                        grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)];
 
                         res.Index.push(groupByIndex);
-                        if (groupBy[0] === "Player")
-                            res.Id.push(lookups[groupBy[0]][0].WebsiteId[lookups[groupBy[0]][0].Index.indexOf(groupByValue)]);
-                        else if (groupBy[0] === "Team")
-                            res.Id.push(groupByValue);
-                        else
-                            res.Id.push("");
+                        // if (groupBy[0] === "Player")
+                        //     res.Id.push(lookups[groupBy[0]][0].WebsiteId[lookups[groupBy[0]][0].Index.indexOf(groupByValue)]);
+                        // else if (groupBy[0] === "Team")
+                        //     res.Id.push(groupByValue);
+                        // else
+                        //     res.Id.push("");
+                        res.Id.push(groupByPlayer);
 
                         res.Grouping1.push(grouping1);
                         res.Grouping2.push(grouping2);
@@ -449,28 +457,26 @@ const updateTable = () => {
         filters[key].push(checkboxLookups.LookupIndex[i]);
     }
 
-    if (view === "Player" && typeof selectedPlayer != "undefined")
-        filters["Player"] = [selectedPlayer];
-    if (typeof selectedTeam != "undefined")
-        filters["Team"] = [selectedTeam];
+    // if (view === "Player" && typeof selectedPlayer != "undefined")
+    //     filters["Player"] = selectedPlayer;
+    // if (typeof selectedTeam != "undefined")
+    //     filters["Team"] = selectedTeam;
 
     const groupings = [];
     const hiddenColumns = ["Index"];
 
     if (view === "Player" || view === "Team") {
         if ((view === "Player" && typeof selectedPlayer === "undefined") || (view === "Team" && typeof selectedTeam === "undefined")) {
-            groupings.push(view);
             if (statGrouping1.value) {
                 groupings.push(statGrouping1.value);
             } else {
-                hiddenColumns.push("Grouping2");
+                hiddenColumns.push("Grouping1");
             }
-            statGrouping2Div.classList.add("d-none");
+
+            hiddenColumns.push("Grouping2");
         } else {
             if (statGrouping1.value) {
                 groupings.push(statGrouping1.value);
-            } else {
-                groupings.push(view);
             }
             if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) {
                 groupings.push(statGrouping2.value);
@@ -492,7 +498,7 @@ const updateTable = () => {
     }
 
     Reactable.setHiddenColumns(reactableId, hiddenColumns);
-    Reactable.setData("xscores-table", aggregate(xscore, groupings, filters));
+    Reactable.setData("xscores-table", aggregate(groupings, filters));
 }
 
 const initialiseFilters = () => {
@@ -551,7 +557,6 @@ const initialiseFilters = () => {
         statGrouping2.appendChild(option.cloneNode(true));
     }
 
-    console.log(lookups.Team)
     if (typeof lookups.Team !== 'undefined') {
         for (i = -1; i < lookups.Team[0].Index.length; i++) {
             const teamLink = document.createElement('a');
@@ -583,8 +588,8 @@ fetch(`https://www.wheeloratings.com/src/xscores/xscores_data.json`)
     .then((res) => res.json())
     .then((data) => {
         xscore = data.Data;
+        xscoreTeam = data.DataTeam;
         lookups = data.Lookups;
-        lookups.Season = [{ Index: Object.keys(xscore), Label: Object.keys(xscore) }];
 
         Reactable.setFilter(reactableId, "Shots", shotsFilter);
         initialiseFilters();
