@@ -89,7 +89,7 @@ const aggregate = (groupBy, filter) => {
                     index = res.Index.indexOf(groupByIndex);
 
                     if (index < 0) {
-                        groupingPlayer = typeof groupByPlayer !== "undefined" && groupByPlayer !== "" ? lookups[view][0].Label[groupByPlayer - 1] : groupByValue;
+                        groupingPlayer = typeof groupByPlayer !== "undefined" && groupByPlayer !== "" ? lookups[view][0].Label[groupByPlayer] : groupByValue;
                         grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)];
                         grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)];
 
