@@ -161,6 +161,7 @@ viewPlayersButton.addEventListener('click', () => {
     selectedPlayer = undefined;
     Reactable.setFilter(reactableId, "Shots", shotsFilter);
     teamFiltersDiv.classList.remove("d-none");
+    teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
     updatePlayer();
@@ -170,6 +171,7 @@ viewTeamsButton.addEventListener('click', () => {
     selectedPlayer = undefined;
     Reactable.setFilter(reactableId, "Shots", shotsFilter);
     teamFiltersDiv.classList.remove("d-none");
+    teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
     updatePlayer();
@@ -180,6 +182,7 @@ viewAllButton.addEventListener('click', () => {
     selectedTeam = undefined;
     Reactable.setFilter(reactableId, "Shots", shotsFilter);
     teamFiltersDiv.classList.add("d-none");
+    teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = true;
     statGrouping1.selectedIndex = 1;
     updatePlayer();
@@ -210,7 +213,12 @@ const chart = new Chart(ctx, {
         },
         plugins: {
             legend: {
-                display: false
+                display: true,
+                labels: {
+                    font: {
+                        size: 10
+                    }
+                }
             },
             tooltip: {
                 callbacks: {}
@@ -232,7 +240,7 @@ const chart = new Chart(ctx, {
                         type: 'line',
                         xMin: -3.5,
                         xMax: -corridorX,
-                        yMin: 0,
+                        yMin: -0.1,
                         yMax: -corridorY,
                         adjustScaleRange: false,
                         borderWidth: 1,
@@ -243,7 +251,7 @@ const chart = new Chart(ctx, {
                         type: 'line',
                         xMin: 3.5,
                         xMax: corridorX,
-                        yMin: 0,
+                        yMin: -0.1,
                         yMax: -corridorY,
                         adjustScaleRange: false,
                         borderWidth: 1,
@@ -272,22 +280,13 @@ const chart = new Chart(ctx, {
                         borderColor: '#dddddd',
                         drawTime: 'beforeDraw'
                     },
-                    centreSquare: {
-                        type: 'box',
-                        xMin: -25,
-                        xMax: 25,
-                        yMin: -55,
-                        yMax: -105,
-                        borderWidth: 2,
-                        backgroundColor: 'transparent',
-                        adjustScaleRange: false,
-                        drawTime: 'beforeDraw'
-                    },
                     label50Left: {
                         type: 'label',
                         xValue: -corridorX,
                         yValue: -corridorY,
+                        adjustScaleRange: false,
                         backgroundColor: grassColour,
+                        padding: 3,
                         content: ['50m'],
                         font: {
                             size: 10
@@ -298,6 +297,7 @@ const chart = new Chart(ctx, {
                         type: 'label',
                         xValue: corridorX,
                         yValue: -corridorY,
+                        adjustScaleRange: false,
                         backgroundColor: grassColour,
                         content: ['50m'],
                         font: {
@@ -309,7 +309,9 @@ const chart = new Chart(ctx, {
                         type: 'label',
                         xValue: 0,
                         yValue: -10,
+                        adjustScaleRange: false,
                         backgroundColor: grassColour,
+                        padding: 3,
                         content: ['10m'],
                         font: {
                             size: 10
@@ -320,6 +322,7 @@ const chart = new Chart(ctx, {
                         type: 'label',
                         xValue: 0,
                         yValue: -20,
+                        adjustScaleRange: false,
                         backgroundColor: grassColour,
                         content: ['20m'],
                         font: {
@@ -331,6 +334,7 @@ const chart = new Chart(ctx, {
                         type: 'label',
                         xValue: 0,
                         yValue: -30,
+                        adjustScaleRange: false,
                         backgroundColor: grassColour,
                         content: ['30m'],
                         font: {
@@ -342,6 +346,7 @@ const chart = new Chart(ctx, {
                         type: 'label',
                         xValue: 0,
                         yValue: -40,
+                        adjustScaleRange: false,
                         backgroundColor: grassColour,
                         content: ['40m'],
                         font: {
@@ -353,6 +358,7 @@ const chart = new Chart(ctx, {
                         type: 'label',
                         xValue: 0,
                         yValue: -50,
+                        adjustScaleRange: false,
                         backgroundColor: grassColour,
                         content: ['50m'],
                         font: {
@@ -360,11 +366,22 @@ const chart = new Chart(ctx, {
                         },
                         drawTime: 'beforeDraw'
                     },
+                    centreSquare: {
+                        type: 'box',
+                        xMin: -25,
+                        xMax: 25,
+                        yMin: -55,
+                        yMax: -105,
+                        borderWidth: 2,
+                        backgroundColor: 'transparent',
+                        adjustScaleRange: false,
+                        drawTime: 'beforeDraw'
+                    },
                     goalSquareLeft: {
                         type: 'line',
                         xMin: -3.5,
                         xMax: -3.5,
-                        yMin: 0,
+                        yMin: -0.1,
                         yMax: -9,
                         borderWidth: 2,
                         adjustScaleRange: false,
@@ -374,7 +391,7 @@ const chart = new Chart(ctx, {
                         type: 'line',
                         xMin: 3.5,
                         xMax: 3.5,
-                        yMin: 0,
+                        yMin: -0.1,
                         yMax: -9,
                         borderWidth: 2,
                         adjustScaleRange: false,
@@ -490,7 +507,7 @@ const updateTable = () => {
             } else {
                 hiddenColumns.push("Grouping1");
             }
-
+            statGrouping2Div.classList.add("d-none");
             hiddenColumns.push("Grouping2");
         } else {
             if (statGrouping1.value) {
@@ -500,8 +517,10 @@ const updateTable = () => {
                 groupings.push(statGrouping2.value);
             } else {
                 hiddenColumns.push("Grouping2");
+                if (!statGrouping1.value) hiddenColumns.push("Grouping1");
             }
             statGrouping2Div.classList.remove("d-none");
+            hiddenColumns.push("Player");
         }
         if (typeof selectedPlayer !== "undefined" || view === "Team") hiddenColumns.push("Id");
     } else {
@@ -652,30 +671,16 @@ const updateShotChart = function (filter) {
     let score;
     let labelText;
 
-    let xMax = 40;
-    let yMax = 55;
+    // let xMax = 40;
+    // let yMax = 55;
+    let xMax = 20;
+    let yMax = 20;
 
     if (Object.keys(xscoreShots).includes("x")) {
 
         xscoreShots["x"].forEach((element, index) => {
             x = parseFloat(element);
             y = parseFloat(xscoreShots["y"][index]);
-
-            if (!isNaN(x)) {
-                if (typeof xMax === "undefined") {
-                    xMax = Math.abs(x);
-                } else {
-                    if (Math.abs(x) > xMax) xMax = Math.abs(x);
-                }
-            }
-
-            if (!isNaN(y)) {
-                if (typeof yMax === "undefined") {
-                    yMax = Math.abs(y);
-                } else {
-                    if (Math.abs(y) > yMax) yMax = Math.abs(y);
-                }
-            }
 
             let filtered = true;
             Object.keys(filter).forEach(filterColumn => {
@@ -684,16 +689,33 @@ const updateShotChart = function (filter) {
             });
 
             if (filtered) {
+
+                if (!isNaN(x)) {
+                    if (typeof xMax === "undefined") {
+                        xMax = Math.abs(x);
+                    } else {
+                        if (Math.abs(x) > xMax) xMax = Math.abs(x);
+                    }
+                }
+
+                if (!isNaN(y)) {
+                    if (typeof yMax === "undefined") {
+                        yMax = Math.abs(y);
+                    } else {
+                        if (Math.abs(y) > yMax) yMax = Math.abs(y);
+                    }
+                }
                 score = xscoreShots["Score"][index] == 6 ? "Goals" : xscoreShots["Score"][index] == 1 ? "Behinds" : "NoScore";
 
                 data[score].push({ x: -y, y: -x });
                 distance = Math.round(Math.sqrt(Math.pow(xscoreShots["x"][index], 2) + Math.pow(xscoreShots["y"][index], 2)));
-                labels[score].push(`${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}, Distance: ${distance}m (${xscoreShots["Season"][index]})`);
+                labels[score].push(`${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}, Distance: ${distance}m (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`);
             }
         })
     }
 
     const datasetGoals = {
+        label: "Goal",
         data: data["Goals"],
         pointRadius: 4,
         order: 2,
@@ -702,6 +724,7 @@ const updateShotChart = function (filter) {
     }
 
     const datasetBehinds = {
+        label: "Behind",
         data: data["Behinds"],
         pointRadius: 4,
         order: 2,
@@ -710,6 +733,7 @@ const updateShotChart = function (filter) {
     }
 
     const datasetNoScore = {
+        label: "No Score",
         data: data["NoScore"],
         pointRadius: 4,
         order: 2,
