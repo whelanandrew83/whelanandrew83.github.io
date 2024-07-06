@@ -108,10 +108,10 @@ const aggregate = (groupBy, filter) => {
                         index = res.Index.length - 1;
                     }
 
-                    res.Goals[index] += data_season.Goals[i];
-                    res.Behinds[index] += data_season.Behinds[i];
-                    res.NoScore[index] += data_season.NoScore[i];
-                    res.xScore[index] += data_season.xScore[i];
+                    res.Goals[index] += data_subset.Goals[i];
+                    res.Behinds[index] += data_subset.Behinds[i];
+                    res.NoScore[index] += data_subset.NoScore[i];
+                    res.xScore[index] += data_subset.xScore[i];
                 }
             }
         }
@@ -516,7 +516,7 @@ const initialiseFilters = () => {
             const div = document.createElement('div');
             div.classList = "form-check form-switch";
 
-            const id = "select-filter-" + c.toLowerCase().replaceAll(' ', '-') + "-" + index.toLowerCase().replaceAll(' ', '-');
+            const id = "select-filter-" + c.toLowerCase().replaceAll(' ', '-') + "-" + index.toString().toLowerCase().replaceAll(' ', '-');
 
             const input = document.createElement('input');
             input.classList = "form-check-input"
@@ -565,7 +565,7 @@ const initialiseFilters = () => {
                 teamLink.innerText = `ALL`;
             } else {
                 teamLink.classList = 'btn btn-sm p-1';
-                teamLink.innerHTML = `<img src='${lookups.Team[0].TeamImage[i]}' height='25px'>`;
+                teamLink.innerHTML = `<img src='${lookups.Team[0].Image[i]}' height='25px'>`;
             }
             teamFiltersDiv.appendChild(teamLink);
 
