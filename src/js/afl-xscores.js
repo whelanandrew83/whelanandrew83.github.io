@@ -12,7 +12,12 @@
 // const filterColumnsDefault = ['Shots']
 const reactableId = 'xscores-table';
 const clearPlayerButton = document.querySelector("#clear-player-button");
-clearPlayerButton.addEventListener('click', () => { selectedPlayer = undefined; Reactable.setFilter(reactableId, "Shots", shotsFilter); updatePlayer(); });
+clearPlayerButton.addEventListener('click', () => {
+    selectedPlayer = undefined;
+    Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    teamFiltersPlayerDiv.classList.add("d-none");
+    updatePlayer();
+});
 const shotChartDiv = document.querySelector("#shot-chart-div");
 
 let view = "Player";
@@ -144,6 +149,7 @@ statGrouping2.addEventListener('change', (e) => { updateTable(); });
 const statGrouping2Div = document.querySelector("#stat-grouping-2-div");
 const teamFiltersDiv = document.querySelector("#team-filters");
 const teamFiltersPlayerDiv = document.querySelector("#team-filters-player");
+const selectedTeamLabel = document.querySelector("#selected-team-label");
 const tableHeading = document.querySelector("#table-heading");
 
 const viewPlayersButton = document.querySelector("#view-players");
@@ -401,6 +407,10 @@ const selectPlayer = (id) => {
 
 const selectTeam = (id) => {
     selectedTeam = id;
+    if (typeof id !== "undefined")
+        selectedTeamLabel.innerHTML = lookups.Team[0].Label[id];
+    else
+        selectedTeamLabel.innerHTML = "All"
 
     updatePlayer();
 }
@@ -415,8 +425,10 @@ const updatePlayer = (clearFilter = false) => {
                 updateTable();
                 updateShotChart(filters);
                 teamFiltersDiv.classList.add("d-none");
+                teamFiltersPlayerDiv.classList.remove("d-none");
                 clearPlayerButton.classList.remove("d-none");
                 shotChartDiv.classList.remove("d-none");
+                updatePlayerTeams();
                 if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
                 tableHeading.innerHTML = lookups.Player[0].Label[selectedPlayer];
@@ -508,6 +520,25 @@ const updateTable = () => {
     Reactable.setData("xscores-table", aggregate(groupings, filters));
 }
 
+const updatePlayerTeams = () => {
+    const playerTeams = [...new Set(xscoreShots.Team)].map(i => 'player-team-select-' + i);
+
+    if (playerTeams.length <= 1) {
+        teamFiltersPlayerDiv.classList.add("d-none")
+    } else {
+        document.querySelectorAll("#team-filters-player > a").forEach((link) => {
+            if (playerTeams.length <= 1)
+                link.classList.add("d-none")
+            else {
+                if (link.id === "player-team-select-all" || playerTeams.includes(link.id))
+                    link.classList.remove("d-none")
+                else
+                    link.classList.add("d-none")
+            }
+        })
+    }
+}
+
 const initialiseFilters = () => {
     for (c of Object.keys(lookupNames)) {
         const filterDiv = document.createElement('div');
@@ -576,12 +607,20 @@ const initialiseFilters = () => {
             }
             teamFiltersDiv.appendChild(teamLink);
 
+            const teamLinkPlayer = teamLink.cloneNode(true);
+            teamLinkPlayer.id = `player-team-select-${i == -1 ? 'all' : lookups.Team[0].Index[i]}`
+            teamFiltersPlayerDiv.appendChild(teamLinkPlayer);
+
             const team = i == -1 ? undefined : lookups.Team[0].Index[i];
-            const teamLabel = i == -1 ? "All teams" : lookups.Team[0].Label[i];
 
             teamLink.addEventListener('click', function (event) {
                 selectTeam(team);
             });
+
+            teamLinkPlayer.addEventListener('click', function (event) {
+                selectTeam(team);
+            });
+
             // teamLink.addEventListener('click', function (event) {
             //     Reactable.setFilter('team-lists-table', 'Abbreviation', team);
             // });
@@ -640,7 +679,7 @@ const updateShotChart = function (filter) {
 
             let filtered = true;
             Object.keys(filter).forEach(filterColumn => {
-                if (filterColumn !== "Player" && filterColumn !== "Team")
+                if (filterColumn !== "Player")
                     filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(xscoreShots[filterColumn][index]));
             });
 
