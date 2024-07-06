@@ -143,6 +143,7 @@ statGrouping2.addEventListener('change', (e) => { updateTable(); });
 
 const statGrouping2Div = document.querySelector("#stat-grouping-2-div");
 const teamFiltersDiv = document.querySelector("#team-filters");
+const teamFiltersPlayerDiv = document.querySelector("#team-filters-player");
 const tableHeading = document.querySelector("#table-heading");
 
 const viewPlayersButton = document.querySelector("#view-players");
@@ -640,7 +641,7 @@ const updateShotChart = function (filter) {
             let filtered = true;
             Object.keys(filter).forEach(filterColumn => {
                 if (filterColumn !== "Player" && filterColumn !== "Team")
-                    filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(`${xscoreShots[filterColumn][index]}`));
+                    filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(xscoreShots[filterColumn][index]));
             });
 
             if (filtered) {
