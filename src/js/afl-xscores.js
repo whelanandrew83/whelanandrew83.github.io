@@ -150,6 +150,7 @@ const statGrouping2Div = document.querySelector("#stat-grouping-2-div");
 const teamFiltersDiv = document.querySelector("#team-filters");
 const teamFiltersPlayerDiv = document.querySelector("#team-filters-player");
 const selectedTeamLabel = document.querySelector("#selected-team-label");
+const selectedTeamLabelPara = document.querySelector("#selected-team-label-para");
 const tableHeading = document.querySelector("#table-heading");
 
 const viewPlayersButton = document.querySelector("#view-players");
@@ -542,20 +543,31 @@ const updateTable = () => {
 const updatePlayerTeams = () => {
     const playerTeams = [...new Set(xscoreShots.Team)].map(i => 'player-team-select-' + i);
 
-    if (playerTeams.length <= 1) {
-        teamFiltersPlayerDiv.classList.add("d-none")
-    } else {
-        document.querySelectorAll("#team-filters-player > a").forEach((link) => {
-            if (playerTeams.length <= 1)
-                link.classList.add("d-none")
-            else {
-                if (link.id === "player-team-select-all" || playerTeams.includes(link.id))
-                    link.classList.remove("d-none")
-                else
-                    link.classList.add("d-none")
-            }
-        })
-    }
+    // if (playerTeams.length <= 1) {
+    //     teamFiltersPlayerDiv.classList.add("d-none")
+    // } else {
+    //     document.querySelectorAll("#team-filters-player > a").forEach((link) => {
+    //         if (playerTeams.length <= 1)
+    //             link.classList.add("d-none")
+    //         else {
+    //             if (link.id === "player-team-select-all" || playerTeams.includes(link.id))
+    //                 link.classList.remove("d-none")
+    //             else
+    //                 link.classList.add("d-none")
+    //         }
+    //     })
+    // }
+    if (playerTeams.length <= 1)
+        selectedTeamLabelPara.classList.add("d-none")
+    else
+        selectedTeamLabelPara.classList.remove("d-none")
+
+    document.querySelectorAll("#team-filters-player > a").forEach((link) => {
+        if (link.id === "player-team-select-all" && playerTeams.length > 1 || playerTeams.includes(link.id))
+            link.classList.remove("d-none")
+        else
+            link.classList.add("d-none")
+    })
 }
 
 const initialiseFilters = () => {
