@@ -750,7 +750,7 @@ const updateShotChart = function (filter) {
                 //labels[score].push(`${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}, Distance: ${distance}m (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`);
                 labels[score].push([
                     `${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}`,
-                    `${distance}m, ${lookups.ShotType[0].Label[xscoreShots["ShotType"][index]]}, (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`
+                    `${distance}m, ${Math.round(90 - Math.atan(Math.abs(x) / Math.abs(y)) * (180 / Math.PI))}°, ${lookups.ShotType[0].Label[xscoreShots["ShotType"][index]]}, v ${lookups.Team[0].Label[xscoreShots["Opposition"][index]]}, R${xscoreShots["Round"][index]} ${lookups.Season[0].Label[xscoreShots["Season"][index]]}`
                 ]);
             }
         })
