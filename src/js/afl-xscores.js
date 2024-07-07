@@ -95,8 +95,10 @@ const aggregate = (groupBy, filter) => {
 
                     if (index < 0) {
                         groupingPlayer = typeof groupByPlayer !== "undefined" && groupByPlayer !== "" ? lookups[view][0].Label[groupByPlayer] : groupByValue;
-                        grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)];
-                        grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)];
+                        // grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)];
+                        // grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)];
+                        grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[groupByValue];
+                        grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[groupByValue2];
 
                         res.Index.push(groupByIndex);
                         // if (groupBy[0] === "Player")
@@ -744,11 +746,11 @@ const updateShotChart = function (filter) {
                 score = xscoreShots["Score"][index] == 6 ? "Goals" : xscoreShots["Score"][index] == 1 ? "Behinds" : "NoScore";
 
                 data[score].push({ x: -y, y: -x });
-                distance = Math.round(Math.sqrt(Math.pow(xscoreShots["x"][index], 2) + Math.pow(xscoreShots["y"][index], 2)));
+                distance = Math.floor(Math.sqrt(Math.pow(xscoreShots["x"][index], 2) + Math.pow(xscoreShots["y"][index], 2)));
                 //labels[score].push(`${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}, Distance: ${distance}m (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`);
                 labels[score].push([
                     `${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}`,
-                    `${distance}m, ${lookups.ShotType[0].Label[lookups.ShotType[0].Index.indexOf(xscoreShots["ShotType"][index])]}, (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`
+                    `${distance}m, ${lookups.ShotType[0].Label[xscoreShots["ShotType"][index]]}, (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`
                 ]);
             }
         })
