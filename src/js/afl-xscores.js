@@ -157,14 +157,34 @@ const viewPlayersButton = document.querySelector("#view-players");
 const viewTeamsButton = document.querySelector("#view-teams");
 const viewAllButton = document.querySelector("#view-all");
 
+const updateViewButtons = () => {
+    if (view === "Player") {
+        viewPlayersButton.classList.add("btn-primary");
+        viewPlayersButton.classList.remove("btn-light");
+        [viewTeamsButton, viewAllButton].forEach((btn) => btn.classList.remove("btn-primary"));
+        [viewTeamsButton, viewAllButton].forEach((btn) => btn.classList.add("btn-light"));
+    } else if (view === "Team") {
+        viewTeamsButton.classList.add("btn-primary");
+        viewTeamsButton.classList.remove("btn-light");
+        [viewPlayersButton, viewAllButton].forEach((btn) => btn.classList.remove("btn-primary"));
+        [viewPlayersButton, viewAllButton].forEach((btn) => btn.classList.add("btn-light"));
+    } else {
+        viewAllButton.classList.add("btn-primary");
+        viewAllButton.classList.remove("btn-light");
+        [viewPlayersButton, viewTeamsButton].forEach((btn) => btn.classList.remove("btn-primary"));
+        [viewPlayersButton, viewTeamsButton].forEach((btn) => btn.classList.add("btn-light"));
+    }
+}
+
 viewPlayersButton.addEventListener('click', () => {
     view = "Player";
     selectedPlayer = undefined;
     Reactable.setFilter(reactableId, "Shots", shotsFilter);
     teamFiltersDiv.classList.remove("d-none");
-    teamFiltersPlayerDiv.classList.add("d-none")
+    teamFiltersPlayerDiv.classList.add("d-none");
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
+    updateViewButtons();
     updatePlayer();
 });
 viewTeamsButton.addEventListener('click', () => {
@@ -175,6 +195,7 @@ viewTeamsButton.addEventListener('click', () => {
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
+    updateViewButtons();
     updatePlayer();
 });
 viewAllButton.addEventListener('click', () => {
@@ -186,6 +207,7 @@ viewAllButton.addEventListener('click', () => {
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = true;
     statGrouping1.selectedIndex = 1;
+    updateViewButtons();
     updatePlayer();
 });
 
@@ -670,6 +692,8 @@ fetch(`https://www.wheeloratings.com/src/xscores/xscores_data.json`)
 
         Reactable.setFilter(reactableId, "Shots", shotsFilter);
         initialiseFilters();
+        updateViewButtons();
+        document.querySelector("#main-content").classList.remove("d-none");
     });
 
 const updateShotChart = function (filter) {
@@ -721,7 +745,11 @@ const updateShotChart = function (filter) {
 
                 data[score].push({ x: -y, y: -x });
                 distance = Math.round(Math.sqrt(Math.pow(xscoreShots["x"][index], 2) + Math.pow(xscoreShots["y"][index], 2)));
-                labels[score].push(`${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}, Distance: ${distance}m (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`);
+                //labels[score].push(`${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}, Distance: ${distance}m (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`);
+                labels[score].push([
+                    `${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}`,
+                    `${distance}m, ${lookups.ShotType[0].Label[lookups.ShotType[0].Index.indexOf(xscoreShots["ShotType"][index])]}, (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`
+                ]);
             }
         })
     }

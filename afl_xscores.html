@@ -366,21 +366,35 @@
 
 
 <main>
-<div id="filters">
-<h3>
+<div id="main-content" class="d-none">
+<div id="filters-acc" class="accordion">
+<div class="accordion-item">
+<h2 class="accordion-header mt-0" id="filters-acc-body">
+<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-filters" aria-expanded="false" aria-controls="collapse-filters">
 Filters
-</h3>
+</button>
+</h2>
+<div id="collapse-filters" class="accordion-collapse collapse"
+aria-labelledby="filters-acc-body" data-bs-parent="#filters-acc">
+<div class="accordion-body px-3 py-2">
 <div id="checkbox-filters" class="d-flex flex-wrap">
 
 </div>
 </div>
-<button id="view-players" class="btn btn-primary btn-sm mx-1 my-2">
+</div>
+</div>
+</div>
+<!-- <div id="filters"> -->
+<!-- <h3>Filters</h3> -->
+<!-- <div id="checkbox-filters" class="d-flex flex-wrap"></div> -->
+<!-- </div> -->
+<button id="view-players" class="btn btn-primary btn-sm fs-4 mx-1 my-2">
 View Players
 </button>
-<button id="view-teams" class="btn btn-primary btn-sm mx-1 my-2">
+<button id="view-teams" class="btn btn-primary btn-sm fs-4 mx-1 my-2">
 View Teams
 </button>
-<button id="view-all" class="btn btn-primary btn-sm mx-1 my-2">
+<button id="view-all" class="btn btn-primary btn-sm fs-4 mx-1 my-2">
 View AFL-wide
 </button>
 <div id="team-filters">
@@ -416,6 +430,7 @@ Clear selection
 style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
 <canvas id="shot-chart">
 </canvas>
+</div>
 </div>
 </div>
 <script src="./src/js/afl-xscores.js"></script>
