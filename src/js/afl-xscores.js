@@ -193,7 +193,8 @@ viewPlayersButton.addEventListener('click', () => {
 viewTeamsButton.addEventListener('click', () => {
     view = "Team";
     selectedPlayer = undefined;
-    Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    //Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    Reactable.setFilter(reactableId, "Shots", undefined);
     teamFiltersDiv.classList.remove("d-none");
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = false;
@@ -205,7 +206,8 @@ viewAllButton.addEventListener('click', () => {
     view = undefined;
     selectedPlayer = undefined;
     selectedTeam = undefined;
-    Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    //Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    Reactable.setFilter(reactableId, "Shots", undefined);
     teamFiltersDiv.classList.add("d-none");
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = true;
@@ -479,7 +481,7 @@ const updatePlayer = (clearFilter = false) => {
                 if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
                 tableHeading.innerHTML = lookups.Player[0].Label[selectedPlayer];
-                window.location.href = `afl_xscores.html?id=${lookups.Player[0].WebsiteId[selectedPlayer]}`;
+                history.replaceState(null, '', `afl_xscores.html?id=${playerWebsiteId}`);
             });
     } else if (view === "Team" && typeof selectedTeam !== "undefined") {
         xscoreShots = {};
@@ -490,7 +492,7 @@ const updatePlayer = (clearFilter = false) => {
         if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
         tableHeading.innerHTML = lookups.Team[0].Label[selectedTeam];
-        window.location.href = "afl_xscores.html";
+        history.replaceState(null, '', "afl_xscores.html");
     } else {
         xscoreShots = {};
         updateTable();
@@ -505,7 +507,7 @@ const updatePlayer = (clearFilter = false) => {
         } else {
             tableHeading.innerHTML = "All Teams";
         }
-        window.location.href = "afl_xscores.html";
+        history.replaceState(null, '', "afl_xscores.html");
     }
 }
 
