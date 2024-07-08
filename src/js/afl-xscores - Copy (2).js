@@ -60,8 +60,7 @@ const getFilter = (filter) => {
 const aggregate = (groupBy, filter) => {
     // using reduce() method to aggregate 
     const data = view === "Player" ? xscore : xscoreTeam;
-    //const res = { Index: [], Id: [], Player: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
-    const res = { Index: [], Id: [], Grouping: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
+    const res = { Index: [], Id: [], Player: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
     let data_subset, groupByPlayer, groupByValue, groupByValue2;
 
     // Loop player groupings or teams
@@ -96,22 +95,15 @@ const aggregate = (groupBy, filter) => {
                     index = res.Index.indexOf(groupByIndex);
 
                     if (index < 0) {
-                        grouping = typeof groupByPlayer !== "undefined" && groupByPlayer !== "" ? lookups[view][0].Label[groupByPlayer] : groupByValue;
+                        groupingPlayer = typeof groupByPlayer !== "undefined" && groupByPlayer !== "" ? lookups[view][0].Label[groupByPlayer] : groupByValue;
                         // grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)];
                         // grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)];
                         grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[groupByValue];
                         grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[groupByValue2];
 
                         if (grouping1) {
-                            grouping = typeof view === "undefined" ||
-                                (view === "Team" && typeof selectedTeam !== "undefined") ||
-                                (view === "Player" && typeof selectedPlayer !== "undefined") ? "" : grouping;
-
-                            if (grouping)
-                                grouping = grouping + ", " + grouping1;
-                            else
-                                grouping = grouping1;
-                            if (grouping2) grouping = grouping + ", " + grouping2;
+                            groupingPlayer = groupingPlayer + ", " + grouping1;
+                            if (grouping2) groupingPlayer = groupingPlayer + ", " + grouping2;
                         }
 
                         res.Index.push(groupByIndex);
@@ -123,9 +115,9 @@ const aggregate = (groupBy, filter) => {
                         //     res.Id.push("");
                         res.Id.push(groupByPlayer);
 
-                        res.Grouping.push(grouping);
-                        // res.Grouping1.push(grouping1);
-                        // res.Grouping2.push(grouping2);
+                        res.Player.push(groupingPlayer);
+                        res.Grouping1.push(grouping1);
+                        res.Grouping2.push(grouping2);
                         res.Goals.push(0);
                         res.Behinds.push(0);
                         res.NoScore.push(0);
@@ -551,10 +543,10 @@ const updateTable = () => {
             if (statGrouping1.value) {
                 groupings.push(statGrouping1.value);
             } else {
-                //hiddenColumns.push("Grouping1");
+                hiddenColumns.push("Grouping1");
             }
             statGrouping2Div.classList.add("d-none");
-            //hiddenColumns.push("Grouping2");
+            hiddenColumns.push("Grouping2");
         } else {
             if (statGrouping1.value) {
                 groupings.push(statGrouping1.value);
@@ -562,11 +554,11 @@ const updateTable = () => {
             if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) {
                 groupings.push(statGrouping2.value);
             } else {
-                //hiddenColumns.push("Grouping2");
-                //if (!statGrouping1.value) hiddenColumns.push("Grouping1");
+                hiddenColumns.push("Grouping2");
+                if (!statGrouping1.value) hiddenColumns.push("Grouping1");
             }
             statGrouping2Div.classList.remove("d-none");
-            //hiddenColumns.push("Player");
+            hiddenColumns.push("Player");
         }
         if (typeof selectedPlayer !== "undefined" || view === "Team") hiddenColumns.push("Id");
     } else {
@@ -574,10 +566,10 @@ const updateTable = () => {
         if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) {
             groupings.push(statGrouping2.value);
         } else {
-            //hiddenColumns.push("Grouping2");
+            hiddenColumns.push("Grouping2");
         }
         hiddenColumns.push("Id");
-        //hiddenColumns.push("Player");
+        hiddenColumns.push("Player");
         statGrouping2Div.classList.remove("d-none");
     }
 
