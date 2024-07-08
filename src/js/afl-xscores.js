@@ -41,7 +41,8 @@ let groupingColumns = {
 }
 let shotsFilter = 10;
 
-//let selectedPlayer = urlParams.get("ID");
+const urlParams = new URLSearchParams(location.search);
+let selectedPlayerURL = urlParams.get("id");
 let selectedPlayer; //= "2db9fb";
 let selectedTeam; //= "2db9fb";
 
@@ -208,6 +209,7 @@ viewAllButton.addEventListener('click', () => {
     teamFiltersDiv.classList.add("d-none");
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = true;
+    //if (statGrouping1.selectedIndex == 0)
     statGrouping1.selectedIndex = 1;
     updateViewButtons();
     updatePlayer();
@@ -477,6 +479,7 @@ const updatePlayer = (clearFilter = false) => {
                 if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
                 tableHeading.innerHTML = lookups.Player[0].Label[selectedPlayer];
+                window.location.href = `afl_xscores.html?id=${lookups.Player[0].WebsiteId[selectedPlayer]}`;
             });
     } else if (view === "Team" && typeof selectedTeam !== "undefined") {
         xscoreShots = {};
@@ -487,6 +490,7 @@ const updatePlayer = (clearFilter = false) => {
         if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
 
         tableHeading.innerHTML = lookups.Team[0].Label[selectedTeam];
+        window.location.href = "afl_xscores.html";
     } else {
         xscoreShots = {};
         updateTable();
@@ -501,9 +505,8 @@ const updatePlayer = (clearFilter = false) => {
         } else {
             tableHeading.innerHTML = "All Teams";
         }
-
+        window.location.href = "afl_xscores.html";
     }
-
 }
 
 const updateTable = () => {
@@ -696,6 +699,8 @@ fetch(`https://www.wheeloratings.com/src/xscores/xscores_data.json`)
         lookups = data.Lookups;
 
         Reactable.setFilter(reactableId, "Shots", shotsFilter);
+        if (selectedPlayerURL) selectedPlayer = lookups.Player[0].WebsiteId.indexOf(selectedPlayerURL);
+        if (selectedPlayer < 0) selectedPlayer = undefined;
         initialiseFilters();
         updateViewButtons();
         document.querySelector("#main-content").classList.remove("d-none");
