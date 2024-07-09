@@ -15,6 +15,7 @@ const clearPlayerButton = document.querySelector("#clear-player-button");
 clearPlayerButton.addEventListener('click', () => {
     selectedPlayer = undefined;
     Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    Reactable.setFilter(reactableId, "Grouping", searchFilter);
     teamFiltersPlayerDiv.classList.add("d-none");
     updatePlayer();
 });
@@ -40,6 +41,7 @@ let groupingColumns = {
     Pocket: "Pocket"
 }
 let shotsFilter = 10;
+let searchFilter;
 
 const urlParams = new URLSearchParams(location.search);
 let selectedPlayerURL = urlParams.get("id");
@@ -192,10 +194,23 @@ const updateViewButtons = () => {
     }
 }
 
+const saveFilters = () => {
+    shotsFilter = getFilter("Shots");
+    searchFilter = getFilter("Grouping");
+}
+
+const clearFilters = () => {
+    Reactable.setFilter(reactableId, "Shots", undefined);
+    Reactable.setFilter(reactableId, "Grouping", undefined);
+}
+
 viewPlayersButton.addEventListener('click', () => {
+    if (view === "Player" && typeof selectPlayer === "undefined") saveFilters();
+
     view = "Player";
     selectedPlayer = undefined;
     Reactable.setFilter(reactableId, "Shots", shotsFilter);
+    Reactable.setFilter(reactableId, "Grouping", searchFilter);
     teamFiltersDiv.classList.remove("d-none");
     teamFiltersPlayerDiv.classList.add("d-none");
     statGrouping1.options[0].disabled = false;
@@ -204,10 +219,12 @@ viewPlayersButton.addEventListener('click', () => {
     updatePlayer();
 });
 viewTeamsButton.addEventListener('click', () => {
+    if (view === "Player" && typeof selectPlayer === "undefined") saveFilters();
+
     view = "Team";
     selectedPlayer = undefined;
     //Reactable.setFilter(reactableId, "Shots", shotsFilter);
-    Reactable.setFilter(reactableId, "Shots", undefined);
+    clearFilters();
     teamFiltersDiv.classList.remove("d-none");
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = false;
@@ -216,11 +233,13 @@ viewTeamsButton.addEventListener('click', () => {
     updatePlayer();
 });
 viewAllButton.addEventListener('click', () => {
+    if (view === "Player" && typeof selectPlayer === "undefined") saveFilters();
+
     view = undefined;
     selectedPlayer = undefined;
     selectedTeam = undefined;
     //Reactable.setFilter(reactableId, "Shots", shotsFilter);
-    Reactable.setFilter(reactableId, "Shots", undefined);
+    clearFilters();
     teamFiltersDiv.classList.add("d-none");
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = true;
@@ -462,7 +481,7 @@ const chart = new Chart(ctx, {
 
 const selectPlayer = (id) => {
     selectedPlayer = id;
-    shotsFilter = getFilter("Shots");
+    saveFilters();
 
     updatePlayer(true);
 }
@@ -491,7 +510,7 @@ const updatePlayer = (clearFilter = false) => {
                 clearPlayerButton.classList.remove("d-none");
                 shotChartDiv.classList.remove("d-none");
                 updatePlayerTeams();
-                if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
+                if (clearFilter) clearFilters();
 
                 tableHeading.innerHTML = lookups.Player[0].Label[selectedPlayer];
                 history.replaceState(null, '', `afl_xscores.html?id=${playerWebsiteId}`);
@@ -502,7 +521,7 @@ const updatePlayer = (clearFilter = false) => {
         updateShotChart(filters);
         clearPlayerButton.classList.add("d-none");
         shotChartDiv.classList.add("d-none");
-        if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
+        if (clearFilter) clearFilters();
 
         tableHeading.innerHTML = lookups.Team[0].Label[selectedTeam];
         history.replaceState(null, '', "afl_xscores.html");
@@ -513,7 +532,7 @@ const updatePlayer = (clearFilter = false) => {
         if (view === "Player") teamFiltersDiv.classList.remove("d-none");
         clearPlayerButton.classList.add("d-none");
         shotChartDiv.classList.add("d-none");
-        if (clearFilter) Reactable.setFilter(reactableId, "Shots", undefined);
+        if (clearFilter) clearFilters();
 
         if (view === "Player" && typeof selectedTeam !== "undefined") {
             tableHeading.innerHTML = lookups.Team[0].Label[selectedTeam];
@@ -616,8 +635,9 @@ const updatePlayerTeams = () => {
 }
 
 const initialiseFilters = () => {
+    let filterDiv;
     for (c of Object.keys(lookupNames)) {
-        const filterDiv = document.createElement('div');
+        filterDiv = document.createElement('div');
         filterDiv.classList = "m-2";
 
         const h5 = document.createElement('h5');
@@ -651,11 +671,26 @@ const initialiseFilters = () => {
 
             div.appendChild(input);
             div.appendChild(label);
-            filterDiv.appendChild(div)
+            filterDiv.appendChild(div);
         });
 
         checkboxFiltersDiv.appendChild(filterDiv);
     }
+
+    filterDiv = document.createElement('div');
+    filterDiv.classList = "m-2";
+
+    const clearAllSelectionsButton = document.createElement('button');
+    clearAllSelectionsButton.classList = 'btn btn-primary btn-sm mx-1 my-1';
+    clearAllSelectionsButton.innerText = "Clear Filters";
+    clearAllSelectionsButton.addEventListener('click', function (event) {
+        document.querySelectorAll(".form-check-input").forEach((inp) => inp.checked = false);
+        updateTable();
+        if (typeof selectedPlayer !== "undefined") updateShotChart(filters);
+    });
+
+    filterDiv.appendChild(clearAllSelectionsButton);
+    checkboxFiltersDiv.appendChild(filterDiv);
 
     let option = document.createElement("option");
     option.value = "";
