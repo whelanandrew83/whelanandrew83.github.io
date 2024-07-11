@@ -124,6 +124,10 @@ if (player) {
 
                 h1.innerText = `Match Stats - ${player_data.Summary.Player}`;
                 document.title = `AFL Match Stats - ${player_data.Summary.Player}`;
+                if (parseInt(player_data.Summary.xScoreAvailable)) {
+                    document.querySelector("#shot-chart-link").href = `afl_xscores.html?id=${player}`;
+                    document.querySelector("#shot-chart-link").classList.remove("d-none");
+                }
 
                 let div = document.querySelector("#react-div");
 

@@ -265,6 +265,9 @@
               <a href="afl_stats_team.html">Team Stats</a>
             </li>
             <li>
+              <a href="afl_xscores.html">Expected Scores</a>
+            </li>
+            <li>
               <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
             </li>
             <li class="divider"></li>
@@ -371,7 +374,8 @@
 since 2012.
 </p>
 <div id="player-div">
-<a id="match-stats-link" href="#">View match stats</a>
+<a id="match-stats-link" href="#">View match stats</a> <br>
+<a id="shot-chart-link" href="#" class="d-none">View shot chart</a>
 <h3>
 Summary
 </h3>
@@ -505,6 +509,10 @@ if (player) {
 
         h1.innerText = `Player Profile - ${player_data[player].Summary.Player}`;
         document.title = `AFL Player Profile - ${player_data[player].Summary.Player}`;
+        if (parseInt(player_data[player].Summary.xScoreAvailable)) {
+          document.querySelector("#shot-chart-link").href = `afl_xscores.html?id=${player}`;
+          document.querySelector("#shot-chart-link").classList.remove("d-none");
+        }
 
         let div = document.querySelector("#react-div");
 
