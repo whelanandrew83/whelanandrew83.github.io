@@ -1,15 +1,3 @@
-// const filterColumns = {
-//     'Shots': 'Shots',
-//     'Goals': 'Goals',
-//     'Behinds': 'Behinds',
-//     'NoScore': 'No Score',
-//     'ScorePerShot': 'Score / Shot',
-//     'xScorePerShot': 'xScore / Shot',
-//     'DiffPerShot': 'Shot Rating',
-//     'Accuracy': 'Accuracy'
-// }
-
-// const filterColumnsDefault = ['Shots']
 const reactableId = 'xscores-table';
 const clearPlayerButton = document.querySelector("#clear-player-button");
 clearPlayerButton.addEventListener('click', () => {
@@ -62,7 +50,6 @@ const getFilter = (filter) => {
 const aggregate = (groupBy, filter) => {
     // using reduce() method to aggregate 
     const data = view === "Player" ? xscore : xscoreTeam;
-    //const res = { Index: [], Id: [], Player: [], Grouping1: [], Grouping2: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
     const res = { Index: [], Id: [], Grouping: [], Shots: [], Goals: [], Behinds: [], NoScore: [], Score: [], xScore: [], Diff: [], ScorePerShot: [], xScorePerShot: [], DiffPerShot: [], Accuracy: [] };
     let data_subset, groupByPlayer, groupByValue, groupByValue2;
 
@@ -77,11 +64,6 @@ const aggregate = (groupBy, filter) => {
             for (i = 0; i < data_subset[Object.keys(data_subset)[0]].length; i++) {
                 let filtered = true;
                 Object.keys(filter).forEach(filterColumn => {
-                    // if (filterColumn === "Player")
-                    //     filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(lookups[filterColumn][0].WebsiteId[lookups[filterColumn][0].Index.indexOf(data_subset[filterColumn][i])]));
-                    // else if (filterColumn === "Team")
-                    //     filtered = filtered && (filter[filterColumn].length == 0 || filter[filterColumn].includes(lookups[filterColumn][0].Index[lookups[filterColumn][0].Index.indexOf(data_subset[filterColumn][i])]));
-                    // else if (filterColumn !== "Season")
                     if (view === "Team" && filterColumn === "Team")
                         filtered = filtered && filter[filterColumn].includes(parseInt(dataIndex));
                     else
@@ -99,8 +81,6 @@ const aggregate = (groupBy, filter) => {
 
                     if (index < 0) {
                         grouping = typeof groupByPlayer !== "undefined" && groupByPlayer !== "" ? lookups[view][0].Label[groupByPlayer] : groupByValue;
-                        // grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[lookups[groupBy[0]][0].Index.indexOf(groupByValue)];
-                        // grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[lookups[groupBy[1]][0].Index.indexOf(groupByValue2)];
                         grouping1 = groupBy.length < 1 ? "" : lookups[groupBy[0]][0].Label[groupByValue];
                         grouping2 = groupBy.length < 2 ? "" : lookups[groupBy[1]][0].Label[groupByValue2];
 
@@ -117,17 +97,9 @@ const aggregate = (groupBy, filter) => {
                         }
 
                         res.Index.push(groupByIndex);
-                        // if (groupBy[0] === "Player")
-                        //     res.Id.push(lookups[groupBy[0]][0].WebsiteId[lookups[groupBy[0]][0].Index.indexOf(groupByValue)]);
-                        // else if (groupBy[0] === "Team")
-                        //     res.Id.push(groupByValue);
-                        // else
-                        //     res.Id.push("");
                         res.Id.push(groupByPlayer);
 
                         res.Grouping.push(grouping);
-                        // res.Grouping1.push(grouping1);
-                        // res.Grouping2.push(grouping2);
                         res.Goals.push(0);
                         res.Behinds.push(0);
                         res.NoScore.push(0);
@@ -215,6 +187,7 @@ viewPlayersButton.addEventListener('click', () => {
     teamFiltersPlayerDiv.classList.add("d-none");
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
+    statGrouping2.selectedIndex = 0;
     updateViewButtons();
     updatePlayer();
 });
@@ -223,12 +196,12 @@ viewTeamsButton.addEventListener('click', () => {
 
     view = "Team";
     selectedPlayer = undefined;
-    //Reactable.setFilter(reactableId, "Shots", shotsFilter);
     clearFilters();
     teamFiltersDiv.classList.remove("d-none");
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = false;
     statGrouping1.selectedIndex = 0;
+    statGrouping2.selectedIndex = 0;
     updateViewButtons();
     updatePlayer();
 });
@@ -238,13 +211,12 @@ viewAllButton.addEventListener('click', () => {
     view = undefined;
     selectedPlayer = undefined;
     selectedTeam = undefined;
-    //Reactable.setFilter(reactableId, "Shots", shotsFilter);
     clearFilters();
     teamFiltersDiv.classList.add("d-none");
     teamFiltersPlayerDiv.classList.add("d-none")
     statGrouping1.options[0].disabled = true;
-    //if (statGrouping1.selectedIndex == 0)
     statGrouping1.selectedIndex = 1;
+    statGrouping2.selectedIndex = 0;
     updateViewButtons();
     updatePlayer();
 });
@@ -569,34 +541,24 @@ const updateTable = () => {
         if ((view === "Player" && typeof selectedPlayer === "undefined") || (view === "Team" && typeof selectedTeam === "undefined")) {
             if (statGrouping1.value) {
                 groupings.push(statGrouping1.value);
-            } else {
-                //hiddenColumns.push("Grouping1");
             }
             statGrouping2Div.classList.add("d-none");
-            //hiddenColumns.push("Grouping2");
         } else {
             if (statGrouping1.value) {
                 groupings.push(statGrouping1.value);
             }
             if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) {
                 groupings.push(statGrouping2.value);
-            } else {
-                //hiddenColumns.push("Grouping2");
-                //if (!statGrouping1.value) hiddenColumns.push("Grouping1");
             }
             statGrouping2Div.classList.remove("d-none");
-            //hiddenColumns.push("Player");
         }
         if (typeof selectedPlayer !== "undefined" || view === "Team") hiddenColumns.push("Id");
     } else {
         groupings.push(statGrouping1.value);
         if (statGrouping2.value && statGrouping2.value !== statGrouping1.value) {
             groupings.push(statGrouping2.value);
-        } else {
-            //hiddenColumns.push("Grouping2");
         }
         hiddenColumns.push("Id");
-        //hiddenColumns.push("Player");
         statGrouping2Div.classList.remove("d-none");
     }
 
@@ -607,20 +569,6 @@ const updateTable = () => {
 const updatePlayerTeams = () => {
     const playerTeams = [...new Set(xscoreShots.Team)].map(i => 'player-team-select-' + i);
 
-    // if (playerTeams.length <= 1) {
-    //     teamFiltersPlayerDiv.classList.add("d-none")
-    // } else {
-    //     document.querySelectorAll("#team-filters-player > a").forEach((link) => {
-    //         if (playerTeams.length <= 1)
-    //             link.classList.add("d-none")
-    //         else {
-    //             if (link.id === "player-team-select-all" || playerTeams.includes(link.id))
-    //                 link.classList.remove("d-none")
-    //             else
-    //                 link.classList.add("d-none")
-    //         }
-    //     })
-    // }
     if (playerTeams.length <= 1)
         selectedTeamLabelPara.classList.add("d-none")
     else
@@ -731,10 +679,6 @@ const initialiseFilters = () => {
             teamLinkPlayer.addEventListener('click', function (event) {
                 selectTeam(team);
             });
-
-            // teamLink.addEventListener('click', function (event) {
-            //     Reactable.setFilter('team-lists-table', 'Abbreviation', team);
-            // });
         }
     }
 
@@ -767,8 +711,6 @@ const updateShotChart = function (filter) {
     let score;
     let labelText;
 
-    // let xMax = 40;
-    // let yMax = 55;
     let xMax = 20;
     let yMax = 20;
 
@@ -805,7 +747,6 @@ const updateShotChart = function (filter) {
 
                 data[score].push({ x: -y, y: -x });
                 distance = Math.floor(Math.sqrt(Math.pow(xscoreShots["x"][index], 2) + Math.pow(xscoreShots["y"][index], 2)));
-                //labels[score].push(`${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}, Distance: ${distance}m (${lookups.Season[0].Label[xscoreShots["Season"][index]]})`);
                 labels[score].push([
                     `${score === "Goals" ? "Goal" : score === "Behinds" ? "Behind" : "No score"}, xScore: ${xscoreShots["xScore"][index].toFixed(1)}`,
                     `${distance}m, ${Math.round(90 - Math.atan(Math.abs(x) / Math.abs(y)) * (180 / Math.PI))}°, ${lookups.ShotType[0].Label[xscoreShots["ShotType"][index]]}`,
