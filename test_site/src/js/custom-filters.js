@@ -22,21 +22,29 @@ filterAdd.innerText = "Add filter";
 const selectOptions = [];
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    Object.keys(filterColumns).forEach(key => {
-        if (Object.keys(Reactable.getInstance(reactableId).data[0]).includes(key)) {
-            if (typeof filterColumnsDefault !== 'undefined' && filterColumnsDefault.includes(key)) {
-                filterCreate(key);
+    try {
+        //columnIds = [];
+        //Reactable.getInstance(reactableId).allColumns.forEach((o) => columnIds.push(o.id));
+
+        Object.keys(filterColumns).forEach(key => {
+            if (Object.keys(Reactable.getInstance(reactableId).data[0]).includes(key)) {
+                //if (columnIds.includes(key)) {
+                if (typeof filterColumnsDefault !== 'undefined' && filterColumnsDefault.includes(key)) {
+                    filterCreate(key);
+                } else {
+                    filterOption = document.createElement("option");
+                    filterOption.value = key;
+                    filterOption.text = filterColumns[key];
+                    selectOptions.push(filterOption);
+                    filterSelect.appendChild(filterOption);
+                }
             } else {
-                filterOption = document.createElement("option");
-                filterOption.value = key;
-                filterOption.text = filterColumns[key];
-                selectOptions.push(filterOption);
-                filterSelect.appendChild(filterOption);
+                delete filterColumns[key];
             }
-        } else {
-            delete filterColumns[key];
-        }
-    })
+        })
+    } catch (e) {
+        customFilterDiv.classList.add("d-none");
+    }
 })
 
 customFilterDiv.appendChild(filterSelectLabel);
@@ -108,7 +116,14 @@ filterAdd.addEventListener('click', (e) => {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 ct_handles = {};
-ct_sharedData = JSON.parse(document.querySelector(`script[data-for='${reactableId}']`).innerHTML).x.tag.attribs.crosstalkGroup;
+//ct_sharedData = JSON.parse(document.querySelector(`script[data-for='${reactableId}']`).innerHTML).x.tag.attribs.crosstalkGroup;
+let reactableScript = document.querySelector(`script[data-for='${reactableId}']`);
+let ct_sharedData;
+
+if (reactableScript)
+    ct_sharedData = JSON.parse(reactableScript.innerHTML).x.tag.attribs.crosstalkGroup;
+else if (typeof ct_sharedData_temp !== 'undefined')
+    ct_sharedData = ct_sharedData_temp;
 
 const filterCustom = function (column, min_value, max_value) {
     let handle;

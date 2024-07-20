@@ -8,7 +8,9 @@ const filterColumns = {
     'Matches_Career': 'Career Matches',
     'Goals_Total_Career': 'Career Goals',
     'Matches_Finals': 'Finals Matches',
-    'Goals_Finals': 'Finals Goals',
+    'Goals_Total_Finals': 'Finals Goals',
+    'Matches_Current': 'Matches This Season',
+    'Goals_Total_Current': 'Goals This Season',
     'RatingPoints_Career': 'Rating Points (Career)',
     'Supercoach_Career': 'Supercoach (Career)',
     'Disposals_Career': 'Disposals (Career)',
@@ -48,7 +50,7 @@ if (typeof teams.Team !== 'undefined') {
 const csvDownloadButton = document.querySelector('#download-csv-button');
 csvDownloadButton.addEventListener('click', (e) => {
     Reactable.downloadDataCSV('team-lists-table', `afl-team-lists.csv`, {
-        columnIds: ['Player', 'Team', 'JumperNumber', 'Age', 'Age_Decimal', 'Height', 'Position', 'DebutYear', 'Matches_Career', 'Goals_Total_Career', 'Matches_Finals', 'Goals_Total_Finals', 'RatingPoints_Career', 'Supercoach_Career', 'Disposals_Career', 'ContestedPossessions_Career', 'Goals_Career', 'RatingPoints_Recent', 'Supercoach_Recent', 'Disposals_Recent', 'ContestedPossessions_Recent', 'Goals_Recent']
+        columnIds: ['Player', 'Team', 'JumperNumber', 'Age', 'Age_Decimal', 'Height', 'Position', 'DebutYear', 'Matches_Career', 'Goals_Total_Career', 'Matches_Finals', 'Goals_Total_Finals', 'Matches_Current', 'Goals_Total_Current', 'RatingPoints_Career', 'Supercoach_Career', 'Disposals_Career', 'ContestedPossessions_Career', 'Goals_Career', 'RatingPoints_Recent', 'Supercoach_Recent', 'Disposals_Recent', 'ContestedPossessions_Recent', 'Goals_Recent']
     });
     gtag('event', 'data_download');
 });

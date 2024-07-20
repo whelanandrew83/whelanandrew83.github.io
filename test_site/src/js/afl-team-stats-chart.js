@@ -41,6 +41,12 @@ const chartColumns = {
     "xScoreRatingPerShot_Set": { name: "xScore Rating / Shot (Set Shots)" },
     "xScorePerShot_General": { name: "xScore / Shot (General Play)" },
     "xScoreRatingPerShot_General": { name: "xScore Rating / Shot (General Play)" },
+    "PointsFromKickIn": { name: "Points from Kick-in" },
+    "PointsFromStoppage": { name: "Points from Stoppage" },
+    "PointsFromTurnover": { name: "Points from Turnover" },
+    "PointsFromDefensiveHalf": { name: "Points from Defensive Half" },
+    "PointsFromForwardHalf": { name: "Points from Forward Half" },
+    "PointsFromCentreBounce": { name: "Points from Centre Bounce" },
     "ContestOffensiveOneOnOnes": { name: "Offensive one-on-one contests" },
     "ContestOffensiveWinPercentage": { name: "Offensive one-on-one win %" },
     "ContestDefensiveOneOnOnes": { name: "Defensive one-on-one contests" },
@@ -79,6 +85,12 @@ const chartColumns = {
     "xScoreRatingPerShot_Set_Opposition": { name: "xScore Rating / Shot (Set Shots) (Opposition)" },
     "xScorePerShot_General_Opposition": { name: "xScore / Shot (General Play) (Opposition)" },
     "xScoreRatingPerShot_General_Opposition": { name: "xScore Rating / Shot (General Play) (Opposition)" },
+    "PointsFromKickIn_Opposition": { name: "Points from Kick-in (Opposition)" },
+    "PointsFromStoppage_Opposition": { name: "Points from Stoppage (Opposition)" },
+    "PointsFromTurnover_Opposition": { name: "Points from Turnover (Opposition)" },
+    "PointsFromDefensiveHalf_Opposition": { name: "Points from Defensive Half (Opposition)" },
+    "PointsFromForwardHalf_Opposition": { name: "Points from Forward Half (Opposition)" },
+    "PointsFromCentreBounce_Opposition": { name: "Points from Centre Bounce (Opposition)" },
     "HitoutsToAdvantagePercentage_Opposition": { name: "Hitout To Advantage % (Opposition)" },
     "Difference_Heading": { name: "Differences", heading: true },
     "RatingPoints_Diff": { name: "Rating Points (Difference)" },
@@ -94,7 +106,12 @@ const chartColumns = {
     "ShotsAtGoal_Diff": { name: "Shots At Goal (Difference)" },
     "xScore_Diff": { name: "xScore (Difference)" },
     "xScoreRating_Diff": { name: "xScore Rating (Difference)" },
-    "xScorePerShot_Diff": { name: "xScore / Shot (Difference)" }
+    "xScorePerShot_Diff": { name: "xScore / Shot (Difference)" },
+    "PointsFromStoppage_Diff": { name: "Points from Stoppage (Difference)" },
+    "PointsFromTurnover_Diff": { name: "Points from Turnover (Difference)" },
+    "PointsFromDefensiveHalf_Diff": { name: "Points from Defensive Half (Difference)" },
+    "PointsFromForwardHalf_Diff": { name: "Points from Forward Half (Difference)" },
+    "PointsFromCentreBounce_Diff": { name: "Points from Centre Bounce (Difference)" }
 };
 
 const defaultX = 'Goals';

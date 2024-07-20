@@ -1,7 +1,7 @@
 const chartColumns = {
     "Match": { name: "Match Number" },
     "RatingPoints": { name: "Player Rating" },
-    "EstimatedRating": { name: "Estimated Rating" },
+    "EstimatedRating": { name: "Predicted Rating" },
     "Supercoach": { name: "Supercoach Points", dec: 0 },
     "DreamTeamPoints": { name: "Fantasy Points", dec: 0 },
     "CoachesVotes": { name: "Coaches Votes", dec: 0 },
@@ -13,6 +13,7 @@ const chartColumns = {
     "Inside50s": { name: "Inside 50s", dec: 0 },
     "MetresGained": { name: "Metres Gained", dec: 0 },
     "ContestedPossessions": { name: "Contested Possessions", dec: 0 },
+    "GroundBallGets": { name: "Ground Ball Gets", dec: 0 },
     "Intercepts": { name: "Intercept Possessions", dec: 0 },
     "CentreBounceAttendancePercentage": { name: "Centre Bounce Attendance %", dec: 0 },
     "TotalClearances": { name: "Total Clearances", dec: 0 },
@@ -25,6 +26,7 @@ const chartColumns = {
     "xScoreRating": { name: "xScore +/-", dec: 1 },
     "GoalAssists": { name: "Goal Assists", dec: 0 },
     "ScoreInvolvements": { name: "Score Involvements", dec: 0 },
+    "ScoreLaunches": { name: "Score Launches", dec: 0 },
     "Tackles": { name: "Tackles", dec: 0 },
     "PressureActs": { name: "Pressure Acts", dec: 0 },
     "Hitouts": { name: "Hitouts", dec: 0 }

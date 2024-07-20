@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-<script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
@@ -265,6 +265,9 @@
               <a href="afl_stats_team.html">Team Stats</a>
             </li>
             <li>
+              <a href="afl_xscores.html">Expected Scores</a>
+            </li>
+            <li>
               <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
             </li>
             <li class="divider"></li>
@@ -364,6 +367,8 @@
 
 
 <main>
+<p><span class="badge bg-primary">New</span> Expected scores and player
+shot charts now available <a href="afl_xscores.html">here</a>.</p>
 <ul id='year-select' class='nav nav-pills'>
 <li id="year-2012">
 <a href="afl_stats_team.html?year=2012">2012</a>
@@ -433,7 +438,7 @@ document.querySelector('h1').innerText = `AFL Team Statistics - ${year_label}`;
 <!-- document.querySelector("#year-label").innerText = year_label; -->
 
 const xmlhttp = new XMLHttpRequest();
-const url = `https://www.wheeloratings.com/test_site/src/team_stats_snippet/${year}.html`;
+const url = `https://www.wheeloratings.com/src/team_stats_snippet/${year}.html`;
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -711,6 +716,34 @@ in general play, reflecting the average difficulty of shots taken.
 <li>
 <b>Rating (Gen):</b> Average score above or below expected score per
 shot at goal for shots in general play.
+</li>
+</ul>
+<h4>
+Score Sources
+</h4>
+<ul>
+<li>
+<b>Kick In:</b> Points scored from kick-ins.
+</li>
+<li>
+<b>Stop:</b> Points scored from stoppages.
+</li>
+<li>
+<b>Turnover:</b> Points scored from turnovers.
+</li>
+</ul>
+<h4>
+Score Origin
+</h4>
+<ul>
+<li>
+<b>Def Half:</b> Points scored from defensive half.
+</li>
+<li>
+<b>Fwd Half:</b> Points scored from forward half.
+</li>
+<li>
+<b>Ctr Bnc:</b> Points scored from centre bounce.
 </li>
 </ul>
 <h4>

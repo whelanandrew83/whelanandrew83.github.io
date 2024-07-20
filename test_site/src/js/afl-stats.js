@@ -34,10 +34,11 @@ const statsColumnsAll = ["Age_Decimal", "Team", "Image", "RatingPoints_Avg", "Su
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
     "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
     "ContestedPossessions", "UncontestedPossessions", "TotalPossessions", "ContestedPossessionRate", "Intercepts",
-    "GroundBallGets", "CentreBounceAttendances", "CentreBounceAttendancePercentage", "CentreClearances", "CentreClearanceRate",
+    "GroundBallGets", "HardBallGets", "LooseBallGets", "GathersFromHitout", "CrumbingPossessions", "HandballReceives",
+    "CentreBounceAttendances", "CentreBounceAttendancePercentage", "CentreClearances", "CentreClearanceRate",
     "StoppageClearances", "TotalClearances", "Marks", "ContestedMarks", "MarksInside50", "InterceptMarks", "MarksOnLead",
     "FreesFor", "FreesAgainst", "FreesDiff", "RuckContests", "RuckContestPercentage", "Hitouts", "HitoutsWinPercentage",
-    "HitoutsToAdvantage", "HitoutsToAdvantagePercentage", "Tackles", "TacklesInside50", "ContestDefensiveOneOnOnes",
+    "HitoutsToAdvantage", "HitoutsToAdvantagePercentage", "RuckHardBallGets", "Tackles", "TacklesInside50", "ContestDefensiveOneOnOnes",
     "ContestDefensiveLossPercentage", "ContestOffensiveOneOnOnes", "ContestOffensiveWinPercentage",
     "Goals_Total", "Goals_Avg", "Behinds", "ShotsAtGoal", "GoalAssists", "GoalAccuracy", "ScoreInvolvements",
     "ScoreInvolvementPercentage", "ScoreLaunches",
@@ -60,7 +61,11 @@ const statsColumns = {
         "KickingEfficiency": "Kicking Efficiency", "HandballEfficiency": "Handball Efficiency", "DisposalEfficiency": "Disposal Efficiency",
         "Clangers": "Clangers", "DisposalsPerClanger": "Disposals Per Clanger", "Turnovers": "Turnovers", "DisposalsPerTurnover": "Disposals Per Turnover"
     },
-    "Possessions": { "ContestedPossessions": "Contested Possessions", "UncontestedPossessions": "Uncontested Possessions", "TotalPossessions": "Total Possessions", "ContestedPossessionRate": "Contested Possession %", "Intercepts": "Intercept Possessions", "GroundBallGets": "Ground Ball Gets" },
+    "Possessions": {
+        "ContestedPossessions": "Contested Possessions", "UncontestedPossessions": "Uncontested Possessions", "TotalPossessions": "Total Possessions",
+        "ContestedPossessionRate": "Contested Possession %", "Intercepts": "Intercept Possessions", "GroundBallGets": "Ground Ball Gets",
+        "HardBallGets": "Hard Ball Gets", "LooseBallGets": "Loose Ball Gets", "GathersFromHitout": "Gathers from Hitout", "CrumbingPossessions": "Crumbing Possessions", "HandballReceives": "Handball Receives"
+    },
     "Clearances": { "CentreBounceAttendances": "Centre Bounce Attendances", "CentreBounceAttendancePercentage": "Centre Bounce Attendance %", "CentreClearances": "Centre Clearances", "CentreClearanceRate": "Centre Clearances Per CBA", "StoppageClearances": "Stoppage Clearances", "TotalClearances": "Total Clearances" },
     "Marks": { "Marks": "Marks", "ContestedMarks": "Contested Marks", "MarksInside50": "Marks Inside Forward 50", "InterceptMarks": "Intercept Marks", "MarksOnLead": "Marks On Lead" },
     "Scoring/Attack": {
@@ -73,7 +78,7 @@ const statsColumns = {
         "xScoreShots_General": "Total General Play Shots", "xScorePerShot_General": "xScore / Shot (General Play)", "xScoreRatingPerShot_General": "Rating / Shot (General Play)"
     },
     "Defence": { "ContestDefensiveOneOnOnes": "Defensive One-On-One Contests", "ContestDefensiveLossPercentage": "Defensive One-On-One Contest Loss %", "Tackles": "Tackles", "TacklesInside50": "Tackles Inside Forward 50", "PressureActs": "Pressure Acts", "Spoils": "Spoils" },
-    "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %" },
+    "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %", "RuckHardBallGets": "Ruck Hard Ball Gets" },
     "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-In Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
 };
 
