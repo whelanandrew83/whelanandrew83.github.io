@@ -438,7 +438,7 @@ document.querySelector('h1').innerText = `AFL Team Statistics - ${year_label}`;
 <!-- document.querySelector("#year-label").innerText = year_label; -->
 
 const xmlhttp = new XMLHttpRequest();
-const url = `https://www.wheeloratings.com/src/team_stats_snippet/${year}.html`;
+const url = `https://www.wheeloratings.com/test_site/src/team_stats_snippet/${year}.html`;
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
