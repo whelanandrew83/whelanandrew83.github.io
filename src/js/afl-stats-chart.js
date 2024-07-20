@@ -20,6 +20,12 @@ const chartColumns = {
     "ContestedPossessions": { name: "Contested Possessions" },
     "TotalPossessions": { name: "Total Possessions" },
     "Intercepts": { name: "Intercept Possessions" },
+    "GroundBallGets": { name: "Ground Ball Gets" },
+    "HardBallGets": { name: "Hard Ball Gets" },
+    "LooseBallGets": { name: "Loose Ball Gets" },
+    "GathersFromHitout": { name: "Gathers from Hitout" },
+    "CrumbingPossessions": { name: "Crumbing Possessions" },
+    "HandballReceives": { name: "Handball Receives" },
     "CentreBounceAttendances": { name: "Centre Bounce Attendances" },
     "CentreBounceAttendancePercentage": { name: "Centre Bounce Attendance %" },
     "CentreClearances": { name: "Centre Clearances" },
@@ -53,7 +59,8 @@ const chartColumns = {
     "RuckContestPercentage": { name: "Ruck Contest %" },
     "Hitouts": { name: "Hitouts" },
     "HitoutsWinPercentage": { name: "Hitout Win %" },
-    "HitoutsToAdvantagePercentage": { name: "Hitout To Advantage %" }
+    "HitoutsToAdvantagePercentage": { name: "Hitout To Advantage %" },
+    "RuckHardBallGets": { name: "Ruck Hard Ball Gets" }
 };
 
 const defaultX = 'Disposals';
