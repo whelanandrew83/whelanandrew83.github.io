@@ -11,7 +11,7 @@
 
 
 
-<title>Brownlow Medal Predictions</title>
+<title>Brownlow Medal Live Predictions</title>
 <meta name="description" content="AFL Brownlow Medal predictions for the
 current season.">
 
@@ -366,7 +366,7 @@ current season.">
 <header id="header">
 
 
-<h1 class="title toc-ignore">Brownlow Medal Predictions</h1>
+<h1 class="title toc-ignore">Brownlow Medal Live Predictions</h1>
 
 </header>
 
@@ -385,22 +385,71 @@ Download Guide
 <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
 <script type='text/javascript'>kofiwidget2.init('Support me', '#555555', 'wheeloratings');kofiwidget2.draw();</script>
 <hr class="my-2">
-<div id="loading-div" class="d-inline-flex">
-<div class="spinner-border ms-auto" role="status" aria-hidden="true">
-
+<!-- <div id="loading-div" class="d-inline-flex"> -->
+<!--   <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div> -->
+<!--   <div class="mx-2"><strong>Loading...</strong></div> -->
+<!-- </div> -->
+<h3 id="title-updated-to">
+Prior to Brownlow count
+</h3>
+<button id="refresh-button" class="btn btn-primary" disabled style="width: 100px;">
+<span id="loading-icon" class="spinner-border spinner-border-sm"
+role="status"></span> <span id="refresh-button-text">Loading<span>
+</button>
+<div id="votes-div" class="d-none">
+<div class="d-flex flex-wrap">
+<div class="m-2">
+<h4>Leaderboard</h4>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-live-leaderboard" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="brownlow-live-leaderboard">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Image":[],"Player":[],"Votes":[]},"columns":[{"id":"Image","name":"Image","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":260,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true},{"id":"Votes","name":"Votes","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","style":{"fontWeight":"bold"}}],"sortable":false,"pagination":false,"className":"afl-table","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live-leaderboard","dataKey":"c072819c91b4296c9c837f6c0088652b"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell"],"jsHooks":[]}</script>
 </div>
-<div class="mx-2">
-<strong>Loading…</strong>
+<div class="m-2">
+<h4>Win Probability</h4>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-live-winner" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="brownlow-live-winner">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Image":[],"Player":[],"Votes":[],"Winner":[]},"columns":[{"id":"Image","name":"Image","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":200,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true},{"id":"Votes","name":"Pred. Votes","type":"numeric","sortNALast":true,"minWidth":60,"align":"center"},{"id":"Winner","name":"Win %","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"style":{"fontWeight":"bold"}}],"sortable":false,"pagination":false,"className":"afl-table","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live-winner","dataKey":"e6993b4c9dbf7d417a92bdad60b0e911"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell"],"jsHooks":[]}</script>
+</div>
+<div class="m-2">
+<h4>Most Games Polling</h4>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-live-most-games-polled" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="brownlow-live-most-games-polled">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Image":[],"Player":[],"GamesPolling":[],"MostGamesPolling":[]},"columns":[{"id":"Image","name":"Image","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":200,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true},{"id":"GamesPolling","name":"Games Polled","type":"numeric","sortNALast":true,"minWidth":60,"align":"center"},{"id":"MostGamesPolling","name":"Most %","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"style":{"fontWeight":"bold"}}],"sortable":false,"pagination":false,"className":"afl-table","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live-most-games-polled","dataKey":"9c046d8cbeba75697029faa5c33d08a8"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell"],"jsHooks":[]}</script>
+</div>
+<div class="m-2">
+<h4>Most 3 Vote Games</h4>
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-live-most-3-vote-games" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="brownlow-live-most-3-vote-games">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Image":[],"Player":[],"Games3Votes":[],"MostGames3Votes":[]},"columns":[{"id":"Image","name":"Image","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":200,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true},{"id":"Games3Votes","name":"3 Vote Games","type":"numeric","sortNALast":true,"minWidth":60,"align":"center"},{"id":"MostGames3Votes","name":"Most %","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"style":{"fontWeight":"bold"}}],"sortable":false,"pagination":false,"className":"afl-table","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live-most-3-vote-games","dataKey":"863058913111268bdfcab905216a8edf"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell"],"jsHooks":[]}</script>
 </div>
 </div>
+<h4>All players</h4>
 <div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-live" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="brownlow-live">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Rank":[],"Player":[],"ActualVotes":[],"Diff":[],"Votes":[],"First":[],"Winner":[],"MostGamesPolling":[],"MostGames3Votes":[]},"columns":[{"id":"Rank","name":"Rank","type":"numeric","sortNALast":true,"minWidth":60,"align":"center"},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":180,"align":"left","filterable":true,"show":true,"defaultSortDesc":false},{"id":"ActualVotes","name":"Votes","type":"numeric","sortNALast":true,"minWidth":50,"align":"center"},{"id":"Diff","name":"Diff","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}},{"id":"Votes","name":"Pred. Votes","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}}},{"id":"First","name":"1st","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Winner","name":"Win","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"MostGamesPolling","name":"Most Games Polled","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"MostGames3Votes","name":"Most 3 Votes","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}}],"defaultSortDesc":true,"defaultSorted":[{"id":"Votes","desc":true}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"showSortIcon":false,"className":"afl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live","dataKey":"79bb86be2418089ad2f260344ff26cb1"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="brownlow-live">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Rank":[],"Image":[],"Player":[],"Team":[],"ActualVotes":[],"Diff":[],"Votes":[],"First":[],"Winner":[],"GamesPolling":[],"MostGamesPolling":[],"Games3Votes":[],"MostGames3Votes":[]},"columns":[{"id":"Rank","name":"Rank","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","defaultSortDesc":false,"style":{"fontWeight":"bold"}},{"id":"Image","name":"Image","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":180,"align":"left","filterable":true,"defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true},{"id":"Team","name":"Team","type":"character","sortNALast":true,"minWidth":50,"align":"center","filterable":true,"defaultSortDesc":false},{"id":"ActualVotes","name":"Votes","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","style":{"fontWeight":"bold"}},{"id":"Diff","name":"+/-","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}},"cell":"function(cellInfo) { return cellInfo.value > 0 ? `+${cellInfo.value}` : cellInfo.value }","html":true},{"id":"Votes","name":"Pred. Votes","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}},"style":{"fontWeight":"bold"}},{"id":"First","name":"1st","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Winner","name":"Win","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}},"style":{"fontWeight":"bold"}},{"id":"GamesPolling","name":"Games Polled","type":"numeric","sortNALast":true,"minWidth":60,"align":"center"},{"id":"MostGamesPolling","name":"Most Games Polled","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Games3Votes","name":"3 Vote Games","type":"numeric","sortNALast":true,"minWidth":60,"align":"center"},{"id":"MostGames3Votes","name":"Most 3 Votes","type":"numeric","sortNALast":true,"minWidth":60,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}}],"defaultSortDesc":true,"defaultSorted":[{"id":"Rank","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"showSortIcon":false,"className":"afl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live","dataKey":"23d8ff040c10bc874bc7d69812bf323d"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.2.cell","tag.attribs.columns.5.cell"],"jsHooks":[]}</script>
+</div>
 <script>
-const loadingDiv = document.querySelector("#loading-div");
-const brownlowTable = document.querySelector("#brownlow-live");
+const playerDisplay = function (cellInfo) {
+    return `<img src='images/afl_logos/${cellInfo.row['Image']}' height='15px' width='15px' alt=''> ${cellInfo.row['Player']}`
+}
 
-brownlowTable.classList.add("d-none");
-loadingDiv.classList.remove("d-none");
+const refreshButton = document.querySelector("#refresh-button");
+refreshButton.addEventListener('click', (e) => { refreshVotes() });
+
+const refreshButtonText = document.querySelector("#refresh-button-text");
+const loadingIcon = document.querySelector("#loading-icon");
+const votesDiv = document.querySelector("#votes-div");
+const updatedToTitle = document.querySelector("#title-updated-to");
+
+votesDiv.classList.add("d-none");
+
+const refreshLoading = function(loading = TRUE) {
+  if (loading) {
+    refreshButtonText.innerText = "Loading";
+    refreshButton.disabled = true;
+    loadingIcon.classList.remove("d-none");
+  } else {
+    refreshButtonText.innerText = "Refresh";
+    refreshButton.disabled = false;
+    loadingIcon.classList.add("d-none");
+    votesDiv.classList.remove("d-none");
+  }
+}
 
 const url = 'https://api.jsonsilo.com/public/fc6f28ff-d866-47c7-a0da-ccb6a9a9f8d9';
 const headers = {
@@ -409,17 +458,33 @@ const headers = {
 
 let brownlow_data = {};
 
-fetch(url, headers)
+const refreshVotes = function() {
+  refreshLoading(true);
+  
+  fetch(url, headers)
     .then(response => response.json())
     .then(data => {
         brownlow_data = data;
-        Reactable.setData("brownlow-live", brownlow_data);
-        brownlowTable.classList.remove("d-none");
-        loadingDiv.classList.add("d-none");
+        
+        Reactable.setData("brownlow-live", brownlow_data.data);
+        Reactable.setData("brownlow-live-leaderboard", brownlow_data.data_leaders);
+        Reactable.setData("brownlow-live-winner", brownlow_data.data_winner);
+        Reactable.setData("brownlow-live-most-games-polled", brownlow_data.data_most_games_polling);
+        Reactable.setData("brownlow-live-most-3-vote-games", brownlow_data.data_most_3_vote_games);
+        
+        if (brownlow_data.latest_round.length)
+          updatedToTitle.innerText = `Following Round ${brownlow_data.latest_round}`
+        else
+          updatedToTitle.innerText = `Prior to Brownlow count`
+        
+        refreshLoading(false);
     })
     .catch(error => {
         console.error('There was an error with the request:', error);
-    });
+    })
+}
+
+refreshVotes();
 </script>
 </main>
 
