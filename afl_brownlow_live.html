@@ -391,14 +391,20 @@ Download Guide
 <!-- </div> -->
 <h3 id="title-updated-to">
 </h3>
-<button id="refresh-button" class="btn btn-primary" disabled style="width: 100px;">
+<div class="d-inline-block">
+<p><button id="refresh-button" class="btn btn-primary mx-1" disabled style="width: 100px;">
 <span id="loading-icon" class="spinner-border spinner-border-sm"
 role="status"></span> <span id="refresh-button-text">Loading<span>
-</button>
+</button></p>
+</div>
+<div class="d-inline-block">
+<p><span id="refresh-error" class="d-none text-danger">There was an
+error loading the data.</span></p>
+</div>
 <div id="votes-div" class="d-none">
 <div class="d-flex flex-wrap">
 <div class="m-1">
-<h4>Leaderboard</h4>
+<h4>Current Leaderboard</h4>
 <div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-live-leaderboard" style="width:auto;height:auto;"></div>
 <script type="application/json" data-for="brownlow-live-leaderboard">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Image":[],"Player":[],"Votes":[]},"columns":[{"id":"Image","name":"Image","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":250,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true},{"id":"Votes","name":"Current Votes","type":"numeric","sortNALast":true,"minWidth":70,"align":"center","style":{"fontWeight":"bold"}}],"sortable":false,"pagination":false,"className":"afl-table","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live-leaderboard","dataKey":"efb96de9d773fec09536a9bf035028af"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell"],"jsHooks":[]}</script>
 </div>
@@ -432,6 +438,7 @@ const refreshButton = document.querySelector("#refresh-button");
 refreshButton.addEventListener('click', (e) => { refreshVotes() });
 
 const refreshButtonText = document.querySelector("#refresh-button-text");
+const refreshError = document.querySelector("#refresh-error");
 const loadingIcon = document.querySelector("#loading-icon");
 const votesDiv = document.querySelector("#votes-div");
 const updatedToTitle = document.querySelector("#title-updated-to");
@@ -444,20 +451,26 @@ guideDownloadButton.addEventListener('click', (e) => {
     window.open('src/docs/wheelo-brownlow-guide-2024.pdf', '_blank');
 });
 
-const refreshLoading = function(loading = TRUE) {
+const refreshLoading = function(loading = true, error = false) {
   if (loading) {
     refreshButtonText.innerText = "Loading";
     refreshButton.disabled = true;
+    refreshError.classList.add("d-none");
     loadingIcon.classList.remove("d-none");
   } else {
     refreshButtonText.innerText = "Refresh";
     refreshButton.disabled = false;
     loadingIcon.classList.add("d-none");
-    votesDiv.classList.remove("d-none");
+    if (error) {
+      refreshError.classList.remove("d-none");
+    } else {
+      refreshError.classList.add("d-none");
+      votesDiv.classList.remove("d-none");
+    }
   }
 }
 
-const url = 'https://api.jsonsilo.com/public/fc6f28ff-d866-47c7-a0da-ccb6a9a9f8d9';
+let url = 'https://api.jsonsilo.com/public/fc6f28ff-d866-47c7-a0da-ccb6a9a9f8d9';
 const headers = {
     'Content-Type': 'application/json'
 };
@@ -468,7 +481,7 @@ const refreshVotes = function() {
   refreshLoading(true);
   
   fetch(url, headers)
-    .then(response => response.json())
+    .then(res => res.json() )
     .then(data => {
         brownlow_data = data;
         
@@ -486,6 +499,8 @@ const refreshVotes = function() {
         refreshLoading(false);
     })
     .catch(error => {
+        refreshLoading(false, true);
+        
         console.error('There was an error with the request:', error);
     })
 }
