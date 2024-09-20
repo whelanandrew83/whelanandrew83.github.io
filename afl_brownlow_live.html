@@ -403,7 +403,7 @@ error loading the data.</span></p>
 </div>
 <div id="votes-div" class="d-none">
 <div class="d-flex flex-wrap">
-<div class="m-1">
+<div id="leaderboard-div" class="m-1">
 <h4>Current Leaderboard</h4>
 <div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-live-leaderboard" style="width:auto;height:auto;"></div>
 <script type="application/json" data-for="brownlow-live-leaderboard">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Image":[],"Player":[],"Votes":[]},"columns":[{"id":"Image","name":"Image","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":250,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true},{"id":"Votes","name":"Current Votes","type":"numeric","sortNALast":true,"minWidth":70,"align":"center","style":{"fontWeight":"bold"}}],"sortable":false,"pagination":false,"className":"afl-table","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"brownlow-live-leaderboard","dataKey":"efb96de9d773fec09536a9bf035028af"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell"],"jsHooks":[]}</script>
@@ -441,6 +441,7 @@ const refreshButtonText = document.querySelector("#refresh-button-text");
 const refreshError = document.querySelector("#refresh-error");
 const loadingIcon = document.querySelector("#loading-icon");
 const votesDiv = document.querySelector("#votes-div");
+const leaderboardDiv = document.querySelector("#leaderboard-div");
 const updatedToTitle = document.querySelector("#title-updated-to");
 
 votesDiv.classList.add("d-none");
@@ -491,10 +492,13 @@ const refreshVotes = function() {
         Reactable.setData("brownlow-live-most-games-polled", brownlow_data.data_most_games_polling);
         Reactable.setData("brownlow-live-most-3-vote-games", brownlow_data.data_most_3_vote_games);
         
-        if (brownlow_data.latest_round.length)
-          updatedToTitle.innerText = `After Round ${brownlow_data.latest_round}`
-        else
-          updatedToTitle.innerText = `Prior to Brownlow count`
+        if (brownlow_data.latest_round[0].length) {
+          updatedToTitle.innerText = `After Round ${brownlow_data.latest_round[0]}`;
+          leaderboardDiv.classList.remove("d-none");
+        } else {
+          updatedToTitle.innerText = `Prior to Brownlow count`;
+          leaderboardDiv.classList.add("d-none");
+        }
         
         refreshLoading(false);
     })
