@@ -118,8 +118,10 @@ let chartStatColumns = [];
 const updateChartColumns = (cols) => {
     if (cols.indexOf('Select') >= 0) isTableSelect = true;
 
+    let chartColumnsAvailable = { ...chartColumns };
+
     Object.keys(chartColumns).forEach(key => {
-        if (cols.indexOf(key) === -1 && !chartColumns[key].heading) { delete chartColumns[key] }
+        if (cols.indexOf(key) === -1 && !chartColumns[key].heading) { delete chartColumnsAvailable[key] }
     });
 
     let selectedX = statDropdownX.value;
@@ -127,10 +129,10 @@ const updateChartColumns = (cols) => {
 
     //for (i = 0; i < statDropdownX.length; i++) statDropdownX.remove(i);
     //for (i = 0; i < statDropdownY.length; i++) statDropdownY.remove(i);
-    statDropdownX.innerHTML = ""
-    statDropdownY.innerHTML = ""
+    statDropdownX.innerHTML = "";
+    statDropdownY.innerHTML = "";
 
-    for (col of Object.keys(chartColumns)) {
+    for (col of Object.keys(chartColumnsAvailable)) {
         if (chartColumns[col].heading) {
             optionGroupX = document.createElement("optgroup");
             optionGroupX.label = chartColumns[col].name;
@@ -157,7 +159,7 @@ const updateChartColumns = (cols) => {
     if (!statDropdownX.value) statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
     if (!statDropdownY.value) statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
 
-    chartStatColumns = [...labelColumns, ...Object.keys(chartColumns)];
+    chartStatColumns = [...labelColumns, ...Object.keys(chartColumnsAvailable)];
     if (typeof highlightColumns !== "undefined") {
         chartStatColumns = [...new Set([...chartStatColumns, ...Object.keys(highlightColumns)])]
     }
