@@ -32,6 +32,18 @@ const fetchCompSeasons = function () {
     }
 }
 
+const updateMissingColumns = function () {
+    missing_columns = [];
+
+    if (season_data) {
+        Reactable.getInstance(reactableId).allColumns.forEach((element, index) => {
+            if (!Object.keys(season_data).includes(element.id)) {
+                missing_columns.push(element.id);
+            }
+        })
+    }
+}
+
 const fetchCompSeasonData = function () {
     tableLoading(true);
     if (dataset && comp && season) {
@@ -39,6 +51,8 @@ const fetchCompSeasonData = function () {
             .then((res) => res.json())
             .then((data) => {
                 season_data = data;
+                updateMissingColumns();
+                updateHiddenColumns();
                 Reactable.setData(reactableId, season_data);
                 tableLoading(false);
             });
