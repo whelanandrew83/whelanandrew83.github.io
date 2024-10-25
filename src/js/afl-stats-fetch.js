@@ -26,7 +26,6 @@ const fetchCompSeasons = function () {
 
                 fetchCompSeasonData();
                 updateTitle();
-                prepareChart();
                 history.replaceState(null, '', `?comp=${comp}&season=${season}`);
                 if (comp_changed) updateSeasons();
             });
@@ -55,6 +54,7 @@ const fetchCompSeasonData = function () {
                 updateMissingColumns();
                 updateHiddenColumns();
                 Reactable.setData(reactableId, season_data);
+                prepareChart();
                 tableLoading(false);
             });
     }

@@ -122,6 +122,14 @@ const updateChartColumns = (cols) => {
         if (cols.indexOf(key) === -1 && !chartColumns[key].heading) { delete chartColumns[key] }
     });
 
+    let selectedX = statDropdownX.value;
+    let selectedY = statDropdownY.value;
+
+    //for (i = 0; i < statDropdownX.length; i++) statDropdownX.remove(i);
+    //for (i = 0; i < statDropdownY.length; i++) statDropdownY.remove(i);
+    statDropdownX.innerHTML = ""
+    statDropdownY.innerHTML = ""
+
     for (col of Object.keys(chartColumns)) {
         if (chartColumns[col].heading) {
             optionGroupX = document.createElement("optgroup");
@@ -141,11 +149,13 @@ const updateChartColumns = (cols) => {
                 statDropdownX.appendChild(option);
                 statDropdownY.appendChild(option.cloneNode(true));
             }
+            if (col === selectedX) statDropdownX.value = col;
+            if (col === selectedY) statDropdownY.value = col;
         }
     }
 
-    statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
-    statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
+    if (!statDropdownX.value) statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
+    if (!statDropdownY.value) statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
 
     chartStatColumns = [...labelColumns, ...Object.keys(chartColumns)];
     if (typeof highlightColumns !== "undefined") {
@@ -168,11 +178,16 @@ const updateChartColumns = (cols) => {
 
 const prepareChart = function () {
     const dataTemp = Reactable.getInstance(reactableId).data;
+    pointStyleImageSource = [];
 
     if (dataTemp.length > 0) {
         updateChartColumns(Object.keys(dataTemp[0]));
         let imgSrc;
         let img;
+
+        for (col of Object.keys(highlightValueOptions)) {
+            if (col !== "Selection") highlightValueOptions[col] = [];
+        }
 
         for (dataRow of dataTemp) {
             for (col of chartStatColumns) {
@@ -183,7 +198,7 @@ const prepareChart = function () {
                 }
             }
             if (typeof pointImageColumn !== "undefined") {
-                if (dataRow[pointImageColumn]) {
+                if (dataRow[pointImageColumn] && dataRow[pointImageColumn] !== "NA") {
                     imgSrc = dataRow[pointImageColumn];
 
                     img = new Image();
