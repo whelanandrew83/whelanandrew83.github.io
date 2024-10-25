@@ -5,7 +5,10 @@ const overlay = document.querySelector("#overlay");
 const clearSelectionButton = document.querySelector("#clear-selection-button");
 if (clearSelectionButton) clearSelectionButton.addEventListener('click', () => { selectedRows = []; refreshView(); updateChart(false); });
 
-const updateSelectionText = () => { selectionText.innerHTML = selectedRows.length == 0 ? 'No players selected' : selectedRows.length == 1 ? '1 player selected' : `${selectedRows.length} players selected` }
+let selectionObjectTypeLabel;
+if (typeof selectionObjectType !== "undefined") selectionObjectTypeLabel = selectionObjectType; else selectionObjectTypeLabel = 'player';
+
+const updateSelectionText = () => { selectionText.innerHTML = selectedRows.length == 0 ? `No ${selectionObjectTypeLabel}s selected` : selectedRows.length == 1 ? `1 ${selectionObjectTypeLabel} selected` : `${selectedRows.length} ${selectionObjectTypeLabel}s selected` }
 
 const selectionText = document.querySelector("#selection-text");
 
@@ -163,6 +166,51 @@ const updateChartColumns = (cols) => {
 // let filteredRowCountPrevious = 0;
 // let filteredRowCount = 0;
 
+const prepareChart = function () {
+    const dataTemp = Reactable.getInstance(reactableId).data;
+
+    if (dataTemp.length > 0) {
+        updateChartColumns(Object.keys(dataTemp[0]));
+        let imgSrc;
+        let img;
+
+        for (dataRow of dataTemp) {
+            for (col of chartStatColumns) {
+                chartStats[col].push(dataRow[col]);
+                if ((typeof highlightColumns !== 'undefined' && Object.keys(highlightColumns).indexOf(col) >= 0 ||
+                    typeof highlightColumn !== 'undefined' && col === highlightColumn) && !highlightValueOptions[col].includes(dataRow[col])) {
+                    highlightValueOptions[col].push(dataRow[col]);
+                }
+            }
+            if (typeof pointImageColumn !== "undefined") {
+                if (dataRow[pointImageColumn]) {
+                    imgSrc = dataRow[pointImageColumn];
+
+                    img = new Image();
+                    img.src = imgSrc;
+                    if (window.innerWidth < 800) {
+                        img.height = "15";
+                        img.width = "15";
+                    } else {
+                        img.height = "20";
+                        img.width = "20";
+                    }
+                } else {
+                    imgSrc = 'circle';
+                    img = 'circle';
+                }
+                if (!pointStyleImages[imgSrc]) {
+                    pointStyleImages[imgSrc] = img;
+                }
+                pointStyleImageSource.push(imgSrc);
+            }
+        }
+
+        updateHighlightOptions();
+        updateChart();
+    }
+}
+
 window.addEventListener('DOMContentLoaded', (event) => {
     // Reactable.onStateChange(reactableId, state => {
     //     filteredRowCount = Reactable.getInstance(reactableId).filteredRows.length;
@@ -172,45 +220,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //     }
     // })
 
-    const dataTemp = Reactable.getInstance(reactableId).data;
-    updateChartColumns(Object.keys(Reactable.getInstance(reactableId).data[0]));
-    let imgSrc;
-    let img;
-
-    for (dataRow of dataTemp) {
-        for (col of chartStatColumns) {
-            chartStats[col].push(dataRow[col]);
-            if ((typeof highlightColumns !== 'undefined' && Object.keys(highlightColumns).indexOf(col) >= 0 ||
-                typeof highlightColumn !== 'undefined' && col === highlightColumn) && !highlightValueOptions[col].includes(dataRow[col])) {
-                highlightValueOptions[col].push(dataRow[col]);
-            }
-        }
-        if (typeof pointImageColumn !== "undefined") {
-            if (dataRow[pointImageColumn]) {
-                imgSrc = dataRow[pointImageColumn];
-
-                img = new Image();
-                img.src = imgSrc;
-                if (window.innerWidth < 800) {
-                    img.height = "15";
-                    img.width = "15";
-                } else {
-                    img.height = "20";
-                    img.width = "20";
-                }
-            } else {
-                imgSrc = 'circle';
-                img = 'circle';
-            }
-            if (!pointStyleImages[imgSrc]) {
-                pointStyleImages[imgSrc] = img;
-            }
-            pointStyleImageSource.push(imgSrc);
-        }
-    }
-
-    updateHighlightOptions();
-    updateChart();
+    prepareChart();
 });
 
 statDropdownX.addEventListener('change', (e) => { updateChart(); });
@@ -227,7 +237,10 @@ const updateChart = function (animation = false) {
     const pointStylesHighlight = [];
     const selectedAnnotations = {};
     let x;
+    let y;
+    let labelText;
     const xRange = [];
+    const yRange = [];
     const drawDiagonalLine = typeof diagonalLines !== "undefined" && diagonalLines[statDropdownX.value] === statDropdownY.value;
 
     const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
@@ -239,35 +252,50 @@ const updateChart = function (animation = false) {
     chartStats[statDropdownX.value].forEach((element, index) => {
         if (filteredRows.includes(index.toString())) {
             x = parseFloat(element);
+            y = parseFloat(chartStats[statDropdownY.value][index]);
             if (typeof highlightColumn === 'string' && ((highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0) || (highlightValue && chartStats[highlightColumn][index] && chartStats[highlightColumn][index].toString() === highlightValue))) {
-                dataHighlight.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
+                dataHighlight.push({ x: x, y: y, index: index });
                 labelsHighlight.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
                 if (Object.keys(pointStyleImages).length > 0 && (highlightColumn !== 'Selection' || !showLabels)) {
                     pointStylesHighlight.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
-                if (highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0 && showLabels) {
+                if (highlightColumn === 'Selection' && selectedRows.indexOf(index) >= 0 && showLabels && !isNaN(x) && !isNaN(y)) {
+                    labelText = chartStats[labelColumns[0]][index];
+                    if (typeof labelColumnsSticky !== "undefined" && labelColumnsSticky > 1 && labelColumns.length > 1) {
+                        labelText = labelText + " (" + chartStats[labelColumns[1]][index] + ")";
+                    }
+
                     selectedAnnotations[`label${index}`] = {
                         type: 'label',
                         xValue: x,
-                        yValue: chartStats[statDropdownY.value][index],
-                        content: chartStats[labelColumns[0]][index],
+                        yValue: y,
+                        content: labelText,
                         backgroundColor: 'rgba(255,255,255,0.7)',
-                        font: { size: 10 }
+                        font: { size: 10 },
+                        padding: 1
                     }
                 }
             } else {
-                data.push({ x: x, y: chartStats[statDropdownY.value][index], index: index });
+                data.push({ x: x, y: y, index: index });
                 labels.push(chartStats[labelColumns[0]][index] + (labelColumns.length == 1 ? "" : " (" + chartStats[labelColumns[1]][index] + ")"));
                 if (Object.keys(pointStyleImages).length > 0) {
                     pointStyles.push(pointStyleImages[pointStyleImageSource[index]]);
                 }
             }
-            if (drawDiagonalLine) {
+            if (!isNaN(x)) {
                 if (xRange.length === 0) {
                     xRange.push(x, x);
                 } else {
                     if (x < xRange[0]) xRange[0] = x;
                     if (x > xRange[1]) xRange[1] = x;
+                }
+            }
+            if (!isNaN(y)) {
+                if (yRange.length === 0) {
+                    yRange.push(y, y);
+                } else {
+                    if (y < yRange[0]) yRange[0] = y;
+                    if (y > yRange[1]) yRange[1] = y;
                 }
             }
         }
@@ -320,6 +348,11 @@ const updateChart = function (animation = false) {
         chart.options.scales.y.reverse = false;
     }
 
+    chart.options.scales.x.suggestedMin = xRange[0] - 0.05 * (xRange[1] - xRange[0]);
+    chart.options.scales.x.suggestedMax = xRange[1] + 0.05 * (xRange[1] - xRange[0]);
+    chart.options.scales.y.suggestedMin = yRange[0] - 0.05 * (yRange[1] - yRange[0]);
+    chart.options.scales.y.suggestedMax = yRange[1] + 0.05 * (yRange[1] - yRange[0]);
+
     chart.options.scales.x.title.text = xLabel;
     chart.options.scales.y.title.text = yLabel;
     chart.options.plugins.tooltip.callbacks.label = function (context) {
@@ -355,6 +388,8 @@ const updateChart = function (animation = false) {
         delete chart.options.plugins.annotation;
     }
 
+    chart.options.animation = false; // disable all animations
+
     if (animation) {
         chart.update();
     } else {
@@ -363,8 +398,6 @@ const updateChart = function (animation = false) {
 }
 
 const ctx = document.getElementById('stats-chart');
-
-let selectedPoints;
 
 const chart = new Chart(ctx, {
     type: 'scatter',
@@ -380,6 +413,15 @@ const chart = new Chart(ctx, {
                     font: {
                         weight: "bold"
                     }
+                },
+                ticks: {
+                    callback: function (value, index, ticks) {
+                        if (parseInt(value) >= 1000) {
+                            return value.toString();
+                        } else {
+                            return Chart.Ticks.formatters.numeric.apply(this, [value, index, ticks]);
+                        }
+                    }
                 }
             },
             y: {
@@ -388,6 +430,15 @@ const chart = new Chart(ctx, {
                     text: "",
                     font: {
                         weight: "bold"
+                    }
+                },
+                ticks: {
+                    callback: function (value, index, ticks) {
+                        if (parseInt(value) >= 1000) {
+                            return value.toString();
+                        } else {
+                            return Chart.Ticks.formatters.numeric.apply(this, [value, index, ticks]);
+                        }
                     }
                 }
             }

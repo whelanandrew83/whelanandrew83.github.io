@@ -26,6 +26,7 @@ const fetchCompSeasons = function () {
 
                 fetchCompSeasonData();
                 updateTitle();
+                prepareChart();
                 history.replaceState(null, '', `?comp=${comp}&season=${season}`);
                 if (comp_changed) updateSeasons();
             });
@@ -81,7 +82,7 @@ const compButtons = [];
 const seasonButtons = [];
 
 const updateComps = function () {
-    compSelect.innerHTML = "";
+    compSelect.innerHTML = "" //"<b>Competition:</b>";
     if (comps) {
         comps.CompPaths.forEach((element, index) => {
             button = document.createElement('button');
@@ -118,7 +119,7 @@ const updateComps = function () {
 }
 
 const updateSeasons = function () {
-    seasonSelect.innerHTML = "";
+    seasonSelect.innerHTML = "" //"<b>Season:</b>";
     if (comp_meta) {
         comp_meta.Seasons.forEach(element => {
             button = document.createElement('button');
