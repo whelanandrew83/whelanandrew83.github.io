@@ -70,6 +70,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 const csvDownloadButton = document.querySelector('#download-csv-button');
 csvDownloadButton.addEventListener('click', (e) => {
-    Reactable.downloadDataCSV(reactableId, `afl-team-stats-${year}.csv`, { columnIds: [...new Set([...columnsAlwaysDisplayed, ...statsColumns.For, ...statsColumns.Against, ...statsColumns.Difference])] });
+    Reactable.downloadDataCSV(reactableId, `${comp}-team-stats-${season}.csv`, { columnIds: [...new Set([...columnsAlwaysDisplayed, ...statsColumns.For, ...statsColumns.Against, ...statsColumns.Difference])].filter((el) => { return !missing_columns.includes(el) }) });
     gtag('event', 'data_download');
 });
