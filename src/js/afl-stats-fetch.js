@@ -22,12 +22,9 @@ const fetchCompSeasons = function () {
                 comp_meta = data;
 
                 if (!(season && comp_meta.Seasons.includes(season)))
-                    season = comp_meta.Seasons.slice(-1)[0];
-
-                season_label = comp_meta.SeasonLabels[comp_meta.Seasons.indexOf(season)];
+                    season = comp_meta.CurrentSeason;
 
                 fetchCompSeasonData();
-                updateTitle();
                 history.replaceState(null, '', `?comp=${comp}&season=${season}`);
                 if (comp_changed) updateSeasons();
             });
@@ -53,6 +50,8 @@ const fetchCompSeasonData = function () {
             .then((res) => res.json())
             .then((data) => {
                 season_data = data;
+                season_label = comp_meta.SeasonLabels[comp_meta.Seasons.indexOf(season)];
+                updateTitle();
                 updateMissingColumns();
                 updateHiddenColumns();
                 Reactable.setData(reactableId, season_data);
@@ -124,11 +123,11 @@ const updateComps = function () {
 const updateSeasons = function () {
     seasonSelect.innerHTML = "" //"<b>Season:</b>";
     if (comp_meta) {
-        comp_meta.Seasons.forEach(element => {
+        comp_meta.Seasons.forEach((element, index) => {
             button = document.createElement('button');
             button.id = `season-${element.replaceAll(".", "-")}`;
             button.type = "button";
-            button.innerText = element;
+            button.innerText = comp_meta.SeasonLabels[index];
             if (season && season == element)
                 button.classList = "btn btm-sm mx-1 my-2 btn-primary";
             else
