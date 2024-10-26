@@ -22,7 +22,7 @@ const fetchCompSeasons = function () {
                 comp_meta = data;
 
                 if (!(season && comp_meta.Seasons.includes(season)))
-                    season = comp_meta.CurrentSeason;
+                    season = comp_meta.CurrentSeason[0];
 
                 fetchCompSeasonData();
                 history.replaceState(null, '', `?comp=${comp}&season=${season}`);
