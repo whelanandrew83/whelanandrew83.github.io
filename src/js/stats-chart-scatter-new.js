@@ -127,6 +127,9 @@ const updateChartColumns = (cols) => {
     let selectedX = statDropdownX.value;
     let selectedY = statDropdownY.value;
 
+    let inSelectionX = false;
+    let inSelectionY = false;
+
     //for (i = 0; i < statDropdownX.length; i++) statDropdownX.remove(i);
     //for (i = 0; i < statDropdownY.length; i++) statDropdownY.remove(i);
     statDropdownX.innerHTML = "";
@@ -151,13 +154,16 @@ const updateChartColumns = (cols) => {
                 statDropdownX.appendChild(option);
                 statDropdownY.appendChild(option.cloneNode(true));
             }
-            if (col === selectedX) statDropdownX.value = col;
-            if (col === selectedY) statDropdownY.value = col;
+            if (col === selectedX) { statDropdownX.value = col; inSelectionX = true; }
+            if (col === selectedY) { statDropdownY.value = col; inSelectionY = true; }
         }
     }
 
-    if (!statDropdownX.value) statDropdownX.selectedIndex = nonHeadingOptions.indexOf(defaultX) < 0 ? 0 : nonHeadingOptions.indexOf(defaultX);
-    if (!statDropdownY.value) statDropdownY.selectedIndex = nonHeadingOptions.indexOf(defaultY) < 0 ? 0 : nonHeadingOptions.indexOf(defaultY);
+    if (!inSelectionX) statDropdownX.value = defaultX;
+    if (!inSelectionY) statDropdownY.value = defaultY;
+
+    if (statDropdownX.selectedIndex === -1) statDropdownX.selectedIndex = 0;
+    if (statDropdownY.selectedIndex === -1) statDropdownY.selectedIndex = 0;
 
     chartStatColumns = [...labelColumns, ...Object.keys(chartColumnsAvailable)];
     if (typeof highlightColumns !== "undefined") {

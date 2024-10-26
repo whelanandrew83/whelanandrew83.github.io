@@ -24,6 +24,8 @@ const fetchCompSeasons = function () {
                 if (!(season && comp_meta.Seasons.includes(season)))
                     season = comp_meta.Seasons.slice(-1)[0];
 
+                season_label = comp_meta.SeasonLabels[comp_meta.Seasons.indexOf(season)];
+
                 fetchCompSeasonData();
                 updateTitle();
                 history.replaceState(null, '', `?comp=${comp}&season=${season}`);
@@ -55,6 +57,7 @@ const fetchCompSeasonData = function () {
                 updateHiddenColumns();
                 Reactable.setData(reactableId, season_data);
                 prepareChart();
+                updateHighlightTeams();
                 tableLoading(false);
             });
     }
@@ -62,9 +65,9 @@ const fetchCompSeasonData = function () {
 
 const updateTitle = function () {
     if (comp_meta) {
-        document.title = `${comp_meta.Name} Team Statistics - ${season}`;
-        document.querySelector('meta[name="description"]').setAttribute('content', `${comp_meta.Name} team statistics for ${season}.`);
-        document.querySelector('h1').innerText = `${comp_meta.Name} Team Statistics - ${season}`;
+        document.title = `${comp_meta.Name} Team Statistics - ${season_label}`;
+        document.querySelector('meta[name="description"]').setAttribute('content', `${comp_meta.Name} team statistics for ${season_label}.`);
+        document.querySelector('h1').innerText = `${comp_meta.Name} Team Statistics - ${season_label}`;
     }
 }
 
@@ -154,4 +157,30 @@ const updateSeasons = function () {
     }
 
     comp_changed = false;
+}
+
+const updateHighlightTeams = function () {
+    let highlightedTeam = highlightedTeamSelect.value;
+    let inSelection = false;
+
+    highlightedTeamSelect.innerHTML = "";
+
+    if (highlightValueOptions && highlightValueOptions.Team) {
+        const highlightTeams = ["None", ...highlightValueOptions.Team];
+
+        highlightTeams.forEach(element => {
+            const option = document.createElement("option");
+            option.value = element;
+            option.text = element;
+            highlightedTeamSelect.appendChild(option);
+
+            if (element === highlightedTeam) {
+                highlightedTeamSelect.value = element;
+                inSelection = true;
+            }
+        });
+    }
+
+    if (!inSelection) highlightedTeamSelect.value = "Average";
+    if (highlightedTeamSelect.selectedIndex === -1) highlightedTeamSelect.value = "None";
 }
