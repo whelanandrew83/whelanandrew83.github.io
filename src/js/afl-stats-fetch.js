@@ -62,6 +62,7 @@ const fetchCompSeasonData = function () {
             .then((data) => {
                 season_data = data;
                 season_label = comps[comp].SeasonLabels[comps[comp].Seasons.indexOf(season)];
+                season_url = isNaN(season) ? "" : `&Season=${season}`;
                 updateTitle();
                 updateMissingColumns();
                 updateOther();

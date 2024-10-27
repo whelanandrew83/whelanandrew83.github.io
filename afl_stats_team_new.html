@@ -400,9 +400,11 @@ const urlParams = new URLSearchParams(location.search);
 let comp = urlParams.get("comp");
 let season = urlParams.get("season");
 let season_label;
+let season_url;
 
 const dataset = "team_stats";
 const reactableId = "team-stats-table";
+const page_title = "Player Statistics";
 let comps;
 let season_data;
 let comp_changed = true;
@@ -417,7 +419,7 @@ const teamDisplay = function (cellInfo) {
   return cellInfo.row['Image'] && cellInfo.row['Image'] !== "NA" ? `<img src='${cellInfo.row['Image']}' height='15px' width='15px' alt=''> ${cellInfo.row['Abbreviation']}` : cellInfo.row['Abbreviation']
 }
 const teamMatchStatsDisplay = function (cellInfo) {
-  return cellInfo.value && cellInfo.value !== "NA" ? `<a href='afl_match_stats_team.html?ID=${cellInfo.value}&Season=${season}'>View</a>` : ""
+  return cellInfo.value && cellInfo.value !== "NA" ? `<a href='afl_match_stats_team.html?ID=${cellInfo.value}${season_url}'>View</a>` : ""
 }
 </script>
 <div><button id="download-csv-button" class="btn btn-primary btn-sm mx-1">Download as CSV</button></div>

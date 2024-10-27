@@ -55,7 +55,7 @@ const statsColumns = {
         "RatingPoints_Avg": null, "TimeOnGround": null, "Disposals": null, "MetresGained": null, "ContestedPossessions": null, "TotalPossessions": null,
         "CentreClearances": null, "TotalClearances": null, "Marks": null, "ContestedMarks": null, "Goals_Total": null, "Goals_Avg": null, "Tackles": null, "PressureActs": null, "Hitouts": null
     },
-    "General": { "RatingPoints_Avg": "Player Rating", "Supercoach_Avg": "Supercoach Points", "DreamTeamPoints_Avg": "Fantasy Points", "CoachesVotes_Total": "Coaches Votes (Total)", "CoachesVotes_Avg": "Coaches Votes (Average)", "CoachesVotes_MatchesPolled": "Coaches Votes (Matches Polled)", "Brownlow Votes": "BrownlowVotes_Total", "TimeOnGround": "Time On Ground" },
+    "General": { "RatingPoints_Avg": "Player Rating", "Supercoach_Avg": "Supercoach Points", "DreamTeamPoints_Avg": "Fantasy Points", "CoachesVotes_Total": "Coaches Votes (Total)", "CoachesVotes_Avg": "Coaches Votes (Average)", "CoachesVotes_MatchesPolled": "Coaches Votes (Matches Polled)", "BrownlowVotes_Total": "Brownlow Votes", "TimeOnGround": "Time On Ground" },
     "Disposals": {
         "Kicks": "Kicks", "Handballs": "Handballs", "Disposals": "Disposals", "KickPercentage": "Kick %",
         "Inside50s": "Inside 50s", "Rebound50s": "Rebound 50s", "MetresGained": "Metres Gained", "MetresGainedPerDisposal": "Metres Gained Per Disposal"
@@ -264,7 +264,7 @@ const updateTableColumns = function (id = null, custom = false) {
 };
 
 const updateOther = function () {
-    updateTableColumns()
+    updateTableColumns();
 }
 
 const saveButton = document.createElement('button');
