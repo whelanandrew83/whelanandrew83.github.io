@@ -175,7 +175,7 @@ const updateChartColumns = (cols) => {
     if (typeof highlightColumns !== "undefined") {
         chartStatColumns = [...new Set([...chartStatColumns, ...Object.keys(highlightColumns)])]
     }
-    if (typeof highlightColumn !== "undefined") {
+    if (typeof highlightColumn !== "undefined" && highlightColumn) {
         chartStatColumns = [...new Set([...chartStatColumns, highlightColumn])]
     };
     // if (chartStatColumns.indexOf('Selection') >= 0) {
