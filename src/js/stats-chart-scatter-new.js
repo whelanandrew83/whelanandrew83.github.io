@@ -41,8 +41,10 @@ const statHighlight = document.querySelector("#stat-highlight");
 
 let isTableSelect = false;
 
-const updateHighlightOptions = function () {
+const updateHighlightOptions = function (keepSelection = false) {
     if (statHighlight) {
+        let highlightedValue = statHighlight.value;
+
         statHighlight.innerHTML = "";
         let option = document.createElement("option");
         option.value = "";
@@ -62,6 +64,8 @@ const updateHighlightOptions = function () {
                         (highlightColumns[highlightColumn].default === "_min" && col === Math.min(...highlightValueOptions[highlightColumn])) ? true : false;
                 }
                 statHighlight.appendChild(option);
+
+                if (keepSelection && col === highlightedValue) statHighlight.value = col;
             }
         }
     }
@@ -229,7 +233,7 @@ const prepareChart = function () {
             }
         }
 
-        updateHighlightOptions();
+        updateHighlightOptions(true);
         updateChart();
     }
 }
