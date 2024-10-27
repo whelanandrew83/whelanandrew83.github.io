@@ -1,35 +1,46 @@
 const fetchComps = function () {
     if (dataset) {
-        fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/meta.json`)
+        fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/comps.json`)
             .then((res) => res.json())
             .then((data) => {
                 comps = data;
 
-                if (!(comp && comps.CompPaths.includes(comp)))
+                if (!(comp && Object.keys(comps).includes(comp)))
                     comp = "afl"
 
-                fetchCompSeasons();
+                updateCompSeasons();
                 updateComps();
             });
     }
 }
 
-const fetchCompSeasons = function () {
-    if (dataset && comp) {
-        fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/${comp}/meta.json`)
-            .then((res) => res.json())
-            .then((data) => {
-                comp_meta = data;
+const updateCompSeasons = function () {
+    if (comp) {
+        if (!(season && comps[comp].Seasons.includes(season)))
+            season = comps[comp].CurrentSeason[0];
 
-                if (!(season && comp_meta.Seasons.includes(season)))
-                    season = comp_meta.CurrentSeason[0];
-
-                fetchCompSeasonData();
-                history.replaceState(null, '', `?comp=${comp}&season=${season}`);
-                if (comp_changed) updateSeasons();
-            });
+        fetchCompSeasonData();
+        history.replaceState(null, '', `?comp=${comp}&season=${season}`);
+        if (comp_changed) updateSeasons();
     }
 }
+
+// const fetchCompSeasons = function () {
+//     if (dataset && comp) {
+//         fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/${comp}/meta.json`)
+//             .then((res) => res.json())
+//             .then((data) => {
+//                 comp_meta = data;
+
+//                 if (!(season && comp_meta.Seasons.includes(season)))
+//                     season = comp_meta.CurrentSeason[0];
+
+//                 fetchCompSeasonData();
+//                 history.replaceState(null, '', `?comp=${comp}&season=${season}`);
+//                 if (comp_changed) updateSeasons();
+//             });
+//     }
+// }
 
 const updateMissingColumns = function () {
     missing_columns = [];
@@ -50,10 +61,10 @@ const fetchCompSeasonData = function () {
             .then((res) => res.json())
             .then((data) => {
                 season_data = data;
-                season_label = comp_meta.SeasonLabels[comp_meta.Seasons.indexOf(season)];
+                season_label = comps[comp].SeasonLabels[comps[comp].Seasons.indexOf(season)];
                 updateTitle();
                 updateMissingColumns();
-                updateHiddenColumns();
+                updateOther();
                 Reactable.setData(reactableId, season_data);
                 prepareChart();
                 updateHighlightTeams();
@@ -63,10 +74,10 @@ const fetchCompSeasonData = function () {
 }
 
 const updateTitle = function () {
-    if (comp_meta) {
-        document.title = `${comp_meta.Name} Team Statistics - ${season_label}`;
-        document.querySelector('meta[name="description"]').setAttribute('content', `${comp_meta.Name} team statistics for ${season_label}.`);
-        document.querySelector('h1').innerText = `${comp_meta.Name} Team Statistics - ${season_label}`;
+    if (comps && comps[comp]) {
+        document.title = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
+        document.querySelector('meta[name="description"]').setAttribute('content', `${comps[comp].Abbreviation} ${page_title}.toLowerCase() for ${season_label}.`);
+        document.querySelector('h1').innerText = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
     }
 }
 
@@ -86,11 +97,12 @@ const seasonButtons = [];
 const updateComps = function () {
     compSelect.innerHTML = "" //"<b>Competition:</b>";
     if (comps) {
-        comps.CompPaths.forEach((element, index) => {
+        //for (element of [...Object.keys(comps)]) {
+        Object.keys(comps).forEach((element) => {
             button = document.createElement('button');
             button.id = `comp-${element}`;
             button.type = "button";
-            button.innerText = comps.Comps[index];
+            button.innerText = comps[element].Abbreviation;
             if (comp && comp == element)
                 button.classList = "btn btm-sm mx-1 my-2 btn-primary";
             else
@@ -104,7 +116,7 @@ const updateComps = function () {
                 // window.location.href = `${window.location.pathname}?comp=${element}`;
                 history.replaceState(null, '', `?comp=${comp}`);
                 comp_changed = true;
-                fetchCompSeasons();
+                updateCompSeasons();
 
                 for (btn of compButtons) {
                     if (btn.id === `comp-${element}`) {
@@ -115,19 +127,19 @@ const updateComps = function () {
                         btn.classList.remove("btn-primary");
                     }
                 }
-            });
-        });
+            })
+        })
     }
 }
 
 const updateSeasons = function () {
     seasonSelect.innerHTML = "" //"<b>Season:</b>";
-    if (comp_meta) {
-        comp_meta.Seasons.forEach((element, index) => {
+    if (comps && comps[comp]) {
+        comps[comp].Seasons.forEach((element, index) => {
             button = document.createElement('button');
             button.id = `season-${element.replaceAll(".", "-")}`;
             button.type = "button";
-            button.innerText = comp_meta.SeasonLabels[index];
+            button.innerText = comps[comp].SeasonLabels[index];
             if (season && season == element)
                 button.classList = "btn btm-sm mx-1 my-2 btn-primary";
             else
@@ -165,7 +177,7 @@ const updateHighlightTeams = function () {
     highlightedTeamSelect.innerHTML = "";
 
     if (highlightValueOptions && highlightValueOptions.Team) {
-        const highlightTeams = ["None", ...highlightValueOptions.Team];
+        const highlightTeams = ["None", ...highlightValueOptions.Team.sort()];
 
         highlightTeams.forEach(element => {
             const option = document.createElement("option");

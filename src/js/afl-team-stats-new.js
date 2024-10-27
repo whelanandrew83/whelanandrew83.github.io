@@ -24,6 +24,10 @@ const updateHiddenColumns = function () {
     updateView();
 }
 
+const updateOther = function () {
+    updateHiddenColumns()
+}
+
 const updateView = function () {
     Reactable.setHiddenColumns(reactableId, hiddenColumns[currentView]);
 }
