@@ -53,19 +53,21 @@ const updateHighlightOptions = function (keepSelection = false) {
 
         highlightColumn = statHighlightColumn ? statHighlightColumn.value : highlightColumn;
 
-        for (col of highlightValueOptions[highlightColumn].sort()) {
-            if (col) {
-                const option = document.createElement("option");
-                option.value = col;
-                option.text = col;
-                if (typeof highlightColumns !== "undefined" && highlightColumns[highlightColumn].default) {
-                    option.selected = col.toString() === highlightColumns[highlightColumn].default.toString() ||
-                        (highlightColumns[highlightColumn].default === "_max" && col === Math.max(...highlightValueOptions[highlightColumn])) ||
-                        (highlightColumns[highlightColumn].default === "_min" && col === Math.min(...highlightValueOptions[highlightColumn])) ? true : false;
-                }
-                statHighlight.appendChild(option);
+        if (highlightValueOptions[highlightColumn]) {
+            for (col of highlightValueOptions[highlightColumn].sort()) {
+                if (col) {
+                    const option = document.createElement("option");
+                    option.value = col;
+                    option.text = col;
+                    if (typeof highlightColumns !== "undefined" && highlightColumns[highlightColumn].default) {
+                        option.selected = col.toString() === highlightColumns[highlightColumn].default.toString() ||
+                            (highlightColumns[highlightColumn].default === "_max" && col === Math.max(...highlightValueOptions[highlightColumn])) ||
+                            (highlightColumns[highlightColumn].default === "_min" && col === Math.min(...highlightValueOptions[highlightColumn])) ? true : false;
+                    }
+                    statHighlight.appendChild(option);
 
-                if (keepSelection && col === highlightedValue) statHighlight.value = col;
+                    if (keepSelection && col === highlightedValue) statHighlight.value = col;
+                }
             }
         }
     }

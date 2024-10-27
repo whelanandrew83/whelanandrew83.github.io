@@ -71,8 +71,6 @@ const fetchCompSeasonData = function () {
                 updateHighlightTeams();
                 tableLoading(false);
             });
-    } else {
-        location.reload()
     }
 }
 
