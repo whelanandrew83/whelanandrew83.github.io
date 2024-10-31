@@ -117,45 +117,77 @@ filterAdd.addEventListener('click', (e) => {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-ct_handles = {};
-//ct_sharedData = JSON.parse(document.querySelector(`script[data-for='${reactableId}']`).innerHTML).x.tag.attribs.crosstalkGroup;
-let reactableScript = document.querySelector(`script[data-for='${reactableId}']`);
-let ct_sharedData;
+// ct_handles = {};
+// //ct_sharedData = JSON.parse(document.querySelector(`script[data-for='${reactableId}']`).innerHTML).x.tag.attribs.crosstalkGroup;
+// let reactableScript = document.querySelector(`script[data-for='${reactableId}']`);
+// let ct_sharedData;
 
-if (reactableScript)
-    ct_sharedData = JSON.parse(reactableScript.innerHTML).x.tag.attribs.crosstalkGroup;
-else if (typeof ct_sharedData_temp !== 'undefined')
-    ct_sharedData = ct_sharedData_temp;
+// if (reactableScript)
+//     ct_sharedData = JSON.parse(reactableScript.innerHTML).x.tag.attribs.crosstalkGroup;
+// else if (typeof ct_sharedData_temp !== 'undefined')
+//     ct_sharedData = ct_sharedData_temp;
+
+// const filterCustom = function (column, min_value, max_value) {
+//     let handle;
+//     if (ct_handles[column]) {
+//         handle = ct_handles[column];
+//     } else {
+//         handle = new window.crosstalk.FilterHandle(ct_sharedData);
+//         ct_handles[column] = handle;
+//     }
+
+//     if (min_value.length === 0 && max_value.length === 0) {
+//         filterClear(column);
+//     } else {
+//         const filtered = [];
+
+//         for (i = 0; i < Reactable.getInstance(reactableId).data.length; i++) {
+//             const value = Reactable.getInstance(reactableId).data[i][column];
+//             if ((value !== null) && (value >= min_value || min_value.length === 0) && (value <= max_value || max_value.length === 0)) filtered.push(i + 1);
+//         };
+
+//         handle.set(filtered);
+//     }
+// };
+
+// const filterClear = function (column) {
+//     if (ct_handles[column]) ct_handles[column].clear();
+// }
+
+// const filterClearAll = function () {
+//     Object.keys(ct_handles).forEach(key => {
+//         ct_handles[key].clear();
+//     })
+// }
+
+
+const filterRange = function (rows, columnId, filterValue) {
+    const [min, max] = filterValue
+    return rows.filter(row => {
+        const value = row.values[columnId]
+        return (value >= min || min.length === 0) && (value <= max || max.length === 0)
+    })
+}
 
 const filterCustom = function (column, min_value, max_value) {
-    let handle;
-    if (ct_handles[column]) {
-        handle = ct_handles[column];
-    } else {
-        handle = new window.crosstalk.FilterHandle(ct_sharedData);
-        ct_handles[column] = handle;
-    }
-
     if (min_value.length === 0 && max_value.length === 0) {
         filterClear(column);
     } else {
-        const filtered = [];
-
-        for (i = 0; i < Reactable.getInstance(reactableId).data.length; i++) {
-            const value = Reactable.getInstance(reactableId).data[i][column];
-            if ((value !== null) && (value >= min_value || min_value.length === 0) && (value <= max_value || max_value.length === 0)) filtered.push(i + 1);
-        };
-
-        handle.set(filtered);
+        Reactable.setFilter(reactableId, column, [min_value, max_value]);
     }
 };
 
 const filterClear = function (column) {
-    if (ct_handles[column]) ct_handles[column].clear();
+    Reactable.setFilter(reactableId, column, undefined);
 }
 
 const filterClearAll = function () {
-    Object.keys(ct_handles).forEach(key => {
-        ct_handles[key].clear();
-    })
+
 }
+
+
+// function(rows, columnId, filterValue) {
+//     return rows.filter(function (row) {
+//         return row.values[columnId] >= filterValue[0] && row.values[columnId] <= filterValue[1]
+//     })
+// }
