@@ -88,7 +88,7 @@ const statsColumns = {
 
 const filterColumns = {
     'Age': 'Age (at 31 December)',
-    'Matches': 'Matches',
+    'Matches': 'Games',
     'TimeOnGround': 'Time On Ground %',
     'RatingPoints_Avg': 'Player Rating',
     'Supercoach_Avg': 'Supercoach',
@@ -561,7 +561,7 @@ const checkbox = document.querySelector("#showAFLListedPlayers");
 
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
-        Reactable.setFilter(reactableId, "IsAFLListedPlayer", 1)
+        Reactable.setFilter(reactableId, "IsAFLListedPlayer", [1])
     } else {
         Reactable.setFilter(reactableId, "IsAFLListedPlayer", undefined)
     }
