@@ -209,12 +209,17 @@ customStatDivParent.classList = "d-none";
 // filtersDiv.appendChild(statSelectAccordian);
 
 const paraCustomWarning = document.createElement('p');
-paraCustomWarning.classList = "small my-1 text-danger d-none";
+paraCustomWarning.classList = "small my-1 d-none";
 paraCustomWarning.innerHTML = "<b>Custom</b> needs to be selected and <b>Show all</b> needs to be de-selected for custom selections to be reflected."
+
+const paraMissingFieldWarning = document.createElement('p');
+paraMissingFieldWarning.classList = "small my-1 text-danger";
+paraMissingFieldWarning.innerHTML = "Fields in red are not available for the selected competition and season."
 
 statSelectDiv.appendChild(statSelect);
 statSelectDiv.appendChild(customStatDivParent);
 customStatDivParent.appendChild(paraCustomWarning);
+customStatDivParent.appendChild(paraMissingFieldWarning);
 customStatDivParent.appendChild(customStatDiv);
 
 const updateTableColumns = function (id = null, custom = false) {
@@ -402,6 +407,20 @@ const updateOther = function () {
     setUniqueFilterOptions("Position", "#position-select");
     setUniqueFilterOptions("Team", "#team-select");
 
+    try {
+        if (selectedPlayersOnly)
+            Reactable.setFilter(reactableId, "Select", selectedRows)
+        else
+            Reactable.setFilter(reactableId, "Select", undefined)
+    } catch (e) { }
+
+    document.querySelectorAll("#stat-select-custom label").forEach(element => {
+        if (missing_columns.includes(element.dataset.column))
+            element.classList.add("text-danger")
+        else
+            element.classList.remove("text-danger")
+    })
+
     updateFiltersIndicator();
 }
 
@@ -572,6 +591,7 @@ for (c of Object.keys(statsColumns).splice(1)) {
 
         const label = document.createElement('label');
         label.classList = "form-check-label stat-selection-label"
+        label.dataset.column = s;
         label.htmlFor = id;
         label.innerText = statsColumns[c][s];
 

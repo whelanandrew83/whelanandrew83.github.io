@@ -72,7 +72,7 @@ const filterCreate = function (column) {
     divWarning.id = `filter-warning-${columnLower}`;
     divWarning.dataset.column = column;
     divWarning.classList = "d-none";
-    divWarning.innerHTML = `<span class="badge bg-primary bg-danger mb-1">FIELD NOT IN DATASET</span>`
+    divWarning.innerHTML = `<span class="badge bg-primary bg-danger mb-1">DATA NOT AVAILABLE</span>`
 
     const inputGroup = document.createElement('div');
     inputGroup.classList = "input-group input-group-sm";

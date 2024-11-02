@@ -55,6 +55,10 @@ const updateMissingColumns = function () {
 }
 
 const fetchCompSeasonData = function () {
+    let selectedPlayers = [];
+    if (typeof selectedRows !== "undefined" && typeof season_data !== "undefined" && season_data.PlayerId)
+        selectedPlayers = selectedRows.map(x => season_data.PlayerId[x]);
+
     tableLoading(true);
     if (dataset && comp && season) {
         fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/${comp}/${season}.json`)
@@ -65,7 +69,14 @@ const fetchCompSeasonData = function () {
                 season_url = isNaN(season) ? "" : `&Season=${season}`;
                 updateTitle();
                 updateMissingColumns();
+
+                selectedRows = [];
+                if (typeof selectedRows !== "undefined" && typeof season_data !== "undefined" && season_data.PlayerId)
+                    selectedPlayers.forEach(x => {
+                        if (season_data.PlayerId.indexOf(x) > 0) selectedRows.push(season_data.PlayerId.indexOf(x));
+                    });
                 updateOther();
+
                 Reactable.setData(reactableId, season_data);
                 prepareChart();
                 updateHighlightTeams();
