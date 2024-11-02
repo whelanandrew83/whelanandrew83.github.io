@@ -22,12 +22,24 @@ let selectedPlayersOnly = false;
 const toggleSelectionButton = document.querySelector("#toggle-selection-button");
 
 if (toggleSelectionButton) {
-    const selectedPlayersHandle = new window.crosstalk.FilterHandle(toggleSelectionButton.dataset.crosstalkTable);
-    toggleSelectionButton.addEventListener('click', () => {
-        const selectedPlayerKeys = [];
-        selectedRows.forEach(e => { selectedPlayerKeys.push(`${e + 1}`) });
+    if (toggleSelectionButton.dataset && toggleSelectionButton.dataset.crosstalkTable) {
+        const selectedPlayersHandle = new window.crosstalk.FilterHandle(toggleSelectionButton.dataset.crosstalkTable);
+        toggleSelectionButton.addEventListener('click', () => {
+            const selectedPlayerKeys = [];
+            selectedRows.forEach(e => { selectedPlayerKeys.push(`${e + 1}`) });
 
-        selectedPlayersOnly = !selectedPlayersOnly;
-        if (selectedPlayersOnly) selectedPlayersHandle.set(selectedPlayerKeys); else selectedPlayersHandle.clear();
-    });
+            selectedPlayersOnly = !selectedPlayersOnly;
+            if (selectedPlayersOnly) selectedPlayersHandle.set(selectedPlayerKeys); else selectedPlayersHandle.clear();
+        })
+    } else {
+        toggleSelectionButton.addEventListener('click', () => {
+            selectedPlayersOnly = !selectedPlayersOnly;
+            try {
+                if (selectedPlayersOnly)
+                    Reactable.setFilter(reactableId, "Select", selectedRows)
+                else
+                    Reactable.setFilter(reactableId, "Select", undefined)
+            } catch (e) { }
+        })
+    }
 }

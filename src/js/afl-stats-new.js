@@ -176,6 +176,9 @@ statCategoryAccordian.classList.remove('d-none');
 const statCategoryCollapse = document.querySelector('#collapse-stat-categories');
 const statCategoryButton = document.querySelector('#collapse-stat-categories-button');
 
+const playerFilterSelect = document.querySelector('#player-select');
+const positionFilterSelect = document.querySelector('#position-select');
+
 if (playerStatSelections && playerStatSelections.length > 0) {
     statCategoryCollapse.classList.remove("show");
     statCategoryButton.classList.add("collapsed");
@@ -263,8 +266,84 @@ const updateTableColumns = function (id = null, custom = false) {
     }
 };
 
+const filterPlayer = function () {
+    if ($('#player-select')[0].selectize.items.length == 0) {
+        Reactable.setFilter(reactableId, "PlayerId", undefined);
+    } else {
+        Reactable.setFilter(reactableId, "PlayerId", $('#player-select')[0].selectize.items);
+    }
+};
+
+const filterPosition = function () {
+    if ($('#position-select')[0].selectize.items.length == 0) {
+        Reactable.setFilter(reactableId, "Position", undefined);
+    } else {
+        Reactable.setFilter(reactableId, "Position", $('#position-select')[0].selectize.items);
+    }
+};
+
+$('#player-select').selectize({
+    maxItems: null,
+    valueField: 'id',
+    labelField: 'title',
+    searchField: 'title',
+    options: [],
+    onChange: filterPlayer,
+    create: false
+});
+
+$('#position-select').selectize({
+    maxItems: null,
+    valueField: 'title',
+    labelField: 'title',
+    searchField: 'title',
+    options: [],
+    onChange: filterPosition,
+    create: false
+});
+
+const setPlayerFilterOptions = function () {
+    const playerFilterOptions = [];
+    const selectedPlayers = $('#player-select')[0].selectize.items;
+    $('#player-select')[0].selectize.clearOptions();
+
+    if (typeof season_data !== "undefined" && season_data["PlayerId"]) {
+        season_data["PlayerId"].forEach((value, index) => {
+            playerFilterOptions.push({ id: value, title: season_data["Player"][index] })
+        });
+
+        playerFilterOptions.sort((a, b) => a.title.localeCompare(b.title));
+
+        $('#player-select')[0].selectize.addOption(playerFilterOptions);
+        $('#player-select')[0].selectize.addItems(selectedPlayers);
+    }
+}
+
+const setPositionFilterOptions = function () {
+    const positionFilterOptions = [];
+    const selectedPositions = $('#position-select')[0].selectize.items;
+    $('#position-select')[0].selectize.clearOptions();
+
+    if (highlightValueOptions && highlightValueOptions.Position && highlightValueOptions.Position.length > 0) {
+        highlightValueOptions.Position.sort().forEach((value, index) => {
+            positionFilterOptions.push({ id: value, title: value })
+        });
+    } else if (typeof season_data !== "undefined" && season_data["Position"]) {
+        const uniquePositions = new Set(season_data["Position"]);
+        [...uniquePositions].sort().forEach((value) => {
+            positionFilterOptions.push({ id: value, title: value })
+        })
+    }
+
+    $('#position-select')[0].selectize.addOption(positionFilterOptions);
+    $('#position-select')[0].selectize.addItems(selectedPositions);
+}
+
 const updateOther = function () {
     updateTableColumns();
+
+    setPlayerFilterOptions();
+    setPositionFilterOptions();
 }
 
 const saveButton = document.createElement('button');

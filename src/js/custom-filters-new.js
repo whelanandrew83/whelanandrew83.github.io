@@ -169,6 +169,22 @@ const filterRange = function (rows, columnId, filterValue) {
     })
 }
 
+const filterSet = function (rows, columnId, filterValues) {
+    return rows.filter(row => {
+        const value = row.values[columnId];
+        return filterValues.includes(value);
+    })
+}
+
+const filterRowId = function (rows, columnId, filterValues) {
+    filterValues = filterValues.map(String);
+
+    return rows.filter(row => {
+        const value = row.id;
+        return filterValues.includes(value);
+    })
+}
+
 const filterCustom = function (column, min_value, max_value) {
     if (min_value.length === 0 && max_value.length === 0) {
         filterClear(column);
