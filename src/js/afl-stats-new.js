@@ -400,6 +400,15 @@ const setPositionFilterOptions = function () {
 }
 
 const updateOther = function () {
+    if (comps && comps[comp] && comps[comp].IsMatchStats) {
+        if (comps[comp].IsMatchStats == "Yes") {
+            if (missing_columns.indexOf("WebsiteId") >= 0) missing_columns.splice(missing_columns.indexOf("WebsiteId"))
+        } else {
+            missing_columns = new Set([...missing_columns, "WebsiteId"])
+            missing_columns = [...missing_columns]
+        }
+    }
+
     updateTableColumns();
 
     setPlayerFilterOptions();
