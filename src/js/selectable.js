@@ -39,6 +39,8 @@ if (toggleSelectionButton) {
                     Reactable.setFilter(reactableId, "Select", selectedRows)
                 else
                     Reactable.setFilter(reactableId, "Select", undefined)
+
+                if (typeof updateFiltersIndicator !== "undefined") updateFiltersIndicator();
             } catch (e) { }
         })
     }
