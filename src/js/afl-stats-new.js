@@ -29,7 +29,7 @@ if (storageAvailable('localStorage')) {
     playerStatSelections = JSON.parse(localStorage.getItem("playerStatSelections"));
 }
 
-const statsColumnsAll = ["Age_Decimal", "Team", "Image", "RatingPoints_Avg", "Supercoach_Avg",
+const statsColumnsAll = ["PlayerId", "IsAFLListedPlayer", "Age_Decimal", "Team", "Image", "RatingPoints_Avg", "Supercoach_Avg",
     "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "BrownlowVotes_Total", "TimeOnGround", "Kicks", "Handballs", "Disposals",
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
     "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
@@ -87,6 +87,7 @@ const statsColumns = {
 };
 
 const filterColumns = {
+    'Age': 'Age (at 31 December)',
     'Matches': 'Matches',
     'TimeOnGround': 'Time On Ground %',
     'RatingPoints_Avg': 'Player Rating',
@@ -110,7 +111,7 @@ const filterColumns = {
     'Hitouts': 'Hitouts'
 }
 
-const filterColumnsDefault = ['Matches']
+const filterColumnsDefault = ['Age', 'Matches']
 
 /* <h4>Select statistical categories to include in the table</h4>
 <div id="stat-select">
@@ -164,7 +165,7 @@ csvDownloadButton.id = "download-csv-button";
 csvDownloadButton.classList = "btn btn-primary btn-sm mx-1 my-2";
 csvDownloadButton.innerText = "Download as CSV";
 csvDownloadButton.addEventListener('click', (e) => {
-    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["WebsiteId", "Team", "Image"].includes(value) })] });
+    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["PlayerId", "WebsiteId", "Team", "Image", "IsAFLListedPlayer"].includes(value) })] });
     gtag('event', 'data_download');
 });
 // playerStatsDiv.appendChild(csvDownloadButton);
@@ -177,6 +178,7 @@ const statCategoryCollapse = document.querySelector('#collapse-stat-categories')
 const statCategoryButton = document.querySelector('#collapse-stat-categories-button');
 
 const playerFilterSelect = document.querySelector('#player-select');
+const teamFilterSelect = document.querySelector('#team-select');
 const positionFilterSelect = document.querySelector('#position-select');
 
 if (playerStatSelections && playerStatSelections.length > 0) {
@@ -222,7 +224,7 @@ const updateTableColumns = function (id = null, custom = false) {
     if (custom) { customTextSpan.innerText = `(${customSelections} selected)` };
 
     if (selectShowAll.checked) {
-        Reactable.setHiddenColumns('player-stats-table', ["Age_Decimal", "Team", "Image", ...missing_columns]);
+        Reactable.setHiddenColumns('player-stats-table', ["PlayerId", "Age_Decimal", "Team", "Image", "IsAFLListedPlayer", ...missing_columns]);
     } else if (selectCustom.checked) {
         const selectedInputs = document.querySelectorAll("#stat-select-custom input:checked");
 
@@ -274,6 +276,14 @@ const filterPlayer = function () {
     }
 };
 
+const filterTeam = function () {
+    if ($('#team-select')[0].selectize.items.length == 0) {
+        Reactable.setFilter(reactableId, "Team", undefined);
+    } else {
+        Reactable.setFilter(reactableId, "Team", $('#team-select')[0].selectize.items);
+    }
+};
+
 const filterPosition = function () {
     if ($('#position-select')[0].selectize.items.length == 0) {
         Reactable.setFilter(reactableId, "Position", undefined);
@@ -289,6 +299,16 @@ $('#player-select').selectize({
     searchField: 'title',
     options: [],
     onChange: filterPlayer,
+    create: false
+});
+
+$('#team-select').selectize({
+    maxItems: null,
+    valueField: 'title',
+    labelField: 'title',
+    searchField: 'title',
+    options: [],
+    onChange: filterTeam,
     create: false
 });
 
@@ -309,7 +329,7 @@ const setPlayerFilterOptions = function () {
 
     if (typeof season_data !== "undefined" && season_data["PlayerId"]) {
         season_data["PlayerId"].forEach((value, index) => {
-            playerFilterOptions.push({ id: value, title: season_data["Player"][index] })
+            playerFilterOptions.push({ id: value, title: `${season_data["Player"][index]} (${season_data["Abbreviation"][index]})` })
         });
 
         playerFilterOptions.sort((a, b) => a.title.localeCompare(b.title));
@@ -319,31 +339,62 @@ const setPlayerFilterOptions = function () {
     }
 }
 
+const setUniqueFilterOptions = function (columnId, selectId) {
+    const filterOptions = [];
+    const selectedPositions = $(selectId)[0].selectize.items;
+    $(selectId)[0].selectize.clearOptions();
+
+    // if (highlightValueOptions && highlightValueOptions[columnId] && highlightValueOptions[columnId].length > 0 && highlightValueOptions[columnId][0]) {
+    //     highlightValueOptions[columnId].sort().forEach((value, index) => {
+    //         filterOptions.push({ title: value })
+    //     });
+    // }
+    if (typeof season_data !== "undefined" && season_data[columnId]) {
+        const uniquePositions = new Set(season_data[columnId]);
+        [...uniquePositions].sort().forEach((value) => {
+            filterOptions.push({ title: value })
+        })
+    }
+
+    $(selectId)[0].selectize.addOption(filterOptions);
+    if (!missing_columns.includes(columnId))
+        $(selectId)[0].selectize.addItems(selectedPositions);
+
+    if (filterOptions.length == 0)
+        document.querySelector(selectId).parentElement.classList.add("d-none");
+    else
+        document.querySelector(selectId).parentElement.classList.remove("d-none");
+}
+
 const setPositionFilterOptions = function () {
     const positionFilterOptions = [];
     const selectedPositions = $('#position-select')[0].selectize.items;
     $('#position-select')[0].selectize.clearOptions();
 
-    if (highlightValueOptions && highlightValueOptions.Position && highlightValueOptions.Position.length > 0) {
+    if (highlightValueOptions && highlightValueOptions.Position && highlightValueOptions.Position.length > 0 && highlightValueOptions.Position[0]) {
         highlightValueOptions.Position.sort().forEach((value, index) => {
-            positionFilterOptions.push({ id: value, title: value })
+            positionFilterOptions.push({ title: value })
         });
     } else if (typeof season_data !== "undefined" && season_data["Position"]) {
         const uniquePositions = new Set(season_data["Position"]);
         [...uniquePositions].sort().forEach((value) => {
-            positionFilterOptions.push({ id: value, title: value })
+            positionFilterOptions.push({ title: value })
         })
     }
 
     $('#position-select')[0].selectize.addOption(positionFilterOptions);
-    $('#position-select')[0].selectize.addItems(selectedPositions);
+    if (!missing_columns.includes("Position"))
+        $('#position-select')[0].selectize.addItems(selectedPositions);
+
 }
 
 const updateOther = function () {
     updateTableColumns();
 
     setPlayerFilterOptions();
-    setPositionFilterOptions();
+    //setPositionFilterOptions();
+    setUniqueFilterOptions("Position", "#position-select");
+    setUniqueFilterOptions("Team", "#team-select");
 }
 
 const saveButton = document.createElement('button');
@@ -505,3 +556,13 @@ customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom in
 // });
 
 window.addEventListener('DOMContentLoaded', (event) => { updateTableColumns() });
+
+const checkbox = document.querySelector("#showAFLListedPlayers");
+
+checkbox.addEventListener('change', function () {
+    if (checkbox.checked) {
+        Reactable.setFilter(reactableId, "IsAFLListedPlayer", 1)
+    } else {
+        Reactable.setFilter(reactableId, "IsAFLListedPlayer", undefined)
+    }
+});
