@@ -558,6 +558,7 @@ customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom in
 window.addEventListener('DOMContentLoaded', (event) => { updateTableColumns() });
 
 const checkbox = document.querySelector("#showAFLListedPlayers");
+checkbox.checked = false;
 
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
