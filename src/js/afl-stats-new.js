@@ -400,13 +400,11 @@ const setPositionFilterOptions = function () {
 }
 
 const updateOther = function () {
-    if (comps && comps[comp] && comps[comp].IsMatchStats) {
-        if (comps[comp].IsMatchStats[0] == "Yes") {
-            if (missing_columns.indexOf("WebsiteId") >= 0) missing_columns.splice(missing_columns.indexOf("WebsiteId"))
-        } else {
-            missing_columns = new Set([...missing_columns, "WebsiteId"])
-            missing_columns = [...missing_columns]
-        }
+    if (comps && comps[comp] && comps[comp].IsMatchStats && comps[comp].IsMatchStats[0] == "Yes") {
+        if (missing_columns.indexOf("WebsiteId") >= 0) missing_columns.splice(missing_columns.indexOf("WebsiteId"))
+    } else {
+        missing_columns = new Set([...missing_columns, "WebsiteId"])
+        missing_columns = [...missing_columns]
     }
 
     updateTableColumns();
@@ -622,7 +620,7 @@ customTextSpan.innerText = `(${document.querySelectorAll("#stat-select-custom in
 window.addEventListener('DOMContentLoaded', (event) => { updateTableColumns() });
 
 const checkbox = document.querySelector("#showAFLListedPlayers");
-checkbox.checked = false;
+if (checkbox) checkbox.checked = false;
 
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
