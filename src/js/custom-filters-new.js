@@ -58,13 +58,21 @@ customFilterRow.classList = "d-flex flex-wrap";
 customFilterDiv.appendChild(customFilterRow);
 
 const filterCreate = function (column) {
+    const columnLower = column.toLowerCase();
+
     const div = document.createElement('div');
     div.classList = "m-2";
 
     const label = document.createElement('label');
     label.innerText = filterColumns[column];
-    label.for = `filter-min-${column}`;
+    label.for = `filter-min-${columnLower}`;
     label.classList = "form-label fw-bold";
+
+    const divWarning = document.createElement('div');
+    divWarning.id = `filter-warning-${columnLower}`;
+    divWarning.dataset.column = column;
+    divWarning.classList = "d-none";
+    divWarning.innerHTML = `<span class="badge bg-primary bg-danger mb-1">FIELD NOT IN DATASET</span>`
 
     const inputGroup = document.createElement('div');
     inputGroup.classList = "input-group input-group-sm";
@@ -75,7 +83,7 @@ const filterCreate = function (column) {
     inputGroup.appendChild(labelMin);
 
     const valueMin = document.createElement('input');
-    valueMin.id = `filter-min-${column}`;
+    valueMin.id = `filter-min-${columnLower}`;
     valueMin.type = "text";
     valueMin.size = "4";
     inputGroup.appendChild(valueMin);
@@ -86,12 +94,13 @@ const filterCreate = function (column) {
     inputGroup.appendChild(labelMax);
 
     const valueMax = document.createElement('input');
-    valueMax.id = `filter-max-${column}`;
+    valueMax.id = `filter-max-${columnLower}`;
     valueMax.type = "text";
     valueMax.size = "4";
     inputGroup.appendChild(valueMax);
 
     div.appendChild(label);
+    div.appendChild(divWarning);
     div.appendChild(inputGroup);
 
     valueMin.addEventListener('input', () => {
@@ -104,6 +113,8 @@ const filterCreate = function (column) {
     customFilterRow.appendChild(div);
 
     selectOptions.forEach(opt => { if (column === opt.value) opt.disabled = true });
+
+    if (typeof updateFiltersIndicator !== "undefined") updateFiltersIndicator();
 }
 
 filterAdd.addEventListener('click', (e) => {
@@ -163,6 +174,7 @@ filterAdd.addEventListener('click', (e) => {
 
 const filterRange = function (rows, columnId, filterValue) {
     const [min, max] = filterValue
+
     return rows.filter(row => {
         const value = row.values[columnId]
         return (value >= min || min.length === 0) && (value <= max || max.length === 0)
@@ -189,16 +201,22 @@ const filterCustom = function (column, min_value, max_value) {
     if (min_value.length === 0 && max_value.length === 0) {
         filterClear(column);
     } else {
-        Reactable.setFilter(reactableId, column, [min_value, max_value]);
+        if (typeof setFilter !== "undefined")
+            setFilter(column, [min_value, max_value]);
+        else
+            Reactable.setFilter(reactableId, column, [min_value, max_value]);
     }
 };
 
 const filterClear = function (column) {
-    Reactable.setFilter(reactableId, column, undefined);
+    if (typeof setFilter !== "undefined")
+        setFilter(column, undefined);
+    else
+        Reactable.setFilter(reactableId, column, undefined);
 }
 
 const filterClearAll = function () {
-
+    //if (typeof updateFiltersIndicator !== "undefined") updateFiltersIndicator();
 }
 
 

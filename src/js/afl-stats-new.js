@@ -159,6 +159,7 @@ const filterColumnsDefault = ['Age', 'Matches']
 const statSelectDiv = document.querySelector('#stat-select-div');
 // const playerStatsDiv = document.querySelector('#player-stats-div');
 const filtersDiv = document.querySelector("#filters");
+const filtersIndicator = document.querySelector("#filters-indicator");
 
 const csvDownloadButton = document.createElement('button');
 csvDownloadButton.id = "download-csv-button";
@@ -268,27 +269,32 @@ const updateTableColumns = function (id = null, custom = false) {
     }
 };
 
+const setFilter = function (columnId, value) {
+    Reactable.setFilter(reactableId, columnId, value);
+    updateFiltersIndicator();
+}
+
 const filterPlayer = function () {
     if ($('#player-select')[0].selectize.items.length == 0) {
-        Reactable.setFilter(reactableId, "PlayerId", undefined);
+        setFilter("PlayerId", undefined);
     } else {
-        Reactable.setFilter(reactableId, "PlayerId", $('#player-select')[0].selectize.items);
+        setFilter("PlayerId", $('#player-select')[0].selectize.items);
     }
 };
 
 const filterTeam = function () {
     if ($('#team-select')[0].selectize.items.length == 0) {
-        Reactable.setFilter(reactableId, "Team", undefined);
+        setFilter("Team", undefined);
     } else {
-        Reactable.setFilter(reactableId, "Team", $('#team-select')[0].selectize.items);
+        setFilter("Team", $('#team-select')[0].selectize.items);
     }
 };
 
 const filterPosition = function () {
     if ($('#position-select')[0].selectize.items.length == 0) {
-        Reactable.setFilter(reactableId, "Position", undefined);
+        setFilter("Position", undefined);
     } else {
-        Reactable.setFilter(reactableId, "Position", $('#position-select')[0].selectize.items);
+        setFilter("Position", $('#position-select')[0].selectize.items);
     }
 };
 
@@ -395,6 +401,35 @@ const updateOther = function () {
     //setPositionFilterOptions();
     setUniqueFilterOptions("Position", "#position-select");
     setUniqueFilterOptions("Team", "#team-select");
+
+    updateFiltersIndicator();
+}
+
+const updateFiltersIndicator = function () {
+    if (Reactable.getState(reactableId).filters.length) {
+        filtersIndicator.classList.remove("d-none");
+    } else {
+        filtersIndicator.classList.add("d-none");
+    }
+
+    let filterWarnings = false;
+
+    document.querySelectorAll("[id^=filter-warning]").forEach((element) => {
+        if (element && element.dataset.column && missing_columns.includes(element.dataset.column))
+            element.classList.remove("d-none")
+        else
+            element.classList.add("d-none")
+    })
+
+    document.getElementById("filters-indicator-warning").classList.add("d-none");
+
+    Reactable.getState(reactableId).filters.forEach((value) => {
+        if (missing_columns.includes(value.id)) {
+            filterWarnings = true;
+
+            document.getElementById("filters-indicator-warning").classList.remove("d-none")
+        }
+    })
 }
 
 const saveButton = document.createElement('button');
@@ -562,8 +597,8 @@ checkbox.checked = false;
 
 checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
-        Reactable.setFilter(reactableId, "IsAFLListedPlayer", [1])
+        setFilter("IsAFLListedPlayer", [1])
     } else {
-        Reactable.setFilter(reactableId, "IsAFLListedPlayer", undefined)
+        setFilter("IsAFLListedPlayer", undefined)
     }
 });
