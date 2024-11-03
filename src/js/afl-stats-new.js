@@ -93,6 +93,8 @@ const filterColumns = {
     'TimeOnGround': 'Time On Ground %',
     'RatingPoints_Avg': 'Player Rating',
     'Supercoach_Avg': 'Supercoach',
+    'Kicks': 'Kicks',
+    'Handballs': 'Handballs',
     'Disposals': 'Disposals',
     'ContestedPossessions': 'Contested Possessions',
     'CentreBounceAttendancePercentage': 'Centre Bounce Attendance %',
@@ -104,11 +106,15 @@ const filterColumns = {
     'Goals_Total': 'Goals (Total)',
     'Goals_Avg': 'Goals (Average)',
     'GoalAssists': 'Goal Assists',
+    'ContestOffensiveOneOnOnes': 'Offensive One-On-One Contests',
     'ShotsAtGoal': 'Shots at Goal (Average)',
     'xScoreShots': 'Shots at Goal (Total)',
     'xScoreShots_Set': 'Set Shots (Total)',
     'xScoreShots_General': 'General Play Shots (Total)',
+    'ContestDefensiveOneOnOnes': 'Defensive One-On-One Contests',
     'Tackles': 'Tackles',
+    'KickIns': 'Kick-Ins',
+    'RuckContests': 'Ruck Contests',
     'Hitouts': 'Hitouts'
 }
 
