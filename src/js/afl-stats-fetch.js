@@ -46,11 +46,12 @@ const updateMissingColumns = function () {
     missing_columns = [];
 
     if (season_data) {
-        Reactable.getInstance(reactableId).allColumns.forEach((element, index) => {
-            if (!Object.keys(season_data).includes(element.id)) {
-                missing_columns.push(element.id);
-            }
-        })
+        if (typeof reactable_columns !== "undefined")
+            reactable_columns.forEach((element) => {
+                if (!Object.keys(season_data).includes(element)) {
+                    missing_columns.push(element);
+                }
+            })
     }
 }
 
@@ -90,7 +91,7 @@ const updateTitle = function () {
         document.title = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
         document.querySelector('meta[name="description"]').setAttribute('content', `${comps[comp].Abbreviation} ${page_title}.toLowerCase() for ${season_label}.`);
         document.querySelector('h1').innerText = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
-        gtag('event', 'page_view', { 'page_title': document.title });
+        // gtag('event', 'page_view', { 'page_title': document.title });
     }
 }
 
@@ -127,7 +128,7 @@ const updateComps = function () {
             button.addEventListener('click', (e) => {
                 comp = element;
                 // window.location.href = `${window.location.pathname}?comp=${element}`;
-                history.replaceState(null, '', `?comp=${comp}`);
+                // history.replaceState(null, '', `?comp=${comp}`);
                 comp_changed = true;
                 updateCompSeasons();
 

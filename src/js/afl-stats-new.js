@@ -29,7 +29,7 @@ if (storageAvailable('localStorage')) {
     playerStatSelections = JSON.parse(localStorage.getItem("playerStatSelections"));
 }
 
-const statsColumnsAll = ["PlayerId", "IsAFLListedPlayer", "Age_Decimal", "Team", "Image", "RatingPoints_Avg", "Supercoach_Avg",
+const statsColumnsAll = ["RatingPoints_Avg", "Supercoach_Avg",
     "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "BrownlowVotes_Total", "TimeOnGround", "Kicks", "Handballs", "Disposals",
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
     "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
@@ -47,6 +47,8 @@ const statsColumnsAll = ["PlayerId", "IsAFLListedPlayer", "Age_Decimal", "Team",
     "xScoreShots_General", "xScorePerShot_General", "xScoreRatingPerShot_General",
     "KickIns", "KickInPercentage", "KickInsPlayOnPercentage",
     "Bounces", "OnePercenters", "PressureActs", "PressureActsDefensiveHalf", "Spoils"];
+
+const columnsAlwaysHidden = ["PlayerId", "IsAFLListedPlayer", "Age_Decimal", "Team", "Image"];
 
 let statsColumnsAvailable;
 
@@ -166,7 +168,8 @@ csvDownloadButton.id = "download-csv-button";
 csvDownloadButton.classList = "btn btn-primary btn-sm mx-1 my-2";
 csvDownloadButton.innerText = "Download as CSV";
 csvDownloadButton.addEventListener('click', (e) => {
-    Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["PlayerId", "WebsiteId", "Team", "Image", "IsAFLListedPlayer"].includes(value) })] });
+    //Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["PlayerId", "WebsiteId", "Team", "Image", "IsAFLListedPlayer"].includes(value) })] });
+    Reactable.downloadDataCSV('player-stats-table', `${comp}-player-stats-${season}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll] });
     gtag('event', 'data_download');
 });
 // playerStatsDiv.appendChild(csvDownloadButton);
@@ -216,10 +219,28 @@ const paraMissingFieldWarning = document.createElement('p');
 paraMissingFieldWarning.classList = "small my-1 text-danger";
 paraMissingFieldWarning.innerHTML = "Fields in red are not available for the selected competition and season."
 
+const customSelectAllButton = document.createElement('button');
+customSelectAllButton.classList = "btn btn-primary btn-sm mx-1 my-2";
+customSelectAllButton.innerText = "Select All";
+customSelectAllButton.addEventListener('click', () => {
+    document.querySelectorAll("#stat-select-custom input:not(:checked)").forEach((element) => element.checked = true);
+    updateTableColumns(id = null, custom = true)
+});
+
+const customSelectNoneButton = document.createElement('button');
+customSelectNoneButton.classList = "btn btn-primary btn-sm mx-1 my-2";
+customSelectNoneButton.innerText = "Clear All";
+customSelectNoneButton.addEventListener('click', () => {
+    document.querySelectorAll("#stat-select-custom input:checked").forEach((element) => element.checked = false);
+    updateTableColumns(id = null, custom = true)
+});
+
 statSelectDiv.appendChild(statSelect);
 statSelectDiv.appendChild(customStatDivParent);
 customStatDivParent.appendChild(paraCustomWarning);
 customStatDivParent.appendChild(paraMissingFieldWarning);
+customStatDivParent.appendChild(customSelectAllButton);
+customStatDivParent.appendChild(customSelectNoneButton);
 customStatDivParent.appendChild(customStatDiv);
 
 const updateTableColumns = function (id = null, custom = false) {
@@ -230,7 +251,8 @@ const updateTableColumns = function (id = null, custom = false) {
     if (custom) { customTextSpan.innerText = `(${customSelections} selected)` };
 
     if (selectShowAll.checked) {
-        Reactable.setHiddenColumns('player-stats-table', ["PlayerId", "Age_Decimal", "Team", "Image", "IsAFLListedPlayer", ...missing_columns]);
+        //Reactable.setHiddenColumns('player-stats-table', ["PlayerId", "Age_Decimal", "Team", "Image", "IsAFLListedPlayer", ...missing_columns]);
+        Reactable.setHiddenColumns('player-stats-table', [...columnsAlwaysHidden, ...missing_columns]);
     } else if (selectCustom.checked) {
         const selectedInputs = document.querySelectorAll("#stat-select-custom input:checked");
 
@@ -238,7 +260,7 @@ const updateTableColumns = function (id = null, custom = false) {
             showColumns = [...showColumns, input.value];
         }
 
-        Reactable.setHiddenColumns('player-stats-table', [...statsColumnsAll.filter((el) => !showColumns.includes(el)), ...missing_columns]);
+        Reactable.setHiddenColumns('player-stats-table', [...statsColumnsAll.filter((el) => !showColumns.includes(el)), ...columnsAlwaysHidden, ...missing_columns]);
     } else if (!custom) {
         const selectedInputs = document.querySelectorAll("#stat-select input:checked");
 
@@ -246,7 +268,7 @@ const updateTableColumns = function (id = null, custom = false) {
             showColumns = [...showColumns, ...Object.keys(statsColumns[input.value])];
         }
 
-        Reactable.setHiddenColumns('player-stats-table', [...statsColumnsAll.filter((el) => !showColumns.includes(el)), ...missing_columns]);
+        Reactable.setHiddenColumns('player-stats-table', [...statsColumnsAll.filter((el) => !showColumns.includes(el)), ...columnsAlwaysHidden, ...missing_columns]);
     }
 
     if (selectShowAll.checked || !selectCustom.checked) {
@@ -410,9 +432,8 @@ const updateOther = function () {
     updateTableColumns();
 
     setPlayerFilterOptions();
-    //setPositionFilterOptions();
-    setUniqueFilterOptions("Position", "#position-select");
     setUniqueFilterOptions("Team", "#team-select");
+    setUniqueFilterOptions("Position", "#position-select");
 
     try {
         if (selectedPlayersOnly)
