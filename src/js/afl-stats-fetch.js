@@ -19,9 +19,9 @@ const updateCompSeasons = function () {
         if (!(season && comps[comp].Seasons.includes(season)))
             season = comps[comp].CurrentSeason[0];
 
+        history.replaceState(null, '', `?comp=${comp}&season=${season}`);
         updateTitle();
         fetchCompSeasonData();
-        history.replaceState(null, '', `?comp=${comp}&season=${season}`);
         if (comp_changed) updateSeasons();
     }
 }
@@ -91,7 +91,7 @@ const updateTitle = function () {
         document.title = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
         document.querySelector('meta[name="description"]').setAttribute('content', `${comps[comp].Abbreviation} ${page_title}.toLowerCase() for ${season_label}.`);
         document.querySelector('h1').innerText = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
-        // gtag('event', 'page_view', { 'page_title': document.title });
+        gtag('event', 'page_view');
     }
 }
 
