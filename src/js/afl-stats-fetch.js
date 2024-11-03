@@ -68,7 +68,7 @@ const fetchCompSeasonData = function () {
             .then((data) => {
                 season_data = data;
                 season_url = isNaN(season) ? "" : `&Season=${season}`;
-                gtag('event', 'page_view');
+                //gtag('event', 'page_view');
                 updateMissingColumns();
 
                 selectedRows = [];
