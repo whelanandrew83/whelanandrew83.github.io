@@ -19,6 +19,7 @@ const updateCompSeasons = function () {
         if (!(season && comps[comp].Seasons.includes(season)))
             season = comps[comp].CurrentSeason[0];
 
+        updateTitle();
         fetchCompSeasonData();
         history.replaceState(null, '', `?comp=${comp}&season=${season}`);
         if (comp_changed) updateSeasons();
@@ -66,9 +67,7 @@ const fetchCompSeasonData = function () {
             .then((res) => res.json())
             .then((data) => {
                 season_data = data;
-                season_label = comps[comp].SeasonLabels[comps[comp].Seasons.indexOf(season)];
                 season_url = isNaN(season) ? "" : `&Season=${season}`;
-                updateTitle();
                 updateMissingColumns();
 
                 selectedRows = [];
@@ -87,7 +86,8 @@ const fetchCompSeasonData = function () {
 }
 
 const updateTitle = function () {
-    if (comps && comps[comp]) {
+    if (comps && comps[comp] && season) {
+        season_label = comps[comp].SeasonLabels[comps[comp].Seasons.indexOf(season)];
         document.title = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
         document.querySelector('meta[name="description"]').setAttribute('content', `${comps[comp].Abbreviation} ${page_title}.toLowerCase() for ${season_label}.`);
         document.querySelector('h1').innerText = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
