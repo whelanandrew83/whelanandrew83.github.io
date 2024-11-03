@@ -68,6 +68,7 @@ const fetchCompSeasonData = function () {
             .then((data) => {
                 season_data = data;
                 season_url = isNaN(season) ? "" : `&Season=${season}`;
+                gtag('event', 'page_view');
                 updateMissingColumns();
 
                 selectedRows = [];
@@ -91,7 +92,6 @@ const updateTitle = function () {
         document.title = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
         document.querySelector('meta[name="description"]').setAttribute('content', `${comps[comp].Abbreviation} ${page_title}.toLowerCase() for ${season_label}.`);
         document.querySelector('h1').innerText = `${comps[comp].Abbreviation} ${page_title} - ${season_label}`;
-        gtag('event', 'page_view');
     }
 }
 
