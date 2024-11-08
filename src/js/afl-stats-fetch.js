@@ -1,3 +1,5 @@
+let season_data_saved = {}
+
 const fetchComps = function () {
     if (dataset) {
         fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/comps.json`)
@@ -57,16 +59,20 @@ const updateMissingColumns = function () {
 }
 
 const fetchCompSeasonData = function () {
+    tableLoading(true);
+
     let selectedPlayers = [];
     if (typeof selectedRows !== "undefined" && typeof season_data !== "undefined" && season_data.PlayerId)
         selectedPlayers = selectedRows.map(x => season_data.PlayerId[x]);
 
-    tableLoading(true);
     if (dataset && comp && season) {
         fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/${comp}/${season}.json`)
             .then((res) => res.json())
             .then((data) => {
                 season_data = data;
+                if (!season_data_saved[comp]) season_data_saved[comp] = {}
+                season_data_saved[comp][season] = season_data
+
                 season_url = isNaN(season) ? "" : `&Season=${season}`;
                 updateMissingColumns();
 
@@ -79,7 +85,7 @@ const fetchCompSeasonData = function () {
 
                 Reactable.setData(reactableId, season_data);
                 prepareChart();
-                updateHighlightTeams();
+                //updateHighlightTeams();
                 tableLoading(false);
             });
     }
@@ -183,28 +189,28 @@ const updateSeasons = function () {
     comp_changed = false;
 }
 
-const updateHighlightTeams = function () {
-    let highlightedTeam = highlightedTeamSelect.value;
-    let inSelection = false;
+// const updateHighlightTeams = function () {
+//     let highlightedTeam = highlightedTeamSelect.value;
+//     let inSelection = false;
 
-    highlightedTeamSelect.innerHTML = "";
+//     highlightedTeamSelect.innerHTML = "";
 
-    if (highlightValueOptions && highlightValueOptions.Team) {
-        const highlightTeams = ["None", ...highlightValueOptions.Team.sort()];
+//     if (highlightValueOptions && highlightValueOptions.Team) {
+//         const highlightTeams = ["None", ...highlightValueOptions.Team.sort()];
 
-        highlightTeams.forEach(element => {
-            const option = document.createElement("option");
-            option.value = element;
-            option.text = element;
-            highlightedTeamSelect.appendChild(option);
+//         highlightTeams.forEach(element => {
+//             const option = document.createElement("option");
+//             option.value = element;
+//             option.text = element;
+//             highlightedTeamSelect.appendChild(option);
 
-            if (element === highlightedTeam) {
-                highlightedTeamSelect.value = element;
-                inSelection = true;
-            }
-        });
-    }
+//             if (element === highlightedTeam) {
+//                 highlightedTeamSelect.value = element;
+//                 inSelection = true;
+//             }
+//         });
+//     }
 
-    if (!inSelection) highlightedTeamSelect.value = "Average";
-    if (highlightedTeamSelect.selectedIndex === -1) highlightedTeamSelect.value = "None";
-}
+//     if (!inSelection) highlightedTeamSelect.value = "Average";
+//     if (highlightedTeamSelect.selectedIndex === -1) highlightedTeamSelect.value = "None";
+// }
