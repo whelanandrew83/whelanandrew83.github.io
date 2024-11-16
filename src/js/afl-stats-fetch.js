@@ -123,9 +123,9 @@ const updateComps = function () {
             button.type = "button";
             button.innerText = comps[element].Abbreviation;
             if (comp && comp == element)
-                button.classList = "btn btm-sm mx-1 my-2 btn-primary";
+                button.classList = "btn btm-sm mx-1 my-2 px-2 btn-primary";
             else
-                button.classList = "btn btm-sm mx-1 my-2 btn-light";
+                button.classList = "btn btm-sm mx-1 my-2 px-2 btn-light";
 
             compSelect.appendChild(button);
             compButtons.push(button);
@@ -160,9 +160,9 @@ const updateSeasons = function () {
             button.type = "button";
             button.innerText = comps[comp].SeasonLabels[index];
             if (season && season == element)
-                button.classList = "btn btm-sm mx-1 my-2 btn-primary";
+                button.classList = "btn btm-sm mx-1 my-2 px-2 btn-primary";
             else
-                button.classList = "btn btm-sm mx-1 my-2 btn-light";
+                button.classList = "btn btm-sm mx-1 my-2 px-2 btn-light";
 
             seasonSelect.appendChild(button);
             seasonButtons.push(button);

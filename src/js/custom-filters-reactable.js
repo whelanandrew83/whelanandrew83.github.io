@@ -29,17 +29,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     Object.keys(filterColumns).forEach(key => {
         if (
             (typeof ignoreFilterInDataset !== 'undefined' && ignoreFilterInDataset)
-            || (Object.keys(Reactable.getInstance(reactableId).data[0]).includes(key))) {
+            || (Object.keys(Reactable.getInstance(reactableId).data[0]).includes(key))
+        ) {
             //if (columnIds.includes(key)) {
-            if (typeof filterColumnsDefault !== 'undefined' && filterColumnsDefault.includes(key)) {
-                filterCreate(key);
-            } else {
-                filterOption = document.createElement("option");
-                filterOption.value = key;
-                filterOption.text = filterColumns[key];
-                selectOptions.push(filterOption);
-                filterSelect.appendChild(filterOption);
-            }
+            // if (typeof filterColumnsDefault !== 'undefined' && filterColumnsDefault.includes(key)) {
+            //     filterCreate(key, true);
+            // } else {
+            filterOption = document.createElement("option");
+            filterOption.value = key;
+            filterOption.text = filterColumns[key];
+            selectOptions.push(filterOption);
+            filterSelect.appendChild(filterOption);
+
+            if (typeof filterColumnsDefault !== 'undefined' && filterColumnsDefault.includes(key)) filterCreate(key);
+            // }
         } else {
             delete filterColumns[key];
         }
@@ -98,6 +101,17 @@ const filterCreate = function (column) {
     valueMax.type = "text";
     valueMax.size = "4";
     inputGroup.appendChild(valueMax);
+
+    const removeFilter = document.createElement('button');
+    removeFilter.type = "button";
+    removeFilter.classList = "btn-close small";
+    div.appendChild(removeFilter);
+
+    removeFilter.addEventListener('click', () => {
+        filterCustom(column, "", "");
+        selectOptions.forEach(opt => { if (column === opt.value) opt.disabled = false });
+        div.remove();
+    })
 
     div.appendChild(label);
     div.appendChild(divWarning);
