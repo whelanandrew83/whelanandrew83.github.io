@@ -45,3 +45,20 @@ if (toggleSelectionButton) {
         })
     }
 }
+
+const toggleSelectionCheckbox = document.querySelector("#toggle-selected-players");
+if (toggleSelectionCheckbox) toggleSelectionCheckbox.checked = false;
+
+if (!toggleSelectionButton && toggleSelectionCheckbox) {
+    toggleSelectionCheckbox.addEventListener('change', () => {
+        selectedPlayersOnly = !selectedPlayersOnly;
+        try {
+            if (selectedPlayersOnly)
+                Reactable.setFilter(reactableId, "Select", selectedRows)
+            else
+                Reactable.setFilter(reactableId, "Select", undefined)
+
+            if (typeof updateFiltersIndicator !== "undefined") updateFiltersIndicator();
+        } catch (e) { }
+    })
+}
