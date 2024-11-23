@@ -89,6 +89,16 @@ const fetchCompSeasonData = function () {
                     });
                 updateOther();
 
+                if (typeof seasonMeta !== "undefined") {
+                    if (season_metadata && season_metadata["LatestGames"] && season_metadata["LatestGames"].length) {
+                        seasonMeta.innerHTML = `<b>Latest game(s):</b> ${season_metadata["LatestGames"]}`
+                        seasonMeta.classList.remove("d-none");
+                    } else {
+                        seasonMeta.innerHTML = "";
+                        seasonMeta.classList.add("d-none");
+                    }
+                }
+
                 Reactable.setData(reactableId, season_data);
                 prepareChart();
                 //updateHighlightTeams();

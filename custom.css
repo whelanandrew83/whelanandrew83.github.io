@@ -424,3 +424,11 @@ ul.nav.navbar-nav>li>a {
 .stat-selection-label {
   min-width: 200px;
 }
+
+.message {
+  background-color: #F6F1F9;
+  font-size: .875em;
+  padding: 5px 10px;
+  margin-bottom: 1rem;
+  border: solid 1px #cbc8d0;
+}
