@@ -89,9 +89,16 @@ const fetchCompSeasonData = function () {
                     });
                 updateOther();
 
+                let seasonMetaText = "";
                 if (typeof seasonMeta !== "undefined") {
-                    if (season_metadata && season_metadata["LatestGames"] && season_metadata["LatestGames"].length) {
-                        seasonMeta.innerHTML = `<b>Latest game(s):</b> ${season_metadata["LatestGames"]}`
+                    if (season_metadata && season_metadata["Notes"])
+                        seasonMetaText = `<p>${season_metadata["Notes"][0]}</p>`;
+
+                    if (season_metadata && season_metadata["LatestGames"])
+                        seasonMetaText = `${seasonMetaText}<p><b>Latest game(s):</b> ${season_metadata["LatestGames"][0]}</p>`;
+
+                    if (seasonMetaText) {
+                        seasonMeta.innerHTML = seasonMetaText
                         seasonMeta.classList.remove("d-none");
                     } else {
                         seasonMeta.innerHTML = "";

@@ -432,3 +432,7 @@ ul.nav.navbar-nav>li>a {
   margin-bottom: 1rem;
   border: solid 1px #cbc8d0;
 }
+
+.message p {
+  margin-bottom: 0;
+}
