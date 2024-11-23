@@ -69,7 +69,13 @@ const fetchCompSeasonData = function () {
         fetch(`https://www.wheeloratings.com/src/afl_stats/${dataset}/${comp}/${season}.json`)
             .then((res) => res.json())
             .then((data) => {
-                season_data = data;
+                if (Object.keys(data).includes("Data"))
+                    season_data = data.Data;
+                else
+                    season_data = data;
+                if (Object.keys(data).includes("Metadata"))
+                    season_metadata = data.Metadata;
+
                 if (!season_data_saved[comp]) season_data_saved[comp] = {}
                 season_data_saved[comp][season] = season_data
 
