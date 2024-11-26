@@ -30,7 +30,7 @@ if (storageAvailable('localStorage')) {
 }
 
 const statsColumnsAll = ["RatingPoints_Avg", "Supercoach_Avg",
-    "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "BrownlowVotes_Total", "TimeOnGround", "Kicks", "Handballs", "Disposals",
+    "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "BnFVotes_Total", "TimeOnGround", "Kicks", "Handballs", "Disposals",
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
     "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
     "ContestedPossessions", "UncontestedPossessions", "TotalPossessions", "ContestedPossessionRate", "Intercepts",
@@ -56,7 +56,7 @@ const statsColumns = {
         "RatingPoints_Avg": null, "TimeOnGround": null, "Disposals": null, "MetresGained": null, "ContestedPossessions": null, "TotalPossessions": null,
         "CentreClearances": null, "TotalClearances": null, "Marks": null, "ContestedMarks": null, "Goals_Total": null, "Goals_Avg": null, "Tackles": null, "PressureActs": null, "Hitouts": null
     },
-    "General": { "RatingPoints_Avg": "Player Rating", "Supercoach_Avg": "Supercoach Points", "DreamTeamPoints_Avg": "Fantasy Points", "CoachesVotes_Total": "Coaches Votes (Total)", "CoachesVotes_Avg": "Coaches Votes (Average)", "CoachesVotes_MatchesPolled": "Coaches Votes (Matches Polled)", "BrownlowVotes_Total": "Brownlow Votes", "TimeOnGround": "Time On Ground" },
+    "General": { "RatingPoints_Avg": "Player Rating", "Supercoach_Avg": "Supercoach Points", "DreamTeamPoints_Avg": "Fantasy Points", "CoachesVotes_Total": "Coaches Votes (Total)", "CoachesVotes_Avg": "Coaches Votes (Average)", "CoachesVotes_MatchesPolled": "Coaches Votes (Matches Polled)", "BnFVotes_Total": "B&F Votes", "TimeOnGround": "Time On Ground" },
     "Disposals": {
         "Kicks": "Kicks", "Handballs": "Handballs", "Disposals": "Disposals", "KickPercentage": "Kick %",
         "Inside50s": "Inside 50s", "Rebound50s": "Rebound 50s", "MetresGained": "Metres Gained", "MetresGainedPerDisposal": "Metres Gained Per Disposal"
