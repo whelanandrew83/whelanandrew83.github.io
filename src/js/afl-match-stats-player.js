@@ -12,7 +12,7 @@ let player_data = "";
 let season;
 let reactableData;
 
-if (paramSeason) { season = parseInt(paramSeason) }
+if (paramSeason) { season = parseFloat(paramSeason).toString() }
 
 const columns = [];
 const columnsMissing = [];
@@ -91,7 +91,7 @@ if (player) {
             if (player_data) {
                 reactableData = JSON.parse(JSON.stringify(player_data.Data));
 
-                if (typeof reactableData.Season === "number") {
+                if (typeof reactableData.Season === "string") {
                     for (k of Object.keys(reactableData)) {
                         reactableData[k] = [reactableData[k]];
                     }

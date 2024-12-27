@@ -17,7 +17,7 @@ let season;
 let reactableData;
 let ct_sharedData_temp;
 
-if (paramSeason) { season = parseInt(paramSeason) }
+if (paramSeason) { season = parseFloat(paramSeason).toString() }
 
 const columns = [];
 const columnsMissing = [];
@@ -155,7 +155,7 @@ if (player) {
 
                 reactableData = JSON.parse(JSON.stringify(player_data.TeamData[0]));
 
-                if (typeof reactableData.Season === "number") {
+                if (typeof reactableData.Season === "string") {
                     for (k of Object.keys(reactableData)) {
                         reactableData[k] = [reactableData[k]];
                     }
