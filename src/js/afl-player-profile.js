@@ -1,5 +1,5 @@
 const tableDataUrl = 'https://www.wheeloratings.com/src/player_profiles/table_data';
-const profileUrl = "afl_player_profile.html?ID";
+const profileUrl = "afl_player_profile.html?id";
 let excludeRows = 1;
 
 const compareColumns = {

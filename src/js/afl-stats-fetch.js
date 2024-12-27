@@ -79,7 +79,7 @@ const fetchCompSeasonData = function () {
                 if (!season_data_saved[comp]) season_data_saved[comp] = {}
                 season_data_saved[comp][season] = season_data
 
-                season_url = isNaN(season) ? "" : `&Season=${season}`;
+                season_url = isNaN(season) ? "" : `&season=${season}`;
                 updateMissingColumns();
 
                 selectedRows = [];

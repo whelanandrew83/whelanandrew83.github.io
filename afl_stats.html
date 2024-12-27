@@ -445,12 +445,12 @@ const seasonMeta = document.querySelector("#season-meta")
 
 const playerDisplay = function (cellInfo) {
     const img = cellInfo.row['Image'] && cellInfo.row['Image'] !== "NA" ? `<img src='${cellInfo.row['Image']}' height='15px' width='15px' alt=''> ` : ""
-    const link = cellInfo.row['WebsiteId'] && cellInfo.row['WebsiteId'] !== "NA" ? `<a href='afl_player_profile.html?ID=${cellInfo.row['WebsiteId']}'>${cellInfo.row['Player']}</a>` : cellInfo.row['Player']
+    const link = cellInfo.row['WebsiteId'] && cellInfo.row['WebsiteId'] !== "NA" ? `<a href='afl_player_profile.html?id=${cellInfo.row['WebsiteId']}'>${cellInfo.row['Player']}</a>` : cellInfo.row['Player']
     
     return `${img}${link}`
 }
 const matchStatsDisplay = function (cellInfo) {
-  return cellInfo.value && cellInfo.value !== "NA" ? `<a href='afl_match_stats_player.html?ID=${cellInfo.value}${season_url}'>View</a>` : ""
+  return cellInfo.value && cellInfo.value !== "NA" ? `<a href='afl_match_stats_player.html?id=${cellInfo.value}${season_url}'>View</a>` : ""
 }
 const columnClass = function(rowInfo, column, state) {
   if (column.id !== 'Player' && column.id !== 'Position') {

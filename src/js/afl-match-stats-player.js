@@ -1,6 +1,8 @@
 const urlParams = new URLSearchParams(location.search);
-const player = urlParams.get("ID");
-const paramSeason = urlParams.get("Season");
+let player = urlParams.get("id");
+if (!player) player = urlParams.get("ID");
+let paramSeason = urlParams.get("season");
+if (!paramSeason) paramSeason = urlParams.get("Season");
 
 const h1 = document.querySelector("h1");
 const h2 = document.querySelector("h2");
@@ -54,7 +56,7 @@ const filterColumns = {
 }
 
 const matchDisplay = function (cellInfo) {
-    return `<a href='afl_match_stats.html?ID=${cellInfo.row['MatchId']}'>View</a>`
+    return `<a href='afl_match_stats.html?id=${cellInfo.row['MatchId']}'>View</a>`
 }
 
 const noValidPlayer = function () {
@@ -63,7 +65,7 @@ const noValidPlayer = function () {
 }
 
 if (player) {
-    document.querySelector("#profile-link").href = `afl_player_profile.html?ID=${player}`;
+    document.querySelector("#profile-link").href = `afl_player_profile.html?id=${player}`;
 
     const xmlhttp = new XMLHttpRequest();
     const url = `https://www.wheeloratings.com/src/match_stats_player/table_data/${player.slice(-2)}.json`;
@@ -154,7 +156,7 @@ if (player) {
                 button.addEventListener('click', (e) => {
                     season = null;
                     Reactable.setFilter('match-stats', 'Season', undefined);
-                    history.replaceState(null, '', `afl_match_stats_player.html?ID=${player}`);
+                    history.replaceState(null, '', `afl_match_stats_player.html?id=${player}`);
 
                     for (btn of seasonButtons) {
                         if (btn.id === `season-${season}` || (!season && btn.id === "season-All")) {
@@ -185,7 +187,7 @@ if (player) {
                         season = s;
                         Reactable.setFilter('match-stats', 'Season', undefined);
                         Reactable.setFilter('match-stats', 'Season', `${season}`);
-                        history.replaceState(null, '', `afl_match_stats_player.html?ID=${player}&Season=${season}`);
+                        history.replaceState(null, '', `afl_match_stats_player.html?id=${player}&season=${season}`);
 
                         for (btn of seasonButtons) {
                             if (btn.id === `season-${season}`) {
@@ -225,7 +227,7 @@ if (player) {
                 // cell.innerHTML = `${player_data.Summary.DebutSeason} v ${player_data.Summary.DebutOpposition}`;
 
                 // if (parseInt(player_data.Summary.DebutMatchId)) {
-                //     cell.innerHTML += ` (<a href='afl_match_stats.html?ID=${parseInt(player_data.Summary.DebutMatchId)}'>Match stats</a>)`;
+                //     cell.innerHTML += ` (<a href='afl_match_stats.html?id=${parseInt(player_data.Summary.DebutMatchId)}'>Match stats</a>)`;
                 // }
 
                 // row = tbody.insertRow();
@@ -237,7 +239,7 @@ if (player) {
                 // cell.innerHTML = `${player_data.Summary.LastMatchSeason} v ${player_data.Summary.LastMatchOpposition}`;
 
                 // if (parseInt(player_data.Summary.LastMatchId)) {
-                //     cell.innerHTML += ` (<a href='afl_match_stats.html?ID=${parseInt(player_data.Summary.LastMatchId)}'>Match stats</a>)`;
+                //     cell.innerHTML += ` (<a href='afl_match_stats.html?id=${parseInt(player_data.Summary.LastMatchId)}'>Match stats</a>)`;
                 // }
 
                 // row = tbody.insertRow();

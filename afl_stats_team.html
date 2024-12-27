@@ -427,7 +427,7 @@ const teamDisplay = function (cellInfo) {
   return cellInfo.row['Image'] && cellInfo.row['Image'] !== "NA" ? `<img src='${cellInfo.row['Image']}' height='15px' width='15px' alt=''> ${cellInfo.row['Abbreviation']}` : cellInfo.row['Abbreviation']
 }
 const teamMatchStatsDisplay = function (cellInfo) {
-  return cellInfo.value && cellInfo.value !== "NA" ? `<a href='afl_match_stats_team.html?ID=${cellInfo.value}${season_url}'>View</a>` : ""
+  return cellInfo.value && cellInfo.value !== "NA" ? `<a href='afl_match_stats_team.html?id=${cellInfo.value}${season_url}'>View</a>` : ""
 }
 const columnClass = function(rowInfo, column, state) {
   if (column.id !== 'Team') {
