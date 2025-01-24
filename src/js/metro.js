@@ -81,10 +81,10 @@ let view;
 
 const setView = function () {
     if (view === "stops") {
-        stopsTable.classList.remove("d-none");
+        stopsTableDiv.classList.remove("d-none");
         stopsDisplayDiv.classList.add("d-none");
     } else if (view === "stops-display") {
-        stopsTable.classList.add("d-none");
+        stopsTableDiv.classList.add("d-none");
         stopsDisplayTable.classList.remove("d-none");
         stopsDisplayDiv.classList.remove("d-none");
     }
@@ -93,6 +93,7 @@ const setView = function () {
 mainViewDiv = document.getElementById("main-view");
 
 stopsTable = document.getElementById("stops-table");
+stopsTableDiv = document.getElementById("stops-table-view");
 favouriteStopsDiv = document.getElementById("favourite-stops-view");
 
 stopsDisplayDiv = document.getElementById("stops-display");
@@ -125,7 +126,6 @@ const stopsLoading = function (loading = true, error = false) {
         refreshButton.disabled = true;
         //refreshError.classList.add("d-none");
         refreshIcon.classList.remove("d-none");
-        stopsDisplayTable.classList.add("d-none");
     } else {
         refreshButtonText.innerText = "Refresh";
         refreshButton.disabled = false;
@@ -134,8 +134,6 @@ const stopsLoading = function (loading = true, error = false) {
             //refreshError.classList.remove("d-none");
         } else {
             //refreshError.classList.add("d-none");
-            stopsDisplayDiv.classList.remove("d-none");
-            stopsDisplayTable.classList.remove("d-none");
         }
     }
 }
@@ -176,6 +174,8 @@ const fetchStops = function () {
                 setView();
                 pageLoading(false);
             });
+    } else {
+        setView();
     }
 }
 
@@ -210,9 +210,9 @@ const fetchStopDisplay = function () {
         scheduledTimeNext: [],
         isEstimateNext: []
     }
-    try { Reactable.setData("stops-display-table", stopDisplay); } catch (error) { };
+    //try { Reactable.setData("stops-display-table", stopDisplay); } catch (error) { };
 
-    stopsTable.classList.add("d-none");
+    stopsTableDiv.classList.add("d-none");
 
     if (stop)
         fetch(`https://tas.mattersoft.fi/timetable/rest/stopdisplays/${stop}`)
@@ -234,7 +234,7 @@ const fetchStopDisplay = function () {
                     stopDisplay.destination.push(stopVisit.directionOfLine.destinationName);
                     if (stopVisit.stopVisits[0].estimatedMinutesUntilDeparture == null) {
                         stopDisplay.scheduledDuration.push(stopVisit.stopVisits[0].scheduledMinutesUntilDeparture);
-                        stopDisplay.scheduledTime.push(formatTime(stopVisit.stopVisits[0].scheduledArrivalTime));
+                        stopDisplay.scheduledTime.push(formatTime(stopVisit.stopVisits[0].scheduledDepartureTime));
                         stopDisplay.isEstimate.push(0);
                         stopDisplay.delay.push(null);
                     } else {
@@ -247,7 +247,7 @@ const fetchStopDisplay = function () {
                     if (stopVisit.stopVisits.length > 1) {
                         if (stopVisit.stopVisits[1].estimatedMinutesUntilDeparture == null) {
                             stopDisplay.scheduledDurationNext.push(stopVisit.stopVisits[1].scheduledMinutesUntilDeparture);
-                            stopDisplay.scheduledTimeNext.push(formatTime(stopVisit.stopVisits[1].scheduledArrivalTime));
+                            stopDisplay.scheduledTimeNext.push(formatTime(stopVisit.stopVisits[1].scheduledDepartureTime));
                             stopDisplay.isEstimateNext.push(0);
                         } else {
                             stopDisplay.scheduledDurationNext.push(stopVisit.stopVisits[1].estimatedMinutesUntilDeparture);
