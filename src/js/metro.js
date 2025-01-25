@@ -24,11 +24,19 @@ function storageAvailable(type) {
 }
 
 let metroFavouriteStops = {};
+let metroDefaultStop;
 
 if (storageAvailable('localStorage')) {
     metroFavouriteStops = JSON.parse(localStorage.getItem("metroFavouriteStops"));
     if (!metroFavouriteStops)
         metroFavouriteStops = {};
+    metroDefaultStop = JSON.parse(localStorage.getItem("metroDefaultStop"));
+    if (!stop) {
+        if (metroDefaultStop)
+            stop = metroDefaultStop;
+        else if (Object.keys(metroFavouriteStops).length > 0)
+            stop = Object.keys(metroFavouriteStops)[0];
+    }
 }
 
 const saveFavouriteStops = function () {
@@ -37,6 +45,15 @@ const saveFavouriteStops = function () {
             localStorage.removeItem("metroFavouriteStops");
         else
             localStorage.setItem("metroFavouriteStops", JSON.stringify(metroFavouriteStops));
+        if (!metroDefaultStop) localStorage.removeItem("metroDefaultStop");
+    }
+}
+
+const saveDefaultStop = function () {
+    if (storageAvailable('localStorage')) {
+        metroDefaultStop = stop_details.id;
+        localStorage.setItem("metroDefaultStop", JSON.stringify(metroDefaultStop));
+        defaultButton.disabled = true;
     }
 }
 
@@ -67,13 +84,16 @@ const addRemoveFavouriteStop = function () {
     if (isFavouriteStop(stop_details.id)) {
         delete metroFavouriteStops[stop_details.id];
         favouriteButton.innerText = "Add Favourite"
+        if (metroDefaultStop && metroDefaultStop === stop_details.id) {
+            metroDefaultStop = null;
+            defaultButton.disabled = false;
+        }
     } else {
         metroFavouriteStops[stop_details.id] = stop_details;
         favouriteButton.innerText = "Remove Favourite"
     }
 
     saveFavouriteStops();
-
     refreshFavouriteView();
 }
 
@@ -110,6 +130,11 @@ const refreshIcon = document.querySelector("#refresh-icon");
 const favouriteButton = document.querySelector("#favourite-button");
 favouriteButton.addEventListener('click', (e) => { addRemoveFavouriteStop() });
 
+const parentStation = document.querySelector("#parent-station");
+
+const defaultButton = document.querySelector("#default-button");
+defaultButton.addEventListener('click', (e) => { saveDefaultStop() });
+
 const pageLoading = function (loading = true) {
     if (loading) {
         mainViewDiv.classList.add("d-none");
@@ -135,6 +160,7 @@ const stopsLoading = function (loading = true, error = false) {
         } else {
             //refreshError.classList.add("d-none");
         }
+        document.getElementById("current-stop").scrollIntoView();
     }
 }
 
@@ -202,6 +228,7 @@ const fetchStopDisplay = function () {
     stopsLoading(true);
 
     stopDisplay = {
+        stopName: [],
         route: [],
         destination: [],
         scheduledDuration: [],
@@ -229,6 +256,18 @@ const fetchStopDisplay = function () {
                     favouriteButton.innerText = "Remove Favourite"
                 else
                     favouriteButton.innerText = "Add Favourite"
+                if (stop === metroDefaultStop)
+                    defaultButton.disabled = true;
+                else
+                    defaultButton.disabled = false;
+                if (stop_details.parentStation) {
+                    parentStation.setAttribute('onclick', `selectStop('${stop_details.parentStation}')`);
+                    parentStation.classList.remove("d-none");
+                } else {
+                    parentStation.setAttribute('onclick', "");
+                    parentStation.classList.add("d-none");
+                }
+                map.setView([stop_details.location.latitude, stop_details.location.longitude], 14);
                 console.log(stop_details);
 
                 data.nextStopVisits.forEach(stopVisit => {
@@ -236,6 +275,8 @@ const fetchStopDisplay = function () {
                     stopDisplay.destination.push(stopVisit.directionOfLine.destinationName);
 
                     let visit = stopVisit.stopVisits[0];
+                    stopDisplay.stopName.push(visit.stopName);
+
                     if (visit.estimatedMinutesUntilDeparture == null) {
                         stopDisplay.scheduledDuration.push(visit.scheduledMinutesUntilDeparture);
                         stopDisplay.scheduledTime.push(formatTime(visit.scheduledDepartureTime));
@@ -291,3 +332,9 @@ document.getElementById("view-stops").addEventListener('click', (e) => {
     view = "stops";
     fetchStops();
 })
+
+var map = L.map('map').setView([-42.9, 147.3], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);

@@ -39,6 +39,12 @@
 <script src="site_libs/selectize-0.12.4/js/selectize.min.js"></script>
 <link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 <link rel="icon" href="favicon.ico" />
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="logo_192.png">
@@ -367,12 +373,21 @@ let stop = urlParams.get("stop");
 let stop_details;
 
 const stopIdDisplay = function (cellInfo) {
-  <!-- return `<button type="button" class="btn btn-primary" onclick="selectStop(${cellInfo.value})">${cellInfo.value}</button>` -->
-  <!-- return `<button class="link-primary" onclick="selectStop(${cellInfo.value})">${cellInfo.value}</button>` -->
+  <!-- return `<button type="button" class="btn btn-primary" onclick="selectStop('${cellInfo.value}')">${cellInfo.value}</button>` -->
+  <!-- return `<button type="button" class="btn btn-link my-0 py-0" onclick="selectStop('${cellInfo.value}')"><small>${cellInfo.value}</small></button>` -->
+  <!-- return `<button class="link-primary" onclick="selectStop('${cellInfo.value}')">${cellInfo.value}</button>` -->
   return `<a href="#" onclick="selectStop('${cellInfo.value}')">${cellInfo.value}</a>`
 }
 const routeDisplay = function (cellInfo) {
-  return `<span class="badge bg-primary p-1" style="min-width: 40px; font-size: 1rem">${cellInfo.value}</span> ${cellInfo.row['destination']}`
+  let bg_color = "#00724f";
+  if (cellInfo.value.includes("F")) bg_color = "#004881"
+  
+  const display_body = `<span class="badge p-1" style="background-color: ${bg_color}; min-width: 35px; font-size: 1rem">${cellInfo.value}</span> ${cellInfo.row['destination']}`;
+  
+  if (stop_details.station)
+    return `<div>${display_body}</div><div><span style="font-size: 0.8rem">⮞${cellInfo.row['stopName']}</span></div>`
+  else
+    return display_body
 }
 const scheduledDurationDisplay = function (cellInfo) {
   return cellInfo.row['isEstimate'] ? `<span class="badge rounded-pill bg-success p-1" style="min-width: 40px; font-size: 1rem">${cellInfo.value}</span>` : `<b>${cellInfo.value}</b>`
@@ -396,33 +411,38 @@ const scheduledDurationDisplay = function (cellInfo) {
 <div id="favourite-stops-view" class="d-none">
 <h3>Favourite stops</h3>
 <div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="favourite-stops-table" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="favourite-stops-table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"id":[],"name":[]},"columns":[{"id":"id","name":"ID","type":"character","sortNALast":true,"minWidth":80,"align":"center","filterable":true,"cell":"function(cellInfo) { return stopIdDisplay(cellInfo) }","html":true},{"id":"name","name":"Name","type":"character","sortNALast":true,"minWidth":80,"align":"left","filterable":true}],"defaultSorted":[{"id":"id","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"favourite-stops-table","dataKey":"9251f425b9cebba8387c8322381e1356"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.cell"],"jsHooks":[]}</script>
+<script type="application/json" data-for="favourite-stops-table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"id":[],"name":[]},"columns":[{"id":"id","name":"ID","type":"character","sortNALast":true,"minWidth":90,"align":"center","filterable":true,"cell":"function(cellInfo) { return stopIdDisplay(cellInfo) }","html":true},{"id":"name","name":"Name","type":"character","sortNALast":true,"minWidth":180,"align":"left","filterable":true}],"defaultSorted":[{"id":"id","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"favourite-stops-table","dataKey":"0afa456696d16d2a18fef345285f4a5d"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.cell"],"jsHooks":[]}</script>
 </div>
 <div id="stops-table-view">
 <h3>All stops</h3>
 <div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="stops-table" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="stops-table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"id":[],"name":[],"latitude":[],"longitude":[]},"columns":[{"id":"id","name":"ID","type":"character","sortNALast":true,"minWidth":80,"align":"center","filterable":true,"cell":"function(cellInfo) { return stopIdDisplay(cellInfo) }","html":true},{"id":"name","name":"Name","type":"character","sortNALast":true,"minWidth":80,"align":"left","filterable":true},{"id":"latitude","name":"Latitude","type":"numeric","sortNALast":true,"minWidth":80,"align":"center"},{"id":"longitude","name":"Longitude","type":"numeric","sortNALast":true,"minWidth":80,"align":"center"}],"defaultSorted":[{"id":"id","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"stops-table","dataKey":"1bd26db282b1015e57cb699527762064"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.cell"],"jsHooks":[]}</script>
+<script type="application/json" data-for="stops-table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"id":[],"name":[],"latitude":[],"longitude":[]},"columns":[{"id":"id","name":"ID","type":"character","sortNALast":true,"minWidth":90,"align":"center","filterable":true,"cell":"function(cellInfo) { return stopIdDisplay(cellInfo) }","html":true},{"id":"name","name":"Name","type":"character","sortNALast":true,"minWidth":180,"align":"left","filterable":true},{"id":"latitude","name":"Latitude","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"},{"id":"longitude","name":"Longitude","type":"numeric","sortNALast":true,"minWidth":90,"align":"center"}],"defaultSorted":[{"id":"id","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"stops-table","dataKey":"89937a3e108a8f47cc42e5addb97ea4d"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.cell"],"jsHooks":[]}</script>
 </div>
 <div id="stops-display">
 <button id="view-stops" type="button" class="btn btn-primary my-2">View all stops</button>
 <hr/>
 <h3 id="current-stop"></h3>
+<div>
+<button id="parent-station" type="button" class="btn btn-link p-0 d-none">View Interchange</button>
+</div>
 <button id="refresh-button" class="btn btn-primary my-2" disabled="TRUE" style="width: 100px;">
 <span id="refresh-icon" class="spinner-border spinner-border-sm" role="status"></span>
 <span id="refresh-button-text">Loading</span>
 </button>
 <button id="favourite-button" class="btn btn-primary my-2">Add favourite</button>
+<button id="default-button" class="btn btn-primary my-2">Set default</button>
 <p class="small my-1">
 <span class="badge rounded-pill bg-success p-1" style="min-width: 40px; font-size: 1rem">8</span>
-Minutes until arrival based on real-time tracking.
+Minutes until departure based on real-time tracking.
 </p>
 <p class="small my-1">
 <span class="badge rounded-pill bg-light p-1" style="min-width: 40px; font-size: 1rem">8</span>
 Minutes until departure based on timetable.
 </p>
 <div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="stops-display-table" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="stops-display-table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"route":[],"destination":[],"scheduledDuration":[],"scheduledTime":[],"isEstimate":[],"delay":[],"scheduledDurationNext":[],"scheduledTimeNext":[],"isEstimateNext":[]},"columns":[{"id":"route","name":"Route","type":"character","sortNALast":true,"minWidth":150,"align":"left","show":true,"cell":"function(cellInfo) { return routeDisplay(cellInfo) }","html":true,"className":"sticky","headerClassName":"sticky"},{"id":"destination","name":"Destination","type":"character","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledDuration","name":"Mins","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","cell":"function(cellInfo) { return scheduledDurationDisplay(cellInfo) }","html":true},{"id":"scheduledTime","name":"Time","type":"character","sortNALast":true,"minWidth":50,"align":"center"},{"id":"isEstimate","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"delay","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledDurationNext","name":"Mins","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledTimeNext","name":"Time","type":"character","sortNALast":true,"minWidth":50,"align":"center"},{"id":"isEstimateNext","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false}],"columnGroups":[{"name":"Departs","columns":["scheduledDuration","scheduledTime","isEstimate","delay"]},{"name":"Next","columns":["scheduledDurationNext","scheduledTimeNext","isEstimateNext"]}],"sortable":false,"defaultSorted":[{"id":"scheduledDuration","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"stops-display-table","dataKey":"ed558e4d39a1eda1233c9569058482b4"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.0.cell","tag.attribs.columns.2.cell"],"jsHooks":[]}</script>
+<script type="application/json" data-for="stops-display-table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"stopName":[],"route":[],"destination":[],"scheduledDuration":[],"scheduledTime":[],"isEstimate":[],"delay":[],"scheduledDurationNext":[],"scheduledTimeNext":[],"isEstimateNext":[]},"columns":[{"id":"stopName","name":"","type":"character","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"route","name":"Route","type":"character","sortNALast":true,"minWidth":150,"align":"left","show":true,"cell":"function(cellInfo) { return routeDisplay(cellInfo) }","html":true,"className":"sticky","headerClassName":"sticky"},{"id":"destination","name":"Destination","type":"character","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledDuration","name":"Mins","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","cell":"function(cellInfo) { return scheduledDurationDisplay(cellInfo) }","html":true},{"id":"scheduledTime","name":"Time","type":"character","sortNALast":true,"minWidth":50,"align":"center"},{"id":"isEstimate","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"delay","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledDurationNext","name":"Mins","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledTimeNext","name":"Next","type":"character","sortNALast":true,"minWidth":50,"align":"center"},{"id":"isEstimateNext","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false}],"sortable":false,"defaultSorted":[{"id":"scheduledDuration","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"2px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"stops-display-table","dataKey":"33bf02d2341e7145270492115fa094db"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell","tag.attribs.columns.3.cell"],"jsHooks":[]}</script>
 </div>
+<div id="map" style="height: 240px"></div>
 </div>
 </div>
 <script src="./src/js/metro.js"></script>
