@@ -180,6 +180,8 @@ const fetchStops = function () {
 }
 
 const formatTime = function (unix_timestamp) {
+    if (!unix_timestamp) return "";
+
     let utc = new Date();
     let offset = utc.getTimezoneOffset();
     let local = new Date(unix_timestamp + offset * 60000);
@@ -232,26 +234,29 @@ const fetchStopDisplay = function () {
                 data.nextStopVisits.forEach(stopVisit => {
                     stopDisplay.route.push(stopVisit.directionOfLine.lineNumber);
                     stopDisplay.destination.push(stopVisit.directionOfLine.destinationName);
-                    if (stopVisit.stopVisits[0].estimatedMinutesUntilDeparture == null) {
-                        stopDisplay.scheduledDuration.push(stopVisit.stopVisits[0].scheduledMinutesUntilDeparture);
-                        stopDisplay.scheduledTime.push(formatTime(stopVisit.stopVisits[0].scheduledDepartureTime));
+
+                    let visit = stopVisit.stopVisits[0];
+                    if (visit.estimatedMinutesUntilDeparture == null) {
+                        stopDisplay.scheduledDuration.push(visit.scheduledMinutesUntilDeparture);
+                        stopDisplay.scheduledTime.push(formatTime(visit.scheduledDepartureTime));
                         stopDisplay.isEstimate.push(0);
                         stopDisplay.delay.push(null);
                     } else {
-                        stopDisplay.scheduledDuration.push(stopVisit.stopVisits[0].estimatedMinutesUntilDeparture);
-                        stopDisplay.scheduledTime.push(formatTime(stopVisit.stopVisits[0].estimatedArrivalTime));
+                        stopDisplay.scheduledDuration.push(visit.estimatedMinutesUntilDeparture);
+                        stopDisplay.scheduledTime.push(formatTime(visit.estimatedDepartureTime));
                         stopDisplay.isEstimate.push(1);
-                        stopDisplay.delay.push(stopVisit.stopVisits[0].estimatedMinutesUntilDeparture - stopVisit.stopVisits[0].scheduledMinutesUntilDeparture);
+                        stopDisplay.delay.push(visit.estimatedMinutesUntilDeparture - visit.scheduledMinutesUntilDeparture);
                     }
 
                     if (stopVisit.stopVisits.length > 1) {
-                        if (stopVisit.stopVisits[1].estimatedMinutesUntilDeparture == null) {
-                            stopDisplay.scheduledDurationNext.push(stopVisit.stopVisits[1].scheduledMinutesUntilDeparture);
-                            stopDisplay.scheduledTimeNext.push(formatTime(stopVisit.stopVisits[1].scheduledDepartureTime));
+                        visit = stopVisit.stopVisits[1];
+                        if (visit.estimatedMinutesUntilDeparture == null) {
+                            stopDisplay.scheduledDurationNext.push(visit.scheduledMinutesUntilDeparture);
+                            stopDisplay.scheduledTimeNext.push(formatTime(visit.scheduledDepartureTime));
                             stopDisplay.isEstimateNext.push(0);
                         } else {
-                            stopDisplay.scheduledDurationNext.push(stopVisit.stopVisits[1].estimatedMinutesUntilDeparture);
-                            stopDisplay.scheduledTimeNext.push(formatTime(stopVisit.stopVisits[1].estimatedArrivalTime));
+                            stopDisplay.scheduledDurationNext.push(visit.estimatedMinutesUntilDeparture);
+                            stopDisplay.scheduledTimeNext.push(formatTime(visit.estimatedDepartureTime));
                             stopDisplay.isEstimateNext.push(1);
                         }
                     }
