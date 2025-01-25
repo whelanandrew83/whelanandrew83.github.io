@@ -103,6 +103,10 @@ const setView = function () {
     if (view === "stops") {
         stopsTableDiv.classList.remove("d-none");
         stopsDisplayDiv.classList.add("d-none");
+
+        window.setTimeout(() => {
+            stopsTableDiv.scrollIntoView();
+        }, 100)
     } else if (view === "stops-display") {
         stopsTableDiv.classList.add("d-none");
         stopsDisplayTable.classList.remove("d-none");
@@ -160,7 +164,10 @@ const stopsLoading = function (loading = true, error = false) {
         } else {
             //refreshError.classList.add("d-none");
         }
-        document.getElementById("current-stop").scrollIntoView();
+        window.setTimeout(() => {
+            document.getElementById("current-stop").scrollIntoView();
+        }, 100)
+
     }
 }
 
