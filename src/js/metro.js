@@ -68,7 +68,7 @@ let mapMarkers = {
 };
 
 const markerPopupText = function (stopName, stopId) {
-    return `<b>${stopName}</b><br><a href="#" onclick="selectStop('${stopId}')">View Stop</a>`
+    return `<b>${stopName}</b><br><a href="#" onclick="selectStop('${stopId}')" style="color: #670099">View Stop</a>`
 }
 
 const refreshFavouriteView = function () {
@@ -124,6 +124,7 @@ const setView = function () {
 
         window.setTimeout(() => {
             stopsTableDiv.scrollIntoView();
+            map.invalidateSize();
         }, 100)
     } else if (view === "stops-display") {
         stopsTableDiv.classList.add("d-none");
@@ -363,6 +364,10 @@ const fetchStopDisplay = function () {
 
                 stop_details = data.stop;
                 document.getElementById("current-stop").innerText = stop_details.name;
+
+                let d = new Date();
+                document.getElementById("refresh-time").innerText = `Refreshed at ${d.toLocaleTimeString()}, ${d.toLocaleDateString()}`;
+
                 if (isFavouriteStop(stop_details.id))
                     favouriteButton.innerText = "Remove Favourite"
                 else
@@ -455,7 +460,7 @@ document.getElementById("view-stops").addEventListener('click', (e) => {
     history.replaceState(null, '', `metro.html`);
 })
 
-let map = L.map('map').setView([-42.9, 147.3], 13);
+let map = L.map('map').setView([-42.88, 147.33], 13);
 let currentMarker;
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,

@@ -451,6 +451,7 @@ from
 </button>
 <button id="favourite-button" class="btn btn-primary btn-sm my-2">Add favourite</button>
 <button id="default-button" class="btn btn-primary btn-sm my-2">Set default</button>
+<p id="refresh-time" class="small"></p>
 <div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="stops-display-table" style="width:auto;height:auto;"></div>
 <script type="application/json" data-for="stops-display-table">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"stopName":[],"route":[],"destination":[],"scheduledDuration":[],"scheduledTime":[],"isEstimate":[],"delay":[],"scheduledDurationNext":[],"scheduledTimeNext":[],"isEstimateNext":[]},"columns":[{"id":"stopName","name":"","type":"character","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"route","name":"Route","type":"character","sortNALast":true,"minWidth":150,"align":"left","show":true,"cell":"function(cellInfo) { return routeDisplay(cellInfo) }","html":true,"className":"sticky","headerClassName":"sticky"},{"id":"destination","name":"Destination","type":"character","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledDuration","name":"Mins","type":"numeric","sortNALast":true,"minWidth":45,"align":"center","cell":"function(cellInfo) { return scheduledDurationDisplay(cellInfo) }","html":true},{"id":"scheduledTime","name":"Time","type":"character","sortNALast":true,"minWidth":50,"align":"center"},{"id":"isEstimate","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"delay","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledDurationNext","name":"Mins","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false},{"id":"scheduledTimeNext","name":"Next","type":"character","sortNALast":true,"minWidth":50,"align":"center"},{"id":"isEstimateNext","name":"","type":"numeric","sortNALast":true,"minWidth":80,"align":"center","show":false}],"sortable":false,"defaultSorted":[{"id":"scheduledDuration","desc":false}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50],"striped":true,"showSortIcon":false,"className":"","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"2px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"stops-display-table","dataKey":"33bf02d2341e7145270492115fa094db"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell","tag.attribs.columns.3.cell"],"jsHooks":[]}</script>
 <br/>
@@ -467,7 +468,16 @@ Minutes until departure based on timetable.
 </p>
 </div>
 <h3>Map of current and favourite stops</h3>
-<p>Click on the map to see nearby stops. Click on a stop marker to view stop.</p>
+<p class="my-2">Click on the map to see nearby stops. Click on a stop marker to view stop.</p>
+<p class="small my-1">
+<b>Guide:</b>
+<img src="https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png" style="filter: hue-rotate(150deg); height: 25px"/>
+Current stop.
+<img src="https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png" style="height: 25px"/>
+Favourite stops.
+<img src="https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png" style="filter: hue-rotate(75deg); height: 25px"/>
+Nearby stops.
+</p>
 <div id="map" style="height: 400px"></div>
 </div>
 </div>
