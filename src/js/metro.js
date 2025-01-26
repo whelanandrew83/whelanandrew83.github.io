@@ -62,7 +62,10 @@ const isFavouriteStop = function (id) {
     return Object.keys(metroFavouriteStops).includes(id);
 }
 
-let mapMarkers = [];
+let mapMarkers = {
+    favourites: [],
+    nearby: []
+};
 
 const markerPopupText = function (stopName, stopId) {
     return `<b>${stopName}</b><br><a href="#" onclick="selectStop('${stopId}')">View Stop</a>`
@@ -73,9 +76,9 @@ const refreshFavouriteView = function () {
         id: [],
         name: []
     }
-    if (mapMarkers.length > 0)
-        mapMarkers.forEach(marker => marker.remove())
-    mapMarkers = [];
+    if (mapMarkers.favourites.length > 0)
+        mapMarkers.favourites.forEach(marker => marker.remove())
+    mapMarkers.favourites = [];
     let marker;
 
     if (Object.keys(metroFavouriteStops).length === 0) {
@@ -88,7 +91,7 @@ const refreshFavouriteView = function () {
 
             marker = L.marker([metroFavouriteStops[stop].location.latitude, metroFavouriteStops[stop].location.longitude], { opacity: 0.75, zIndexOffset: -10000 }).bindPopup(markerPopupText(metroFavouriteStops[stop].name, metroFavouriteStops[stop].id)).addTo(map);
             //marker = L.circle([metroFavouriteStops[stop].location.latitude, metroFavouriteStops[stop].location.longitude], { color: "red", radius: 50 }).bindPopup(`<b>${metroFavouriteStops[stop].name}</b>`).addTo(map);
-            mapMarkers.push(marker);
+            mapMarkers.favourites.push(marker);
         })
         Reactable.setData("favourite-stops-table", favouritesTableData);
         favouriteStopsDiv.classList.remove("d-none");
@@ -219,37 +222,65 @@ function distance(lat1, lon1, lat2, lon2, unit) {
     }
 }
 
-const successCallback = (position) => {
-    let lat = position.coords.latitude;
-    let lng = position.coords.longitude;
-    console.log({ lat, lng })
+// const successCallback = (position) => {
+//     let lat = position.coords.latitude;
+//     let lng = position.coords.longitude;
+//     console.log({ lat, lng })
+
+//     for (let i = 0; i < stops.id.length; i++) {
+//         stops.distance[i] = Math.round(distance(stops.latitude[i], stops.longitude[i], lat, lng, "K") * 100) / 100;
+//     }
+//     Reactable.setData("stops-table", stops);
+//     Reactable.setHiddenColumns("stops-table", ["latitude", "longitude"]);
+// };
+
+// const errorCallback = (error) => {
+//     console.log(error);
+// };
+
+// const calculateDistance = function () {
+//     const options = {
+//         enableHighAccuracy: true,
+//         timeout: 10000,
+//     };
+
+//     navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+// }
+
+// document.getElementById("distance-button").addEventListener('click', (e) => { calculateDistance() });
+
+const clearNearbyStops = function () {
+    if (mapMarkers.nearby.length > 0)
+        mapMarkers.nearby.forEach(marker => marker.remove())
+    mapMarkers.nearby = [];
+}
+
+const findNearbyStops = function (latlng) {
+    let lat = latlng.lat;
+    let lng = latlng.lng;
+
+    clearNearbyStops();
+    let marker;
 
     for (let i = 0; i < stops.id.length; i++) {
         stops.distance[i] = Math.round(distance(stops.latitude[i], stops.longitude[i], lat, lng, "K") * 100) / 100;
+
+        if (stops.distance[i] <= 0.5) {
+            marker = L.marker([stops.latitude[i], stops.longitude[i]], { opacity: 0.75, zIndexOffset: -10000 }).bindPopup(markerPopupText(stops.name[i], stops.id[i])).addTo(map);
+            marker._icon.style.filter = "hue-rotate(75deg)"
+            //marker = L.circle([metroFavouriteStops[stop].location.latitude, metroFavouriteStops[stop].location.longitude], { color: "red", radius: 50 }).bindPopup(`<b>${metroFavouriteStops[stop].name}</b>`).addTo(map);
+            mapMarkers.nearby.push(marker);
+        }
     }
     Reactable.setData("stops-table", stops);
     Reactable.setHiddenColumns("stops-table", ["latitude", "longitude"]);
 };
 
-const errorCallback = (error) => {
-    console.log(error);
-};
-
-const calculateDistance = function () {
-    const options = {
-        enableHighAccuracy: true,
-        timeout: 10000,
-    };
-
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
-}
-
-document.getElementById("distance-button").addEventListener('click', (e) => { calculateDistance() });
-
-const fetchStops = function () {
+const fetchStops = function (changeView = true) {
     if (stops.id.length == 0) {
 
-        pageLoading(true);
+        if (changeView) pageLoading(true);
+
         // stops = {
         //     id: [],
         //     name: [],
@@ -273,11 +304,15 @@ const fetchStops = function () {
                 });
 
                 Reactable.setData("stops-table", stops);
-                setView();
-                pageLoading(false);
+                if (changeView) {
+                    setView();
+                    pageLoading(false);
+                }
             });
     } else {
-        setView();
+        if (changeView) {
+            setView();
+        }
     }
 }
 
@@ -350,6 +385,7 @@ const fetchStopDisplay = function () {
                     currentMarker = L.marker([stop_details.location.latitude, stop_details.location.longitude]).bindPopup(markerPopupText(stop_details.name, stop_details.id)).addTo(map);
                     currentMarker._icon.style.filter = "hue-rotate(150deg)"
                 }
+                clearNearbyStops();
                 map.setView([stop_details.location.latitude, stop_details.location.longitude], 14);
                 map.closePopup();
                 console.log(stop_details);
@@ -401,6 +437,7 @@ if (!stop) {
     fetchStops();
 } else {
     view = "stops-display"
+    fetchStops(false);
     fetchStopDisplay();
 }
 
@@ -409,12 +446,13 @@ const selectStop = function (stopId) {
     view = "stops-display";
     stop = stopId;
     fetchStopDisplay();
-    history.replaceState(null, '', `?stop=${stop}`);
+    history.replaceState(null, '', `metro.html?stop=${stop}`);
 }
 
 document.getElementById("view-stops").addEventListener('click', (e) => {
     view = "stops";
     fetchStops();
+    history.replaceState(null, '', `metro.html`);
 })
 
 let map = L.map('map').setView([-42.9, 147.3], 13);
@@ -423,3 +461,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+map.on('click', function (ev) {
+    if (stops.id.length === 0) fetchStops(false);
+    findNearbyStops(ev.latlng)
+});
