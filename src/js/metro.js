@@ -366,7 +366,7 @@ const fetchStopDisplay = function () {
                 document.getElementById("current-stop").innerText = stop_details.name;
 
                 let d = new Date();
-                document.getElementById("refresh-time").innerText = `Refreshed at ${d.toLocaleTimeString()}, ${d.toLocaleDateString()}`;
+                document.getElementById("refresh-time").innerHTML = `Refreshed at <b>${d.toLocaleTimeString()}</b>, ${d.toLocaleDateString()}`;
 
                 if (isFavouriteStop(stop_details.id))
                     favouriteButton.innerText = "Remove Favourite"
