@@ -293,7 +293,7 @@ const fetchStops = function (changeView = true) {
             .then((res) => res.json())
             .then((data) => {
                 data;
-                console.log(data)
+                //console.log(data)
 
                 data.forEach(stop => {
 
@@ -360,7 +360,7 @@ const fetchStopDisplay = function () {
             .then((res) => res.json())
             .then((data) => {
                 data;
-                console.log(data)
+                //console.log(data)
 
                 stop_details = data.stop;
                 document.getElementById("current-stop").innerText = stop_details.name;
@@ -393,7 +393,7 @@ const fetchStopDisplay = function () {
                 clearNearbyStops();
                 map.setView([stop_details.location.latitude, stop_details.location.longitude], 14);
                 map.closePopup();
-                console.log(stop_details);
+                //console.log(stop_details);
 
                 data.nextStopVisits.forEach(stopVisit => {
                     stopDisplay.route.push(stopVisit.directionOfLine.lineNumber);
