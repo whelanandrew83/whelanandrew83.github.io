@@ -37,6 +37,8 @@ const filterColumns = {
     "Inside50s": "Inside 50s",
     "ContestedPossessions": "Contested Possessions",
     "GroundBallGets": "Ground Ball Gets",
+    "PostClearanceContestedPossessions": "Post-Clearance Contested Possessions",
+    "PostClearanceGroundBallGets": "Post-Clearance Ground Ball Gets",
     "Intercepts": "Intercept Possessions",
     "CentreBounceAttendancePercentage": "Centre Bounce Attendance %",
     "TotalClearances": "Total Clearances",
@@ -279,7 +281,7 @@ if (player) {
 }
 
 const columnsAlwaysDisplayed = ["Season", "RoundNumber", "Match", "Team", "Opposition", "Result"];
-const statsColumns = ["CoachesVotes", "RatingPoints", "EstimatedRating", "Supercoach", "DreamTeamPoints", "TimeOnGround", "Kicks", "Handballs", "Disposals", "DisposalEfficiency", "MetresGained", "Inside50s", "ContestedPossessions", "GroundBallGets", "Intercepts", "CentreBounceAttendancePercentage", "TotalClearances", "Marks", "ContestedMarks", "InterceptMarks", "ShotsAtGoal", "Goals", "Behinds", "GoalAssists", "ScoreInvolvements", "ScoreLaunches", "Tackles", "PressureActs", "Hitouts"];
+const statsColumns = ["CoachesVotes", "RatingPoints", "EstimatedRating", "Supercoach", "DreamTeamPoints", "TimeOnGround", "Kicks", "Handballs", "Disposals", "DisposalEfficiency", "MetresGained", "Inside50s", "ContestedPossessions", "GroundBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "Intercepts", "CentreBounceAttendancePercentage", "TotalClearances", "Marks", "ContestedMarks", "InterceptMarks", "ShotsAtGoal", "Goals", "Behinds", "GoalAssists", "ScoreInvolvements", "ScoreLaunches", "Tackles", "PressureActs", "Hitouts"];
 
 const csvDownloadButton = document.querySelector('#download-csv-button');
 csvDownloadButton.addEventListener('click', (e) => {
