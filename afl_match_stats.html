@@ -417,6 +417,13 @@
 </ul>
 <script>
 const validYears = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024]
+
+const colClass = function (rowInfo, column, state) {
+  for (let i = 0; i < state.sorted.length; i++) {
+    if (state.sorted[i].id === column.id)
+      return 'fw-bold'
+  }
+}
 </script>
 <div id="season-div">
 <div id="round-select-div" class="d-none">
