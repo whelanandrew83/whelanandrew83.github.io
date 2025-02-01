@@ -2,7 +2,7 @@ const chartColumns = {
     "Match": { name: "Match Number" },
     "Margin": { name: "Margin" },
     "xMargin": { name: "xMargin" },
-    "xWin %": { name: "xWins" },
+    "xWins": { name: "xWin %" },
     "RatingPoints": { name: "Player Rating" },
 
     "Team_Heading": { name: "Team Averages", heading: true },
