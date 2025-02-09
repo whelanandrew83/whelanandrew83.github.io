@@ -1,6 +1,7 @@
 let matchId;
 let roundId;
 let seasonId;
+let roundName;
 
 const urlParams = new URLSearchParams(location.search);
 let paramId = urlParams.get("id");
@@ -56,10 +57,10 @@ const scoreDisplay = function (cellInfo, goalsField, behindsField, scoreField) {
 const loadMatch = function () {
     if (match_number >= 0) {
         matchBanner.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="40px" alt=""> ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]} <img src="${round_data.Matches[0].AwayImage[match_number]}" height="40px" alt="">`;
-        document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, Round ${round_data.Summary[0].RoundNumber} - ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]}`;
+        document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, ${roundName} - ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]}`;
     } else {
-        matchBanner.innerHTML = `All Round ${round_data.Summary[0].RoundNumber} Matches`;
-        document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, Round ${round_data.Summary[0].RoundNumber}`;
+        matchBanner.innerHTML = `All ${roundName} Matches`;
+        document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, ${roundName}`;
     }
 }
 
@@ -81,7 +82,10 @@ if (validYears.includes(seasonId)) {
                     for (let i = 0; i < data.RoundId.length; i++) {
                         const li = document.createElement('option');
                         li.value = data.RoundId[i];
-                        li.innerText = `Round ${data.RoundNumber[i]}`;
+                        if (Object.keys(data).includes("RoundName"))
+                            li.innerText = data.RoundName[i];
+                        else
+                            li.innerText = `Round ${data.RoundNumber[i]}`;
                         if (data.RoundId[i] === roundId) {
                             li.selected = true;
                         }
@@ -230,7 +234,12 @@ if (validYears.includes(seasonId)) {
 
                     div.append(s);
 
-                    h2.innerText = `Round ${round_data.Summary[0].RoundNumber}, ${round_data.Summary[0].Season}`;
+                    if (Object.keys(round_data.Summary[0]).includes("RoundName"))
+                        roundName = `${round_data.Summary[0].RoundName}`;
+                    else
+                        roundName = `Round ${round_data.Summary[0].RoundNumber}`;
+
+                    h2.innerText = `${roundName}, ${round_data.Summary[0].Season}`;
 
                     if (matches.MatchId.length > 1) {
                         const button = document.createElement('button');
