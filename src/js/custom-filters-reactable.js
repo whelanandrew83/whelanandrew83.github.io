@@ -198,7 +198,7 @@ const filterRange = function (rows, columnId, filterValue) {
 const filterSet = function (rows, columnId, filterValues) {
     return rows.filter(row => {
         const value = row.values[columnId];
-        return filterValues.includes(value);
+        return filterValues.includes(value) || (typeof filterValues === 'string' && value.toLowerCase().includes(filterValues.toLowerCase()));
     })
 }
 
