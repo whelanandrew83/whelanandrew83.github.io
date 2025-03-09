@@ -16,6 +16,7 @@ const chartColumns = {
     "GroundBallGets": { name: "Ground Ball Gets", dec: 0 },
     "PostClearanceContestedPossessions": { name: "Post-Clearance Contested Possessions", dec: 0 },
     "PostClearanceGroundBallGets": { name: "Post-Clearance Ground Ball Gets", dec: 0 },
+    "HandballReceives": { name: "Handball Receives", dec: 0 },
     "Intercepts": { name: "Intercept Possessions", dec: 0 },
     "CentreBounceAttendancePercentage": { name: "Centre Bounce Attendance %", dec: 0 },
     "TotalClearances": { name: "Total Clearances", dec: 0 },
