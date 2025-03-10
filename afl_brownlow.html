@@ -28,6 +28,17 @@ current season.">
 <script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
 <script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/selectize-0.12.4/css/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="site_libs/selectize-0.12.4/js/selectize.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
 <link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="icon" href="favicon.ico" />
@@ -366,7 +377,7 @@ current season.">
 
 
 <main>
-<h2 class="mt-2"></h2>
+<h2 class="mt-2">2025</h2>
 <p>
 Brownlow Medal predictions are updated following the release of the AFL
 <a href="https://aflcoaches.com.au/awards/the-aflca-champion-player-of-the-year-award/leaderboard" target="_blank">Coaches
@@ -379,7 +390,276 @@ Votes</a>.
 <!-- <button id="download-guide-button" class="btn btn-primary mx-1 my-2 fs-4">Download Guide</button> -->
 <!-- <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me', '#555555', 'wheeloratings');kofiwidget2.draw();</script> -->
 <!-- <hr class="my-2"> -->
-<h3>Brownlow predictions coming soon</h3>
+<div>
+<button id="download-csv-button" class="btn btn-primary btn-sm mx-1 my-2">Download Summary as CSV</button>
+<button id="download-raw-csv-button" onclick="window.location.href=&#39;src/data/wheelo-brownlow-predictions.csv&#39;" class="btn btn-primary btn-sm mx-1 my-2">Download Match-by-Match as CSV</button>
+</div>
+<div class="row">
+<div class="col-sm-6">
+<div id="player_select" class="form-group crosstalk-input-select crosstalk-input">
+<label class="control-label" for="player_select">Filter player(s)</label>
+<div>
+<select multiple></select>
+<script type="application/json" data-for="player_select">{
+  "items": {
+    "value": ["Aaron Cadman", "Angus Sheldrick", "Beau McCreery", "Ben Paton", "Blake Hardwick", "Bobby Hill", "Braeden Campbell", "Brayden Maynard", "Brent Daniels", "Brodie Grundy", "Brody Mihocek", "Callan Ward", "Callum M. Brown", "Cam Mackenzie", "Chad Warner", "Connor Idun", "Connor Macdonald", "Conor Nash", "Conor Stone", "Corey Warner", "Dane Rampe", "Daniel McStay", "Darcy Cameron", "Darcy Jones", "Darcy Moore", "Dylan Moore", "Edward Allan", "Finn Callaghan", "Finn Maginness", "Harry Himmelberg", "Harry Morrison", "Harry Perryman", "Isaac Heeney", "Isaac Quaynor", "Jack Buckley", "Jack Crisp", "Jack Ginnivan", "Jack Scrimshaw", "Jacob Wehr", "Jai Newcombe", "Jake Lloyd", "James Jordon", "James Leake", "James Rowbottom", "James Sicily", "James Worpel", "Jamie Elliott", "Jarman Impey", "Jeremy Howe", "Joel Amartey", "Josh Battle", "Josh Daicos", "Josh Kelly", "Josh Weddle", "Justin McInerney", "Karl Amon", "Kieren Briggs", "Lachie Ash", "Lachie Schultz", "Lachie Whitfield", "Lachlan Keeffe", "Lewis Melican", "Lloyd Meek", "Mabior Chol", "Massimo D'Ambrosio", "Matt Roberts", "Max Gruzewski", "Ned Long", "Nick Blakey", "Nick Daicos", "Nick Watson", "Oliver Florent", "Patrick Lipinski", "Reef McInnes", "Sam Frost", "Sam Taylor", "Sam Wicks", "Scott Pendlebury", "Steele Sidebottom", "Stephen Coniglio", "Taylor Adams", "Tim Membrey", "Toby Bedford", "Toby Greene", "Tom Barrass", "Tom Hanily", "Tom McCartin", "Tom Papley", "Will Day", "Will Hayward", "Will Hoskin-Elliott", "Xavier O'Halloran"],
+    "label": ["Aaron Cadman", "Angus Sheldrick", "Beau McCreery", "Ben Paton", "Blake Hardwick", "Bobby Hill", "Braeden Campbell", "Brayden Maynard", "Brent Daniels", "Brodie Grundy", "Brody Mihocek", "Callan Ward", "Callum M. Brown", "Cam Mackenzie", "Chad Warner", "Connor Idun", "Connor Macdonald", "Conor Nash", "Conor Stone", "Corey Warner", "Dane Rampe", "Daniel McStay", "Darcy Cameron", "Darcy Jones", "Darcy Moore", "Dylan Moore", "Edward Allan", "Finn Callaghan", "Finn Maginness", "Harry Himmelberg", "Harry Morrison", "Harry Perryman", "Isaac Heeney", "Isaac Quaynor", "Jack Buckley", "Jack Crisp", "Jack Ginnivan", "Jack Scrimshaw", "Jacob Wehr", "Jai Newcombe", "Jake Lloyd", "James Jordon", "James Leake", "James Rowbottom", "James Sicily", "James Worpel", "Jamie Elliott", "Jarman Impey", "Jeremy Howe", "Joel Amartey", "Josh Battle", "Josh Daicos", "Josh Kelly", "Josh Weddle", "Justin McInerney", "Karl Amon", "Kieren Briggs", "Lachie Ash", "Lachie Schultz", "Lachie Whitfield", "Lachlan Keeffe", "Lewis Melican", "Lloyd Meek", "Mabior Chol", "Massimo D'Ambrosio", "Matt Roberts", "Max Gruzewski", "Ned Long", "Nick Blakey", "Nick Daicos", "Nick Watson", "Oliver Florent", "Patrick Lipinski", "Reef McInnes", "Sam Frost", "Sam Taylor", "Sam Wicks", "Scott Pendlebury", "Steele Sidebottom", "Stephen Coniglio", "Taylor Adams", "Tim Membrey", "Toby Bedford", "Toby Greene", "Tom Barrass", "Tom Hanily", "Tom McCartin", "Tom Papley", "Will Day", "Will Hayward", "Will Hoskin-Elliott", "Xavier O'Halloran"]
+  },
+  "map": {
+    "Aaron Cadman": ["71"],
+    "Angus Sheldrick": ["81"],
+    "Beau McCreery": ["75"],
+    "Ben Paton": ["74"],
+    "Blake Hardwick": ["69"],
+    "Bobby Hill": ["76"],
+    "Braeden Campbell": ["88"],
+    "Brayden Maynard": ["67"],
+    "Brent Daniels": ["17"],
+    "Brodie Grundy": ["52"],
+    "Brody Mihocek": ["70"],
+    "Callan Ward": ["19"],
+    "Callum M. Brown": ["48"],
+    "Cam Mackenzie": ["31"],
+    "Chad Warner": ["8"],
+    "Connor Idun": ["45"],
+    "Connor Macdonald": ["55"],
+    "Conor Nash": ["10"],
+    "Conor Stone": ["58"],
+    "Corey Warner": ["80"],
+    "Dane Rampe": ["73"],
+    "Daniel McStay": ["82"],
+    "Darcy Cameron": ["16"],
+    "Darcy Jones": ["27"],
+    "Darcy Moore": ["66"],
+    "Dylan Moore": ["15"],
+    "Edward Allan": ["62"],
+    "Finn Callaghan": ["2"],
+    "Finn Maginness": ["38"],
+    "Harry Himmelberg": ["33"],
+    "Harry Morrison": ["35"],
+    "Harry Perryman": ["46"],
+    "Isaac Heeney": ["11"],
+    "Isaac Quaynor": ["65"],
+    "Jack Buckley": ["61"],
+    "Jack Crisp": ["63"],
+    "Jack Ginnivan": ["29"],
+    "Jack Scrimshaw": ["18"],
+    "Jacob Wehr": ["49"],
+    "Jai Newcombe": ["7"],
+    "Jake Lloyd": ["41"],
+    "James Jordon": ["30"],
+    "James Leake": ["56"],
+    "James Rowbottom": ["37"],
+    "James Sicily": ["6"],
+    "James Worpel": ["24"],
+    "Jamie Elliott": ["50"],
+    "Jarman Impey": ["36"],
+    "Jeremy Howe": ["72"],
+    "Joel Amartey": ["28"],
+    "Josh Battle": ["43"],
+    "Josh Daicos": ["47"],
+    "Josh Kelly": ["3"],
+    "Josh Weddle": ["32"],
+    "Justin McInerney": ["44"],
+    "Karl Amon": ["4"],
+    "Kieren Briggs": ["91"],
+    "Lachie Ash": ["12"],
+    "Lachie Schultz": ["84"],
+    "Lachie Whitfield": ["14"],
+    "Lachlan Keeffe": ["60"],
+    "Lewis Melican": ["59"],
+    "Lloyd Meek": ["9"],
+    "Mabior Chol": ["42"],
+    "Massimo D'Ambrosio": ["22"],
+    "Matt Roberts": ["20"],
+    "Max Gruzewski": ["39"],
+    "Ned Long": ["87"],
+    "Nick Blakey": ["13"],
+    "Nick Daicos": ["26"],
+    "Nick Watson": ["85"],
+    "Oliver Florent": ["54"],
+    "Patrick Lipinski": ["68"],
+    "Reef McInnes": ["77"],
+    "Sam Frost": ["79"],
+    "Sam Taylor": ["5"],
+    "Sam Wicks": ["25"],
+    "Scott Pendlebury": ["51"],
+    "Steele Sidebottom": ["64"],
+    "Stephen Coniglio": ["57"],
+    "Taylor Adams": ["83"],
+    "Tim Membrey": ["89"],
+    "Toby Bedford": ["21"],
+    "Toby Greene": ["23"],
+    "Tom Barrass": ["40"],
+    "Tom Hanily": ["92"],
+    "Tom McCartin": ["78"],
+    "Tom Papley": ["53"],
+    "Will Day": ["1"],
+    "Will Hayward": ["90"],
+    "Will Hoskin-Elliott": ["86"],
+    "Xavier O'Halloran": ["34"]
+  },
+  "group": ["SharedData1e2e1f92"]
+}</script>
+</div>
+</div>
+</div>
+<div class="col-sm-6">
+<div id="team_select" class="form-group crosstalk-input-select crosstalk-input">
+<label class="control-label" for="team_select">Filter team(s)</label>
+<div>
+<select multiple></select>
+<script type="application/json" data-for="team_select">{
+  "items": {
+    "value": ["Collingwood", "Greater Western Sydney", "Hawthorn", "Sydney"],
+    "label": ["Collingwood", "Greater Western Sydney", "Hawthorn", "Sydney"]
+  },
+  "map": {
+    "Collingwood": ["16", "26", "46", "47", "50", "51", "62", "63", "64", "65", "66", "67", "68", "70", "72", "75", "76", "77", "82", "84", "86", "87", "89"],
+    "Greater Western Sydney": ["2", "3", "5", "12", "14", "17", "19", "21", "23", "27", "33", "34", "39", "45", "48", "49", "56", "57", "58", "60", "61", "71", "91"],
+    "Hawthorn": ["1", "4", "6", "7", "9", "10", "15", "18", "22", "24", "29", "31", "32", "35", "36", "38", "40", "42", "43", "55", "69", "79", "85"],
+    "Sydney": ["8", "11", "13", "20", "25", "28", "30", "37", "41", "44", "52", "53", "54", "59", "73", "74", "78", "80", "81", "83", "88", "90", "92"]
+  },
+  "group": ["SharedData1e2e1f92"]
+}</script>
+</div>
+</div>
+</div>
+</div>
+<div id="brownlow-table">
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="brownlow-summary" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="brownlow-summary">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"PlayerId":["CD_I1008550","CD_I1023266","CD_I296347","CD_I297354","CD_I1005247","CD_I297566","CD_I1020895","CD_I1012014","CD_I1000980","CD_I1007124","CD_I298539","CD_I1009253","CD_I1006028","CD_I294305","CD_I1006314","CD_I990291","CD_I1002251","CD_I998114","CD_I280109","CD_I1012210","CD_I1008139","CD_I1005144","CD_I295344","CD_I1002222","CD_I1006232","CD_I1023261","CD_I1020650","CD_I1008091","CD_I1012857","CD_I1013409","CD_I1023482","CD_I1027935","CD_I993107","CD_I1006135","CD_I1000963","CD_I296254","CD_I1006126","CD_I1009421","CD_I1027921","CD_I990290","CD_I295342","CD_I994077","CD_I998134","CD_I1011936","CD_I1008083","CD_I998205","CD_I1005054","CD_I1014038","CD_I1004530","CD_I293801","CD_I260257","CD_I293957","CD_I996765","CD_I998103","CD_I1017094","CD_I1032119","CD_I291969","CD_I1015862","CD_I996743","CD_I290314","CD_I1009708","CD_I1022915","CD_I293871","CD_I280965","CD_I1008089","CD_I298288","CD_I992010","CD_I1003130","CD_I993794","CD_I291849","CD_I1019038","CD_I291313","CD_I290307","CD_I1004985","CD_I1004757","CD_I1006148","CD_I1013278","CD_I1008198","CD_I293738","CD_I1018424","CD_I1020339","CD_I297504","CD_I291776","CD_I1000860","CD_I1023473","CD_I291720","CD_I1017124","CD_I1013133","CD_I294596","CD_I997100","CD_I1008436","CD_I1027687"],"WebsiteId":["14090a6","140ca22","230a1b","230e0a","14083bf","230ede","140c0df","1409e2e","1407314","1408b14","2312ab","1409365","14086cc","230221","14087ea","2da0d3","140780b","2dbf62","22caad","1409ef2","1408f0b","1408358","230630","14077ee","1408798","140ca1d","140bfea","1408edb","140a179","140a3a1","140cafa","140dc5f","2dabd3","1408737","1407303","2309be","140872e","140940d","140dc51","2da0d2","23062e","2daf9d","2dbf76","1409de0","1408ed3","2dbfbd","14082fe","140a616","14080f2","230029","227d21","2300c5","2dba1d","2dbf57","140b206","140ecb7","22f901","140ad36","2dba07","22f28a","140952c","140c8c3","23006f","22ce05","1408ed9","2311b0","2da78a","1407b7a","2dae82","22f889","140b99e","22f671","22f283","14082b9","14081d5","1408744","140a31e","1408f46","22ffea","140b738","140beb3","230ea0","22f840","140729c","140caf1","22f808","140b224","140a28d","230344","2dbb6c","1409034","140db67"],"Player":["Will Day","Finn Callaghan","Josh Kelly","Karl Amon","Sam Taylor","James Sicily","Jai Newcombe","Chad Warner","Lloyd Meek","Conor Nash","Isaac Heeney","Lachie Ash","Nick Blakey","Lachie Whitfield","Dylan Moore","Darcy Cameron","Brent Daniels","Jack Scrimshaw","Callan Ward","Matt Roberts","Toby Bedford","Massimo D'Ambrosio","Toby Greene","James Worpel","Sam Wicks","Nick Daicos","Darcy Jones","Joel Amartey","Jack Ginnivan","James Jordon","Cam Mackenzie","Josh Weddle","Harry Himmelberg","Xavier O'Halloran","Harry Morrison","Jarman Impey","James Rowbottom","Finn Maginness","Max Gruzewski","Tom Barrass","Jake Lloyd","Mabior Chol","Josh Battle","Justin McInerney","Connor Idun","Harry Perryman","Josh Daicos","Callum M. Brown","Jacob Wehr","Jamie Elliott","Scott Pendlebury","Brodie Grundy","Tom Papley","Oliver Florent","Connor Macdonald","James Leake","Stephen Coniglio","Conor Stone","Lewis Melican","Lachlan Keeffe","Jack Buckley","Edward Allan","Jack Crisp","Steele Sidebottom","Isaac Quaynor","Darcy Moore","Brayden Maynard","Patrick Lipinski","Blake Hardwick","Brody Mihocek","Aaron Cadman","Jeremy Howe","Dane Rampe","Ben Paton","Beau McCreery","Bobby Hill","Reef McInnes","Tom McCartin","Sam Frost","Corey Warner","Angus Sheldrick","Daniel McStay","Taylor Adams","Lachie Schultz","Nick Watson","Will Hoskin-Elliott","Ned Long","Braeden Campbell","Tim Membrey","Will Hayward","Kieren Briggs","Tom Hanily"],"Team":["Hawthorn","Greater Western Sydney","Greater Western Sydney","Hawthorn","Greater Western Sydney","Hawthorn","Hawthorn","Sydney","Hawthorn","Hawthorn","Sydney","Greater Western Sydney","Sydney","Greater Western Sydney","Hawthorn","Collingwood","Greater Western Sydney","Hawthorn","Greater Western Sydney","Sydney","Greater Western Sydney","Hawthorn","Greater Western Sydney","Hawthorn","Sydney","Collingwood","Greater Western Sydney","Sydney","Hawthorn","Sydney","Hawthorn","Hawthorn","Greater Western Sydney","Greater Western Sydney","Hawthorn","Hawthorn","Sydney","Hawthorn","Greater Western Sydney","Hawthorn","Sydney","Hawthorn","Hawthorn","Sydney","Greater Western Sydney","Collingwood","Collingwood","Greater Western Sydney","Greater Western Sydney","Collingwood","Collingwood","Sydney","Sydney","Sydney","Hawthorn","Greater Western Sydney","Greater Western Sydney","Greater Western Sydney","Sydney","Greater Western Sydney","Greater Western Sydney","Collingwood","Collingwood","Collingwood","Collingwood","Collingwood","Collingwood","Collingwood","Hawthorn","Collingwood","Greater Western Sydney","Collingwood","Sydney","Sydney","Collingwood","Collingwood","Collingwood","Sydney","Hawthorn","Sydney","Sydney","Collingwood","Sydney","Collingwood","Hawthorn","Collingwood","Collingwood","Sydney","Collingwood","Sydney","Greater Western Sydney","Sydney"],"Abbreviation":["Haw","GWS","GWS","Haw","GWS","Haw","Haw","Syd","Haw","Haw","Syd","GWS","Syd","GWS","Haw","Coll","GWS","Haw","GWS","Syd","GWS","Haw","GWS","Haw","Syd","Coll","GWS","Syd","Haw","Syd","Haw","Haw","GWS","GWS","Haw","Haw","Syd","Haw","GWS","Haw","Syd","Haw","Haw","Syd","GWS","Coll","Coll","GWS","GWS","Coll","Coll","Syd","Syd","Syd","Haw","GWS","GWS","GWS","Syd","GWS","GWS","Coll","Coll","Coll","Coll","Coll","Coll","Coll","Haw","Coll","GWS","Coll","Syd","Syd","Coll","Coll","Coll","Syd","Haw","Syd","Syd","Coll","Syd","Coll","Haw","Coll","Coll","Syd","Coll","Syd","GWS","Syd"],"Image":["images/afl_logos/Haw-40.png","images/afl_logos/GWS-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Syd-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Coll-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Syd-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Coll-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Haw-40.png","images/afl_logos/GWS-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Haw-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/GWS-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Haw-40.png","images/afl_logos/GWS-40.png","images/afl_logos/GWS-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Syd-40.png","images/afl_logos/GWS-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Coll-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Syd-40.png","images/afl_logos/Coll-40.png","images/afl_logos/Syd-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Syd-40.png"],"Matches":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"Winner":[0.97295,0.84705,0.13865,0.0241,0.0143,0.00145,0.0015,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Votes_Total":[2.972,2.839,1.841,1.313,0.931,0.423,0.368,0.21,0.123,0.1,0.084,0.08,0.068,0.055,0.054,0.042,0.041,0.04,0.03,0.03,0.026,0.025,0.023,0.021,0.019,0.017,0.016,0.016,0.016,0.015,0.014,0.012,0.011,0.01,0.009,0.009,0.008,0.008,0.006,0.006,0.006,0.006,0.005,0.005,0.004,0.004,0.004,0.004,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.002,0.002,0.002,0.002,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"CI95Low":[2,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"CI95High":[3,3,3,2,2,2,2,2,2,2,2,1,2,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"First":[0.97295,0.84705,0.13865,0.0241,0.0143,0.00145,0.0015,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Top3":[0.999,0.9917,0.71545,0.4294,0.14905,0.1179,0.10215,0.06405,0.04145,0.0349,0.03035,0.0239,0.02575,0.0181,0.02225,0.01405,0.014,0.0174,0.01145,0.0131,0.01035,0.0113,0.00915,0.00945,0.0091,0.00765,0.00725,0.0074,0.00745,0.00695,0.00665,0.0059,0.00475,0.0047,0.0043,0.0045,0.004,0.0038,0.0029,0.00315,0.0031,0.00315,0.0027,0.0025,0.00215,0.00225,0.0021,0.00175,0.00155,0.00135,0.00135,0.0016,0.00155,0.0015,0.00135,0.00105,0.0011,0.0009,0.0009,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Top5":[1,1,0.9866,0.86,0.7672,0.3035,0.26395,0.1462,0.08195,0.0654,0.05415,0.0565,0.0421,0.037,0.03215,0.02815,0.02675,0.023,0.0186,0.01645,0.01605,0.0139,0.0143,0.01145,0.0102,0.00955,0.00905,0.0084,0.00815,0.00775,0.0073,0.0059,0.00625,0.00555,0.0043,0.0045,0.004,0.0038,0.0029,0.00315,0.0031,0.00315,0.0027,0.0025,0.00215,0.00225,0.0021,0.00175,0.00155,0.00135,0.00135,0.0016,0.00155,0.0015,0.00135,0.00105,0.0011,0.0009,0.0009,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Top10":[1,1,0.9866,0.86,0.7672,0.3035,0.26395,0.1462,0.08195,0.0654,0.05415,0.0565,0.0421,0.037,0.03215,0.02815,0.02675,0.023,0.0186,0.01645,0.01605,0.0139,0.0143,0.01145,0.0102,0.00955,0.00905,0.0084,0.00815,0.00775,0.0073,0.0059,0.00625,0.00555,0.0043,0.0045,0.004,0.0038,0.0029,0.00315,0.0031,0.00315,0.0027,0.0025,0.00215,0.00225,0.0021,0.00175,0.00155,0.00135,0.00135,0.0016,0.00155,0.0015,0.00135,0.00105,0.0011,0.0009,0.0009,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"TeamFirst":[0.97295,0.84705,0.13865,0.0241,0.0143,0.00145,0.0015,0.1426,0,0,0.05335,0,0.04135,0,0,0.02815,0,0,0,0.01645,0,0,0,0,0.0102,0.00955,0,0.0084,0,0.00775,0,0,0,0,0,0,0.004,0,0,0,0.0031,0,0,0.0025,0,0.00225,0.0021,0,0,0.00135,0.00135,0.0016,0.00155,0.0015,0,0,0,0,0.0009,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Rank1":[1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Rank2":[0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"Rank3":[0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"RankTop5":[1,1,1,1,1,1,1,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"0":[2.972,2.839,1.841,1.313,0.931,0.423,0.368,0.21,0.123,0.1,0.084,0.08,0.068,0.055,0.054,0.042,0.041,0.04,0.03,0.03,0.026,0.025,0.023,0.021,0.019,0.017,0.016,0.016,0.016,0.015,0.014,0.012,0.011,0.01,0.009,0.009,0.008,0.008,0.006,0.006,0.006,0.006,0.005,0.005,0.004,0.004,0.004,0.004,0.003,0.003,0.003,0.003,0.003,0.003,0.003,0.002,0.002,0.002,0.002,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},"columns":[{"id":"PlayerId","name":"PlayerId","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"WebsiteId","name":"WebsiteId","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"minWidth":180,"align":"left","filterable":true,"show":true,"defaultSortDesc":false,"cell":["<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14090a6\">Will Day<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140ca22\">Finn Callaghan<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230a1b\">Josh Kelly<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230e0a\">Karl Amon<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14083bf\">Sam Taylor<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230ede\">James Sicily<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140c0df\">Jai Newcombe<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1409e2e\">Chad Warner<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1407314\">Lloyd Meek<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408b14\">Conor Nash<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2312ab\">Isaac Heeney<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1409365\">Lachie Ash<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14086cc\">Nick Blakey<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230221\">Lachie Whitfield<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14087ea\">Dylan Moore<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2da0d3\">Darcy Cameron<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140780b\">Brent Daniels<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dbf62\">Jack Scrimshaw<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22caad\">Callan Ward<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1409ef2\">Matt Roberts<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408f0b\">Toby Bedford<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408358\">Massimo D'Ambrosio<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230630\">Toby Greene<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14077ee\">James Worpel<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408798\">Sam Wicks<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140ca1d\">Nick Daicos<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140bfea\">Darcy Jones<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408edb\">Joel Amartey<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140a179\">Jack Ginnivan<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140a3a1\">James Jordon<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140cafa\">Cam Mackenzie<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140dc5f\">Josh Weddle<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dabd3\">Harry Himmelberg<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408737\">Xavier O'Halloran<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1407303\">Harry Morrison<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2309be\">Jarman Impey<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140872e\">James Rowbottom<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140940d\">Finn Maginness<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140dc51\">Max Gruzewski<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2da0d2\">Tom Barrass<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=23062e\">Jake Lloyd<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2daf9d\">Mabior Chol<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dbf76\">Josh Battle<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1409de0\">Justin McInerney<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408ed3\">Connor Idun<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dbfbd\">Harry Perryman<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14082fe\">Josh Daicos<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140a616\">Callum M. Brown<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14080f2\">Jacob Wehr<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230029\">Jamie Elliott<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=227d21\">Scott Pendlebury<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2300c5\">Brodie Grundy<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dba1d\">Tom Papley<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dbf57\">Oliver Florent<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140b206\">Connor Macdonald<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140ecb7\">James Leake<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22f901\">Stephen Coniglio<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140ad36\">Conor Stone<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dba07\">Lewis Melican<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22f28a\">Lachlan Keeffe<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140952c\">Jack Buckley<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140c8c3\">Edward Allan<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=23006f\">Jack Crisp<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22ce05\">Steele Sidebottom<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408ed9\">Isaac Quaynor<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2311b0\">Darcy Moore<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2da78a\">Brayden Maynard<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1407b7a\">Patrick Lipinski<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dae82\">Blake Hardwick<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22f889\">Brody Mihocek<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140b99e\">Aaron Cadman<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22f671\">Jeremy Howe<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22f283\">Dane Rampe<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14082b9\">Ben Paton<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=14081d5\">Beau McCreery<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408744\">Bobby Hill<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140a31e\">Reef McInnes<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1408f46\">Tom McCartin<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22ffea\">Sam Frost<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140b738\">Corey Warner<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140beb3\">Angus Sheldrick<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230ea0\">Daniel McStay<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22f840\">Taylor Adams<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140729c\">Lachie Schultz<\/a>","<img src=\"images/afl_logos/Haw-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140caf1\">Nick Watson<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=22f808\">Will Hoskin-Elliott<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140b224\">Ned Long<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140a28d\">Braeden Campbell<\/a>","<img src=\"images/afl_logos/Coll-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=230344\">Tim Membrey<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=2dbb6c\">Will Hayward<\/a>","<img src=\"images/afl_logos/GWS-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=1409034\">Kieren Briggs<\/a>","<img src=\"images/afl_logos/Syd-40.png\" height=\"15px\" width=\"15px\" alt=\"\"/>\n \n<a href=\"afl_player_profile.html?id=140db67\">Tom Hanily<\/a>"],"html":true,"className":"sticky","headerClassName":"sticky"},{"id":"Team","name":"Team","type":"character","sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Abbreviation","name":"Team","type":"character","sortNALast":true,"minWidth":50,"align":"center","filterable":true,"defaultSortDesc":false},{"id":"Image","name":"Image","type":["glue","character"],"sortNALast":true,"minWidth":60,"align":"center","show":false},{"id":"Matches","name":"M","type":"numeric","sortNALast":true,"minWidth":35,"align":"center"},{"id":"Winner","name":"Win","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","show":true,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Votes_Total","name":"Votes","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1},"aggregated":{"digits":1}},"className":"sticky","style":[{"left":180,"background":"#D79FF5"},{"left":180,"background":"#D8A3F5"},{"left":180,"background":"#E6C3F8"},{"left":180,"background":"#EDD4FA"},{"left":180,"background":"#F2E0FB"},{"left":180,"background":"#F9F1FD"},{"left":180,"background":"#FAF3FD"},{"left":180,"background":"#FCF8FE"},{"left":180,"background":"#FDFBFE"},{"left":180,"background":"#FDFBFE"},{"left":180,"background":"#FDFCFE"},{"left":180,"background":"#FDFCFE"},{"left":180,"background":"#FEFCFE"},{"left":180,"background":"#FEFDFE"},{"left":180,"background":"#FEFDFE"},{"left":180,"background":"#FEFDFE"},{"left":180,"background":"#FEFDFE"},{"left":180,"background":"#FEFDFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FEFEFE"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"},{"left":180,"background":"#FFFFFF"}],"headerClassName":"sticky","headerStyle":{"left":180}},{"id":"CI95Low","name":"Low","type":"numeric","sortNALast":true,"minWidth":40,"align":"center"},{"id":"CI95High","name":"High","type":"numeric","sortNALast":true,"minWidth":40,"align":"center"},{"id":"First","name":"1st","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Top3","name":"Top 3","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","show":false,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Top5","name":"Top 5","type":"numeric","sortNALast":true,"minWidth":50,"align":"center","show":false,"format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Top10","name":"Top 10","type":"numeric","sortNALast":true,"minWidth":55,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"TeamFirst","name":"1st","type":"numeric","sortNALast":true,"minWidth":55,"align":"center","format":{"cell":{"digits":1,"percent":true},"aggregated":{"digits":1,"percent":true}}},{"id":"Rank1","name":"1st","type":"numeric","sortNALast":true,"minWidth":40,"align":"center"},{"id":"Rank2","name":"2nd","type":"numeric","sortNALast":true,"minWidth":40,"align":"center"},{"id":"Rank3","name":"3rd","type":"numeric","sortNALast":true,"minWidth":40,"align":"center"},{"id":"RankTop5","name":"Top 5","type":"numeric","sortNALast":true,"minWidth":45,"align":"center"},{"id":"0","name":"0","type":"numeric","sortNALast":true,"minWidth":40,"align":"center","defaultSortDesc":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"className":"shaded","style":[{"background":"#D79FF5"},{"background":"#D8A3F5"},{"background":"#E6C3F8"},{"background":"#EDD4FA"},{"background":"#F2E0FB"},{"background":"#F9F1FD"},{"background":"#FAF3FD"},{"background":"#FCF8FE"},{"background":"#FDFBFE"},{"background":"#FDFBFE"},{"background":"#FDFCFE"},{"background":"#FDFCFE"},{"background":"#FEFCFE"},{"background":"#FEFDFE"},{"background":"#FEFDFE"},{"background":"#FEFDFE"},{"background":"#FEFDFE"},{"background":"#FEFDFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FEFEFE"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"},{"background":"#FFFFFF"}]}],"columnGroups":[{"name":"95% CI","columns":["CI95Low","CI95High"]},{"name":"Overall rank","columns":["First","Top3","Top5","Top10"]},{"name":"Team","columns":["TeamFirst"]},{"name":"Game rank","columns":["Rank1","Rank2","Rank3","RankTop5"]},{"name":"Round-by-round votes","columns":["0"]}],"defaultSortDesc":true,"defaultSorted":[{"id":"Votes_Total","desc":true}],"defaultPageSize":20,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"showSortIcon":false,"className":"afl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"crosstalkKey":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92"],"crosstalkGroup":"SharedData1e2e1f92","elementId":"brownlow-summary","dataKey":"efac2058d04ee905939ac9d5a26479f6"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+<hr/>
+<h4>Round-by-Round Votes and Leaderboard</h4>
+<ul class='nav nav-pills' role='tablist'>
+
+<li class="active" role="presentation">
+<a role='tab' data-toggle='tab' href='#round0' aria-controls='round0'>0</a>
+</li>
+</ul>
+<hr/>
+<div class='tab-content'>
+
+<div id='round0' class='section level3 tab-pane tabbed-pane active'>
+<div class='container overflow-hidden small'>
+<div class='row'>
+<div class='col'>
+<a href='afl_match_stats.html?id=202500'>View match stats for all matches</a>
+</div>
+</div>
+<div class='row gx-5'>
+<div class='col-lg-8'>
+<div class='row gx-5'><div class='col-sm-6 col-md-4'>
+<div class='row text-center mt-3 bg-primary'>
+<div class='col'>
+<h5 class='my-1'>Sydney v Hawthorn</h5>
+</div>
+</div>
+<div class='row text-center'>
+<h6 class='my-1'>Hawthorn by 20</h6>
+</div>
+<div class='row text-center border-bottom'>
+<a href='afl_match_stats.html?id=20250002'>View match stats</a>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> Will Day</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #D79FF5'>3.0</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> Karl Amon</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #EDD4FA'>1.3</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> James Sicily</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #F9F1FD'>0.4</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> Jai Newcombe</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FAF3FD'>0.4</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/Syd-40.png' height='15px' alt> Chad Warner</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FCF8FE'>0.2</span></div>
+</div></div><div class='col-sm-6 col-md-4'>
+<div class='row text-center mt-3 bg-primary'>
+<div class='col'>
+<h5 class='my-1'>Greater Western Sydney v Collingwood</h5>
+</div>
+</div>
+<div class='row text-center'>
+<h6 class='my-1'>Greater Western Sydney by 52</h6>
+</div>
+<div class='row text-center border-bottom'>
+<a href='afl_match_stats.html?id=20250004'>View match stats</a>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> Finn Callaghan</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #D8A3F5'>2.8</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> Josh Kelly</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #E6C3F8'>1.8</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> Sam Taylor</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #F2E0FB'>0.9</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> Lachie Ash</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FDFCFE'>0.1</span></div>
+</div><div class='row border-bottom' style='padding: 2px 0'>
+  <div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> Lachie Whitfield</div>
+  <div class='col-3 px-1 text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFDFE'>0.1</span></div>
+</div></div>
+</div>
+</div><div class='col-lg-4'>
+<div class='row gx-5'>
+<div class='col-sm-6 col-lg-12'>
+<div class='row text-center pt-2'>
+<h5>Leaderboard</h5>
+</div><div class='row fw-bold bg-primary py-1' style='padding: 2px 0'>
+<div class='col-9 px-1'></div>
+<div class='col-3 px-1 text-center'>Votes</div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=14090a6'>Will Day</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #D79FF5'>3.0</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> <a href='afl_player_profile.html?id=140ca22'>Finn Callaghan</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #D8A3F5'>2.8</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> <a href='afl_player_profile.html?id=230a1b'>Josh Kelly</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #E6C3F8'>1.8</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=230e0a'>Karl Amon</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #EDD4FA'>1.3</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> <a href='afl_player_profile.html?id=14083bf'>Sam Taylor</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #F2E0FB'>0.9</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=230ede'>James Sicily</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #F9F1FD'>0.4</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=140c0df'>Jai Newcombe</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FAF3FD'>0.4</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Syd-40.png' height='15px' alt> <a href='afl_player_profile.html?id=1409e2e'>Chad Warner</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FCF8FE'>0.2</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=1407314'>Lloyd Meek</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FDFBFE'>0.1</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=1408b14'>Conor Nash</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FDFBFE'>0.1</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Syd-40.png' height='15px' alt> <a href='afl_player_profile.html?id=2312ab'>Isaac Heeney</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FDFCFE'>0.1</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> <a href='afl_player_profile.html?id=1409365'>Lachie Ash</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FDFCFE'>0.1</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Syd-40.png' height='15px' alt> <a href='afl_player_profile.html?id=14086cc'>Nick Blakey</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFCFE'>0.1</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> <a href='afl_player_profile.html?id=230221'>Lachie Whitfield</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFDFE'>0.1</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=14087ea'>Dylan Moore</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFDFE'>0.1</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Coll-40.png' height='15px' alt> <a href='afl_player_profile.html?id=2da0d3'>Darcy Cameron</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFDFE'>0.0</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> <a href='afl_player_profile.html?id=140780b'>Brent Daniels</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFDFE'>0.0</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Haw-40.png' height='15px' alt> <a href='afl_player_profile.html?id=2dbf62'>Jack Scrimshaw</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFDFE'>0.0</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/GWS-40.png' height='15px' alt> <a href='afl_player_profile.html?id=22caad'>Callan Ward</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFEFE'>0.0</span></div></div><div class='row border-bottom' style='padding: 2px 0'>
+<div class='col-9 px-1'><img src='images/afl_logos/Syd-40.png' height='15px' alt> <a href='afl_player_profile.html?id=1409ef2'>Matt Roberts</a></div>
+<div class='col-3 px-1 fw-bold text-center'><span class='rounded' style='display: inline-block; width: 90%; background-color: #FEFEFE'>0.0</span></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3>Top 6 vote progression</h3>
+<div class="chart-container" style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px"><canvas id='brownlow-chart'></canvas></div>
 <script>
 const ctx = document.getElementById('brownlow-chart');
 const dataScript = document.querySelector('#brownlow-table script[data-for^="brownlow-summary"]')
