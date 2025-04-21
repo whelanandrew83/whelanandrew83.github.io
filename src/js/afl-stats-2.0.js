@@ -33,10 +33,11 @@ const statsColumnsAll = ["RatingPoints_Avg", "Supercoach_Avg",
     "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "BnFVotes_Total", "TimeOnGround", "Kicks", "Handballs", "Disposals",
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
     "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
+    "xThreatPerKick", "ThreatRating", "xRetainPerKick", "RetentionRating",
     "ContestedPossessions", "UncontestedPossessions", "TotalPossessions", "ContestedPossessionRate", "Intercepts",
     "GroundBallGets", "GroundBallGetsForward50", "HardBallGets", "LooseBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "GathersFromHitout", "CrumbingPossessions", "HandballReceives",
     "CentreBounceAttendances", "CentreBounceAttendancePercentage", "CentreClearances", "CentreClearanceRate",
-    "StoppageClearances", "TotalClearances", "Marks", "ContestedMarks", "MarksInside50", "InterceptMarks", "MarksOnLead",
+    "StoppageClearances", "TotalClearances", "FirstPossessions", "FirstPossessionToClearance", "Marks", "ContestedMarks", "MarksInside50", "InterceptMarks", "MarksOnLead",
     "FreesFor", "FreesAgainst", "FreesDiff", "RuckContests", "RuckContestPercentage", "Hitouts", "HitoutsWinPercentage",
     "HitoutsToAdvantage", "HitoutsToAdvantagePercentage", "RuckHardBallGets", "Tackles", "TacklesInside50", "ContestDefensiveOneOnOnes",
     "ContestDefensiveLossPercentage", "ContestOffensiveOneOnOnes", "ContestOffensiveWinPercentage",
@@ -63,7 +64,8 @@ const statsColumns = {
     },
     "Disposal Efficiency": {
         "KickingEfficiency": "Kicking Efficiency", "HandballEfficiency": "Handball Efficiency", "DisposalEfficiency": "Disposal Efficiency",
-        "Clangers": "Clangers", "DisposalsPerClanger": "Disposals Per Clanger", "Turnovers": "Turnovers", "DisposalsPerTurnover": "Disposals Per Turnover"
+        "Clangers": "Clangers", "DisposalsPerClanger": "Disposals Per Clanger", "Turnovers": "Turnovers", "DisposalsPerTurnover": "Disposals Per Turnover",
+        "xThreatPerKick": "xThreat / Kick", "ThreatRating": "Threat Rating", "xRetainPerKick": "xRetain / Kick", "RetentionRating": "Retention Rating"
     },
     "Possessions": {
         "ContestedPossessions": "Contested Possessions", "UncontestedPossessions": "Uncontested Possessions", "TotalPossessions": "Total Possessions",
@@ -71,7 +73,10 @@ const statsColumns = {
         "HardBallGets": "Hard Ball Gets", "LooseBallGets": "Loose Ball Gets", "PostClearanceContestedPossessions": "Post-Clearance Contested Possessions", "PostClearanceGroundBallGets": "Post-Clearance Ground Ball Gets",
         "GathersFromHitout": "Gathers from Hitout", "CrumbingPossessions": "Crumbing Possessions", "HandballReceives": "Handball Receives"
     },
-    "Clearances": { "CentreBounceAttendances": "Centre Bounce Attendances", "CentreBounceAttendancePercentage": "Centre Bounce Attendance %", "CentreClearances": "Centre Clearances", "CentreClearanceRate": "Centre Clearances Per CBA", "StoppageClearances": "Stoppage Clearances", "TotalClearances": "Total Clearances" },
+    "Clearances": {
+        "CentreBounceAttendances": "Centre Bounce Attendances", "CentreBounceAttendancePercentage": "Centre Bounce Attendance %", "CentreClearances": "Centre Clearances", "CentreClearanceRate": "Centre Clearances Per CBA", "StoppageClearances": "Stoppage Clearances", "TotalClearances": "Total Clearances",
+        "FirstPossessions": "First Possessions", "FirstPossessionToClearance": "First Possession To Clearance %"
+    },
     "Marks": { "Marks": "Marks", "ContestedMarks": "Contested Marks", "MarksInside50": "Marks Inside Forward 50", "InterceptMarks": "Intercept Marks", "MarksOnLead": "Marks On Lead" },
     "Scoring/Attack": {
         "Goals_Total": "Goals (Total)", "Goals_Avg": "Goals (Average)", "Behinds": "Behinds", "ShotsAtGoal": "Shots At Goal", "GoalAssists": "Goal Assists", "GoalAccuracy": "Goal Accuracy", "ScoreInvolvements": "Score Involvements", "ScoreInvolvementPercentage": "Score Involvement %", "ScoreLaunches": "Score Launches",
@@ -101,6 +106,7 @@ const filterColumns = {
     'CentreClearances': 'Centre Clearances',
     'TotalClearances': 'Clearances',
     'MetresGained': 'Metres Gained',
+    'FirstPossessions': 'First Possessions',
     'Marks': 'Marks',
     'ContestedMarks': 'Contested Marks',
     'Goals_Total': 'Goals (Total)',
