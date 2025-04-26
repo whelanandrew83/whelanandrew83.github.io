@@ -16,7 +16,7 @@ const chartColumns = {
     "Disposals": { name: "Disposals", dec: 0 },
     "DisposalEfficiency": { name: "Disposal Efficiency" },
     "Inside50s": { name: "Inside 50s", dec: 0 },
-    "Forward Half": { name: "Time in Forward Half", dec: 1 },
+    "ForwardHalf": { name: "Time in Forward Half", dec: 1 },
     "MetresGained": { name: "Metres Gained", dec: 0 },
     "ContestedPossessions": { name: "Contested Possessions", dec: 0 },
     "GroundBallGets": { name: "Ground Ball Gets", dec: 0 },
