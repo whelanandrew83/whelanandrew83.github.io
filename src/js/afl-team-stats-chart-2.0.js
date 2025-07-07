@@ -72,6 +72,7 @@ const chartColumns = {
     "Tackles": { name: "Tackles" },
     "TacklesInside50": { name: "Tackles Inside 50" },
     "Spoils": { name: "Spoils" },
+    "RuckContests": { name: "Ruck Contests" },
     "HitoutsWinPercentage": { name: "Hitout Win %" },
     "HitoutsToAdvantagePercentage": { name: "Hitout To Advantage %" },
     "RuckHardBallGets": { name: "Ruck Hard Ball Gets" },
