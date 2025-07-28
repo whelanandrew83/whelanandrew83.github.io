@@ -1,5 +1,7 @@
 const filterColumns = {
     'Year': 'Year',
+    'Teams': 'Team Count',
+    'HALadderPosition': 'Home & Away Ladder Position',
     'M_FinalsTeams': 'Matches against finals teams',
     'W_FinalsTeams': 'Wins against finals teams',
     'L_FinalsTeams': 'Losses against finals teams',
@@ -14,4 +16,4 @@ const filterColumns = {
     'MR_Diff': 'Match ratio difference'
 }
 
-const filterColumnsDefault = ['Year']
+const filterColumnsDefault = ['Year', 'HALadderPosition']

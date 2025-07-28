@@ -13,7 +13,8 @@ const chartColumns = {
     'MR_NonFinalsTeams': { name: 'Match ratio against non-finals teams' },
     'Rank_NonFinalsTeams': { name: 'Rank against non-finals teams', dec: 0, reverse: true },
     'Percentage_Diff': { name: 'Percentage difference' },
-    'MR_Diff': { name: 'Match ratio difference' }
+    'MR_Diff': { name: 'Match ratio difference' },
+    "HALadderPosition": { name: "Home & Away Ladder Position", dec: 0, reverse: true }
 };
 
 const defaultX = 'MR_FinalsTeams';
