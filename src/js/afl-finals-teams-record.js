@@ -1,19 +1,23 @@
 const filterColumns = {
     'Year': 'Year',
     'Teams': 'Team Count',
+    'FinalsTeams': 'Finals Team Count',
     'HALadderPosition': 'Home & Away Ladder Position',
     'M_FinalsTeams': 'Matches against finals teams',
     'W_FinalsTeams': 'Wins against finals teams',
     'L_FinalsTeams': 'Losses against finals teams',
     'Percentage_FinalsTeams': 'Percentage against finals teams',
     'MR_FinalsTeams': 'Match ratio against finals teams',
+    'Rating_FinalsTeams': 'Rating against finals teams',
     'M_NonFinalsTeams': 'Matches against non-finals teams',
     'W_NonFinalsTeams': 'Wins against non-finals teams',
     'L_NonFinalsTeams': 'Losses against non-finals teams',
     'Percentage_NonFinalsTeams': 'Percentage against non-finals teams',
     'MR_NonFinalsTeams': 'Match ratio against non-finals teams',
+    'Rating_NonFinalsTeams': 'Rating against non-finals teams',
     'Percentage_Diff': 'Percentage difference',
-    'MR_Diff': 'Match ratio difference'
+    'MR_Diff': 'Match ratio difference',
+    'Rating_Diff': 'Rating difference'
 }
 
 const filterColumnsDefault = ['Year', 'HALadderPosition']

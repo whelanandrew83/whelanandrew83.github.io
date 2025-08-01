@@ -6,14 +6,17 @@ const chartColumns = {
     'Percentage_FinalsTeams': { name: 'Percentage against finals teams' },
     'MR_FinalsTeams': { name: 'Match ratio against finals teams' },
     'Rank_FinalsTeams': { name: 'Rank against finals teams', dec: 0, reverse: true },
+    'Rating_FinalsTeams': { name: 'Rating against finals teams' },
     'M_NonFinalsTeams': { name: 'Matches against non-finals teams' },
     'W_NonFinalsTeams': { name: 'Wins against non-finals teams' },
     'L_NonFinalsTeams': { name: 'Losses against non-finals teams' },
     'Percentage_NonFinalsTeams': { name: 'Percentage against non-finals teams' },
     'MR_NonFinalsTeams': { name: 'Match ratio against non-finals teams' },
     'Rank_NonFinalsTeams': { name: 'Rank against non-finals teams', dec: 0, reverse: true },
+    'Rating_NonFinalsTeams': { name: 'Rating against non-finals teams' },
     'Percentage_Diff': { name: 'Percentage difference' },
     'MR_Diff': { name: 'Match ratio difference' },
+    'Rating_Diff': { name: 'Rating difference' },
     "HALadderPosition": { name: "Home & Away Ladder Position", dec: 0, reverse: true }
 };
 
