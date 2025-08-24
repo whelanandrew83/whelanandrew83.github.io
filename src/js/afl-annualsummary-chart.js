@@ -48,6 +48,10 @@ let highlightColumns = {
         name: 'Year',
         default: '_max'
     },
+    'HALadderPosition': {
+        name: 'H&A Ladder Position',
+        default: 1
+    },
     'IsPremier': {
         name: 'Premiership teams',
         default: "Yes"
