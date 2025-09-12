@@ -11,6 +11,7 @@ const chartColumns = {
     "Goals_Total_Career": { name: "Total Goals (Career)", dec: 0 },
     "Matches_Finals": { name: "Matches (Finals)", dec: 0 },
     "Goals_Total_Finals": { name: "Total Goals (Finals)", dec: 0 },
+    "RatingPoints_Finals": { name: "Rating Points (Finals)" },
     "Matches_Current": { name: "Matches (This Season)", dec: 0 },
     "Goals_Total_Current": { name: "Total Goals (This Season)", dec: 0 },
     "CareerStats_Heading": { name: "Career Stats", heading: true },

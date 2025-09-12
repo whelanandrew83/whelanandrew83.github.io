@@ -9,6 +9,7 @@ const filterColumns = {
     'Goals_Total_Career': 'Career Goals',
     'Matches_Finals': 'Finals Matches',
     'Goals_Total_Finals': 'Finals Goals',
+    'RatingPoints_Finals': 'Rating Points (Finals)',
     'Matches_Current': 'Matches This Season',
     'Goals_Total_Current': 'Goals This Season',
     'RatingPoints_Career': 'Rating Points (Career)',
