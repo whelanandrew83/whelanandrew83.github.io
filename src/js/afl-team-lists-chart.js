@@ -32,7 +32,9 @@ const defaultX = 'Age_Decimal';
 const defaultY = 'RatingPoints_Recent';
 const reactableId = 'team-lists-table';
 const diagonalLines = {
-    "RatingPoints_Career": "RatingPoints_Recent",
+    "RatingPoints_Career": "RatingPoints_Finals",
+    "RatingPoints_Finals": "RatingPoints_Recent",
+    "RatingPoints_Recent": "RatingPoints_Career",
     "Supercoach_Career": "Supercoach_Recent",
     "Disposals_Career": "Disposals_Recent",
     "ContestedPossessions_Career": "ContestedPossessions_Recent",

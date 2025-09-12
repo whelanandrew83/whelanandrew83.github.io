@@ -301,7 +301,7 @@ const updateChart = function (animation = false) {
     let labelText;
     const xRange = [];
     const yRange = [];
-    const drawDiagonalLine = typeof diagonalLines !== "undefined" && diagonalLines[statDropdownX.value] === statDropdownY.value;
+    const drawDiagonalLine = typeof diagonalLines !== "undefined" && (diagonalLines[statDropdownX.value] === statDropdownY.value || diagonalLines[statDropdownY.value] === statDropdownX.value);
 
     const filteredRows = Object.keys(Reactable.getInstance(reactableId).filteredRowsById);
 
