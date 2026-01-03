@@ -31,17 +31,19 @@ if (storageAvailable('localStorage')) {
 
 const statsColumnsAll = ["RatingPoints_Avg", "Supercoach_Avg",
     "DreamTeamPoints_Avg", "CoachesVotes_Total", "CoachesVotes_Avg", "CoachesVotes_MatchesPolled", "BnFVotes_Total", "TimeOnGround", "Kicks", "Handballs", "Disposals",
-    "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "KickPercentage", "Inside50s", "Rebound50s",
-    "MetresGained", "MetresGainedPerDisposal", "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
+    "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "DisposalRetentionPercentage", "KickIntoF50RetentionPercentage", "KickPercentage", "Inside50s", "Rebound50s",
+    "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
+    "MetresGained", "MetresGainedPerDisposal", "AssistedMetresGained", "NetMetresGained", "KickMetresGained", "RetainedMetresGained", "KickMetresGainedPerKick", "HandballMetresGained", "HandballMetresGainedPerHandball",
     "xThreatPerKick", "ThreatRating", "xRetainPerKick", "RetentionRating",
     "ContestedPossessions", "UncontestedPossessions", "TotalPossessions", "ContestedPossessionRate", "Intercepts",
     "GroundBallGets", "GroundBallGetsForward50", "HardBallGets", "LooseBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "GathersFromHitout", "CrumbingPossessions", "HandballReceives",
+    "AverageFieldPosition", "Defensive50Possessions", "DefensiveMidfieldPossessions", "AttackingMidfieldPossessions", "Forward50Possessions",
     "CentreBounceAttendances", "CentreBounceAttendancePercentage", "CentreClearances", "CentreClearanceRate",
     "StoppageClearances", "TotalClearances", "FirstPossessions", "FirstPossessionToClearance", "Marks", "ContestedMarks", "MarksInside50", "InterceptMarks", "MarksOnLead",
     "FreesFor", "FreesAgainst", "FreesDiff", "RuckContests", "RuckContestPercentage", "Hitouts", "HitoutsWinPercentage",
-    "HitoutsToAdvantage", "HitoutsToAdvantagePercentage", "RuckHardBallGets", "Tackles", "TacklesInside50", "ContestDefensiveOneOnOnes",
+    "HitoutsToAdvantage", "HitoutsToAdvantagePercentage", "RuckHardBallGets", "HitoutToFirstPossession", "HitoutToClearance", "Tackles", "TacklesInside50", "ContestDefensiveOneOnOnes",
     "ContestDefensiveLossPercentage", "ContestOffensiveOneOnOnes", "ContestOffensiveWinPercentage",
-    "Goals_Total", "Goals_Avg", "Behinds", "ShotsAtGoal", "GoalAssists", "GoalAccuracy", "ScoreInvolvements",
+    "Goals_Total", "Goals_Avg", "Behinds", "ShotsAtGoal", "GoalAssists", "ScoreAssists", "ScoreboardImpact", "GoalAccuracy", "ScoreInvolvements",
     "ScoreInvolvementPercentage", "ScoreLaunches",
     "xScoreShots", "xScorePerShot", "xScoreRatingPerShot", "xScoreShots_Set", "xScorePerShot_Set", "xScoreRatingPerShot_Set",
     "xScoreShots_General", "xScorePerShot_General", "xScoreRatingPerShot_General",
@@ -60,18 +62,22 @@ const statsColumns = {
     "General": { "RatingPoints_Avg": "Player Rating", "Supercoach_Avg": "Supercoach Points", "DreamTeamPoints_Avg": "Fantasy Points", "CoachesVotes_Total": "Coaches Votes (Total)", "CoachesVotes_Avg": "Coaches Votes (Average)", "CoachesVotes_MatchesPolled": "Coaches Votes (Matches Polled)", "BnFVotes_Total": "B&F Votes", "TimeOnGround": "Time On Ground" },
     "Disposals": {
         "Kicks": "Kicks", "Handballs": "Handballs", "Disposals": "Disposals", "KickPercentage": "Kick %",
-        "Inside50s": "Inside 50s", "Rebound50s": "Rebound 50s", "MetresGained": "Metres Gained", "MetresGainedPerDisposal": "Metres Gained Per Disposal"
+        "Inside50s": "Inside 50s", "Rebound50s": "Rebound 50s", "MetresGained": "Metres Gained", "MetresGainedPerDisposal": "Metres Gained Per Disposal",
+        "AssistedMetresGained": "Assisted Metres Gained", "NetMetresGained": "Net Metres Gained", "RetainedMetresGained": "Retained Metres Gained", "KickMetresGained": "Kick Metres Gained", "KickMetresGainedPerKick": "Kick Metres Gained / Kick",
+        "HandballMetresGained": "Handball Metres Gained", "HandballMetresGainedPerHandball": "Handball Metres Gained / Handball"
     },
     "Disposal Efficiency": {
         "KickingEfficiency": "Kicking Efficiency", "HandballEfficiency": "Handball Efficiency", "DisposalEfficiency": "Disposal Efficiency",
         "Clangers": "Clangers", "DisposalsPerClanger": "Disposals Per Clanger", "Turnovers": "Turnovers", "DisposalsPerTurnover": "Disposals Per Turnover",
+        "DisposalRetentionPercentage": "Disposal Retention %", "KickIntoF50RetentionPercentage": "Kick Into F50 Retention %",
         "xThreatPerKick": "xThreat / Kick", "ThreatRating": "Threat Rating", "xRetainPerKick": "xRetain / Kick", "RetentionRating": "Retention Rating"
     },
     "Possessions": {
         "ContestedPossessions": "Contested Possessions", "UncontestedPossessions": "Uncontested Possessions", "TotalPossessions": "Total Possessions",
         "ContestedPossessionRate": "Contested Possession %", "Intercepts": "Intercept Possessions", "GroundBallGets": "Ground Ball Gets", "GroundBallGetsForward50": "Forward 50 Ground Ball Gets",
         "HardBallGets": "Hard Ball Gets", "LooseBallGets": "Loose Ball Gets", "PostClearanceContestedPossessions": "Post-Clearance Contested Possessions", "PostClearanceGroundBallGets": "Post-Clearance Ground Ball Gets",
-        "GathersFromHitout": "Gathers from Hitout", "CrumbingPossessions": "Crumbing Possessions", "HandballReceives": "Handball Receives"
+        "GathersFromHitout": "Gathers from Hitout", "CrumbingPossessions": "Crumbing Possessions", "HandballReceives": "Handball Receives",
+        "AverageFieldPosition": "Possession Location Chart", "Defensive50Possessions": "Defensive 50 Possessions", "DefensiveMidfieldPossessions": "Defensive Midfield Possessions", "AttackingMidfieldPossessions": "Attacking Midfield Possessions", "Forward50Possessions": "Forward 50 Possessions"
     },
     "Clearances": {
         "CentreBounceAttendances": "Centre Bounce Attendances", "CentreBounceAttendancePercentage": "Centre Bounce Attendance %", "CentreClearances": "Centre Clearances", "CentreClearanceRate": "Centre Clearances Per CBA", "StoppageClearances": "Stoppage Clearances", "TotalClearances": "Total Clearances",
@@ -79,7 +85,9 @@ const statsColumns = {
     },
     "Marks": { "Marks": "Marks", "ContestedMarks": "Contested Marks", "MarksInside50": "Marks Inside Forward 50", "InterceptMarks": "Intercept Marks", "MarksOnLead": "Marks On Lead" },
     "Scoring/Attack": {
-        "Goals_Total": "Goals (Total)", "Goals_Avg": "Goals (Average)", "Behinds": "Behinds", "ShotsAtGoal": "Shots At Goal", "GoalAssists": "Goal Assists", "GoalAccuracy": "Goal Accuracy", "ScoreInvolvements": "Score Involvements", "ScoreInvolvementPercentage": "Score Involvement %", "ScoreLaunches": "Score Launches",
+        "Goals_Total": "Goals (Total)", "Goals_Avg": "Goals (Average)", "Behinds": "Behinds", "ShotsAtGoal": "Shots At Goal", "GoalAssists": "Goal Assists",
+        "ScoreAssists": "Score Assists", "ScoreboardImpact": "Scoreboard Impact",
+        "GoalAccuracy": "Goal Accuracy", "ScoreInvolvements": "Score Involvements", "ScoreInvolvementPercentage": "Score Involvement %", "ScoreLaunches": "Score Launches",
         "ContestOffensiveOneOnOnes": "Offensive One-On-One Contests", "ContestOffensiveWinPercentage": "Offensive One-On-One Contest Win %"
     },
     "Expected Scores": {
@@ -88,7 +96,10 @@ const statsColumns = {
         "xScoreShots_General": "Total General Play Shots", "xScorePerShot_General": "xScore / Shot (General Play)", "xScoreRatingPerShot_General": "Rating / Shot (General Play)"
     },
     "Defence": { "ContestDefensiveOneOnOnes": "Defensive One-On-One Contests", "ContestDefensiveLossPercentage": "Defensive One-On-One Contest Loss %", "Tackles": "Tackles", "TacklesInside50": "Tackles Inside Forward 50", "PressureActs": "Pressure Acts", "PressureActsDefensiveHalf": "Defensive Half Pressure Acts", "Spoils": "Spoils" },
-    "Ruck Contests": { "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %", "RuckHardBallGets": "Ruck Hard Ball Gets" },
+    "Ruck Contests": {
+        "RuckContests": "Ruck Contests", "RuckContestPercentage": "Ruck Contest %", "Hitouts": "Hitouts", "HitoutsWinPercentage": "Hitout Win %", "HitoutsToAdvantage": "Hitouts To Advantage", "HitoutsToAdvantagePercentage": "Hitouts To Advantage %",
+        "RuckHardBallGets": "Ruck Hard Ball Gets", "HitoutToFirstPossession": "Hitout To First Possession %", "HitoutToClearance": "Hitout To Clearance %"
+    },
     "Other": { "FreesFor": "Frees For", "FreesAgainst": "Frees Against", "FreesDiff": "Frees Differential", "KickIns": "Kick-Ins", "KickInPercentage": "Kick-In %", "KickInsPlayOnPercentage": "Kick-In Play On %", "Bounces": "Bounces", "OnePercenters": "One Percenters" }
 };
 
@@ -101,6 +112,7 @@ const filterColumns = {
     'Kicks': 'Kicks',
     'Handballs': 'Handballs',
     'Disposals': 'Disposals',
+    'KicksIntoF50': 'Kicks Into Foward 50',
     'ContestedPossessions': 'Contested Possessions',
     'CentreBounceAttendancePercentage': 'Centre Bounce Attendance %',
     'CentreClearances': 'Centre Clearances',
