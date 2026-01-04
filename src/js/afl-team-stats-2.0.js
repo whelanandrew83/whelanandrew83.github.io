@@ -11,7 +11,7 @@ const statsColumns = {
         "CentreClearances", "StoppageClearances", "TotalClearances", "FirstPossessions", "FirstPossessionToClearance",
         "Marks", "ContestedMarks", "MarksInside50", "MarksInside50PerInside50", "InterceptMarks", "MarksOnLead",
         "GoalScorers_Total", "GoalScorers", "Goals", "Behinds", "TotalPoints", "RushedBehinds", "ShotsAtGoal", "GoalAssists", "GoalAccuracy", "GoalsPerInside50", "ScoringShotsPerInside50", "ShotsPerInside50", "ContestOffensiveOneOnOnes", "ContestOffensiveWinPercentage",
-        "xScore", "xScoreRating", "xScorePerShot", "xScoreRatingPerShot", "xScorePerShot_Set", "xScoreRatingPerShot_Set", "xScorePerShot_General", "xScoreRatingPerShot_General",
+        "xWins", "WinsAboveXWins", "xScore", "xScoreRating", "xScorePerShot", "xScoreRatingPerShot", "xScorePerShot_Set", "xScoreRatingPerShot_Set", "xScorePerShot_General", "xScoreRatingPerShot_General",
         "PointsFromKickIn", "PointsFromStoppage", "PointsFromTurnover", "PointsFromDefensiveHalf", "PointsFromForwardHalf", "PointsFromCentreBounce",
         "ChainToScore", "D50ToF50", "D50ToScore", "DefHalfToF50", "DefHalfToScore",
         "ContestDefensiveOneOnOnes", "ContestDefensiveLossPercentage", "Tackles", "TacklesInside50", "PressureActs", "PressureActsDefensiveHalf", "Spoils",
