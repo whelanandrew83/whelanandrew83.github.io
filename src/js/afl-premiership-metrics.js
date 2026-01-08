@@ -42,6 +42,11 @@ showAllTeamsButton.addEventListener('click', (e) => {
 });
 
 window.addEventListener('DOMContentLoaded', (event) => {
+    if (typeof chart !== 'undefined') {
+        chart.update();
+        document.getElementById("temp-message").innerText = "Chart updated"
+    }
+
     if (typeof premiership_metrics !== 'undefined')
         Reactable.getInstance(reactableId).setData(premiership_metrics);
 
