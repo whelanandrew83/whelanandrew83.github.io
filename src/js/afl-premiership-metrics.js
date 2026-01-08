@@ -46,7 +46,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
         chart.update();
         document.getElementById("temp-message").innerText = "Chart updated"
         window.setTimeout(() => {
-            document.getElementById("temp-message").innerText = ""
+            document.getElementById("temp-message").innerText = "";
+            chart.update();
         }, 1000)
     }
 
