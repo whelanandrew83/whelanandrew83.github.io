@@ -45,6 +45,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (typeof chart !== 'undefined') {
         chart.update();
         document.getElementById("temp-message").innerText = "Chart updated"
+        window.setTimeout(() => {
+            document.getElementById("temp-message").innerText = ""
+        }, 1000)
     }
 
     if (typeof premiership_metrics !== 'undefined')
