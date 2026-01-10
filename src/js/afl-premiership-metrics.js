@@ -1,3 +1,17 @@
+const viewWindowButton = document.querySelector("#view-window-button");
+const closeSearchButton = document.querySelector("#close-search-button");
+
+viewWindowButton.addEventListener('click', () => { overlay.style.display = "block"; chart.update() });
+closeSearchButton.addEventListener('click', () => { overlay.style.display = "none" });
+document.addEventListener('keyup', (e) => {
+    if (e.code === "Escape") {
+        if (document.activeElement.id === "close-search-button") {
+            overlay.style.display = "none";
+        } else
+            closeSearchButton.focus();
+    }
+});
+
 const showCurrentTeamsButton = document.querySelector('#show-current');
 const showPremiersButton = document.querySelector('#show-premiers');
 const showAllTeamsButton = document.querySelector('#show-all');
@@ -42,11 +56,9 @@ showAllTeamsButton.addEventListener('click', (e) => {
 });
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    if (typeof chart !== 'undefined') {
-        window.setTimeout(() => {
-            chart.update();
-        }, 200)
-    }
+    window.setTimeout(() => {
+        if (typeof chart !== 'undefined') chart.update();
+    }, 1000)
 
     if (typeof premiership_metrics !== 'undefined')
         Reactable.getInstance(reactableId).setData(premiership_metrics);

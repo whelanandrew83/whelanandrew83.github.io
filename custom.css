@@ -179,6 +179,11 @@ ul.nav.navbar-nav>li>a {
   font-size: 80% !important;
 }
 
+.rt-sorted {
+  background-color: #f3f3f3;
+  font-weight: bold;
+}
+
 .-header {
   /* background-color: #eee; */
   /* color: #333; */
