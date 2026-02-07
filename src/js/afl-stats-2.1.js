@@ -24,6 +24,7 @@ function storageAvailable(type) {
 }
 
 let playerStatSelections;
+let showColumns = [];
 
 if (storageAvailable('localStorage')) {
     playerStatSelections = JSON.parse(localStorage.getItem("playerStatSelections"));
@@ -249,6 +250,18 @@ csvDownloadButton.addEventListener('click', (e) => {
 // playerStatsDiv.appendChild(csvDownloadButton);
 filtersDiv.insertAdjacentElement('afterend', csvDownloadButton);
 
+const csvDownloadVisibleButton = document.createElement('button');
+csvDownloadVisibleButton.id = "download-visible-csv-button";
+csvDownloadVisibleButton.classList = "btn btn-primary btn-sm mx-1 my-2";
+csvDownloadVisibleButton.innerText = "Download Visible Columns Only";
+csvDownloadVisibleButton.addEventListener('click', (e) => {
+    //Reactable.downloadDataCSV('player-stats-table', `afl-player-stats-${year}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...statsColumnsAll.filter((value) => { return !["PlayerId", "WebsiteId", "Team", "Image", "IsAFLListedPlayer"].includes(value) })] });
+    Reactable.downloadDataCSV('player-stats-table', `${comp}-player-stats-${season}.csv`, { columnIds: [...['Player', 'Team', 'Age', 'Age_Decimal', 'Position', 'Matches'], ...showColumns] });
+    gtag('event', 'data_download');
+});
+// playerStatsDiv.appendChild(csvDownloadButton);
+csvDownloadButton.insertAdjacentElement('afterend', csvDownloadVisibleButton);
+
 const statCategoryAccordian = document.querySelector('#accordion-stat-categories');
 statCategoryAccordian.classList.remove('d-none');
 
@@ -318,8 +331,7 @@ customStatDivParent.appendChild(customSelectNoneButton);
 customStatDivParent.appendChild(customStatDiv);
 
 const updateTableColumns = function (id = null, custom = false) {
-    let showColumns = [];
-
+    showColumns = [];
     const customSelections = document.querySelectorAll("#stat-select-custom input:checked").length;
 
     if (custom) { customTextSpan.innerText = `(${customSelections} selected)` };
