@@ -35,7 +35,7 @@ const statsColumnsAll = ["RatingPoints_Avg", "Supercoach_Avg",
     "DisposalEfficiency", "KickingEfficiency", "HandballEfficiency", "DisposalRetentionPercentage", "KicksIntoF50", "KickIntoF50RetentionPercentage", "KickPercentage", "Inside50s", "Rebound50s",
     "Clangers", "DisposalsPerClanger", "Turnovers", "DisposalsPerTurnover",
     "MetresGained", "MetresGainedPerDisposal", "AssistedMetresGained", "NetMetresGained", "KickMetresGained", "RetainedMetresGained", "KickMetresGainedPerKick", "HandballMetresGained", "HandballMetresGainedPerHandball",
-    "xThreatPerKick", "ThreatRating", "xRetainPerKick", "RetentionRating",
+    "Equity_PreClearance", "Equity_PostClearance", "Equity_Possession", "Equity_BallUse", "xThreatPerKick", "ThreatRating", "xRetainPerKick", "RetentionRating",
     "ContestedPossessions", "UncontestedPossessions", "TotalPossessions", "ContestedPossessionRate", "Intercepts",
     "GroundBallGets", "GroundBallGetsForward50", "HardBallGets", "LooseBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "GathersFromHitout", "CrumbingPossessions", "HandballReceives",
     "AverageFieldPosition", "Defensive50Possessions", "DefensiveMidfieldPossessions", "AttackingMidfieldPossessions", "Forward50Possessions",
@@ -73,6 +73,7 @@ const statsColumns = {
         "DisposalRetentionPercentage": "Disposal Retention %", "KickIntoF50RetentionPercentage": "Kick Into F50 Retention %",
         "xThreatPerKick": "xThreat / Kick", "ThreatRating": "Threat Rating", "xRetainPerKick": "xRetain / Kick", "RetentionRating": "Retention Rating"
     },
+    "Equity": { "Equity_PreClearance": "Pre-Clearance", "Equity_PostClearance": "Post-Clearance", "Equity_Possession": "Ball Winning", "Equity_BallUse": "Ball Use" },
     "Possessions": {
         "ContestedPossessions": "Contested Possessions", "UncontestedPossessions": "Uncontested Possessions", "TotalPossessions": "Total Possessions",
         "ContestedPossessionRate": "Contested Possession %", "Intercepts": "Intercept Possessions", "GroundBallGets": "Ground Ball Gets", "GroundBallGetsForward50": "Forward 50 Ground Ball Gets",
