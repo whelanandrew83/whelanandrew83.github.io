@@ -1,6 +1,10 @@
 const chartColumns = {
     "RatingPoints": { name: "Player Rating" },
     "EstimatedRating": { name: "Estimated Rating" },
+    "Equity_PreClearance": { name: "Pre-Clearance Equity", dec: 1 },
+    "Equity_PostClearance": { name: "Post-Clearance Equity", dec: 1 },
+    "Equity_Possession": { name: "Ball Winning Equity", dec: 1 },
+    "Equity_BallUse": { name: "Ball Use Equity", dec: 1 },
     "Supercoach": { name: "Supercoach Points", dec: 0 },
     "DreamTeamPoints": { name: "Fantasy Points", dec: 0 },
     "CoachesVotes": { name: "Coaches Votes", dec: 0 },
@@ -13,6 +17,7 @@ const chartColumns = {
     "DisposalEfficiency": { name: "Disposal Efficiency" },
     "Inside50s": { name: "Inside 50s", dec: 0 },
     "MetresGained": { name: "Metres Gained", dec: 0 },
+    "AssistedMetresGained": { name: "Assisted Metres Gained", dec: 0 },
     "ContestedPossessions": { name: "Contested Possessions", dec: 0 },
     "GroundBallGets": { name: "Ground Ball Gets", dec: 0 },
     "PostClearanceContestedPossessions": { name: "Post-Clearance Contested Possessions", dec: 0 },

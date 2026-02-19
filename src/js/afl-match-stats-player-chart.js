@@ -16,6 +16,7 @@ const chartColumns = {
     "DisposalEfficiency": { name: "Disposal Efficiency" },
     "Inside50s": { name: "Inside 50s", dec: 0 },
     "MetresGained": { name: "Metres Gained", dec: 0 },
+    "AssistedMetresGained": { name: "Assisted Metres Gained", dec: 0 },
     "ContestedPossessions": { name: "Contested Possessions", dec: 0 },
     "GroundBallGets": { name: "Ground Ball Gets", dec: 0 },
     "PostClearanceContestedPossessions": { name: "Post-Clearance Contested Possessions", dec: 0 },
