@@ -536,7 +536,7 @@ premiership_metrics.Team.forEach((element, index) => {
     if (premiership_metrics.IsPremier[index] == 1) {
         data.Premiers.push({ x: x, y: y });
         labels.Premiers.push(label);
-    } else {
+    } else if (premiership_metrics.IsPremier[index] == 0) {
         data.Other.push({ x: x, y: y });
         labels.Other.push(label);
     }
