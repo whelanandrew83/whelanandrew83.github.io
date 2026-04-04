@@ -37,7 +37,7 @@ const statsColumnsAll = ["RatingPoints_Avg", "Supercoach_Avg",
     "MetresGained", "MetresGainedPerDisposal", "AssistedMetresGained", "NetMetresGained", "KickMetresGained", "RetainedMetresGained", "KickMetresGainedPerKick", "HandballMetresGained", "HandballMetresGainedPerHandball",
     "Equity_PreClearance", "Equity_PostClearance", "Equity_Possession", "Equity_BallUse", "xThreatPerKick", "ThreatRating", "xRetainPerKick", "RetentionRating",
     "ContestedPossessions", "UncontestedPossessions", "TotalPossessions", "ContestedPossessionRate", "Intercepts",
-    "GroundBallGets", "GroundBallGetsForward50", "HardBallGets", "LooseBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "GathersFromHitout", "CrumbingPossessions", "HandballReceives",
+    "GroundBallGets", "GroundBallGetsForward50", "GroundBallGetsDefensive50", "HardBallGets", "LooseBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "GathersFromHitout", "CrumbingPossessions", "HandballReceives",
     "AverageFieldPosition", "Defensive50Possessions", "DefensiveMidfieldPossessions", "AttackingMidfieldPossessions", "Forward50Possessions",
     "CentreBounceAttendances", "CentreBounceAttendancePercentage", "CentreClearances", "CentreClearanceRate",
     "StoppageClearances", "TotalClearances", "FirstPossessions", "FirstPossessionToClearance", "Marks", "ContestedMarks", "MarksInside50", "InterceptMarks", "MarksOnLead",
@@ -76,7 +76,7 @@ const statsColumns = {
     "Equity": { "Equity_PreClearance": "Pre-Clearance", "Equity_PostClearance": "Post-Clearance", "Equity_Possession": "Ball Winning", "Equity_BallUse": "Ball Use" },
     "Possessions": {
         "ContestedPossessions": "Contested Possessions", "UncontestedPossessions": "Uncontested Possessions", "TotalPossessions": "Total Possessions",
-        "ContestedPossessionRate": "Contested Possession %", "Intercepts": "Intercept Possessions", "GroundBallGets": "Ground Ball Gets", "GroundBallGetsForward50": "Forward 50 Ground Ball Gets",
+        "ContestedPossessionRate": "Contested Possession %", "Intercepts": "Intercept Possessions", "GroundBallGets": "Ground Ball Gets", "GroundBallGetsForward50": "Forward 50 Ground Ball Gets", "GroundBallGetsDefensive50": "Defensive 50 Ground Ball Gets",
         "HardBallGets": "Hard Ball Gets", "LooseBallGets": "Loose Ball Gets", "PostClearanceContestedPossessions": "Post-Clearance Contested Possessions", "PostClearanceGroundBallGets": "Post-Clearance Ground Ball Gets",
         "GathersFromHitout": "Gathers from Hitout", "CrumbingPossessions": "Crumbing Possessions", "HandballReceives": "Handball Receives",
         "AverageFieldPosition": "Possession Location Chart", "Defensive50Possessions": "Defensive 50 Possessions", "DefensiveMidfieldPossessions": "Defensive Midfield Possessions", "AttackingMidfieldPossessions": "Attacking Midfield Possessions", "Forward50Possessions": "Forward 50 Possessions"
