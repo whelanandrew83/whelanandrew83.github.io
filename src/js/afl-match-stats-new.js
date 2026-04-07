@@ -76,7 +76,7 @@ const teamStatsColumns = {
     "GroundBallGets": { name: "Ground Ball Gets" },
     "PostClearanceGroundBallGets": { name: "Post-Clearance GBG" },
     "FirstPossessions": { name: "1st Possessions" },
-    "FirstPossessionToClearance": { name: "1st Possession To Clearance %", decimals: 1 },
+    "FirstPossessionToClearance": { name: "1st Poss. To Clearance %", decimals: 1 },
     "Marks": { name: "Marks" },
     "ContestedMarks": { name: "Contested Marks" },
     "InterceptMarks": { name: "Intercept Marks" },
@@ -101,19 +101,19 @@ const teamStatsColumns = {
     "xChainScoreFromStoppage": { name: "Stoppage", decimals: 1 },
     "xChainScoreFromTurnover": { name: "Turnover", decimals: 1 },
     "ScoreSource_Heading": { name: "Score Source", heading: true },
-    "PointsFromKickIn": { name: "Kick-In", fields: ["GoalsFromKickIn", "BehindsFromKickIn", "PointsFromKickIn"], format: "{1}.{2}.{3}" },
-    "PointsFromStoppage": { name: "Stoppage", fields: ["GoalsFromStoppage", "BehindsFromStoppage", "PointsFromStoppage"], format: "{1}.{2}.{3}" },
-    "PointsFromTurnover": { name: "Turnover", fields: ["GoalsFromTurnover", "BehindsFromTurnover", "PointsFromTurnover"], format: "{1}.{2}.{3}" },
+    "PointsFromKickIn": { name: "Kick-In", fields: ["GoalsFromKickIn", "BehindsFromKickIn", "PointsFromKickIn"], format: "{1}.{2} ({3})" },
+    "PointsFromStoppage": { name: "Stoppage", fields: ["GoalsFromStoppage", "BehindsFromStoppage", "PointsFromStoppage"], format: "{1}.{2} ({3})" },
+    "PointsFromTurnover": { name: "Turnover", fields: ["GoalsFromTurnover", "BehindsFromTurnover", "PointsFromTurnover"], format: "{1}.{2} ({3})" },
     "ScoreOrigin_Heading": { name: "Score Origin", heading: true },
-    "PointsFromDefensiveHalf": { name: "Defensive Half", fields: ["GoalsFromDefensiveHalf", "BehindsFromDefensiveHalf", "PointsFromDefensiveHalf"], format: "{1}.{2}.{3}" },
-    "PointsFromForwardHalf": { name: "Forward Half", fields: ["GoalsFromForwardHalf", "BehindsFromForwardHalf", "PointsFromForwardHalf"], format: "{1}.{2}.{3}" },
-    "PointsFromCentreBounce": { name: "Centre Bounce", fields: ["GoalsFromCentreBounce", "BehindsFromCentreBounce", "PointsFromCentreBounce"], format: "{1}.{2}.{3}" },
+    "PointsFromDefensiveHalf": { name: "Defensive Half", fields: ["GoalsFromDefensiveHalf", "BehindsFromDefensiveHalf", "PointsFromDefensiveHalf"], format: "{1}.{2} ({3})" },
+    "PointsFromForwardHalf": { name: "Forward Half", fields: ["GoalsFromForwardHalf", "BehindsFromForwardHalf", "PointsFromForwardHalf"], format: "{1}.{2} ({3})" },
+    "PointsFromCentreBounce": { name: "Centre Bounce", fields: ["GoalsFromCentreBounce", "BehindsFromCentreBounce", "PointsFromCentreBounce"], format: "{1}.{2} ({3})" },
     "Transition_Heading": { name: "Transition", heading: true },
     "ChainToScore": { name: "Chain to Score %", decimals: 1 },
-    "D50ToF50": { name: "Defensive 50 to F50 %", decimals: 1 },
-    "D50ToScore": { name: "Defensive 50 to Score %", decimals: 1 },
-    "DefHalfToF50": { name: "Defensive Half to F50 %", decimals: 1 },
-    "DefHalfToScore": { name: "Defensive Half to Score %", decimals: 1 }
+    "D50ToF50": { name: "Def. 50 to F50 %", decimals: 1 },
+    "D50ToScore": { name: "Def. 50 to Score %", decimals: 1 },
+    "DefHalfToF50": { name: "Def. Half to F50 %", decimals: 1 },
+    "DefHalfToScore": { name: "Def. Half to Score %", decimals: 1 }
 }
 
 const displaySingleMatchTeamStats = function () {
@@ -128,28 +128,28 @@ const displaySingleMatchTeamStats = function () {
     let colNumber = 0;
 
     const colDivs = [document.createElement('div'), document.createElement('div')];
-    colDivs[0].classList = "col-lg-6 text-center";
-    colDivs[1].classList = "col-lg-6 text-center";
+    colDivs[0].classList = "col-lg-6 px-3 text-center";
+    colDivs[1].classList = "col-lg-6 px-3 text-center";
     teamstatsDiv.appendChild(colDivs[0]);
     teamstatsDiv.appendChild(colDivs[1]);
 
-    const rowDivHeading = document.createElement('div');
-    rowDivHeading.classList = "row";
+    // const rowDivHeading = document.createElement('div');
+    // rowDivHeading.classList = "row";
 
-    rowDivHeadingColumns = [document.createElement('div'), document.createElement('div'), document.createElement('div')];
-    rowDivHeadingColumns[0].classList = "col";
-    rowDivHeadingColumns[1].classList = "col-5";
-    rowDivHeadingColumns[2].classList = "col";
+    // rowDivHeadingColumns = [document.createElement('div'), document.createElement('div'), document.createElement('div')];
+    // rowDivHeadingColumns[0].classList = "col";
+    // rowDivHeadingColumns[1].classList = "col-5";
+    // rowDivHeadingColumns[2].classList = "col";
 
-    rowDivHeadingColumns[0].innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].HomeTeam[match_number]}`;
-    rowDivHeadingColumns[2].innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].AwayTeam[match_number]}`;
+    // rowDivHeadingColumns[0].innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].HomeTeam[match_number]}`;
+    // rowDivHeadingColumns[2].innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].AwayTeam[match_number]}`;
 
     // rowDivHeading.appendChild(rowDivHeadingColumns[0]);
     // rowDivHeading.appendChild(rowDivHeadingColumns[1]);
     // rowDivHeading.appendChild(rowDivHeadingColumns[2]);
 
-    colDivs[0].appendChild(rowDivHeading);
-    colDivs[1].appendChild(rowDivHeading.cloneNode(true));
+    // colDivs[0].appendChild(rowDivHeading);
+    // colDivs[1].appendChild(rowDivHeading.cloneNode(true));
 
     Object.keys(teamStatsColumns).forEach((key) => {
         if (key == 'Scoring_Heading') colNumber = 1;
@@ -167,11 +167,11 @@ const displaySingleMatchTeamStats = function () {
 
             const colDivHeadingHome = document.createElement('div');
             colDivHeadingHome.classList = "col";
-            colDivHeadingHome.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="15px" alt=""></img>`;
+            colDivHeadingHome.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="18px" alt=""></img>`;
 
             const colDivHeadingAway = document.createElement('div');
             colDivHeadingAway.classList = "col";
-            colDivHeadingAway.innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="15px" alt=""></img>`;
+            colDivHeadingAway.innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="18px" alt=""></img>`;
 
             rowDiv.appendChild(colDivHeadingHome);
             rowDiv.appendChild(colDivHeading);
