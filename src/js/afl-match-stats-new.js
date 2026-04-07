@@ -281,13 +281,13 @@ const loadMatch = function () {
         document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, ${roundName} - ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]}`;
 
         displaySingleMatchTeamStats();
-        teamstatsDiv.classList.remove('d-none');
+        document.querySelector("#single-match-div-team-container").classList.remove('d-none');
         document.querySelector("#react-div-team").classList.add('d-none');
     } else {
         matchBanner.innerHTML = `All ${roundName} Matches`;
         document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, ${roundName}`;
 
-        teamstatsDiv.classList.add('d-none');
+        document.querySelector("#single-match-div-team-container").classList.add('d-none');
         document.querySelector("#react-div-team").classList.remove('d-none');
         teamstatsDiv.innerHTML = '';
     }
