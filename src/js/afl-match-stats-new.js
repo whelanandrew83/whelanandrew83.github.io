@@ -179,6 +179,7 @@ const displaySingleMatchTeamStats = function () {
         } else {
             rowDiv.style = "padding: 2px 0 0 0;";
             rowDiv.classList.add("border-bottom");
+            rowDiv.classList.add("hover-row");
 
             colDivHeading.classList = "col-5 p-0";
 
@@ -519,7 +520,7 @@ if (validYears.includes(seasonId)) {
                             addEventListener('DOMContentLoaded', (event) => {
                                 if (matchId) {
                                     Reactable.setFilter('match-stats', 'MatchId', matchId);
-                                    Reactable.setFilter('match-stats-team', 'MatchId', matchId);
+                                    // Reactable.setFilter('match-stats-team', 'MatchId', matchId);
                                 }
                                 Reactable.setHiddenColumns("match-stats", prevColumns => { return prevColumns.concat(columnsMissing) });
                                 Reactable.setHiddenColumns("match-stats-team", prevColumns => { return prevColumns.concat(columnsTeamMissing) });
@@ -569,13 +570,13 @@ if (validYears.includes(seasonId)) {
                                 matchButtons.push(button);
 
                                 button.addEventListener('click', (e) => {
-                                    console.log("match clicked")
+                                    // console.log("match clicked")
 
                                     matchId = null;
                                     match_number = -1;
                                     loadMatch();
                                     Reactable.setFilter('match-stats', 'MatchId', undefined);
-                                    Reactable.setFilter('match-stats-team', 'MatchId', undefined);
+                                    // Reactable.setFilter('match-stats-team', 'MatchId', undefined);
                                     history.replaceState(null, '', `afl_match_stats_new.html?id=${roundId}`);
 
                                     for (btn of matchButtons) {
@@ -605,7 +606,7 @@ if (validYears.includes(seasonId)) {
                                 matchButtons.push(button);
 
                                 button.addEventListener('click', (e) => {
-                                    console.log("match clicked")
+                                    // console.log("match clicked")
 
                                     matchId = matches.MatchId[i];
                                     match_number = round_data.Matches[0].MatchId.indexOf(matchId);
@@ -613,7 +614,7 @@ if (validYears.includes(seasonId)) {
                                     // Reactable.setFilter('match-stats', 'MatchId', undefined);
                                     Reactable.setFilter('match-stats', 'MatchId', matchId);
                                     // Reactable.setFilter('match-stats-team', 'MatchId', undefined);
-                                    Reactable.setFilter('match-stats-team', 'MatchId', matchId);
+                                    // Reactable.setFilter('match-stats-team', 'MatchId', matchId);
                                     history.replaceState(null, '', `afl_match_stats_new.html?id=${matchId}`);
 
                                     for (btn of matchButtons) {
