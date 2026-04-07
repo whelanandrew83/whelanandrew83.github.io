@@ -94,7 +94,7 @@ const teamStatsColumns = {
     "Score": { name: "Score" },
     "xScore": { name: "Expected Score", decimals: 1 },
     "xScoreRating": { name: "Expected Score +/-", decimals: 1 },
-    "xWins": { name: "x Win %", decimals: 1 },
+    "xWins": { name: "xWin %", decimals: 1 },
     "GoalAssists": { name: "Goal Assists" },
     "xChainScore_Heading": { name: "xChainScore", heading: true },
     "xChainScore": { name: "Total", decimals: 1 },
@@ -117,15 +117,21 @@ const teamStatsColumns = {
 }
 
 const displaySingleMatchTeamStats = function () {
+    teamstatsDiv.innerHTML = '';
+
     const homeTeam = round_data.Matches[0].HomeAbbreviation[match_number];
     const awayTeam = round_data.Matches[0].AwayAbbreviation[match_number];
 
     const homeTeamIndex = round_data.TeamData[0].MatchId.findIndex((m, i) => m == matchId && round_data.TeamData[0].Abbreviation[i] == homeTeam)
     const awayTeamIndex = round_data.TeamData[0].MatchId.findIndex((m, i) => m == matchId && round_data.TeamData[0].Abbreviation[i] == awayTeam)
 
-    const colDiv = document.createElement('div');
-    colDiv.classList = "col-lg-6 text-center";
-    teamstatsDiv.appendChild(colDiv);
+    let colNumber = 0;
+
+    const colDivs = [document.createElement('div'), document.createElement('div')];
+    colDivs[0].classList = "col-lg-6 text-center";
+    colDivs[1].classList = "col-lg-6 text-center";
+    teamstatsDiv.appendChild(colDivs[0]);
+    teamstatsDiv.appendChild(colDivs[1]);
 
     const rowDivHeading = document.createElement('div');
     rowDivHeading.classList = "row";
@@ -138,13 +144,16 @@ const displaySingleMatchTeamStats = function () {
     rowDivHeadingColumns[0].innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].HomeTeam[match_number]}`;
     rowDivHeadingColumns[2].innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].AwayTeam[match_number]}`;
 
-    rowDivHeading.appendChild(rowDivHeadingColumns[0]);
-    rowDivHeading.appendChild(rowDivHeadingColumns[1]);
-    rowDivHeading.appendChild(rowDivHeadingColumns[2]);
+    // rowDivHeading.appendChild(rowDivHeadingColumns[0]);
+    // rowDivHeading.appendChild(rowDivHeadingColumns[1]);
+    // rowDivHeading.appendChild(rowDivHeadingColumns[2]);
 
-    colDiv.appendChild(rowDivHeading);
+    colDivs[0].appendChild(rowDivHeading);
+    colDivs[1].appendChild(rowDivHeading.cloneNode(true));
 
     Object.keys(teamStatsColumns).forEach((key) => {
+        if (key == 'Scoring_Heading') colNumber = 1;
+
         const rowDiv = document.createElement('div');
         rowDiv.classList = "row";
 
@@ -152,11 +161,21 @@ const displaySingleMatchTeamStats = function () {
         colDivHeading.innerText = teamStatsColumns[key].name;
 
         if (teamStatsColumns[key].heading) {
-            rowDiv.style = "padding: 2px 0; color: white; background-color: #3a0057;";
+            // rowDiv.style = "padding: 2px 0; color: white; background-color: #3a0057;";
+            rowDiv.style = "padding: 2px 0; background-color: #ededed;";
+            colDivHeading.classList = "col-5 fw-bold";
 
-            colDivHeading.classList = "col";
+            const colDivHeadingHome = document.createElement('div');
+            colDivHeadingHome.classList = "col";
+            colDivHeadingHome.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="15px" alt=""></img>`;
 
+            const colDivHeadingAway = document.createElement('div');
+            colDivHeadingAway.classList = "col";
+            colDivHeadingAway.innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="15px" alt=""></img>`;
+
+            rowDiv.appendChild(colDivHeadingHome);
             rowDiv.appendChild(colDivHeading);
+            rowDiv.appendChild(colDivHeadingAway);
         } else {
             rowDiv.style = "padding: 2px 0 0 0;";
             rowDiv.classList.add("border-bottom");
@@ -165,7 +184,7 @@ const displaySingleMatchTeamStats = function () {
 
             let decimals = teamStatsColumns[key].decimals ? teamStatsColumns[key].decimals : 0;
 
-            let metric_range = season_data.Metrics[key];
+            let metric_range = season_data.Metrics ? season_data.Metrics[key] : null;
 
             const colDivHome = document.createElement('div');
             const colDivHomeText = document.createElement('div');
@@ -224,14 +243,17 @@ const displaySingleMatchTeamStats = function () {
                 const colorHome = relativeValueHome > relativeValueAway ? "hsl(279 80% 62%)" : "hsl(0 0% 70%)";
                 const colorAway = relativeValueAway > relativeValueHome ? "hsl(36 80% 62%)" : "hsl(0 0% 70%)";
 
-                if (relativeValueHome > relativeValueAway) colDivHome.classList.add("fw-bold");
-                if (relativeValueAway > relativeValueHome) colDivAway.classList.add("fw-bold");
-
                 colDivHomeBarPadding.style = `width: ${(relativeValueHome >= 0 ? 1 : 1 + relativeValueHome) * 50}%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
-                colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 50}%; height: 3px; float: left; background-color: ${colorHome};`;
+                colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 50}%; height: 3px; float: left; background-color: ${colorHome}; border-${relativeValueHome > 0 ? 'left' : 'right'}: black solid 1px;`;
                 colDivAwayBarPadding.style = `width: ${(relativeValueAway >= 0 ? 1 : 1 + relativeValueAway) * 50}%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
-                colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 50}%; height: 3px; float: left; background-color: ${colorAway};`;
+                colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 50}%; height: 3px; float: left; background-color: ${colorAway}; border-${relativeValueAway > 0 ? 'left' : 'right'}: black solid 1px;`;
+            } else {
+                colDivHomeBarPadding.style = `width: 100%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
+                colDivAwayBarPadding.style = `width: 100%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
             }
+
+            if (valueHome > valueAway) colDivHome.classList.add("fw-bold");
+            if (valueAway > valueHome) colDivAway.classList.add("fw-bold");
 
             colDivHomeBarContainer.appendChild(colDivHomeBarPadding);
             colDivHomeBarContainer.appendChild(colDivHomeBar);
@@ -248,7 +270,7 @@ const displaySingleMatchTeamStats = function () {
             rowDiv.appendChild(colDivAway);
         }
 
-        colDiv.appendChild(rowDiv);
+        colDivs[colNumber].appendChild(rowDiv);
     });
 }
 
@@ -257,6 +279,7 @@ const loadMatch = function () {
         matchBanner.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="40px" alt=""> ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]} <img src="${round_data.Matches[0].AwayImage[match_number]}" height="40px" alt="">`;
         document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, ${roundName} - ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]}`;
 
+        displaySingleMatchTeamStats();
         teamstatsDiv.classList.remove('d-none');
         document.querySelector("#react-div-team").classList.add('d-none');
     } else {
@@ -272,28 +295,102 @@ const loadMatch = function () {
 const goToRound = () => { window.location.href = `afl_match_stats_new.html?id=${roundList.value}` };
 
 if (validYears.includes(seasonId)) {
-    fetch(`https://www.wheeloratings.com/src/match_stats/table_data/${seasonId}.json`)
-        .then((res) => res.json())
-        .then((data) => {
-            if (typeof data.RoundId === "string") {
-                for (key of Object.keys(data)) {
-                    data[key] = [data[key]];
+    // fetch(`https://www.wheeloratings.com/src/match_stats/table_data/${seasonId}.json`)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         if (typeof data.RoundId === "string") {
+    //             for (key of Object.keys(data)) {
+    //                 data[key] = [data[key]];
+    //             }
+    //         }
+    //         if (!roundId && data.RoundId.slice(-1)) {
+    //             window.location.href = `afl_match_stats_new.html?id=${data.RoundId.slice(-1)}`;
+    //         } else {
+    //             if (data.RoundId.length > 1) {
+    //                 season_data = data;
+
+    //                 for (let i = 0; i < data.RoundId.length; i++) {
+    //                     const li = document.createElement('option');
+    //                     li.value = data.RoundId[i];
+    //                     if (Object.keys(data).includes("RoundName"))
+    //                         li.innerText = data.RoundName[i];
+    //                     else
+    //                         li.innerText = `Round ${data.RoundNumber[i]}`;
+    //                     if (data.RoundId[i] === roundId) {
+    //                         li.selected = true;
+    //                     }
+    //                     roundList.appendChild(li);
+    //                 }
+
+    //                 document.querySelector("#round-select-div").classList.remove("d-none");
+
+    //                 if (roundList.selectedIndex > 0) {
+    //                     document.querySelector("#first-round-button").classList.remove("disabled");
+    //                     document.querySelector("#previous-round-button").classList.remove("disabled");
+    //                 }
+    //                 if (roundList.selectedIndex < (roundList.length - 1)) {
+    //                     document.querySelector("#next-round-button").classList.remove("disabled");
+    //                     document.querySelector("#last-round-button").classList.remove("disabled");
+    //                 }
+
+    //                 document.querySelector("#first-round-button").addEventListener('click', (e) => {
+    //                     roundList.selectedIndex = 0;
+    //                     goToRound();
+    //                 });
+    //                 document.querySelector("#previous-round-button").addEventListener('click', (e) => {
+    //                     roundList.selectedIndex -= 1;
+    //                     goToRound();
+    //                 });
+    //                 document.querySelector("#next-round-button").addEventListener('click', (e) => {
+    //                     roundList.selectedIndex += 1;
+    //                     goToRound();
+    //                 });
+    //                 document.querySelector("#last-round-button").addEventListener('click', (e) => {
+    //                     roundList.selectedIndex = roundList.length - 1;
+    //                     goToRound();
+    //                 });
+
+    //                 roundList.addEventListener('change', (e) => {
+    //                     goToRound();
+    //                 })
+    //             }
+
+    //             displaySingleMatchTeamStats();
+    //         }
+    //     });
+
+    document.querySelector(`#year-${seasonId}`).classList = "active";
+
+    if (!roundId) {
+        roundDiv.classList.add("d-none");
+    }
+
+    const xmlhttpSeason = new XMLHttpRequest();
+    const urlSeason = `https://www.wheeloratings.com/src/match_stats/table_data/${seasonId}.json`;
+
+    xmlhttpSeason.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            res = JSON.parse(this.responseText);
+
+            if (typeof res.RoundId === "string") {
+                for (key of Object.keys(res)) {
+                    res[key] = [res[key]];
                 }
             }
-            if (!roundId && data.RoundId.slice(-1)) {
-                window.location.href = `afl_match_stats_new.html?id=${data.RoundId.slice(-1)}`;
+            if (!roundId && res.RoundId.slice(-1)) {
+                window.location.href = `afl_match_stats_new.html?id=${res.RoundId.slice(-1)}`;
             } else {
-                if (data.RoundId.length > 1) {
-                    season_data = data;
+                if (res.RoundId.length > 1) {
+                    season_data = res;
 
-                    for (let i = 0; i < data.RoundId.length; i++) {
+                    for (let i = 0; i < res.RoundId.length; i++) {
                         const li = document.createElement('option');
-                        li.value = data.RoundId[i];
-                        if (Object.keys(data).includes("RoundName"))
-                            li.innerText = data.RoundName[i];
+                        li.value = res.RoundId[i];
+                        if (Object.keys(res).includes("RoundName"))
+                            li.innerText = res.RoundName[i];
                         else
-                            li.innerText = `Round ${data.RoundNumber[i]}`;
-                        if (data.RoundId[i] === roundId) {
+                            li.innerText = `Round ${res.RoundNumber[i]}`;
+                        if (res.RoundId[i] === roundId) {
                             li.selected = true;
                         }
                         roundList.appendChild(li);
@@ -331,226 +428,225 @@ if (validYears.includes(seasonId)) {
                         goToRound();
                     })
                 }
-
-                displaySingleMatchTeamStats();
             }
-        });
 
-    document.querySelector(`#year-${seasonId}`).classList = "active";
+            if (roundId) {
+                const xmlhttp = new XMLHttpRequest();
+                const url = `https://www.wheeloratings.com/src/match_stats/table_data/${roundId}.json`;
 
-    if (roundId) {
-        const xmlhttp = new XMLHttpRequest();
-        const url = `https://www.wheeloratings.com/src/match_stats/table_data/${roundId}.json`;
+                let data = `{"x":{"tag":{"name":"Reactable","attribs":{"data":{},"columns":[{"id":"MatchId","name":"MatchId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":180,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true,"className":"sticky","headerClassName":"sticky"},{"id":"WebsiteId","name":"WebsiteId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Team","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Abbreviation","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","defaultSortDesc":false},{"id":"Image","name":"Image","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"CoachesVotes","name":"Coaches Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":65,"align":"center","className":"colClass"},{"id":"RatingPoints","name":"Player Rating","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","className":"colClass"},{"id":"EstimatedRating","name":"Pred. Rating","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Equity_PreClearance","name":"Pre Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_PostClearance","name":"Post Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_Possession","name":"Ball Win.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Equity_BallUse","name":"Ball Use","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Supercoach","name":"Super Coach","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"DreamTeamPoints","name":"Fantasy Points","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center","className":"colClass"},{"id":"ExpVotes","name":"Exp. Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Votes3","name":"% 3 Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Votes2","name":"% 2 Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Votes1","name":"% 1 Vote","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"TimeOnGround","name":"TOG","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Kicks","name":"Kick","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Handballs","name":"HB","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Disposals","name":"Dis.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"DisposalEfficiency","name":"Dis. Eff %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"MetresGained","name":"Mtrs Gnd","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"AssistedMetresGained","name":"Ass. Mtrs","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Inside50s","name":"In 50s","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ContestedPossessions","name":"CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"GroundBallGets","name":"GB Gets","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"PostClearanceContestedPossessions","name":"Post Cl CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"PostClearanceGroundBallGets","name":"Post Cl GBG","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"HandballReceives","name":"HB Rec","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Intercepts","name":"Int","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"CentreBounceAttendancePercentage","name":"CBA %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"TotalClearances","name":"Clr","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Marks","name":"Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ContestedMarks","name":"CM","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"InterceptMarks","name":"Int Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ShotsAtGoal","name":"Shots","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Goals","name":"Goals","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Behinds","name":"Beh","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"xScore","name":"xSc","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":40,"align":"center","className":"colClass"},{"id":"xScoreRating","name":"xSc +/-","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"GoalAssists","name":"Goal Ass.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ScoreInvolvements","name":"SI","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ScoreLaunches","name":"Launch","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Tackles","name":"Tack","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"PressureActs","name":"Pr. Acts","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Hitouts","name":"Hit Outs","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"}],"defaultSortDesc":true,"defaultSorted":[{"id":"RatingPoints","desc":true}],"defaultPageSize":50,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"afl-table table-condensed","rowStyle":"function(rowInfo) { if (rowInfo && rowInfo.values['TimeOnGround'] === 0) { return {color: '#828282'} } }","height":"600px","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"match-stats","dataKey":"616ff9da0c8b70ec57343fd49aa9074a"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell","tag.attribs.columns.6.className","tag.attribs.columns.7.className","tag.attribs.columns.8.className","tag.attribs.columns.9.className","tag.attribs.columns.10.className","tag.attribs.columns.11.className","tag.attribs.columns.12.className","tag.attribs.columns.13.className","tag.attribs.columns.14.className","tag.attribs.columns.15.className","tag.attribs.columns.16.className","tag.attribs.columns.17.className","tag.attribs.columns.18.className","tag.attribs.columns.19.className","tag.attribs.columns.20.className","tag.attribs.columns.21.className","tag.attribs.columns.22.className","tag.attribs.columns.23.className","tag.attribs.columns.24.className","tag.attribs.columns.25.className","tag.attribs.columns.26.className","tag.attribs.columns.27.className","tag.attribs.columns.28.className","tag.attribs.columns.29.className","tag.attribs.columns.30.className","tag.attribs.columns.31.className","tag.attribs.columns.32.className","tag.attribs.columns.33.className","tag.attribs.columns.34.className","tag.attribs.columns.35.className","tag.attribs.columns.36.className","tag.attribs.columns.37.className","tag.attribs.columns.38.className","tag.attribs.columns.39.className","tag.attribs.columns.40.className","tag.attribs.columns.41.className","tag.attribs.columns.42.className","tag.attribs.columns.43.className","tag.attribs.columns.44.className","tag.attribs.columns.45.className","tag.attribs.columns.46.className","tag.attribs.columns.47.className","tag.attribs.columns.48.className","tag.attribs.rowStyle"],"jsHooks":[]}`;
+                let dataTeam = `{"x":{"tag":{"name":"Reactable","attribs":{"data":{},"columns":[{"id":"RoundId","name":"RoundId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center"},{"id":"MatchId","name":"MatchId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Team","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":180,"align":"left","defaultSortDesc":false},{"id":"Abbreviation","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return teamDisplay(cellInfo) }","html":true,"className":"sticky","headerClassName":"sticky"},{"id":"Image","name":"Image","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Age","name":"Age","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Experience","name":"Exp.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"CoachesVotes","name":"Coaches Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":65,"align":"center","className":"colClass"},{"id":"RatingPoints","name":"Player Rating","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Supercoach","name":"Super Coach","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"DreamTeamPoints","name":"Fantasy Points","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Kicks","name":"Kick","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Handballs","name":"HB","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Disposals","name":"Dis.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"DisposalEfficiency","name":"Dis. Eff %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"MetresGained","name":"Mtrs Gnd","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Inside50s","name":"In 50s","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ForwardHalf","name":"Fwd Half","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"ContestedPossessions","name":"CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"GroundBallGets","name":"GB Gets","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"PostClearanceContestedPossessions","name":"Post Cl CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"PostClearanceGroundBallGets","name":"Post Cl GBG","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Intercepts","name":"Int","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"TotalClearances","name":"Clr","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"FirstPossessions","name":"1st Poss","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"FirstPossessionToClearance","name":"1st Poss to Clr","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":65,"align":"center","className":"colClass"},{"id":"Marks","name":"Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ContestedMarks","name":"CM","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"InterceptMarks","name":"Int Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ShotsAtGoal","name":"Shots","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Goals","name":"Goals","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Behinds","name":"Beh","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Score","name":"Score","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"xScore","name":"xSc","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"xScoreRating","name":"xSc +/-","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"xWins","name":"xWin %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"GoalAssists","name":"Goal Ass.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Tackles","name":"Tack","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Hitouts","name":"Hit Outs","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Equity_PreClearance","name":"Pre Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_PostClearance","name":"Post Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_Possession","name":"Ball Win.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Equity_BallUse","name":"Ball Use","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"ChainToScore","name":"Chain to Sc.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"D50ToF50","name":"D50 to F50","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":50,"align":"center","className":"colClass"},{"id":"D50ToScore","name":"D50 to Sc.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":50,"align":"center","className":"colClass"},{"id":"DefHalfToF50","name":"Def Half to F50","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":65,"align":"center","className":"colClass"},{"id":"DefHalfToScore","name":"Def Half to Sc.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":65,"align":"center","className":"colClass"},{"id":"xChainScore","name":"Total","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":50,"align":"center","className":"colClass"},{"id":"xChainScoreFromStoppage","name":"Stoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":75,"align":"center","className":"colClass"},{"id":"xChainScoreFromTurnover","name":"Turnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":75,"align":"center","className":"colClass"},{"id":"GoalsFromKickIn","name":"GoalsFromKickIn","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromKickIn","name":"BehindsFromKickIn","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromKickIn","name":"Kick In","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":65,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromKickIn', 'BehindsFromKickIn', 'PointsFromKickIn') }","html":true,"className":"colClass"},{"id":"GoalsFromStoppage","name":"GoalsFromStoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromStoppage","name":"BehindsFromStoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromStoppage","name":"Stoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":75,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromStoppage', 'BehindsFromStoppage', 'PointsFromStoppage') }","html":true,"className":"colClass"},{"id":"GoalsFromTurnover","name":"GoalsFromTurnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromTurnover","name":"BehindsFromTurnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromTurnover","name":"Turnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":75,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromTurnover', 'BehindsFromTurnover', 'PointsFromTurnover') }","html":true,"className":"colClass"},{"id":"GoalsFromDefensiveHalf","name":"GoalsFromDefensiveHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromDefensiveHalf","name":"BehindsFromDefensiveHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromDefensiveHalf","name":"Def Half","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":70,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromDefensiveHalf', 'BehindsFromDefensiveHalf', 'PointsFromDefensiveHalf') }","html":true,"className":"colClass"},{"id":"GoalsFromForwardHalf","name":"GoalsFromForwardHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromForwardHalf","name":"BehindsFromForwardHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromForwardHalf","name":"Forward Half","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":70,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromForwardHalf', 'BehindsFromForwardHalf', 'PointsFromForwardHalf') }","html":true,"className":"colClass"},{"id":"GoalsFromCentreBounce","name":"GoalsFromCentreBounce","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromCentreBounce","name":"BehindsFromCentreBounce","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromCentreBounce","name":"Centre Bounce","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":70,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromCentreBounce', 'BehindsFromCentreBounce', 'PointsFromCentreBounce') }","html":true,"className":"colClass"}],"columnGroups":[{"name":"Equity","columns":["Equity_PreClearance","Equity_PostClearance","Equity_Possession","Equity_BallUse"]},{"name":"Transition","columns":["ChainToScore","D50ToF50","D50ToScore","DefHalfToF50","DefHalfToScore"]},{"name":"xChainScore","columns":["xChainScore","xChainScoreFromStoppage","xChainScoreFromTurnover"]},{"name":"Score sources","columns":["GoalsFromKickIn","BehindsFromKickIn","PointsFromKickIn","GoalsFromStoppage","BehindsFromStoppage","PointsFromStoppage","GoalsFromTurnover","BehindsFromTurnover","PointsFromTurnover"]},{"name":"Score origin","columns":["GoalsFromDefensiveHalf","BehindsFromDefensiveHalf","PointsFromDefensiveHalf","GoalsFromForwardHalf","BehindsFromForwardHalf","PointsFromForwardHalf","GoalsFromCentreBounce","BehindsFromCentreBounce","PointsFromCentreBounce"]}],"defaultSortDesc":true,"defaultSorted":[{"id":"RatingPoints","desc":true}],"defaultPageSize":50,"showPageSizeOptions":false,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"afl-table table-condensed","height":"600px","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"match-stats-team","dataKey":"5153b21f50a22c18a315d5753e48f93c"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.3.cell","tag.attribs.columns.5.className","tag.attribs.columns.6.className","tag.attribs.columns.7.className","tag.attribs.columns.8.className","tag.attribs.columns.9.className","tag.attribs.columns.10.className","tag.attribs.columns.11.className","tag.attribs.columns.12.className","tag.attribs.columns.13.className","tag.attribs.columns.14.className","tag.attribs.columns.15.className","tag.attribs.columns.16.className","tag.attribs.columns.17.className","tag.attribs.columns.18.className","tag.attribs.columns.19.className","tag.attribs.columns.20.className","tag.attribs.columns.21.className","tag.attribs.columns.22.className","tag.attribs.columns.23.className","tag.attribs.columns.24.className","tag.attribs.columns.25.className","tag.attribs.columns.26.className","tag.attribs.columns.27.className","tag.attribs.columns.28.className","tag.attribs.columns.29.className","tag.attribs.columns.30.className","tag.attribs.columns.31.className","tag.attribs.columns.32.className","tag.attribs.columns.33.className","tag.attribs.columns.34.className","tag.attribs.columns.35.className","tag.attribs.columns.36.className","tag.attribs.columns.37.className","tag.attribs.columns.38.className","tag.attribs.columns.39.className","tag.attribs.columns.40.className","tag.attribs.columns.41.className","tag.attribs.columns.42.className","tag.attribs.columns.43.className","tag.attribs.columns.44.className","tag.attribs.columns.45.className","tag.attribs.columns.46.className","tag.attribs.columns.47.className","tag.attribs.columns.48.className","tag.attribs.columns.49.className","tag.attribs.columns.50.className","tag.attribs.columns.53.cell","tag.attribs.columns.53.className","tag.attribs.columns.56.cell","tag.attribs.columns.56.className","tag.attribs.columns.59.cell","tag.attribs.columns.59.className","tag.attribs.columns.62.cell","tag.attribs.columns.62.className","tag.attribs.columns.65.cell","tag.attribs.columns.65.className","tag.attribs.columns.68.cell","tag.attribs.columns.68.className"],"jsHooks":[]}`;
 
-        let data = `{"x":{"tag":{"name":"Reactable","attribs":{"data":{},"columns":[{"id":"MatchId","name":"MatchId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Player","name":"Player","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":180,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return playerDisplay(cellInfo) }","html":true,"className":"sticky","headerClassName":"sticky"},{"id":"WebsiteId","name":"WebsiteId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Team","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Abbreviation","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","defaultSortDesc":false},{"id":"Image","name":"Image","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"CoachesVotes","name":"Coaches Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":65,"align":"center","className":"colClass"},{"id":"RatingPoints","name":"Player Rating","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","className":"colClass"},{"id":"EstimatedRating","name":"Pred. Rating","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Equity_PreClearance","name":"Pre Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_PostClearance","name":"Post Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_Possession","name":"Ball Win.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Equity_BallUse","name":"Ball Use","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Supercoach","name":"Super Coach","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"DreamTeamPoints","name":"Fantasy Points","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center","className":"colClass"},{"id":"ExpVotes","name":"Exp. Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":2},"aggregated":{"digits":2}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Votes3","name":"% 3 Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Votes2","name":"% 2 Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Votes1","name":"% 1 Vote","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"TimeOnGround","name":"TOG","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Kicks","name":"Kick","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Handballs","name":"HB","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Disposals","name":"Dis.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"DisposalEfficiency","name":"Dis. Eff %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"MetresGained","name":"Mtrs Gnd","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"AssistedMetresGained","name":"Ass. Mtrs","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Inside50s","name":"In 50s","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ContestedPossessions","name":"CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"GroundBallGets","name":"GB Gets","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"PostClearanceContestedPossessions","name":"Post Cl CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"PostClearanceGroundBallGets","name":"Post Cl GBG","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"HandballReceives","name":"HB Rec","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Intercepts","name":"Int","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"CentreBounceAttendancePercentage","name":"CBA %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"TotalClearances","name":"Clr","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Marks","name":"Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ContestedMarks","name":"CM","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"InterceptMarks","name":"Int Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ShotsAtGoal","name":"Shots","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Goals","name":"Goals","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Behinds","name":"Beh","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"xScore","name":"xSc","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":40,"align":"center","className":"colClass"},{"id":"xScoreRating","name":"xSc +/-","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"GoalAssists","name":"Goal Ass.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ScoreInvolvements","name":"SI","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ScoreLaunches","name":"Launch","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Tackles","name":"Tack","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"PressureActs","name":"Pr. Acts","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Hitouts","name":"Hit Outs","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"}],"defaultSortDesc":true,"defaultSorted":[{"id":"RatingPoints","desc":true}],"defaultPageSize":50,"showPageSizeOptions":true,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"afl-table table-condensed","rowStyle":"function(rowInfo) { if (rowInfo && rowInfo.values['TimeOnGround'] === 0) { return {color: '#828282'} } }","height":"600px","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"match-stats","dataKey":"616ff9da0c8b70ec57343fd49aa9074a"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.1.cell","tag.attribs.columns.6.className","tag.attribs.columns.7.className","tag.attribs.columns.8.className","tag.attribs.columns.9.className","tag.attribs.columns.10.className","tag.attribs.columns.11.className","tag.attribs.columns.12.className","tag.attribs.columns.13.className","tag.attribs.columns.14.className","tag.attribs.columns.15.className","tag.attribs.columns.16.className","tag.attribs.columns.17.className","tag.attribs.columns.18.className","tag.attribs.columns.19.className","tag.attribs.columns.20.className","tag.attribs.columns.21.className","tag.attribs.columns.22.className","tag.attribs.columns.23.className","tag.attribs.columns.24.className","tag.attribs.columns.25.className","tag.attribs.columns.26.className","tag.attribs.columns.27.className","tag.attribs.columns.28.className","tag.attribs.columns.29.className","tag.attribs.columns.30.className","tag.attribs.columns.31.className","tag.attribs.columns.32.className","tag.attribs.columns.33.className","tag.attribs.columns.34.className","tag.attribs.columns.35.className","tag.attribs.columns.36.className","tag.attribs.columns.37.className","tag.attribs.columns.38.className","tag.attribs.columns.39.className","tag.attribs.columns.40.className","tag.attribs.columns.41.className","tag.attribs.columns.42.className","tag.attribs.columns.43.className","tag.attribs.columns.44.className","tag.attribs.columns.45.className","tag.attribs.columns.46.className","tag.attribs.columns.47.className","tag.attribs.columns.48.className","tag.attribs.rowStyle"],"jsHooks":[]}`;
-        let dataTeam = `{"x":{"tag":{"name":"Reactable","attribs":{"data":{},"columns":[{"id":"RoundId","name":"RoundId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center"},{"id":"MatchId","name":"MatchId","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Team","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":180,"align":"left","defaultSortDesc":false},{"id":"Abbreviation","name":"Team","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"left","defaultSortDesc":false,"cell":"function(cellInfo) { return teamDisplay(cellInfo) }","html":true,"className":"sticky","headerClassName":"sticky"},{"id":"Image","name":"Image","type":"character","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"Age","name":"Age","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Experience","name":"Exp.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"CoachesVotes","name":"Coaches Votes","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":65,"align":"center","className":"colClass"},{"id":"RatingPoints","name":"Player Rating","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Supercoach","name":"Super Coach","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"DreamTeamPoints","name":"Fantasy Points","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":60,"align":"center","className":"colClass"},{"id":"Kicks","name":"Kick","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Handballs","name":"HB","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Disposals","name":"Dis.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"DisposalEfficiency","name":"Dis. Eff %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"MetresGained","name":"Mtrs Gnd","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Inside50s","name":"In 50s","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ForwardHalf","name":"Fwd Half","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"ContestedPossessions","name":"CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"GroundBallGets","name":"GB Gets","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"PostClearanceContestedPossessions","name":"Post Cl CP","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"PostClearanceGroundBallGets","name":"Post Cl GBG","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Intercepts","name":"Int","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"TotalClearances","name":"Clr","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"FirstPossessions","name":"1st Poss","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"FirstPossessionToClearance","name":"1st Poss to Clr","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":65,"align":"center","className":"colClass"},{"id":"Marks","name":"Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ContestedMarks","name":"CM","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"InterceptMarks","name":"Int Mks","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"ShotsAtGoal","name":"Shots","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Goals","name":"Goals","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"Behinds","name":"Beh","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Score","name":"Score","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":50,"align":"center","className":"colClass"},{"id":"xScore","name":"xSc","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"xScoreRating","name":"xSc +/-","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"xWins","name":"xWin %","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"GoalAssists","name":"Goal Ass.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Tackles","name":"Tack","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Hitouts","name":"Hit Outs","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","className":"colClass"},{"id":"Equity_PreClearance","name":"Pre Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_PostClearance","name":"Post Cl Equity","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"Equity_Possession","name":"Ball Win.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"Equity_BallUse","name":"Ball Use","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":45,"align":"center","className":"colClass"},{"id":"ChainToScore","name":"Chain to Sc.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":55,"align":"center","className":"colClass"},{"id":"D50ToF50","name":"D50 to F50","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":50,"align":"center","className":"colClass"},{"id":"D50ToScore","name":"D50 to Sc.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":50,"align":"center","className":"colClass"},{"id":"DefHalfToF50","name":"Def Half to F50","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":65,"align":"center","className":"colClass"},{"id":"DefHalfToScore","name":"Def Half to Sc.","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":65,"align":"center","className":"colClass"},{"id":"xChainScore","name":"Total","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":50,"align":"center","className":"colClass"},{"id":"xChainScoreFromStoppage","name":"Stoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":75,"align":"center","className":"colClass"},{"id":"xChainScoreFromTurnover","name":"Turnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":1},"aggregated":{"digits":1}},"minWidth":75,"align":"center","className":"colClass"},{"id":"GoalsFromKickIn","name":"GoalsFromKickIn","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromKickIn","name":"BehindsFromKickIn","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromKickIn","name":"Kick In","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":65,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromKickIn', 'BehindsFromKickIn', 'PointsFromKickIn') }","html":true,"className":"colClass"},{"id":"GoalsFromStoppage","name":"GoalsFromStoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromStoppage","name":"BehindsFromStoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromStoppage","name":"Stoppage","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":75,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromStoppage', 'BehindsFromStoppage', 'PointsFromStoppage') }","html":true,"className":"colClass"},{"id":"GoalsFromTurnover","name":"GoalsFromTurnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromTurnover","name":"BehindsFromTurnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromTurnover","name":"Turnover","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":75,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromTurnover', 'BehindsFromTurnover', 'PointsFromTurnover') }","html":true,"className":"colClass"},{"id":"GoalsFromDefensiveHalf","name":"GoalsFromDefensiveHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromDefensiveHalf","name":"BehindsFromDefensiveHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromDefensiveHalf","name":"Def Half","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":70,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromDefensiveHalf', 'BehindsFromDefensiveHalf', 'PointsFromDefensiveHalf') }","html":true,"className":"colClass"},{"id":"GoalsFromForwardHalf","name":"GoalsFromForwardHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromForwardHalf","name":"BehindsFromForwardHalf","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromForwardHalf","name":"Forward Half","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":70,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromForwardHalf', 'BehindsFromForwardHalf', 'PointsFromForwardHalf') }","html":true,"className":"colClass"},{"id":"GoalsFromCentreBounce","name":"GoalsFromCentreBounce","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"BehindsFromCentreBounce","name":"BehindsFromCentreBounce","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":40,"align":"center","show":false},{"id":"PointsFromCentreBounce","name":"Centre Bounce","type":"numeric","sortNALast":true,"format":{"cell":{"digits":0},"aggregated":{"digits":0}},"minWidth":70,"align":"center","cell":"function(cellInfo) { return scoreDisplay(cellInfo, 'GoalsFromCentreBounce', 'BehindsFromCentreBounce', 'PointsFromCentreBounce') }","html":true,"className":"colClass"}],"columnGroups":[{"name":"Equity","columns":["Equity_PreClearance","Equity_PostClearance","Equity_Possession","Equity_BallUse"]},{"name":"Transition","columns":["ChainToScore","D50ToF50","D50ToScore","DefHalfToF50","DefHalfToScore"]},{"name":"xChainScore","columns":["xChainScore","xChainScoreFromStoppage","xChainScoreFromTurnover"]},{"name":"Score sources","columns":["GoalsFromKickIn","BehindsFromKickIn","PointsFromKickIn","GoalsFromStoppage","BehindsFromStoppage","PointsFromStoppage","GoalsFromTurnover","BehindsFromTurnover","PointsFromTurnover"]},{"name":"Score origin","columns":["GoalsFromDefensiveHalf","BehindsFromDefensiveHalf","PointsFromDefensiveHalf","GoalsFromForwardHalf","BehindsFromForwardHalf","PointsFromForwardHalf","GoalsFromCentreBounce","BehindsFromCentreBounce","PointsFromCentreBounce"]}],"defaultSortDesc":true,"defaultSorted":[{"id":"RatingPoints","desc":true}],"defaultPageSize":50,"showPageSizeOptions":false,"pageSizeOptions":[10,15,20,50,100],"striped":true,"showSortIcon":false,"className":"afl-table table-condensed","height":"600px","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"elementId":"match-stats-team","dataKey":"5153b21f50a22c18a315d5753e48f93c"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.3.cell","tag.attribs.columns.5.className","tag.attribs.columns.6.className","tag.attribs.columns.7.className","tag.attribs.columns.8.className","tag.attribs.columns.9.className","tag.attribs.columns.10.className","tag.attribs.columns.11.className","tag.attribs.columns.12.className","tag.attribs.columns.13.className","tag.attribs.columns.14.className","tag.attribs.columns.15.className","tag.attribs.columns.16.className","tag.attribs.columns.17.className","tag.attribs.columns.18.className","tag.attribs.columns.19.className","tag.attribs.columns.20.className","tag.attribs.columns.21.className","tag.attribs.columns.22.className","tag.attribs.columns.23.className","tag.attribs.columns.24.className","tag.attribs.columns.25.className","tag.attribs.columns.26.className","tag.attribs.columns.27.className","tag.attribs.columns.28.className","tag.attribs.columns.29.className","tag.attribs.columns.30.className","tag.attribs.columns.31.className","tag.attribs.columns.32.className","tag.attribs.columns.33.className","tag.attribs.columns.34.className","tag.attribs.columns.35.className","tag.attribs.columns.36.className","tag.attribs.columns.37.className","tag.attribs.columns.38.className","tag.attribs.columns.39.className","tag.attribs.columns.40.className","tag.attribs.columns.41.className","tag.attribs.columns.42.className","tag.attribs.columns.43.className","tag.attribs.columns.44.className","tag.attribs.columns.45.className","tag.attribs.columns.46.className","tag.attribs.columns.47.className","tag.attribs.columns.48.className","tag.attribs.columns.49.className","tag.attribs.columns.50.className","tag.attribs.columns.53.cell","tag.attribs.columns.53.className","tag.attribs.columns.56.cell","tag.attribs.columns.56.className","tag.attribs.columns.59.cell","tag.attribs.columns.59.className","tag.attribs.columns.62.cell","tag.attribs.columns.62.className","tag.attribs.columns.65.cell","tag.attribs.columns.65.className","tag.attribs.columns.68.cell","tag.attribs.columns.68.className"],"jsHooks":[]}`;
+                data = JSON.parse(data);
+                dataTeam = JSON.parse(dataTeam);
 
-        data = JSON.parse(data);
-        dataTeam = JSON.parse(dataTeam);
-
-        for (col of data.x.tag.attribs.columns) {
-            columns.push(col.id);
-        }
-        for (col of dataTeam.x.tag.attribs.columns) {
-            columnsTeam.push(col.id);
-        }
-
-        xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                res = JSON.parse(this.responseText);
-
-                if (res) {
-                    round_data = res;
-
-                    const matches = round_data.Matches[0];
-
-                    if (typeof matches.MatchId === "string") {
-                        for (key of Object.keys(matches)) {
-                            matches[key] = [matches[key]];
-                        }
-                    }
-
-                    if (matchId) {
-                        match_number = matches.MatchId.indexOf(matchId);
-                    } else {
-                        match_number = -1;
-                    }
-                    if (match_number < 0 && matches.MatchId.length === 1) {
-                        match_number = 0;
-                        matchId = matches.MatchId[match_number];
-                        history.replaceState(null, '', `afl_match_stats_new.html?id=${matchId}`);
-                    }
-
-                    reactableData = JSON.parse(JSON.stringify(round_data.Data[0]));
-                    reactableDataTeam = JSON.parse(JSON.stringify(round_data.TeamData[0]));
-
-                    // Remove columns from data if column isn't defined in Reactable
-                    for (col of Object.keys(reactableData)) {
-                        if (!columns.includes(col)) {
-                            delete reactableData[col];
-                        }
-                    }
-                    for (col of Object.keys(reactableDataTeam)) {
-                        if (!columnsTeam.includes(col)) {
-                            delete reactableDataTeam[col];
-                        }
-                    }
-
-                    // Hide columns in Reactable if no player data exists
-                    for (col of columns) {
-                        if (!Object.keys(reactableData).includes(col)) {
-                            columnsMissing.push(col);
-                        }
-                    }
-                    for (col of columnsTeam) {
-                        if (!Object.keys(reactableDataTeam).includes(col)) {
-                            columnsTeamMissing.push(col);
-                        }
-                    }
-
-                    let heading;
-                    let keepHeading = false;
-                    Object.keys(teamStatsColumns).forEach(key => {
-                        if (teamStatsColumns[key].heading) {
-                            if (heading && !keepHeading) delete teamStatsColumns[heading];
-                            heading = key;
-                            keepHeading = false;
-                        } else {
-                            if (Object.keys(reactableDataTeam).includes(key))
-                                keepHeading = true;
-                            else
-                                delete teamStatsColumns[key];
-                        }
-                    })
-                    if (heading && !keepHeading) delete teamStatsColumns[heading];
-
-                    addEventListener('DOMContentLoaded', (event) => {
-                        if (matchId) {
-                            Reactable.setFilter('match-stats', 'MatchId', matchId);
-                            Reactable.setFilter('match-stats-team', 'MatchId', matchId);
-                        }
-                        Reactable.setHiddenColumns("match-stats", prevColumns => { return prevColumns.concat(columnsMissing) });
-                        Reactable.setHiddenColumns("match-stats-team", prevColumns => { return prevColumns.concat(columnsTeamMissing) });
-                    });
-
-                    data.x.tag.attribs.data = reactableData;
-                    dataTeam.x.tag.attribs.data = reactableDataTeam;
-                    //data.x.tag.attribs.columns.find(element => element.id === "Player").cell = reactableData.PlayerDisplay;
-
-                    let div = document.querySelector("#react-div");
-
-                    let s = document.createElement('script');
-                    s.setAttribute('type', 'application/json');
-                    s.setAttribute('data-for', 'htmlwidget-stats');
-                    s.innerText = JSON.stringify(data);
-
-                    div.append(s);
-
-                    div = document.querySelector("#react-div-team");
-
-                    s = document.createElement('script');
-                    s.setAttribute('type', 'application/json');
-                    s.setAttribute('data-for', 'htmlwidget-stats-team');
-                    s.innerText = JSON.stringify(dataTeam);
-
-                    div.append(s);
-
-                    if (Object.keys(round_data.Summary[0]).includes("RoundName"))
-                        roundName = `${round_data.Summary[0].RoundName}`;
-                    else
-                        roundName = `Round ${round_data.Summary[0].RoundNumber}`;
-
-                    h2.innerText = `${roundName}, ${round_data.Summary[0].Season}`;
-
-                    if (matches.MatchId.length > 1) {
-                        const button = document.createElement('button');
-                        button.id = "match-All";
-                        button.type = "button";
-                        button.classList = "btn btm-sm mx-1 my-2";
-                        button.innerText = "All matches";
-                        if (matchId) {
-                            button.classList.add("btn-light");
-                        } else {
-                            button.classList.add("btn-primary");
-                        }
-                        matchList.appendChild(button);
-                        matchButtons.push(button);
-
-                        button.addEventListener('click', (e) => {
-                            console.log("match clicked")
-
-                            matchId = null;
-                            match_number = -1;
-                            loadMatch();
-                            Reactable.setFilter('match-stats', 'MatchId', undefined);
-                            Reactable.setFilter('match-stats-team', 'MatchId', undefined);
-                            history.replaceState(null, '', `afl_match_stats_new.html?id=${roundId}`);
-
-                            for (btn of matchButtons) {
-                                if (btn.id === `match-${matchId}` || (!matchId && btn.id === "match-All")) {
-                                    btn.classList.add("btn-primary");
-                                    btn.classList.remove("btn-light");
-                                } else {
-                                    btn.classList.add("btn-light");
-                                    btn.classList.remove("btn-primary");
-                                }
-                            }
-                        });
-                    }
-
-                    for (let i = 0; i < matches.MatchId.length; i++) {
-                        const button = document.createElement('button');
-                        button.id = `match-${matches.MatchId[i]}`;
-                        button.type = "button";
-                        button.classList = "btn btm-sm mx-1 my-2";
-                        button.innerText = `${matches.HomeAbbreviation[i]} v ${matches.AwayAbbreviation[i]}`;
-                        if (matches.MatchId[i] === matchId) {
-                            button.classList.add("btn-primary");
-                        } else {
-                            button.classList.add("btn-light");
-                        }
-                        matchList.appendChild(button);
-                        matchButtons.push(button);
-
-                        button.addEventListener('click', (e) => {
-                            console.log("match clicked")
-
-                            matchId = matches.MatchId[i];
-                            match_number = round_data.Matches[0].MatchId.indexOf(matchId);
-                            loadMatch();
-                            // Reactable.setFilter('match-stats', 'MatchId', undefined);
-                            Reactable.setFilter('match-stats', 'MatchId', matchId);
-                            // Reactable.setFilter('match-stats-team', 'MatchId', undefined);
-                            Reactable.setFilter('match-stats-team', 'MatchId', matchId);
-                            history.replaceState(null, '', `afl_match_stats_new.html?id=${matchId}`);
-
-                            for (btn of matchButtons) {
-                                if (btn.id === `match-${matchId}`) {
-                                    btn.classList.add("btn-primary");
-                                    btn.classList.remove("btn-light");
-                                } else {
-                                    btn.classList.add("btn-light");
-                                    btn.classList.remove("btn-primary");
-                                }
-                            }
-                        });
-
-                    }
-
-                    loadMatch();
-                } else {
-                    roundDiv.classList.add("d-none");
+                for (col of data.x.tag.attribs.columns) {
+                    columns.push(col.id);
                 }
-            } else if (this.readyState == 4) {
-                roundDiv.classList.add("d-none");
-            }
-        };
+                for (col of dataTeam.x.tag.attribs.columns) {
+                    columnsTeam.push(col.id);
+                }
 
-        xmlhttp.open("GET", url, false);
-        xmlhttp.send();
-    } else {
-        roundDiv.classList.add("d-none");
-    }
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        res = JSON.parse(this.responseText);
+
+                        if (res) {
+                            round_data = res;
+
+                            const matches = round_data.Matches[0];
+
+                            if (typeof matches.MatchId === "string") {
+                                for (key of Object.keys(matches)) {
+                                    matches[key] = [matches[key]];
+                                }
+                            }
+
+                            if (matchId) {
+                                match_number = matches.MatchId.indexOf(matchId);
+                            } else {
+                                match_number = -1;
+                            }
+                            if (match_number < 0 && matches.MatchId.length === 1) {
+                                match_number = 0;
+                                matchId = matches.MatchId[match_number];
+                                history.replaceState(null, '', `afl_match_stats_new.html?id=${matchId}`);
+                            }
+
+                            reactableData = JSON.parse(JSON.stringify(round_data.Data[0]));
+                            reactableDataTeam = JSON.parse(JSON.stringify(round_data.TeamData[0]));
+
+                            // Remove columns from data if column isn't defined in Reactable
+                            for (col of Object.keys(reactableData)) {
+                                if (!columns.includes(col)) {
+                                    delete reactableData[col];
+                                }
+                            }
+                            for (col of Object.keys(reactableDataTeam)) {
+                                if (!columnsTeam.includes(col)) {
+                                    delete reactableDataTeam[col];
+                                }
+                            }
+
+                            // Hide columns in Reactable if no player data exists
+                            for (col of columns) {
+                                if (!Object.keys(reactableData).includes(col)) {
+                                    columnsMissing.push(col);
+                                }
+                            }
+                            for (col of columnsTeam) {
+                                if (!Object.keys(reactableDataTeam).includes(col)) {
+                                    columnsTeamMissing.push(col);
+                                }
+                            }
+
+                            let heading;
+                            let keepHeading = false;
+                            Object.keys(teamStatsColumns).forEach(key => {
+                                if (teamStatsColumns[key].heading) {
+                                    if (heading && !keepHeading) delete teamStatsColumns[heading];
+                                    heading = key;
+                                    keepHeading = false;
+                                } else {
+                                    if (Object.keys(reactableDataTeam).includes(key))
+                                        keepHeading = true;
+                                    else
+                                        delete teamStatsColumns[key];
+                                }
+                            })
+                            if (heading && !keepHeading) delete teamStatsColumns[heading];
+
+                            addEventListener('DOMContentLoaded', (event) => {
+                                if (matchId) {
+                                    Reactable.setFilter('match-stats', 'MatchId', matchId);
+                                    Reactable.setFilter('match-stats-team', 'MatchId', matchId);
+                                }
+                                Reactable.setHiddenColumns("match-stats", prevColumns => { return prevColumns.concat(columnsMissing) });
+                                Reactable.setHiddenColumns("match-stats-team", prevColumns => { return prevColumns.concat(columnsTeamMissing) });
+                            });
+
+                            data.x.tag.attribs.data = reactableData;
+                            dataTeam.x.tag.attribs.data = reactableDataTeam;
+                            //data.x.tag.attribs.columns.find(element => element.id === "Player").cell = reactableData.PlayerDisplay;
+
+                            let div = document.querySelector("#react-div");
+
+                            let s = document.createElement('script');
+                            s.setAttribute('type', 'application/json');
+                            s.setAttribute('data-for', 'htmlwidget-stats');
+                            s.innerText = JSON.stringify(data);
+
+                            div.append(s);
+
+                            div = document.querySelector("#react-div-team");
+
+                            s = document.createElement('script');
+                            s.setAttribute('type', 'application/json');
+                            s.setAttribute('data-for', 'htmlwidget-stats-team');
+                            s.innerText = JSON.stringify(dataTeam);
+
+                            div.append(s);
+
+                            if (Object.keys(round_data.Summary[0]).includes("RoundName"))
+                                roundName = `${round_data.Summary[0].RoundName}`;
+                            else
+                                roundName = `Round ${round_data.Summary[0].RoundNumber}`;
+
+                            h2.innerText = `${roundName}, ${round_data.Summary[0].Season}`;
+
+                            if (matches.MatchId.length > 1) {
+                                const button = document.createElement('button');
+                                button.id = "match-All";
+                                button.type = "button";
+                                button.classList = "btn btm-sm mx-1 my-2";
+                                button.innerText = "All matches";
+                                if (matchId) {
+                                    button.classList.add("btn-light");
+                                } else {
+                                    button.classList.add("btn-primary");
+                                }
+                                matchList.appendChild(button);
+                                matchButtons.push(button);
+
+                                button.addEventListener('click', (e) => {
+                                    console.log("match clicked")
+
+                                    matchId = null;
+                                    match_number = -1;
+                                    loadMatch();
+                                    Reactable.setFilter('match-stats', 'MatchId', undefined);
+                                    Reactable.setFilter('match-stats-team', 'MatchId', undefined);
+                                    history.replaceState(null, '', `afl_match_stats_new.html?id=${roundId}`);
+
+                                    for (btn of matchButtons) {
+                                        if (btn.id === `match-${matchId}` || (!matchId && btn.id === "match-All")) {
+                                            btn.classList.add("btn-primary");
+                                            btn.classList.remove("btn-light");
+                                        } else {
+                                            btn.classList.add("btn-light");
+                                            btn.classList.remove("btn-primary");
+                                        }
+                                    }
+                                });
+                            }
+
+                            for (let i = 0; i < matches.MatchId.length; i++) {
+                                const button = document.createElement('button');
+                                button.id = `match-${matches.MatchId[i]}`;
+                                button.type = "button";
+                                button.classList = "btn btm-sm mx-1 my-2";
+                                button.innerText = `${matches.HomeAbbreviation[i]} v ${matches.AwayAbbreviation[i]}`;
+                                if (matches.MatchId[i] === matchId) {
+                                    button.classList.add("btn-primary");
+                                } else {
+                                    button.classList.add("btn-light");
+                                }
+                                matchList.appendChild(button);
+                                matchButtons.push(button);
+
+                                button.addEventListener('click', (e) => {
+                                    console.log("match clicked")
+
+                                    matchId = matches.MatchId[i];
+                                    match_number = round_data.Matches[0].MatchId.indexOf(matchId);
+                                    loadMatch();
+                                    // Reactable.setFilter('match-stats', 'MatchId', undefined);
+                                    Reactable.setFilter('match-stats', 'MatchId', matchId);
+                                    // Reactable.setFilter('match-stats-team', 'MatchId', undefined);
+                                    Reactable.setFilter('match-stats-team', 'MatchId', matchId);
+                                    history.replaceState(null, '', `afl_match_stats_new.html?id=${matchId}`);
+
+                                    for (btn of matchButtons) {
+                                        if (btn.id === `match-${matchId}`) {
+                                            btn.classList.add("btn-primary");
+                                            btn.classList.remove("btn-light");
+                                        } else {
+                                            btn.classList.add("btn-light");
+                                            btn.classList.remove("btn-primary");
+                                        }
+                                    }
+                                });
+
+                            }
+
+                            loadMatch();
+                        } else {
+                            roundDiv.classList.add("d-none");
+                        }
+                    } else if (this.readyState == 4) {
+                        roundDiv.classList.add("d-none");
+                    }
+                };
+
+                xmlhttp.open("GET", url, false);
+                xmlhttp.send();
+            }
+        }
+    };
+
+    xmlhttpSeason.open("GET", urlSeason, false);
+    xmlhttpSeason.send();
+
 } else {
     seasonDiv.classList.add("d-none");
 }
