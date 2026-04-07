@@ -158,12 +158,33 @@ const displaySingleMatchTeamStats = function () {
 
             rowDiv.appendChild(colDivHeading);
         } else {
-            rowDiv.style = "padding: 2px 0;";
+            rowDiv.style = "padding: 2px 0 0 0;";
             rowDiv.classList.add("border-bottom");
+
+            colDivHeading.classList = "col-5 p-0";
 
             let decimals = teamStatsColumns[key].decimals ? teamStatsColumns[key].decimals : 0;
 
+            let metric_range = season_data.Metrics[key];
+
+            const colDivHome = document.createElement('div');
+            const colDivHomeText = document.createElement('div');
+            const colDivHomeBarContainer = document.createElement('div');
+            const colDivHomeBarPadding = document.createElement('div');
+            const colDivHomeBar = document.createElement('div');
+
+            const colDivAway = document.createElement('div');
+            const colDivAwayText = document.createElement('div');
+            const colDivAwayBarContainer = document.createElement('div');
+            const colDivAwayBarPadding = document.createElement('div');
+            const colDivAwayBar = document.createElement('div');
+
+            colDivHome.classList = "col d-block p-0";
+            colDivAway.classList = "col d-block p-0";
+
+            // Home team
             let labelHome;
+            let valueHome = parseFloat(round_data.TeamData[0][key][homeTeamIndex]);
 
             if (teamStatsColumns[key].fields) {
                 labelHome = teamStatsColumns[key].format;
@@ -172,17 +193,14 @@ const displaySingleMatchTeamStats = function () {
                     labelHome = isNaN(parseFloat(value)) ? '' : labelHome.replace(`{${index + 1}}`, value);
                 })
             } else {
-                labelHome = round_data.TeamData[0][key][homeTeamIndex];
-                labelHome = isNaN(parseFloat(labelHome)) ? "" : parseFloat(labelHome).toFixed(decimals);
+                labelHome = isNaN(valueHome) ? "" : valueHome.toFixed(decimals);
             }
 
-            colDivHeading.classList = "col-5";
+            colDivHomeText.innerText = labelHome;
 
-            const colDivHome = document.createElement('div');
-            colDivHome.classList = "col";
-            colDivHome.innerText = labelHome;
-
+            // Away team
             let labelAway;
+            let valueAway = parseFloat(round_data.TeamData[0][key][awayTeamIndex]);
 
             if (teamStatsColumns[key].fields) {
                 labelAway = teamStatsColumns[key].format;
@@ -192,13 +210,38 @@ const displaySingleMatchTeamStats = function () {
                 })
 
             } else {
-                labelAway = round_data.TeamData[0][key][awayTeamIndex];
-                labelAway = isNaN(parseFloat(labelAway)) ? "" : parseFloat(labelAway).toFixed(decimals);
+                labelAway = isNaN(valueAway) ? "" : valueAway.toFixed(decimals);
             }
 
-            const colDivAway = document.createElement('div');
-            colDivAway.classList = "col";
-            colDivAway.innerText = labelAway;
+            colDivAwayText.innerText = labelAway;
+
+            if (metric_range && metric_range.length === 2) {
+                let relativeValueHome = (valueHome - metric_range[0]) / metric_range[1];
+                Math.abs(relativeValueHome) > 1 ? relativeValueHome = 1 * Math.sign(relativeValueHome) : relativeValueHome;
+                let relativeValueAway = (valueAway - metric_range[0]) / metric_range[1];
+                Math.abs(relativeValueAway) > 1 ? relativeValueAway = 1 * Math.sign(relativeValueAway) : relativeValueAway;
+
+                const colorHome = relativeValueHome > relativeValueAway ? "hsl(279 80% 62%)" : "hsl(0 0% 70%)";
+                const colorAway = relativeValueAway > relativeValueHome ? "hsl(36 80% 62%)" : "hsl(0 0% 70%)";
+
+                if (relativeValueHome > relativeValueAway) colDivHome.classList.add("fw-bold");
+                if (relativeValueAway > relativeValueHome) colDivAway.classList.add("fw-bold");
+
+                colDivHomeBarPadding.style = `width: ${(relativeValueHome >= 0 ? 1 : 1 + relativeValueHome) * 50}%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
+                colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 50}%; height: 3px; float: left; background-color: ${colorHome};`;
+                colDivAwayBarPadding.style = `width: ${(relativeValueAway >= 0 ? 1 : 1 + relativeValueAway) * 50}%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
+                colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 50}%; height: 3px; float: left; background-color: ${colorAway};`;
+            }
+
+            colDivHomeBarContainer.appendChild(colDivHomeBarPadding);
+            colDivHomeBarContainer.appendChild(colDivHomeBar);
+            colDivAwayBarContainer.appendChild(colDivAwayBarPadding);
+            colDivAwayBarContainer.appendChild(colDivAwayBar);
+
+            colDivHome.appendChild(colDivHomeText);
+            colDivHome.appendChild(colDivHomeBarContainer);
+            colDivAway.appendChild(colDivAwayText);
+            colDivAway.appendChild(colDivAwayBarContainer);
 
             rowDiv.appendChild(colDivHome);
             rowDiv.appendChild(colDivHeading);
@@ -214,7 +257,6 @@ const loadMatch = function () {
         matchBanner.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="40px" alt=""> ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]} <img src="${round_data.Matches[0].AwayImage[match_number]}" height="40px" alt="">`;
         document.title = `AFL Match Stats - ${round_data.Summary[0].Season}, ${roundName} - ${round_data.Matches[0].HomeTeam[match_number]} v ${round_data.Matches[0].AwayTeam[match_number]}`;
 
-        displaySingleMatchTeamStats();
         teamstatsDiv.classList.remove('d-none');
         document.querySelector("#react-div-team").classList.add('d-none');
     } else {
@@ -242,6 +284,8 @@ if (validYears.includes(seasonId)) {
                 window.location.href = `afl_match_stats_new.html?id=${data.RoundId.slice(-1)}`;
             } else {
                 if (data.RoundId.length > 1) {
+                    season_data = data;
+
                     for (let i = 0; i < data.RoundId.length; i++) {
                         const li = document.createElement('option');
                         li.value = data.RoundId[i];
@@ -287,6 +331,8 @@ if (validYears.includes(seasonId)) {
                         goToRound();
                     })
                 }
+
+                displaySingleMatchTeamStats();
             }
         });
 
