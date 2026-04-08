@@ -130,8 +130,8 @@ const displaySingleMatchTeamStats = function () {
     let colNumber = 0;
 
     const colDivs = [document.createElement('div'), document.createElement('div')];
-    colDivs[0].classList = "col-lg-6 px-3";
-    colDivs[1].classList = "col-lg-6 px-3";
+    colDivs[0].classList = "col-lg-6 px-3 text-center";
+    colDivs[1].classList = "col-lg-6 px-3 text-center";
     teamstatsDiv.appendChild(colDivs[0]);
     teamstatsDiv.appendChild(colDivs[1]);
 
@@ -165,25 +165,25 @@ const displaySingleMatchTeamStats = function () {
         if (teamStatsColumns[key].heading) {
             // rowDiv.style = "padding: 2px 0; color: white; background-color: #3a0057;";
             rowDiv.style = "padding: 2px 0; background-color: #ededed;";
-            colDivHeading.classList = "col-5 ps-1 fw-bold";
+            colDivHeading.classList = "col-5 fw-bold";
 
             const colDivHeadingHome = document.createElement('div');
-            colDivHeadingHome.classList = "col text-center ps-1 pe-0";
+            colDivHeadingHome.classList = "col";
             colDivHeadingHome.innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="18px" alt=""></img>`;
 
             const colDivHeadingAway = document.createElement('div');
-            colDivHeadingAway.classList = "col text-center ps-1 pe-0";
+            colDivHeadingAway.classList = "col";
             colDivHeadingAway.innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="18px" alt=""></img>`;
 
-            rowDiv.appendChild(colDivHeading);
             rowDiv.appendChild(colDivHeadingHome);
+            rowDiv.appendChild(colDivHeading);
             rowDiv.appendChild(colDivHeadingAway);
         } else {
             rowDiv.style = "padding: 2px 0 0 0;";
             rowDiv.classList.add("border-bottom");
             rowDiv.classList.add("hover-row");
 
-            colDivHeading.classList = "col-5 ps-1";
+            colDivHeading.classList = "col-5 p-0";
 
             let decimals = teamStatsColumns[key].decimals ? teamStatsColumns[key].decimals : 0;
 
@@ -201,8 +201,8 @@ const displaySingleMatchTeamStats = function () {
             const colDivAwayBarPadding = document.createElement('div');
             const colDivAwayBar = document.createElement('div');
 
-            colDivHome.classList = "col text-center d-block ps-1 pe-0";
-            colDivAway.classList = "col text-center d-block ps-1 pe-0";
+            colDivHome.classList = "col d-block p-0";
+            colDivAway.classList = "col d-block p-0";
 
             // Home team
             let labelHome;
@@ -268,8 +268,8 @@ const displaySingleMatchTeamStats = function () {
             colDivAway.appendChild(colDivAwayText);
             colDivAway.appendChild(colDivAwayBarContainer);
 
-            rowDiv.appendChild(colDivHeading);
             rowDiv.appendChild(colDivHome);
+            rowDiv.appendChild(colDivHeading);
             rowDiv.appendChild(colDivAway);
         }
 
