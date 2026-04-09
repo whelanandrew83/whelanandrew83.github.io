@@ -201,8 +201,8 @@ const displaySingleMatchTeamStats = function () {
             const colDivAwayBarPadding = document.createElement('div');
             const colDivAwayBar = document.createElement('div');
 
-            colDivHome.classList = "col text-center d-block ps-1 pe-0";
-            colDivAway.classList = "col text-center d-block ps-1 pe-0";
+            colDivHome.classList = "col stat d-block ps-1 pe-0";
+            colDivAway.classList = "col stat d-block ps-1 pe-0";
 
             // Home team
             let labelHome;
@@ -243,25 +243,33 @@ const displaySingleMatchTeamStats = function () {
                 let relativeValueAway = (valueAway - metric_range[0]) / metric_range[1];
                 Math.abs(relativeValueAway) > 1 ? relativeValueAway = 1 * Math.sign(relativeValueAway) : relativeValueAway;
 
-                const colorHome = relativeValueHome > relativeValueAway ? "hsl(279 80% 62%)" : "hsl(0 0% 70%)";
-                const colorAway = relativeValueAway > relativeValueHome ? "hsl(36 80% 62%)" : "hsl(0 0% 70%)";
+                // const colorHome = relativeValueHome > relativeValueAway ? "hsl(279 80% 62%)" : "hsl(0 0% 70%)";
+                // const colorAway = relativeValueAway > relativeValueHome ? "hsl(36 80% 62%)" : "hsl(0 0% 70%)";
+                const colorHome = relativeValueHome > relativeValueAway ? `hsl(279 80% ${relativeValueHome >= 0 ? 62 : 75}%)` : `hsl(0 0% ${relativeValueHome >= 0 ? 70 : 85}%)`;
+                const colorAway = relativeValueAway > relativeValueHome ? `hsl(36 80% ${relativeValueAway >= 0 ? 62 : 75}%)` : `hsl(0 0% ${relativeValueAway >= 0 ? 70 : 85}%)`;
 
-                colDivHomeBarPadding.style = `width: ${(relativeValueHome >= 0 ? 1 : 1 + relativeValueHome) * 50}%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
-                colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 50}%; height: 3px; float: left; background-color: ${colorHome}; border-${relativeValueHome > 0 ? 'left' : 'right'}: black solid 1px;`;
-                colDivAwayBarPadding.style = `width: ${(relativeValueAway >= 0 ? 1 : 1 + relativeValueAway) * 50}%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
-                colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 50}%; height: 3px; float: left; background-color: ${colorAway}; border-${relativeValueAway > 0 ? 'left' : 'right'}: black solid 1px;`;
+                colDivHomeBarPadding.style = `width: ${(relativeValueHome >= 0 ? 1 : 1 + relativeValueHome) * 49}%; height: 5px; float: left; background-color: hsl(0 0% 100% 100% );`;
+                // colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 50}%; height: 3px; float: left; background-color: ${colorHome}; border-${relativeValueHome > 0 ? 'left' : 'right'}: black solid 1px;`;
+                colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 49}%; height: 5px; float: left; background-color: ${colorHome}; border-radius: ${relativeValueHome < 0 ? '2.5px 0px 0px 2.5px' : '0px 2.5px 2.5px 0px'};`;
+                colDivAwayBarPadding.style = `width: ${(relativeValueAway >= 0 ? 1 : 1 + relativeValueAway) * 49}%; height: 5px; float: left; background-color: hsl(0 0% 100% 100% );`;
+                // colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 50}%; height: 3px; float: left; background-color: ${colorAway}; border-${relativeValueAway > 0 ? 'left' : 'right'}: black solid 1px;`;
+                colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 49}%; height: 5px; float: left; background-color: ${colorAway}; border-radius: ${relativeValueAway < 0 ? '2.5px 0px 0px 2.5px' : '0px 2.5px 2.5px 0px'};`;
+
+                colDivHomeBarContainer.appendChild(colDivHomeBarPadding);
+                colDivHomeBarContainer.appendChild(colDivHomeBar);
+
+                colDivAwayBarContainer.appendChild(colDivAwayBarPadding);
+                colDivAwayBarContainer.appendChild(colDivAwayBar);
             } else {
-                colDivHomeBarPadding.style = `width: 100%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
-                colDivAwayBarPadding.style = `width: 100%; height: 3px; float: left; background-color: hsl(0 0% 100% 100% );`;
+                colDivHomeBarPadding.style = `width: 100%; height: 5px; float: left; background-color: hsl(0 0% 100% 100% );`;
+                colDivAwayBarPadding.style = `width: 100%; height: 5px; float: left; background-color: hsl(0 0% 100% 100% );`;
+
+                colDivHomeBarContainer.appendChild(colDivHomeBarPadding);
+                colDivAwayBarContainer.appendChild(colDivAwayBarPadding);
             }
 
             if (valueHome > valueAway) colDivHome.classList.add("fw-bold");
             if (valueAway > valueHome) colDivAway.classList.add("fw-bold");
-
-            colDivHomeBarContainer.appendChild(colDivHomeBarPadding);
-            colDivHomeBarContainer.appendChild(colDivHomeBar);
-            colDivAwayBarContainer.appendChild(colDivAwayBarPadding);
-            colDivAwayBarContainer.appendChild(colDivAwayBar);
 
             colDivHome.appendChild(colDivHomeText);
             colDivHome.appendChild(colDivHomeBarContainer);
