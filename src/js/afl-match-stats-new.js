@@ -71,29 +71,24 @@ const teamStatsColumns = {
     "MetresGained": { name: "Metres Gained" },
     "Inside50s": { name: "Inside 50s" },
     "ForwardHalf": { name: "Time in Forward Half", decimals: 1 },
+    "Tackles": { name: "Tackles" },
+    "Possessions_Heading": { name: "Possessions", heading: true },
     "ContestedPossessions": { name: "Contested Possessions" },
     "PostClearanceContestedPossessions": { name: "Post-Clearance CP" },
     "GroundBallGets": { name: "Ground Ball Gets" },
     "PostClearanceGroundBallGets": { name: "Post-Clearance GBG" },
-    "FirstPossessions": { name: "1st Possessions" },
-    "FirstPossessionToClearance": { name: "1st Poss. To Clearance %", decimals: 1 },
-    "TotalClearances": { name: "Clearances" },
     "Intercepts": { name: "Intercept Possessions" },
     "Marks": { name: "Marks" },
     "ContestedMarks": { name: "Contested Marks" },
     "InterceptMarks": { name: "Intercept Marks" },
-    "Tackles": { name: "Tackles" },
+    "Stoppages_Heading": { name: "Stoppages", heading: true },
+    "FirstPossessions": { name: "1st Possessions" },
+    "FirstPossessionToClearance": { name: "1st Poss. To Clearance %", decimals: 1 },
+    "TotalClearances": { name: "Clearances" },
     "Hitouts": { name: "Hitouts" },
-    "Equity_Heading": { name: "Equity Points", heading: true },
-    "Equity_PreClearance": { name: "Pre-Clearance", decimals: 1 },
-    "Equity_PostClearance": { name: "Post-Clearance", decimals: 1 },
-    "Equity_Possession": { name: "Ball Winning", decimals: 1 },
-    "Equity_BallUse": { name: "Ball Use", decimals: 1 },
     "Scoring_Heading": { name: "Scoring", heading: true },
     "ShotsAtGoal": { name: "Shots At Goal" },
-    "Goals": { name: "Goals" },
-    "Behinds": { name: "Behinds" },
-    "Score": { name: "Score" },
+    "Score": { name: "Score", fields: ["Goals", "Behinds", "Score"], format: "{1}.{2} ({3})" },
     "xScore": { name: "Expected Score", decimals: 1 },
     "xScoreRating": { name: "Expected Score +/-", decimals: 1 },
     "xWins": { name: "xWin %", decimals: 1 },
@@ -110,6 +105,11 @@ const teamStatsColumns = {
     "PointsFromDefensiveHalf": { name: "Defensive Half", fields: ["GoalsFromDefensiveHalf", "BehindsFromDefensiveHalf", "PointsFromDefensiveHalf"], format: "{1}.{2} ({3})" },
     "PointsFromForwardHalf": { name: "Forward Half", fields: ["GoalsFromForwardHalf", "BehindsFromForwardHalf", "PointsFromForwardHalf"], format: "{1}.{2} ({3})" },
     "PointsFromCentreBounce": { name: "Centre Bounce", fields: ["GoalsFromCentreBounce", "BehindsFromCentreBounce", "PointsFromCentreBounce"], format: "{1}.{2} ({3})" },
+    "Equity_Heading": { name: "Equity Points", heading: true },
+    "Equity_PreClearance": { name: "Pre-Clearance", decimals: 1 },
+    "Equity_PostClearance": { name: "Post-Clearance", decimals: 1 },
+    "Equity_Possession": { name: "Ball Winning", decimals: 1 },
+    "Equity_BallUse": { name: "Ball Use", decimals: 1 },
     "Transition_Heading": { name: "Transition", heading: true },
     "ChainToScore": { name: "Chain to Score %", decimals: 1 },
     "D50ToF50": { name: "Def. 50 to F50 %", decimals: 1 },
@@ -128,6 +128,8 @@ const displaySingleMatchTeamStats = function () {
     const awayTeamIndex = round_data.TeamData[0].MatchId.findIndex((m, i) => m == matchId && round_data.TeamData[0].Abbreviation[i] == awayTeam)
 
     let colNumber = 0;
+    let statNumber = 0;
+    let previousHeading = false;
 
     const colDivs = [document.createElement('div'), document.createElement('div')];
     colDivs[0].classList = "col-lg-6 px-3";
@@ -154,7 +156,8 @@ const displaySingleMatchTeamStats = function () {
     // colDivs[1].appendChild(rowDivHeading.cloneNode(true));
 
     Object.keys(teamStatsColumns).forEach((key) => {
-        if (key == 'Scoring_Heading') colNumber = 1;
+        statNumber += 1;
+        if (teamStatsColumns[key].heading && statNumber > (Object.keys(teamStatsColumns).length / 2)) colNumber = 1;
 
         const rowDiv = document.createElement('div');
         rowDiv.classList = "row";
@@ -163,6 +166,7 @@ const displaySingleMatchTeamStats = function () {
         colDivHeading.innerText = teamStatsColumns[key].name;
 
         if (teamStatsColumns[key].heading) {
+            previousHeading = true;
             // rowDiv.style = "padding: 2px 0; color: white; background-color: #3a0057;";
             rowDiv.style = "padding: 2px 0; background-color: #ededed;";
             colDivHeading.classList = "col-5 ps-1 fw-bold";
@@ -180,7 +184,7 @@ const displaySingleMatchTeamStats = function () {
             rowDiv.appendChild(colDivHeadingAway);
         } else {
             rowDiv.style = "padding: 2px 0 0 0;";
-            rowDiv.classList.add("border-bottom");
+            if (!previousHeading) rowDiv.classList.add("border-top");
             rowDiv.classList.add("hover-row");
 
             colDivHeading.classList = "col-5 ps-1";
@@ -279,6 +283,8 @@ const displaySingleMatchTeamStats = function () {
             rowDiv.appendChild(colDivHeading);
             rowDiv.appendChild(colDivHome);
             rowDiv.appendChild(colDivAway);
+
+            previousHeading = false;
         }
 
         colDivs[colNumber].appendChild(rowDiv);
