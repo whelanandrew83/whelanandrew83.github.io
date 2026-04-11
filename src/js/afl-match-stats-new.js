@@ -67,10 +67,12 @@ const teamStatsColumns = {
     "Kicks": { name: "Kicks" },
     "Handballs": { name: "Handballs" },
     "Disposals": { name: "Disposals" },
-    "DisposalEfficiency": { name: "Disposal Efficiency", decimals: 1 },
+    "DisposalEfficiency": { name: "Disposal Efficiency", decimals: 1, percentage: true },
     "MetresGained": { name: "Metres Gained" },
+    "KickMetresGained": { name: "Kick Metres Gained" },
+    "HandballMetresGained": { name: "Handball Metres Gained" },
     "Inside50s": { name: "Inside 50s" },
-    "ForwardHalf": { name: "Time in Forward Half", decimals: 1 },
+    "ForwardHalf": { name: "Time in Forward Half", decimals: 1, percentage: true },
     "Tackles": { name: "Tackles" },
     "Possessions_Heading": { name: "Possessions", heading: true },
     "ContestedPossessions": { name: "Contested Possessions" },
@@ -82,16 +84,21 @@ const teamStatsColumns = {
     "ContestedMarks": { name: "Contested Marks" },
     "InterceptMarks": { name: "Intercept Marks" },
     "Stoppages_Heading": { name: "Stoppages", heading: true },
-    "FirstPossessions": { name: "1st Possessions" },
-    "FirstPossessionToClearance": { name: "1st Poss. To Clearance %", decimals: 1 },
-    "TotalClearances": { name: "Clearances" },
+    "RuckContests": { name: "Ruck Contests" },
     "Hitouts": { name: "Hitouts" },
+    "HitoutToFirstPossession": { name: "Hitout to 1st Poss. %", decimals: 1, percentage: true },
+    "HitoutsToAdvantage": { name: "Hitouts to Advantage" },
+    "FirstPossessions": { name: "1st Possessions" },
+    "FirstPossessionToClearance": { name: "1st Poss. To Clearance %", decimals: 1, percentage: true },
+    "TotalClearances": { name: "Clearances" },
+    "CentreClearances": { name: "Centre Clearances" },
     "Scoring_Heading": { name: "Scoring", heading: true },
     "ShotsAtGoal": { name: "Shots At Goal" },
     "Score": { name: "Score", fields: ["Goals", "Behinds", "Score"], format: "{1}.{2} ({3})" },
-    "xScore": { name: "Expected Score", decimals: 1 },
     "xScoreRating": { name: "Expected Score +/-", decimals: 1 },
-    "xWins": { name: "xWin %", decimals: 1 },
+    "ScoresPerInside50": { name: "Scores / Inside 50", decimals: 1, percentage: true },
+    "xScoreRating": { name: "Expected Score +/-", decimals: 1 },
+    "xWins": { name: "xWin %", decimals: 1, percentage: true },
     "GoalAssists": { name: "Goal Assists" },
     "xChainScore_Heading": { name: "xChainScore", heading: true },
     "xChainScore": { name: "Total", decimals: 1 },
@@ -111,11 +118,11 @@ const teamStatsColumns = {
     "Equity_Possession": { name: "Ball Winning", decimals: 1 },
     "Equity_BallUse": { name: "Ball Use", decimals: 1 },
     "Transition_Heading": { name: "Transition", heading: true },
-    "ChainToScore": { name: "Chain to Score %", decimals: 1 },
-    "D50ToF50": { name: "Def. 50 to F50 %", decimals: 1 },
-    "D50ToScore": { name: "Def. 50 to Score %", decimals: 1 },
-    "DefHalfToF50": { name: "Def. Half to F50 %", decimals: 1 },
-    "DefHalfToScore": { name: "Def. Half to Score %", decimals: 1 }
+    "ChainToScore": { name: "Chain to Score %", decimals: 1, percentage: true },
+    "D50ToF50": { name: "Def. 50 to F50 %", decimals: 1, percentage: true },
+    "D50ToScore": { name: "Def. 50 to Score %", decimals: 1, percentage: true },
+    "DefHalfToF50": { name: "Def. Half to F50 %", decimals: 1, percentage: true },
+    "DefHalfToScore": { name: "Def. Half to Score %", decimals: 1, percentage: true }
 }
 
 const displaySingleMatchTeamStats = function () {
@@ -220,6 +227,7 @@ const displaySingleMatchTeamStats = function () {
                 })
             } else {
                 labelHome = isNaN(valueHome) ? "" : valueHome.toFixed(decimals);
+                if (teamStatsColumns[key].percentage && labelHome) labelHome = `${labelHome}%`;
             }
 
             colDivHomeText.innerText = labelHome;
@@ -237,6 +245,7 @@ const displaySingleMatchTeamStats = function () {
 
             } else {
                 labelAway = isNaN(valueAway) ? "" : valueAway.toFixed(decimals);
+                if (teamStatsColumns[key].percentage && labelAway) labelAway = `${labelAway}%`;
             }
 
             colDivAwayText.innerText = labelAway;
@@ -525,7 +534,8 @@ if (validYears.includes(seasonId)) {
                                     heading = key;
                                     keepHeading = false;
                                 } else {
-                                    if (Object.keys(reactableDataTeam).includes(key))
+                                    // if (Object.keys(reactableDataTeam).includes(key))
+                                    if (Object.keys(round_data.TeamData[0]).includes(key))
                                         keepHeading = true;
                                     else
                                         delete teamStatsColumns[key];
