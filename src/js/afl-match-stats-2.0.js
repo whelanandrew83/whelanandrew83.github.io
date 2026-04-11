@@ -144,24 +144,6 @@ const displaySingleMatchTeamStats = function () {
     teamstatsDiv.appendChild(colDivs[0]);
     teamstatsDiv.appendChild(colDivs[1]);
 
-    // const rowDivHeading = document.createElement('div');
-    // rowDivHeading.classList = "row";
-
-    // rowDivHeadingColumns = [document.createElement('div'), document.createElement('div'), document.createElement('div')];
-    // rowDivHeadingColumns[0].classList = "col";
-    // rowDivHeadingColumns[1].classList = "col-5";
-    // rowDivHeadingColumns[2].classList = "col";
-
-    // rowDivHeadingColumns[0].innerHTML = `<img src="${round_data.Matches[0].HomeImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].HomeTeam[match_number]}`;
-    // rowDivHeadingColumns[2].innerHTML = `<img src="${round_data.Matches[0].AwayImage[match_number]}" height="15px" alt=""></img>${round_data.Matches[0].AwayTeam[match_number]}`;
-
-    // rowDivHeading.appendChild(rowDivHeadingColumns[0]);
-    // rowDivHeading.appendChild(rowDivHeadingColumns[1]);
-    // rowDivHeading.appendChild(rowDivHeadingColumns[2]);
-
-    // colDivs[0].appendChild(rowDivHeading);
-    // colDivs[1].appendChild(rowDivHeading.cloneNode(true));
-
     Object.keys(teamStatsColumns).forEach((key) => {
         statNumber += 1;
         if (teamStatsColumns[key].heading && statNumber > (Object.keys(teamStatsColumns).length / 2)) colNumber = 1;
@@ -174,7 +156,6 @@ const displaySingleMatchTeamStats = function () {
 
         if (teamStatsColumns[key].heading) {
             previousHeading = true;
-            // rowDiv.style = "padding: 2px 0; color: white; background-color: #3a0057;";
             rowDiv.style = "padding: 2px 0; background-color: #ededed;";
             colDivHeading.classList = "col-5 ps-1 fw-bold";
 
@@ -256,16 +237,12 @@ const displaySingleMatchTeamStats = function () {
                 let relativeValueAway = (valueAway - metric_range[0]) / metric_range[1];
                 Math.abs(relativeValueAway) > 1 ? relativeValueAway = 1 * Math.sign(relativeValueAway) : relativeValueAway;
 
-                // const colorHome = relativeValueHome > relativeValueAway ? "hsl(279 80% 62%)" : "hsl(0 0% 70%)";
-                // const colorAway = relativeValueAway > relativeValueHome ? "hsl(36 80% 62%)" : "hsl(0 0% 70%)";
                 const colorHome = relativeValueHome > relativeValueAway ? `hsl(279 80% ${relativeValueHome >= 0 ? 62 : 75}%)` : `hsl(0 0% ${relativeValueHome >= 0 ? 70 : 85}%)`;
                 const colorAway = relativeValueAway > relativeValueHome ? `hsl(36 80% ${relativeValueAway >= 0 ? 62 : 75}%)` : `hsl(0 0% ${relativeValueAway >= 0 ? 70 : 85}%)`;
 
                 colDivHomeBarPadding.style = `width: ${(relativeValueHome >= 0 ? 1 : 1 + relativeValueHome) * 49}%; height: 5px; float: left; background-color: hsl(0 0% 100% 100% );`;
-                // colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 50}%; height: 3px; float: left; background-color: ${colorHome}; border-${relativeValueHome > 0 ? 'left' : 'right'}: black solid 1px;`;
                 colDivHomeBar.style = `width: ${Math.abs(relativeValueHome) * 49}%; height: 5px; float: left; background-color: ${colorHome}; border-radius: ${relativeValueHome < 0 ? '2.5px 0px 0px 2.5px' : '0px 2.5px 2.5px 0px'};`;
                 colDivAwayBarPadding.style = `width: ${(relativeValueAway >= 0 ? 1 : 1 + relativeValueAway) * 49}%; height: 5px; float: left; background-color: hsl(0 0% 100% 100% );`;
-                // colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 50}%; height: 3px; float: left; background-color: ${colorAway}; border-${relativeValueAway > 0 ? 'left' : 'right'}: black solid 1px;`;
                 colDivAwayBar.style = `width: ${Math.abs(relativeValueAway) * 49}%; height: 5px; float: left; background-color: ${colorAway}; border-radius: ${relativeValueAway < 0 ? '2.5px 0px 0px 2.5px' : '0px 2.5px 2.5px 0px'};`;
 
                 colDivHomeBarContainer.appendChild(colDivHomeBarPadding);
@@ -321,70 +298,6 @@ const loadMatch = function () {
 const goToRound = () => { window.location.href = `afl_match_stats.html?id=${roundList.value}` };
 
 if (validYears.includes(seasonId)) {
-    // fetch(`https://www.wheeloratings.com/src/match_stats/table_data/${seasonId}.json`)
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         if (typeof data.RoundId === "string") {
-    //             for (key of Object.keys(data)) {
-    //                 data[key] = [data[key]];
-    //             }
-    //         }
-    //         if (!roundId && data.RoundId.slice(-1)) {
-    //             window.location.href = `afl_match_stats.html?id=${data.RoundId.slice(-1)}`;
-    //         } else {
-    //             if (data.RoundId.length > 1) {
-    //                 season_data = data;
-
-    //                 for (let i = 0; i < data.RoundId.length; i++) {
-    //                     const li = document.createElement('option');
-    //                     li.value = data.RoundId[i];
-    //                     if (Object.keys(data).includes("RoundName"))
-    //                         li.innerText = data.RoundName[i];
-    //                     else
-    //                         li.innerText = `Round ${data.RoundNumber[i]}`;
-    //                     if (data.RoundId[i] === roundId) {
-    //                         li.selected = true;
-    //                     }
-    //                     roundList.appendChild(li);
-    //                 }
-
-    //                 document.querySelector("#round-select-div").classList.remove("d-none");
-
-    //                 if (roundList.selectedIndex > 0) {
-    //                     document.querySelector("#first-round-button").classList.remove("disabled");
-    //                     document.querySelector("#previous-round-button").classList.remove("disabled");
-    //                 }
-    //                 if (roundList.selectedIndex < (roundList.length - 1)) {
-    //                     document.querySelector("#next-round-button").classList.remove("disabled");
-    //                     document.querySelector("#last-round-button").classList.remove("disabled");
-    //                 }
-
-    //                 document.querySelector("#first-round-button").addEventListener('click', (e) => {
-    //                     roundList.selectedIndex = 0;
-    //                     goToRound();
-    //                 });
-    //                 document.querySelector("#previous-round-button").addEventListener('click', (e) => {
-    //                     roundList.selectedIndex -= 1;
-    //                     goToRound();
-    //                 });
-    //                 document.querySelector("#next-round-button").addEventListener('click', (e) => {
-    //                     roundList.selectedIndex += 1;
-    //                     goToRound();
-    //                 });
-    //                 document.querySelector("#last-round-button").addEventListener('click', (e) => {
-    //                     roundList.selectedIndex = roundList.length - 1;
-    //                     goToRound();
-    //                 });
-
-    //                 roundList.addEventListener('change', (e) => {
-    //                     goToRound();
-    //                 })
-    //             }
-
-    //             displaySingleMatchTeamStats();
-    //         }
-    //     });
-
     document.querySelector(`#year-${seasonId}`).classList = "active";
 
     if (!roundId) {
