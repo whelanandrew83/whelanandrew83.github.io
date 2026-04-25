@@ -592,7 +592,14 @@ if (validYears.includes(seasonId)) {
 }
 
 const columnsAlwaysDisplayed = ["MatchId", "Player", "Team"];
-const statsColumns = ["CoachesVotes", "RatingPoints", "EstimatedRating", "Equity_PreClearance", "Equity_PostClearance", "Equity_Possession", "Equity_BallUse", "Supercoach", "DreamTeamPoints", "ExpVotes", "Votes3", "TimeOnGround", "Kicks", "Handballs", "Disposals", "DisposalEfficiency", "MetresGained", "AssistedMetresGained", "Inside50s", "ContestedPossessions", "GroundBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "HandballReceives", "Intercepts", "CentreBounceAttendancePercentage", "TotalClearances", "Marks", "InterceptMarks", "ContestedMarks", "ShotsAtGoal", "Goals", "Behinds", "xScore", "xScoreRating", "GoalAssists", "ScoreInvolvements", "ScoreLaunches", "Tackles", "PressureActs", "Hitouts"];
+const statsColumns = [
+    "Rating_Q1", "Rating_Q2", "Rating_Q3", "Rating_Q4", "RatingPoints", "EstimatedRating",
+    "Equity_PreClearance", "Equity_PostClearance", "Equity_Possession", "Equity_BallUse",
+    "CoachesVotes", "Supercoach", "DreamTeamPoints", "ExpVotes", "Votes3", "TimeOnGround", "Kicks", "Handballs", "Disposals", "DisposalEfficiency", "MetresGained", "AssistedMetresGained", "Inside50s", "Turnovers", "Tackles", "PressureActs", "KickIns",
+    "ContestedPossessions", "GroundBallGets", "PostClearanceContestedPossessions", "PostClearanceGroundBallGets", "HandballReceives", "Intercepts", "Marks", "InterceptMarks", "ContestedMarks",
+    "CentreBounceAttendancePercentage", "TotalClearances", "FirstPossessions", "RuckContests", "Hitouts", "HitoutsToAdvantage",
+    "ShotsAtGoal", "Goals", "Behinds", "xScore", "xScoreRating", "GoalAssists", "ScoreInvolvements", "ScoreLaunches"
+];
 
 const csvDownloadButton = document.querySelector('#download-csv-button');
 csvDownloadButton.addEventListener('click', (e) => {
