@@ -3358,7 +3358,7 @@ Round,Match,Player,Team,Rank,Votes,Votes3_Probability,Votes_Optimistic,CoachesVo
 9,Frem v Haw,Bodie Ryan,Haw,45,0,0,0,0,2.4,27,7,2,0,101,0,2
 9,Frem v Haw,Tom Barrass,Haw,46,0,0,0,0,2.6,7,1,1,0,6,0,0
 9,Bris v Carl,Lachie Neale,Bris,1,2.718,75.4,3,9,18.5,121,33,16,9,524,1,7
-9,Bris v Carl,Patrick Cripps,Carl,2,1.227,13.2,1.8,4,23.8,128,32,18,9,396,1,8
+9,Bris v Carl,Patrick Cripps,Carl,2,1.227,13.2,1.8,4,23.3,128,32,18,9,396,1,8
 9,Bris v Carl,Ryan Lester,Bris,3,0.719,6.1,1,9,17.6,123,20,7,0,217,0,1
 9,Bris v Carl,Harry McKay,Carl,4,0.448,2.9,0.2,2,17.9,132,21,10,1,355,3,9
 9,Bris v Carl,Hugh McCluggage,Bris,5,0.204,0.8,0,0,17.6,111,25,13,10,340,1,7
@@ -4139,3 +4139,417 @@ Round,Match,Player,Team,Rank,Votes,Votes3_Probability,Votes_Optimistic,CoachesVo
 10,WC v GWS,Aaron Cadman,GWS,44,0,0,0,0,1.9,31,5,1,0,126,0,2
 10,WC v GWS,Phoenix Gothard,GWS,45,0,0,0,0,2.8,45,8,5,0,62,0,1
 10,WC v GWS,Jake Riccardi,GWS,46,0,0,0,0,-0.6,14,6,3,0,5,0,1
+11,Haw v Adel,Blake Hardwick,Haw,1,1.468,24.2,2.3,7,14.4,106,14,4,0,263,4,10
+11,Haw v Adel,Jordan Dawson,Adel,2,1.42,23.5,2.2,3,15.9,111,28,12,4,661,1,4
+11,Haw v Adel,Jarman Impey,Haw,3,1.025,17,1.3,10,8.5,71,21,7,0,780,0,1
+11,Haw v Adel,Wayne Milera,Adel,4,0.657,11.4,0.2,5,16.5,143,32,9,4,768,0,5
+11,Haw v Adel,Sam Berry,Adel,5,0.376,6.7,0,2,16.8,132,27,8,5,471,0,7
+11,Haw v Adel,Cam Mackenzie,Haw,6,0.225,4,0,0,7.9,92,24,9,6,435,0,1
+11,Haw v Adel,Jai Newcombe,Haw,7,0.214,3.8,0,0,6.3,68,18,12,10,195,0,3
+11,Haw v Adel,Josh Ward,Haw,8,0.15,2.5,0,0,11.3,84,24,11,5,159,0,2
+11,Haw v Adel,Josh Worrell,Adel,9,0.133,2.2,0,1,13.1,134,28,8,0,663,0,0
+11,Haw v Adel,Josh Weddle,Haw,10,0.08,1.3,0,2,18,100,17,5,0,410,0,1
+11,Haw v Adel,Rory Laird,Adel,11,0.042,0.7,0,0,3.1,87,28,7,0,269,0,3
+11,Haw v Adel,Massimo D'Ambrosio,Haw,13,0.037,0.5,0,0,10.6,105,22,5,0,583,0,6
+11,Haw v Adel,Nick Watson,Haw,12,0.036,0.5,0,0,14.7,98,12,10,2,251,2,11
+11,Haw v Adel,Conor Nash,Haw,14,0.035,0.5,0,0,6,62,15,10,6,344,0,2
+11,Haw v Adel,Ned Reeves,Haw,15,0.023,0.3,0,0,10.2,95,9,7,8,312,0,3
+11,Haw v Adel,Alex Neal-Bullen,Adel,16,0.017,0.2,0,0,5.1,96,26,8,1,377,0,5
+11,Haw v Adel,Josh Battle,Haw,17,0.017,0.2,0,0,11.2,84,18,5,1,409,0,3
+11,Haw v Adel,Karl Amon,Haw,18,0.012,0.2,0,0,6.6,64,18,4,1,471,0,3
+11,Haw v Adel,Izak Rankine,Adel,19,0.007,0,0,0,7.2,64,17,6,1,158,1,4
+11,Haw v Adel,Lachlan McAndrew,Adel,20,0.007,0,0,0,12.6,75,12,8,7,158,1,4
+11,Haw v Adel,Jake Soligo,Adel,22,0.003,0,0,0,3.7,59,19,5,1,313,1,4
+11,Haw v Adel,James Sicily,Haw,21,0.002,0,0,0,2.9,72,11,1,0,192,0,3
+11,Haw v Adel,Mabior Chol,Haw,28,0.002,0,0,0,5.2,54,8,3,3,131,1,3
+11,Haw v Adel,Callum Ah Chee,Adel,27,0.002,0,0,0,-0.3,63,11,5,0,147,2,4
+11,Haw v Adel,James Peatling,Adel,23,0.001,0,0,0,3.7,55,17,5,1,143,0,1
+11,Haw v Adel,Riley Thilthorpe,Adel,26,0.001,0,0,0,11.5,59,16,7,2,251,0,4
+11,Haw v Adel,Finn Maginness,Haw,30,0.001,0,0,0,6.8,66,14,4,0,297,0,4
+11,Haw v Adel,Lloyd Meek,Haw,25,0.001,0,0,0,12.1,86,11,8,3,43,1,3
+11,Haw v Adel,Connor Macdonald,Haw,24,0.001,0,0,0,-1.3,50,14,5,0,200,0,6
+11,Haw v Adel,Josh Rachele,Adel,29,0.001,0,0,0,-5.4,41,16,6,1,243,1,6
+11,Haw v Adel,James Borlase,Adel,31,0.001,0,0,0,12.6,81,14,6,0,183,0,0
+11,Haw v Adel,Darcy Fogarty,Adel,33,0.001,0,0,0,2.5,67,14,7,1,228,1,6
+11,Haw v Adel,Bodie Ryan,Haw,32,0,0,0,0,1.3,30,11,3,1,141,0,1
+11,Haw v Adel,Dylan Moore,Haw,34,0,0,0,0,3.8,37,11,3,1,282,1,4
+11,Haw v Adel,Bailey Macdonald,Haw,36,0,0,0,0,9,59,13,6,0,112,0,2
+11,Haw v Adel,Jordon Butts,Adel,38,0,0,0,0,3.3,38,12,2,0,42,0,1
+11,Haw v Adel,Mitch Lewis,Haw,35,0,0,0,0,3,54,8,6,0,78,1,6
+11,Haw v Adel,Jack Ginnivan,Haw,37,0,0,0,0,2.4,56,10,5,0,279,0,3
+11,Haw v Adel,Zac Taylor,Adel,39,0,0,0,0,14.4,77,12,6,0,233,1,4
+11,Haw v Adel,Cameron Nairn,Haw,40,0,0,0,0,3,37,11,1,0,100,0,2
+11,Haw v Adel,Luke Nankervis,Adel,41,0,0,0,0,12.6,82,15,8,1,178,0,3
+11,Haw v Adel,Brayden Cook,Adel,42,0,0,0,0,9.7,67,10,7,1,253,0,2
+11,Haw v Adel,Ben Keays,Adel,43,0,0,0,0,6.9,33,11,4,1,199,0,1
+11,Haw v Adel,Daniel Curtin,Adel,44,0,0,0,0,8.2,71,8,5,2,204,0,1
+11,Haw v Adel,Max Michalanney,Adel,45,0,0,0,0,1.7,35,13,1,0,192,0,1
+11,Haw v Adel,Toby Murray,Adel,46,0,0,0,0,-0.1,0,2,1,0,30,0,1
+11,Rich v Ess,Darcy Parish,Ess,1,2.346,50,2.9,9,17.5,155,41,16,9,698,0,9
+11,Rich v Ess,Tim Taranto,Rich,2,1.896,31.7,2.1,6,8.5,116,30,11,8,320,0,10
+11,Rich v Ess,Zach Merrett,Ess,3,0.904,10.8,1,3,13.7,126,36,6,4,490,1,10
+11,Rich v Ess,Jayden Short,Rich,4,0.371,4.1,0,4,12.3,124,30,3,0,723,1,5
+11,Rich v Ess,Patrick Retschko,Rich,5,0.175,1.8,0,6,15.7,107,27,4,0,499,0,9
+11,Rich v Ess,Jack Ross,Rich,6,0.149,1.3,0,2,7.8,104,24,9,1,282,1,10
+11,Rich v Ess,Archie Roberts,Ess,7,0.034,0.2,0,0,10.5,85,33,7,1,488,0,8
+11,Rich v Ess,Seth Campbell,Rich,8,0.028,0.1,0,0,17,83,22,9,5,217,0,4
+11,Rich v Ess,Jacob Hopper,Rich,9,0.018,0,0,0,9.2,77,20,9,5,217,0,5
+11,Rich v Ess,Archer May,Ess,10,0.011,0,0,0,10,81,15,7,0,245,3,5
+11,Rich v Ess,Mason Redman,Ess,12,0.009,0,0,0,9.6,131,30,3,0,541,0,5
+11,Rich v Ess,Steely Green,Rich,11,0.008,0,0,0,10.4,94,13,7,2,145,2,7
+11,Rich v Ess,Sullivan Robey,Ess,13,0.007,0,0,0,2.9,69,23,8,4,273,0,3
+11,Rich v Ess,Tom Lynch,Rich,14,0.007,0,0,0,10.1,90,10,6,1,201,2,7
+11,Rich v Ess,Sam Cumming,Rich,15,0.007,0,0,0,8.1,72,17,3,2,164,1,5
+11,Rich v Ess,Ben Miller,Rich,17,0.006,0,0,0,6.7,85,17,2,0,389,0,6
+11,Rich v Ess,Tyler Sonsie,Rich,16,0.005,0,0,0,6.8,85,22,5,0,313,0,6
+11,Rich v Ess,Kyle Langford,Ess,19,0.003,0,0,0,12.1,105,27,6,0,376,0,5
+11,Rich v Ess,Noah Balta,Rich,18,0.003,0,0,0,10.3,53,15,6,3,366,0,4
+11,Rich v Ess,James Trezise,Rich,20,0.003,0,0,0,4.9,60,19,5,1,184,0,2
+11,Rich v Ess,Ben McKay,Ess,22,0.002,0,0,0,7.6,98,19,6,0,101,0,5
+11,Rich v Ess,Nick Vlastuin,Rich,23,0.002,0,0,0,4.3,75,16,6,0,208,0,2
+11,Rich v Ess,Jaxon Prior,Ess,21,0.001,0,0,0,7.1,88,22,6,1,417,0,1
+11,Rich v Ess,Nathan Broad,Rich,24,0.001,0,0,0,10.9,72,13,4,0,240,0,3
+11,Rich v Ess,Sam Grlj,Rich,25,0.001,0,0,0,-2.6,41,13,1,1,367,0,3
+11,Rich v Ess,Mykelti Lefau,Rich,26,0.001,0,0,0,11.8,78,10,4,0,105,1,5
+11,Rich v Ess,Jacob Farrow,Ess,27,0,0,0,0,5.5,91,18,4,0,201,0,5
+11,Rich v Ess,Archie Perkins,Ess,28,0,0,0,0,9.1,95,19,3,0,361,0,5
+11,Rich v Ess,Nick Bryan,Ess,29,0,0,0,0,15.4,96,14,6,3,153,0,5
+11,Rich v Ess,Jasper Alger,Rich,30,0,0,0,0,2.6,50,10,6,0,147,0,2
+11,Rich v Ess,Oliver Hayes-Brown,Rich,31,0,0,0,0,6.8,46,7,7,3,93,0,1
+11,Rich v Ess,Luke Trainor,Rich,32,0,0,0,0,3.9,39,11,0,0,173,0,3
+11,Rich v Ess,Nate Caddy,Ess,33,0,0,0,0,3.2,56,7,2,0,237,2,6
+11,Rich v Ess,Zach Reid,Ess,34,0,0,0,0,4.4,64,13,2,0,159,0,6
+11,Rich v Ess,Thomas Edwards,Ess,35,0,0,0,0,6.3,62,14,6,0,84,0,5
+11,Rich v Ess,Jade Gresham,Ess,36,0,0,0,0,2.1,45,12,4,3,165,0,2
+11,Rich v Ess,Noah Roberts-Thomson,Rich,37,0,0,0,0,0.5,33,4,0,0,92,1,1
+11,Rich v Ess,Jonty Faull,Rich,38,0,0,0,0,4.4,21,3,1,0,24,1,2
+11,Rich v Ess,Lachlan Blakiston,Ess,39,0,0,0,0,9.3,69,10,6,0,131,0,3
+11,Rich v Ess,Tom Burton,Rich,40,0,0,0,0,1.2,34,8,1,0,71,0,1
+11,Rich v Ess,Xavier Duursma,Ess,41,0,0,0,0,3.2,49,14,3,0,97,0,4
+11,Rich v Ess,Jye Caldwell,Ess,42,0,0,0,0,4.3,35,5,3,1,29,1,3
+11,Rich v Ess,Sam Durham,Ess,43,0,0,0,0,0.6,16,6,2,0,31,0,1
+11,Rich v Ess,Andrew McGrath,Ess,44,0,0,0,0,1.7,22,6,1,0,110,0,1
+11,Rich v Ess,Archer Day-Wicks,Ess,45,0,0,0,0,-1.8,24,8,2,0,111,0,2
+11,Rich v Ess,Matt Guelfi,Ess,46,0,0,0,0,0,0,0,0,0,0,0,0
+11,Frem v St K,Murphy Reid,Frem,1,1.66,29.1,2.7,9,19.2,126,30,9,3,354,1,14
+11,Frem v St K,Luke Jackson,Frem,2,1.141,19,1.7,5,14.8,119,22,18,7,279,0,8
+11,Frem v St K,Shai Bolton,Frem,3,1.002,16.9,1.4,5,18,72,25,11,4,631,1,6
+11,Frem v St K,Josh Treacy,Frem,4,0.609,10.4,0.2,6,11.1,126,19,9,0,321,2,9
+11,Frem v St K,Max Hall,St K,5,0.424,7.5,0,1,20,102,25,13,9,379,2,9
+11,Frem v St K,Andrew Brayshaw,Frem,6,0.325,5.5,0,0,17.3,93,25,11,7,227,0,4
+11,Frem v St K,Patrick Voss,Frem,7,0.16,2.5,0,3,10.4,80,11,5,0,135,3,6
+11,Frem v St K,Nathan O'Driscoll,Frem,8,0.12,1.9,0,0,6.9,68,27,8,3,243,0,4
+11,Frem v St K,Matthew Johnson,Frem,9,0.105,1.7,0,1,6.2,64,20,6,3,117,0,3
+11,Frem v St K,Brennan Cox,Frem,11,0.087,1.3,0,0,8.2,92,20,8,0,220,0,0
+11,Frem v St K,Jye Amiss,Frem,10,0.086,1.2,0,0,17,77,8,3,0,233,4,5
+11,Frem v St K,Luke Ryan,Frem,12,0.06,0.8,0,0,14.8,94,24,7,0,303,0,3
+11,Frem v St K,Karl Worner,Frem,13,0.052,0.7,0,0,8.9,83,25,7,1,519,0,4
+11,Frem v St K,Jack Sinclair,St K,14,0.04,0.5,0,0,14.7,114,29,5,1,644,0,5
+11,Frem v St K,Heath Chapman,Frem,15,0.038,0.5,0,0,10,91,15,4,0,345,0,1
+11,Frem v St K,Neil Erasmus,Frem,16,0.016,0.2,0,0,8,81,15,5,1,157,1,4
+11,Frem v St K,Mattaes Phillipou,St K,17,0.015,0.2,0,0,16,88,19,10,3,307,2,6
+11,Frem v St K,Sam Flanders,St K,18,0.015,0.1,0,0,9.1,111,25,6,1,347,0,3
+11,Frem v St K,Jordan Clark,Frem,19,0.008,0,0,0,7.5,83,18,3,1,352,0,6
+11,Frem v St K,Bradley Hill,St K,21,0.006,0,0,0,8.4,68,19,5,1,344,2,4
+11,Frem v St K,Michael Frederick,Frem,20,0.006,0,0,0,14.9,73,17,6,1,371,1,7
+11,Frem v St K,Oscar McDonald,Frem,22,0.005,0,0,0,5.2,56,10,6,0,123,0,1
+11,Frem v St K,Isaiah Dudley,Frem,23,0.003,0,0,0,10.3,54,9,4,0,166,2,4
+11,Frem v St K,Judd McVee,Frem,27,0.003,0,0,0,0,38,16,1,0,236,0,2
+11,Frem v St K,Corey Wagner,Frem,24,0.003,0,0,0,6.5,67,15,3,0,411,0,4
+11,Frem v St K,Marcus Windhager,St K,25,0.003,0,0,0,9,69,16,4,5,216,0,3
+11,Frem v St K,Mason Wood,St K,28,0.002,0,0,0,6.9,85,15,9,0,196,2,8
+11,Frem v St K,Callum Wilkie,St K,26,0.002,0,0,0,7.9,86,21,4,1,383,0,2
+11,Frem v St K,Jack Silvagni,St K,29,0.002,0,0,0,14.6,91,16,8,0,106,0,2
+11,Frem v St K,Jack Macrae,St K,30,0.001,0,0,0,5.8,61,18,7,2,238,0,4
+11,Frem v St K,Darcy Wilson,St K,31,0.001,0,0,0,14.3,75,19,9,3,289,1,5
+11,Frem v St K,Mason Cox,Frem,32,0,0,0,0,-0.9,16,8,6,3,117,0,2
+11,Frem v St K,Rowan Marshall,St K,33,0,0,0,0,13.4,96,14,8,5,174,0,3
+11,Frem v St K,Charlie Banfield,St K,34,0,0,0,0,11.1,80,11,7,2,238,0,1
+11,Frem v St K,Sam Switkowski,Frem,35,0,0,0,0,4.7,51,7,4,0,100,1,3
+11,Frem v St K,Anthony Caminiti,St K,36,0,0,0,0,7.1,51,11,9,0,76,0,1
+11,Frem v St K,Liam Henry,St K,37,0,0,0,0,1.7,31,9,2,0,52,2,3
+11,Frem v St K,Christopher Scerri,Frem,38,0,0,0,0,7.6,56,8,4,0,116,0,4
+11,Frem v St K,Liam Stocker,St K,39,0,0,0,0,1.7,37,12,4,1,264,0,0
+11,Frem v St K,Tom De Koning,St K,40,0,0,0,0,6.9,56,8,4,3,216,0,4
+11,Frem v St K,Cooper Sharman,St K,41,0,0,0,0,6.3,46,11,4,0,193,0,4
+11,Frem v St K,Hugo Garcia,St K,42,0,0,0,0,4.1,48,10,4,2,151,0,2
+11,Frem v St K,Jack Carroll,St K,43,0,0,0,0,4.6,35,12,3,0,295,0,1
+11,Frem v St K,Ryan Byrnes,St K,44,0,0,0,0,6.5,26,12,4,1,150,0,1
+11,Frem v St K,Liam O'Connell,St K,45,0,0,0,0,3.5,53,10,2,1,230,0,1
+11,Frem v St K,Dougal Howard,St K,46,0,0,0,0,1.1,33,9,0,0,0,0,1
+11,NM v GC,Luke Davies-Uniacke,NM,1,1.841,31.9,2.5,5,19.6,141,30,10,7,444,1,10
+11,NM v GC,Matt Rowell,GC,2,1.813,31.6,2.4,5,15.1,131,31,14,14,439,1,9
+11,NM v GC,Noah Anderson,GC,3,0.977,15.7,1.1,2,14.6,126,31,12,7,739,1,8
+11,NM v GC,Harry Sheezel,NM,4,0.52,8.3,0,0,14.5,125,32,9,6,413,0,11
+11,NM v GC,Jy Simpkin,NM,5,0.428,6.8,0,7,16.3,101,29,4,1,523,1,10
+11,NM v GC,Christian Petracca,GC,6,0.174,2.6,0,0,20,118,28,14,8,449,1,6
+11,NM v GC,Finn O'Sullivan,NM,7,0.157,2.4,0,1,11.1,105,26,7,4,408,0,10
+11,NM v GC,Jack Darling,NM,8,0.026,0.3,0,3,17.7,84,12,5,0,254,3,9
+11,NM v GC,Sam Collins,GC,9,0.023,0.2,0,6,14,96,15,7,1,179,0,1
+11,NM v GC,George Wardlaw,NM,10,0.015,0.1,0,0,14.2,75,19,9,3,246,0,7
+11,NM v GC,Caleb Daniel,NM,11,0.005,0,0,0,14.7,86,24,7,2,407,0,4
+11,NM v GC,Charlie Comben,NM,12,0.005,0,0,1,15.2,87,12,7,0,250,0,3
+11,NM v GC,Touk Miller,GC,13,0.003,0,0,0,12.9,84,22,7,5,189,1,8
+11,NM v GC,Paul Curtis,NM,15,0.003,0,0,0,9.3,70,12,5,6,206,2,7
+11,NM v GC,Luke Parker,NM,14,0.003,0,0,0,2.7,73,20,2,2,414,0,5
+11,NM v GC,Tristan Xerri,NM,16,0.002,0,0,0,10.8,114,12,6,2,86,1,6
+11,NM v GC,Jacob Konstanty,NM,17,0.001,0,0,0,16.3,80,12,6,1,182,2,6
+11,NM v GC,Cameron Zurhaar,NM,19,0.001,0,0,0,5.9,98,15,4,1,354,1,7
+11,NM v GC,Colby McKercher,NM,18,0.001,0,0,0,6.1,61,18,3,2,433,0,5
+11,NM v GC,Cooper Trembath,NM,20,0.001,0,0,0,11.4,53,6,3,1,114,2,4
+11,NM v GC,John Noble,GC,21,0.001,0,0,0,9.1,84,17,4,1,277,1,4
+11,NM v GC,Bailey Humphrey,GC,22,0,0,0,0,12.7,78,13,6,2,288,1,9
+11,NM v GC,Ben Long,GC,23,0,0,0,0,10.6,64,12,4,0,259,2,7
+11,NM v GC,Daniel Rioli,GC,24,0,0,0,0,4.7,62,17,4,0,346,0,3
+11,NM v GC,Wil Powell,GC,25,0,0,0,0,10.6,70,16,5,2,314,1,4
+11,NM v GC,Nick Larkey,NM,26,0,0,0,0,5.3,44,8,3,0,120,2,4
+11,NM v GC,Jed Walter,GC,27,0,0,0,0,4.6,48,6,2,0,85,3,4
+11,NM v GC,Bodhi Uwland,GC,28,0,0,0,0,11.8,75,15,6,0,141,0,2
+11,NM v GC,Griffin Logue,NM,29,0,0,0,0,5.1,41,9,4,0,151,0,0
+11,NM v GC,Charlie Spargo,NM,30,0,0,0,0,11.7,54,14,5,1,117,1,7
+11,NM v GC,Joel Jeffrey,GC,31,0,0,0,0,4.9,68,14,1,0,385,0,1
+11,NM v GC,Jarrod Witts,GC,32,0,0,0,0,9.9,71,7,5,2,92,0,5
+11,NM v GC,Dylan Stephens,NM,33,0,0,0,0,-1.9,40,13,1,0,188,0,2
+11,NM v GC,Mac Andrew,GC,34,0,0,0,0,4.8,54,12,4,0,170,0,0
+11,NM v GC,Luke McDonald,NM,35,0,0,0,0,6.8,55,9,3,0,111,0,3
+11,NM v GC,Ned Moyle,GC,36,0,0,0,0,8.9,83,8,5,0,61,1,9
+11,NM v GC,Zeke Uwland,GC,37,0,0,0,0,7.4,39,12,3,0,467,1,4
+11,NM v GC,Zane Duursma,NM,38,0,0,0,0,8.6,61,9,3,1,99,1,4
+11,NM v GC,Riley Hardeman,NM,39,0,0,0,0,2.4,26,11,1,0,303,0,3
+11,NM v GC,Lachlan Gulbin,GC,40,0,0,0,0,6,49,10,3,0,177,1,3
+11,NM v GC,Leonardo Lombard,GC,41,0,0,0,0,10.7,58,12,5,1,161,0,3
+11,NM v GC,Sam Clohesy,GC,42,0,0,0,0,2.8,46,11,4,1,86,0,4
+11,NM v GC,Ben King,GC,43,0,0,0,0,5.4,43,4,3,0,119,1,2
+11,NM v GC,Oscar Adams,GC,44,0,0,0,0,4.3,36,5,1,0,28,0,2
+11,NM v GC,Wil Dawson,NM,45,0,0,0,0,2.2,14,2,1,1,-1,0,2
+11,NM v GC,Nick Holman,GC,46,0,0,0,0,2.6,31,6,3,0,36,0,3
+11,Geel v Syd,Max Holmes,Geel,1,2.23,45,2.8,9,17,128,35,13,8,712,0,9
+11,Geel v Syd,Bailey Smith,Geel,2,1.687,27.1,1.8,5,16.6,115,32,12,7,353,1,8
+11,Geel v Syd,Lawson Humphries,Geel,3,1.453,21.7,1.4,9,21.3,120,33,8,0,811,1,8
+11,Geel v Syd,Jeremy Cameron,Geel,4,0.42,5.5,0,1,18.1,111,21,1,0,516,3,7
+11,Geel v Syd,Riley Bice,Syd,5,0.057,0.4,0,1,19,127,34,11,2,689,0,3
+11,Geel v Syd,Gryan Miers,Geel,6,0.035,0.2,0,2,10.6,71,24,2,0,352,0,8
+11,Geel v Syd,Isaac Heeney,Syd,7,0.015,0,0,0,14.3,105,23,13,8,281,1,5
+11,Geel v Syd,Jack Martin,Geel,9,0.01,0,0,3,4.5,55,16,6,0,200,1,4
+11,Geel v Syd,Connor O'Sullivan,Geel,8,0.01,0,0,0,13,98,16,6,0,277,1,6
+11,Geel v Syd,Tom Stewart,Geel,10,0.009,0,0,0,9.8,74,17,5,0,322,0,4
+11,Geel v Syd,Joel Amartey,Syd,12,0.008,0,0,0,12.8,64,8,3,2,178,4,7
+11,Geel v Syd,Oliver Dempsey,Geel,11,0.008,0,0,0,7.1,86,23,8,3,361,0,5
+11,Geel v Syd,Sam De Koning,Geel,14,0.006,0,0,0,8.1,80,16,8,2,106,0,9
+11,Geel v Syd,Zach Guthrie,Geel,13,0.006,0,0,0,12.1,93,21,4,0,435,0,7
+11,Geel v Syd,Callum Mills,Syd,15,0.006,0,0,0,11.2,110,24,3,0,651,0,2
+11,Geel v Syd,Oisin Mullin,Geel,16,0.006,0,0,0,10.4,54,19,8,2,379,0,4
+11,Geel v Syd,Mark O'Connor,Geel,18,0.005,0,0,0,8,82,18,6,2,224,0,3
+11,Geel v Syd,Patrick Dangerfield,Geel,17,0.004,0,0,0,11.2,84,15,8,1,161,1,6
+11,Geel v Syd,Jai Serong,Syd,19,0.003,0,0,0,11,92,26,7,3,380,0,3
+11,Geel v Syd,Mitchell Edwards,Geel,21,0.002,0,0,0,15.3,82,12,9,3,175,0,4
+11,Geel v Syd,Oliver Henry,Geel,20,0.002,0,0,0,1.9,62,12,5,1,237,2,6
+11,Geel v Syd,Tom Atkins,Geel,22,0.002,0,0,0,5.3,56,13,6,1,178,1,2
+11,Geel v Syd,Nick Blakey,Syd,30,0.002,0,0,0,10,68,22,5,0,473,0,4
+11,Geel v Syd,Justin McInerney,Syd,28,0.002,0,0,0,3.3,52,18,2,1,270,1,7
+11,Geel v Syd,Jake Lloyd,Syd,27,0.002,0,0,0,9.7,103,24,5,1,592,0,2
+11,Geel v Syd,Shaun Mannagh,Geel,24,0.002,0,0,0,7.9,55,15,6,4,440,1,6
+11,Geel v Syd,Brodie Grundy,Syd,25,0.002,0,0,0,16.2,95,15,15,8,113,0,7
+11,Geel v Syd,Tom McCartin,Syd,23,0.002,0,0,0,7,79,18,6,1,344,0,3
+11,Geel v Syd,Brad Close,Geel,26,0.001,0,0,0,10.5,53,9,3,0,254,2,4
+11,Geel v Syd,Jake Kolodjashnij,Geel,29,0.001,0,0,0,13.4,56,12,5,1,178,0,1
+11,Geel v Syd,Lewis Melican,Syd,31,0.001,0,0,0,16.4,95,18,6,0,285,0,2
+11,Geel v Syd,Jack Henry,Geel,32,0,0,0,0,-0.2,43,8,4,0,80,1,5
+11,Geel v Syd,Angus Sheldrick,Syd,33,0,0,0,0,3.3,52,14,5,1,413,0,3
+11,Geel v Syd,Shannon Neale,Geel,34,0,0,0,0,4.1,48,11,5,1,153,0,7
+11,Geel v Syd,Mark Blicavs,Geel,35,0,0,0,0,6.6,54,12,6,2,168,0,3
+11,Geel v Syd,Sam Wicks,Syd,36,0,0,0,0,3.4,39,16,4,1,323,0,2
+11,Geel v Syd,Logan McDonald,Syd,37,0,0,0,0,9.2,69,10,4,1,204,2,5
+11,Geel v Syd,James Jordon,Syd,38,0,0,0,0,4.3,35,14,9,4,104,0,1
+11,Geel v Syd,William Edwards,Syd,39,0,0,0,0,7.3,54,17,6,0,253,0,1
+11,Geel v Syd,Charlie Curnow,Syd,40,0,0,0,0,14,61,10,4,0,234,2,4
+11,Geel v Syd,Chad Warner,Syd,41,0,0,0,0,8.2,46,11,2,0,273,0,2
+11,Geel v Syd,James Rowbottom,Syd,42,0,0,0,0,9.3,72,14,11,1,93,0,5
+11,Geel v Syd,Caiden Cleary,Syd,43,0,0,0,0,4.2,62,14,5,0,168,1,7
+11,Geel v Syd,Tom Hanily,Syd,44,0,0,0,0,3.4,22,8,1,0,104,1,1
+11,Geel v Syd,Tom Papley,Syd,45,0,0,0,0,5.5,37,5,1,0,111,0,4
+11,Geel v Syd,Malcolm Rosas,Syd,46,0,0,0,0,0.1,2,2,1,0,79,0,0
+11,Coll v WC,Nick Daicos,Coll,1,2.984,98.4,3,10,13.4,124,34,9,7,578,3,14
+11,Coll v WC,Darcy Cameron,Coll,2,1.409,1.6,2,7,18.6,133,28,21,8,265,0,4
+11,Coll v WC,Bailey J. Williams,WC,3,0.556,0,0.8,7,23.9,136,20,18,12,460,1,6
+11,Coll v WC,Jack Crisp,Coll,4,0.403,0,0.2,3,11.8,103,28,13,6,406,0,3
+11,Coll v WC,Jordan De Goey,Coll,5,0.183,0,0,0,9,111,25,7,1,452,0,8
+11,Coll v WC,Elliot Yeo,WC,6,0.178,0,0,2,9,82,16,6,2,266,3,5
+11,Coll v WC,Tom McCarthy,WC,7,0.044,0,0,0,17.9,117,30,9,1,445,0,5
+11,Coll v WC,Jamie Elliott,Coll,8,0.028,0,0,0,16.8,94,10,2,0,210,3,9
+11,Coll v WC,Harley Reid,WC,9,0.027,0,0,0,10.9,60,20,9,4,325,0,5
+11,Coll v WC,Scott Pendlebury,Coll,10,0.022,0,0,0,2.5,53,20,7,5,147,0,5
+11,Coll v WC,Tim Kelly,WC,11,0.02,0,0,0,9.2,66,19,7,4,463,0,5
+11,Coll v WC,Beau McCreery,Coll,14,0.016,0,0,0,15.2,96,18,5,1,398,0,8
+11,Coll v WC,Roan Steele,Coll,12,0.014,0,0,0,9,59,12,2,2,340,2,5
+11,Coll v WC,Lachie Schultz,Coll,13,0.014,0,0,0,9,90,17,7,1,296,1,7
+11,Coll v WC,Josh Daicos,Coll,15,0.013,0,0,0,7.4,73,18,6,2,239,0,8
+11,Coll v WC,Jeremy Howe,Coll,16,0.011,0,0,0,8.4,73,15,4,1,333,0,4
+11,Coll v WC,Jack Williams,WC,20,0.009,0,0,0,14.1,84,21,12,6,70,0,4
+11,Coll v WC,Reuben Ginbey,WC,17,0.009,0,0,1,9.5,81,19,6,0,61,0,5
+11,Coll v WC,Isaac Quaynor,Coll,19,0.009,0,0,0,13.9,86,19,8,0,291,0,3
+11,Coll v WC,Willem Duursma,WC,21,0.009,0,0,0,16.4,82,17,7,3,482,0,7
+11,Coll v WC,Patrick Lipinski,Coll,18,0.008,0,0,0,9.2,88,19,7,2,257,1,5
+11,Coll v WC,Daniel McStay,Coll,22,0.007,0,0,0,10.3,72,7,5,1,148,2,4
+11,Coll v WC,Billy Frampton,Coll,23,0.004,0,0,0,11.5,77,12,4,0,304,0,1
+11,Coll v WC,Milan Murdock,WC,24,0.003,0,0,0,15.4,94,22,12,4,144,1,7
+11,Coll v WC,Liam Duggan,WC,25,0.003,0,0,0,5,76,19,1,0,309,0,4
+11,Coll v WC,Hamish Davis,WC,26,0.003,0,0,0,3.8,65,23,7,3,292,0,4
+11,Coll v WC,Darcy Moore,Coll,29,0.003,0,0,0,5.4,50,5,2,0,110,0,2
+11,Coll v WC,Steele Sidebottom,Coll,27,0.002,0,0,0,10.2,62,16,6,0,140,0,4
+11,Coll v WC,Edward Allan,Coll,31,0.002,0,0,0,8.8,50,9,5,1,128,1,1
+11,Coll v WC,Ryan Maric,WC,28,0.002,0,0,0,4.2,72,20,4,1,325,0,3
+11,Coll v WC,Josh Lindsay,WC,30,0.002,0,0,0,3.2,55,20,1,0,423,0,6
+11,Coll v WC,Jobe Shanahan,WC,32,0.001,0,0,0,10.6,65,11,4,0,199,2,5
+11,Coll v WC,Malakai Champion,WC,34,0.001,0,0,0,11,56,12,4,1,108,2,2
+11,Coll v WC,Brayden Maynard,Coll,33,0.001,0,0,0,2.5,46,12,4,0,155,0,1
+11,Coll v WC,Dan Houston,Coll,35,0.001,0,0,0,5.3,46,13,3,0,175,0,2
+11,Coll v WC,Ned Long,Coll,37,0.001,0,0,0,2.3,44,10,6,0,83,0,2
+11,Coll v WC,Brady Hough,WC,36,0,0,0,0,8.8,56,13,4,1,130,1,4
+11,Coll v WC,Rhett Bazzo,WC,38,0,0,0,0,6,52,12,3,0,189,0,5
+11,Coll v WC,Harvey Johnston,WC,39,0,0,0,0,2.2,43,13,3,0,138,1,5
+11,Coll v WC,Tylar Young,WC,40,0,0,0,0,3.6,61,13,2,0,201,0,2
+11,Coll v WC,Liam Baker,WC,41,0,0,0,0,1.8,34,14,2,0,155,0,2
+11,Coll v WC,Jake Waterman,WC,42,0,0,0,0,5,53,10,3,0,176,1,7
+11,Coll v WC,Bo Allan,WC,43,0,0,0,0,4.7,57,12,5,0,75,0,1
+11,Coll v WC,Charlie West,Coll,44,0,0,0,0,3.2,36,4,3,0,74,0,2
+11,Coll v WC,Tom Cole,WC,45,0,0,0,0,2.3,57,12,2,0,308,0,4
+11,Coll v WC,William Hayes,Coll,46,0,0,0,0,1.5,30,6,2,0,120,0,3
+11,Port v Carl,Patrick Cripps,Carl,1,2.454,55,2.9,10,9.6,116,32,17,8,275,1,10
+11,Port v Carl,Jason Horne-Francis,Port,2,1.988,32.1,2.1,5,22.9,128,32,16,8,600,3,6
+11,Port v Carl,Sam Walsh,Carl,3,0.805,7.9,1,3,13.7,104,28,5,3,291,1,8
+11,Port v Carl,Jagga Smith,Carl,4,0.387,3.4,0,8,13.1,108,27,11,4,248,0,15
+11,Port v Carl,George Hewett,Carl,5,0.186,1.4,0,1,17.2,126,26,14,4,336,1,8
+11,Port v Carl,Will Hayward,Carl,6,0.068,0.3,0,2,21.1,113,19,5,0,532,2,5
+11,Port v Carl,Harry McKay,Carl,7,0.029,0,0,0,9.4,86,19,6,3,318,1,9
+11,Port v Carl,Zak Butters,Port,8,0.018,0,0,0,14.4,103,28,8,4,658,0,8
+11,Port v Carl,Oliver Florent,Carl,9,0.013,0,0,0,10.8,100,26,2,1,567,0,7
+11,Port v Carl,Nick Haynes,Carl,10,0.009,0,0,1,9.6,78,18,4,0,142,0,2
+11,Port v Carl,Mitch McGovern,Carl,14,0.004,0,0,0,4.2,61,12,1,0,442,2,4
+11,Port v Carl,Lachlan Cowan,Carl,13,0.004,0,0,0,9,86,14,6,0,206,0,2
+11,Port v Carl,Francis Evans,Carl,12,0.004,0,0,0,11.9,94,19,5,1,266,1,8
+11,Port v Carl,Billy Wilson,Carl,11,0.004,0,0,0,8.7,76,22,5,0,430,0,6
+11,Port v Carl,Nic Newman,Carl,15,0.003,0,0,0,10.2,89,21,2,0,364,0,6
+11,Port v Carl,Brodie Kemp,Carl,16,0.003,0,0,0,13.2,92,14,5,0,161,2,6
+11,Port v Carl,Jack Ison,Carl,18,0.003,0,0,0,3.7,70,17,7,0,246,1,9
+11,Port v Carl,Ben Ainsworth,Carl,20,0.003,0,0,0,10.6,72,17,4,0,232,0,6
+11,Port v Carl,Joe Richards,Port,24,0.003,0,0,0,8.8,83,23,7,5,292,0,5
+11,Port v Carl,Willem Drew,Port,17,0.002,0,0,0,13,119,17,11,6,247,0,6
+11,Port v Carl,Harry Dean,Carl,21,0.002,0,0,0,8.5,81,12,3,0,309,0,3
+11,Port v Carl,Wade Derksen,Carl,19,0.002,0,0,0,5.4,67,15,2,0,252,0,2
+11,Port v Carl,Marc Pittonet,Carl,22,0.002,0,0,0,6.7,87,12,2,2,16,0,6
+11,Port v Carl,Adam Cerra,Carl,23,0.002,0,0,0,6.5,57,17,5,1,265,0,4
+11,Port v Carl,Jase Burgoyne,Port,26,0.001,0,0,0,7.5,81,22,7,0,233,0,3
+11,Port v Carl,Logan Evans,Port,25,0.001,0,0,0,12.9,100,21,3,1,559,0,2
+11,Port v Carl,Talor Byrne,Carl,28,0.001,0,0,0,-0.9,40,8,3,0,161,1,4
+11,Port v Carl,Jack Whitlock,Port,27,0.001,0,0,0,5.5,69,12,4,1,174,2,5
+11,Port v Carl,Jordon Sweet,Port,29,0,0,0,0,3.5,68,10,5,4,264,0,4
+11,Port v Carl,Josh Lai,Port,30,0,0,0,0,11,61,10,7,0,203,0,2
+11,Port v Carl,Jack Watkins,Port,31,0,0,0,0,2.1,26,14,3,2,201,0,1
+11,Port v Carl,Flynn Young,Carl,32,0,0,0,0,0.2,28,9,0,0,166,0,5
+11,Port v Carl,Kane Farrell,Port,33,0,0,0,0,3.9,66,13,2,1,296,0,2
+11,Port v Carl,Darcy Byrne-Jones,Port,34,0,0,0,0,5.9,75,14,4,1,224,0,0
+11,Port v Carl,Mitch Georgiades,Port,35,0,0,0,0,2.7,61,9,4,0,177,1,4
+11,Port v Carl,Esava Ratugolea,Port,36,0,0,0,0,3.8,52,9,3,0,127,0,1
+11,Port v Carl,Joe Berry,Port,37,0,0,0,0,8.9,44,15,7,1,205,0,4
+11,Port v Carl,Aliir Aliir,Port,38,0,0,0,0,6.5,63,8,1,0,81,0,0
+11,Port v Carl,Corey Durdin,Port,39,0,0,0,0,2.7,52,11,1,0,144,1,7
+11,Port v Carl,Ewan Mackinlay,Port,40,0,0,0,0,8.8,61,14,8,0,237,0,4
+11,Port v Carl,Jacob Wehr,Port,41,0,0,0,0,-2.2,24,11,3,0,246,0,1
+11,Port v Carl,Tom Anastasopoulos,Port,42,0,0,0,0,-0.6,37,10,1,0,186,0,2
+11,Port v Carl,Todd Marshall,Port,43,0,0,0,0,7.4,42,6,2,0,157,1,4
+11,Port v Carl,Matthew Carroll,Carl,44,0,0,0,0,0.2,0,0,0,0,0,0,0
+11,Port v Carl,Ollie Wines,Port,45,0,0,0,0,4.5,20,5,4,1,-7,0,0
+11,Port v Carl,Christian Moraes,Port,46,0,0,0,0,5.1,38,11,3,0,110,0,5
+11,GWS v Bris,Clayton Oliver,GWS,1,1.734,30,2.5,9,23.2,142,37,23,11,584,0,6
+11,GWS v Bris,Toby Greene,GWS,2,1.512,25.5,2,7,21.7,87,21,10,1,388,5,12
+11,GWS v Bris,Brent Daniels,GWS,3,1.237,20.4,1.5,5,22.4,97,24,9,8,693,2,9
+11,GWS v Bris,Jake Stringer,GWS,4,0.502,8.4,0,3,21.7,86,13,7,0,411,5,11
+11,GWS v Bris,Finn Callaghan,GWS,5,0.44,7.4,0,0,17.6,104,31,9,4,727,1,3
+11,GWS v Bris,Phoenix Gothard,GWS,6,0.378,6.3,0,6,25.5,142,29,15,2,298,2,8
+11,GWS v Bris,Lachie Ash,GWS,7,0.071,1.1,0,0,16.9,95,28,5,0,764,0,8
+11,GWS v Bris,Toby Bedford,GWS,10,0.02,0.2,0,0,22,92,25,6,2,379,1,7
+11,GWS v Bris,Lachie Neale,Bris,8,0.02,0.2,0,0,13.6,114,32,16,10,245,1,5
+11,GWS v Bris,Stephen Coniglio,GWS,9,0.017,0.2,0,0,12.8,68,21,8,5,287,0,5
+11,GWS v Bris,Aaron Cadman,GWS,11,0.017,0.2,0,0,16.9,90,14,6,1,256,3,9
+11,GWS v Bris,Kieren Briggs,GWS,12,0.012,0.1,0,0,10.7,93,20,9,5,251,0,8
+11,GWS v Bris,Jayden Laverde,GWS,13,0.008,0,0,0,13.7,88,17,11,0,140,0,4
+11,GWS v Bris,Harry Himmelberg,GWS,16,0.007,0,0,0,11.5,83,16,6,0,251,0,5
+11,GWS v Bris,Callum Brown,GWS,14,0.007,0,0,0,15.6,64,18,6,0,378,2,8
+11,GWS v Bris,Max Gruzewski,GWS,15,0.006,0,0,0,8.1,78,11,5,0,157,3,8
+11,GWS v Bris,Cam Rayner,Bris,17,0.005,0,0,0,16,71,17,8,4,369,3,7
+11,GWS v Bris,Connor Idun,GWS,18,0.002,0,0,0,8.3,75,17,5,1,153,0,4
+11,GWS v Bris,Conor Stone,GWS,19,0.002,0,0,0,16.5,77,22,11,1,361,0,6
+11,GWS v Bris,Darcy Wilmot,Bris,20,0.002,0,0,0,15.6,100,27,4,1,525,0,3
+11,GWS v Bris,Toby McMullin,GWS,21,0.001,0,0,0,10.5,63,20,7,0,250,0,5
+11,GWS v Bris,Hugh McCluggage,Bris,22,0.001,0,0,0,7.9,47,23,8,3,423,0,3
+11,GWS v Bris,Joe Fonti,GWS,23,0.001,0,0,0,6.1,43,15,4,1,181,0,3
+11,GWS v Bris,Harvey Thomas,GWS,24,0.001,0,0,0,7.6,39,14,3,2,159,0,3
+11,GWS v Bris,Kai Lohmann,Bris,25,0,0,0,0,12,65,14,4,0,245,3,6
+11,GWS v Bris,Jaspa Fletcher,Bris,26,0,0,0,0,5.8,55,25,5,3,410,0,4
+11,GWS v Bris,Will Ashcroft,Bris,27,0,0,0,0,8,63,21,9,3,295,0,5
+11,GWS v Bris,Jake Riccardi,GWS,28,0,0,0,0,2.8,34,6,0,0,86,2,3
+11,GWS v Bris,Josh Dunkley,Bris,29,0,0,0,0,11.5,74,21,9,3,211,0,7
+11,GWS v Bris,Levi Ashcroft,Bris,30,0,0,0,0,5.1,51,24,7,1,385,0,4
+11,GWS v Bris,Harris Andrews,Bris,31,0,0,0,0,14.1,83,13,9,0,164,0,4
+11,GWS v Bris,Harrison Oliver,GWS,32,0,0,0,0,2.3,35,10,2,1,108,0,2
+11,GWS v Bris,Keidean Coleman,Bris,33,0,0,0,0,9.6,69,15,5,1,382,0,3
+11,GWS v Bris,Sam Draper,Bris,34,0,0,0,0,11.1,46,10,10,8,207,0,4
+11,GWS v Bris,Jack Buckley,GWS,35,0,0,0,0,0.2,6,1,1,0,-6,0,0
+11,GWS v Bris,Zac Bailey,Bris,36,0,0,0,0,12.5,86,17,9,2,237,0,7
+11,GWS v Bris,James Tunstill,Bris,37,0,0,0,0,9.2,59,15,4,1,284,0,2
+11,GWS v Bris,Sam Marshall,Bris,38,0,0,0,0,8.2,86,21,8,0,265,0,6
+11,GWS v Bris,Darcy Gardiner,Bris,39,0,0,0,0,15,66,15,6,0,237,0,1
+11,GWS v Bris,Charlie Cameron,Bris,40,0,0,0,0,9.8,84,11,7,0,100,2,6
+11,GWS v Bris,Ty Gallop,Bris,41,0,0,0,0,12.6,68,10,5,0,208,0,1
+11,GWS v Bris,Darcy Fort,Bris,42,0,0,0,0,10.7,75,12,8,3,227,0,5
+11,GWS v Bris,Conor McKenna,Bris,43,0,0,0,0,14.1,55,12,4,0,216,2,6
+11,GWS v Bris,Logan Morris,Bris,44,0,0,0,0,1.3,33,11,5,0,103,1,8
+11,GWS v Bris,Bruce Reville,Bris,45,0,0,0,0,4.7,39,11,3,0,182,0,5
+11,GWS v Bris,Will McLachlan,Bris,46,0,0,0,0,-0.9,28,4,2,0,54,1,1
+11,WB v Melb,Ed Richards,WB,1,2.665,68.7,3,10,24.2,140,30,13,10,773,3,9
+11,WB v Melb,Marcus Bontempelli,WB,2,2.04,26.5,2,8,22.7,119,29,17,6,390,2,10
+11,WB v Melb,Ryley Sanders,WB,3,0.877,4.3,1,5,9.4,118,30,9,4,447,0,10
+11,WB v Melb,Kysaiah Pickett,Melb,4,0.16,0.4,0,3,16.2,103,25,13,6,549,0,8
+11,WB v Melb,Bailey Dale,WB,5,0.085,0.1,0,1,9.5,97,31,7,0,484,0,7
+11,WB v Melb,Max Gawn,Melb,6,0.03,0,0,1,19,114,18,12,2,256,1,7
+11,WB v Melb,Matthew Kennedy,WB,7,0.023,0,0,0,10.3,84,23,10,4,447,0,3
+11,WB v Melb,Tom Sparrow,Melb,8,0.02,0,0,0,9.7,87,23,10,7,424,0,6
+11,WB v Melb,Jake Bowey,Melb,9,0.014,0,0,0,11.2,96,27,5,1,497,0,5
+11,WB v Melb,Jack Steele,Melb,10,0.012,0,0,0,12.1,107,21,9,4,235,0,6
+11,WB v Melb,Aaron Naughton,WB,11,0.011,0,0,0,18.1,110,18,10,0,316,2,8
+11,WB v Melb,Kade Chandler,Melb,12,0.009,0,0,0,14.2,71,19,10,9,413,1,6
+11,WB v Melb,Joel Freijah,WB,14,0.007,0,0,0,12.7,98,18,8,1,233,1,7
+11,WB v Melb,Rory Lobb,WB,15,0.007,0,0,0,12.8,107,13,8,6,261,0,5
+11,WB v Melb,Harvey Langford,Melb,13,0.007,0,0,2,17.4,85,16,10,3,276,2,5
+11,WB v Melb,Connor Budarick,WB,16,0.006,0,0,0,14.8,92,20,6,2,354,0,2
+11,WB v Melb,Ed Langdon,Melb,17,0.004,0,0,0,15.5,105,22,6,2,461,1,5
+11,WB v Melb,Rhylee West,WB,18,0.003,0,0,0,7,79,12,7,3,191,2,5
+11,WB v Melb,Arthur Jones,WB,19,0.003,0,0,0,6.4,52,12,5,1,297,2,8
+11,WB v Melb,Lachlan Bramble,WB,22,0.002,0,0,0,4.8,63,17,5,0,227,0,2
+11,WB v Melb,Harry Sharp,Melb,21,0.002,0,0,0,7,71,12,4,0,312,2,3
+11,WB v Melb,Buku Khamis,WB,25,0.002,0,0,0,15.1,63,11,9,1,133,0,2
+11,WB v Melb,Will Lewis,WB,24,0.002,0,0,0,10,61,11,9,0,311,1,6
+11,WB v Melb,Daniel Turner,Melb,23,0.002,0,0,0,4.9,74,13,6,0,289,1,2
+11,WB v Melb,Nick Coffield,WB,26,0.002,0,0,0,8.5,71,17,2,0,237,0,2
+11,WB v Melb,Trent Rivers,Melb,20,0.001,0,0,0,17.1,93,16,8,0,264,1,5
+11,WB v Melb,Caleb Windsor,Melb,28,0.001,0,0,0,5.8,37,13,7,2,131,0,2
+11,WB v Melb,Koltyn Tholstrup,Melb,30,0.001,0,0,0,8.4,73,12,2,0,361,1,3
+11,WB v Melb,Adam Treloar,WB,27,0.001,0,0,0,4.2,54,17,7,4,93,0,4
+11,WB v Melb,James O'Donnell,WB,29,0.001,0,0,0,13.6,75,11,4,0,389,0,3
+11,WB v Melb,Harrison Petty,Melb,31,0.001,0,0,0,10.5,97,12,7,0,9,1,7
+11,WB v Melb,Jacob van Rooyen,Melb,32,0,0,0,0,3.8,62,12,9,0,273,0,3
+11,WB v Melb,Jordan Croft,WB,33,0,0,0,0,5.8,48,7,4,2,62,1,3
+11,WB v Melb,Blake Howes,Melb,34,0,0,0,0,4.4,48,16,3,0,207,0,3
+11,WB v Melb,Changkuoth Jiath,Melb,35,0,0,0,0,7.9,55,13,6,0,139,0,1
+11,WB v Melb,Paddy Cross,Melb,36,0,0,0,0,8.6,61,9,3,0,337,1,2
+11,WB v Melb,Lachlan McNeil,WB,37,0,0,0,0,4.8,53,10,5,1,60,0,3
+11,WB v Melb,Michael Sellwood,WB,38,0,0,0,0,-0.7,25,10,0,0,215,0,2
+11,WB v Melb,Bailey Laurie,Melb,39,0,0,0,0,4.9,34,9,1,0,182,1,4
+11,WB v Melb,Cooper Hynes,WB,40,0,0,0,0,4.6,34,8,3,0,171,0,1
+11,WB v Melb,Jake Lever,Melb,41,0,0,0,0,6.4,38,7,1,0,64,0,0
+11,WB v Melb,Lachie Jaques,WB,42,0,0,0,0,1.6,31,8,2,0,124,0,3
+11,WB v Melb,Matthew Jefferson,Melb,43,0,0,0,0,2.4,47,9,4,0,130,0,4
+11,WB v Melb,Max Heath,Melb,44,0,0,0,0,3.1,19,5,3,0,122,0,2
+11,WB v Melb,Luke Cleary,WB,45,0,0,0,0,3,10,3,1,0,19,0,1
+11,WB v Melb,Bayley Fritsch,Melb,46,0,0,0,0,3.3,38,7,2,0,120,0,2
