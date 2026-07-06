@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Current AFL Team Ratings</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="site_libs/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-5.2.2/bootstrap.bundle.min.js"></script>
+<script src="site_libs/bs3compat-0.4.2/transition.js"></script>
+<script src="site_libs/bs3compat-0.4.2/tabs.js"></script>
+<script src="site_libs/bs3compat-0.4.2/bs3compat.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="site_libs/react-17.0.0/react.min.js"></script>
+<script src="site_libs/react-17.0.0/react-dom.min.js"></script>
+<script src="site_libs/reactwidget-1.0.0/react-tools.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet" />
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
+<link href="site_libs/ionicons-2.0.1/css/ionicons.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="icon" href="favicon.ico" />
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="logo_192.png">
+<meta name="theme-color" content="#670099">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L04L041MGC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-L04L041MGC');
+</script>
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "ae8a2litjx");
+</script>
+
+<link rel="stylesheet" href="custom.css" type="text/css" />
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<!-- tabsets -->
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+</head>
+<body>
+<div class="container-fluid main-container container">
+
+<nav id="nav" class="navbar navbar-expand-sm navbar-default fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img id="logo" style="height: 50px; width: 151px;" src="logo.png"
+        alt="Wheelo Ratings logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+      aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            ATP Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_atp_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_atp_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_atp_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_atp_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_atp_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_atp_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_atp_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_atp_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_atp_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            WTA Tennis
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">RATINGS</li>
+            <li>
+              <a href="tennis_wta_ratings.html">Elo Ratings</a>
+            </li>
+            <li>
+              <a href="tennis_wta_race.html">Elo Race</a>
+            </li>
+            <!-- <li>
+              <a href="tennis_wta_ratings_by_year.html">End of year top 200</a>
+            </li>
+            <li>
+              <a href="tennis_wta_ratings_by_year_top5.html">End of year top 5</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="tennis_wta_stats_last52.html">Player Stats - Last 52 Weeks</a>
+            </li>
+            <!-- <li class="divider"></li>
+            <li class="dropdown-header">HISTORY</li>
+            <li>
+              <a href="tennis_wta_players.html">Players</a>
+            </li>
+            <li>
+              <a href="tennis_wta_tournaments.html">Tournaments</a>
+            </li> -->
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="tennis_wta_records.html">Overall Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_season_records.html">Season Records</a>
+            </li>
+            <li>
+              <a href="tennis_wta_goat.html">Greatest players</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            AFL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="afl_index.html">AFL Home</a>
+            </li>
+            <li>
+              <a href="afl_match_previews.html">Match Previews</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="afl_ratings.html">Ratings</a>
+            </li>
+            <li>
+              <a href="afl_tipping.html">Tipping</a>
+            </li>
+            <li>
+              <a href="afl_simulations.html">Simulations</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="afl_team_lists.html">Team Lists</a>
+            </li>
+            <li>
+              <a href="afl_match_stats.html">Match Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="afl_stats_team.html">Team Stats</a>
+            </li>
+            <li>
+              <a href="afl_xscores.html">Expected Scores</a>
+            </li>
+            <li>
+              <a href="afl_brownlow.html">Brownlow Medal Predictions</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">RECORDS</li>
+            <li>
+              <a href="afl_premierships.html">Premierships</a>
+            </li>
+            <li>
+              <a href="afl_annual_summary.html">Team Annual Summary</a>
+            </li>
+            <li>
+              <a href="afl_record_against_finals_teams.html">Record Against Finals Teams</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+            NBL
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">MODEL</li>
+            <li>
+              <a href="nbl_ratings.html">Team Ratings</a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">STATISTICS</li>
+            <li>
+              <a href="nbl_stats.html">Player Stats</a>
+            </li>
+            <li>
+              <a href="nbl_stats_team.html">Team Stats</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="about.html">About</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="https://twitter.com/WheeloRatings">
+            <!-- <span class="ion ion-social-twitter"></span> -->
+            <svg class="twitter" xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav id="navbar-banner">
+    <ul class="nav navbar-banner-heading justify-content-center">
+        <li class="fw-bold text-center">
+            Australian Football League (AFL)
+        </li>
+    </ul>
+    <ul class="nav navbar-banner-nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="afl_index.html">AFL Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_previews.html">Match Previews</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_team_lists.html">Team Lists</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_match_stats.html">Match Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats.html">Player Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_stats_team.html">Team Stats</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_ratings.html">Team Ratings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_simulations.html">Simulations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="afl_brownlow.html">Brownlow</a>
+        </li>
+    </ul>
+</nav>
+
+<header id="header">
+
+
+<h1 class="title toc-ignore">Current AFL Team Ratings</h1>
+
+</header>
+
+
+<main>
+<div id="section"
+class="section level2 tabset tabset-fade tabset-pills">
+<h2 class="tabset tabset-fade tabset-pills"></h2>
+<!-- ### Table -->
+<div id="ratings-table">
+<div class="reactable html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5cb6e31a799cf4f204e7" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-5cb6e31a799cf4f204e7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Rank":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],"TeamID":[14,3,2,16,7,6,1,4,19,20,10,11,8,5,13,12,15,9],"Image":["images/afl_logos/Syd-40.png","images/afl_logos/Carl-40.png","images/afl_logos/Bris-40.png","images/afl_logos/WB-40.png","images/afl_logos/Geel-40.png","images/afl_logos/Frem-40.png","images/afl_logos/Adel-40.png","images/afl_logos/Coll-40.png","images/afl_logos/GC-40.png","images/afl_logos/GWS-40.png","images/afl_logos/Melb-40.png","images/afl_logos/Port-40.png","images/afl_logos/Haw-40.png","images/afl_logos/Ess-40.png","images/afl_logos/St K-40.png","images/afl_logos/Rich-40.png","images/afl_logos/WC-40.png","images/afl_logos/NM-40.png"],"TeamName":["Sydney","Carlton","Brisbane","Western Bulldogs","Geelong","Fremantle","Adelaide","Collingwood","Gold Coast","Greater Western Sydney","Melbourne","Port Adelaide","Hawthorn","Essendon","St Kilda","Richmond","West Coast","North Melbourne"],"RatingOverall":[26.2,15,15,9.9,9,8.9,3.1,2.1,1.1,0.9,0.1,-0.3,-3.3,-3.8,-7.7,-24.4,-25.1,-26.6],"RatingOverall_Diff":[0,0,0,0,0,0,0.7,0,0,0,0,0,0,-0.7,0,0,0,0],"RatingAtt":[18.4,13.5,11.9,6,8.2,1.6,1.9,1.9,0.1,1.9,-6.4,-0.3,-5.3,-2,-12.1,-13.2,-14.8,-11.2],"AttRank":[1,2,3,5,4,9,6,7,10,8,14,11,13,12,16,17,18,15],"RatingDef":[7.8,1.5,3.1,3.9,0.9,7.2,1.2,0.2,0.9,-1,6.6,0,1.9,-1.8,4.4,-11.2,-10.4,-15.3],"DefRank":[1,8,6,5,11,2,9,12,10,14,3,13,7,15,4,17,16,18],"RatingOverallSeason":[25,11.9,12.6,11.1,7.8,7.7,0.3,4.6,1.9,4.4,2.4,2.1,-2.9,-0.9,-6.4,-25.9,-23.2,-32.5],"RankSeason":[1,3,2,4,5,6,12,7,11,8,9,10,14,13,15,17,16,18],"RatingAttSeason":[16.9,12.6,9.1,7.5,7.5,-0.2,-1.7,3.2,0.1,3.9,-4.8,1.8,-5.6,0.5,-11.6,-13.9,-12.8,-12.5],"AttRankSeason":[1,2,3,5,4,11,12,7,10,6,13,8,14,9,15,18,17,16],"RatingDefSeason":[8.1,-0.6,3.5,3.7,0.3,7.9,2,1.4,1.8,0.4,7.2,0.3,2.7,-1.4,5.2,-12,-10.4,-20],"DefRankSeason":[1,14,6,5,13,2,8,10,9,11,3,12,7,15,4,17,16,18]},"columns":[{"id":"Rank","name":"Rank","type":"numeric","minWidth":60,"align":"center","defaultSortDesc":false},{"id":"TeamID","name":"TeamID","type":"numeric","minWidth":60,"align":"center","show":false},{"id":"Image","name":"Image","type":["glue","character"],"minWidth":60,"align":"center","show":false},{"id":"TeamName","name":"Team","type":"character","minWidth":180,"align":"left","cell":[{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Syd-40.png","height":"18px","alt":""},"children":[]}," ","Sydney"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Carl-40.png","height":"18px","alt":""},"children":[]}," ","Carlton"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Bris-40.png","height":"18px","alt":""},"children":[]}," ","Brisbane"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/WB-40.png","height":"18px","alt":""},"children":[]}," ","Western Bulldogs"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Geel-40.png","height":"18px","alt":""},"children":[]}," ","Geelong"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Frem-40.png","height":"18px","alt":""},"children":[]}," ","Fremantle"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Adel-40.png","height":"18px","alt":""},"children":[]}," ","Adelaide"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Coll-40.png","height":"18px","alt":""},"children":[]}," ","Collingwood"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GC-40.png","height":"18px","alt":""},"children":[]}," ","Gold Coast"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/GWS-40.png","height":"18px","alt":""},"children":[]}," ","Greater Western Sydney"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Melb-40.png","height":"18px","alt":""},"children":[]}," ","Melbourne"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Port-40.png","height":"18px","alt":""},"children":[]}," ","Port Adelaide"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Haw-40.png","height":"18px","alt":""},"children":[]}," ","Hawthorn"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Ess-40.png","height":"18px","alt":""},"children":[]}," ","Essendon"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/St K-40.png","height":"18px","alt":""},"children":[]}," ","St Kilda"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/Rich-40.png","height":"18px","alt":""},"children":[]}," ","Richmond"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/WC-40.png","height":"18px","alt":""},"children":[]}," ","West Coast"]},{"name":"Fragment","attribs":[],"children":[{"name":"img","attribs":{"src":"images/afl_logos/NM-40.png","height":"18px","alt":""},"children":[]}," ","North Melbourne"]}],"className":"sticky","headerClassName":"sticky"},{"id":"RatingOverall","name":"Rating","type":"numeric","minWidth":60,"align":"center","defaultSortDesc":true,"cell":["+26.2","+15.0","+15.0","+9.9","+9.0","+8.9","+3.1","+2.1","+1.1","+0.9","+0.1","-0.3","-3.3","-3.8","-7.7","-24.4","-25.1","-26.6"],"style":[{"background":"#D7A0F5"},{"background":"#E8C8F9"},{"background":"#E8C8F9"},{"background":"#F0DBFB"},{"background":"#F1DEFB"},{"background":"#F1DEFB"},{"background":"#FAF3FD"},{"background":"#FBF7FE"},{"background":"#FDFBFE"},{"background":"#FDFBFE"},{"background":"#FEFEFE"},{"background":"#FEFEFD"},{"background":"#FDF7ED"},{"background":"#FCF5EB"},{"background":"#FAECD7"},{"background":"#F1C480"},{"background":"#F0C27C"},{"background":"#F0BF75"}]},{"id":"RatingOverall_Diff","name":"+/-","type":"numeric","minWidth":60,"align":"center","defaultSortDesc":true,"cell":["•","•","•","•","•","•","+0.7","•","•","•","•","•","•","-0.7","•","•","•","•"],"html":true,"style":"function(rowInfo) {\n            var value = rowInfo.row['RatingOverall_Diff']\n            if (value > 0) {\n                var color = '#008000'\n            } else if (value < 0) {\n                var color = '#e00000'\n            } else {\n                var color = '#777'\n            }\n            return { color: color, fontWeight: 'bold' }\n        }"},{"id":"RatingAtt","name":"Attack","type":"numeric","minWidth":60,"align":"center","defaultSortDesc":true,"cell":["+18.4","+13.5","+11.9","+6.0","+8.2","+1.6","+1.9","+1.9","+0.1","+1.9","-6.4","-0.3","-5.3","-2.0","-12.1","-13.2","-14.8","-11.2"],"style":[{"background":"#D79FF5"},{"background":"#E1B8F7"},{"background":"#E5C0F8"},{"background":"#F1DFFB"},{"background":"#EDD4FA"},{"background":"#FBF6FE"},{"background":"#FAF5FD"},{"background":"#FAF5FD"},{"background":"#FEFEFE"},{"background":"#FAF5FD"},{"background":"#F9E8CF"},{"background":"#FEFDFC"},{"background":"#FAECD7"},{"background":"#FDF8F0"},{"background":"#F5D4A4"},{"background":"#F4D19C"},{"background":"#F2CB90"},{"background":"#F5D8AB"}]},{"id":"AttRank","name":"Rank","type":"numeric","minWidth":60,"align":"center"},{"id":"RatingDef","name":"Defense","type":"numeric","minWidth":65,"align":"center","defaultSortDesc":true,"cell":["+7.8","+1.5","+3.1","+3.9","+0.9","+7.2","+1.2","+0.2","+0.9","-1.0","+6.6","+0.0","+1.9","-1.8","+4.4","-11.2","-10.4","-15.3"],"style":[{"background":"#EACEF9"},{"background":"#FBF5FE"},{"background":"#F6EBFC"},{"background":"#F4E6FC"},{"background":"#FCF9FE"},{"background":"#ECD1FA"},{"background":"#FBF7FE"},{"background":"#FEFDFE"},{"background":"#FCF9FE"},{"background":"#FEFAF5"},{"background":"#EDD5FA"},{"background":"#FFFFFF"},{"background":"#FAF3FD"},{"background":"#FDF7EE"},{"background":"#F3E3FC"},{"background":"#F4D099"},{"background":"#F4D3A1"},{"background":"#F0BF75"}]},{"id":"DefRank","name":"Rank","type":"numeric","minWidth":60,"align":"center"},{"id":"RatingOverallSeason","name":"Rating","type":"numeric","minWidth":60,"align":"center","defaultSortDesc":true,"cell":["+25.0","+11.9","+12.6","+11.1","+7.8","+7.7","+0.3","+4.6","+1.9","+4.4","+2.4","+2.1","-2.9","-0.9","-6.4","-25.9","-23.2","-32.5"],"style":[{"background":"#E0B5F7"},{"background":"#F0DBFB"},{"background":"#EFD9FB"},{"background":"#F1DEFB"},{"background":"#F5E7FC"},{"background":"#F5E8FC"},{"background":"#FEFEFE"},{"background":"#F9F1FD"},{"background":"#FCF9FE"},{"background":"#F9F2FD"},{"background":"#FCF7FE"},{"background":"#FCF8FE"},{"background":"#FDF9F2"},{"background":"#FEFDFB"},{"background":"#FCF2E3"},{"background":"#F3CB91"},{"background":"#F4D19C"},{"background":"#F0BF75"}]},{"id":"RankSeason","name":"Rank","type":"numeric","minWidth":60,"align":"center"},{"id":"RatingAttSeason","name":"Attack","type":"numeric","minWidth":60,"align":"center","defaultSortDesc":true,"cell":["+16.9","+12.6","+9.1","+7.5","+7.5","-0.2","-1.7","+3.2","+0.1","+3.9","-4.8","+1.8","-5.6","+0.5","-11.6","-13.9","-12.8","-12.5"],"style":[{"background":"#D79FF5"},{"background":"#E1B7F7"},{"background":"#E9CBF9"},{"background":"#EDD4FA"},{"background":"#EDD4FA"},{"background":"#FEFEFD"},{"background":"#FDF8F1"},{"background":"#F7ECFD"},{"background":"#FEFEFE"},{"background":"#F5E8FC"},{"background":"#FAECD7"},{"background":"#FAF4FD"},{"background":"#FAE9D1"},{"background":"#FDFCFE"},{"background":"#F4D3A0"},{"background":"#F2CA8D"},{"background":"#F3CE96"},{"background":"#F3CF98"}]},{"id":"AttRankSeason","name":"Rank","type":"numeric","minWidth":60,"align":"center"},{"id":"RatingDefSeason","name":"Defense","type":"numeric","minWidth":65,"align":"center","defaultSortDesc":true,"cell":["+8.1","-0.6","+3.5","+3.7","+0.3","+7.9","+2.0","+1.4","+1.8","+0.4","+7.2","+0.3","+2.7","-1.4","+5.2","-12.0","-10.4","-20.0"],"style":[{"background":"#EED8FA"},{"background":"#FEFDFA"},{"background":"#F8EEFD"},{"background":"#F7EDFD"},{"background":"#FEFDFE"},{"background":"#EFD9FB"},{"background":"#FBF5FE"},{"background":"#FCF8FE"},{"background":"#FBF6FE"},{"background":"#FEFDFE"},{"background":"#F0DCFB"},{"background":"#FEFDFE"},{"background":"#F9F2FD"},{"background":"#FDFAF5"},{"background":"#F4E6FC"},{"background":"#F6D8AC"},{"background":"#F7DDB7"},{"background":"#F0BF75"}]},{"id":"DefRankSeason","name":"Rank","type":"numeric","minWidth":60,"align":"center"}],"columnGroups":[{"name":"Current Rating","columns":["RatingOverall","RatingOverall_Diff","RatingAtt","AttRank","RatingDef","DefRank"]},{"name":"Overall Season Rating","columns":["RatingOverallSeason","RankSeason","RatingAttSeason","AttRankSeason","RatingDefSeason","DefRankSeason"]}],"defaultSorted":[{"id":"Rank","desc":false}],"pagination":false,"striped":true,"nowrap":true,"showSortIcon":false,"className":"afl-table table-condensed","theme":{"borderColor":"#dfe2e5","highlightColor":"#f0f5f9","cellPadding":"4px 5px","searchInputStyle":{"width":"100%"}},"language":{"filterPlaceholder":"search","noData":"No entries found","pageNext":"❯","pagePrevious":"❮","pageInfo":"{rowStart}–{rowEnd} of {rows} entries","pageNextLabel":"Next page","pagePreviousLabel":"Previous page"},"dataKey":"18d6be4552849ba7ab29ad1a1e9d692f"},"children":[]},"class":"reactR_markup"},"evals":["tag.attribs.columns.5.style"],"jsHooks":[]}</script>
+</div>
+<h3>
+Overall Ratings chart
+</h3>
+<div class="chart-container"
+style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
+<canvas id="ratings-chart-overall">
+</canvas>
+</div>
+<h3>
+Attack/Defense Ratings chart
+</h3>
+<div class="chart-container"
+style="position: relative; margin:auto; height:45vw; width:100%; max-height:600px">
+<canvas id="ratings-chart">
+</canvas>
+</div>
+<!-- <script -->
+<!--     src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.2/chartjs-plugin-annotation.min.js"></script> -->
+<script>
+const ctxOverall = document.getElementById('ratings-chart-overall');
+const dataScript = document.querySelector('#ratings-table script[data-for^="htmlwidget"]')
+const data = JSON.parse(dataScript.innerText).x.tag.attribs.data;
+
+const pointStyles = [];
+const chartDataOverall = [];
+data.TeamName.forEach((element, index) => {
+    chartDataOverall.push({ x: data.Rank[index], y: data.RatingOverall[index] });
+
+    const img = new Image();
+    img.src = data.Image[index];
+    if (window.innerWidth < 800) {
+        img.height = "15";
+        img.width = "15";
+    } else {
+        img.height = "20";
+        img.width = "20";
+    }
+    pointStyles.push(img);
+});
+
+const chartOverall = new Chart(ctxOverall, {
+    data: {
+        datasets: [{
+            type: 'scatter',
+            data: chartDataOverall,
+            pointStyle: pointStyles,
+            pointRadius: 10
+        }, {
+            type: 'bar',
+            data: chartDataOverall,
+            backgroundColor: "#dbdbdb",
+            barThickness: 5
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                display: false,
+                offset: false,
+                min: 0,
+                max: Math.max(...data.Rank) + 1
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: "Overall rating",
+                    font: {
+                        weight: "bold"
+                    }
+                },
+                grid: {
+                    color: function (context) {
+                        if (context.tick.value == 0) {
+                            return "#878787"
+                        } else {
+                            return "#e8e8e8"
+                        }
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    beforeLabel: function (context) {
+                        return data.TeamName[context.dataIndex];
+                    },
+                    label: function (context) {
+                        let label = "Overall rating: " + data.RatingOverall[context.dataIndex].toFixed(1);
+
+                        return label;
+                    }
+                }
+            }
+            // , annotation: {
+            //     annotations: {
+            //         xAxisLine: {
+            //             drawTime: 'beforeDatasetsDraw',
+            //             type: 'line',
+            //             borderWidth: 1,
+            //             yMin: 0,
+            //             yMax: 0
+            //         },
+            //         yAxisLine: {
+            //             drawTime: 'beforeDatasetsDraw',
+            //             type: 'line',
+            //             borderWidth: 1,
+            //             xMin: 0,
+            //             xMax: 0
+            //         }
+            //     }
+            // }
+        }
+    }
+});
+
+const ctx = document.getElementById('ratings-chart');
+const chartData = [];
+data.TeamName.forEach((element, index) => {
+    chartData.push({ x: data.RatingDef[index], y: data.RatingAtt[index] });
+
+    const img = new Image();
+    img.src = data.Image[index];
+    img.height = "20";
+    img.width = "20";
+    pointStyles.push(img);
+});
+
+const chart = new Chart(ctx, {
+    type: 'scatter',
+    data: {
+        datasets: [{
+            label: 'Team ratings',
+            data: chartData,
+            pointStyle: pointStyles,
+            pointRadius: 10
+        }]
+    },
+    options: {
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Defensive rating",
+                    font: {
+                        weight: "bold"
+                    }
+                },
+                grid: {
+                    color: function (context) {
+                        if (context.tick.value == 0) {
+                            return "#878787"
+                        } else {
+                            return "#e8e8e8"
+                        }
+                    }
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: "Attacking rating",
+                    font: {
+                        weight: "bold"
+                    }
+                },
+                grid: {
+                    color: function (context) {
+                        if (context.tick.value == 0) {
+                            return "#878787"
+                        } else {
+                            return "#e8e8e8"
+                        }
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    beforeLabel: function (context) {
+                        return data.TeamName[context.dataIndex];
+                    },
+                    label: function (context) {
+                        let label = "Overall: " + data.RatingOverall[context.dataIndex].toFixed(1) + ", Defense: " + context.parsed.x.toFixed(1) + ", Attack: " + context.parsed.y.toFixed(1);
+
+                        return label;
+                    }
+                }
+            }
+            // , annotation: {
+            //     annotations: {
+            //         xAxisLine: {
+            //             drawTime: 'beforeDatasetsDraw',
+            //             type: 'line',
+            //             borderWidth: 1,
+            //             yMin: 0,
+            //             yMax: 0
+            //         },
+            //         yAxisLine: {
+            //             drawTime: 'beforeDatasetsDraw',
+            //             type: 'line',
+            //             borderWidth: 1,
+            //             xMin: 0,
+            //             xMax: 0
+            //         }
+            //     }
+            // }
+        }
+    }
+});
+</script>
+<!-- <script> -->
+<!-- function filter_default() { -->
+<!--     document.getElementById("team_filter").getElementsByClassName("selectized") -->
+<!-- [0].selectize.setValue("`#r default_team`", false); -->
+<!--  } -->
+<!-- window.onload = filter_default; -->
+<!-- </script> -->
+</div>
+</main>
+
+<footer>
+    <!-- <br> -->
+    <!-- <div class="addthis_inline_share_toolbox"></div>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=wheels83"></script> -->
+    <!-- &nbsp; -->
+    <hr />
+    <p style="text-align: center;"><a href="#top">Back to top</a></p>
+    <p style="text-align: center;">&copy; Wheelo Ratings</p>
+</footer>
+
+
+
+</div>
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+(function() {
+  href = window.location.pathname;
+  href = href.substr(href.lastIndexOf('/') + 1);
+  if (href === "")
+    href = "index.html";
+  
+  let li = null;
+  
+  // main menu
+  let menuAnchor = document.getElementById("navbar").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+      li = menuAnchor.closest('li');
+      li.classList.add('active');
+      
+      let parent = li.parentElement.closest('li')
+      
+      if (parent !== null)
+        parent.classList.add('active');
+  }
+  
+  // banner menu
+  menuAnchor = document.getElementById("navbar-banner").querySelector('[href="' + href + '"]');
+
+  if (menuAnchor !== null) {
+    li = menuAnchor.closest('li');
+    li.classList.add('active');
+  }
+})();
+</script>
+<!-- <script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("nav").style.top = "0";
+  } else {
+    document.getElementById("nav").style.top = "-60px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script> -->
+</body>
+</html>

@@ -1,0 +1,1387 @@
+season,round,playing_for,score,xscore
+2021,1,Carlton,80,82.9
+2021,1,Richmond,105,114.8
+2021,1,Collingwood,53,59.9
+2021,1,Western Bulldogs,69,89.4
+2021,1,Fremantle,58,69.6
+2021,1,Melbourne,80,96.6
+2021,1,Adelaide,103,87.6
+2021,1,Geelong,91,101.5
+2021,1,Essendon,91,94.8
+2021,1,Hawthorn,92,95.6
+2021,1,Brisbane,94,70
+2021,1,Sydney,125,95.1
+2021,1,North Melbourne,65,90.2
+2021,1,Port Adelaide,117,119.5
+2021,1,Greater Western Sydney,78,90.5
+2021,1,St Kilda,86,80.1
+2021,1,Gold Coast,58,65.6
+2021,1,West Coast,83,94.5
+2021,2,Carlton,85,78.3
+2021,2,Collingwood,106,90.8
+2021,2,Brisbane,80,83.1
+2021,2,Geelong,81,81.8
+2021,2,Adelaide,88,107.4
+2021,2,Sydney,121,102.1
+2021,2,Essendon,65,76.6
+2021,2,Port Adelaide,119,103.2
+2021,2,Melbourne,91,106
+2021,2,St Kilda,73,71.3
+2021,2,Gold Coast,98,110.9
+2021,2,North Melbourne,39,40.3
+2021,2,Hawthorn,49,53.7
+2021,2,Richmond,78,89.6
+2021,2,West Coast,93,83.2
+2021,2,Western Bulldogs,100,99
+2021,2,Fremantle,87,116.1
+2021,2,Greater Western Sydney,56,72.9
+2021,3,Brisbane,73,80.2
+2021,3,Collingwood,72,64.3
+2021,3,North Melbourne,39,48.2
+2021,3,Western Bulldogs,167,161.6
+2021,3,Adelaide,95,85.3
+2021,3,Gold Coast,85,79.3
+2021,3,Richmond,72,77.2
+2021,3,Sydney,117,113.3
+2021,3,Essendon,143,113.8
+2021,3,St Kilda,68,77
+2021,3,Port Adelaide,71,65.1
+2021,3,West Coast,108,84.5
+2021,3,Carlton,109,122.4
+2021,3,Fremantle,64,65.3
+2021,3,Greater Western Sydney,68,62.6
+2021,3,Melbourne,102,95.1
+2021,3,Geelong,69,58.8
+2021,3,Hawthorn,64,74.7
+2021,4,Essendon,80,79.2
+2021,4,Sydney,83,94.3
+2021,4,Port Adelaide,79,95.2
+2021,4,Richmond,77,72.2
+2021,4,Brisbane,54,51.7
+2021,4,Western Bulldogs,73,82.3
+2021,4,St Kilda,102,103.6
+2021,4,West Coast,82,66.7
+2021,4,Carlton,70,94.9
+2021,4,Gold Coast,59,59.2
+2021,4,Collingwood,60,53.7
+2021,4,Greater Western Sydney,90,64.6
+2021,4,Adelaide,109,95.4
+2021,4,North Melbourne,68,70.8
+2021,4,Geelong,60,54.7
+2021,4,Melbourne,85,89.7
+2021,4,Fremantle,96,116.6
+2021,4,Hawthorn,81,76.9
+2021,5,Richmond,134,126.3
+2021,5,St Kilda,48,48.1
+2021,5,Collingwood,76,88.8
+2021,5,West Coast,103,83.1
+2021,5,Gold Coast,56,68.4
+2021,5,Western Bulldogs,118,121.7
+2021,5,Greater Western Sydney,71,85.5
+2021,5,Sydney,69,66.4
+2021,5,Carlton,68,84.4
+2021,5,Port Adelaide,96,84.2
+2021,5,Brisbane,102,105.1
+2021,5,Essendon,45,46.3
+2021,5,Adelaide,72,66.1
+2021,5,Fremantle,84,83.7
+2021,5,Hawthorn,54,49.3
+2021,5,Melbourne,104,100.2
+2021,5,Geelong,77,107.1
+2021,5,North Melbourne,47,51.7
+2021,6,Greater Western Sydney,65,56.3
+2021,6,Western Bulldogs,104,102.7
+2021,6,Geelong,136,107.2
+2021,6,West Coast,39,49
+2021,6,Gold Coast,100,100.3
+2021,6,Sydney,60,44.7
+2021,6,Brisbane,103,96.8
+2021,6,Carlton,85,82.4
+2021,6,Melbourne,82,76.4
+2021,6,Richmond,48,79
+2021,6,Fremantle,99,104.7
+2021,6,North Melbourne,48,55.2
+2021,6,Adelaide,99,98.2
+2021,6,Hawthorn,102,103.1
+2021,6,Collingwood,85,69.6
+2021,6,Essendon,109,85.2
+2021,6,Port Adelaide,93,87.7
+2021,6,St Kilda,39,54.6
+2021,7,Adelaide,39,77.6
+2021,7,Greater Western Sydney,106,122.1
+2021,7,Brisbane,93,97.5
+2021,7,Port Adelaide,44,57.1
+2021,7,Collingwood,55,65
+2021,7,Gold Coast,79,70.2
+2021,7,Carlton,123,107
+2021,7,Essendon,107,86.5
+2021,7,Melbourne,103,89.5
+2021,7,North Melbourne,73,67.6
+2021,7,Richmond,77,81.6
+2021,7,Western Bulldogs,55,66.1
+2021,7,Hawthorn,59,54.7
+2021,7,St Kilda,128,121.4
+2021,7,Geelong,88,108.7
+2021,7,Sydney,90,74.8
+2021,7,Fremantle,73,60.7
+2021,7,West Coast,132,115
+2021,8,Brisbane,95,104
+2021,8,Fremantle,71,76.2
+2021,8,Gold Coast,54,73.7
+2021,8,St Kilda,63,77.8
+2021,8,Essendon,105,81.1
+2021,8,Greater Western Sydney,107,101.1
+2021,8,Hawthorn,60,60.7
+2021,8,West Coast,98,98.4
+2021,8,Melbourne,67,62.6
+2021,8,Sydney,58,62
+2021,8,Collingwood,94,92.4
+2021,8,North Melbourne,76,96.7
+2021,8,Adelaide,38,41.5
+2021,8,Port Adelaide,87,96.5
+2021,8,Geelong,126,110.7
+2021,8,Richmond,63,53
+2021,8,Carlton,91,83.9
+2021,8,Western Bulldogs,107,109.4
+2021,9,Essendon,68,74.5
+2021,9,Fremantle,61,80.3
+2021,9,Brisbane,124,110.1
+2021,9,Gold Coast,51,46.2
+2021,9,Hawthorn,80,72.3
+2021,9,North Melbourne,87,85.9
+2021,9,Carlton,68,67
+2021,9,Melbourne,94,87.6
+2021,9,Port Adelaide,77,64.8
+2021,9,Western Bulldogs,96,86.3
+2021,9,Greater Western Sydney,83,94
+2021,9,Richmond,87,83.3
+2021,9,Geelong,68,72.7
+2021,9,St Kilda,47,80.3
+2021,9,Collingwood,42,61.3
+2021,9,Sydney,72,91.1
+2021,9,Adelaide,76,83.4
+2021,9,West Coast,106,94
+2021,10,Adelaide,96,83.7
+2021,10,Melbourne,95,91.6
+2021,10,Brisbane,102,93.5
+2021,10,Richmond,74,68.8
+2021,10,Carlton,86,74
+2021,10,Hawthorn,63,65.6
+2021,10,Collingwood,58,65.7
+2021,10,Port Adelaide,59,60.2
+2021,10,Essendon,141,103.1
+2021,10,North Melbourne,69,64.4
+2021,10,Fremantle,86,92.7
+2021,10,Sydney,84,64.9
+2021,10,Geelong,91,76.2
+2021,10,Gold Coast,57,59.9
+2021,10,Greater Western Sydney,93,101.8
+2021,10,West Coast,77,71.7
+2021,10,St Kilda,33,34.9
+2021,10,Western Bulldogs,144,142.3
+2021,11,Brisbane,129,115.4
+2021,11,Greater Western Sydney,65,59.8
+2021,11,Collingwood,51,70.3
+2021,11,Geelong,61,83.4
+2021,11,Gold Coast,113,114.9
+2021,11,Hawthorn,76,79.2
+2021,11,Fremantle,69,77
+2021,11,Port Adelaide,115,96.6
+2021,11,Adelaide,83,81.3
+2021,11,Richmond,111,92.8
+2021,11,North Melbourne,68,75.2
+2021,11,St Kilda,88,114
+2021,11,Carlton,78,73.9
+2021,11,Sydney,100,88.1
+2021,11,Essendon,87,101
+2021,11,West Coast,71,50.5
+2021,11,Melbourne,87,76.3
+2021,11,Western Bulldogs,59,58.5
+2021,12,Adelaide,73,78.7
+2021,12,Collingwood,78,59.9
+2021,12,Carlton,73,87.5
+2021,12,West Coast,95,82.4
+2021,12,Essendon,84,99
+2021,12,Richmond,123,104
+2021,12,Fremantle,65,66.2
+2021,12,Western Bulldogs,93,116.2
+2021,12,Brisbane,75,62.1
+2021,12,Melbourne,97,92.1
+2021,12,St Kilda,83,88.1
+2021,12,Sydney,92,102.4
+2021,13,Fremantle,76,71.6
+2021,13,Gold Coast,49,70.8
+2021,13,Collingwood,80,86.2
+2021,13,Melbourne,63,75.5
+2021,13,Greater Western Sydney,94,82.1
+2021,13,North Melbourne,94,73.7
+2021,13,Geelong,112,86.6
+2021,13,Port Adelaide,91,79
+2021,13,Adelaide,66,76.5
+2021,13,St Kilda,60,61.2
+2021,13,Hawthorn,89,82.5
+2021,13,Sydney,51,50.1
+2021,13,Richmond,81,85.1
+2021,13,West Coast,85,68.8
+2021,14,Geelong,83,85
+2021,14,Western Bulldogs,78,66.5
+2021,14,Gold Coast,31,35.6
+2021,14,Port Adelaide,81,81
+2021,14,Carlton,66,82.1
+2021,14,Greater Western Sydney,102,83.4
+2021,14,Essendon,86,76.3
+2021,14,Hawthorn,73,76.4
+2021,14,Brisbane,68,88.4
+2021,14,North Melbourne,45,48.3
+2021,15,Brisbane,94,97.3
+2021,15,Geelong,50,52
+2021,15,Adelaide,73,75.6
+2021,15,Carlton,83,92.6
+2021,15,Collingwood,79,77.5
+2021,15,Fremantle,91,77.3
+2021,15,Essendon,57,67.7
+2021,15,Melbourne,68,82.6
+2021,15,Greater Western Sydney,72,65.4
+2021,15,Hawthorn,90,86.1
+2021,15,Gold Coast,63,54.7
+2021,15,North Melbourne,72,84.6
+2021,15,Port Adelaide,81,79.3
+2021,15,Sydney,71,67.5
+2021,15,Richmond,22,46.9
+2021,15,St Kilda,62,61.9
+2021,15,West Coast,43,45.3
+2021,15,Western Bulldogs,98,120.5
+2021,16,Adelaide,59,75.1
+2021,16,Brisbane,111,92.5
+2021,16,Collingwood,61,71.3
+2021,16,St Kilda,70,73.1
+2021,16,Carlton,80,76.1
+2021,16,Fremantle,64,81.7
+2021,16,Essendon,57,47.9
+2021,16,Geelong,98,83.5
+2021,16,Gold Coast,77,93.8
+2021,16,Richmond,67,57.6
+2021,16,Hawthorn,53,63.5
+2021,16,Port Adelaide,87,90.1
+2021,16,Greater Western Sydney,64,65.2
+2021,16,Melbourne,55,65.4
+2021,16,Sydney,118,110.3
+2021,16,West Coast,26,48
+2021,16,North Melbourne,79,87.4
+2021,16,Western Bulldogs,108,107.3
+2021,17,Brisbane,63,71.2
+2021,17,St Kilda,95,93.8
+2021,17,Carlton,44,71.2
+2021,17,Geelong,70,74.8
+2021,17,Adelaide,21,33.7
+2021,17,Essendon,84,104.2
+2021,17,Gold Coast,65,65.8
+2021,17,Greater Western Sydney,64,72.9
+2021,17,Fremantle,108,104.2
+2021,17,Hawthorn,46,58.1
+2021,17,Melbourne,86,93.2
+2021,17,Port Adelaide,55,52.4
+2021,17,Collingwood,87,84.5
+2021,17,Richmond,71,54.2
+2021,17,North Melbourne,70,75.3
+2021,17,West Coast,60,61.8
+2021,17,Sydney,79,90.4
+2021,17,Western Bulldogs,60,84.3
+2021,18,Adelaide,56,56.5
+2021,18,West Coast,98,94.3
+2021,18,Carlton,91,100.1
+2021,18,Collingwood,62,60.5
+2021,18,Fremantle,31,53.4
+2021,18,Geelong,100,114.9
+2021,18,Gold Coast,79,84.8
+2021,18,Western Bulldogs,90,70.4
+2021,18,Greater Western Sydney,72,75.6
+2021,18,Sydney,98,71.5
+2021,18,Hawthorn,79,66.1
+2021,18,Melbourne,79,84.2
+2021,18,Essendon,92,95.4
+2021,18,North Melbourne,74,83.8
+2021,18,Brisbane,86,93.6
+2021,18,Richmond,106,93.3
+2021,18,Port Adelaide,74,82.3
+2021,18,St Kilda,61,68.5
+2021,19,Carlton,77,83
+2021,19,North Melbourne,116,92.5
+2021,19,Essendon,53,69.3
+2021,19,Greater Western Sydney,66,77.1
+2021,19,Geelong,95,78
+2021,19,Richmond,57,64.4
+2021,19,Melbourne,65,71.1
+2021,19,Western Bulldogs,85,68.7
+2021,19,Brisbane,120,132.2
+2021,19,Gold Coast,71,80.3
+2021,19,Collingwood,69,72.8
+2021,19,Port Adelaide,97,106.3
+2021,19,Fremantle,58,72.6
+2021,19,Sydney,98,105.1
+2021,19,St Kilda,86,71.9
+2021,19,West Coast,94,80.9
+2021,19,Adelaide,102,83
+2021,19,Hawthorn,83,76
+2021,20,Brisbane,80,84
+2021,20,Hawthorn,92,77
+2021,20,Gold Coast,30,42.6
+2021,20,Melbourne,128,139.8
+2021,20,Collingwood,90,81.3
+2021,20,West Coast,45,41.7
+2021,20,Essendon,102,86.7
+2021,20,Sydney,109,85.5
+2021,20,Fremantle,55,63.4
+2021,20,Richmond,51,71
+2021,20,Greater Western Sydney,73,67.7
+2021,20,Port Adelaide,100,81.3
+2021,20,Adelaide,56,68.3
+2021,20,Western Bulldogs,105,108.9
+2021,20,Geelong,62,74.8
+2021,20,North Melbourne,42,45.4
+2021,20,Carlton,112,79.8
+2021,20,St Kilda,81,84
+2021,21,Adelaide,51,56.6
+2021,21,Port Adelaide,55,63.8
+2021,21,Brisbane,118,117.2
+2021,21,Fremantle,54,52.9
+2021,21,Carlton,57,56.8
+2021,21,Gold Coast,76,70.4
+2021,21,Geelong,65,78.4
+2021,21,Greater Western Sydney,84,75.6
+2021,21,Collingwood,78,70.8
+2021,21,Hawthorn,97,73.4
+2021,21,North Melbourne,56,59.7
+2021,21,Richmond,89,88.9
+2021,21,St Kilda,93,85.4
+2021,21,Sydney,64,61
+2021,21,Melbourne,72,87.6
+2021,21,West Coast,63,60.4
+2021,21,Essendon,97,76.1
+2021,21,Western Bulldogs,84,114.2
+2021,22,Brisbane,142,120.6
+2021,22,Collingwood,57,64.1
+2021,22,Fremantle,79,63.3
+2021,22,West Coast,64,70.2
+2021,22,Geelong,85,75.3
+2021,22,St Kilda,71,54.3
+2021,22,Essendon,98,97.8
+2021,22,Gold Coast,30,42.3
+2021,22,Greater Western Sydney,106,92.2
+2021,22,Richmond,67,68.6
+2021,22,Hawthorn,64,72.5
+2021,22,Western Bulldogs,37,54
+2021,22,Adelaide,63,64.8
+2021,22,Melbourne,104,98
+2021,22,North Melbourne,77,71.8
+2021,22,Sydney,91,87.3
+2021,22,Carlton,45,79.1
+2021,22,Port Adelaide,140,143.3
+2021,23,Adelaide,98,120
+2021,23,North Melbourne,54,66.4
+2021,23,Brisbane,125,117.3
+2021,23,West Coast,87,98.9
+2021,23,Carlton,75,81.1
+2021,23,Greater Western Sydney,89,111.9
+2021,23,Collingwood,64,71.6
+2021,23,Essendon,102,103.5
+2021,23,Geelong,77,69.2
+2021,23,Melbourne,81,73.9
+2021,23,Hawthorn,83,78.6
+2021,23,Richmond,83,93
+2021,23,Fremantle,49,62.8
+2021,23,St Kilda,107,85.6
+2021,23,Gold Coast,49,56.3
+2021,23,Sydney,136,109.5
+2021,23,Port Adelaide,66,69.7
+2021,23,Western Bulldogs,64,53.7
+2021,24,Geelong,43,57.9
+2021,24,Port Adelaide,86,88.8
+2021,24,Greater Western Sydney,74,60.1
+2021,24,Sydney,73,89.6
+2021,24,Brisbane,60,64.3
+2021,24,Melbourne,93,90.8
+2021,24,Essendon,36,60.8
+2021,24,Western Bulldogs,85,86
+2021,25,Geelong,103,103.7
+2021,25,Greater Western Sydney,68,70
+2021,25,Brisbane,78,86.3
+2021,25,Western Bulldogs,79,71
+2021,26,Geelong,42,41.6
+2021,26,Melbourne,125,104.9
+2021,26,Port Adelaide,45,62.6
+2021,26,Western Bulldogs,116,104
+2021,27,Melbourne,140,106.6
+2021,27,Western Bulldogs,66,55
+2022,1,Melbourne,97,93.8
+2022,1,Western Bulldogs,71,51
+2022,1,Carlton,101,102.2
+2022,1,Richmond,76,80
+2022,1,Collingwood,102,89
+2022,1,St Kilda,85,87.3
+2022,1,Essendon,72,67.7
+2022,1,Geelong,138,113.9
+2022,1,Greater Western Sydney,92,93.8
+2022,1,Sydney,112,105.4
+2022,1,Brisbane,80,87.2
+2022,1,Port Adelaide,69,64.2
+2022,1,Hawthorn,78,89.9
+2022,1,North Melbourne,58,65.5
+2022,1,Adelaide,82,83.8
+2022,1,Fremantle,83,83.8
+2022,1,Gold Coast,107,124.2
+2022,1,West Coast,80,59.1
+2022,2,Carlton,102,72.1
+2022,2,Western Bulldogs,90,88.6
+2022,2,Geelong,77,84.2
+2022,2,Sydney,107,82.4
+2022,2,Adelaide,58,65.9
+2022,2,Collingwood,100,96
+2022,2,Brisbane,97,80.3
+2022,2,Essendon,75,84
+2022,2,Hawthorn,120,94.5
+2022,2,Port Adelaide,56,70
+2022,2,Gold Coast,69,76.2
+2022,2,Melbourne,82,68.7
+2022,2,North Melbourne,74,88.5
+2022,2,West Coast,59,71.4
+2022,2,Greater Western Sydney,73,75.9
+2022,2,Richmond,109,98.1
+2022,2,Fremantle,55,54.1
+2022,2,St Kilda,65,73.1
+2022,3,Sydney,60,57.8
+2022,3,Western Bulldogs,71,102.6
+2022,3,Essendon,70,60.2
+2022,3,Melbourne,99,98.4
+2022,3,Adelaide,96,84.9
+2022,3,Port Adelaide,92,96.2
+2022,3,Gold Coast,57,68.2
+2022,3,Greater Western Sydney,83,88.7
+2022,3,Collingwood,91,87.4
+2022,3,Geelong,104,84.2
+2022,3,Brisbane,156,140.4
+2022,3,North Melbourne,48,43.2
+2022,3,Carlton,74,65.6
+2022,3,Hawthorn,73,63.1
+2022,3,Richmond,84,68.2
+2022,3,St Kilda,117,106.8
+2022,3,Fremantle,102,104.1
+2022,3,West Coast,47,55.2
+2022,4,Melbourne,68,76.1
+2022,4,Port Adelaide,36,44.5
+2022,4,Brisbane,70,64.3
+2022,4,Geelong,80,88.9
+2022,4,North Melbourne,75,78.5
+2022,4,Sydney,86,75.9
+2022,4,Collingwood,74,97.3
+2022,4,West Coast,87,63.2
+2022,4,Richmond,99,82.8
+2022,4,Western Bulldogs,61,76.4
+2022,4,Fremantle,88,88.7
+2022,4,Greater Western Sydney,54,46.7
+2022,4,Adelaide,99,99
+2022,4,Essendon,103,84.7
+2022,4,Hawthorn,73,83.1
+2022,4,St Kilda,142,121.9
+2022,4,Carlton,62,77.2
+2022,4,Gold Coast,92,103.4
+2022,5,Brisbane,98,92.4
+2022,5,Collingwood,91,77
+2022,5,North Melbourne,71,67
+2022,5,Western Bulldogs,139,125.7
+2022,5,Sydney,121,99.9
+2022,5,West Coast,58,44.7
+2022,5,Gold Coast,61,61.3
+2022,5,St Kilda,87,77.3
+2022,5,Adelaide,101,82.1
+2022,5,Richmond,82,92.4
+2022,5,Greater Western Sydney,53,60.7
+2022,5,Melbourne,120,97
+2022,5,Carlton,94,93
+2022,5,Port Adelaide,91,83.1
+2022,5,Essendon,59,65.5
+2022,5,Fremantle,107,97.6
+2022,5,Geelong,80,91.5
+2022,5,Hawthorn,92,82.9
+2022,6,Greater Western Sydney,60,65.4
+2022,6,St Kilda,77,86.7
+2022,6,Adelaide,63,89.4
+2022,6,Western Bulldogs,62,55.9
+2022,6,Port Adelaide,117,96.9
+2022,6,West Coast,33,46.9
+2022,6,Carlton,62,61.3
+2022,6,Fremantle,97,92.6
+2022,6,Geelong,121,124.4
+2022,6,North Melbourne,61,60.5
+2022,6,Brisbane,132,99.6
+2022,6,Gold Coast,80,81.8
+2022,6,Melbourne,76,103
+2022,6,Richmond,54,47.3
+2022,6,Hawthorn,68,78.1
+2022,6,Sydney,109,117.4
+2022,6,Collingwood,93,55.8
+2022,6,Essendon,82,67.6
+2022,7,Richmond,165,169.2
+2022,7,West Coast,56,54.2
+2022,7,Fremantle,69,78.6
+2022,7,Geelong,66,68.6
+2022,7,Adelaide,54,63.1
+2022,7,Greater Western Sydney,113,96.5
+2022,7,Hawthorn,81,80
+2022,7,Melbourne,91,92
+2022,7,Port Adelaide,43,60.3
+2022,7,St Kilda,42,67.3
+2022,7,Carlton,114,121.2
+2022,7,North Melbourne,64,61.5
+2022,7,Collingwood,115,110.5
+2022,7,Gold Coast,90,79
+2022,7,Essendon,71,73.7
+2022,7,Western Bulldogs,103,97
+2022,7,Brisbane,113,91.6
+2022,7,Sydney,89,84.3
+2022,8,Port Adelaide,86,100.2
+2022,8,Western Bulldogs,69,74.3
+2022,8,Fremantle,102,105
+2022,8,North Melbourne,24,36.4
+2022,8,Collingwood,86,102.1
+2022,8,Richmond,113,115.7
+2022,8,Gold Coast,75,89.1
+2022,8,Sydney,61,67.1
+2022,8,Geelong,88,84.4
+2022,8,Greater Western Sydney,35,51.4
+2022,8,Essendon,108,109.8
+2022,8,Hawthorn,81,91.8
+2022,8,Brisbane,105,93.3
+2022,8,West Coast,30,38.8
+2022,8,Melbourne,93,84.2
+2022,8,St Kilda,55,56.7
+2022,8,Adelaide,68,63.9
+2022,8,Carlton,116,105.6
+2022,9,Collingwood,51,56
+2022,9,Western Bulldogs,99,110.9
+2022,9,Hawthorn,94,88.7
+2022,9,Richmond,117,128
+2022,9,North Melbourne,46,55.9
+2022,9,Port Adelaide,115,111.9
+2022,9,Geelong,80,74.8
+2022,9,St Kilda,90,104.7
+2022,9,Essendon,47,51.4
+2022,9,Sydney,105,104.7
+2022,9,Adelaide,66,68.1
+2022,9,Brisbane,102,82.4
+2022,9,Fremantle,33,63.1
+2022,9,Gold Coast,69,65
+2022,9,Carlton,105,101.5
+2022,9,Greater Western Sydney,75,64.9
+2022,9,Melbourne,112,107.7
+2022,9,West Coast,38,45.4
+2022,10,Adelaide,69,88.8
+2022,10,St Kilda,90,65.8
+2022,10,Carlton,102,99.7
+2022,10,Sydney,87,71.9
+2022,10,Collingwood,80,77.3
+2022,10,Fremantle,44,45.1
+2022,10,Geelong,82,88.3
+2022,10,Port Adelaide,47,46.4
+2022,10,Greater Western Sydney,138,117.9
+2022,10,West Coast,86,66.4
+2022,10,Brisbane,112,88.4
+2022,10,Hawthorn,117,100.2
+2022,10,Melbourne,100,95.7
+2022,10,North Melbourne,53,49.2
+2022,10,Essendon,48,42.9
+2022,10,Richmond,80,98.7
+2022,10,Gold Coast,87,82.1
+2022,10,Western Bulldogs,106,117.9
+2022,11,Brisbane,110,113.9
+2022,11,Greater Western Sydney,96,72
+2022,11,Carlton,75,59.7
+2022,11,Collingwood,79,96
+2022,11,Adelaide,55,65
+2022,11,Geelong,97,83.1
+2022,11,Gold Coast,121,122.2
+2022,11,Hawthorn,54,52
+2022,11,Fremantle,94,89.1
+2022,11,Melbourne,56,62.9
+2022,11,Essendon,50,66.1
+2022,11,Port Adelaide,66,72.4
+2022,11,North Melbourne,50,65.5
+2022,11,St Kilda,103,91.3
+2022,11,Richmond,100,76.4
+2022,11,Sydney,106,87.4
+2022,11,West Coast,60,52.7
+2022,11,Western Bulldogs,161,140.7
+2022,12,Adelaide,88,85.5
+2022,12,West Coast,57,50.4
+2022,12,Brisbane,85,87.8
+2022,12,Fremantle,99,91.1
+2022,12,Gold Coast,109,122.1
+2022,12,North Melbourne,47,43.7
+2022,12,Collingwood,72,84.2
+2022,12,Hawthorn,68,68.6
+2022,12,Melbourne,61,66.8
+2022,12,Sydney,73,81.5
+2022,12,Geelong,83,68
+2022,12,Western Bulldogs,70,64.2
+2022,13,Brisbane,78,98
+2022,13,St Kilda,57,67.3
+2022,13,Collingwood,82,93
+2022,13,Melbourne,56,57.5
+2022,13,Carlton,80,76
+2022,13,Essendon,54,62.1
+2022,13,Fremantle,95,91.3
+2022,13,Hawthorn,82,80.2
+2022,13,Greater Western Sydney,102,101.3
+2022,13,North Melbourne,53,71.4
+2022,13,Port Adelaide,65,53.3
+2022,13,Richmond,77,88.9
+2022,14,Adelaide,73,84.7
+2022,14,Gold Coast,116,116.4
+2022,14,Greater Western Sydney,105,91.3
+2022,14,Western Bulldogs,125,129.8
+2022,14,Port Adelaide,82,79.5
+2022,14,Sydney,59,70.6
+2022,14,Carlton,66,77.9
+2022,14,Richmond,81,83.3
+2022,14,Essendon,107,110.1
+2022,14,St Kilda,72,69.1
+2022,14,Geelong,81,89.3
+2022,14,West Coast,63,60.6
+2022,15,Carlton,81,83.8
+2022,15,Fremantle,50,63.6
+2022,15,Collingwood,88,112.2
+2022,15,Greater Western Sydney,77,72.3
+2022,15,Geelong,89,86.4
+2022,15,Richmond,86,85.5
+2022,15,Brisbane,53,55.7
+2022,15,Melbourne,117,114.8
+2022,15,Adelaide,115,104.1
+2022,15,North Melbourne,58,76.7
+2022,15,Gold Coast,91,99.4
+2022,15,Port Adelaide,93,98
+2022,15,St Kilda,32,47.2
+2022,15,Sydney,83,86.6
+2022,15,Essendon,97,86.5
+2022,15,West Coast,107,91.2
+2022,15,Hawthorn,83,84
+2022,15,Western Bulldogs,125,114.8
+2022,16,Adelaide,65,59.9
+2022,16,Melbourne,94,98.7
+2022,16,Brisbane,108,101.8
+2022,16,Western Bulldogs,67,80.3
+2022,16,Carlton,78,108.2
+2022,16,St Kilda,93,77.9
+2022,16,Essendon,95,72.1
+2022,16,Sydney,86,94.6
+2022,16,Fremantle,99,88
+2022,16,Port Adelaide,91,78.1
+2022,16,Geelong,144,129.4
+2022,16,North Melbourne,32,27.9
+2022,16,Collingwood,67,75.6
+2022,16,Gold Coast,62,64.3
+2022,16,Greater Western Sydney,72,74.5
+2022,16,Hawthorn,50,55.7
+2022,16,Richmond,128,95.2
+2022,16,West Coast,93,90.1
+2022,17,Brisbane,90,81.5
+2022,17,Essendon,100,108.1
+2022,17,Collingwood,88,90.4
+2022,17,North Melbourne,81,72
+2022,17,Geelong,91,102.2
+2022,17,Melbourne,63,55.6
+2022,17,Gold Coast,94,93.2
+2022,17,Richmond,92,119.8
+2022,17,Adelaide,54,59.1
+2022,17,Hawthorn,86,81.3
+2022,17,Greater Western Sydney,29,53.5
+2022,17,Port Adelaide,84,76.3
+2022,17,Fremantle,111,98.4
+2022,17,St Kilda,70,68.4
+2022,17,Sydney,120,112.6
+2022,17,Western Bulldogs,67,83.8
+2022,17,Carlton,116,114.3
+2022,17,West Coast,53,52.3
+2022,18,Adelaide,86,75.4
+2022,18,Collingwood,91,67.7
+2022,18,Carlton,55,52.3
+2022,18,Geelong,85,87.8
+2022,18,Essendon,103,128.8
+2022,18,Gold Coast,55,49.8
+2022,18,Fremantle,65,62.4
+2022,18,Sydney,82,79.6
+2022,18,Brisbane,99,102.8
+2022,18,Greater Western Sydney,59,60.2
+2022,18,Hawthorn,102,91.2
+2022,18,West Coast,77,70.7
+2022,18,Melbourne,83,81.1
+2022,18,Port Adelaide,69,75.2
+2022,18,North Melbourne,92,74.1
+2022,18,Richmond,88,102.2
+2022,18,St Kilda,56,70.8
+2022,18,Western Bulldogs,84,65.5
+2022,19,Brisbane,110,92.4
+2022,19,Gold Coast,93,87.6
+2022,19,Carlton,90,101.8
+2022,19,Greater Western Sydney,54,60.6
+2022,19,Collingwood,80,72.2
+2022,19,Essendon,76,79.4
+2022,19,Hawthorn,121,84.5
+2022,19,North Melbourne,75,85.6
+2022,19,Geelong,106,91.9
+2022,19,Port Adelaide,94,92.1
+2022,19,Fremantle,52,57.5
+2022,19,Richmond,52,63.2
+2022,19,Adelaide,85,73.2
+2022,19,Sydney,118,116
+2022,19,St Kilda,90,69.5
+2022,19,West Coast,62,56.8
+2022,19,Melbourne,100,90
+2022,19,Western Bulldogs,110,88.7
+2022,20,Adelaide,84,95.4
+2022,20,Carlton,55,70.7
+2022,20,Collingwood,88,77
+2022,20,Port Adelaide,82,72.4
+2022,20,Essendon,114,96.3
+2022,20,North Melbourne,66,83.6
+2022,20,Fremantle,39,56.1
+2022,20,Melbourne,85,88.3
+2022,20,Geelong,94,92.5
+2022,20,Western Bulldogs,66,73.2
+2022,20,Gold Coast,107,99.2
+2022,20,West Coast,104,95.5
+2022,20,Brisbane,97,100.2
+2022,20,Richmond,104,96
+2022,20,Hawthorn,63,73.2
+2022,20,St Kilda,75,100.1
+2022,20,Greater Western Sydney,39,42.3
+2022,20,Sydney,112,111.5
+2022,21,Brisbane,114,111.4
+2022,21,Carlton,81,75.9
+2022,21,Geelong,110,97.9
+2022,21,St Kilda,65,53.3
+2022,21,Essendon,69,60.8
+2022,21,Greater Western Sydney,96,90.7
+2022,21,Gold Coast,63,75.8
+2022,21,Hawthorn,70,83.7
+2022,21,Collingwood,96,79.5
+2022,21,Melbourne,89,93.5
+2022,21,North Melbourne,88,94
+2022,21,Sydney,126,120.5
+2022,21,Port Adelaide,71,76.6
+2022,21,Richmond,109,115.5
+2022,21,Adelaide,102,79.2
+2022,21,West Coast,86,77
+2022,21,Fremantle,95,76.8
+2022,21,Western Bulldogs,78,89.1
+2022,22,Adelaide,103,90.3
+2022,22,North Melbourne,74,87.8
+2022,22,Essendon,62,62.4
+2022,22,Port Adelaide,146,125
+2022,22,Fremantle,71,90.3
+2022,22,West Coast,47,46.7
+2022,22,Geelong,119,116.4
+2022,22,Gold Coast,59,54.2
+2022,22,Carlton,74,75.7
+2022,22,Melbourne,79,80.8
+2022,22,Hawthorn,67,67
+2022,22,Richmond,128,103.1
+2022,22,Brisbane,81,90.8
+2022,22,St Kilda,66,75.5
+2022,22,Collingwood,50,54.9
+2022,22,Sydney,77,84.5
+2022,22,Greater Western Sydney,57,49.6
+2022,22,Western Bulldogs,62,59.7
+2022,23,Brisbane,57,57.8
+2022,23,Melbourne,115,82.8
+2022,23,Carlton,74,78.3
+2022,23,Collingwood,75,61.7
+2022,23,Essendon,75,74.1
+2022,23,Richmond,141,127.2
+2022,23,Geelong,131,119.2
+2022,23,West Coast,46,30.9
+2022,23,Fremantle,89,102
+2022,23,Greater Western Sydney,69,74.8
+2022,23,Hawthorn,64,60.8
+2022,23,Western Bulldogs,87,111.2
+2022,23,Gold Coast,114,124.8
+2022,23,North Melbourne,47,68.9
+2022,23,Adelaide,55,62.3
+2022,23,Port Adelaide,111,112.8
+2022,23,St Kilda,74,78.4
+2022,23,Sydney,88,94.1
+2022,24,Brisbane,106,94.5
+2022,24,Richmond,104,83.1
+2022,24,Melbourne,69,69.1
+2022,24,Sydney,91,75.9
+2022,24,Collingwood,72,73.1
+2022,24,Geelong,78,84.8
+2022,24,Fremantle,73,75.1
+2022,24,Western Bulldogs,60,79.3
+2022,25,Brisbane,92,77.9
+2022,25,Melbourne,79,88.8
+2022,25,Collingwood,79,82.5
+2022,25,Fremantle,59,62.5
+2022,26,Brisbane,49,57.3
+2022,26,Geelong,120,90.7
+2022,26,Collingwood,94,80.1
+2022,26,Sydney,95,89.2
+2022,27,Geelong,133,105.7
+2022,27,Sydney,52,41.4
+2023,1,Carlton,58,58
+2023,1,Richmond,58,76.9
+2023,1,Collingwood,125,104.2
+2023,1,Geelong,103,81.5
+2023,1,North Melbourne,87,100.5
+2023,1,West Coast,82,85.4
+2023,1,Brisbane,72,54.6
+2023,1,Port Adelaide,126,131.9
+2023,1,Melbourne,115,106
+2023,1,Western Bulldogs,65,62.6
+2023,1,Gold Coast,61,57.1
+2023,1,Sydney,110,102.6
+2023,1,Adelaide,90,93.7
+2023,1,Greater Western Sydney,106,103.8
+2023,1,Essendon,124,111.3
+2023,1,Hawthorn,65,63.4
+2023,1,Fremantle,52,69.3
+2023,1,St Kilda,67,70.5
+2023,2,Carlton,90,94.7
+2023,2,Geelong,82,73.6
+2023,2,Brisbane,93,79.7
+2023,2,Melbourne,82,66.6
+2023,2,Collingwood,135,105.1
+2023,2,Port Adelaide,64,64
+2023,2,Adelaide,76,85.5
+2023,2,Richmond,108,90.5
+2023,2,St Kilda,92,80
+2023,2,Western Bulldogs,41,52.2
+2023,2,Fremantle,72,69.4
+2023,2,North Melbourne,73,63.6
+2023,2,Hawthorn,37,68.7
+2023,2,Sydney,118,118.5
+2023,2,Essendon,108,110
+2023,2,Gold Coast,80,90.5
+2023,2,Greater Western Sydney,81,94.2
+2023,2,West Coast,100,97.2
+2023,3,Brisbane,53,63
+2023,3,Western Bulldogs,67,66.8
+2023,3,Collingwood,63,78.1
+2023,3,Richmond,49,54.3
+2023,3,Hawthorn,80,90.7
+2023,3,North Melbourne,61,57.5
+2023,3,Carlton,74,86.5
+2023,3,Greater Western Sydney,64,73.1
+2023,3,Essendon,74,76.9
+2023,3,St Kilda,92,93.2
+2023,3,Adelaide,117,98.3
+2023,3,Port Adelaide,86,84
+2023,3,Geelong,54,71.7
+2023,3,Gold Coast,73,80.2
+2023,3,Melbourne,134,108.1
+2023,3,Sydney,84,88.8
+2023,3,Fremantle,108,100.2
+2023,3,West Coast,67,81
+2023,4,Brisbane,116,113.1
+2023,4,Collingwood,83,88
+2023,4,Carlton,107,98.5
+2023,4,North Melbourne,84,92.1
+2023,4,Adelaide,111,89.1
+2023,4,Fremantle,72,74.6
+2023,4,Richmond,84,79.6
+2023,4,Western Bulldogs,89,91.8
+2023,4,Gold Coast,60,77.8
+2023,4,St Kilda,113,107.8
+2023,4,Port Adelaide,66,72.7
+2023,4,Sydney,64,81.2
+2023,4,Essendon,88,119.1
+2023,4,Greater Western Sydney,75,91.7
+2023,4,Melbourne,126,114.1
+2023,4,West Coast,63,70.4
+2023,4,Geelong,127,121.5
+2023,4,Hawthorn,45,58.8
+2023,5,Adelaide,118,106.8
+2023,5,Carlton,62,61.1
+2023,5,Fremantle,100,103.2
+2023,5,Gold Coast,90,85.2
+2023,5,Richmond,78,86.3
+2023,5,Sydney,122,114.5
+2023,5,Brisbane,152,162.9
+2023,5,North Melbourne,77,63.5
+2023,5,Essendon,104,106.4
+2023,5,Melbourne,77,73.9
+2023,5,Port Adelaide,70,78.9
+2023,5,Western Bulldogs,56,63.6
+2023,5,Geelong,136,119.8
+2023,5,West Coast,89,82.3
+2023,5,Greater Western Sydney,77,99.5
+2023,5,Hawthorn,75,74.9
+2023,5,Collingwood,70,69
+2023,5,St Kilda,64,62.9
+2023,6,Fremantle,69,66.4
+2023,6,Western Bulldogs,118,118.8
+2023,6,Port Adelaide,109,102.5
+2023,6,West Coast,69,68
+2023,6,Brisbane,108,101
+2023,6,Greater Western Sydney,87,75
+2023,6,Geelong,130,103
+2023,6,Sydney,37,41.7
+2023,6,Adelaide,79,84
+2023,6,Hawthorn,76,87.8
+2023,6,Carlton,60,76.8
+2023,6,St Kilda,82,81.5
+2023,6,Gold Coast,97,109.2
+2023,6,North Melbourne,54,67.3
+2023,6,Melbourne,96,79.9
+2023,6,Richmond,78,81
+2023,6,Collingwood,90,81
+2023,6,Essendon,77,71.8
+2023,7,Port Adelaide,83,84
+2023,7,St Kilda,76,83.4
+2023,7,Brisbane,115,105.2
+2023,7,Fremantle,67,64.1
+2023,7,Greater Western Sydney,107,81.3
+2023,7,Sydney,106,104.3
+2023,7,Hawthorn,65,63.2
+2023,7,Western Bulldogs,94,84.2
+2023,7,Melbourne,139,106.8
+2023,7,North Melbourne,49,49.5
+2023,7,Carlton,152,133.2
+2023,7,West Coast,44,43.4
+2023,7,Essendon,104,89
+2023,7,Geelong,132,111.4
+2023,7,Gold Coast,72,74.8
+2023,7,Richmond,48,57.6
+2023,7,Adelaide,58,78.6
+2023,7,Collingwood,59,64.2
+2023,8,Brisbane,100,97.8
+2023,8,Carlton,74,68.7
+2023,8,Richmond,104,110.7
+2023,8,West Coast,58,77
+2023,8,Adelaide,72,68.5
+2023,8,Geelong,98,84.3
+2023,8,Gold Coast,85,83
+2023,8,Melbourne,90,77.6
+2023,8,Greater Western Sydney,71,71.4
+2023,8,Western Bulldogs,86,69.6
+2023,8,Fremantle,117,121.3
+2023,8,Hawthorn,48,60.2
+2023,8,Essendon,87,68.6
+2023,8,Port Adelaide,92,107.4
+2023,8,Collingwood,77,79.1
+2023,8,Sydney,48,70
+2023,8,North Melbourne,34,64.6
+2023,8,St Kilda,64,83
+2023,9,Geelong,78,79.4
+2023,9,Richmond,102,77.7
+2023,9,Gold Coast,113,119.4
+2023,9,West Coast,43,34.6
+2023,9,Fremantle,103,102.5
+2023,9,Sydney,86,64.8
+2023,9,North Melbourne,65,56.5
+2023,9,Port Adelaide,135,104.9
+2023,9,Hawthorn,49,54
+2023,9,Melbourne,103,90.4
+2023,9,Brisbane,87,101.8
+2023,9,Essendon,45,57.5
+2023,9,Carlton,59,59.5
+2023,9,Western Bulldogs,79,69.7
+2023,9,Adelaide,121,99.7
+2023,9,St Kilda,69,71.1
+2023,9,Collingwood,120,105.3
+2023,9,Greater Western Sydney,55,74.5
+2023,10,Melbourne,76,77.8
+2023,10,Port Adelaide,80,92.4
+2023,10,North Melbourne,90,83.7
+2023,10,Sydney,93,89.3
+2023,10,Adelaide,40,51.5
+2023,10,Western Bulldogs,85,100.6
+2023,10,Fremantle,106,98.8
+2023,10,Geelong,77,81.6
+2023,10,Brisbane,107,100.4
+2023,10,Gold Coast,64,63
+2023,10,Essendon,71,78.8
+2023,10,Richmond,70,74.3
+2023,10,Hawthorn,142,122.5
+2023,10,West Coast,26,23.8
+2023,10,Carlton,57,67.6
+2023,10,Collingwood,85,90.5
+2023,10,Greater Western Sydney,80,69.6
+2023,10,St Kilda,92,105.5
+2023,11,Carlton,51,72.7
+2023,11,Sydney,77,72.6
+2023,11,Hawthorn,88,105.1
+2023,11,St Kilda,78,84.3
+2023,11,Fremantle,79,65.7
+2023,11,Melbourne,72,81
+2023,11,Geelong,74,80.1
+2023,11,Greater Western Sydney,81,88
+2023,11,Gold Coast,84,78.2
+2023,11,Western Bulldogs,77,85.8
+2023,11,Essendon,96,99.4
+2023,11,West Coast,46,61.9
+2023,11,Port Adelaide,77,98.3
+2023,11,Richmond,67,69.6
+2023,11,Collingwood,105,92.1
+2023,11,North Melbourne,70,74.3
+2023,11,Adelaide,95,87.2
+2023,11,Brisbane,78,89.6
+2023,12,Carlton,44,43.8
+2023,12,Melbourne,61,79.9
+2023,12,Hawthorn,96,94.9
+2023,12,Port Adelaide,151,123.7
+2023,12,Collingwood,120,111.8
+2023,12,West Coast,57,55.8
+2023,12,Geelong,97,83.1
+2023,12,Western Bulldogs,75,86.8
+2023,12,Adelaide,87,76.6
+2023,12,Gold Coast,112,100.7
+2023,12,Greater Western Sydney,104,92.2
+2023,12,Richmond,110,109.5
+2023,12,Essendon,105,103.9
+2023,12,North Melbourne,99,86
+2023,13,St Kilda,80,82.7
+2023,13,Sydney,66,60
+2023,13,Port Adelaide,107,98.5
+2023,13,Western Bulldogs,85,69.7
+2023,13,Brisbane,73,73.9
+2023,13,Hawthorn,98,81.5
+2023,13,Adelaide,174,137.5
+2023,13,West Coast,52,52.2
+2023,13,Fremantle,70,73.4
+2023,13,Richmond,85,74.5
+2023,13,Greater Western Sydney,103,111.6
+2023,13,North Melbourne,75,73.8
+2023,13,Carlton,52,82.1
+2023,13,Essendon,86,80.3
+2023,13,Collingwood,62,62.1
+2023,13,Melbourne,66,89
+2023,14,Geelong,72,67.2
+2023,14,Port Adelaide,110,114.6
+2023,14,Brisbane,97,105.4
+2023,14,Sydney,81,67.7
+2023,14,Fremantle,36,58.1
+2023,14,Greater Western Sydney,106,103.7
+2023,14,Richmond,90,84.7
+2023,14,St Kilda,70,72.9
+2023,14,Carlton,120,126
+2023,14,Gold Coast,61,66.6
+2023,14,North Melbourne,84,81.2
+2023,14,Western Bulldogs,105,105.4
+2023,15,Geelong,78,76.4
+2023,15,Melbourne,63,76.7
+2023,15,Brisbane,84,88.6
+2023,15,St Kilda,56,67.1
+2023,15,Sydney,205,189.7
+2023,15,West Coast,34,37.6
+2023,15,Essendon,61,63.7
+2023,15,Fremantle,93,82.3
+2023,15,Adelaide,80,87.8
+2023,15,Collingwood,82,90.1
+2023,15,Gold Coast,101,107.6
+2023,15,Hawthorn,34,47.7
+2023,16,Adelaide,138,118.9
+2023,16,North Melbourne,72,64.6
+2023,16,Brisbane,134,121.4
+2023,16,Richmond,53,50.7
+2023,16,Essendon,74,78.2
+2023,16,Port Adelaide,78,68.2
+2023,16,Collingwood,120,128.4
+2023,16,Gold Coast,42,56.8
+2023,16,Carlton,112,102.7
+2023,16,Hawthorn,52,57.2
+2023,16,Greater Western Sydney,47,43.9
+2023,16,Melbourne,45,73.1
+2023,16,Geelong,54,70.1
+2023,16,Sydney,54,96.8
+2023,16,St Kilda,85,101.8
+2023,16,West Coast,77,56.2
+2023,16,Fremantle,73,80.5
+2023,16,Western Bulldogs,102,84.2
+2023,17,Brisbane,116,123.7
+2023,17,West Coast,35,32.8
+2023,17,Adelaide,97,70.5
+2023,17,Essendon,115,107
+2023,17,Carlton,98,104.2
+2023,17,Fremantle,45,63.2
+2023,17,Geelong,125,129
+2023,17,North Melbourne,63,55.4
+2023,17,Greater Western Sydney,85,91.3
+2023,17,Hawthorn,72,77.5
+2023,17,Gold Coast,73,66.5
+2023,17,Port Adelaide,106,100
+2023,17,Richmond,88,104.7
+2023,17,Sydney,75,71.2
+2023,17,Melbourne,79,60.6
+2023,17,St Kilda,58,66.6
+2023,17,Collingwood,89,78.4
+2023,17,Western Bulldogs,77,75.6
+2023,18,Adelaide,57,58
+2023,18,Greater Western Sydney,71,70.1
+2023,18,Carlton,122,115.1
+2023,18,Port Adelaide,72,88.3
+2023,18,Collingwood,113,100.4
+2023,18,Fremantle,67,75.7
+2023,18,Essendon,45,41.2
+2023,18,Geelong,122,113.8
+2023,18,Gold Coast,77,77.5
+2023,18,St Kilda,51,46.4
+2023,18,Brisbane,104,90
+2023,18,Melbourne,105,75.9
+2023,18,Hawthorn,88,91.9
+2023,18,North Melbourne,40,33.7
+2023,18,Sydney,78,82.1
+2023,18,Western Bulldogs,76,72.8
+2023,18,Richmond,98,112.4
+2023,18,West Coast,60,76
+2023,19,Brisbane,64,67.7
+2023,19,Geelong,53,60.2
+2023,19,Carlton,140,129.3
+2023,19,West Coast,69,63.5
+2023,19,Essendon,49,52.5
+2023,19,Western Bulldogs,90,76.9
+2023,19,Fremantle,76,65.5
+2023,19,Sydney,105,83
+2023,19,Gold Coast,63,52.6
+2023,19,Greater Western Sydney,103,104.2
+2023,19,Adelaide,93,85.7
+2023,19,Melbourne,97,96.1
+2023,19,Collingwood,85,59.5
+2023,19,Port Adelaide,83,90.6
+2023,19,Hawthorn,95,66.4
+2023,19,Richmond,96,100.8
+2023,19,North Melbourne,61,63
+2023,19,St Kilda,69,85.1
+2023,20,Adelaide,112,108.5
+2023,20,Port Adelaide,65,70.2
+2023,20,Carlton,93,84.7
+2023,20,Collingwood,76,97.3
+2023,20,Essendon,99,90.6
+2023,20,Sydney,101,91.9
+2023,20,Fremantle,71,79.5
+2023,20,Geelong,64,74
+2023,20,Brisbane,55,72.7
+2023,20,Gold Coast,96,95.5
+2023,20,Hawthorn,93,83.1
+2023,20,St Kilda,122,103.7
+2023,20,Melbourne,130,122
+2023,20,Richmond,98,84.4
+2023,20,North Melbourne,67,75.6
+2023,20,West Coast,72,81.4
+2023,20,Greater Western Sydney,78,89.4
+2023,20,Western Bulldogs,73,84.5
+2023,21,Adelaide,89,106.8
+2023,21,Gold Coast,61,60.9
+2023,21,Essendon,73,82.3
+2023,21,West Coast,72,67.7
+2023,21,Brisbane,77,78.5
+2023,21,Fremantle,74,72
+2023,21,Geelong,97,98
+2023,21,Port Adelaide,85,91.6
+2023,21,Greater Western Sydney,85,80.7
+2023,21,Sydney,96,73.7
+2023,21,Collingwood,73,61.6
+2023,21,Hawthorn,105,103.5
+2023,21,Melbourne,103,89.1
+2023,21,North Melbourne,71,70.8
+2023,21,Carlton,73,62.6
+2023,21,St Kilda,54,49.1
+2023,21,Richmond,71,75.8
+2023,21,Western Bulldogs,126,136.6
+2023,22,Carlton,60,54.4
+2023,22,Melbourne,56,60.3
+2023,22,Adelaide,93,101.6
+2023,22,Brisbane,99,92.5
+2023,22,Collingwood,109,109.7
+2023,22,Geelong,101,83
+2023,22,Hawthorn,67,78.9
+2023,22,Western Bulldogs,64,73.4
+2023,22,Essendon,86,79.3
+2023,22,North Melbourne,77,65.4
+2023,22,Greater Western Sydney,85,77.1
+2023,22,Port Adelaide,136,105.5
+2023,22,Richmond,57,73.4
+2023,22,St Kilda,93,92.7
+2023,22,Gold Coast,90,82.8
+2023,22,Sydney,114,95.3
+2023,22,Fremantle,134,117.5
+2023,22,West Coast,33,50.4
+2023,23,Adelaide,73,79
+2023,23,Sydney,74,81.2
+2023,23,Brisbane,124,88.1
+2023,23,Collingwood,100,89.6
+2023,23,Fremantle,58,65.5
+2023,23,Port Adelaide,74,80
+2023,23,Carlton,91,90.7
+2023,23,Gold Coast,87,89.6
+2023,23,Essendon,36,45.6
+2023,23,Greater Western Sydney,162,139.1
+2023,23,Hawthorn,60,57.3
+2023,23,Melbourne,87,82.3
+2023,23,North Melbourne,72,88.9
+2023,23,Richmond,101,100.6
+2023,23,Geelong,55,53.1
+2023,23,St Kilda,88,114.3
+2023,23,West Coast,92,76.2
+2023,23,Western Bulldogs,85,84.1
+2023,24,Brisbane,72,98.7
+2023,24,St Kilda,60,54.8
+2023,24,Carlton,73,68.3
+2023,24,Greater Western Sydney,105,96.1
+2023,24,Collingwood,101,84.7
+2023,24,Essendon,31,48.9
+2023,24,Geelong,79,100.7
+2023,24,Western Bulldogs,104,88.3
+2023,24,Fremantle,93,82.1
+2023,24,Hawthorn,56,54.2
+2023,24,Gold Coast,97,91.8
+2023,24,North Melbourne,132,121.8
+2023,24,Port Adelaide,94,110.7
+2023,24,Richmond,63,75.8
+2023,24,Melbourne,77,87.1
+2023,24,Sydney,56,90.6
+2023,24,Adelaide,123,139.3
+2023,24,West Coast,78,69.7
+2023,25,Collingwood,60,54.8
+2023,25,Melbourne,53,73.9
+2023,25,Carlton,74,67.9
+2023,25,Sydney,68,71.8
+2023,25,Greater Western Sydney,101,99.2
+2023,25,St Kilda,77,82.9
+2023,25,Brisbane,123,99.1
+2023,25,Port Adelaide,75,92.7
+2023,26,Carlton,73,64
+2023,26,Melbourne,71,80.6
+2023,26,Greater Western Sydney,93,93.4
+2023,26,Port Adelaide,70,80.6
+2023,27,Collingwood,58,58.1
+2023,27,Greater Western Sydney,57,66.4
+2023,27,Brisbane,79,90.4
+2023,27,Carlton,63,65
+2023,28,Brisbane,86,66.2
+2023,28,Collingwood,90,82.6
+2024,0,Melbourne,64,65.7
+2024,0,Sydney,86,83.7
+2024,0,Brisbane,85,85.1
+2024,0,Carlton,86,69.4
+2024,0,Gold Coast,99,105.6
+2024,0,Richmond,60,49.8
+2024,0,Collingwood,82,86
+2024,0,Greater Western Sydney,114,73.3
+2024,1,Carlton,86,94.3
+2024,1,Richmond,81,85.9
+2024,1,Collingwood,69,62.7
+2024,1,Sydney,102,102.2
+2024,1,Essendon,107,79.6
+2024,1,Hawthorn,83,93.5
+2024,1,Greater Western Sydney,121,134.4
+2024,1,North Melbourne,82,65.9
+2024,1,Geelong,76,99.5
+2024,1,St Kilda,68,87.3
+2024,1,Adelaide,54,47.6
+2024,1,Gold Coast,60,61.3
+2024,1,Melbourne,109,85.3
+2024,1,Western Bulldogs,64,68.4
+2024,1,Port Adelaide,120,122.6
+2024,1,West Coast,70,72.1
+2024,1,Brisbane,70,72.1
+2024,1,Fremantle,93,87.4
+2024,2,Collingwood,79,69.6
+2024,2,St Kilda,94,73.7
+2024,2,Adelaide,77,85.2
+2024,2,Geelong,96,81
+2024,2,Fremantle,102,98.7
+2024,2,North Melbourne,76,79.4
+2024,2,Hawthorn,38,48.2
+2024,2,Melbourne,93,78.5
+2024,2,Essendon,101,91.3
+2024,2,Sydney,131,119.6
+2024,2,Gold Coast,67,55
+2024,2,Western Bulldogs,115,104.4
+2024,2,Port Adelaide,122,127.2
+2024,2,Richmond,92,86.8
+2024,2,Greater Western Sydney,108,99.8
+2024,2,West Coast,43,49.9
+2024,3,Brisbane,72,66.2
+2024,3,Collingwood,92,72.5
+2024,3,Carlton,137,124.3
+2024,3,North Melbourne,81,76.3
+2024,3,Adelaide,34,42
+2024,3,Fremantle,69,79.7
+2024,3,Essendon,71,78.4
+2024,3,St Kilda,67,85.1
+2024,3,Melbourne,96,62.1
+2024,3,Port Adelaide,89,91.6
+2024,3,West Coast,30,54
+2024,3,Western Bulldogs,106,91.2
+2024,3,Richmond,82,79.4
+2024,3,Sydney,77,75.1
+2024,3,Geelong,106,77.5
+2024,3,Hawthorn,70,74.7
+2024,4,Adelaide,63,81.5
+2024,4,Melbourne,78,85.3
+2024,4,Brisbane,112,132.7
+2024,4,North Melbourne,42,42.1
+2024,4,Essendon,42,41.1
+2024,4,Port Adelaide,111,91.9
+2024,4,Sydney,104,103
+2024,4,West Coast,78,89.1
+2024,4,Carlton,73,80.7
+2024,4,Fremantle,63,75.4
+2024,4,Geelong,95,82.9
+2024,4,Western Bulldogs,91,91.5
+2024,4,Gold Coast,89,84.9
+2024,4,Greater Western Sydney,117,100.7
+2024,4,Richmond,60,53.2
+2024,4,St Kilda,67,76.8
+2024,4,Collingwood,77,74.2
+2024,4,Hawthorn,72,70.9
+2024,5,Brisbane,82,84.8
+2024,5,Melbourne,60,60
+2024,5,Essendon,96,78.8
+2024,5,Western Bulldogs,67,82.2
+2024,5,Greater Western Sydney,80,81.9
+2024,5,St Kilda,79,79.8
+2024,5,Adelaide,100,92.8
+2024,5,Carlton,98,95.8
+2024,5,Gold Coast,109,85.1
+2024,5,Hawthorn,56,51.8
+2024,5,Fremantle,63,66.6
+2024,5,Port Adelaide,66,74.8
+2024,5,Geelong,139,125.3
+2024,5,North Melbourne,64,55
+2024,5,Richmond,70,72.5
+2024,5,West Coast,109,111
+2024,6,St Kilda,64,70.4
+2024,6,Western Bulldogs,124,109.1
+2024,6,Adelaide,75,68.4
+2024,6,Essendon,78,88.9
+2024,6,Collingwood,123,123.1
+2024,6,Port Adelaide,81,72
+2024,6,Carlton,117,118.3
+2024,6,Greater Western Sydney,98,92.3
+2024,6,Brisbane,37,51.6
+2024,6,Geelong,63,63.3
+2024,6,Fremantle,68,64.6
+2024,6,West Coast,105,88.1
+2024,6,Gold Coast,57,55.5
+2024,6,Sydney,110,81.3
+2024,6,Hawthorn,113,101.2
+2024,6,North Melbourne,68,66.8
+2024,7,Melbourne,85,76.3
+2024,7,Richmond,42,57.7
+2024,7,Collingwood,85,89.9
+2024,7,Essendon,85,78.8
+2024,7,Brisbane,59,73.1
+2024,7,Greater Western Sydney,113,85.5
+2024,7,Port Adelaide,82,90.5
+2024,7,St Kilda,72,55.1
+2024,7,Adelaide,138,122.9
+2024,7,North Melbourne,81,65.9
+2024,7,Carlton,105,101.8
+2024,7,Geelong,118,101.4
+2024,7,Fremantle,95,94.2
+2024,7,Western Bulldogs,71,74.8
+2024,7,Gold Coast,112,90.3
+2024,7,West Coast,75,56.3
+2024,7,Hawthorn,42,64.5
+2024,7,Sydney,118,90.9
