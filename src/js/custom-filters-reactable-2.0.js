@@ -3,12 +3,12 @@ customFilterDiv.innerHTML = "";
 
 const filterSelectLabel = document.createElement('label');
 filterSelectLabel.innerText = "Select a field to filter";
-filterSelectLabel.for = "filter-select";
-filterSelectLabel.classList = "form-label fw-bold";
+filterSelectLabel.htmlFor = "filter-select";
+filterSelectLabel.className = "form-label fw-bold";
 
 const filterSelect = document.createElement('select');
 filterSelect.id = "filter-select";
-filterSelect.classList = "form-select";
+filterSelect.className = "form-select";
 
 let filterOption = document.createElement("option");
 filterOption.value = "";
@@ -16,7 +16,7 @@ filterOption.text = "Select a field";
 filterSelect.appendChild(filterOption);
 
 const filterAdd = document.createElement('button');
-filterAdd.classList = "btn btn-primary btn-sm mx-1 my-2";
+filterAdd.className = "btn btn-primary btn-sm mx-1 my-2";
 filterAdd.innerText = "Add filter";
 
 const selectOptions = [];
@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             filterOption = document.createElement("option");
             filterOption.id = `filter-select-${key}`;
-            istotal = false;
+            let istotal = false;
 
             if (typeof filterColumns[key] === 'object') {
                 filterOption.value = filterColumns[key]["column"];
@@ -73,59 +73,60 @@ customFilterDiv.appendChild(filterSelect);
 customFilterDiv.appendChild(filterAdd);
 
 const customFilterRow = document.createElement('div');
-customFilterRow.classList = "d-flex flex-wrap";
+customFilterRow.className = "d-flex flex-wrap";
 customFilterDiv.appendChild(customFilterRow);
 
 const filterCreate = function (id, column, label_text, total = false) {
     const columnLower = column.toLowerCase();
 
     const div = document.createElement('div');
-    div.classList = "m-2";
+    div.className = "m-2";
 
     const label = document.createElement('label');
     label.innerText = label_text;
-    label.for = `filter-min-${columnLower}`;
-    label.classList = "form-label fw-bold";
+    label.htmlFor = `filter-min-${columnLower}`;
+    label.className = "form-label fw-bold";
 
     const divWarning = document.createElement('div');
     divWarning.id = `filter-warning-${columnLower}`;
     divWarning.dataset.column = column;
-    divWarning.classList = "d-none";
+    divWarning.className = "d-none";
     divWarning.innerHTML = `<span class="badge bg-primary bg-danger mb-1">DATA NOT AVAILABLE</span>`
 
     const inputGroup = document.createElement('div');
-    inputGroup.classList = "input-group input-group-sm";
+    inputGroup.className = "input-group input-group-sm";
 
     const labelMin = document.createElement('span');
     labelMin.innerText = "from";
-    labelMin.classList = "input-group-text";
+    labelMin.className = "input-group-text";
     inputGroup.appendChild(labelMin);
 
     const valueMin = document.createElement('input');
     valueMin.id = `filter-min-${columnLower}`;
-    valueMin.type = "text";
+    valueMin.type = "decimal";
     valueMin.size = "4";
     inputGroup.appendChild(valueMin);
 
     const labelMax = document.createElement('span');
     labelMax.innerText = "to";
-    labelMax.classList = "input-group-text";
+    labelMax.className = "input-group-text";
     inputGroup.appendChild(labelMax);
 
     const valueMax = document.createElement('input');
     valueMax.id = `filter-max-${columnLower}`;
-    valueMax.type = "text";
+    valueMax.type = "decimal";
     valueMax.size = "4";
     inputGroup.appendChild(valueMax);
 
     const removeFilter = document.createElement('button');
     removeFilter.type = "button";
-    removeFilter.classList = "btn-close small";
+    removeFilter.className = "btn-close small";
     div.appendChild(removeFilter);
 
     removeFilter.addEventListener('click', () => {
         filterCustom(column, "", "");
-        selectOptions.forEach(opt => { if (id === opt.id) opt.disabled = false });
+        // selectOptions.forEach(opt => { if (id === opt.id) opt.disabled = false });
+        selectOptions.forEach(opt => { if (columnLower === opt.value.toLowerCase()) opt.disabled = false });
         div.remove();
     })
 
@@ -142,7 +143,8 @@ const filterCreate = function (id, column, label_text, total = false) {
 
     customFilterRow.appendChild(div);
 
-    selectOptions.forEach(opt => { if (id === opt.id) opt.disabled = true });
+    // selectOptions.forEach(opt => { if (id === opt.id) opt.disabled = true });
+    selectOptions.forEach(opt => { if (columnLower === opt.value.toLowerCase()) opt.disabled = true });
 
     if (typeof updateFiltersIndicator !== "undefined") updateFiltersIndicator();
 }
@@ -150,7 +152,7 @@ const filterCreate = function (id, column, label_text, total = false) {
 filterAdd.addEventListener('click', (e) => {
     if (filterSelect.value) {
         const filterColumn = filterSelect.selectedOptions[0];
-        filterCreate(filterColumn.id, filterColumn.value, filterColumn.text, filterColumn.dataset.istotal);
+        filterCreate(filterColumn.id, filterColumn.value, filterColumn.text, filterColumn.dataset.istotal === 'true');
 
         filterSelect.value = "";
     }
@@ -204,11 +206,11 @@ filterAdd.addEventListener('click', (e) => {
 
 const filterRange = function (rows, columnId, filterValue) {
     const [min, max, total] = filterValue
-    const filter_total = total && total === 'true' && typeof match_count_column !== 'undefined' && Reactable.getInstance(reactableId).data.length > 0 && typeof Reactable.getInstance(reactableId).data[0][match_count_column] !== 'undefined';
+    const filter_total = total && total === true && typeof match_count_column !== 'undefined' && Reactable.getInstance(reactableId).data.length > 0 && typeof Reactable.getInstance(reactableId).data[0][match_count_column] !== 'undefined';
 
     return rows.filter(row => {
         let value = row.values[columnId]
-        if (filter_total) value = Math.round(value * row.values[match_count_column], 1)  // 'total' is a string, not logical
+        if (filter_total) value = Math.round(value * row.values[match_count_column])  // 'total' is a string, not logical
 
         return (value >= min || min.length === 0) && (value <= max || max.length === 0)
     })
