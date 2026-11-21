@@ -91,7 +91,7 @@ const filterCreate = function (id, column, label_text, total = false) {
     divWarning.id = `filter-warning-${columnLower}`;
     divWarning.dataset.column = column;
     divWarning.className = "d-none";
-    divWarning.innerHTML = `<span class="badge bg-primary bg-danger mb-1">DATA NOT AVAILABLE</span>`
+    divWarning.innerHTML = `<span class="badge bg-primaomalry bg-danger mb-1">DATA NOT AVAILABLE</span>`
 
     const inputGroup = document.createElement('div');
     inputGroup.className = "input-group input-group-sm";
@@ -103,7 +103,7 @@ const filterCreate = function (id, column, label_text, total = false) {
 
     const valueMin = document.createElement('input');
     valueMin.id = `filter-min-${columnLower}`;
-    valueMin.type = "decimal";
+    valueMin.type = "text";
     valueMin.size = "4";
     inputGroup.appendChild(valueMin);
 
@@ -114,7 +114,7 @@ const filterCreate = function (id, column, label_text, total = false) {
 
     const valueMax = document.createElement('input');
     valueMax.id = `filter-max-${columnLower}`;
-    valueMax.type = "decimal";
+    valueMax.type = "text";
     valueMax.size = "4";
     inputGroup.appendChild(valueMax);
 
